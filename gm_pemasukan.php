@@ -5,6 +5,7 @@ include "include/head.php";
 include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
+include "include/cssDatatables.php";
 
 $AJU_PLB = '';
 // API - 
@@ -90,6 +91,40 @@ if (isset($_POST['show_all'])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <?php if (isset($_POST['filter'])) { ?>
+                        <div class="card text-white border-0 bg-blue text-center mb-2">
+                            <div class="card-body">
+                                <div>
+                                    <div>
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">Hasil Pencarian: <?= $AJU_PLB; ?></p>
+                                    </div>
+                                </div>
+                                <figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
+                                    Time <cite title="Source Title"> <?= date('H:m:i A'); ?></cite>
+                                </figcaption>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_POST['show_all'])) { ?>
+                        <div class="card text-white border-0 bg-blue text-center mb-2">
+                            <div class="card-body">
+                                <div>
+                                    <div>
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">Anda menampilkan semua data!</p>
+                                    </div>
+                                </div>
+                                <figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
+                                    Time <cite title="Source Title"> <?= date('H:m:i A'); ?></cite>
+                                </figcaption>
+                            </div>
+                        </div>
+                    <?php } ?>
                     <div class="table-responsive">
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
@@ -191,5 +226,6 @@ if (isset($_POST['show_all'])) {
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/jsDatatables.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
