@@ -248,20 +248,20 @@ $data = json_decode($content, true);
                         <table id="table-keluar-barang" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
                                     <th colspan="2" style="text-align: center;">Bukti Pengeluaran</th>
-                                    <th rowspan="2" style="text-align: center;">Pembeli / Penerima</th>
-                                    <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>
+                                    <th rowspan="2" style="text-align: center;">Tujuan / Penerima</th>
+                                    <th rowspan="2" style="text-align: center;">No. HS</th>
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Jenis</th>
-                                    <th style="text-align: center;">No.</th>
+                                    <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">Tanggal</th>
-                                    <th style="text-align: center;">No.</th>
+                                    <th style="text-align: center;">No. Daftar</th>
                                     <th style="text-align: center;">Tanggal</th>
                                 </tr>
                             </thead>
