@@ -95,9 +95,9 @@ if (isset($_POST['show_all'])) {
                         <div class="card text-white border-0 bg-blue text-center mb-2">
                             <div class="card-body">
                                 <div>
-                                    <div>
+                                    <h1>
                                         <i class="fas fa-search"></i> Hasil Pencarian.
-                                    </div>
+                                    </h1>
                                     <div>
                                         <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_PLB; ?></p>
                                     </div>
@@ -112,9 +112,9 @@ if (isset($_POST['show_all'])) {
                         <div class="card text-white border-0 bg-blue text-center mb-2">
                             <div class="card-body">
                                 <div>
-                                    <div>
+                                    <h1>
                                         <i class="fas fa-info"></i> Hasil Pencarian
-                                    </div>
+                                    </h1>
                                     <div>
                                         <p class="mb-2">Anda menampilkan semua data!</p>
                                     </div>
