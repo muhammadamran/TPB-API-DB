@@ -53,7 +53,7 @@ $data = json_decode($content, true);
 
                         <div class="row">
                             <div class="col-sm-3">
-                                <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
+                                <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
                             <div class="col-sm-12">
                                 <div class="row">
