@@ -213,6 +213,7 @@ if (isset($_POST['show_all'])) {
                                                                                     <h4>PLB</h4>
                                                                                 </div>
                                                                             </div>
+                                                                            <hr>
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Nomor Pengajuan PLB</label>
@@ -248,6 +249,7 @@ if (isset($_POST['show_all'])) {
                                                                                     <h4>Sarinah</h4>
                                                                                 </div>
                                                                             </div>
+                                                                            <hr>
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Nomor Pengajuan GB</label>
