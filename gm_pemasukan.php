@@ -50,16 +50,17 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
+
                         <div class="row">
-                            <div class="col-sm-3" style="display: flex;justify-content: center;">
+                            <div class="col-sm-3">
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
-                            <div class="col-sm-9" style="margin-top: 10px;">
+                            <div class="col-sm-9">
                                 <div class="row">
-                                    <div class="col-xl-5">
+                                    <div class="col-xl-12">
                                         <div class="form-group">
                                             <label>Nomor Pengajuan PLB</label>
-                                            <input type="date" name="AJU_PLB" class="form-control" value="<?= $AJU_PLB; ?>" required>
+                                            <input type="number" name="AJU_PLB" class="form-control" value="<?= $AJU_PLB; ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -69,6 +70,7 @@ $data = json_decode($content, true);
                                 </div>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
