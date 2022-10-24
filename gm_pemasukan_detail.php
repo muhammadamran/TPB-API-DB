@@ -9,31 +9,31 @@ include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
 // BAHAN BAKU
-$contentBahanBaku = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BahanBaku' . $_GET['AJU']);
+$contentBahanBaku = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BahanBaku&AJU=' . $_GET['AJU']);
 $dataBahanBaku = json_decode($contentBahanBaku, true);
 // BAHAN BAKU TARIF
-$contentBahanBakuTarif = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BahanBakuTarif' . $_GET['AJU']);
+$contentBahanBakuTarif = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BahanBakuTarif&AJU=' . $_GET['AJU']);
 $dataBahanBakuTarif = json_decode($contentBahanBakuTarif, true);
 // BAHAN BAKU DOKUMEN
-$contentBahanBakuDokumen = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BahanBakuDokumen' . $_GET['AJU']);
+$contentBahanBakuDokumen = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BahanBakuDokumen&AJU=' . $_GET['AJU']);
 $dataBahanBakuDokumen = json_decode($contentBahanBakuDokumen, true);
 // BARANG
-$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang' . $_GET['AJU']);
+$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
 $dataBarang = json_decode($contentBarang, true);
 // BARANG TARIF
-$contentBarangTarif = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTarif' . $_GET['AJU']);
+$contentBarangTarif = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTarif&AJU=' . $_GET['AJU']);
 $dataBarangTarif = json_decode($contentBarangTarif, true);
 // BARANG DOKUMEN
-$contentBarangDokumen = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangDokumen' . $_GET['AJU']);
+$contentBarangDokumen = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangDokumen&AJU=' . $_GET['AJU']);
 $dataBarangDokumen = json_decode($contentBarangDokumen, true);
 // DOKUMEN
-$contentDokumen = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Dokumen' . $_GET['AJU']);
+$contentDokumen = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Dokumen&AJU=' . $_GET['AJU']);
 $dataDokumen = json_decode($contentDokumen, true);
 // KEMASAN
-$contentKemasan = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Kemasan' . $_GET['AJU']);
+$contentKemasan = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Kemasan&AJU=' . $_GET['AJU']);
 $dataKemasan = json_decode($contentKemasan, true);
 // KONTAINER
-$contentKontainer = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Kontainer' . $_GET['AJU']);
+$contentKontainer = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Kontainer&AJU=' . $_GET['AJU']);
 $dataKontainer = json_decode($contentKontainer, true);
 ?>
 <!-- begin #content -->

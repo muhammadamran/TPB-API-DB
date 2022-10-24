@@ -34,7 +34,7 @@ if (isset($_POST['show_all'])) {
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Gate</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
                 <li class="breadcrumb-item active">Barang Masuk</li>
             </ol>
         </div>
