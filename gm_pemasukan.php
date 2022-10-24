@@ -52,9 +52,9 @@ $data = json_decode($content, true);
                     <form action="" method="POST">
 
                         <div class="row">
-                            <!-- <div class="col-sm-3">
+                            <div class="col-sm-3">
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
-                            </div> -->
+                            </div>
                             <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-xl-12">
@@ -151,8 +151,8 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <a href="gm_pemasukan_detail?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info">Details</a>
-                                                <a href="" class="btn btn-success">Add</a>
+                                                <a href="gm_pemasukan_detail?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info"><i class="fas fa-book"></i> Details</a>
+                                                <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
