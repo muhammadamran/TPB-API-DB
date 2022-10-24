@@ -135,7 +135,7 @@ if (isset($_POST['show_all'])) {
 
                                             $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                             ?>
-                                            <td style="text-align: center;"><?= $datTGLAJU ?></td>
+                                            <td style="text-align: center;"><i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?></td>
                                             <td style="text-align: center">
                                                 <?php if ($row['PEMASOK'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
@@ -157,6 +157,27 @@ if (isset($_POST['show_all'])) {
                                                 <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="add<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Add] Nomor Pengajuan GB</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="add_kuota" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <?php } ?>
                                 <?php } ?>
                             </tbody>
