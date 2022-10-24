@@ -286,6 +286,9 @@ $data = json_decode($content, true);
                                             <td>
                                                 Petugas BC
                                             </td>
+                                            <td style="text-align: center">
+                                                -
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 <?php } ?>

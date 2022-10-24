@@ -375,6 +375,18 @@ $data = json_decode($content, true);
                                                     <font><?= $row['CIF']; ?></font>
                                                 </div>
                                             </td>
+                                            <td style="text-align: center">
+                                                -
+                                            </td>
+                                            <td>
+                                                Petugas Sarinah
+                                            </td>
+                                            <td>
+                                                Petugas BC
+                                            </td>
+                                            <td style="text-align: center">
+                                                -
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 <?php } ?>
