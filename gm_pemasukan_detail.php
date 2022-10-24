@@ -48,7 +48,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Barang Masuk</a></li>
-                <li class="breadcrumb-item active">Detail Nomor AJU <?= $_GET['AJU'] ?></li>
+                <li class="breadcrumb-item active">Detail Nomor AJU: <?= $_GET['AJU'] ?></li>
             </ol>
         </div>
         <div>
@@ -62,7 +62,7 @@ $dataKontainer = json_decode($contentKontainer, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Gate Mandiri] Data Masuk Barang</h4>
+                    <h4 class="panel-title">[Detail] Data Masuk Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -70,7 +70,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                     <!-- Menu -->
                     <ul class="nav nav-pills mb-2">
                         <li class="nav-item">
-                            <a href="#IDBahanBaku" data-toggle="tab" class="nav-link">
+                            <a href="#IDBahanBaku" data-toggle="tab" class="nav-link active">
                                 <span class="d-sm-none">Bahan Baku</span>
                                 <span class="d-sm-block d-none">Bahan Baku</span>
                             </a>
@@ -129,7 +129,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBahanBaku -->
-                        <div class="tab-pane fade" id="IDBahanBaku">
+                        <div class="tab-pane fade active show" id="IDBahanBaku">
                             <div class="table-responsive">
                                 <table id="TableBahanBaku" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
