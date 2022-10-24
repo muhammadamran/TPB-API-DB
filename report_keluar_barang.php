@@ -252,7 +252,7 @@ $data = json_decode($content, true);
                                     <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
                                     <th colspan="2" style="text-align: center;">Bukti Pengeluaran</th>
                                     <th rowspan="2" style="text-align: center;">Tujuan / Penerima</th>
-                                    <th rowspan="2" style="text-align: center;">No. HS</th>
+                                    <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
