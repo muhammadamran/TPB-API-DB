@@ -55,8 +55,8 @@ $data = json_decode($content, true);
                             <div style="display: flex;justify-content: center;">
                                 <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
-                            <div>
-                                <div>
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Nomor Pengajuan PLB</label>
                                         <input type="number" name="AJU_PLB" class="form-control" value="<?= $AJU_PLB; ?>" required>
