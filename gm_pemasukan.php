@@ -122,8 +122,8 @@ $data = json_decode($content, true);
                                             <td style="text-align: center;"><?= $row['PEMASOK'] ?></td>
                                             <td style="text-align: center;"><?= $row['KODE_NEGARA_PEMASOK'] ?></td>
                                             <td style="text-align: center;">
-                                                <a class="btn btn-info">Details</a>
-                                                <a class="btn btn-success">Add</a>
+                                                <a href="gm_pemasukan_detail?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info">Details</a>
+                                                <a href="" class="btn btn-success">Add</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
