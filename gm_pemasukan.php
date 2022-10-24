@@ -52,21 +52,17 @@ $data = json_decode($content, true);
                     <form action="" method="POST">
 
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div>
                                 <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
-                            <div class="col-sm-12">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="form-group">
-                                            <label>Nomor Pengajuan PLB</label>
-                                            <input type="number" name="AJU_PLB" class="form-control" value="<?= $AJU_PLB; ?>" required>
-                                        </div>
+                            <div>
+                                <div>
+                                    <div class="form-group">
+                                        <label>Nomor Pengajuan PLB</label>
+                                        <input type="number" name="AJU_PLB" class="form-control" value="<?= $AJU_PLB; ?>" required>
                                     </div>
-                                    <hr>
                                     <div class="col-sm-12">
-                                        <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
-                                            Find! </button>
+                                        <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i>Cari</button>
                                     </div>
                                 </div>
                             </div>
