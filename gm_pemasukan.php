@@ -205,12 +205,66 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label>Nomor Pengajuan GB <small>Optional</small></label>
-                                                                            <input type="number" name="AJU_GB" class="form-control" placeholder="Nomor Pengajuan GB ...">
+                                                                    <!-- Barang Masuk -->
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Nomor Pengajuan PLB</label>
+                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Tanggal Masuk</label>
+                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Petugas</label>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Petugas</label>
+                                                                                    <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <!-- End Barang Masuk -->
+                                                                    <!-- Barang Keluar -->
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Nomor Pengajuan GB</label>
+                                                                                    <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Tanggal Masuk</label>
+                                                                                    <input type="date" name="bk_masuk" class="form-control" placeholder="Tanggal Masuk ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Petugas</label>
+                                                                                    <input type="text" name="bk_operator" class="form-control" placeholder="Nama Operator ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Petugas</label>
+                                                                                    <textarea name="bk_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- End Barang Keluar -->
                                                                 </div>
                                                             </fieldset>
                                                         </div>
