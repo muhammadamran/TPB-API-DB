@@ -598,6 +598,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDHeader -->
+
                         <!-- IDBahanBaku -->
                         <div class="tab-pane fade" id="IDBahanBaku">
                             <div class="table-responsive">
@@ -692,6 +693,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDBahanBaku -->
+
                         <!-- IDBahanBakuTarif -->
                         <div class="tab-pane fade" id="IDBahanBakuTarif">
                             <div class="table-responsive">
@@ -756,6 +758,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDBahanBakuTarif -->
+
                         <!-- IDBahanBakuDokumen -->
                         <div class="tab-pane fade" id="IDBahanBakuDokumen">
                             <div class="table-responsive">
@@ -800,6 +803,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDBahanBakuDokumen -->
+
                         <!-- IDBarang -->
                         <div class="tab-pane fade" id="IDBarang">
                             <div class="table-responsive">
@@ -934,6 +938,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDBarang -->
+
                         <!-- IDBarangTarif -->
                         <div class="tab-pane fade" id="IDBarangTarif">
                             <div class="table-responsive">
@@ -994,6 +999,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDBarangTarif -->
+
                         <!-- IDBarangDokumen -->
                         <div class="tab-pane fade" id="IDBarangDokumen">
                             <div class="table-responsive">
@@ -1034,6 +1040,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDBarangDokumen -->
+
                         <!-- IDDokumen -->
                         <div class="tab-pane fade" id="IDDokumen">
                             <div class="table-responsive">
@@ -1084,6 +1091,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDDokumen -->
+
                         <!-- IDKemasan -->
                         <div class="tab-pane fade" id="IDKemasan">
                             <div class="table-responsive">
@@ -1144,6 +1152,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDKemasan -->
+
                         <!-- IDKontainer -->
                         <div class="tab-pane fade" id="IDKontainer">
                             <div class="table-responsive">
@@ -1206,6 +1215,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                             </div>
                         </div>
                         <!-- End IDKontainer -->
+
                         <!-- IDRespon -->
                         <div class="tab-pane fade" id="IDRespon">
                             <div class="table-responsive">

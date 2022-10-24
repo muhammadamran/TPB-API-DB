@@ -46,8 +46,9 @@ $dataKontainer = json_decode($contentKontainer, true);
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Gate</a></li>
-                <li class="breadcrumb-item active">Barang Masuk</li>
+                <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;">Barang Masuk</a></li>
+                <li class="breadcrumb-item active">Detail Nomor AJU <?= $_GET['AJU'] ?></li>
             </ol>
         </div>
         <div>

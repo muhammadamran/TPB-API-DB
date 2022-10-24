@@ -239,13 +239,13 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['PEMASOK'] == NULL) { ?>
+                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
                                                     <center>
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                         </font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['PEMASOK']; ?>
+                                                    <?= $row['PERUSAHAAN']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
