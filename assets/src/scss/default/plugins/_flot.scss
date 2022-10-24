@@ -1,0 +1,68 @@
+.legend {
+	& > table {
+		& tbody {
+			& tr {
+				& + tr {
+					& td {
+						padding-top: 0;
+					}
+				}
+				& td {
+					padding: rem(4px) 0 rem(5px);
+					
+					&.legendColorBox {
+						padding-left: rem(5px) !important;
+						
+						& > div {
+							margin-right: rem(5px) !important;
+							border: none !important;
+						
+							@include border-radius($border-radius * 2);
+							
+							& > div {
+								border-width: rem(4px) !important;
+								
+								@include border-radius($border-radius * 2);
+							}
+						}
+					}
+					&.legendLabel {
+						padding-right: rem(10px);
+						color: $white;
+						font-size: rem(11px);
+						
+						@if $enable-rtl {
+							padding-right: 0;
+							padding-left: rem(10px);
+						}
+					}
+				}
+			}
+		}
+	}
+	& > div {
+		background: $dark-darker !important;
+		
+		@include border-radius($border-radius);
+	}
+}
+.flot-text {
+	& .tickLabel {
+		color: $dark;
+		font-size: rem(12px);
+		font-weight: 600;
+	}
+}
+.flot-tooltip {
+	position: absolute;
+	display: none;
+	border: 0;
+	padding: rem(6px) rem(10px);
+	color: rgba($white, .9);
+	font-weight: 600;
+	font-size: rem(11px);
+	background: rgba($dark-darker, .85);
+	z-index: 10000 !important;
+	
+	@include border-radius($border-radius);
+}
