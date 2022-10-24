@@ -13,13 +13,13 @@
     <ul class="sub-menu">
         <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' ? 'active' : '' ?>">
             <a href="gm_pemasukan.php">
-                Gate Barang Masuk
-                <span class="label label-theme">0</span>
+                Barang Masuk
+                <!-- <span class="label label-theme">0</span> -->
             </a>
         </li>
         <!-- <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' ? 'active' : '' ?>">
             <a href="gm_pengeluaran.php">
-                Gate Pengeluaran
+                Barang Keluar
                 <span class="label label-theme">0</span>
             </a>
         </li> -->

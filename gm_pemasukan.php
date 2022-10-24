@@ -12,12 +12,12 @@ include "include/sidebar.php";
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-door-open icon-page"></i>
-                <font class="text-page">Gate</font>
+                <font class="text-page">Gate Mandiri</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate</a></li>
-                <li class="breadcrumb-item active">Gate Pemasukan</li>
+                <li class="breadcrumb-item active">Barang Masuk</li>
             </ol>
         </div>
         <div>
