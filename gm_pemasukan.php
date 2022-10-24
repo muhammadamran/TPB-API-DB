@@ -134,7 +134,7 @@ if (isset($_POST['show_all'])) {
                                     <th width="1%">No.</th>
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
-                                    <th class="text-nowrap" style="text-align: center;">Nama Supplier</th>
+                                    <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
                                     <th class="text-nowrap" style="text-align: center;">KD Negara</th>
                                     <th class="text-nowrap" style="text-align: center;">Action</th>
                                 </tr>
@@ -174,11 +174,11 @@ if (isset($_POST['show_all'])) {
                                             ?>
                                             <td style="text-align: center;"><i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?></td>
                                             <td style="text-align: center">
-                                                <?php if ($row['PEMASOK'] == NULL) { ?>
+                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['PEMASOK']; ?>
+                                                    <?= $row['PERUSAHAAN']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
@@ -236,6 +236,12 @@ if (isset($_POST['show_all'])) {
                                                                                 <div class="form-group">
                                                                                     <label>Remarks Barang Masuk</label>
                                                                                     <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Upload Berita Acara</label>
+                                                                                    <input type="uploadBA" name="bm_upload" class="form-control" placeholder="Upload Berita Acara ...">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
