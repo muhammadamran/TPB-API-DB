@@ -192,6 +192,7 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
                                     <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk</th>
                                     <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+                                    <th rowspan="2" style="text-align: center;">Dokumen Upload</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Jenis Dok. Pabean PLB</th>

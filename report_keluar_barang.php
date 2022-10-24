@@ -256,6 +256,9 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk</th>
+                                    <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+                                    <th rowspan="2" style="text-align: center;">Dokumen Upload</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Jenis</th>
@@ -263,6 +266,8 @@ $data = json_decode($content, true);
                                     <th style="text-align: center;">Tanggal</th>
                                     <th style="text-align: center;">No. Daftar</th>
                                     <th style="text-align: center;">Tanggal</th>
+                                    <th style="text-align: center;">Sarinah</th>
+                                    <th style="text-align: center;">BC</th>
                                 </tr>
                             </thead>
                             <tbody>
