@@ -117,10 +117,39 @@ $data = json_decode($content, true);
                                         <?php $no++ ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                            <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
-                                            <td style="text-align: center;"><?= $row['TGL_AJU'] ?></td>
-                                            <td style="text-align: center;"><?= $row['PEMASOK'] ?></td>
-                                            <td style="text-align: center;"><?= $row['KODE_NEGARA_PEMASOK'] ?></td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_AJU']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <?php
+                                            $dataTGLAJU = $row['TGL_AJU'];
+                                            $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                                            $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                                            $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+
+                                            $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                                            ?>
+                                            <td style="text-align: center;"><?= $datTGLAJU ?></td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['PEMASOK'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['PEMASOK']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_NEGARA_PEMASOK']; ?>
+                                                <?php } ?>
+                                            </td>
                                             <td style="text-align: center;">
                                                 <a href="gm_pemasukan_detail?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info">Details</a>
                                                 <a href="" class="btn btn-success">Add</a>
