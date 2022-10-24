@@ -88,9 +88,49 @@ $data = json_decode($content, true);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <center>
-                        <img class="picture-w-550" src="assets/images/coming-soon/01.jpg" alt="coming-soon">
-                    </center>
+                    <div class="table-responsive">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                            <thead>
+                                <tr>
+                                    <th width="1%">#</th>
+                                    <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
+                                    <th class="text-nowrap" style="text-align: center;">Nama Supplier</th>
+                                    <th class="text-nowrap" style="text-align: center;">KD Negara</th>
+                                    <th class="text-nowrap" style="text-align: center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($data['status'] == 404) { ?>
+                                    <tr>
+                                        <td colspan="8">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr>
+                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                            <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
+                                            <td style="text-align: center;"><?= $row['TGL_AJU'] ?></td>
+                                            <td style="text-align: center;"><?= $row['PEMASOK'] ?></td>
+                                            <td style="text-align: center;"><?= $row['KODE_NEGARA_PEMASOK'] ?></td>
+                                            <td style="text-align: center;">
+                                                <a class="btn btn-info">Details</a>
+                                                <a class="btn btn-success">Add</a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
