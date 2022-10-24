@@ -63,8 +63,8 @@ if (isset($_POST['show_all'])) {
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>CK5 PLB PLB (Nomor Pengajuan)</label>
-                                        <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        <label>CK5 PLB (Nomor Pengajuan)</label>
+                                        <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -98,6 +98,7 @@ if (isset($_POST['show_all'])) {
                                     <h4>
                                         <i class="fas fa-search"></i> Hasil Pencarian.
                                     </h4>
+                                    <hr>
                                     <div>
                                         <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_PLB; ?></p>
                                     </div>
@@ -115,6 +116,7 @@ if (isset($_POST['show_all'])) {
                                     <h4>
                                         <i class="fas fa-info"></i> Hasil Pencarian
                                     </h4>
+                                    <hr>
                                     <div>
                                         <p class="mb-2">Anda menampilkan semua data!</p>
                                     </div>
@@ -202,7 +204,14 @@ if (isset($_POST['show_all'])) {
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Pengajuan GB <small>Optional</small></label>
+                                                                            <input type="number" name="AJU_GB" class="form-control" placeholder="Nomor Pengajuan GB ...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
