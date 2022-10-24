@@ -56,11 +56,14 @@ $data = json_decode($content, true);
                                 <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
                             <div class="row">
-                                <div class="col-md-12" style="width: 50%;">
+                                <div class="col-md-12" style="width: 780px;">
                                     <div class="form-group">
                                         <label>CK5 PLB PLB (Nomor Pengajuan)</label>
                                         <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>" required>
                                     </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i>Cari</button>
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i>Cari</button>
