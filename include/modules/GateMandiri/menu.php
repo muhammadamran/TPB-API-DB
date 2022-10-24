@@ -6,7 +6,7 @@
         <b class="caret"></b>
         <i class="fas fa-door-open"></i>
         <span>
-            Gate
+            Gate Mandiri
             <!-- <span class="label label-theme">0</span> -->
         </span>
     </a>
@@ -17,11 +17,11 @@
                 <!-- <span class="label label-theme">0</span> -->
             </a>
         </li>
-        <!-- <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' ? 'active' : '' ?>">
+        <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' ? 'active' : '' ?>">
             <a href="gm_pengeluaran.php">
                 Barang Keluar
                 <span class="label label-theme">0</span>
             </a>
-        </li> -->
+        </li>
     </ul>
 </li>
