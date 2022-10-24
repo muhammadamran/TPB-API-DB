@@ -64,8 +64,6 @@ $data = json_decode($content, true);
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i>Cari</button>
-                                </div>
-                                <div class="col-sm-12">
                                     <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i>Cari</button>
                                 </div>
                             </div>
