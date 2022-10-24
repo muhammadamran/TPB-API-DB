@@ -7,17 +7,21 @@ include "include/top-header.php";
 include "include/sidebar.php";
 
 $AJU_PLB = '';
+// API - 
+include "include/api.php";
 
 if (isset($_POST['filter'])) {
     if ($_POST["AJU_PLB"] != '') {
         $AJU_PLB   = $_POST['AJU_PLB'];
     }
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_noAJU&AJU_PLB=' . $AJU_PLB);
+    $data = json_decode($content, true);
 }
 
-// API - 
-include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?AJU_PLB=' . $AJU_PLB);
-$data = json_decode($content, true);
+if (isset($_POST['show_all'])) {
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
+    $data = json_decode($content, true);
+}
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
