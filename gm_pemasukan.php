@@ -210,6 +210,11 @@ if (isset($_POST['show_all'])) {
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
+                                                                                    <h4>PLB</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
                                                                                     <label>Nomor Pengajuan PLB</label>
                                                                                     <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
                                                                                 </div>
@@ -228,7 +233,7 @@ if (isset($_POST['show_all'])) {
                                                                             </div>
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label>Petugas</label>
+                                                                                    <label>Remarks Barang Masuk</label>
                                                                                     <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
                                                                                 </div>
                                                                             </div>
@@ -240,6 +245,11 @@ if (isset($_POST['show_all'])) {
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
+                                                                                    <h4>Sarinah</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
                                                                                     <label>Nomor Pengajuan GB</label>
                                                                                     <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ...">
                                                                                 </div>
@@ -247,7 +257,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Tanggal Masuk</label>
-                                                                                    <input type="date" name="bk_masuk" class="form-control" placeholder="Tanggal Masuk ...">
+                                                                                    <input type="date" name="bk_masuk" class="form-control" placeholder="Tanggal Keluar ...">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -258,8 +268,8 @@ if (isset($_POST['show_all'])) {
                                                                             </div>
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <textarea name="bk_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
+                                                                                    <label>Remarks Barang Keluar</label>
+                                                                                    <textarea name="bk_remarks" class="form-control" placeholder="Remarks Barang Keluar ..."></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
