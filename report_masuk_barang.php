@@ -276,7 +276,7 @@ $data = json_decode($content, true);
                                                     <font><?= $row['CIF']; ?></font>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="text-align: center">
                                                 -
                                             </td>
                                             <td>
