@@ -131,7 +131,7 @@ if (isset($_POST['show_all'])) {
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">#</th>
+                                    <th width="1%">No.</th>
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
                                     <th class="text-nowrap" style="text-align: center;">Nama Supplier</th>

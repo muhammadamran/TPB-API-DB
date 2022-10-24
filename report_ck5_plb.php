@@ -69,7 +69,7 @@ include "include/cssForm.php";
         </div>
         <div class="col-xl-6">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
-                <a href="http://plb.itinventory-sarinah.com:8091/report_ck5_plb.php?username=<?= $_SESSION['username']; ?>" id="id-fl">
+                <a href="http://plb.itinventory-sarinah.com:8091/report_ck5_plb.php?username=<?= $_SESSION['username']; ?>" target="_blank" id="id-fl">
                     <i class="fa-solid fa-upload"></i>
                     <font style="font-size: 8px; margin-top: 10px">Upload CK5 PLB</font>
                 </a>

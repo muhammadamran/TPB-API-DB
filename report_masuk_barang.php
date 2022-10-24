@@ -48,8 +48,7 @@ $data = json_decode($content, true);
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span
-                    id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;">
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;">
                         <?= date('h:m:i a') ?></font></span></button>
         </div>
     </div>
@@ -67,20 +66,17 @@ $data = json_decode($content, true);
                     <form action="" method="POST">
                         <div class="row">
                             <div class="col-sm-3" style="display: flex;justify-content: center;">
-                                <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun"
-                                    class="image" width="50%">
+                                <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
                             <div class="col-sm-9" style="margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-xl-5">
                                         <div class="form-group">
                                             <label>Tanggal Mulai</label>
-                                            <input type="date" name="StartTanggal" class="form-control"
-                                                value="<?= $StartTanggal; ?>" required>
+                                            <input type="date" name="StartTanggal" class="form-control" value="<?= $StartTanggal; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="col-xl-2"
-                                        style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
+                                    <div class="col-xl-2" style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
                                         <div class="form-group">
                                             S.D
                                         </div>
@@ -88,13 +84,11 @@ $data = json_decode($content, true);
                                     <div class="col-xl-5">
                                         <div class="form-group">
                                             <label>Tanggal Selesai</label>
-                                            <input type="date" name="EndTanggal" class="form-control"
-                                                value="<?= $EndTanggal; ?>" required>
+                                            <input type="date" name="EndTanggal" class="form-control" value="<?= $EndTanggal; ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i
-                                                class="fas fa-filter"></i>
+                                        <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
                                             Filter Tanggal</button>
                                     </div>
                                 </div>
@@ -118,9 +112,9 @@ $data = json_decode($content, true);
                         <div class="col-md-3">
                             <div style="display: flex;justify-content: center;">
                                 <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                                <img src="assets/images/logo/logo-default.png" width="30%">
+                                    <img src="assets/images/logo/logo-default.png" width="30%">
                                 <?php } else { ?>
-                                <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
                                 <?php } ?>
                             </div>
                         </div>
@@ -131,8 +125,8 @@ $data = json_decode($content, true);
                                 <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?>
                                 </font>
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $StartTanggal ?> S.D
-                                    <?= $EndTanggal ?></font>
+                                    <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $StartTanggal ?> S.D
+                                        <?= $EndTanggal ?></font>
                                 <?php } ?>
                                 <div class="line-page-table"></div>
                                 <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?>
@@ -142,124 +136,120 @@ $data = json_decode($content, true);
                     </div>
                 </div>
                 <style>
-                .bar {
-                    display: flex;
-                    justify-content: end;
-                    background: transparent;
-                }
+                    .bar {
+                        display: flex;
+                        justify-content: end;
+                        background: transparent;
+                    }
                 </style>
                 <div class="panel-body text-inverse">
                     <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
                     </div>
                     <?php if (isset($_POST['filter_date'])) { ?>
-                    <div class="bar">
-                        <div style="padding: 5px;">
-                            <a href="./report_masuk_barang.php" class="btn btn-secondary" title="Reset"
-                                style="padding: 8px;">
-                                <div style="display: flex;justify-content: space-between;align-items: end;">
-                                    <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
-                                </div>
-                            </a>
+                        <div class="bar">
+                            <div style="padding: 5px;">
+                                <a href="./report_masuk_barang.php" class="btn btn-secondary" title="Reset" style="padding: 8px;">
+                                    <div style="display: flex;justify-content: space-between;align-items: end;">
+                                        <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                                    </div>
+                                </a>
+                            </div>
+                            <div style="padding: 5px;">
+                                <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
+                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                                    <button type="submit" name="find_" class="btn btn-secondary">
+                                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel" data-toggle="popover" data-trigger="hover" data-title="Export File Excel" data-placement="top" data-content="Klik untuk mengexport data dalam file Excel">
+                                        Export
+                                        Excel
+                                    </button>
+                                </form>
+                            </div>
+                            <div style="padding: 5px;">
+                                <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
+                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
+                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
+                                    <button type="submit" name="find_" class="btn btn-secondary">
+                                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print" data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top" data-content="Klik untuk Print File">
+                                        Print
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        <div style="padding: 5px;">
-                            <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST"
-                                style="display: inline-block;">
-                                <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                <button type="submit" name="find_" class="btn btn-secondary">
-                                    <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"
-                                        data-toggle="popover" data-trigger="hover" data-title="Export File Excel"
-                                        data-placement="top" data-content="Klik untuk mengexport data dalam file Excel">
-                                    Export
-                                    Excel
-                                </button>
-                            </form>
+                        <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
                         </div>
-                        <div style="padding: 5px;">
-                            <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST"
-                                style="display: inline-block;">
-                                <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                <button type="submit" name="find_" class="btn btn-secondary">
-                                    <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"
-                                        data-toggle="popover" data-trigger="hover" data-title="Print File"
-                                        data-placement="top" data-content="Klik untuk Print File">
-                                    Print
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
-                    </div>
                     <?php } ?>
                     <div class="table-responsive">
-                        <table id="table-masuk-barang"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="table-masuk-barang" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
-                                    <th rowspan="2" style="text-align: center;">Supplier</th>
-                                    <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>
+                                    <th rowspan="2" style="text-align: center;">Asal PLB</th>
+                                    <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk</th>
+                                    <th colsapn="2" style="text-align: center;">Petugas Penerima</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
                                     <th style="text-align: center;">No. Daftar PLB</th>
                                     <th style="text-align: center;">Tanggal Submit PLB</th>
+                                    <th style="text-align: center;">Sarinah</th>
+                                    <th style="text-align: center;">BC</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="9">
-                                        <center>
-                                            <div style="display: flex;justify-content: center; align-items: center">
-                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="9">
+                                            <center>
+                                                <div style="display: flex;justify-content: center; align-items: center">
+                                                    <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <tr>
-                                    <!-- 9 -->
-                                    <td><?= $no ?>.</td>
-                                    <td style="text-align: center">
-                                        BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
-                                    </td>
-                                    <td style="text-align: center">
-                                        <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['NOMOR_DAFTAR']; ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['ck5_plb_submit']; ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <?php if ($row['PEMASOK'] == NULL) { ?>
-                                        <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                            </font>
-                                        </center>
-                                        <?php } else { ?>
-                                        <?= $row['PEMASOK']; ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center">
-                                        <?php
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr>
+                                            <!-- 9 -->
+                                            <td><?= $no ?>.</td>
+                                            <td style="text-align: center">
+                                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_DAFTAR']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['ck5_plb_submit'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['ck5_plb_submit']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['PEMASOK'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['PEMASOK']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php
                                                 if ($row['KODE_BARANG'] == NULL) {
                                                     $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
                                                 } else {
@@ -271,23 +261,32 @@ $data = json_decode($content, true);
                                                     $POSTARIF = $row['POS_TARIF'];
                                                 }
                                                 ?>
-                                        <?= $KDBRG ?>
-                                    </td>
-                                    <td><?= $row['URAIAN']; ?></td>
-                                    <td>
-                                        <div style="display: flex;justify-content: space-between;align-items: center">
-                                            <font><?= $row['KODE_SATUAN']; ?></font>
-                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="display: flex;justify-content: space-between;align-items: center">
-                                            <font><?= $row['KODE_VALUTA']; ?></font>
-                                            <font><?= $row['CIF']; ?></font>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php } ?>
+                                                <?= $KDBRG ?>
+                                            </td>
+                                            <td><?= $row['URAIAN']; ?></td>
+                                            <td>
+                                                <div style="display: flex;justify-content: space-between;align-items: center">
+                                                    <font><?= $row['KODE_SATUAN']; ?></font>
+                                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="display: flex;justify-content: space-between;align-items: center">
+                                                    <font><?= $row['KODE_VALUTA']; ?></font>
+                                                    <font><?= $row['CIF']; ?></font>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                -
+                                            </td>
+                                            <td>
+                                                Petugas Sarinah
+                                            </td>
+                                            <td>
+                                                Petugas BC
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
@@ -320,41 +319,41 @@ include "include/footer.php";
 include "include/jsDatatables.php";
 ?>
 <script type="text/javascript">
-$(function() {
-    $("#input-filter").change(function() {
-        if ($(this).val() == "TGL") {
-            $("#form_tgl").show();
-            $("#form_aju").hide();
-        } else if ($(this).val() == "AJU") {
-            $("#form_tgl").hide();
-            $("#form_aju").show();
-        } else {
-            $("#form_tgl").hide();
-            $("#form_aju").hide();
-        }
+    $(function() {
+        $("#input-filter").change(function() {
+            if ($(this).val() == "TGL") {
+                $("#form_tgl").show();
+                $("#form_aju").hide();
+            } else if ($(this).val() == "AJU") {
+                $("#form_tgl").hide();
+                $("#form_aju").show();
+            } else {
+                $("#form_tgl").hide();
+                $("#form_aju").hide();
+            }
+        });
     });
-});
 
-// TableBarangTarif
-$(document).ready(function() {
-    $('#table-masuk-barang').DataTable({
-        // dom: 'Bfrtip',
-        // buttons: [
-        //     'copyHtml5',
-        //     'excelHtml5',
-        //     'csvHtml5',
-        //     'pdfHtml5'
-        // ]
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-        ],
-        "order": [],
-        "columnDefs": [{
-            "targets": 'no-sort',
-            "orderable": false,
-        }],
-        iDisplayLength: -1
+    // TableBarangTarif
+    $(document).ready(function() {
+        $('#table-masuk-barang').DataTable({
+            // dom: 'Bfrtip',
+            // buttons: [
+            //     'copyHtml5',
+            //     'excelHtml5',
+            //     'csvHtml5',
+            //     'pdfHtml5'
+            // ]
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+            ],
+            "order": [],
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
+            iDisplayLength: -1
+        });
     });
-});
 </script>
