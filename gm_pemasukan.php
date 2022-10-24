@@ -53,10 +53,10 @@ $data = json_decode($content, true);
 
                         <div style="display: flex;align-items: center;">
                             <div style="display: flex;justify-content: center;">
-                                <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
+                                <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="80%">
                             </div>
                             <div class="row">
-                                <div class="col-md-12" style="width: 780px;">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>CK5 PLB PLB (Nomor Pengajuan)</label>
                                         <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>" required>
