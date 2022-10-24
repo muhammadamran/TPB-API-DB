@@ -241,7 +241,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Upload Berita Acara</label>
-                                                                                    <input type="uploadBA" name="bm_upload" class="form-control" placeholder="Upload Berita Acara ...">
+                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ...">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
