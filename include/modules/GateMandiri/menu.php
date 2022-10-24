@@ -1,7 +1,6 @@
 <li class="nav-header">GATE MANDIRI</li>
 <li class="has-sub <?= $uriSegments[1] == 'gm_pemasukan.php' ||
-                        $uriSegments[1] == 'gm_pengeluaran.php'
-                        ? 'active' : '' ?>">
+                        $uriSegments[1] == 'gm_pengeluaran.php' ? 'active' : '' ?>">
     <a href="javascript:;">
         <b class="caret"></b>
         <i class="fas fa-door-open"></i>
