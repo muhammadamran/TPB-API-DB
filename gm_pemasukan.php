@@ -5,6 +5,19 @@ include "include/head.php";
 include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
+
+$AJU_PLB = '';
+
+if (isset($_POST['filter'])) {
+    if ($_POST["AJU_PLB"] != '') {
+        $AJU_PLB   = $_POST['AJU_PLB'];
+    }
+}
+
+// API - 
+include "include/api.php";
+$content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?AJU_PLB=' . $AJU_PLB);
+$data = json_decode($content, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -26,6 +39,43 @@ include "include/sidebar.php";
         </div>
     </div>
     <div class="line-page"></div>
+
+    <!-- Search AJU PLB -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang</h4>
+                    <?php include "include/panel-row.php"; ?>
+                </div>
+                <div class="panel-body text-inverse">
+                    <form action="" method="POST">
+                        <div class="row">
+                            <div class="col-sm-3" style="display: flex;justify-content: center;">
+                                <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
+                            </div>
+                            <div class="col-sm-9" style="margin-top: 10px;">
+                                <div class="row">
+                                    <div class="col-xl-5">
+                                        <div class="form-group">
+                                            <label>Nomor Pengajuan PLB</label>
+                                            <input type="date" name="AJU_PLB" class="form-control" value="<?= $AJU_PLB; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
+                                            Filter Tanggal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Search AJU PLB -->
+
     <!-- begin row -->
     <div class="row">
         <div class="col-xl-12">
