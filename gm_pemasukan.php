@@ -190,7 +190,7 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <a href="gm_pemasukan_detail?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info"><i class="fas fa-book"></i> Details</a>
+                                                <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info"><i class="fas fa-book"></i> Details</a>
                                                 <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
                                             </td>
                                         </tr>
