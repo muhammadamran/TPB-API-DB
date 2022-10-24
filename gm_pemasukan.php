@@ -191,9 +191,9 @@ if (isset($_POST['show_all'])) {
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['status'] == NULL) { ?>
-                                                    <p>Lakukan Pengecekan Barang</p><br>
+                                                    <p>Lakukan Pengecekan Barang</p>
                                                 <?php } else { ?>
-                                                    <p>Upload Berita Acara</p><br>
+                                                    <p>Upload Berita Acara</p>
                                                 <?php } ?>
                                                 <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-info" target="_blank"><i class="fas fa-book"></i> Detail</a>
                                                 <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
