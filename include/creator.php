@@ -3,10 +3,10 @@
     <?php if ($resultSetting['company'] == NULL) { ?>
         Copyright © 2022 - Company All Rights Reserved.
     <?php } else { ?>
-        <?= $resultSetting['company'] ?>
+        Copyright © 2022 - <?= $resultSetting['company'] ?> All Rights Reserved.
     <?php } ?>
     <a class="font-w600" href="mailto:info@hellos-id.com" target="_blank">
-
+        Hellos-ID
     </a>
     <br>
     <?php if ($resultSetting['version'] == NULL) { ?>
