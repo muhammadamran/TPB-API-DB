@@ -63,7 +63,7 @@ if (isset($_POST['show_all'])) {
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>CK5 PLB PLB (Nomor Pengajuan)</label>
-                                        <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>" required>
+                                        <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
