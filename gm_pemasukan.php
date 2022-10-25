@@ -71,7 +71,11 @@ $dataAllShow = json_decode($content, true);
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-door-open icon-page"></i>
-                <font class="text-page">Gate Mandiri <?= $dataAllShow['result']; ?></font>
+                <font class="text-page">Gate Mandiri
+                    <?php foreach ($dataAllShow['result'] as $row) { ?>
+                        <?= $row['NOMOR_AJU'] ?>
+                    <?php } ?>
+                </font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
