@@ -191,7 +191,7 @@ if (isset($_POST['show_all'])) {
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['status'] == NULL) { ?>
-                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank"><i class="fas fa-earning"></i> Cek Barang Masuk</a>
+                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank"><i class="fas fa-warning"></i> Cek Barang Masuk</a>
                                                 <?php } else { ?>
                                                     <p>Upload Berita Acara</p>
                                                 <?php } ?>
