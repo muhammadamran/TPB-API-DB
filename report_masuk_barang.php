@@ -29,7 +29,8 @@ if (isset($_POST['filter_date'])) {
 
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
+// DATA LAPORAN
+$content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?function=get_lap&StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
 $data = json_decode($content, true);
 ?>
 
@@ -193,7 +194,7 @@ $data = json_decode($content, true);
                                 <tr>
                                     <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
                                     <th style="text-align: center;">No. Daftar PLB</th>
-                                    <th style="text-align: center;">Tanggal Submit PLB</th>
+                                    <th style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
                                     <th style="text-align: center;">Sarinah</th>
                                     <th style="text-align: center;">BC</th>
                                 </tr>
