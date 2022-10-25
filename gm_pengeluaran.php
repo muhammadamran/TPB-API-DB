@@ -8,7 +8,7 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
 
-$AJU_PLB = '';
+$AJU_GB = '';
 // API - 
 include "include/api.php";
 
@@ -73,15 +73,15 @@ if (isset($_POST['upload_'])) {
 
 // Find
 if (isset($_POST['filter'])) {
-    if ($_POST["AJU_PLB"] != '') {
-        $AJU_PLB   = $_POST['AJU_PLB'];
+    if ($_POST["AJU_GB"] != '') {
+        $AJU_GB   = $_POST['AJU_GB'];
     }
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_noAJU&AJU_PLB=' . $AJU_PLB);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluar.php?function=get_noAJU&AJU_GB=' . $AJU_GB);
     $data = json_decode($content, true);
 }
 
 if (isset($_POST['show_all'])) {
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluar.php?function=get_all');
     $data = json_decode($content, true);
 }
 
@@ -129,8 +129,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>CK5 PLB (Nomor Pengajuan)</label>
-                                        <input type="text" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        <label>Nomor Pengajuan GB</label>
+                                        <input type="text" id="IDAJU_GB" name="AJU_GB" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $AJU_GB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -166,7 +166,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     </h4>
                                     <hr>
                                     <div>
-                                        <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_PLB; ?></p>
+                                        <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_GB; ?></p>
                                     </div>
                                 </div>
                                 <figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
@@ -845,7 +845,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
 <script type="text/javascript">
     $(".default-select2").select2();
     $(function() {
-        $("#IDAJU_PLB").autocomplete({
+        $("#IDAJU_GB").autocomplete({
             source: 'function/autocomplete/nomor_aju_plb.php'
         });
     });
@@ -867,7 +867,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
             icon: 'success',
             text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan.php');
+        history.replaceState({}, '', './gm_pengeluaran.php');
     }
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
@@ -875,6 +875,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
             icon: 'error',
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan.php');
+        history.replaceState({}, '', './gm_pengeluaran.php');
     }
 </script>
