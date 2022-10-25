@@ -836,8 +836,18 @@ $dataAllShow = json_decode($content, true);
                                                                         <!-- Barang Keluar -->
                                                                         <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                             <div class="col-6">
-                                                                                <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                </object>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="form-group">
+                                                                                            <h4>PLB</h4>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <hr>
+                                                                                    <div class="col-md-12">
+                                                                                        <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                        </object>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         <?php } else { ?>
                                                                         <?php } ?>
