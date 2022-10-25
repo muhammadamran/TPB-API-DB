@@ -213,14 +213,64 @@ if (isset($_POST['add_'])) {
                                                     </div>
                                                 <?php } ?>
                                             </td>
-                                            <!--  -->
-                                            <td>
+                                            <!-- Total Barang PLB -->
+                                            <td style="text-align: center;">
                                                 <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
                                                     <center>
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
                                                     <?= $row['JUMLAH_BARANG']; ?> Barang
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Total Barang "Sesuai" -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['total_Sesuai'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['total_Sesuai']; ?> Barang
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Total Barang "Kurang" -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['total_Kurang'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['total_Kurang']; ?> Barang
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Total Barang "Lebih" -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['total_Lebih'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['total_Lebih']; ?> Barang
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Total Barang "Pecah" -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['total_Pecah'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['total_Pecah']; ?> Barang
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Total Barang "Rusak" -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['total_Rusak'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['total_Rusak']; ?> Barang
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
