@@ -371,7 +371,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div style="display: flex;justify-content: center;align-items: center;width: 300px;">
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>
-                                                            <a href="#!" class="btn btn-success" target="_blank">
+                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!">
                                                                     <div style="display: grid;">
                                                                         <div style="font-size: 22px;">
@@ -428,7 +428,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         </div>
                                                                     </div>
                                                                 <?php } else { ?>
-                                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-dark" target="_blank">
+                                                                    <a href="#detail<?= $row['ID'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
                                                                         <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Masuk Barang Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
                                                                             <div>
                                                                                 <div style="font-size: 22px;">
