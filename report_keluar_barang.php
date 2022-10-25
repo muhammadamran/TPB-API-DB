@@ -261,7 +261,7 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Dokumen Upload</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">Jenis</th>
+                                    <th style="text-align: center;">Jenis Dok. Pabean</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">Tanggal</th>
                                     <th style="text-align: center;">No. Daftar</th>

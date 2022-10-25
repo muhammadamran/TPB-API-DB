@@ -29,6 +29,7 @@ if (isset($_POST['filter_date'])) {
 
 // API - 
 include "include/api.php";
+// DATA PETUGAS & DOKUMEN
 // DATA LAPORAN
 $content = get_content($resultAPI['url_api'] . 'reportMasukBarang.php?function=get_lap&StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
 $data = json_decode($content, true);
