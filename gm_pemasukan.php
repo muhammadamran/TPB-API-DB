@@ -222,7 +222,7 @@ if (isset($_POST['show_all'])) {
                                                             <fieldset>
                                                                 <div class="row">
                                                                     <!-- Barang Masuk -->
-                                                                    <div class="col-6">
+                                                                    <div class="col-12">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
@@ -264,7 +264,7 @@ if (isset($_POST['show_all'])) {
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
                                                                     <!-- Barang Keluar -->
-                                                                    <div class="col-6">
+                                                                    <!-- <div class="col-6">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
@@ -297,7 +297,7 @@ if (isset($_POST['show_all'])) {
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <!-- End Barang Keluar -->
                                                                 </div>
                                                             </fieldset>
