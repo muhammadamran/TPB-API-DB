@@ -223,7 +223,7 @@ if (isset($_POST['show_all'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Nomor Pengajuan GB</h4>
+                                                            <h4 class="modal-title">[Add] Data Barang Masuk</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">

@@ -155,7 +155,9 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             // include 'modules/Komunikasi/menu.php' 
             ?>
             <!-- Database -->
-            <?php include 'modules/Database/menu.php' ?>
+            <?php
+            // include 'modules/Database/menu.php'
+            ?>
             <!-- Referensi -->
             <?php include 'modules/Referensi/menu.php' ?>
             <!-- Utility -->

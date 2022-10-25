@@ -132,13 +132,24 @@ if (isset($_POST['show_all'])) {
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">No.</th>
+                                    <th rowspan="2" width="1%">No.</th>
+                                    <th colspan="4" class="text-nowrap" style="text-align: center;">PLB Barang Masuk</th>
+                                    <th colspan="4" class="text-nowrap" style="text-align: center;">GB Barang Keluar</th>
+                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
+                                </tr>
+                                <tr>
+                                    <!-- PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
                                     <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
                                     <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
                                     <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
-                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <!-- GB -->
+                                    <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
+                                    <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
+                                    <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
+                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -223,7 +234,7 @@ if (isset($_POST['show_all'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Nomor Pengajuan GB</h4>
+                                                            <h4 class="modal-title">[Add] Data Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
