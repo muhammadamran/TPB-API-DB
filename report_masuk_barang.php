@@ -64,33 +64,31 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
-                        <div class="row">
-                            <div class="col-sm-3" style="display: flex;justify-content: center;">
+                        <div>
+                            <div>
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
-                            <div class="col-sm-9" style="margin-top: 10px;">
-                                <div class="row">
-                                    <div class="col-xl-5">
-                                        <div class="form-group">
-                                            <label>Tanggal Mulai</label>
-                                            <input type="date" name="StartTanggal" class="form-control" value="<?= $StartTanggal; ?>" required>
-                                        </div>
+                            <div class="row">
+                                <div class="col-xl-5">
+                                    <div class="form-group">
+                                        <label>Tanggal Mulai</label>
+                                        <input type="date" name="StartTanggal" class="form-control" value="<?= $StartTanggal; ?>" required>
                                     </div>
-                                    <div class="col-xl-2" style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
-                                        <div class="form-group">
-                                            S.D
-                                        </div>
+                                </div>
+                                <div class="col-xl-2" style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
+                                    <div class="form-group">
+                                        S.D
                                     </div>
-                                    <div class="col-xl-5">
-                                        <div class="form-group">
-                                            <label>Tanggal Selesai</label>
-                                            <input type="date" name="EndTanggal" class="form-control" value="<?= $EndTanggal; ?>" required>
-                                        </div>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="form-group">
+                                        <label>Tanggal Selesai</label>
+                                        <input type="date" name="EndTanggal" class="form-control" value="<?= $EndTanggal; ?>" required>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
-                                            Filter Tanggal</button>
-                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
+                                        Filter Tanggal</button>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +98,6 @@ $data = json_decode($content, true);
         </div>
     </div>
     <!-- End Select Tabel -->
-
-
 
     <!-- Begin Row -->
     <div class="row">
