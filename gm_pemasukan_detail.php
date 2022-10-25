@@ -384,10 +384,10 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                     <td style="text-align: center;">
                                                         <input type="checkbox">
                                                     </td>
-                                                    <td style="text-align: center;">
+                                                    <td style="text-align: left;">
                                                         <div style="display: grid;">
-                                                            <font><i class="fa-solid fa-user-pen"></i> Petugas: -</font>
-                                                            <font><i class="fa-solid fa-file-circle-check"></i> Status: ??</font>
+                                                            <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
+                                                            <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
                                                         </div>
                                                     </td>
                                                     <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
