@@ -245,7 +245,7 @@ if (isset($_POST["All_rusak"])) {
                             </div>
                             <div style="display: flex;justify-content: flex-start;align-content: baseline;">
                                 <!-- Sesuai ALl -->
-                                <form action="" method="POST" style="margin-left: 5px;">
+                                <form action="" method="POST" style="margin-left: 0px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
