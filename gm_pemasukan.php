@@ -428,7 +428,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         </div>
                                                                     </div>
                                                                 <?php } else { ?>
-                                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
+                                                                    <a href="#gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-dark" target="_blank">
                                                                         <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Masuk Barang Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
                                                                             <div>
                                                                                 <div style="font-size: 22px;">
