@@ -555,7 +555,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                         </div>
                                         <!-- End Add -->
                                         <!-- Detail -->
-                                        <div class="modal fade" id="add<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="detail<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
