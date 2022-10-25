@@ -165,10 +165,11 @@ if (isset($_POST['show_all'])) {
                                             $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                             ?>
                                             <td style="text-align: center;"><i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?></td>
-                                            <td style="text-align: center">
+                                            <td>
                                                 <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    </center>
                                                 <?php } else { ?>
                                                     <div style="display:grid">
                                                         <font>Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
