@@ -172,7 +172,8 @@ if (isset($_POST['show_all'])) {
                                                     </center>
                                                 <?php } else { ?>
                                                     <div style="display:grid;justify-content: center;">
-                                                        <font>Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
+                                                        <font style="font-weight: 800;">Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
+                                                        <hr>
                                                         <font>Sesuai: Barang</font>
                                                         <font>Kurang: Barang</font>
                                                         <font>Lebih: Barang</font>
@@ -259,7 +260,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ...">
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-12">
