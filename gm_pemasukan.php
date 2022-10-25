@@ -204,9 +204,9 @@ if (isset($_POST['show_all'])) {
                                                             <p>Upload Berita Acara</p>
                                                         </div>
                                                     <?php } ?>
-                                                    <div style="margin-left: 10px;">
+                                                    <!-- <div style="margin-left: 10px;">
                                                         <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </td>
                                         </tr>

@@ -69,7 +69,7 @@ $dataKontainer = json_decode($contentKontainer, true);
 
                     <!-- Menu -->
                     <ul class="nav nav-pills mb-2">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#IDBahanBaku" data-toggle="tab" class="nav-link active">
                                 <span class="d-sm-none">Bahan Baku</span>
                                 <span class="d-sm-block d-none">Bahan Baku</span>
@@ -86,14 +86,14 @@ $dataKontainer = json_decode($contentKontainer, true);
                                 <span class="d-sm-none">Bahan Baku Dokumen</span>
                                 <span class="d-sm-block d-none">Bahan Baku Dokumen</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a href="#IDBarang" data-toggle="tab" class="nav-link">
+                            <a href="#IDBarang" data-toggle="tab" class="nav-link active">
                                 <span class="d-sm-none">Barang</span>
                                 <span class="d-sm-block d-none">Barang</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#IDBarangTarif" data-toggle="tab" class="nav-link">
                                 <span class="d-sm-none">Barang Tarif</span>
                                 <span class="d-sm-block d-none">Barang Tarif</span>
@@ -122,14 +122,14 @@ $dataKontainer = json_decode($contentKontainer, true);
                                 <span class="d-sm-none">Kontainer</span>
                                 <span class="d-sm-block d-none">Kontainer</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- Menu -->
 
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBahanBaku -->
-                        <div class="tab-pane fade active show" id="IDBahanBaku">
+                        <!-- <div class="tab-pane fade" id="IDBahanBaku">
                             <div class="table-responsive">
                                 <table id="TableBahanBaku" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -220,11 +220,11 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDBahanBaku -->
 
                         <!-- IDBahanBakuTarif -->
-                        <div class="tab-pane fade" id="IDBahanBakuTarif">
+                        <!-- <div class="tab-pane fade" id="IDBahanBakuTarif">
                             <div class="table-responsive">
                                 <table id="TableBahanBakuTarif" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -285,11 +285,11 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDBahanBakuTarif -->
 
                         <!-- IDBahanBakuDokumen -->
-                        <div class="tab-pane fade" id="IDBahanBakuDokumen">
+                        <!-- <div class="tab-pane fade" id="IDBahanBakuDokumen">
                             <div class="table-responsive">
                                 <table id="TableBahanBakuDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -330,95 +330,63 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDBahanBakuDokumen -->
 
                         <!-- IDBarang -->
-                        <div class="tab-pane fade" id="IDBarang">
+                        <div class="tab-pane fade active show" id="IDBarang">
                             <div class="table-responsive">
                                 <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
-                                            <th style="text-align: center;">ASURANSI</th>
-                                            <th style="text-align: center;">CIF</th>
-                                            <th style="text-align: center;">CIF RUPIAH</th>
-                                            <th style="text-align: center;">DISKON</th>
-                                            <th style="text-align: center;">FLAG KENDARAAN</th>
-                                            <th style="text-align: center;">FOB</th>
-                                            <th style="text-align: center;">FREIGHT</th>
-                                            <th style="text-align: center;">BARANG BARANG LDP</th>
-                                            <th style="text-align: center;">HARGA INVOICE</th>
-                                            <th style="text-align: center;">HARGA PENYERAHAN</th>
-                                            <th style="text-align: center;">HARGA SATUAN</th>
-                                            <th style="text-align: center;">JENIS KENDARAAN</th>
-                                            <th style="text-align: center;">JUMLAH BAHAN BAKU</th>
-                                            <th style="text-align: center;">JUMLAH KEMASAN</th>
-                                            <th style="text-align: center;">JUMLAH SATUAN</th>
-                                            <th style="text-align: center;">KAPASITAS SILINDER</th>
-                                            <th style="text-align: center;">KATEGORI BARANG</th>
-                                            <th style="text-align: center;">KODE_ASAL BARANG</th>
-                                            <th style="text-align: center;">KODE BARANG</th>
-                                            <th style="text-align: center;">KODE FASILITAS</th>
-                                            <th style="text-align: center;">KODE GUNA</th>
-                                            <th style="text-align: center;">KODE JENIS NILAI</th>
-                                            <th style="text-align: center;">KODE KEMASAN</th>
-                                            <th style="text-align: center;">KODE LEBIH DARI 4 TAHUN</th>
-                                            <th style="text-align: center;">KODE NEGARA ASAL</th>
-                                            <th style="text-align: center;">KODE SATUAN</th>
-                                            <th style="text-align: center;">KODE SKEMA TARIF</th>
-                                            <th style="text-align: center;">KODE STATUS</th>
-                                            <th style="text-align: center;">KONDISI BARANG</th>
-                                            <th style="text-align: center;">MERK</th>
-                                            <th style="text-align: center;">NETTO</th>
-                                            <th style="text-align: center;">NILAI INCOTERM</th>
-                                            <th style="text-align: center;">NILAI PABEAN</th>
-                                            <th style="text-align: center;">NOMOR MESIN</th>
-                                            <th style="text-align: center;">POS TARIF</th>
-                                            <th style="text-align: center;">SERI POS TARIF</th>
-                                            <th style="text-align: center;">SPESIFIKASI LAIN</th>
-                                            <th style="text-align: center;">TAHUN PEMBUATAN</th>
-                                            <th style="text-align: center;">TIPE</th>
-                                            <th style="text-align: center;">UKURAN</th>
-                                            <th style="text-align: center;">URAIAN</th>
-                                            <th style="text-align: center;">VOLUME</th>
-                                            <th style="text-align: center;">SERI IJIN</th>
-                                            <th style="text-align: center;">ID EKSPORTIR</th>
-                                            <th style="text-align: center;">NAMA EKSPORTIR</th>
-                                            <th style="text-align: center;">ALAMAT EKSPORTIR</th>
-                                            <th style="text-align: center;">KODE PERHITUNGAN</th>
-                                            <th style="text-align: center;">SERI BARANG DOK ASAL</th>
+                                            <th rowspan="2" width="1%">#</th>
+                                            <th rowspan="2" style="text-align: center;">
+                                                Check ALL
+                                                <input type="checkbox">
+                                            </th>
+                                            <th colspan="6" style="text-align: center;">Barang</th>
+                                            <th colspan="3" style="text-align: center;">Jumlah</th>
+                                            <th rowspan="2" style="text-align: center;">CIF</th>
+                                            <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
+                                            <th rowspan="2" style="text-align: center;">NETTO</th>
+                                            <th rowspan="2" style="text-align: center;">Pos Tarif</th>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: center;">Kode</th>
+                                            <th style="text-align: center;">Seri</th>
+                                            <th style="text-align: center;">Uraian</th>
+                                            <th style="text-align: center;">Tipe</th>
+                                            <th style="text-align: center;">Ukuran</th>
+                                            <th style="text-align: center;">Spesifikasi Barang</th>
+                                            <th style="text-align: center;">Jumlah Bahan Baku</th>
+                                            <th style="text-align: center;">Jumlah Kemasan</th>
+                                            <th style="text-align: center;">Jumlah Satuan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if ($dataBarang['status'] == 404) { ?>
-                                            <tr>
-                                                <td colspan="51">
-                                                    <center>
-                                                        <div style="display: grid;">
-                                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                        </div>
-                                                    </center>
-                                                </td>
-                                            </tr>
-                                        <?php } else { ?>
+                                        <?php if ($dataBarang['status'] == 200) { ?>
                                             <?php $noBarang = 0; ?>
                                             <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
                                                 <?php $noBarang++ ?>
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
-                                                    <td><?= $rowBarang['NOMOR_AJU']; ?></td>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                    </td>
+                                                    <td><?= $rowBarang['KODE_BARANG']; ?></td>
                                                     <td><?= $rowBarang['SERI_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['ASURANSI']; ?></td>
-                                                    <td><?= $rowBarang['CIF']; ?></td>
-                                                    <td><?= $rowBarang['CIF_RUPIAH']; ?></td>
-                                                    <td><?= $rowBarang['DISKON']; ?></td>
-                                                    <td><?= $rowBarang['FLAG_KENDARAAN']; ?></td>
-                                                    <td><?= $rowBarang['FOB']; ?></td>
-                                                    <td><?= $rowBarang['FREIGHT']; ?></td>
-                                                    <td><?= $rowBarang['BARANG_BARANG_LDP']; ?></td>
+                                                    <td><?= $rowBarang['URAIAN']; ?></td>
+                                                    <td><?= $rowBarang['TIPE']; ?></td>
+                                                    <td><?= $rowBarang['UKURAN']; ?></td>
+                                                    <td><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
+                                                    <td><?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?></td>
+                                                    <td><?= $rowBarang['JUMLAH_KEMASAN']; ?></td>
+                                                    <td>
+                                                        <div style="display: flex;justify-content: space-evenly;align-items:center">
+                                                            <font><?= $rowBarang['KODE_SATUAN']; ?></font>
+                                                            <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
+                                                        </div>
+                                                    </td>
                                                     <td><?= $rowBarang['HARGA_INVOICE']; ?></td>
                                                     <td><?= $rowBarang['HARGA_PENYERAHAN']; ?></td>
                                                     <td><?= $rowBarang['HARGA_SATUAN']; ?></td>
@@ -461,6 +429,16 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                     <td><?= $rowBarang['SERI_BARANG_DOK_ASAL']; ?></td>
                                                 </tr>
                                             <?php } ?>
+                                        <?php } else { ?>
+                                            <tr>
+                                                <td colspan="51">
+                                                    <center>
+                                                        <div style="display: grid;">
+                                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                        </div>
+                                                    </center>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -469,7 +447,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                         <!-- End IDBarang -->
 
                         <!-- IDBarangTarif -->
-                        <div class="tab-pane fade" id="IDBarangTarif">
+                        <!-- <div class="tab-pane fade" id="IDBarangTarif">
                             <div class="table-responsive">
                                 <table id="TableBarangTarif" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -526,11 +504,11 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDBarangTarif -->
 
                         <!-- IDBarangDokumen -->
-                        <div class="tab-pane fade" id="IDBarangDokumen">
+                        <!-- <div class="tab-pane fade" id="IDBarangDokumen">
                             <div class="table-responsive">
                                 <table id="TableBarangDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -567,11 +545,11 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDBarangDokumen -->
 
                         <!-- IDDokumen -->
-                        <div class="tab-pane fade" id="IDDokumen">
+                        <!-- <div class="tab-pane fade" id="IDDokumen">
                             <div class="table-responsive">
                                 <table id="TableDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -618,11 +596,11 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDDokumen -->
 
                         <!-- IDKemasan -->
-                        <div class="tab-pane fade" id="IDKemasan">
+                        <!-- <div class="tab-pane fade" id="IDKemasan">
                             <div class="table-responsive">
                                 <table id="TableKemasan" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -679,11 +657,11 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDKemasan -->
 
                         <!-- IDKontainer -->
-                        <div class="tab-pane fade" id="IDKontainer">
+                        <!-- <div class="tab-pane fade" id="IDKontainer">
                             <div class="table-responsive">
                                 <table id="TableKontainer" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -742,7 +720,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End IDKontainer -->
 
                     </div>
