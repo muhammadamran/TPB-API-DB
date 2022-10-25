@@ -281,7 +281,7 @@ if (isset($_POST["FRusak"])) {
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <div style="display: grid;font-size: 10px;width: 80px;">
-                                                            <?php if ($rowBarang['ID'] == NULL) { ?>
+                                                            <?php if ($rowBarang['STATUS'] == NULL) { ?>
                                                                 <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
                                                                 <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
                                                             <?php } else { ?>
