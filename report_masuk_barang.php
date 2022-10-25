@@ -123,7 +123,7 @@ $data = json_decode($content, true);
                                 <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?>
                                 </font>
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <font style="font-size: 14px;font-weight: 800;"><i class="fa-regular fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
+                                    <font style="font-size: 14px;font-weight: 800;"><i class="fas fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
                                         <?= $EndTanggal ?></font>
                                 <?php } ?>
                                 <div class="line-page-table"></div>
