@@ -336,7 +336,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
                             <hr>
-                            <font>Status Barang</font>
+                            <font style="font-weight: 800;">Status Barang:</font>
                             <div>
                                 <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
                                 <button class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
