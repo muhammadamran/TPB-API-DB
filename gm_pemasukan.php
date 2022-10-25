@@ -26,11 +26,11 @@ if (isset($_POST['add_'])) {
     $ext = end($exp);
     $uniq_file =  "Berita-Acara-PLB" . '_' . time();
     $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    $config['upload_path'] = './files/BA/PLB/';
+    $config['upload_path'] = './files/ck5plb/BA/PLB/';
     $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
-    move_uploaded_file($tmpname, "files/BA/PLB/" . $newname);
+    move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&bm_remarks=' . $bm_remarks . '&newname=' . $newname);
     $data = json_decode($content, true);
