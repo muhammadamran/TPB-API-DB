@@ -61,6 +61,8 @@ $dataBarang = json_decode($contentBarang, true);
                                     Barang
                                 </span>
                             </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link active">
                                 <?php if ($dataBarangCek['status'] == 200) { ?>
                                     <span class="btn btn-info">
