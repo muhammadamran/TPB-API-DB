@@ -101,7 +101,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item active">Barang Masuk</li>
+                <li class="breadcrumb-item active">Barang Keluar</li>
             </ol>
         </div>
         <div>
@@ -116,7 +116,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Masuk Barang</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Keluar Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -344,13 +344,13 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success" target="_blank">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
                                                                     <div style="display: grid;">
                                                                         <div style="font-size: 22px;">
                                                                             <i class="fas fa-check-circle"></i>
                                                                         </div>
                                                                         <div style="font-size: 8px;">
-                                                                            <font>Barang Masuk Sudah diCek!</font>
+                                                                            <font>Barang Keluar Sudah diCek!</font>
                                                                         </div>
                                                                     </div>
                                                                 </font>
@@ -418,13 +418,13 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     <?php } else { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Keluar.">
                                                                     <div>
                                                                         <div style="font-size: 22px;">
                                                                             <i class="fas fa-warning"></i>
                                                                         </div>
                                                                         <div style="font-size: 8px;">
-                                                                            <font>Cek Barang Masuk!</font>
+                                                                            <font>Cek Barang Keluar!</font>
                                                                         </div>
                                                                     </div>
                                                                 </font>
@@ -440,7 +440,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Add] Data Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -542,7 +542,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Edit] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Edit] Data Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -719,7 +719,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Detail] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Detail] Data Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
