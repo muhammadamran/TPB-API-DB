@@ -123,8 +123,22 @@ $dataBarang = json_decode($contentBarang, true);
                                                     <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['JUMLAH_KEMASAN']; ?></td>
+                                                    <td style="text-align: center">
+                                                        <?php if ($row['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                            </font>
+                                                        <?php } else { ?>
+                                                            <?= $row['JUMLAH_BAHAN_BAKU']; ?>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td style="text-align: center">
+                                                        <?php if ($row['JUMLAH_KEMASAN'] == NULL) { ?>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                            </font>
+                                                        <?php } else { ?>
+                                                            <?= $row['JUMLAH_KEMASAN']; ?>
+                                                        <?php } ?>
+                                                    </td>
                                                     <td style="text-align: center;">
                                                         <div style="display: flex;justify-content: space-evenly;align-items:center">
                                                             <font><?= $rowBarang['KODE_SATUAN']; ?></font>
