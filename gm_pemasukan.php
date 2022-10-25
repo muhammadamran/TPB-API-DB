@@ -190,7 +190,7 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: space-evenly;align-items: center;">
+                                                <div style="display: flex;justify-content: center;align-items: center;">
                                                     <?php if ($row['status'] == NULL) { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
@@ -204,7 +204,7 @@ if (isset($_POST['show_all'])) {
                                                             <p>Upload Berita Acara</p>
                                                         </div>
                                                     <?php } ?>
-                                                    <div>
+                                                    <div style="margin-left: 10px;">
                                                         <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
                                                     </div>
                                                 </div>
