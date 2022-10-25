@@ -630,7 +630,14 @@ $dataAllShow = json_decode($content, true);
                                                             <div>
                                                                 <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                     <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
-                                                                        <i class="fas fa-warning"></i> Cek Barang Masuk
+                                                                        <div style="display: grid;">
+                                                                            <div style="font-size: 22px;">
+                                                                                <i class="fas fa-warning"></i>
+                                                                            </div>
+                                                                            <div style="font-size: 8px;">
+                                                                                <font>Cek Barang Masuk!</font>
+                                                                            </div>
+                                                                        </div>
                                                                     </font>
                                                                 </a>
                                                             </div>
@@ -639,10 +646,10 @@ $dataAllShow = json_decode($content, true);
                                                             <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
                                                                 <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
                                                                     <div>
-                                                                        <div>
+                                                                        <div style="font-size: 22px;">
                                                                             <i class="fas fa-plus-circle"></i>
                                                                         </div>
-                                                                        <div>
+                                                                        <div style="font-size: 8px;">
                                                                             <font>Add</font>
                                                                         </div>
                                                                     </div>
@@ -651,10 +658,10 @@ $dataAllShow = json_decode($content, true);
                                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
                                                                     <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
                                                                         <div>
-                                                                            <div>
+                                                                            <div style="font-size: 22px;">
                                                                                 <i class="fas fa-file"></i>
                                                                             </div>
-                                                                            <div>
+                                                                            <div style="font-size: 8px;">
                                                                                 <font>Upload Berita Acara!</font>
                                                                             </div>
                                                                         </div>
@@ -662,10 +669,10 @@ $dataAllShow = json_decode($content, true);
                                                                 <?php } else { ?>
                                                                     <a href="#add<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Add">
                                                                         <div>
-                                                                            <div>
+                                                                            <div style="font-size: 22px;">
                                                                                 <i class="fas fa-check-circle"></i>
                                                                             </div>
-                                                                            <div>
+                                                                            <div style="font-size: 8px;">
                                                                                 <font>No. AJU GB & Berita Acara Terisi!</font>
                                                                             </div>
                                                                         </div>
