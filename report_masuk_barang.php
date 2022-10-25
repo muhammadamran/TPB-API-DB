@@ -182,7 +182,7 @@ $data = json_decode($content, true);
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
+                                    <th colspan="4" style="text-align: center;">Dokumen Pabean</th>
                                     <th rowspan="2" style="text-align: center;">Asal PLB</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Barang</th>
@@ -194,6 +194,7 @@ $data = json_decode($content, true);
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
+                                    <th style="text-align: center;">Nomor Pengajuan PLB</th>
                                     <th style="text-align: center;">No. Daftar PLB</th>
                                     <th style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
                                     <th style="text-align: center;">Sarinah</th>
@@ -220,6 +221,14 @@ $data = json_decode($content, true);
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center">
                                                 BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['NOMOR_PENGAJUAN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_PENGAJUAN']; ?>
+                                                <?php } ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
