@@ -71,7 +71,7 @@ $dataBarang = json_decode($contentBarang, true);
                             </div>
                             <hr>
                             <div class="table-responsive">
-                                <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
+                                <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
@@ -165,3 +165,16 @@ $dataBarang = json_decode($contentBarang, true);
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#TableData').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
