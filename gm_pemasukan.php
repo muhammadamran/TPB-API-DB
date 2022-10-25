@@ -371,7 +371,7 @@ if (isset($_POST['add_'])) {
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="7">
+                                        <td colspan="8">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
