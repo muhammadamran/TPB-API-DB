@@ -192,11 +192,11 @@ PT. PGR Logitik Indonesia
                                                 <?php } else { ?>
                                                     <div style="display:grid;justify-content: center;">
                                                         <font style="font-weight: 800;margin-bottom: 10px">Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
-                                                        <font>Sesuai: Barang</font>
-                                                        <font>Kurang: Barang</font>
-                                                        <font>Lebih: Barang</font>
-                                                        <font>Pecah: Barang</font>
-                                                        <font>Rusak: Barang</font>
+                                                        <font>Sesuai: <?= $row['total_Sesuai']; ?> Barang</font>
+                                                        <font>Kurang: <?= $row['total_Kurang']; ?> Barang</font>
+                                                        <font>Lebih: <?= $row['total_Lebih']; ?> Barang</font>
+                                                        <font>Pecah: <?= $row['total_Pecah']; ?> Barang</font>
+                                                        <font>Rusak: <?= $row['total_Rusak']; ?> Barang</font>
                                                     </div>
                                                 <?php } ?>
                                             </td>
