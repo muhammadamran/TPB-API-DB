@@ -551,13 +551,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
-                                                                        <?php $col = '6'; ?>
-                                                                    <?php } else { ?>
-                                                                        <?php $col = '12'; ?>
-                                                                    <?php } ?>
                                                                     <!-- Barang Masuk -->
-                                                                    <div class="col-<?= $col; ?>">
+                                                                    <div class="col-6">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
@@ -565,26 +560,10 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Nomor Pengajuan PLB</label>
-                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                        <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                            <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } else { ?>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } ?>
-                                                                                        <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
-                                                                                            <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
-                                                                                        <?php } ?>
-                                                                                    </select>
+                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['bm_no_aju_plb']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -601,34 +580,67 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <h4>Berita Acara Barang Masuk</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr>
+                                                                            <div class="col-md-12">
+                                                                                <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                </object>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
                                                                     <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
-                                                                        <div class="col-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <h4>Berita Acara Barang Keluar</h4>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
+                                                                    <div class="col-6">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <h4>GB Sarinah</h4>
                                                                                 </div>
                                                                             </div>
+                                                                            <hr>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Nomor Pengajuan GB</label>
+                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Tanggal Keluar</label>
+                                                                                    <?php
+                                                                                    $tgl_msk = $row['bk_tgl_keluar'];
+                                                                                    $tgl = substr($tgl_msk, 0, 10);
+                                                                                    $time = substr($tgl_msk, 10, 20);
+                                                                                    ?>
+                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Keluar ..." value="<?= $tgl; ?>">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Petugas</label>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bk_nama_operator']; ?>" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <h4>Berita Acara Barang Keluar</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr>
+                                                                            <div class="col-md-12">
+                                                                                <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
+                                                                                </object>
+                                                                            </div>
                                                                         </div>
-                                                                    <?php } else { ?>
-                                                                    <?php } ?>
-                                                                    <!-- End Barang Keluar -->
-                                                                    <div class="col-md-12">
-                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
                                                                     </div>
+                                                                    <!-- End Barang Keluar -->
                                                                 </div>
                                                             </fieldset>
                                                         </div>
