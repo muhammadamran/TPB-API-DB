@@ -67,16 +67,18 @@ $dataBarang = json_decode($contentBarang, true);
                                 <?php if ($dataBarangCek['status'] == 200) { ?>
                                     <span class="d-sm-none">Proses Barang Masuk</span>
                                     <span class="d-sm-block d-none">
-                                        Proses Pengecekan Barang:
-                                        <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
-                                            <?= $rowBarangCek['total_cek']; ?>
-                                        <?php } ?>
-                                        Barang DiCek!
+                                        <font class="blink_me">
+                                            Proses Pengecekan Barang:
+                                            <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
+                                                <?= $rowBarangCek['total_cek']; ?>
+                                            <?php } ?>
+                                            Barang DiCek!
+                                        </font>
                                     </span>
                                 <?php } else { ?>
                                     <span class="d-sm-none">Proses Barang Masuk</span>
                                     <span class="d-sm-block d-none">
-                                        Proses pengecekan Proses Barang Masuk!
+                                        <font class="blink_me">Proses pengecekan Proses Barang Masuk!</font>
                                     </span>
                                 <?php } ?>
                             </a>
