@@ -17,6 +17,94 @@ $dataBarangCek = json_decode($contentBarangCek, true);
 // BARANG
 $contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
 $dataBarang = json_decode($contentBarang, true);
+
+// Form Sesuai
+if (isset($_POST["FSesuai"])) {
+    $AJU               = $_POST['AJU'];
+    $ID                = $_POST['ID'];
+    $STATUS            = $_POST['STATUS'];
+    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $TGL_CEK           = $_POST['TGL_CEK'];
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=<?= $AJU ?>';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    }
+}
+// Form Kurang
+if (isset($_POST["FKurang"])) {
+    $AJU               = $_POST['AJU'];
+    $ID                = $_POST['ID'];
+    $STATUS            = $_POST['STATUS'];
+    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $TGL_CEK           = $_POST['TGL_CEK'];
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=<?= $AJU ?>';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    }
+}
+// Form Lebih
+if (isset($_POST["FLebih"])) {
+    $AJU               = $_POST['AJU'];
+    $ID                = $_POST['ID'];
+    $STATUS            = $_POST['STATUS'];
+    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $TGL_CEK           = $_POST['TGL_CEK'];
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=<?= $AJU ?>';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    }
+}
+// Form Pecah
+if (isset($_POST["FPecah"])) {
+    $AJU               = $_POST['AJU'];
+    $ID                = $_POST['ID'];
+    $STATUS            = $_POST['STATUS'];
+    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $TGL_CEK           = $_POST['TGL_CEK'];
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=<?= $AJU ?>';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    }
+}
+// Form Rusak
+if (isset($_POST["FRusak"])) {
+    $AJU               = $_POST['AJU'];
+    $ID                = $_POST['ID'];
+    $STATUS            = $_POST['STATUS'];
+    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $TGL_CEK           = $_POST['TGL_CEK'];
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=<?= $AJU ?>';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    }
+}
+
+
 ?>
 <style>
     .btn-custom {
@@ -158,6 +246,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                         <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                             <form action="" method="POST">
+                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Sesuai">
                                                                 <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
@@ -165,6 +254,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                 <button type="submit" name="FSesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
                                                             </form>
                                                             <form action="" method="POST">
+                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Kurang">
                                                                 <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
@@ -172,6 +262,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                 <button type="submit" name="FKurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
                                                             </form>
                                                             <form action="" method="POST">
+                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Lebih">
                                                                 <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
@@ -179,6 +270,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                 <button type="submit" name="FLebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
                                                             </form>
                                                             <form action="" method="POST">
+                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Pecah">
                                                                 <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
@@ -186,6 +278,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                 <button type="submit" name="FPecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
                                                             </form>
                                                             <form action="" method="POST">
+                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Rusak">
                                                                 <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
@@ -363,4 +456,14 @@ $dataBarang = json_decode($contentBarang, true);
         else
             return false;
     });
+
+    // SAVED FAILED
+    if (window?.location?.href?.indexOf('SaveFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal disimpan!',
+            icon: 'error',
+            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './gm_pemasukan_detail.php');
+    }
 </script>
