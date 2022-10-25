@@ -197,7 +197,7 @@ if (isset($_POST['add_'])) {
                                             $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                             ?>
                                             <td style="text-align: center;">
-                                                <div>
+                                                <div style="width: 85px;">
                                                     <i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?>
                                                 </div>
                                             </td>
@@ -234,7 +234,7 @@ if (isset($_POST['add_'])) {
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['total_Sesuai']; ?> Barang
+                                                    <span class="label label-success"><?= $row['total_Sesuai']; ?> Barang</span>
                                                 <?php } ?>
                                             </td>
                                             <!-- Total Barang "Kurang" -->
@@ -244,7 +244,7 @@ if (isset($_POST['add_'])) {
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['total_Kurang']; ?> Barang
+                                                    <span class="label label-danger"><?= $row['total_Kurang']; ?> Barang</span>
                                                 <?php } ?>
                                             </td>
                                             <!-- Total Barang "Lebih" -->
@@ -254,7 +254,7 @@ if (isset($_POST['add_'])) {
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['total_Lebih']; ?> Barang
+                                                    <span class="label label-lime"><?= $row['total_Lebih']; ?> Barang</span>
                                                 <?php } ?>
                                             </td>
                                             <!-- Total Barang "Pecah" -->
@@ -264,7 +264,7 @@ if (isset($_POST['add_'])) {
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['total_Pecah']; ?> Barang
+                                                    <span class="label label-danger"><?= $row['total_Pecah']; ?> Barang</span>
                                                 <?php } ?>
                                             </td>
                                             <!-- Total Barang "Rusak" -->
@@ -274,7 +274,7 @@ if (isset($_POST['add_'])) {
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['total_Rusak']; ?> Barang
+                                                    <span class="label label-warning"><?= $row['total_Rusak']; ?> Barang</span>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
@@ -298,7 +298,7 @@ if (isset($_POST['add_'])) {
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>
                                                             <a href="#!" class="btn btn-success" target="_blank">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!.">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!">
                                                                     <i class="fas fa-check-circle"></i> Barang Masuk Sudah diCek!
                                                                 </font>
                                                             </a>
@@ -306,7 +306,7 @@ if (isset($_POST['add_'])) {
                                                     <?php } else { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang masuk.">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
                                                                     <i class="fas fa-warning"></i> Cek Barang Masuk
                                                                 </font>
                                                             </a>
