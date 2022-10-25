@@ -36,9 +36,9 @@ if (isset($_POST['add_'])) {
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$bm_no_aju_plb;</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?AJU=$bm_no_aju_plb;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
 }
 
