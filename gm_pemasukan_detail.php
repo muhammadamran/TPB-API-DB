@@ -18,6 +18,11 @@ $dataBarangCek = json_decode($contentBarangCek, true);
 $contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
 $dataBarang = json_decode($contentBarang, true);
 ?>
+<style>
+    .btn-custom {
+        font-size: 8px;
+    }
+</style>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -149,7 +154,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                         <!-- END MAIN -->
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
-                                                        <div>
+                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;">
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Sesuai">
