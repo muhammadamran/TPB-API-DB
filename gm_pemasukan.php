@@ -196,7 +196,11 @@ if (isset($_POST['add_'])) {
 
                                             $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                             ?>
-                                            <td style="text-align: center;"><i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?></td>
+                                            <td style="text-align: center;">
+                                                <div>
+                                                    <i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?>
+                                                </div>
+                                            </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['ck5_plb_submit'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
@@ -290,7 +294,7 @@ if (isset($_POST['add_'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: center;align-items: center;">
+                                                <div style="display: flex;justify-content: center;align-items: center;width: 300px;">
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>
                                                             <a href="#!" class="btn btn-success" target="_blank">
