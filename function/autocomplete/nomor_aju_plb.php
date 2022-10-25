@@ -21,7 +21,7 @@ function get_content($URL)
     return $data;
 }
 
-$content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_auto_noAJU');
+$content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_auto_noAJU&AJU=' . $searchTerm);
 $data = json_decode($content, true);
 
 foreach ($data['result'] as $row) {
