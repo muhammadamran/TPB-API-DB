@@ -30,9 +30,7 @@ $searchTerm = $_GET['term']; // Menerima kiriman data dari inputan pengguna
 // echo json_encode($data['result']);
 
 $sql = $dbcon->query("SELECT * FROM referensi_asal_barang WHERE URAIAN_ASAL_BARANG LIKE '%" . $searchTerm . "%' ORDER BY ID ASC");
-$hasil = mysqli_fetch_array($sql);
-
-while ($row = $hasil) {
+while ($row = mysqli_fetch_array($sql)) {
     $data[] = $row['URAIAN_ASAL_BARANG'];
 }
 echo json_encode($data);
