@@ -108,10 +108,10 @@ $dataBarang = json_decode($contentBarang, true);
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" style="text-align: center;">
-                                                Ceklis Semua<br>
-                                                <hr>
+                                                <!-- Ceklis Semua<br>
+                                                <hr> -->
                                                 <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');"><i class="icon-copy dw dw-checked" style="font-size: 12px;font-weight: 300;"></i>
-                                                    <font style="font-size: 14px;font-weight: 300;">Pilih Semua</font>
+                                                    <font style="font-size: 10px;font-weight: 300;">Pilih Semua</font>
                                                 </button>
                                             </th>
                                             <th rowspan="2" style="text-align: center;">Status</th>
