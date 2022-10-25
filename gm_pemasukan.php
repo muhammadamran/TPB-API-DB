@@ -138,7 +138,7 @@ if (isset($_POST['show_all'])) {
                                     <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
                                     <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
                                     <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
-                                    <th class="text-nowrap" style="text-align: center;">Action</th>
+                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -191,7 +191,7 @@ if (isset($_POST['show_all'])) {
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['status'] == NULL) { ?>
-                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank"><i class="fas fa-warning"></i> Cek Barang Masuk</a>
+                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank" data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang masuk."><i class="fas fa-warning"></i> Cek Barang Masuk</a>
                                                 <?php } else { ?>
                                                     <p>Upload Berita Acara</p>
                                                 <?php } ?>
