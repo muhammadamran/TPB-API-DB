@@ -6,6 +6,7 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+include "include/cssForm.php";
 
 $AJU_PLB = '';
 // API - 
@@ -128,7 +129,7 @@ if (isset($_POST['show_all'])) {
                         </div>
                     <?php } ?>
                     <div class="table-responsive">
-                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
@@ -312,6 +313,20 @@ if (isset($_POST['show_all'])) {
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/jsForm.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#TableData').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
