@@ -637,18 +637,39 @@ $dataAllShow = json_decode($content, true);
                                                         <?php } ?>
                                                         <div style="margin-left: 10px;">
                                                             <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
-                                                                <div style="display: grid;">
-                                                                    <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
-                                                                </div>
+                                                                <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
+                                                                    <div>
+                                                                        <div>
+                                                                            <i class="fas fa-plus-circle"></i>
+                                                                        </div>
+                                                                        <div>
+                                                                            <font>Add</font>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
                                                             <?php } else { ?>
                                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                                    <div style="display: grid;">
-                                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add"><i class="fas fa-file"></i> Upload Berita Acara!</a>
-                                                                    </div>
+                                                                    <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
+                                                                        <div>
+                                                                            <div>
+                                                                                <i class="fas fa-file"></i>
+                                                                            </div>
+                                                                            <div>
+                                                                                <font>Upload Berita Acara!</font>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
                                                                 <?php } else { ?>
-                                                                    <div style="display: grid;">
-                                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Add"><i class="fas fa-check-circle"></i> AJU GB & Berita Acara Terisi!</a>
-                                                                    </div>
+                                                                    <a href="#add<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Add">
+                                                                        <div>
+                                                                            <div>
+                                                                                <i class="fas fa-check-circle"></i>
+                                                                            </div>
+                                                                            <div>
+                                                                                <font>No. AJU GB & Berita Acara Terisi!</font>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
                                                                 <?php } ?>
                                                             <?php } ?>
                                                         </div>
