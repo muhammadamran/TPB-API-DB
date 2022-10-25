@@ -230,10 +230,16 @@ if (isset($_POST['show_all'])) {
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
-                                                                            <div class="col-md-12">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Nomor Pengajuan PLB</label>
                                                                                     <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label>Nomor Pengajuan GB</label>
+                                                                                    <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
