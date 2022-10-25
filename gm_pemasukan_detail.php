@@ -335,6 +335,10 @@ $dataKontainer = json_decode($contentKontainer, true);
 
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
+                            <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                            <button class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                            <button class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                            <button class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                             <div class="table-responsive">
                                 <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -376,7 +380,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                     </td>
                                                     <td style="text-align: center;"><?= $rowBarang['KODE_BARANG']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['URAIAN']; ?></td>
+                                                    <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
