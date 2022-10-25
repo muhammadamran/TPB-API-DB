@@ -802,7 +802,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="13">
+                                        <td colspan="14">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
