@@ -178,7 +178,7 @@ $dataBarang = json_decode($contentBarang, true);
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Barang Keluar</a></li>
-                <li class="breadcrumb-item active">Detail Nomor AJU: <?= $_GET['AJU'] ?></li>
+                <li class="breadcrumb-item active">Detail ID: <?= $_GET['AJU'] ?></li>
             </ol>
         </div>
         <div>
