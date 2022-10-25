@@ -28,6 +28,9 @@ if (isset($_POST["FSesuai"])) {
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
+
+    var_dump($data['status']);
+    exit;
 }
 // Form Kurang
 if (isset($_POST["FKurang"])) {
