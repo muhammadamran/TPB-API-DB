@@ -151,14 +151,26 @@ if (isset($_POST['add_'])) {
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">No.</th>
+                                    <th rowspan="2" width="1%">No.</th>
+                                    <th colspan="3" class="text-nowrap" style="text-align: center;">Nomor Pengajuan PLB</th>
+                                    <th colspan="6" class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal PLB</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
+                                </tr>
+                                <tr>
+                                    <!-- Nomor Pengajuan PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tanggal Nomor Pengajuan</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
-                                    <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
-                                    <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
-                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
-                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <!-- Jumlah Barang -->
+                                    <th class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
+                                    <th class="text-nowrap" style="text-align: center;">Barang "Sesuai"</th>
+                                    <th class="text-nowrap" style="text-align: center;">Barang "Kurang"</th>
+                                    <th class="text-nowrap" style="text-align: center;">Barang "Lebih"</th>
+                                    <th class="text-nowrap" style="text-align: center;">Barang "Pecah"</th>
+                                    <th class="text-nowrap" style="text-align: center;">Barang "Rusak"</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -201,20 +213,14 @@ if (isset($_POST['add_'])) {
                                                     </div>
                                                 <?php } ?>
                                             </td>
+                                            <!--  -->
                                             <td>
                                                 <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
                                                     <center>
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <div style="display:grid;justify-content: center;">
-                                                        <font style="font-weight: 800;margin-bottom: 10px">Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
-                                                        <font>Sesuai: <?= $row['total_Sesuai']; ?> Barang</font>
-                                                        <font>Kurang: <?= $row['total_Kurang']; ?> Barang</font>
-                                                        <font>Lebih: <?= $row['total_Lebih']; ?> Barang</font>
-                                                        <font>Pecah: <?= $row['total_Pecah']; ?> Barang</font>
-                                                        <font>Rusak: <?= $row['total_Rusak']; ?> Barang</font>
-                                                    </div>
+                                                    <?= $row['JUMLAH_BARANG']; ?> Barang
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
