@@ -60,6 +60,8 @@ $dataBarang = json_decode($contentBarang, true);
                                     <?php } ?>
                                     Barang
                                 </span>
+                            </a>
+                            <a href="#IDBarang" data-toggle="tab" class="nav-link active">
                                 <span class="btn btn-info">
                                     Proses Pengecekan Barang:
                                     <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
