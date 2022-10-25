@@ -170,7 +170,12 @@ if (isset($_POST['show_all'])) {
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['JUMLAH_BARANG']; ?>
+                                                    <font>Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
+                                                    <font>Sesuai: </font>
+                                                    <font>Kurang: </font>
+                                                    <font>Lebih: </font>
+                                                    <font>Pecah: </font>
+                                                    <font>Rusak: </font>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">

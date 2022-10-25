@@ -338,6 +338,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                             <hr>
                             <font style="font-weight: 800;">Status Barang:</font>
                             <div>
+                                <button class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
                                 <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
                                 <button class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
                                 <button class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
