@@ -325,7 +325,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['tpb_total_All']) { ?>
                                                         <div>
                                                             <a href="gm_pengeluaran_detail.php?AJU=<?= $row['ID'] ?>" class="btn btn-success" target="_blank">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['tpb_total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
                                                                     <div style="display: grid;">
                                                                         <div style="font-size: 22px;">
                                                                             <i class="fas fa-check-circle"></i>
@@ -353,7 +353,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </font>
                                                                 </a>
                                                             <?php } else { ?>
-                                                                <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                                <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
                                                                     <div style="display: flex;">
                                                                         <div>
                                                                             <a href="#edit<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
@@ -428,7 +428,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <?php $col = '6'; ?>
                                                                     <?php } else { ?>
                                                                         <?php $col = '12'; ?>
@@ -485,17 +485,17 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
                                                                     <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Keluar</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
                                                                                 <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
                                                                                 </div>
                                                                             </div>
@@ -530,7 +530,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <?php $col = '6'; ?>
                                                                     <?php } else { ?>
                                                                         <?php $col = '12'; ?>
@@ -588,17 +588,17 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
                                                                     <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Keluar</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
                                                                                 <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
                                                                                 </div>
                                                                             </div>
@@ -633,7 +633,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <?php $col = '6'; ?>
                                                                     <?php } else { ?>
                                                                         <?php $col = '12'; ?>
@@ -649,12 +649,12 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <hr>
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                                         <label>Upload Berita Acara Kembali!</label>
                                                                                     <?php } else { ?>
                                                                                         <label>Upload Berita Acara</label>
                                                                                     <?php } ?>
-                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_GB']; ?>">
                                                                                     <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
                                                                                 </div>
                                                                             </div>
@@ -662,17 +662,17 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
                                                                     <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Keluar</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
                                                                                 <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
                                                                                 </div>
                                                                             </div>
@@ -707,7 +707,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <?php $col = '6'; ?>
                                                                     <?php } else { ?>
                                                                         <?php $col = '12'; ?>
@@ -764,17 +764,17 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
                                                                     <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Keluar</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
                                                                                 <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
                                                                                 </div>
                                                                             </div>

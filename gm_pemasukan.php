@@ -552,7 +552,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Masuk</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
@@ -671,7 +671,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Masuk</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
@@ -790,7 +790,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Masuk</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
@@ -908,7 +908,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <h4>Berita Acara</h4>
+                                                                                        <h4>Berita Acara Barang Masuk</h4>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr>
