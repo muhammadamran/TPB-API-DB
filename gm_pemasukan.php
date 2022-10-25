@@ -636,7 +636,15 @@ $dataAllShow = json_decode($content, true);
                                                             </div>
                                                         <?php } ?>
                                                         <div style="margin-left: 10px;">
-                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
+                                                            <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
+                                                                <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
+                                                            <?php } else { ?>
+                                                                <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                                    <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add"><i class="fas fa-file"></i> Upload Berita Acara!</a>
+                                                                <?php } else { ?>
+                                                                    <a href="#add<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Add"><i class="fas fa-check-circle"></i> AJU GB & Berita Acara Terisi!</a>
+                                                                <?php } ?>
+                                                            <?php } ?>
                                                         </div>
                                                     </div>
                                                 </td>
