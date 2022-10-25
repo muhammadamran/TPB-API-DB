@@ -150,13 +150,13 @@ if (isset($_POST["All_rusak"])) {
 }
 
 // TOTAL BARANG
-$contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
+$contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5GB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
 $dataBarangTotal = json_decode($contentBarangTotal, true);
 // CEK BARANG
-$contentBarangCek = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangCek&AJU=' . $_GET['AJU']);
+$contentBarangCek = get_content($resultAPI['url_api'] . 'BarangCK5GB.php?function=get_BarangCek&AJU=' . $_GET['AJU']);
 $dataBarangCek = json_decode($contentBarangCek, true);
 // BARANG
-$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
+$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5GB.php?function=get_Barang&AJU=' . $_GET['AJU']);
 $dataBarang = json_decode($contentBarang, true);
 
 ?>
