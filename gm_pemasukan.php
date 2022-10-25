@@ -375,7 +375,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 </a>
                                                             <?php } else { ?>
                                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                                    <div>
+                                                                    <div style="display: flex;">
                                                                         <div>
                                                                             <a href="#detail<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
                                                                                 <div>
@@ -388,7 +388,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 </div>
                                                                             </a>
                                                                         </div>
-                                                                        <div>
+                                                                        <div style="margin-left: 10px;">
                                                                             <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
                                                                                 <div>
                                                                                     <div style="font-size: 22px;">
