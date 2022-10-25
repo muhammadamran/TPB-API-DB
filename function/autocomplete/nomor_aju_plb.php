@@ -1,6 +1,6 @@
 <?php
-include "../../../include/connection.php";
-include "../../../include/api.php";
+include "include/connection.php";
+include "include/api.php";
 
 $dataSetRealTime = $dbcon->query("SELECT * FROM tbl_realtime ORDER BY id DESC LIMIT 1");
 $resultSetRealTime = mysqli_fetch_array($dataSetRealTime);
