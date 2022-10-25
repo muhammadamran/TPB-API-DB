@@ -24,6 +24,10 @@ if (isset($_POST['show_all'])) {
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
     $data = json_decode($content, true);
 }
+
+// NOMOR PENGAJUAN GB
+$contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
+$dataAJUGB = json_decode($contentAJUGB, true);
 ?>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -247,7 +251,12 @@ if (isset($_POST['show_all'])) {
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." required>
+                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
+                                                                                        <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                        <?php foreach ($data['result'] as $rowAJUGB) { ?>
+                                                                                            <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
+                                                                                        <?php } ?>
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -355,6 +364,7 @@ if (isset($_POST['show_all'])) {
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/jsForm.php"; ?>
 <script type="text/javascript">
+    $(".default-select2").select2();
     $(function() {
         $("#IDAJU_PLB").autocomplete({
             source: 'function/autocomplete/nomor_aju_plb.php'
