@@ -190,7 +190,7 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <div>
+                                                <div style="display: flex;justify-content: space-evenly;align-items: center;">
                                                     <?php if ($row['status'] == NULL) { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
