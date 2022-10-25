@@ -168,7 +168,7 @@ $dataAllShow = json_decode($content, true);
                             </div>
                         </div>
                     <?php } ?>
-                    <?php if ($_POST['filter'] || $_POST['show_all']) { ?>
+                    <?php if ($_POST['filter'] == NULL || $_POST['show_all'] == NULL) { ?>
                         <div class="table-responsive">
                             <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                                 <thead>
