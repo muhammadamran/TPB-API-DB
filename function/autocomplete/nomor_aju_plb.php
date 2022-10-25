@@ -29,11 +29,10 @@ $searchTerm = $_GET['term']; // Menerima kiriman data dari inputan pengguna
 // }
 // echo json_encode($data['result']);
 
-$sql = "SELECT * FROM referensi_asal_barang WHERE URAIAN_ASAL_BARANG LIKE '%" . $searchTerm . "%' ORDER BY ID ASC"; // query sql untuk menampilkan data mahasiswa dengan operator LIKE
+$sql = $dbcon->query("SELECT * FROM referensi_asal_barang WHERE URAIAN_ASAL_BARANG LIKE '%" . $searchTerm . "%' ORDER BY ID ASC");
+$hasil = mysqli_fetch_array($sql);
 
-$hasil = mysqli_query($kon, $sql);
-
-while ($row = mysqli_fetch_array($hasil)) {
+while ($row = $hasil) {
     $data[] = $row['URAIAN_ASAL_BARANG'];
 }
 echo json_encode($data);
