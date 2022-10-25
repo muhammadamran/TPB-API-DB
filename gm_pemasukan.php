@@ -761,78 +761,79 @@ $dataAllShow = json_decode($content, true);
                                                             <div class="modal-body">
                                                                 <fieldset>
                                                                     <div class="row">
+                                                                        <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                            <?php $col = '6'; ?>
+                                                                        <?php } else { ?>
+                                                                            <?php $col = '12'; ?>
+                                                                        <?php } ?>
                                                                         <!-- Barang Masuk -->
-                                                                        <div class="col-12">
+                                                                        <div class="col-<?= $col; ?>">
                                                                             <div class="row">
-                                                                                <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                    <div class="col-md-6">
-                                                                                    <?php } else { ?>
-                                                                                        <div class="col-md-12">
-                                                                                        <?php } ?>
-                                                                                        <div class="form-group">
-                                                                                            <h4>PLB</h4>
-                                                                                        </div>
-                                                                                        </div>
-                                                                                        <hr>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label>Nomor Pengajuan PLB</label>
-                                                                                                <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                                <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                                    <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                                        <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                                        <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                                    <?php } else { ?>
-                                                                                                        <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                                    <?php } ?>
-                                                                                                    <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
-                                                                                                        <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
-                                                                                                    <?php } ?>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label>Tanggal Masuk</label>
-                                                                                                <?php
-                                                                                                $tgl_msk = $row['bm_tgl_masuk'];
-                                                                                                $tgl = substr($tgl_msk, 0, 10);
-                                                                                                $time = substr($tgl_msk, 10, 20);
-                                                                                                ?>
-                                                                                                <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label>Petugas</label>
-                                                                                                <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <!-- <div class="col-md-12">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <h4>PLB</h4>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <hr>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Nomor Pengajuan PLB</label>
+                                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
+                                                                                        <select name="bk_aju" class="default-select2 form-control" required>
+                                                                                            <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
+                                                                                                <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
+                                                                                                <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php } else { ?>
+                                                                                                <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php } ?>
+                                                                                            <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
+                                                                                                <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
+                                                                                            <?php } ?>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Tanggal Masuk</label>
+                                                                                        <?php
+                                                                                        $tgl_msk = $row['bm_tgl_masuk'];
+                                                                                        $tgl = substr($tgl_msk, 0, 10);
+                                                                                        $time = substr($tgl_msk, 10, 20);
+                                                                                        ?>
+                                                                                        <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Petugas</label>
+                                                                                        <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Remarks Barang Masuk</label>
                                                                                     <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
                                                                                 </div>
                                                                             </div> -->
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group">
-                                                                                                <label>Upload Berita Acara</label>
-                                                                                                <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <small style="color: red"><i>(*) Harus diisi</i></small>
-                                                                                        </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label>Upload Berita Acara</label>
+                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
                                                                                     </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                                </div>
                                                                             </div>
-                                                                            <!-- End Barang Masuk -->
-                                                                            <!-- Barang Keluar -->
-                                                                            <!-- <div class="col-6">
+                                                                        </div>
+                                                                        <!-- End Barang Masuk -->
+                                                                        <!-- Barang Keluar -->
+                                                                        <!-- <div class="col-6">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
@@ -866,8 +867,8 @@ $dataAllShow = json_decode($content, true);
                                                                             </div>
                                                                         </div>
                                                                     </div> -->
-                                                                            <!-- End Barang Keluar -->
-                                                                        </div>
+                                                                        <!-- End Barang Keluar -->
+                                                                    </div>
                                                                 </fieldset>
                                                             </div>
                                                             <div class="modal-footer">
