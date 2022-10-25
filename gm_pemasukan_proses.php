@@ -13,7 +13,11 @@ if ($aksi == 'sesuai') {
         $STATUS      = "Sesuai" . $i;
         $OPERATOR_ONE     = $_POST["OPERATOR_ONE$i"];
         $TGL_CEK     = $_POST["TGL_CEK$i"];
-        $update = $dbcon->query('UPDATE plb_barang SET STATUS="' . $STATUS . '", OPERATOR_ONE="' . $OPERATOR_ONE . '", TGL_CEK="' . $TGL_CEK . '" WHERE ID="' . $ID . '"');
+
+        $update = $dbcon->query('UPDATE plb_barang SET STATUS="' . $STATUS . '", 
+                                                       OPERATOR_ONE="' . $OPERATOR_ONE . '", 
+                                                       TGL_CEK="' . $TGL_CEK . '" 
+                                                    WHERE ID="' . $ID . '"');
     }
 
     var_dump($update);
