@@ -30,9 +30,9 @@ if (isset($_POST["FSesuai"])) {
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gmBarangMasukProses.php?SaveSuccess=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveSuccess=true';</script>";
     } else {
-        echo "<script>window.location.href='gmBarangMasukProses.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Kurang
