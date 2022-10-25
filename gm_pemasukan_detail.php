@@ -165,11 +165,11 @@ if (isset($_POST["FRusak"])) {
                                 <font style="font-weight: 800;">Status Barang:</font>
                             </div>
                             <div>
-                                <!-- <button id="btn-sesuai" class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                    <button id="btn-kurang" class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
-                                    <button id="btn-lebih" class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
-                                    <button id="btn-pecah" class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
-                                    <button id="btn-rusak" class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button> -->
+                                <button id="btn-sesuai" class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
+                                <button id="btn-kurang" class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                                <button id="btn-lebih" class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                                <button id="btn-pecah" class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                                <button id="btn-rusak" class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                             </div>
                             <hr>
                             <div class="table-responsive">
@@ -178,13 +178,13 @@ if (isset($_POST["FRusak"])) {
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                <!-- <div style="width: 110px;">
+                                                <div style="width: 110px;">
                                                     <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');">
                                                         <i class="fa-solid fa-list-check"></i>
                                                         <font style="font-size: 10px;font-weight: 300;">Barang Masuk</font>
                                                     </button>
-                                                </div> -->
-                                                Cek Barang Masuk
+                                                </div>
+                                                <!-- Cek Barang Masuk -->
                                             </th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
@@ -215,11 +215,11 @@ if (isset($_POST["FRusak"])) {
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
                                                         <!-- MAIN -->
-                                                        <!-- <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>"> -->
+                                                        <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                         <!-- END MAIN -->
-                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
-                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
-                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
+                                                        <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
+                                                        <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                        <!-- <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
@@ -260,7 +260,7 @@ if (isset($_POST["FRusak"])) {
                                                                 <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
                                                                 <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                                                             </form>
-                                                        </div>
+                                                        </div> -->
                                                         <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                             <?php if ($rowBarang['STATUS'] != NULL) { ?>
                                                                 <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>

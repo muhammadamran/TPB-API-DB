@@ -28,7 +28,22 @@ if (isset($_POST['show_all'])) {
 // NOMOR PENGAJUAN GB
 $contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
 $dataAJUGB = json_decode($contentAJUGB, true);
+
+if (isset($_POST['add_'])) {
+    $bm_no_aju_plb  = $_POST['bm_aju'];
+    $bk_aju         = $_POST['bk_aju'];
+    $bm_masuk       = $_POST['bm_masuk'];
+    $bm_operator    = $_POST['bm_operator'];
+    $bm_remarks     = $_POST['bm_remarks'];
+    $uploadBA       = $_POST['uploadBA'];
+
+    $query = $dbcon->query("INSERT INTO rcd_status
+                               (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bm_remarks,bk_no_aju_sarinah,upload_beritaAcara)
+                               VALUES
+                               ('','$bm_no_aju_plb','$bk_aju','$InputModul','$InputDescription','$InputAction','$InputDate')");
+}
 ?>
+PT. PGR Logitik Indonesia
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -330,7 +345,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="add_kuota" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                            <button type="submit" name="add_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                                         </div>
                                                     </form>
                                                 </div>
