@@ -135,8 +135,9 @@ if (isset($_POST['show_all'])) {
                                     <th width="1%">No.</th>
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
+                                    <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
                                     <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
-                                    <th class="text-nowrap" style="text-align: center;">KD Negara</th>
+                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <th class="text-nowrap" style="text-align: center;">Action</th>
                                 </tr>
                             </thead>
@@ -164,6 +165,14 @@ if (isset($_POST['show_all'])) {
                                             $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                             ?>
                                             <td style="text-align: center;"><i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?></td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['JUMLAH_BARANG']; ?>
+                                                <?php } ?>
+                                            </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['PERUSAHAAN'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
