@@ -24,16 +24,9 @@ if (isset($_POST["FSesuai"])) {
     $ID                = $_POST['ID'];
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-    $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=<?= $AJU ?>';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
-    }
 }
 // Form Kurang
 if (isset($_POST["FKurang"])) {
@@ -92,9 +85,8 @@ if (isset($_POST["FRusak"])) {
     $ID                = $_POST['ID'];
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-    $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
