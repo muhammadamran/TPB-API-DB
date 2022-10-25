@@ -278,7 +278,7 @@ if (isset($_POST["FRusak"])) {
                                                                 <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                                                             </form>
                                                         </div>
-                                                        <div>
+                                                        <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;margin-bottom: -20px;">
                                                             <?php if ($rowBarang['STATUS'] != NULL) { ?>
                                                                 <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
                                                             <?php } ?>
