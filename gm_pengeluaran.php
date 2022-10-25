@@ -212,7 +212,7 @@ if (isset($_POST['show_all'])) {
                                                 <div style="display: flex;justify-content: center;align-items: center;">
                                                     <?php if ($row['status'] == NULL) { ?>
                                                         <div>
-                                                            <a href="gm_peKeluaran_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
+                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang Keluar.">
                                                                     <i class="fas fa-warning"></i> Cek Barang Keluar
                                                                 </font>
