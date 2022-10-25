@@ -339,9 +339,9 @@ $dataKontainer = json_decode($contentKontainer, true);
                                 <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th rowspan="2" width="1%">#</th>
+                                            <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" style="text-align: center;">
-                                                Check ALL
+                                                Ceklis Semua<br>
                                                 <input type="checkbox">
                                             </th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
@@ -370,7 +370,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                 <?php $noBarang++ ?>
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
-                                                    <td>
+                                                    <td style="text-align: center;">
                                                         <input type="checkbox">
                                                     </td>
                                                     <td><?= $rowBarang['KODE_BARANG']; ?></td>
@@ -387,46 +387,10 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                             <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
                                                         </div>
                                                     </td>
-                                                    <td><?= $rowBarang['HARGA_INVOICE']; ?></td>
+                                                    <td><?= $rowBarang['CIF_RUPIAH']; ?></td>
                                                     <td><?= $rowBarang['HARGA_PENYERAHAN']; ?></td>
-                                                    <td><?= $rowBarang['HARGA_SATUAN']; ?></td>
-                                                    <td><?= $rowBarang['JENIS_KENDARAAN']; ?></td>
-                                                    <td><?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?></td>
-                                                    <td><?= $rowBarang['JUMLAH_KEMASAN']; ?></td>
-                                                    <td><?= $rowBarang['JUMLAH_SATUAN']; ?></td>
-                                                    <td><?= $rowBarang['KAPASITAS_SILINDER']; ?></td>
-                                                    <td><?= $rowBarang['KATEGORI_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['KODE_ASAL_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['KODE_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['KODE_FASILITAS']; ?></td>
-                                                    <td><?= $rowBarang['KODE_GUNA']; ?></td>
-                                                    <td><?= $rowBarang['KODE_JENIS_NILAI']; ?></td>
-                                                    <td><?= $rowBarang['KODE_KEMASAN']; ?></td>
-                                                    <td><?= $rowBarang['KODE_LEBIH_DARI_4_TAHUN']; ?></td>
-                                                    <td><?= $rowBarang['KODE_NEGARA_ASAL']; ?></td>
-                                                    <td><?= $rowBarang['KODE_SATUAN']; ?></td>
-                                                    <td><?= $rowBarang['KODE_SKEMA_TARIF']; ?></td>
-                                                    <td><?= $rowBarang['KODE_STATUS']; ?></td>
-                                                    <td><?= $rowBarang['KONDISI_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['MERK']; ?></td>
                                                     <td><?= $rowBarang['NETTO']; ?></td>
-                                                    <td><?= $rowBarang['NILAI_INCOTERM']; ?></td>
-                                                    <td><?= $rowBarang['NILAI_PABEAN']; ?></td>
-                                                    <td><?= $rowBarang['NOMOR_MESIN']; ?></td>
                                                     <td><?= $rowBarang['POS_TARIF']; ?></td>
-                                                    <td><?= $rowBarang['SERI_POS_TARIF']; ?></td>
-                                                    <td><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
-                                                    <td><?= $rowBarang['TAHUN_PEMBUATAN']; ?></td>
-                                                    <td><?= $rowBarang['TIPE']; ?></td>
-                                                    <td><?= $rowBarang['UKURAN']; ?></td>
-                                                    <td><?= $rowBarang['URAIAN']; ?></td>
-                                                    <td><?= $rowBarang['VOLUME']; ?></td>
-                                                    <td><?= $rowBarang['SERI_IJIN']; ?></td>
-                                                    <td><?= $rowBarang['ID_EKSPORTIR']; ?></td>
-                                                    <td><?= $rowBarang['NAMA_EKSPORTIR']; ?></td>
-                                                    <td><?= $rowBarang['ALAMAT_EKSPORTIR']; ?></td>
-                                                    <td><?= $rowBarang['KODE_PERHITUNGAN']; ?></td>
-                                                    <td><?= $rowBarang['SERI_BARANG_DOK_ASAL']; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         <?php } else { ?>
