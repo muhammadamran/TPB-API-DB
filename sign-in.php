@@ -262,9 +262,9 @@ $resultLoginSetting = mysqli_fetch_array($dataLoginSettting);
         // Tidak Ada Akses
         if (window?.location?.href?.indexOf('NoAccess') > -1) {
             Swal.fire({
-                html: '<font>Tidak memiliki akses/Session telah berakhir!</font>',
+                html: '',
                 icon: 'info',
-                html: 'Silahkan <b>Sign In</b> kembali atau hubungi administrator sistem!',
+                html: '<font style="font-weight:800";font-size:14;>Tidak memiliki akses/Session telah berakhir!</font><br>Silahkan <b>Sign In</b> kembali atau hubungi administrator sistem!',
             })
             history.replaceState({}, '', './sign-in.php');
         }
