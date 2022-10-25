@@ -140,22 +140,10 @@ if (isset($_POST['show_all'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="8">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
+                                <?php if ($data['status'] == 200) { ?>
                                     <?php $no = 0; ?>
                                     <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++;
-                                        var_dump($no);
-                                        exit; ?>
+                                        <?php $no++ ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center">
@@ -302,6 +290,16 @@ if (isset($_POST['show_all'])) {
                                             </div>
                                         </div>
                                     <?php } ?>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td colspan="6">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
