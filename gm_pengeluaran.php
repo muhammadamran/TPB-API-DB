@@ -14,12 +14,10 @@ include "include/api.php";
 
 if (isset($_POST['edit_'])) {
     $rcd_id                 = $_POST['rcd_id'];
-    $bm_no_aju_plb          = $_POST['bm_aju'];
-    $bk_no_aju_sarinah      = $_POST['bk_aju'];
-    $bm_tgl_masuk           = $_POST['bm_masuk'];
-    $bm_nama_operator       = $_POST['bm_operator'];
+    $bk_tgl_keluar          = $_POST['bk_tgl_keluar'];
+    $bk_nama_operator       = $_POST['bk_nama_operator'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostEDIT&bk_tgl_keluar=' . $bk_tgl_keluar . '&bk_nama_operator=' . $bk_nama_operator . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -37,13 +35,13 @@ if (isset($_POST['upload_'])) {
     $sizename = $_FILES['uploadBA']['size'];
     $exp = explode('.', $filename);
     $ext = end($exp);
-    $uniq_file =  "Berita-Acara-PLB" . '_' . time();
-    $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    $config['upload_path'] = './files/ck5plb/BA/PLB/';
+    $uniq_file =  "Berita-Acara-GB" . '_' . time();
+    $newname =  "Berita-Acara-GB" . '_' . time() . "." . $ext;
+    $config['upload_path'] = './files/ck5plb/BA/GB/';
     $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
-    move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+    move_uploaded_file($tmpname, "files/ck5plb/BA/GB/" . $newname);
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
@@ -441,13 +439,13 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     $time = substr($tgl_msk, 10, 20);
                                                                                     ?>
                                                                                     <input type="date" name="bk_tgl_keluar" class="form-control" placeholder="Tanggal Keluar ..." value="<?= $tgl; ?>">
-                                                                                    <input type="text" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                                    <input type="text" name="bk_nama_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
