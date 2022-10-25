@@ -248,8 +248,10 @@ $data = json_decode($content, true);
                                                     $tgl = substr($alldate, 0, 10);
                                                     $time = substr($alldate, 10, 20);
                                                     ?>
-                                                    <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?>
-                                                    <i class="fa-solid fa-clock"></i> <?= $time ?>
+                                                    <div style="display: grid;">
+                                                        <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?></font>
+                                                        <font><i class="fa-solid fa-clock"></i> <?= $time ?></font>
+                                                    </div>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
