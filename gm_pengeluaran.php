@@ -135,7 +135,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                 </div>
                                 <div class="col-sm-12">
                                     <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i> Cari</button>
-                                    <a href="gm_pemasukan.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i> Reset</a>
+                                    <a href="gm_pengeluaran.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i> Reset</a>
                                     <button type="submit" name="show_all" class="btn btn-default m-r-5"><i class="fas fa-calendar-check"></i> Tampilkan Semua</button>
                                 </div>
                             </div>
