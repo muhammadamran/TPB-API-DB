@@ -780,7 +780,12 @@ $dataAllShow = json_decode($content, true);
                                                                                     <div class="form-group">
                                                                                         <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
                                                                                         <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
+                                                                                                <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
+                                                                                                <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php } else { ?>
+                                                                                                <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php } ?>
                                                                                             <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
                                                                                                 <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
                                                                                             <?php } ?>
@@ -790,7 +795,12 @@ $dataAllShow = json_decode($content, true);
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label>Tanggal Masuk</label>
-                                                                                        <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ...">
+                                                                                        <?php
+                                                                                        $tgl_msk = $row['bm_tgl_masuk'];
+                                                                                        $tgl = substr($tgl_msk, 0, 10);
+                                                                                        $time = substr($tgl_msk, 10, 20);
+                                                                                        ?>
+                                                                                        <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -808,7 +818,7 @@ $dataAllShow = json_decode($content, true);
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
                                                                                         <label>Upload Berita Acara</label>
-                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ...">
+                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
