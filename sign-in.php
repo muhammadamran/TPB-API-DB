@@ -264,7 +264,7 @@ $resultLoginSetting = mysqli_fetch_array($dataLoginSettting);
             Swal.fire({
                 html: '',
                 icon: 'info',
-                html: '<font style="font-weight:800;font-size:24;">Tidak memiliki akses/Session telah berakhir!</font><hr><br>Silahkan <b>Sign In</b> kembali atau hubungi administrator sistem!',
+                html: '<div style="margin-top:-22px;margin-bottom:10px"><font style="font-weight:800;font-size:24;">Tidak memiliki akses/Session telah berakhir!</font></div>Silahkan <b>Sign In</b> kembali atau hubungi administrator sistem!',
             })
             history.replaceState({}, '', './sign-in.php');
         }
