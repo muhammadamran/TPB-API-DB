@@ -355,6 +355,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                 <hr>
                                                 <input type="checkbox">
                                             </th>
+                                            <th rowspan="2" style="text-align: center;">Status</th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
                                             <th colspan="3" style="text-align: center;">Jumlah</th>
                                             <th rowspan="2" style="text-align: center;">CIF</th>
@@ -384,7 +385,14 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                     <td style="text-align: center;">
                                                         <input type="checkbox">
                                                     </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['KODE_BARANG']; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <div style="display: grid;">
+                                                            <font><i class="fa-solid fa-user-pen"></i> Petugas: -</font>
+                                                            <font><i class="fa-solid fa-file-circle-check"></i> Status: ??</font>
+                                                        </div>
+                                                    </td>
+                                                    <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
+                                                    </td>
                                                     <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
                                                     <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
