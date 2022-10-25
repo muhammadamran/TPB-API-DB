@@ -12,6 +12,37 @@ $AJU_PLB = '';
 // API - 
 include "include/api.php";
 
+if (isset($_POST['add_'])) {
+    $bm_no_aju_plb          = $_POST['bm_aju'];
+    $bk_no_aju_sarinah      = $_POST['bk_aju'];
+    $bm_tgl_masuk           = $_POST['bm_masuk'];
+    $bm_nama_operator       = $_POST['bm_operator'];
+    $bm_remarks             = $_POST['bm_remarks'];
+    // File
+    $filename = $_FILES['uploadBA']['name'];
+    $tmpname = $_FILES['uploadBA']['tmp_name'];
+    $sizename = $_FILES['uploadBA']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $uniq_file =  "Berita-Acara-PLB" . '_' . time();
+    $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
+    $config['upload_path'] = './file/BA/PLB/';
+    $config['allowed_types'] = "pdf";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+    move_uploaded_file($tmpname, "file/BA/PLB/" . $newname);
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&bm_remarks=' . $bm_remarks . '&newname=' . $newname);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$bm_no_aju_plb;</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    }
+}
+
+// Find
 if (isset($_POST['filter'])) {
     if ($_POST["AJU_PLB"] != '') {
         $AJU_PLB   = $_POST['AJU_PLB'];
@@ -28,20 +59,6 @@ if (isset($_POST['show_all'])) {
 // NOMOR PENGAJUAN GB
 $contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
 $dataAJUGB = json_decode($contentAJUGB, true);
-
-if (isset($_POST['add_'])) {
-    $bm_no_aju_plb  = $_POST['bm_aju'];
-    $bk_aju         = $_POST['bk_aju'];
-    $bm_masuk       = $_POST['bm_masuk'];
-    $bm_operator    = $_POST['bm_operator'];
-    $bm_remarks     = $_POST['bm_remarks'];
-    $uploadBA       = $_POST['uploadBA'];
-
-    $query = $dbcon->query("INSERT INTO rcd_status
-                               (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bm_remarks,bk_no_aju_sarinah,upload_beritaAcara)
-                               VALUES
-                               ('','$bm_no_aju_plb','$bk_aju','$InputModul','$InputDescription','$InputAction','$InputDate')");
-}
 ?>
 
 <!-- begin #content -->
@@ -321,7 +338,7 @@ if (isset($_POST['add_'])) {
                                         <div class="modal fade" id="add<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="" method="POST">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
                                                             <h4 class="modal-title">[Add] Data Barang Masuk</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -364,7 +381,7 @@ if (isset($_POST['add_'])) {
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>">
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-12">
