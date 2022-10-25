@@ -692,7 +692,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="edit_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                            <button type="submit" name="edit_" class="btn btn-info"><i class="fas fa-edit"></i> Edit</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -811,7 +811,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="upload_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                            <button type="submit" name="upload_" class="btn btn-warning"><i class="fas fa-file"></i> Upload</button>
                                                         </div>
                                                     </form>
                                                 </div>
