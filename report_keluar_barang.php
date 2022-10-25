@@ -231,11 +231,11 @@ $data = json_decode($content, true);
                                 <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?>
                                 </font>
                                 <?php if (isset($_POST['filter_date'])) { ?>
-                                    <font style="font-size: 14px;font-weight: 800;">Tanggal: <?= $StartTanggal ?> S.D
+                                    <font style="font-size: 14px;font-weight: 800;"><i class="fas fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
                                         <?= $EndTanggal ?></font>
                                 <?php } ?>
                                 <div class="line-page-table"></div>
-                                <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?>
+                                <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
                                 </font>
                             </div>
                         </div>
@@ -293,11 +293,11 @@ $data = json_decode($content, true);
                                             <td style="text-align: center;">BC <?= $row['KODE_DOKUMEN_PABEAN']; ?></td>
                                             <!-- AJU -->
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['NOMOR_DAFTAR']; ?>
+                                                    <?= $row['NOMOR_AJU']; ?>
                                                 <?php } ?>
                                             </td>
                                             <!-- TGL AJU (FILTER) -->
