@@ -20,7 +20,8 @@ $dataBarang = json_decode($contentBarang, true);
 ?>
 <style>
     .btn-custom {
-        font-size: 8px;
+        font-size: 10px;
+        padding: 5px;
     }
 </style>
 <!-- begin #content -->
@@ -154,7 +155,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                         <!-- END MAIN -->
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
-                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;">
+                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Sesuai">
