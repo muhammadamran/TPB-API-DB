@@ -27,7 +27,7 @@ if (isset($_POST['add_'])) {
     $uniq_file =  "Berita-Acara-PLB" . '_' . time();
     $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
     $config['upload_path'] = './files/BA/PLB/';
-    $config['allowed_types'] = "pdf";
+    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
     move_uploaded_file($tmpname, "files/BA/PLB/" . $newname);
