@@ -90,124 +90,126 @@ $dataBarang = json_decode($contentBarang, true);
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
-                            <hr>
-                            <div style="margin-bottom: 10px;">
-                                <font style="font-weight: 800;">Status Barang:</font>
-                            </div>
-                            <div>
-                                <button class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
-                                <button class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
-                                <button class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
-                                <button class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
-                            </div>
-                            <hr>
-                            <div class="table-responsive">
-                                <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
-                                    <thead>
-                                        <tr>
-                                            <th rowspan="2" width="1%">No.</th>
-                                            <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                <div style="width: 110px;">
-                                                    <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');">
-                                                        <i class="fa-solid fa-list-check"></i>
-                                                        <font style="font-size: 10px;font-weight: 300;">Pilih Semua</font>
-                                                    </button>
-                                                </div>
-                                            </th>
-                                            <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
-                                            <th colspan="6" style="text-align: center;">Barang</th>
-                                            <th colspan="3" style="text-align: center;">Jumlah</th>
-                                            <th rowspan="2" style="text-align: center;">CIF</th>
-                                            <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
-                                            <th rowspan="2" style="text-align: center;">NETTO</th>
-                                            <th rowspan="2" style="text-align: center;">Pos Tarif</th>
-                                        </tr>
-                                        <tr>
-                                            <th style="text-align: center;">Kode</th>
-                                            <th style="text-align: center;">Seri Barang</th>
-                                            <th style="text-align: center;">Uraian</th>
-                                            <th style="text-align: center;">Tipe</th>
-                                            <th style="text-align: center;">Ukuran</th>
-                                            <th style="text-align: center;">Spesifikasi Barang</th>
-                                            <th style="text-align: center;">Jumlah Bahan Baku</th>
-                                            <th style="text-align: center;">Jumlah Kemasan</th>
-                                            <th style="text-align: center;">Jumlah Satuan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php if ($dataBarang['status'] == 200) { ?>
-                                            <?php $noBarang = 0; ?>
-                                            <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
-                                                <?php $noBarang++ ?>
-                                                <tr class="odd gradeX">
-                                                    <td><?= $noBarang ?>. </td>
-                                                    <td style="text-align: center;">
-                                                        <input type="checkbox" id="chk" name="pengajuan[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <div style="display: grid;font-size: 10px;">
-                                                            <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
-                                                            <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
-                                                        </div>
-                                                    </td>
-                                                    <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
-                                                    </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
-                                                    <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
-                                                    <td style="text-align: center">
-                                                        <?php if ($rowBarang['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
-                                                        <?php } else { ?>
-                                                            <?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?>
-                                                        <?php } ?>
-                                                    </td>
-                                                    <td style="text-align: center">
-                                                        <?php if ($rowBarang['JUMLAH_KEMASAN'] == NULL) { ?>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
-                                                        <?php } else { ?>
-                                                            <?= $rowBarang['JUMLAH_KEMASAN']; ?>
-                                                        <?php } ?>
-                                                    </td>
-                                                    <td style="text-align: center;">
-                                                        <div style="display: flex;justify-content: space-evenly;align-items:center">
-                                                            <font><?= $rowBarang['KODE_SATUAN']; ?></font>
-                                                            <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
-                                                        </div>
-                                                    </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
-                                                    <td style="text-align: center;">
-                                                        <div style="width: 155px;">
-                                                            <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
-                                                        </div>
-                                                    </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
-                                                    <td style="text-align: center;">
-                                                        <div style="width: 155px;">
-                                                            <?= Rupiah($rowBarang['POS_TARIF']); ?>
-                                                        </div>
+                            <form id="form-submit" action="" method="POST">
+                                <hr>
+                                <div style="margin-bottom: 10px;">
+                                    <font style="font-weight: 800;">Status Barang:</font>
+                                </div>
+                                <div>
+                                    <button id="btn-sesuai" class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
+                                    <button id="btn-kurang" class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                                    <button id="btn-lebih" class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                                    <button id="btn-pecah" class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                                    <button id="btn-rusak" class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                                </div>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" width="1%">No.</th>
+                                                <th rowspan="2" class="no-sort" style="text-align: center;">
+                                                    <div style="width: 110px;">
+                                                        <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');">
+                                                            <i class="fa-solid fa-list-check"></i>
+                                                            <font style="font-size: 10px;font-weight: 300;">Pilih Semua</font>
+                                                        </button>
+                                                    </div>
+                                                </th>
+                                                <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
+                                                <th colspan="6" style="text-align: center;">Barang</th>
+                                                <th colspan="3" style="text-align: center;">Jumlah</th>
+                                                <th rowspan="2" style="text-align: center;">CIF</th>
+                                                <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
+                                                <th rowspan="2" style="text-align: center;">NETTO</th>
+                                                <th rowspan="2" style="text-align: center;">Pos Tarif</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align: center;">Kode</th>
+                                                <th style="text-align: center;">Seri Barang</th>
+                                                <th style="text-align: center;">Uraian</th>
+                                                <th style="text-align: center;">Tipe</th>
+                                                <th style="text-align: center;">Ukuran</th>
+                                                <th style="text-align: center;">Spesifikasi Barang</th>
+                                                <th style="text-align: center;">Jumlah Bahan Baku</th>
+                                                <th style="text-align: center;">Jumlah Kemasan</th>
+                                                <th style="text-align: center;">Jumlah Satuan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if ($dataBarang['status'] == 200) { ?>
+                                                <?php $noBarang = 0; ?>
+                                                <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
+                                                    <?php $noBarang++ ?>
+                                                    <tr class="odd gradeX">
+                                                        <td><?= $noBarang ?>. </td>
+                                                        <td style="text-align: center;">
+                                                            <input type="checkbox" id="chk" name="pengajuan[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <div style="display: grid;font-size: 10px;">
+                                                                <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
+                                                                <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
+                                                            </div>
+                                                        </td>
+                                                        <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
+                                                        </td>
+                                                        <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
+                                                        <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
+                                                        <td style="text-align: center">
+                                                            <?php if ($rowBarang['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
+                                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                                </font>
+                                                            <?php } else { ?>
+                                                                <?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?>
+                                                            <?php } ?>
+                                                        </td>
+                                                        <td style="text-align: center">
+                                                            <?php if ($rowBarang['JUMLAH_KEMASAN'] == NULL) { ?>
+                                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                                </font>
+                                                            <?php } else { ?>
+                                                                <?= $rowBarang['JUMLAH_KEMASAN']; ?>
+                                                            <?php } ?>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <div style="display: flex;justify-content: space-evenly;align-items:center">
+                                                                <font><?= $rowBarang['KODE_SATUAN']; ?></font>
+                                                                <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
+                                                        <td style="text-align: center;">
+                                                            <div style="width: 155px;">
+                                                                <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
+                                                        <td style="text-align: center;">
+                                                            <div style="width: 155px;">
+                                                                <?= Rupiah($rowBarang['POS_TARIF']); ?>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <tr>
+                                                    <td colspan="51">
+                                                        <center>
+                                                            <div style="display: grid;">
+                                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                            </div>
+                                                        </center>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
-                                        <?php } else { ?>
-                                            <tr>
-                                                <td colspan="51">
-                                                    <center>
-                                                        <div style="display: grid;">
-                                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                        </div>
-                                                    </center>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
                         </div>
                         <!-- End IDBarang -->
                     </div>
@@ -257,4 +259,57 @@ $dataBarang = json_decode($contentBarang, true);
             }
         }
     }
+
+    // SESUAI
+    $("#btn-sesuai").click(function() {
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuai`)
+        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
+    // KURANG
+    $("#btn-kurang").click(function() {
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurang`)
+        var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
+    // LEBIH
+    $("#btn-lebih").click(function() {
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebih`)
+        var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
+    // PECAH
+    $("#btn-pecah").click(function() {
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecah`)
+        var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
+    // RUSAK
+    $("#btn-rusak").click(function() {
+        $("#form-submit").attr('action', `gm_proses' ?>`)
+        // console.log($("#form-submit").attr('action'))
+        // return;
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusak`)
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
 </script>
