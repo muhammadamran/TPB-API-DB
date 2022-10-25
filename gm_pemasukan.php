@@ -71,11 +71,7 @@ $dataAllShow = json_decode($content, true);
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-door-open icon-page"></i>
-                <font class="text-page">Gate Mandiri
-                    <?php foreach ($dataAllShow['result'] as $row) { ?>
-                        <?= $row['NOMOR_AJU'] ?>
-                    <?php } ?>
-                </font>
+                <font class="text-page">Gate Mandiri</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
@@ -172,7 +168,7 @@ $dataAllShow = json_decode($content, true);
                             </div>
                         </div>
                     <?php } ?>
-                    <?php if ($_POST['filter'] == NULL || $_POST['show_all'] == NULL) { ?>
+                    <?php if ($_POST['filter'] != NULL || $_POST['show_all'] != NULL) { ?>
                         <div class="table-responsive">
                             <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                                 <thead>
