@@ -59,7 +59,9 @@ $dataBarang = json_decode($contentBarang, true);
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
                             <hr>
-                            <font style="font-weight: 800;">Status Barang:</font>
+                            <div style="margin-bottom: 10px;">
+                                <font style="font-weight: 800;">Status Barang:</font>
+                            </div>
                             <div>
                                 <button class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
                                 <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
