@@ -839,7 +839,7 @@ $dataAllShow = json_decode($content, true);
                                                                                 <div class="row">
                                                                                     <div class="col-md-12">
                                                                                         <div class="form-group">
-                                                                                            <h4>PLB</h4>
+                                                                                            <h4>Berita Acara</h4>
                                                                                         </div>
                                                                                     </div>
                                                                                     <hr>
