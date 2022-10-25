@@ -834,40 +834,13 @@ $dataAllShow = json_decode($content, true);
                                                                         </div>
                                                                         <!-- End Barang Masuk -->
                                                                         <!-- Barang Keluar -->
-                                                                        <!-- <div class="col-6">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>Sarinah</h4>
-                                                                                </div>
+                                                                        <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                            <div class="col-6">
+                                                                                <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                </object>
                                                                             </div>
-                                                                            <hr>
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB</label>
-                                                                                    <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
-                                                                                    <input type="date" name="bk_masuk" class="form-control" placeholder="Tanggal Keluar ...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <input type="text" name="bk_operator" class="form-control" placeholder="Nama Operator ...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Remarks Barang Keluar</label>
-                                                                                    <textarea name="bk_remarks" class="form-control" placeholder="Remarks Barang Keluar ..."></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
+                                                                        <?php } else { ?>
+                                                                        <?php } ?>
                                                                         <!-- End Barang Keluar -->
                                                                         <div class="col-md-12">
                                                                             <small style="color: red"><i>(*) Harus diisi</i></small>
