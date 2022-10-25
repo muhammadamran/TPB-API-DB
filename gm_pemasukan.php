@@ -375,26 +375,30 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 </a>
                                                             <?php } else { ?>
                                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                                    <a href="#detail<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
-                                                                        <div>
-                                                                            <div style="font-size: 22px;">
-                                                                                <i class="fas fa-edit"></i>
+                                                                    <div>
+                                                                        <a href="#detail<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
+                                                                            <div>
+                                                                                <div style="font-size: 22px;">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                </div>
+                                                                                <div style="font-size: 8px;">
+                                                                                    <font>Update No. AJU GB</font>
+                                                                                </div>
                                                                             </div>
-                                                                            <div style="font-size: 8px;">
-                                                                                <font>Update No. AJU GB</font>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div>
+                                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
+                                                                            <div>
+                                                                                <div style="font-size: 22px;">
+                                                                                    <i class="fas fa-file"></i>
+                                                                                </div>
+                                                                                <div style="font-size: 8px;">
+                                                                                    <font>Upload Berita Acara!</font>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
-                                                                        <div>
-                                                                            <div style="font-size: 22px;">
-                                                                                <i class="fas fa-file"></i>
-                                                                            </div>
-                                                                            <div style="font-size: 8px;">
-                                                                                <font>Upload Berita Acara!</font>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
+                                                                        </a>
+                                                                    </div>
                                                                 <?php } else { ?>
                                                                     <a href="#add<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Add">
                                                                         <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Masuk Barang Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
