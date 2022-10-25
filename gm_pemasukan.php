@@ -354,7 +354,7 @@ if (isset($_POST['show_all'])) {
 <script type="text/javascript">
     $(function() {
         $("#IDAJU_PLB").autocomplete({
-            source: 'autocomplete.php'
+            source: 'function/autocomplete/nomor_aju_plb.php'
         });
     });
     $(document).ready(function() {
