@@ -335,10 +335,16 @@ $dataKontainer = json_decode($contentKontainer, true);
 
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
-                            <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
-                            <button class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
-                            <button class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
-                            <button class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                            <hr>
+                            <font>Status Barang</font>
+                            <hr>
+                            <div>
+                                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                                <button class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                                <button class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                                <button class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                            </div>
+                            <hr>
                             <div class="table-responsive">
                                 <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
