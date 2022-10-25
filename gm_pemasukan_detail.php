@@ -131,7 +131,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                             <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
                                                         </div>
                                                     </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['CIF_RUPIAH']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
                                                     <td style="text-align: center;"><?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
                                                     <td style="text-align: center;"><?= Rupiah($rowBarang['POS_TARIF']); ?></td>
