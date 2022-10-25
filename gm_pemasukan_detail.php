@@ -90,7 +90,7 @@ $dataBarang = json_decode($contentBarang, true);
                                         </tr>
                                         <tr>
                                             <th style="text-align: center;">Kode</th>
-                                            <th style="text-align: center;">Seri</th>
+                                            <th style="text-align: center;">Seri Barang</th>
                                             <th style="text-align: center;">Uraian</th>
                                             <th style="text-align: center;">Tipe</th>
                                             <th style="text-align: center;">Ukuran</th>
