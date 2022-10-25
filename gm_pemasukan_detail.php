@@ -151,7 +151,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                             <input type="hidden" name="CekBarang[<?= $no - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <div style="display: grid;font-size: 10px;width: 155px;">
+                                                            <div style="display: grid;font-size: 10px;width: 80px;">
                                                                 <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
                                                                 <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
                                                             </div>
