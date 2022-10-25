@@ -473,7 +473,7 @@ $dataAllShow = json_decode($content, true);
                                                                                         <?php } else { ?>
                                                                                             <label>Upload Berita Acara</label>
                                                                                         <?php } ?>
-                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ...">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -829,7 +829,7 @@ $dataAllShow = json_decode($content, true);
                                                                                         <?php } else { ?>
                                                                                             <label>Upload Berita Acara</label>
                                                                                         <?php } ?>
-                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ...">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
