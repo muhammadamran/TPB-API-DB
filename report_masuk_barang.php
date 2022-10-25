@@ -223,11 +223,11 @@ $data = json_decode($content, true);
                                                 BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_PENGAJUAN'] == NULL) { ?>
+                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['NOMOR_PENGAJUAN']; ?>
+                                                    <?= $row['NOMOR_AJU']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
