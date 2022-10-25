@@ -205,7 +205,7 @@ if (isset($_POST['show_all'])) {
                                                         </div>
                                                     <?php } ?>
                                                     <div style="margin-left: 10px;">
-                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
+                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add.</a>
                                                     </div>
                                                 </div>
                                             </td>
