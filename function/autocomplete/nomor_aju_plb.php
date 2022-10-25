@@ -28,4 +28,4 @@ $data = json_decode($content, true);
 foreach ($data['result'] as $row) {
     $row['NOMOR_AJU'];
 }
-echo json_encode($result);
+echo json_encode($row['NOMOR_AJU']);
