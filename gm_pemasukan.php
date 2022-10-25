@@ -36,9 +36,9 @@ if (isset($_POST['add_'])) {
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        // echo "<script>window.location.href='gm_pemasukan.php?AJU=$bm_no_aju_plb;</script>";
-        $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
-        $data = json_decode($content, true);
+        echo "<script>window.location.href='gm_pemasukan.php?AJU=$bm_no_aju_plb;</script>";
+        // $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
+        // $data = json_decode($content, true);
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
