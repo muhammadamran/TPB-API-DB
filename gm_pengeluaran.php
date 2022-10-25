@@ -135,7 +135,7 @@ if (isset($_POST['show_all'])) {
                                     <th rowspan="2" width="1%">No.</th>
                                     <th colspan="4" class="text-nowrap" style="text-align: center;">PLB Barang Masuk</th>
                                     <th colspan="4" class="text-nowrap" style="text-align: center;">GB Barang Keluar</th>
-                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
                                     <!-- PLB -->
