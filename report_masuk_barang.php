@@ -144,7 +144,7 @@ $data = json_decode($content, true);
                     <?php if (isset($_POST['filter_date'])) { ?>
                         <div class="bar">
                             <div style="padding: 5px;">
-                                <a href="./report_masuk_barang.php" class="btn btn-secondary" title="Reset" style="padding: 8px;">
+                                <a href="./report_masuk_barang.php" class="btn btn-warning" title="Reset" style="padding: 8px;">
                                     <div style="display: flex;justify-content: space-between;align-items: end;">
                                         <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
                                     </div>
