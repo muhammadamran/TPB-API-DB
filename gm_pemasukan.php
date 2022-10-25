@@ -17,7 +17,7 @@ if (isset($_POST['add_'])) {
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
-    $bm_remarks             = $_POST['bm_remarks'];
+    $bm_remarks             = preg_replace('/[^a-zA-Z0-9]/', ' ', $_POST['bm_remarks']);
     // File
     $filename = $_FILES['uploadBA']['name'];
     $tmpname = $_FILES['uploadBA']['tmp_name'];
@@ -36,7 +36,9 @@ if (isset($_POST['add_'])) {
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?AJU=$bm_no_aju_plb;</script>";
+        // echo "<script>window.location.href='gm_pemasukan.php?AJU=$bm_no_aju_plb;</script>";
+        $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
+        $data = json_decode($content, true);
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
