@@ -165,11 +165,11 @@ if (isset($_POST["FRusak"])) {
                                 <font style="font-weight: 800;">Status Barang:</font>
                             </div>
                             <div>
-                                <button id="btn-sesuai" class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                <button id="btn-kurang" class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
-                                <button id="btn-lebih" class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
-                                <button id="btn-pecah" class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
-                                <button id="btn-rusak" class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                                <button id="btn-sesuai" class="btn btn-sm btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
+                                <button id="btn-kurang" class="btn btn-sm btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
+                                <button id="btn-lebih" class="btn btn-sm btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
+                                <button id="btn-pecah" class="btn btn-sm btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
+                                <button id="btn-rusak" class="btn btn-sm btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
                             </div>
                             <hr>
                             <div class="table-responsive">
