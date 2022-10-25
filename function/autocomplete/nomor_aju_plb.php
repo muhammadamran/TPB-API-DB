@@ -25,7 +25,7 @@ $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_a
 $data = json_decode($content, true);
 
 foreach ($data['result'] as $row) {
-    $list[] = $row['NOMOR_AJU'];
+    $row['NOMOR_AJU'];
 }
 echo json_encode($list);
 
