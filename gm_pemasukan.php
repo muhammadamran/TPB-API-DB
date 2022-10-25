@@ -830,9 +830,6 @@ $dataAllShow = json_decode($content, true);
                                                                                         <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-12">
-                                                                                    <small style="color: red"><i>(*) Harus diisi</i></small>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <!-- End Barang Masuk -->
@@ -872,6 +869,9 @@ $dataAllShow = json_decode($content, true);
                                                                         </div>
                                                                     </div> -->
                                                                         <!-- End Barang Keluar -->
+                                                                        <div class="col-md-12">
+                                                                            <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                        </div>
                                                                     </div>
                                                                 </fieldset>
                                                             </div>
