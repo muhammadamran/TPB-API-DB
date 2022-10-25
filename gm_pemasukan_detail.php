@@ -158,19 +158,19 @@ $dataBarang = json_decode($contentBarang, true);
                                                     <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
                                                     <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
                                                     <td style="text-align: center">
-                                                        <?php if ($row['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
+                                                        <?php if ($rowBarang['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
                                                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                             </font>
                                                         <?php } else { ?>
-                                                            <?= $row['JUMLAH_BAHAN_BAKU']; ?>
+                                                            <?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?>
                                                         <?php } ?>
                                                     </td>
                                                     <td style="text-align: center">
-                                                        <?php if ($row['JUMLAH_KEMASAN'] == NULL) { ?>
+                                                        <?php if ($rowBarang['JUMLAH_KEMASAN'] == NULL) { ?>
                                                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                             </font>
                                                         <?php } else { ?>
-                                                            <?= $row['JUMLAH_KEMASAN']; ?>
+                                                            <?= $rowBarang['JUMLAH_KEMASAN']; ?>
                                                         <?php } ?>
                                                     </td>
                                                     <td style="text-align: center;">
