@@ -321,7 +321,14 @@ $dataAllShow = json_decode($content, true);
                                                             <div>
                                                                 <a href="#!" class="btn btn-success" target="_blank">
                                                                     <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!">
-                                                                        <i class="fas fa-check-circle"></i> Barang Masuk Sudah diCek!
+                                                                        <div style="display: grid;">
+                                                                            <div style="font-size: 22px;">
+                                                                                <i class="fas fa-check-circle"></i>
+                                                                            </div>
+                                                                            <div style="font-size: 8px;">
+                                                                                <font>Barang Masuk Sudah diCek!</font>
+                                                                            </div>
+                                                                        </div>
                                                                     </font>
                                                                 </a>
                                                             </div>
