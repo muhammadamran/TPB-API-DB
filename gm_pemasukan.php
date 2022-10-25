@@ -325,10 +325,11 @@ if (isset($_POST['show_all'])) {
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
-<?php include "include/jsForm.php"; ?>
-<?php include "include/jsDatatables.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
+<?php include "include/jsDatatables.php"; ?>
+<?php include "include/jsForm.php"; ?>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#TableData').DataTable({
