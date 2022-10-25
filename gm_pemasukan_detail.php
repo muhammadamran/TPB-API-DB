@@ -142,7 +142,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" id="chk" name="pengajuan[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <div style="display: grid;">
