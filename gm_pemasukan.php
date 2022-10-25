@@ -238,7 +238,7 @@ if (isset($_POST['show_all'])) {
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB</label>
+                                                                                    <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
                                                                                     <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." required>
                                                                                 </div>
                                                                             </div>
@@ -265,6 +265,9 @@ if (isset($_POST['show_all'])) {
                                                                                     <label>Upload Berita Acara</label>
                                                                                     <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ...">
                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <small style="color: red"><i>(*) Harus diisi</i></small>
                                                                             </div>
                                                                         </div>
                                                                     </div>
