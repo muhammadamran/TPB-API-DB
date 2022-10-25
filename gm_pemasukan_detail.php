@@ -147,8 +147,8 @@ $dataBarang = json_decode($contentBarang, true);
                                                             <!-- MAIN -->
                                                             <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                             <!-- END MAIN -->
-                                                            <input type="hidden" name="CekBarang[<?= $no - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
-                                                            <input type="hidden" name="CekBarang[<?= $no - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                            <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
+                                                            <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <div style="display: grid;font-size: 10px;width: 80px;">

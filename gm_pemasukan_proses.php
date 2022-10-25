@@ -6,20 +6,20 @@ $aksi = $_GET['aksi'];
 
 if ($aksi == 'sesuai') {
     $key = $_POST['CekBarang'];
-    var_dump(count($key));
-    exit;
-    foreach ($key as $row) {
-        if (@$row['ID']) {
-            $ID = $row['ID'];
-            $dataUpdate = array(
-                'STATUS' => 'Sesuai'
-            );
 
-            $update = $dbcon->query('UPDATE plb_barang SET STATUS="' . $FName . '", lname="' . $LName . '" WHERE ID="' . $ID . '"');
-        }
+    $count = count($key);
+    for ($i = 1; $i <= $count; $i++) {
+        $ID          = $_POST["ID$i"];
+        $STATUS      = "Sesuai" . $i;
+        $OPERATOR_ONE     = $_POST["OPERATOR_ONE$i"];
+        $TGL_CEK     = $_POST["TGL_CEK$i"];
+        $update = $dbcon->query('UPDATE plb_barang SET STATUS="' . $STATUS . '", OPERATOR_ONE="' . $OPERATOR_ONE . '", TGL_CEK="' . $TGL_CEK . '" WHERE ID="' . $ID . '"');
     }
 
-    if ($insert) {
+    var_dump($update);
+    exit;
+
+    if ($update) {
         echo '<script>alert("Data has been Added");location.href = "../../index.php?m=user&s=user"</script>';
     } else {
         echo '<script>alert("Data failed Added");history.go(-1)</script>';
