@@ -62,7 +62,7 @@ $dataKontainer = json_decode($contentKontainer, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Detail] Data Masuk Barang</h4>
+                    <h4 class="panel-title">[Detail] Pengecekan Data Masuk Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -89,8 +89,8 @@ $dataKontainer = json_decode($contentKontainer, true);
                         </li> -->
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link active">
-                                <span class="d-sm-none">Barang</span>
-                                <span class="d-sm-block d-none">Barang</span>
+                                <span class="d-sm-none">Total Barang Masuk: 0 Barang</span>
+                                <span class="d-sm-block d-none">Total Barang Masuk: 0 Barang</span>
                             </a>
                         </li>
                         <!-- <li class="nav-item">
@@ -342,6 +342,7 @@ $dataKontainer = json_decode($contentKontainer, true);
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" style="text-align: center;">
                                                 Ceklis Semua<br>
+                                                <hr>
                                                 <input type="checkbox">
                                             </th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
@@ -373,24 +374,24 @@ $dataKontainer = json_decode($contentKontainer, true);
                                                     <td style="text-align: center;">
                                                         <input type="checkbox">
                                                     </td>
-                                                    <td><?= $rowBarang['KODE_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['SERI_BARANG']; ?></td>
-                                                    <td><?= $rowBarang['URAIAN']; ?></td>
-                                                    <td><?= $rowBarang['TIPE']; ?></td>
-                                                    <td><?= $rowBarang['UKURAN']; ?></td>
-                                                    <td><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
-                                                    <td><?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?></td>
-                                                    <td><?= $rowBarang['JUMLAH_KEMASAN']; ?></td>
-                                                    <td>
+                                                    <td style="text-align: center;"><?= $rowBarang['KODE_BARANG']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['URAIAN']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['JUMLAH_KEMASAN']; ?></td>
+                                                    <td style="text-align: center;">
                                                         <div style="display: flex;justify-content: space-evenly;align-items:center">
                                                             <font><?= $rowBarang['KODE_SATUAN']; ?></font>
                                                             <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
                                                         </div>
                                                     </td>
-                                                    <td><?= $rowBarang['CIF_RUPIAH']; ?></td>
-                                                    <td><?= $rowBarang['HARGA_PENYERAHAN']; ?></td>
-                                                    <td><?= $rowBarang['NETTO']; ?></td>
-                                                    <td><?= $rowBarang['POS_TARIF']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['CIF_RUPIAH']; ?></td>
+                                                    <td style="text-align: center;"><?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
+                                                    <td style="text-align: center;"><?= Rupiah($rowBarang['POS_TARIF']); ?></td>
                                                 </tr>
                                             <?php } ?>
                                         <?php } else { ?>
