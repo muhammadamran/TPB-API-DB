@@ -65,7 +65,7 @@ if (isset($_POST['show_all'])) {
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>CK5 PLB (Nomor Pengajuan)</label>
-                                        <input type="number" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -351,8 +351,16 @@ if (isset($_POST['show_all'])) {
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/jsForm.php"; ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
+    $(function() {
+        $("#IDAJU_PLB").autocomplete({
+            source: 'autocomplete.php'
+        });
+    });
     $(document).ready(function() {
         $('#TableData').DataTable({
             dom: 'Bfrtip',
