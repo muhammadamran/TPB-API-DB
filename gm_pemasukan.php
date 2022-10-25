@@ -586,7 +586,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Edit] Data Barang Masuk</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -705,7 +705,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Upload] Berita Acara</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -824,7 +824,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Detail] Data Barang Masuk</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
