@@ -253,7 +253,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
                                                                                     <select name="bk_aju" class="default-select2 form-control" required>
                                                                                         <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php foreach ($data['result'] as $rowAJUGB) { ?>
+                                                                                        <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
                                                                                             <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
                                                                                         <?php } ?>
                                                                                     </select>
