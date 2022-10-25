@@ -63,7 +63,33 @@ if (isset($_POST['edit_'])) {
     // $config['file_name'] = $newname;
     // move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
+    $data = json_decode($content, true);
+
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+    }
+}
+
+if (isset($_POST['upload_'])) {
+    $rcd_id                 = $_POST['rcd_id'];
+    // File
+    $filename = $_FILES['uploadBA']['name'];
+    $tmpname = $_FILES['uploadBA']['tmp_name'];
+    $sizename = $_FILES['uploadBA']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $uniq_file =  "Berita-Acara-PLB" . '_' . time();
+    $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
+    $config['upload_path'] = './files/ck5plb/BA/PLB/';
+    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+    move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -611,7 +637,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     $time = substr($tgl_msk, 10, 20);
                                                                                     ?>
                                                                                     <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
-                                                                                    <input type="text" name="rcd_id" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $row['rcd_id']; ?>">
+                                                                                    <input type="hidden" name="rcd_id" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $row['rcd_id']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
