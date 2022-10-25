@@ -53,19 +53,20 @@ $dataBarang = json_decode($contentBarang, true);
                     <ul class="nav nav-pills mb-2">
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link active">
-                                <span class="d-sm-none">
+                                <span class="d-sm-none">Barang Masuk</span>
+                                <span class="d-sm-block d-none">
                                     Total Barang Masuk:
                                     <?php foreach ($dataBarangTotal['result'] as $rowBarangTotal) { ?>
                                         <?= $rowBarangTotal['total']; ?>
                                     <?php } ?>
                                     Barang
-                                </span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link">
                                 <?php if ($dataBarangCek['status'] == 200) { ?>
-                                    <span class="d-sm-none">
+                                    <span class="d-sm-none">Proses Barang Masuk</span>
+                                    <span class="d-sm-block d-none">
                                         Proses Pengecekan Barang:
                                         <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
                                             <?= $rowBarangCek['total_cek']; ?>
@@ -73,8 +74,9 @@ $dataBarang = json_decode($contentBarang, true);
                                         Barang DiCek!
                                     </span>
                                 <?php } else { ?>
-                                    <span class="d-sm-none">
-                                        Progress pengecekan Barang Masuk!
+                                    <span class="d-sm-none">Proses Barang Masuk</span>
+                                    <span class="d-sm-block d-none">
+                                        Proses pengecekan Proses Barang Masuk!
                                     </span>
                                 <?php } ?>
                             </a>
