@@ -324,7 +324,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div style="display: flex;justify-content: flex-start;align-items: center;width: 300px;">
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>
-                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success" target="_blank">
+                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
                                                                     <div style="display: grid;">
                                                                         <div style="font-size: 22px;">
@@ -398,7 +398,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                     <?php } else { ?>
                                                         <div>
-                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
+                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Keluar.">
                                                                     <div>
                                                                         <div style="font-size: 22px;">
