@@ -64,8 +64,8 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
-                        <div>
-                            <div>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <div style="display: flex;justify-content: center;align-items: center;">
                                 <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
                             </div>
                             <div class="row">
