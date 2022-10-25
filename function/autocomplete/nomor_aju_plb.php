@@ -25,9 +25,7 @@ function get_content($URL)
 $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_auto_noAJU');
 $data = json_decode($content, true);
 
-$hasil = $data['result'];
-
-while ($row = mysqli_fetch_array($hasil)) {
-    $result[] = $row['NOMOR_AJU'];
+foreach ($data['result'] as $row) {
+    $row['NOMOR_AJU'];
 }
 echo json_encode($result);
