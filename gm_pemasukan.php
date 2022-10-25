@@ -407,8 +407,13 @@ $dataAllShow = json_decode($content, true);
                                                             <div class="modal-body">
                                                                 <fieldset>
                                                                     <div class="row">
+                                                                        <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                            <?php $col = '6'; ?>
+                                                                        <?php } else { ?>
+                                                                            <?php $col = '12'; ?>
+                                                                        <?php } ?>
                                                                         <!-- Barang Masuk -->
-                                                                        <div class="col-12">
+                                                                        <div class="col-<?= $col; ?>">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
@@ -426,7 +431,12 @@ $dataAllShow = json_decode($content, true);
                                                                                     <div class="form-group">
                                                                                         <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
                                                                                         <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
+                                                                                                <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
+                                                                                                <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php } else { ?>
+                                                                                                <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                            <?php } ?>
                                                                                             <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
                                                                                                 <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
                                                                                             <?php } ?>
@@ -436,7 +446,12 @@ $dataAllShow = json_decode($content, true);
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label>Tanggal Masuk</label>
-                                                                                        <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ...">
+                                                                                        <?php
+                                                                                        $tgl_msk = $row['bm_tgl_masuk'];
+                                                                                        $tgl = substr($tgl_msk, 0, 10);
+                                                                                        $time = substr($tgl_msk, 10, 20);
+                                                                                        ?>
+                                                                                        <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -453,52 +468,39 @@ $dataAllShow = json_decode($content, true);
                                                                             </div> -->
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <label>Upload Berita Acara</label>
-                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ...">
+                                                                                        <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                                            <label>Upload Berita Acara Kembali!</label>
+                                                                                        <?php } else { ?>
+                                                                                            <label>Upload Berita Acara</label>
+                                                                                        <?php } ?>
+                                                                                        <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="col-md-12">
-                                                                                    <small style="color: red"><i>(*) Harus diisi</i></small>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <!-- End Barang Masuk -->
                                                                         <!-- Barang Keluar -->
-                                                                        <!-- <div class="col-6">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>Sarinah</h4>
+                                                                        <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                            <div class="col-6">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="form-group">
+                                                                                            <h4>Berita Acara</h4>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <hr>
+                                                                                    <div class="col-md-12">
+                                                                                        <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                        </object>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <hr>
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB</label>
-                                                                                    <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
-                                                                                    <input type="date" name="bk_masuk" class="form-control" placeholder="Tanggal Keluar ...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <input type="text" name="bk_operator" class="form-control" placeholder="Nama Operator ...">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Remarks Barang Keluar</label>
-                                                                                    <textarea name="bk_remarks" class="form-control" placeholder="Remarks Barang Keluar ..."></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> -->
+                                                                        <?php } else { ?>
+                                                                        <?php } ?>
                                                                         <!-- End Barang Keluar -->
+                                                                        <div class="col-md-12">
+                                                                            <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                        </div>
                                                                     </div>
                                                                 </fieldset>
                                                             </div>
