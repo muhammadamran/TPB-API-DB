@@ -172,8 +172,7 @@ if (isset($_POST['show_all'])) {
                                                     </center>
                                                 <?php } else { ?>
                                                     <div style="display:grid;justify-content: center;">
-                                                        <font style="font-weight: 800;">Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
-                                                        <hr>
+                                                        <font style="font-weight: 800;margin-bottom: 10px">Total: <?= $row['JUMLAH_BARANG']; ?> Barang</font>
                                                         <font>Sesuai: Barang</font>
                                                         <font>Kurang: Barang</font>
                                                         <font>Lebih: Barang</font>
