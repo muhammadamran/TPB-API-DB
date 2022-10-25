@@ -16,13 +16,13 @@ if (isset($_POST["FSesuai"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // All Sesuai
@@ -32,13 +32,13 @@ if (isset($_POST["All_sesuai"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Kurang
@@ -49,7 +49,7 @@ if (isset($_POST["FKurang"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Kurang
@@ -59,13 +59,13 @@ if (isset($_POST["All_kurang"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurangAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangKurangAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Lebih
@@ -76,7 +76,7 @@ if (isset($_POST["FLebih"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Lebih
@@ -86,13 +86,13 @@ if (isset($_POST["All_lebih"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebihAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangLebihAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Pecah
@@ -103,7 +103,7 @@ if (isset($_POST["FPecah"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Pecah
@@ -113,13 +113,13 @@ if (isset($_POST["All_pecah"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecahAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangPecahAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Rusak
@@ -129,7 +129,7 @@ if (isset($_POST["FRusak"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Rusak
@@ -139,13 +139,13 @@ if (isset($_POST["All_rusak"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusakAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangRusakAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 
@@ -492,7 +492,7 @@ $dataBarang = json_decode($contentBarang, true);
             icon: 'success',
             text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan_detail.php?AJU=<?= $DATAAJU ?>');
+        history.replaceState({}, '', './gm_pengeluaran_detail.php?AJU=<?= $DATAAJU ?>');
     }
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
@@ -500,6 +500,6 @@ $dataBarang = json_decode($contentBarang, true);
             icon: 'error',
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan_detail.php');
+        history.replaceState({}, '', './gm_pengeluaran_detail.php');
     }
 </script>
