@@ -398,7 +398,7 @@ if (isset($_POST["FRusak"])) {
 
     // SESUAI
     $("#btn-sesuai").click(function() {
-        // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuai`)
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuaiAll`)
         $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
         var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
 
@@ -409,7 +409,7 @@ if (isset($_POST["FRusak"])) {
     });
     // KURANG
     $("#btn-kurang").click(function() {
-        // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurang`)
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurangAll`)
         $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=kurang`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
 
@@ -420,7 +420,7 @@ if (isset($_POST["FRusak"])) {
     });
     // LEBIH
     $("#btn-lebih").click(function() {
-        // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebih`)
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebihAll`)
         $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=lebih`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
 
@@ -431,8 +431,8 @@ if (isset($_POST["FRusak"])) {
     });
     // PECAH
     $("#btn-pecah").click(function() {
-        // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecah`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecahAll`)
+        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
 
         if (confirm)
@@ -442,7 +442,7 @@ if (isset($_POST["FRusak"])) {
     });
     // RUSAK
     $("#btn-rusak").click(function() {
-        // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusak`)
+        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusakAll`)
         $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
         // console.log($("#form-submit").attr('action'))
         // return;
