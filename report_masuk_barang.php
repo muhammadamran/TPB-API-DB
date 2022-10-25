@@ -250,7 +250,7 @@ $data = json_decode($content, true);
                                                     ?>
                                                     <div style="display: grid;">
                                                         <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?></font>
-                                                        <font><i class="fa-solid fa-clock"></i> <?= $time ?></font>
+                                                        <font style="margin-left: -26px;"><i class="fa-solid fa-clock"></i> <?= $time ?></font>
                                                     </div>
                                                 <?php } ?>
                                             </td>
