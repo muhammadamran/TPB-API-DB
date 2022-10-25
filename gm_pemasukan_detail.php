@@ -267,7 +267,7 @@ $dataBarang = json_decode($contentBarang, true);
     // SESUAI
     $("#btn-sesuai").click(function() {
         // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuai`)
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gm_pemasukan_proses.php?aksi=sesuai`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
         var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
 
         if (confirm)
@@ -278,7 +278,7 @@ $dataBarang = json_decode($contentBarang, true);
     // KURANG
     $("#btn-kurang").click(function() {
         // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurang`)
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gm_pemasukan_proses.php?aksi=kurang`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=kurang`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
 
         if (confirm)
@@ -289,7 +289,7 @@ $dataBarang = json_decode($contentBarang, true);
     // LEBIH
     $("#btn-lebih").click(function() {
         // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebih`)
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gm_pemasukan_proses.php?aksi=lebih`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=lebih`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
 
         if (confirm)
@@ -300,7 +300,7 @@ $dataBarang = json_decode($contentBarang, true);
     // PECAH
     $("#btn-pecah").click(function() {
         // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecah`)
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gm_pemasukan_proses.php?aksi=pecah`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
 
         if (confirm)
@@ -311,7 +311,7 @@ $dataBarang = json_decode($contentBarang, true);
     // RUSAK
     $("#btn-rusak").click(function() {
         // $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusak`)
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gm_pemasukan_proses.php?aksi=rusak`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
         // console.log($("#form-submit").attr('action'))
         // return;
         if (confirm)
