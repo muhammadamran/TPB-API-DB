@@ -198,24 +198,25 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="3" class="text-nowrap" style="text-align: center;">Nomor Pengajuan PLB</th>
-                                    <th colspan="6" class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
+                                    <th colspan="5" class="text-nowrap" style="text-align: center;">PLB</th>
+                                    <th colspan="5" class="text-nowrap" style="text-align: center;">GB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal PLB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
-                                    <!-- Nomor Pengajuan PLB -->
+                                    <!-- PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
-                                    <!-- Jumlah Barang -->
-                                    <th class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Sesuai"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Kurang"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Lebih"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Pecah"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Rusak"</th>
+                                    <th class="text-nowrap" style="text-align: center;">Total Barang</th>
+                                    <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
+                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
+                                    <!-- GB -->
+                                    <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal</th>
+                                    <th class="text-nowrap" style="text-align: center;">Total Barang</th>
+                                    <th class="text-nowrap" style="text-align: center;">Asal GB</th>
+                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
 
                                 </tr>
                             </thead>
