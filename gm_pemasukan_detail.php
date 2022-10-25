@@ -281,8 +281,23 @@ if (isset($_POST["FRusak"])) {
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <div style="display: grid;font-size: 10px;width: 80px;">
-                                                            <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
-                                                            <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
+                                                            <?php if ($rowBarang['ID'] == NULL) { ?>
+                                                                <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
+                                                                <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
+                                                            <?php } else { ?>
+                                                                <font><i class="fa-solid fa-user-pen"></i>: <?= $rowBarang['OPERATOR_ONE']; ?></font>
+                                                                <?php if ($rowBarang['STATUS'] == 'Sesuai') { ?>
+                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-success"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                <?php } else if ($rowBarang['STATUS'] == 'Kurang') { ?>
+                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-danger"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                <?php } else if ($rowBarang['STATUS'] == 'Lebih') { ?>
+                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-lime"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                <?php } else if ($rowBarang['STATUS'] == 'Pecah') { ?>
+                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-dark"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                <?php } else if ($rowBarang['STATUS'] == 'Rusak') { ?>
+                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-warning"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                <?php } ?>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                     <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
