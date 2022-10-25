@@ -8,6 +8,12 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
+// TOTAL BARANG
+$contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
+$dataBarangTotal = json_decode($contentBarangTotal, true);
+// CEK BARANG
+$contentBarangCek = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangCek&AJU=' . $_GET['AJU']);
+$dataBarangCek = json_decode($contentBarangCek, true);
 // BARANG
 $contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
 $dataBarang = json_decode($contentBarang, true);
@@ -47,8 +53,20 @@ $dataBarang = json_decode($contentBarang, true);
                     <ul class="nav nav-pills mb-2">
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link active">
-                                <span class="d-sm-none">Total Barang Masuk: 0 Barang</span>
-                                <span class="d-sm-block d-none">Total Barang Masuk: 0 Barang</span>
+                                <span class="d-sm-none">
+                                    Total Barang Masuk:
+                                    <?php foreach ($dataBarangTotal['result'] as $rowBarangTotal) { ?>
+                                        <?= $rowBarangTotal['total']; ?>
+                                    <?php } ?>
+                                    Barang
+                                </span>
+                                <span class="btn btn-info">
+                                    Proses Pengecekan Barang:
+                                    <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
+                                        <?= $rowBarangCek['total_cek']; ?>
+                                    <?php } ?>
+                                    Barang DiCek!
+                                </span>
                             </a>
                         </li>
                     </ul>
