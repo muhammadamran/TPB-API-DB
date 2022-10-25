@@ -110,7 +110,9 @@ $dataBarang = json_decode($contentBarang, true);
                                             <th rowspan="2" style="text-align: center;">
                                                 Ceklis Semua<br>
                                                 <hr>
-                                                <input type="checkbox">
+                                                <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');"><i class="icon-copy dw dw-checked" style="font-size: 12px;font-weight: 300;"></i>
+                                                    <font style="font-size: 14px;font-weight: 300;">Pilih Semua</font>
+                                                </button>
                                             </th>
                                             <th rowspan="2" style="text-align: center;">Status</th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
@@ -223,4 +225,17 @@ $dataBarang = json_decode($contentBarang, true);
             ]
         });
     });
+
+    function checkAll(checkId) {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
+                if (inputs[i].checked == true) {
+                    inputs[i].checked = false;
+                } else if (inputs[i].checked == false) {
+                    inputs[i].checked = true;
+                }
+            }
+        }
+    }
 </script>
