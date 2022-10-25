@@ -26,7 +26,7 @@ if (isset($_POST["FSesuai"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -43,7 +43,7 @@ if (isset($_POST["FKurang"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -60,7 +60,7 @@ if (isset($_POST["FLebih"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -77,7 +77,7 @@ if (isset($_POST["FPecah"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -94,7 +94,7 @@ if (isset($_POST["FRusak"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&TGL_CEK=' . $TGL_CEK . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
