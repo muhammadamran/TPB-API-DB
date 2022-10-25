@@ -12,22 +12,6 @@ $AJU_GB = '';
 // API - 
 include "include/api.php";
 
-if (isset($_POST['add_'])) {
-    $bm_no_aju_plb          = $_POST['bm_aju'];
-    $bk_no_aju_sarinah      = $_POST['bk_aju'];
-    $bm_tgl_masuk           = $_POST['bm_masuk'];
-    $bm_nama_operator       = $_POST['bm_operator'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
-    }
-}
-
 if (isset($_POST['edit_'])) {
     $rcd_id                 = $_POST['rcd_id'];
     $bm_no_aju_plb          = $_POST['bm_aju'];
@@ -35,13 +19,13 @@ if (isset($_POST['edit_'])) {
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='gm_pengeluaran.php?SaveSuccess=true;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran.php?SaveFailed=true';</script>";
     }
 }
 
@@ -61,13 +45,13 @@ if (isset($_POST['upload_'])) {
     $config['file_name'] = $newname;
     move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='gm_pengeluaran.php?SaveSuccess=true;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran.php?SaveFailed=true';</script>";
     }
 }
 
@@ -456,8 +440,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     $tgl = substr($tgl_msk, 0, 10);
                                                                                     $time = substr($tgl_msk, 10, 20);
                                                                                     ?>
-                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Keluar ..." value="<?= $tgl; ?>">
-                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                    <input type="date" name="bk_tgl_keluar" class="form-control" placeholder="Tanggal Keluar ..." value="<?= $tgl; ?>">
+                                                                                    <input type="text" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -531,16 +515,16 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
-                                                                                    <label>Upload Berita Acara Kembali!</label>
-                                                                                <?php } else { ?>
-                                                                                    <label>Upload Berita Acara</label>
-                                                                                <?php } ?>
-                                                                                <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_GB']; ?>">
-                                                                                <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
+                                                                                        <label>Upload Berita Acara Kembali!</label>
+                                                                                    <?php } else { ?>
+                                                                                        <label>Upload Berita Acara</label>
+                                                                                    <?php } ?>
+                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_GB']; ?>">
+                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
