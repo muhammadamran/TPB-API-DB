@@ -179,14 +179,14 @@ $dataBarang = json_decode($contentBarang, true);
                                                         </div>
                                                     </td>
                                                     <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
-                                                    <td style="text-align: center;">4
-                                                        <div>
+                                                    <td style="text-align: center;">
+                                                        <div style="width: 155px;">
                                                             <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
                                                         </div>
                                                     </td>
                                                     <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
                                                     <td style="text-align: center;">
-                                                        <div>
+                                                        <div style="width: 155px;">
                                                             <?= Rupiah($rowBarang['POS_TARIF']); ?>
                                                         </div>
                                                     </td>
