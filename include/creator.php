@@ -5,8 +5,8 @@
     <?php } else { ?>
         Copyright © 2022 - <?= $resultSetting['company'] ?> All Rights Reserved.
     <?php } ?>
-    <a class="font-w600" href="mailto:info@hellos-id.com" target="_blank">
-        Hellos-ID
+    <a href="https://hellos-id.com/" target="_blank">
+        <font style="color:#070d2d"><b>HELLOS<sup>ID</sup></b></font>
     </a>
     <br>
     <?php if ($resultSetting['version'] == NULL) { ?>
