@@ -71,7 +71,7 @@ $dataAllShow = json_decode($content, true);
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-door-open icon-page"></i>
-                <font class="text-page">Gate Mandiri</font>
+                <font class="text-page">Gate Mandiri <?= $dataAllShow['status'] ?></font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
