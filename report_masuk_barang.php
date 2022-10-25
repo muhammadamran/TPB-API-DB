@@ -304,7 +304,7 @@ $data = json_decode($content, true);
                                             <td style="text-align: center">
                                                 <a href="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" target="_blank">
                                                     <span class="badge badge-default" data-toggle="tooltip" title="Open File PDF">
-                                                        <i class="far fa-file"></i> <?= $row['upload_beritaAcara_PLB'] ?>
+                                                        <i class="far fa-file"></i> Lihat
                                                     </span>
                                                 </a>
                                             </td>
