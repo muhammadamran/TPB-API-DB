@@ -216,13 +216,23 @@ $dataBarang = json_decode($contentBarang, true);
 <script type="text/javascript">
     $(document).ready(function() {
         $('#TableData').DataTable({
+            // dom: 'Bfrtip',
+            // buttons: [
+            //     'copyHtml5',
+            //     'excelHtml5',
+            //     'csvHtml5',
+            //     'pdfHtml5'
+            // ]
             dom: 'Bfrtip',
             buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
+                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+            ],
+            "order": [],
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
+            iDisplayLength: -1
         });
     });
 
