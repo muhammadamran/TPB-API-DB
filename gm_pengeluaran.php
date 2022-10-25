@@ -358,10 +358,10 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <a href="#edit<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
                                                                                 <div>
                                                                                     <div style="font-size: 22px;">
-                                                                                        <i class="fas fa-edit"></i>
+                                                                                        <i class="fas fa-calendar-alt"></i>
                                                                                     </div>
                                                                                     <div style="font-size: 8px;">
-                                                                                        <font>Update No. AJU GB</font>
+                                                                                        <font>Update Tanggal Keluar</font>
                                                                                     </div>
                                                                                 </div>
                                                                             </a>
@@ -474,7 +474,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="edit_" class="btn btn-info"><i class="fas fa-edit"></i> Edit</button>
+                                                            <button type="submit" name="edit_" class="btn btn-info"><i class="fas fa-calendar-alt"></i> Edit</button>
                                                         </div>
                                                     </form>
                                                 </div>
