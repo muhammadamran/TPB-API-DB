@@ -200,8 +200,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <th rowspan="2" width="1%">No.</th>
                                     <th colspan="5" class="text-nowrap" style="text-align: center;">PLB</th>
                                     <th colspan="5" class="text-nowrap" style="text-align: center;">GB</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal PLB</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
@@ -802,7 +800,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="14">
+                                        <td colspan="12">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
