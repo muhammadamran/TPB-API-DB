@@ -34,11 +34,10 @@ if (isset($_POST['add_'])) {
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&bm_remarks=' . $bm_remarks . '&newname=' . $newname);
     $data = json_decode($content, true);
-
+    var_dump($data['status']);
+    exit;
     if ($data['status'] == 200) {
         echo "<script>window.location.href='gm_pemasukan.php?AJU=$bm_no_aju_plb;</script>";
-        // $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
-        // $data = json_decode($content, true);
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
@@ -386,12 +385,12 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12">
+                                                                            <!-- <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Remarks Barang Masuk</label>
                                                                                     <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> -->
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <label>Upload Berita Acara</label>
