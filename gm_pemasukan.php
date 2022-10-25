@@ -43,7 +43,7 @@ if (isset($_POST['add_'])) {
                                ('','$bm_no_aju_plb','$bk_aju','$InputModul','$InputDescription','$InputAction','$InputDate')");
 }
 ?>
-PT. PGR Logitik Indonesia
+
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -153,7 +153,8 @@ PT. PGR Logitik Indonesia
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tanggal AJU</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal Nomor Pengajuan</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
                                     <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
                                     <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
                                     <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
@@ -184,6 +185,22 @@ PT. PGR Logitik Indonesia
                                             $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                             ?>
                                             <td style="text-align: center;"><i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?></td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['ck5_plb_submit'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?php
+                                                    $alldate = $row['ck5_plb_submit'];
+                                                    $tgl = substr($alldate, 0, 10);
+                                                    $time = substr($alldate, 10, 20);
+                                                    ?>
+                                                    <div style="display: grid;">
+                                                        <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?></font>
+                                                        <font style="margin-left: -26px;"><i class="fa-solid fa-clock"></i> <?= $time ?></font>
+                                                    </div>
+                                                <?php } ?>
+                                            </td>
                                             <td>
                                                 <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
                                                     <center>
