@@ -153,7 +153,9 @@ if (isset($_POST['show_all'])) {
                                 <?php } else { ?>
                                     <?php $no = 0; ?>
                                     <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                        <?php $no++;
+                                        var_dump($no);
+                                        exit; ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center">
