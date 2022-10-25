@@ -26,11 +26,11 @@ if (isset($_POST['add_'])) {
     $ext = end($exp);
     $uniq_file =  "Berita-Acara-PLB" . '_' . time();
     $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    $config['upload_path'] = './file/BA/PLB/';
+    $config['upload_path'] = './files/BA/PLB/';
     $config['allowed_types'] = "pdf";
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
-    move_uploaded_file($tmpname, "file/BA/PLB/" . $newname);
+    move_uploaded_file($tmpname, "files/BA/PLB/" . $newname);
 
     var_dump($newname);
     exit;
