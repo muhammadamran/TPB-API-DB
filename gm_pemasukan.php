@@ -235,17 +235,21 @@ if (isset($_POST['add_'])) {
                                             </td>
                                             <td style="text-align: center;">
                                                 <div style="display: flex;justify-content: center;align-items: center;">
-                                                    <?php if ($row['STATUS'] == NULL) { ?>
+                                                    <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
+                                                        <div>
+                                                            <a href="#!" class="btn btn-success" target="_blank">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!.">
+                                                                    <i class="fas fa-check-circle"></i> Barang Masuk Sudah diCek!
+                                                                </font>
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang masuk.">
                                                                     <i class="fas fa-warning"></i> Cek Barang Masuk
                                                                 </font>
                                                             </a>
-                                                        </div>
-                                                    <?php } else { ?>
-                                                        <div>
-                                                            <p>Upload Berita Acara</p>
                                                         </div>
                                                     <?php } ?>
                                                     <div style="margin-left: 10px;">
