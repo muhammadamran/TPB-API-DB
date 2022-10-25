@@ -235,7 +235,7 @@ if (isset($_POST['add_'])) {
                                             </td>
                                             <td style="text-align: center;">
                                                 <div style="display: flex;justify-content: center;align-items: center;">
-                                                    <?php if ($row['status'] == NULL) { ?>
+                                                    <?php if ($row['STATUS'] == NULL) { ?>
                                                         <div>
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang masuk.">
