@@ -147,7 +147,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                             <input type="checkbox" id="chk" name="pengajuan[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <div style="display: grid;font-size: 10px;">
+                                                            <div style="display: grid;font-size: 10px;width: 155px;">
                                                                 <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
                                                                 <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
                                                             </div>
