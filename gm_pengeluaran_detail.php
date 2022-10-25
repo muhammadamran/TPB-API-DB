@@ -311,11 +311,6 @@ $dataBarang = json_decode($contentBarang, true);
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
-                                                        <!-- MAIN -->
-                                                        <!-- <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>"> -->
-                                                        <!-- END MAIN -->
-                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
-                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                         <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
