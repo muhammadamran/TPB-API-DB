@@ -151,46 +151,39 @@ $dataBarang = json_decode($contentBarang, true);
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                         <div>
                                                             <form action="" method="POST">
-                                                                <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="text" name="STATUS" value="Sesuai">
-                                                                <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="text" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                <input type="hidden" name="STATUS" value="Sesuai">
+                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
                                                                 <button type="submit" name="FSesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
                                                             </form>
                                                             <form action="" method="POST">
-                                                                <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="text" name="STATUS" value="Kurang">
-                                                                <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="text" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FKurang" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
+                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                <input type="hidden" name="STATUS" value="Kurang">
+                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                <button type="submit" name="FKurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
                                                             </form>
                                                             <form action="" method="POST">
-                                                                <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="text" name="STATUS" value="Lebih">
-                                                                <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="text" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FLebih" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
+                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                <input type="hidden" name="STATUS" value="Lebih">
+                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                <button type="submit" name="FLebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
                                                             </form>
                                                             <form action="" method="POST">
-                                                                <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="text" name="STATUS" value="Lebih">
-                                                                <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="text" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FLebih" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
+                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                <input type="hidden" name="STATUS" value="Pecah">
+                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                <button type="submit" name="FPecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
                                                             </form>
                                                             <form action="" method="POST">
-                                                                <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="text" name="STATUS" value="Pecah">
-                                                                <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="text" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FPecah" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="text" name="STATUS" value="Rusak">
-                                                                <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="text" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
+                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                <input type="hidden" name="STATUS" value="Rusak">
+                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                                                             </form>
                                                         </div>
                                                     </td>
