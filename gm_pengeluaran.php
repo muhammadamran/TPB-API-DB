@@ -182,11 +182,11 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                                <?php if ($row['NAMA_PENGUSAHA'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['PERUSAHAAN']; ?>
+                                                    <?= $row['NAMA_PENGUSAHA']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
