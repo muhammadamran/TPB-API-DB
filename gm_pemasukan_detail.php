@@ -65,7 +65,7 @@ $dataBarang = json_decode($contentBarang, true);
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link">
                                 <?php if ($dataBarangCek['status'] == 200) { ?>
-                                    <span class="btn btn-info">
+                                    <span class="d-sm-none">
                                         Proses Pengecekan Barang:
                                         <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
                                             <?= $rowBarangCek['total_cek']; ?>
@@ -73,7 +73,7 @@ $dataBarang = json_decode($contentBarang, true);
                                         Barang DiCek!
                                     </span>
                                 <?php } else { ?>
-                                    <span class="btn btn-warning">
+                                    <span class="d-sm-none">
                                         Progress pengecekan Barang Masuk!
                                     </span>
                                 <?php } ?>
