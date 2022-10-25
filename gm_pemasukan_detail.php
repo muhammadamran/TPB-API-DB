@@ -29,8 +29,11 @@ if (isset($_POST["FSesuai"])) {
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
-    var_dump($data['status']);
-    exit;
+    if ($data['status'] == 200) {
+        echo "<script>window.location.href='adm_time_reload.php?SaveSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='adm_time_reload.php?SaveFailed=true';</script>";
+    }
 }
 // Form Kurang
 if (isset($_POST["FKurang"])) {
