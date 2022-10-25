@@ -330,7 +330,7 @@ if (isset($_POST['show_all'])) {
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="6">
+                                        <td colspan="7">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data

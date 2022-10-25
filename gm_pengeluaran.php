@@ -8,15 +8,15 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
 
-$AJU_PLB = '';
+$AJU_GB = '';
 // API - 
 include "include/api.php";
 
 if (isset($_POST['filter'])) {
-    if ($_POST["AJU_PLB"] != '') {
-        $AJU_PLB   = $_POST['AJU_PLB'];
+    if ($_POST["AJU_GB"] != '') {
+        $AJU_GB   = $_POST['AJU_GB'];
     }
-    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluar.php?function=get_noAJU&AJU_PLB=' . $AJU_PLB);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluar.php?function=get_noAJU&AJU_GB=' . $AJU_GB);
     $data = json_decode($content, true);
 }
 
@@ -64,8 +64,8 @@ if (isset($_POST['show_all'])) {
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>CK5 PLB (Nomor Pengajuan)</label>
-                                        <input type="text" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        <label>Nomor Pengajuan GB</label>
+                                        <input type="text" id="IDAJU_GB" name="AJU_GB" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $AJU_GB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -101,7 +101,7 @@ if (isset($_POST['show_all'])) {
                                     </h4>
                                     <hr>
                                     <div>
-                                        <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_PLB; ?></p>
+                                        <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_GB; ?></p>
                                     </div>
                                 </div>
                                 <figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
@@ -330,7 +330,7 @@ if (isset($_POST['show_all'])) {
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="6">
+                                        <td colspan="7">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -356,8 +356,8 @@ if (isset($_POST['show_all'])) {
 <?php include "include/jsForm.php"; ?>
 <script type="text/javascript">
     $(function() {
-        $("#IDAJU_PLB").autocomplete({
-            source: 'function/autocomplete/nomor_aju_plb.php'
+        $("#IDAJU_GB").autocomplete({
+            source: 'function/autocomplete/nomor_aju_GB.php'
         });
     });
     $(document).ready(function() {
