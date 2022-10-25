@@ -8,6 +8,7 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
+$DATAAJU = $_GET['AJU'];
 // TOTAL BARANG
 $contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
 $dataBarangTotal = json_decode($contentBarangTotal, true);
@@ -445,7 +446,15 @@ if (isset($_POST["FRusak"])) {
             return false;
     });
 
-    // SAVED FAILED
+    // SAVED SUCCESS
+    if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil disimpan!',
+            icon: 'success',
+            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './gm_pemasukan_detail.php?AJU=<?= $DATAAJU ?>');
+    }
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
             title: 'Data gagal disimpan!',
