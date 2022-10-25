@@ -127,7 +127,7 @@ $data = json_decode($content, true);
                                         <?= $EndTanggal ?></font>
                                 <?php } ?>
                                 <div class="line-page-table"></div>
-                                <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?>
+                                <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
                                 </font>
                             </div>
                         </div>
