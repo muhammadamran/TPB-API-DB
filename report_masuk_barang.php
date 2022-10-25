@@ -243,7 +243,13 @@ $data = json_decode($content, true);
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['ck5_plb_submit']; ?>
+                                                    <?php
+                                                    $alldate = $row['ck5_plb_submit'];
+                                                    $tgl = substr($alldate, 0, 10);
+                                                    $time = substr($alldate, 10, 20);
+                                                    ?>
+                                                    <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?>
+                                                    <i class="fa-solid fa-clock"></i> <?= $time ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
