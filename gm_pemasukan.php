@@ -415,7 +415,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             </a>
                                                                         </div>
                                                                         <div style="margin-left: 10px;">
-                                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
+                                                                            <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
                                                                                 <div>
                                                                                     <div style="font-size: 22px;">
                                                                                         <i class="fas fa-file"></i>
@@ -700,7 +700,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                         </div>
                                         <!-- End Edit -->
                                         <!-- Upload -->
-                                        <div class="modal fade" id="detail<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="upload<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
@@ -819,7 +819,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                         </div>
                                         <!-- End Upload -->
                                         <!-- Detail -->
-                                        <div class="modal fade" id="add<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="detail<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
