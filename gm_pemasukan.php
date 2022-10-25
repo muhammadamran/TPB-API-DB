@@ -822,7 +822,11 @@ $dataAllShow = json_decode($content, true);
                                                                             </div> -->
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <label>Upload Berita Acara</label>
+                                                                                        <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                                            <label>Upload Berita Acara Kembali!</label>
+                                                                                        <?php } else { ?>
+                                                                                            <label>Upload Berita Acara</label>
+                                                                                        <?php } ?>
                                                                                         <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
                                                                                     </div>
                                                                                 </div>
