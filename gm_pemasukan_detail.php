@@ -149,7 +149,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                             <!-- END MAIN -->
                                                             <input type="hidden" name="CekBarang[<?= $no - 1; ?>][STATUS]" value="<?= $row['STATUS']; ?>">
                                                             <input type="text" name="CekBarang[<?= $no - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
-                                                            <input type="text" name="CekBarang[<?= $no - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                            <input type="text" name="CekBarang[<?= $no - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:M:I') ?>">
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <div style="display: grid;font-size: 10px;width: 155px;">
