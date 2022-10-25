@@ -329,13 +329,31 @@ $dataAllShow = json_decode($content, true);
                                                             <div>
                                                                 <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                     <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
-                                                                        <i class="fas fa-warning"></i> Cek Barang Masuk
+                                                                        <div>
+                                                                            <div style="font-size: 22px;">
+                                                                                <i class="fas fa-warning"></i>
+                                                                            </div>
+                                                                            <div style="font-size: 8px;">
+                                                                                <font>Cek Barang Masuk!</font>
+                                                                            </div>
+                                                                        </div>
                                                                     </font>
                                                                 </a>
                                                             </div>
                                                         <?php } ?>
                                                         <div style="margin-left: 10px;">
-                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
+                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Add Nomor Pengajuan GB!" data-placement="top" data-content="Klik untuk menginput Nomor Pengajuan GB!">
+                                                                    <div>
+                                                                        <div style="font-size: 22px;">
+                                                                            <i class="fas fa-plus-circle"></i>
+                                                                        </div>
+                                                                        <div style="font-size: 8px;">
+                                                                            <font>Add</font>
+                                                                        </div>
+                                                                    </div>
+                                                                </font>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>
