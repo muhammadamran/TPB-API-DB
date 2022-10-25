@@ -190,16 +190,24 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?php if ($row['status'] == NULL) { ?>
-                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
-                                                        <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang masuk.">
-                                                            <i class="fas fa-warning"></i> Cek Barang Masuk
-                                                        </font>
-                                                    </a>
-                                                <?php } else { ?>
-                                                    <p>Upload Berita Acara</p>
-                                                <?php } ?>
-                                                <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
+                                                <div>
+                                                    <?php if ($row['status'] == NULL) { ?>
+                                                        <div>
+                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan barang masuk.">
+                                                                    <i class="fas fa-warning"></i> Cek Barang Masuk
+                                                                </font>
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div>
+                                                            <p>Upload Berita Acara</p>
+                                                        </div>
+                                                    <?php } ?>
+                                                    <div>
+                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add"><i class="fas fa-plus-circle"></i> Add</a>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="add<?= $row['ID'] ?>">
