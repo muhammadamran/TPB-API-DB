@@ -351,8 +351,6 @@ if (isset($_POST['show_all'])) {
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/jsForm.php"; ?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
