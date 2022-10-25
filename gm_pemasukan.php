@@ -18,19 +18,22 @@ if (isset($_POST['add_'])) {
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
     $bm_remarks             = preg_replace('/[^a-zA-Z0-9]/', ' ', $_POST['bm_remarks']);
-    // File
-    $filename = $_FILES['uploadBA']['name'];
-    $tmpname = $_FILES['uploadBA']['tmp_name'];
-    $sizename = $_FILES['uploadBA']['size'];
-    $exp = explode('.', $filename);
-    $ext = end($exp);
-    $uniq_file =  "Berita-Acara-PLB" . '_' . time();
-    $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    $config['upload_path'] = './files/ck5plb/BA/PLB/';
-    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
-    $config['max_size'] = '2000000';
-    $config['file_name'] = $newname;
-    move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+
+    if ($_POST['uploadBA'] != NULL) {
+        // File
+        $filename = $_FILES['uploadBA']['name'];
+        $tmpname = $_FILES['uploadBA']['tmp_name'];
+        $sizename = $_FILES['uploadBA']['size'];
+        $exp = explode('.', $filename);
+        $ext = end($exp);
+        $uniq_file =  "Berita-Acara-PLB" . '_' . time();
+        $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
+        $config['upload_path'] = './files/ck5plb/BA/PLB/';
+        $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
+        $config['max_size'] = '2000000';
+        $config['file_name'] = $newname;
+        move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+    }
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&bm_remarks=' . $bm_remarks . '&newname=' . $newname);
     $data = json_decode($content, true);
