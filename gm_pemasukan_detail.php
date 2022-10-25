@@ -219,7 +219,7 @@ if (isset($_POST["FRusak"])) {
                                                         <!-- END MAIN -->
                                                         <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
                                                         <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
-                                                        <!-- <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
+                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
@@ -260,7 +260,7 @@ if (isset($_POST["FRusak"])) {
                                                                 <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
                                                                 <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                                                             </form>
-                                                        </div> -->
+                                                        </div>
                                                         <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                             <?php if ($rowBarang['STATUS'] != NULL) { ?>
                                                                 <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
