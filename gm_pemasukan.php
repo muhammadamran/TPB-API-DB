@@ -458,7 +458,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
                                                                                 </div>
                                                                             </div> -->
-                                                                            <div class="col-md-12">
+                                                                            <!-- <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                                         <label>Upload Berita Acara Kembali!</label>
@@ -467,7 +467,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <?php } ?>
                                                                                     <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> -->
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
