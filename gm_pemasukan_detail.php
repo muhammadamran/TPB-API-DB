@@ -243,33 +243,33 @@ if (isset($_POST["All_rusak"])) {
                             <div style="margin-bottom: 10px;">
                                 <font style="font-weight: 800;">Status Barang:</font>
                             </div>
-                            <div style="display: flex;padding: 0px;">
+                            <div style="display: flex;justify-content: flex-start;align-content: baseline;">
                                 <!-- Sesuai ALl -->
-                                <form action="" method="POST">
+                                <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
                                 </form>
                                 <!-- Kurang All -->
-                                <form action="" method="POST">
+                                <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
                                 </form>
                                 <!-- Lebih ALl -->
-                                <form action="" method="POST">
+                                <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
                                 </form>
                                 <!-- Pecah ALl -->
-                                <form action="" method="POST">
+                                <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
                                 </form>
                                 <!-- Rusak ALl -->
-                                <form action="" method="POST">
+                                <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
