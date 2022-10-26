@@ -53,8 +53,9 @@ include "include/cssDatatables.php";
     </div>
     <div class="line-page"></div>
 
+
     <div class="row" style="padding: 10px;">
-        <div class="col-xl-9">
+        <div class="col-xl-6">
             <div class="card border-0 bg-dark text-white mb-3 overflow-hidden">
                 <div class="card-body">
                     <div class="row">
@@ -99,50 +100,103 @@ include "include/cssDatatables.php";
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card border-0 bg-dark text-white text-truncate mb-3">
-                <div class="card-body">
-                    <div class="mb-3 text-grey">
-                        <b class="mb-3">CONVERSION RATE</b>
-                        <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
-                    </div>
-                    <div class="d-flex align-items-center mb-1">
-                        <h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
-                        <div class="ml-auto">
-                            <div id="conversion-rate-sparkline"></div>
+        <div class="col-xl-6">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card border-0 bg-dark text-white text-truncate mb-3">
+                        <div class="card-body">
+                            <div class="mb-3 text-grey">
+                                <b class="mb-3">CONVERSION RATE</b>
+                                <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+                            </div>
+                            <div class="d-flex align-items-center mb-1">
+                                <h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
+                                <div class="ml-auto">
+                                    <div id="conversion-rate-sparkline"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4 text-grey">
+                                <i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+                            </div>
+                            <div class="d-flex mb-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-red f-s-8 mr-2"></i>
+                                    Added to cart
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+                                    Reached checkout
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+                                    Sessions converted
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-4 text-grey">
-                        <i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
-                    </div>
-                    <div class="d-flex mb-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-circle text-red f-s-8 mr-2"></i>
-                            Added to cart
-                        </div>
-                        <div class="d-flex align-items-center ml-auto">
-                            <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-                            Reached checkout
-                        </div>
-                        <div class="d-flex align-items-center ml-auto">
-                            <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-circle text-lime f-s-8 mr-2"></i>
-                            Sessions converted
-                        </div>
-                        <div class="d-flex align-items-center ml-auto">
-                            <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
-                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card border-0 bg-dark text-white text-truncate mb-3">
+                        <div class="card-body">
+                            <div class="mb-3 text-grey">
+                                <b class="mb-3">STORE SESSIONS</b>
+                                <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+                            </div>
+                            <div class="d-flex align-items-center mb-1">
+                                <h2 class="text-white mb-0"><span data-animation="number" data-value="70719">0</span></h2>
+                                <div class="ml-auto">
+                                    <div id="store-session-sparkline"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4 text-grey">
+                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+                            </div>
+                            <div class="d-flex mb-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-teal f-s-8 mr-2"></i>
+                                    Mobile
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-blue f-s-8 mr-2"></i>
+                                    Desktop
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
+                                    Tablet
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="5545">0</span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
