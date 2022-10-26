@@ -9,137 +9,16 @@ include "include/cssDatatables.php";
 // API - 
 include "include/api.php";
 $DATAAJU = $_GET['AJU'];
-// Form Sesuai
-if (isset($_POST["FSesuai"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
-    }
-}
 // All Sesuai
 if (isset($_POST["All_sesuai"])) {
     $AJU               = $_POST['AJU'];
     $ID                = $_POST['ID'];
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $NETTO             = $_POST['NETTO'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
-    }
-}
-// Form Kurang
-if (isset($_POST["FKurang"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-    $TGL_CEK           = $_POST['TGL_CEK'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-}
-// All Kurang
-if (isset($_POST["All_kurang"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurangAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
-    }
-}
-// Form Lebih
-if (isset($_POST["FLebih"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-    $TGL_CEK           = $_POST['TGL_CEK'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-}
-// All Lebih
-if (isset($_POST["All_lebih"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebihAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
-    }
-}
-// Form Pecah
-if (isset($_POST["FPecah"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-    $TGL_CEK           = $_POST['TGL_CEK'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-}
-// All Pecah
-if (isset($_POST["All_pecah"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecahAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
-    }
-}
-// Form Rusak
-if (isset($_POST["FRusak"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
-    $data = json_decode($content, true);
-}
-// All Rusak
-if (isset($_POST["All_rusak"])) {
-    $AJU               = $_POST['AJU'];
-    $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusakAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU . '&NETTO=' . $NETTO);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -257,6 +136,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                     <form action="" method="POST" style="margin-left: 0px;">
                                                         <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                                         <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                        <input type="hidden" name="NETTO" value="<?= $pcs; ?>">
                                                         <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
                                                     </form>
                                                 </div>
