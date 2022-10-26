@@ -352,11 +352,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                             $resultUSER = mysqli_fetch_array($dataUSER);
                                                             ?>
                                                             <!-- USERNAME -->
-                                                            <input type="text" name="username" value="<?= $resultUSER['username']; ?>">
+                                                            <input type="hidden" name="username" value="<?= $resultUSER['username']; ?>">
                                                             <!-- PASSWORD -->
-                                                            <input type="text" name="password" value="<?= $resultUSER['PASSWORD']; ?>">
+                                                            <input type="hidden" name="password" value="<?= $resultUSER['PASSWORD']; ?>">
                                                             <!-- AJU -->
-                                                            <input type="text" name="AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                            <input type="hidden" name="AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                             <button type="submit" name="submit" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
                                                                     <div>
