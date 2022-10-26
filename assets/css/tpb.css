@@ -293,8 +293,8 @@
 }
 
 .btn-RD {
-        background: #2d353c;
-        border-color: #2d353c;
+        background: transparent;
+        border-color: transparent;
         color: #fff;
         font-weight: 200;
 }
