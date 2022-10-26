@@ -387,7 +387,15 @@ $dataBarang = json_decode($contentBarang, true);
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <hr>
+                                                                            <style>
+                                                                                .line-page-cek {
+                                                                                    height: 1.5px;
+                                                                                    margin: 0px 0px 15px 0px;
+                                                                                    background: #444e66;
+                                                                                    box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
+                                                                                }
+                                                                            </style>
+                                                                            <div class="line-page-cek"></div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
@@ -418,12 +426,16 @@ $dataBarang = json_decode($contentBarang, true);
                                                                                     <input type="number" name="Rusak" class="form-control" placeholder="Rusak ...">
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="col-sm-2">
+                                                                                <div class="form-group">
+                                                                                    <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </fieldset>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                                    <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
                                                                 </div>
                                                             </form>
                                                         </div>
