@@ -55,9 +55,14 @@ include "include/cssDatatables.php";
 
 
     <div class="row" style="padding: 10px;">
-        <div class="col-xl-12">
-            <div style="font-size: 22px;font-weight: 900;margin-bottom: 5px;text-shadow: 0px 1px 0px #0000006e;">
-                <font>Gate Mandiri</font> <small>Monitoring</small>
+        <div style="display: flex;justify-content: space-between;align-items:center;">
+            <div class="col-xl-12">
+                <div style="font-size: 22px;font-weight: 900;margin-bottom: 5px;text-shadow: 0px 1px 0px #0000006e;">
+                    <font>Gate Mandiri</font> <small>Monitoring</small>
+                </div>
+            </div>
+            <div>
+                <a class="btn btn-sm btn-dark"><i class="fas fa-dashboard"></i> Lihat Dahsboard</a>
             </div>
         </div>
         <div class="col-xl-6">
