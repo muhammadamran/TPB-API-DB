@@ -134,9 +134,9 @@ $dataBarang = json_decode($contentBarang, true);
                                                     <hr>
                                                     <!-- Sesuai ALl -->
                                                     <form action="" method="POST" style="margin-left: 0px;">
-                                                        <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                                        <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                        <input type="hidden" name="NETTO" value="<?= $pcs; ?>">
+                                                        <input type="text" name="AJU" value="<?= $DATAAJU; ?>">
+                                                        <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                        <input type="text" name="NETTO" value="<?= $pcs; ?>">
                                                         <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
                                                     </form>
                                                 </div>
