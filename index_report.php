@@ -66,9 +66,9 @@ include "include/cssDatatables.php";
                     <div class="row">
                         <div class="col-xl-7 col-lg-8">
                             <div class="mb-3 text-grey">
-                                <b>TOTAL SALES</b>
+                                <b>Barang Masuk</b>
                                 <span class="ml-2">
-                                    <i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i>
+                                    <i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Barang Masuk" data-placement="top" data-content="Gate Mandiri - Monitoring Data Barang Masuk, In Warehouse dan Barang Keluar"></i>
                                 </span>
                             </div>
                             <div class="d-flex mb-1">
@@ -83,21 +83,21 @@ include "include/cssDatatables.php";
                             <hr class="bg-white-transparent-2" />
                             <div class="row text-truncate">
                                 <div class="col-4">
-                                    <div class="f-s-12 text-grey">Total sales order</div>
+                                    <div class="f-s-12 text-grey">Barang Masuk</div>
                                     <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
                                     <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                         <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="f-s-12 text-grey">Avg. sales per order</div>
+                                    <div class="f-s-12 text-grey">In Warehouse</div>
                                     <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
                                     <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                         <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="f-s-12 text-grey">Avg. sales per order</div>
+                                    <div class="f-s-12 text-grey">Barang Keluar</div>
                                     <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
                                     <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                         <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
