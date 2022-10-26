@@ -386,34 +386,34 @@ $dataBarang = json_decode($contentBarang, true);
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-sm-12">
+                                                                            <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
-                                                                                    <input type="text" name="Sesuai" class="form-control" placeholder="Sesuai ...">
+                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ...">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-sm-12">
+                                                                            <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Kurang</label>
-                                                                                    <input type="text" name="Kurang" class="form-control" placeholder="Kurang ...">
+                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ...">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-sm-12">
+                                                                            <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Lebih</label>
-                                                                                    <input type="text" name="Lebih" class="form-control" placeholder="Lebih ...">
+                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ...">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-sm-12">
+                                                                            <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Pecah</label>
-                                                                                    <input type="text" name="Pecah" class="form-control" placeholder="Pecah ...">
+                                                                                    <input type="number" name="Pecah" class="form-control" placeholder="Pecah ...">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-sm-12">
+                                                                            <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Rusak</label>
-                                                                                    <input type="text" name="Rusak" class="form-control" placeholder="Rusak ...">
+                                                                                    <input type="number" name="Rusak" class="form-control" placeholder="Rusak ...">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
