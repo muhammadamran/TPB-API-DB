@@ -344,7 +344,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                     <?php } else { ?>
                                                         <div>
-                                                            <form action="http://plb.itinventory-sarinah.com/login_gm_detail.php" method="POST">
+                                                            <form action="http://plb.itinventory-sarinah.com:8091/login_gm_detail.php" method="POST">
                                                                 <?php
                                                                 // USER
                                                                 $user = $_SESSION['username'];
