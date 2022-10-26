@@ -238,6 +238,43 @@ $dataBarang = json_decode($contentBarang, true);
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
+                            <hr>
+                            <div style="margin-bottom: 10px;">
+                                <font style="font-weight: 800;">Status Barang:</font>
+                            </div>
+                            <div style="display: flex;justify-content: flex-start;align-content: baseline;">
+                                <!-- Sesuai ALl -->
+                                <form action="" method="POST" style="margin-left: 0px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
+                                </form>
+                                <!-- Kurang All -->
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
+                                </form> -->
+                                <!-- Lebih ALl -->
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
+                                </form> -->
+                                <!-- Pecah ALl -->
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
+                                </form> -->
+                                <!-- Rusak ALl -->
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
+                                </form> -->
+                            </div>
+                            <hr>
                             <div class="table-responsive">
                                 <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -245,13 +282,6 @@ $dataBarang = json_decode($contentBarang, true);
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
                                                 Cek Barang Masuk
-                                                <hr>
-                                                <!-- Sesuai ALl -->
-                                                <form action="" method="POST" style="margin-left: 0px;">
-                                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
-                                                </form>
                                             </th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
@@ -281,6 +311,11 @@ $dataBarang = json_decode($contentBarang, true);
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
+                                                        <!-- MAIN -->
+                                                        <!-- <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>"> -->
+                                                        <!-- END MAIN -->
+                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
+                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                         <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">

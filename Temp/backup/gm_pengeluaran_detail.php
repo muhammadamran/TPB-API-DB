@@ -16,13 +16,13 @@ if (isset($_POST["FSesuai"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangSesuai&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // All Sesuai
@@ -32,13 +32,13 @@ if (isset($_POST["All_sesuai"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Kurang
@@ -49,7 +49,7 @@ if (isset($_POST["FKurang"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangKurang&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Kurang
@@ -59,13 +59,13 @@ if (isset($_POST["All_kurang"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangKurangAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangKurangAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Lebih
@@ -76,7 +76,7 @@ if (isset($_POST["FLebih"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangLebih&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Lebih
@@ -86,13 +86,13 @@ if (isset($_POST["All_lebih"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangLebihAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangLebihAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Pecah
@@ -103,7 +103,7 @@ if (isset($_POST["FPecah"])) {
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
     $TGL_CEK           = $_POST['TGL_CEK'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangPecah&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Pecah
@@ -113,13 +113,13 @@ if (isset($_POST["All_pecah"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangPecahAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangPecahAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 // Form Rusak
@@ -129,7 +129,7 @@ if (isset($_POST["FRusak"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangRusak&ID=' . $ID . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 }
 // All Rusak
@@ -139,24 +139,24 @@ if (isset($_POST["All_rusak"])) {
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangRusakAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostBarangRusakAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$DATAAJU;</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?SaveFailed=true';</script>";
     }
 }
 
 // TOTAL BARANG
-$contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
+$contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5GB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
 $dataBarangTotal = json_decode($contentBarangTotal, true);
 // CEK BARANG
-$contentBarangCek = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangCek&AJU=' . $_GET['AJU']);
+$contentBarangCek = get_content($resultAPI['url_api'] . 'BarangCK5GB.php?function=get_BarangCek&AJU=' . $_GET['AJU']);
 $dataBarangCek = json_decode($contentBarangCek, true);
 // BARANG
-$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
+$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5GB.php?function=get_Barang&AJU=' . $_GET['AJU']);
 $dataBarang = json_decode($contentBarang, true);
 
 ?>
@@ -177,8 +177,8 @@ $dataBarang = json_decode($contentBarang, true);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Barang Masuk</a></li>
-                <li class="breadcrumb-item active">Detail Nomor AJU: <?= $_GET['AJU'] ?></li>
+                <li class="breadcrumb-item"><a href="javascript:;">Barang Keluar</a></li>
+                <li class="breadcrumb-item active">Detail ID: <?= $_GET['AJU'] ?></li>
             </ol>
         </div>
         <div>
@@ -192,7 +192,7 @@ $dataBarang = json_decode($contentBarang, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Detail] Pengecekan Data Masuk Barang</h4>
+                    <h4 class="panel-title">[Detail] Pengecekan Data Keluar Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -201,9 +201,9 @@ $dataBarang = json_decode($contentBarang, true);
                     <ul class="nav nav-pills mb-2">
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link active">
-                                <span class="d-sm-none">Barang Masuk</span>
+                                <span class="d-sm-none">Barang Keluar</span>
                                 <span class="d-sm-block d-none">
-                                    Total Barang Masuk:
+                                    Total Barang Keluar:
                                     <?php foreach ($dataBarangTotal['result'] as $rowBarangTotal) { ?>
                                         <?= $rowBarangTotal['total']; ?>
                                     <?php } ?>
@@ -213,7 +213,7 @@ $dataBarang = json_decode($contentBarang, true);
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link">
                                 <?php if ($dataBarangCek['status'] == 200) { ?>
-                                    <span class="d-sm-none">Proses Barang Masuk</span>
+                                    <span class="d-sm-none">Proses Barang Keluar</span>
                                     <span class="d-sm-block d-none">
                                         <font class="blink_me">
                                             Proses Pengecekan Barang:
@@ -224,9 +224,9 @@ $dataBarang = json_decode($contentBarang, true);
                                         </font>
                                     </span>
                                 <?php } else { ?>
-                                    <span class="d-sm-none">Proses Barang Masuk</span>
+                                    <span class="d-sm-none">Proses Barang Keluar</span>
                                     <span class="d-sm-block d-none">
-                                        <font class="blink_me">Proses pengecekan Proses Barang Masuk!</font>
+                                        <font class="blink_me">Proses pengecekan Proses Barang Keluar!</font>
                                     </span>
                                 <?php } ?>
                             </a>
@@ -238,20 +238,50 @@ $dataBarang = json_decode($contentBarang, true);
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
+                            <hr>
+                            <div style="margin-bottom: 10px;">
+                                <font style="font-weight: 800;">Status Barang:</font>
+                            </div>
+                            <div style="display: flex;justify-content: flex-start;align-content: baseline;">
+                                <!-- Sesuai ALl -->
+                                <form action="" method="POST" style="margin-left: 0px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
+                                </form>
+                                <!-- Kurang All -->
+                                <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
+                                </form>
+                                <!-- Lebih ALl -->
+                                <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
+                                </form>
+                                <!-- Pecah ALl -->
+                                <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
+                                </form>
+                                <!-- Rusak ALl -->
+                                <form action="" method="POST" style="margin-left: 5px;">
+                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                    <button type="submit" name="All_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
+                                </form>
+                            </div>
+                            <hr>
                             <div class="table-responsive">
                                 <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                Cek Barang Masuk
-                                                <hr>
-                                                <!-- Sesuai ALl -->
-                                                <form action="" method="POST" style="margin-left: 0px;">
-                                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
-                                                </form>
+                                                Cek Barang Keluar
                                             </th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
@@ -424,13 +454,6 @@ $dataBarang = json_decode($contentBarang, true);
 <script type="text/javascript">
     $(document).ready(function() {
         $('#TableData').DataTable({
-            // dom: 'Bfrtip',
-            // buttons: [
-            //     'copyHtml5',
-            //     'excelHtml5',
-            //     'csvHtml5',
-            //     'pdfHtml5'
-            // ]
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
@@ -457,62 +480,6 @@ $dataBarang = json_decode($contentBarang, true);
         }
     }
 
-    // SESUAI
-    $("#btn-sesuai").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuaiAll?AJU=<?= $DATAAJU ?>&OPERATOR_ONE=<?= $_SESSION['username']; ?>`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // KURANG
-    $("#btn-kurang").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurangAll`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=kurang`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // LEBIH
-    $("#btn-lebih").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebihAll`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=lebih`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // PECAH
-    $("#btn-pecah").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecahAll`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // RUSAK
-    $("#btn-rusak").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusakAll?AJU=<?= $DATAAJU ?>&OPERATOR_ONE=<?= $_SESSION['username']; ?>`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
-        // console.log($("#form-submit").attr('action'))
-        // return;
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
@@ -520,7 +487,7 @@ $dataBarang = json_decode($contentBarang, true);
             icon: 'success',
             text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan_detail.php?AJU=<?= $DATAAJU ?>');
+        history.replaceState({}, '', './gm_pengeluaran_detail.php?AJU=<?= $DATAAJU ?>');
     }
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
@@ -528,6 +495,6 @@ $dataBarang = json_decode($contentBarang, true);
             icon: 'error',
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan_detail.php');
+        history.replaceState({}, '', './gm_pengeluaran_detail.php');
     }
 </script>
