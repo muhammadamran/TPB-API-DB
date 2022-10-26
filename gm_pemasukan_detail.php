@@ -287,7 +287,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
-                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." required>
+                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." value="<?= $rowBarang['SESUAI'] ?>" required>
                                                                                     <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                                     <input type="hidden" name="AJU" value="<?= $rowBarang['NOMOR_AJU']; ?>">
                                                                                     <input type="hidden" name="Total" value="<?= $pcs; ?>">
@@ -296,25 +296,25 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Kurang</label>
-                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." required>
+                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="<?= $rowBarang['KURANG'] ?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Lebih</label>
-                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." required>
+                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $rowBarang['LEBIH'] ?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Pecah</label>
-                                                                                    <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." required>
+                                                                                    <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $rowBarang['PECAH'] ?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Rusak</label>
-                                                                                    <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." required>
+                                                                                    <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $rowBarang['RUSAK'] ?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
@@ -399,63 +399,6 @@ $dataBarang = json_decode($contentBarang, true);
             }
         }
     }
-
-    // SESUAI
-    $("#btn-sesuai").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuaiAll?AJU=<?= $DATAAJU ?>&OPERATOR_ONE=<?= $_SESSION['username']; ?>`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // KURANG
-    $("#btn-kurang").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurangAll`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=kurang`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // LEBIH
-    $("#btn-lebih").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebihAll`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=lebih`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // PECAH
-    $("#btn-pecah").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecahAll`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // RUSAK
-    $("#btn-rusak").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusakAll?AJU=<?= $DATAAJU ?>&OPERATOR_ONE=<?= $_SESSION['username']; ?>`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
-        // console.log($("#form-submit").attr('action'))
-        // return;
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
