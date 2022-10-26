@@ -287,3 +287,7 @@
 .bg-tpb {
     background: linear-gradient(226deg, #384850, #384850);
 }
+
+#RD {
+    box-shadow: 7px 8px 4px rgb(0 0 0 / 52%);
+}

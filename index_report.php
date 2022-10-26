@@ -61,7 +61,7 @@ include "include/cssDatatables.php";
             </div>
         </div>
         <div class="col-xl-6">
-            <div class="card border-0 bg-dark text-white mb-3 overflow-hidden">
+            <div class="card border-0 bg-dark text-white mb-3 overflow-hidden" id="RD">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xl-7 col-lg-8">
@@ -115,7 +115,7 @@ include "include/cssDatatables.php";
         <div class="col-xl-6">
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="card border-0 bg-dark text-white text-truncate mb-3">
+                    <div class="card border-0 bg-dark text-white text-truncate mb-3" id="RD">
                         <div class="card-body">
                             <div class="mb-3 text-grey">
                                 <b class="mb-3">CONVERSION RATE</b>
@@ -164,7 +164,7 @@ include "include/cssDatatables.php";
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="card border-0 bg-dark text-white text-truncate mb-3">
+                    <div class="card border-0 bg-dark text-white text-truncate mb-3" id="RD">
                         <div class="card-body">
                             <div class="mb-3 text-grey">
                                 <b class="mb-3">STORE SESSIONS</b>
