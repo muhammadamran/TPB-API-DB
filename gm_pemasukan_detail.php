@@ -12,17 +12,25 @@ $DATAAJU = $_GET['AJU'];
 
 // All Sesuai
 if (isset($_POST["update_"])) {
-    $AJU               = $_POST['AJU'];
     $ID                = $_POST['ID'];
-    $STATUS            = $_POST['STATUS'];
-    $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
+    $AJU               = $_POST['AJU'];
+    $STATUS            = '1';
+    $OPERATOR_ONE      = $_SESSION['username'];
+    $Sesuai            = $_POST['Sesuai'];
+    $Kurang            = $_POST['Kurang'];
+    $Lebih             = $_POST['Lebih'];
+    $Pecah             = $_POST['Pecah'];
+    $Rusak             = $_POST['Rusak'];
+    $Total             = $_POST['Total'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&ID=' . $ID . '&AJU=' . $AJU . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&Sesuai=' . $Sesuai . '&Kurang=' . $Kurang . '&Lebih=' . $Lebih . '&Pecah=' . $Pecah . '&Rusak=' . $Rusak . '&Total=' . $Total);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else {
+    } else if ($data['status'] == 402) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU&Alert=NULL;</script>";
+    } else if ($data['status'] == 404) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
     }
 }
@@ -122,6 +130,15 @@ $dataBarang = json_decode($contentBarang, true);
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
+                            <?php if ($_GET['Alert'] == 'NULL') { ?>
+                                <div class="note note-warning">
+                                    <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                                    <div class="note-content">
+                                        <h4><b>Gagal Submit!</b></h4>
+                                        <p> Data gagal disimpan!, <b>Jumlah Status</b> dan <b>Jumlah Total Tidak Sesuai!</b></p>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="table-responsive">
                                 <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
@@ -271,8 +288,9 @@ $dataBarang = json_decode($contentBarang, true);
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
                                                                                     <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." required>
-                                                                                    <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                                    <input type="text" name="AJU" value="<?= $rowBarang['NOMOR_AJU']; ?>">
+                                                                                    <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                                    <input type="hidden" name="AJU" value="<?= $rowBarang['NOMOR_AJU']; ?>">
+                                                                                    <input type="hidden" name="Total" value="<?= $pcs; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
