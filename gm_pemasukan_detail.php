@@ -11,13 +11,13 @@ include "include/api.php";
 $DATAAJU = $_GET['AJU'];
 
 // All Sesuai
-if (isset($_POST["All_sesuai"])) {
+if (isset($_POST["update_"])) {
     $AJU               = $_POST['AJU'];
     $ID                = $_POST['ID'];
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -130,13 +130,6 @@ $dataBarang = json_decode($contentBarang, true);
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
                                                 <div style="width: 135px;">
                                                     Cek Barang Masuk
-                                                    <hr>
-                                                    <!-- Sesuai ALl -->
-                                                    <form action="" method="POST" style="margin-left: 0px;">
-                                                        <input type="text" name="AJU" value="<?= $DATAAJU; ?>">
-                                                        <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                        <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
-                                                    </form>
                                                 </div>
                                             </th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
@@ -277,31 +270,33 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
-                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ...">
+                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." required>
+                                                                                    <input type="text" name="ID" value="<?= $rowBarang['ID']; ?>">
+                                                                                    <input type="text" name="AJU" value="<?= $rowBarang['NOMOR_AJU']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Kurang</label>
-                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ...">
+                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Lebih</label>
-                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ...">
+                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Pecah</label>
-                                                                                    <input type="number" name="Pecah" class="form-control" placeholder="Pecah ...">
+                                                                                    <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Rusak</label>
-                                                                                    <input type="number" name="Rusak" class="form-control" placeholder="Rusak ...">
+                                                                                    <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
