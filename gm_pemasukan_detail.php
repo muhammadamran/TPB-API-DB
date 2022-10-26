@@ -23,7 +23,9 @@ if (isset($_POST["update_"])) {
     $Total             = $_POST['Total'];
 
     $validasi = $Sesuai + $Kurang + $Lebih + $Pecah + $Rusak;
-
+    var_dump($validasi);
+    var_dump($Total);
+    exit;
     if ($validasi == $Total) {
         $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&ID=' . $ID . '&AJU=' . $AJU . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&Sesuai=' . $Sesuai . '&Kurang=' . $Kurang . '&Lebih=' . $Lebih . '&Pecah=' . $Pecah . '&Rusak=' . $Rusak);
         $data = json_decode($content, true);
@@ -33,7 +35,7 @@ if (isset($_POST["update_"])) {
         } else if ($data['status'] == 404) {
             echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
         }
-    } else {
+    } else if ($validasi != $Total) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&Alert=Failed;</script>";
     }
 }
