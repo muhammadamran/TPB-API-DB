@@ -394,7 +394,9 @@ $dataBarang = json_decode($contentBarang, true);
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="line-page-cek"></div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="line-page-cek"></div>
+                                                                            </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
@@ -427,7 +429,9 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
-                                                                                    <label style="color: transparent;">.</label>
+                                                                                    <label>
+                                                                                        <font style="color: transparent;">Submit</font>
+                                                                                    </label>
                                                                                     <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
                                                                                 </div>
                                                                             </div>
