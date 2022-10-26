@@ -279,11 +279,13 @@ $dataBarang = json_decode($contentBarang, true);
                                         <?php if ($dataBarang['status'] == 200) { ?>
                                             <?php $noBarang = 0; ?>
                                             <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
+                                                <?php $jml_pcs = $rowBarang['JUMLAH_SATUAN']; ?>
+                                                <?php $pcs = str_replace(".0000", "", "$jml_pcs"); ?>
                                                 <?php $noBarang++ ?>
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
-                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Jumlah Barang Masuk.">
+                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Jumlah Barang Masuk. Kode Barang:<?= $rowBarang['KODE_BARANG']; ?> - Total: <?= $pcs; ?> Pcs">
                                                             <font data-toggle="popover" data-trigger="hover" data-title="Cek Jumlah Barang Masuk Berdasarkan Ketegori Sesuai, Kurang, Lebih, Pecah, Rusak" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk pada Kode Barang: <?= $rowBarang['KODE_BARANG']; ?>.">
                                                                 <div>
                                                                     <div style="font-size: 12px;">
