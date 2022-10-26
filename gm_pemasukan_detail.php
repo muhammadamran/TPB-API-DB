@@ -170,7 +170,6 @@ $dataBarang = json_decode($contentBarang, true);
         height: 0.5px;
         margin: 6px 866px 23px 0px;
         background: #444e66;
-        box-shadow: -1px 1px 12px 1px rgb(0 0 0 / 52%);
     }
 </style>
 <!-- begin #content -->
@@ -383,7 +382,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                     <fieldset>
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
-                                                                                <div style="display: flex;justify-content: flex-start;align-content: center;margin-left: 10px;">
+                                                                                <div style="display: flex;justify-content: flex-start;align-content: center;">
                                                                                     <div style="font-size: 40px;">
                                                                                         <i class="fas fa-info"></i>
                                                                                     </div>
