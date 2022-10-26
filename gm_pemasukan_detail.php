@@ -25,11 +25,12 @@ if (isset($_POST["update_"])) {
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&ID=' . $ID . '&AJU=' . $AJU . '&STATUS=' . $STATUS . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&Sesuai=' . $Sesuai . '&Kurang=' . $Kurang . '&Lebih=' . $Lebih . '&Pecah=' . $Pecah . '&Rusak=' . $Rusak . '&Total=' . $Total);
     $data = json_decode($content, true);
-
+    var_dump($data['status']);
+    exit;
     if ($data['status'] == 200) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
     } else if ($data['status'] == 402) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU&Alert=NULL;</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU&Alert=Failed;</script>";
     } else if ($data['status'] == 404) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
     }
@@ -130,7 +131,7 @@ $dataBarang = json_decode($contentBarang, true);
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
-                            <?php if ($_GET['Alert'] == 'NULL') { ?>
+                            <?php if ($_GET['Alert'] == 'Failed') { ?>
                                 <div class="note note-warning">
                                     <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                                     <div class="note-content">
