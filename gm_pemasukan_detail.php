@@ -14,7 +14,7 @@ $DATAAJU = $_GET['AJU'];
 if (isset($_POST["update_"])) {
     $ID                = $_POST['ID'];
     $AJU               = $_POST['AJU'];
-    $STATUS            = '1';
+    $STATUS            = 'Sudah DiCek!';
     $OPERATOR_ONE      = $_SESSION['username'];
     $Sesuai            = $_POST['Sesuai'];
     $Kurang            = $_POST['Kurang'];
