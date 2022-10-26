@@ -111,7 +111,7 @@ include "include/cssDatatables.php";
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-4 align-items-center d-flex justify-content-center">
-                            <img src="../assets/img/svg/dark-analytics-animate2.svg" height="200px" class="d-none d-lg-block" />
+                            <img src="../assets/img/svg/dark-analytics-animate2.svg" height="150px" class="d-none d-lg-block" />
                         </div>
                     </div>
                 </div>
