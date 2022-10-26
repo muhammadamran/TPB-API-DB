@@ -376,6 +376,16 @@ $dataBarang = json_decode($contentBarang, true);
                                                                     <fieldset>
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
+                                                                                <div>
+                                                                                    <div>
+                                                                                        <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
                                                                                     <input type="text" name="Sesuai" class="form-control" placeholder="Sesuai ...">
