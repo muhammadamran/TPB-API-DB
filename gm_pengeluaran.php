@@ -312,9 +312,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div style="font-size: 22px;">
                                                                             <i class="fas fa-check-circle"></i>
                                                                         </div>
-                                                                        <div style="font-size: 8px;">
+                                                                        <!-- <div style="font-size: 8px;">
                                                                             <font>Barang Keluar Sudah diCek!</font>
-                                                                        </div>
+                                                                        </div> -->
                                                                     </div>
                                                                 </font>
                                                             </a>
@@ -327,9 +327,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div style="font-size: 22px;">
                                                                                 <i class="fas fa-plus-circle"></i>
                                                                             </div>
-                                                                            <div style="font-size: 8px;">
+                                                                            <!-- <div style="font-size: 8px;">
                                                                                 <font>Add</font>
-                                                                            </div>
+                                                                            </div> -->
                                                                         </div>
                                                                     </font>
                                                                 </a>
@@ -342,21 +342,21 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <div style="font-size: 22px;">
                                                                                         <i class="fas fa-calendar-alt"></i>
                                                                                     </div>
-                                                                                    <div style="font-size: 8px;">
+                                                                                    <!-- <div style="font-size: 8px;">
                                                                                         <font>Update Tanggal Keluar</font>
-                                                                                    </div>
+                                                                                    </div> -->
                                                                                 </div>
                                                                             </a>
                                                                         </div>
                                                                         <div style="margin-left: 10px;">
-                                                                            <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Add">
+                                                                            <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
                                                                                 <div>
                                                                                     <div style="font-size: 22px;">
                                                                                         <i class="fas fa-file"></i>
                                                                                     </div>
-                                                                                    <div style="font-size: 8px;">
+                                                                                    <!-- <div style="font-size: 8px;">
                                                                                         <font>Upload Berita Acara!</font>
-                                                                                    </div>
+                                                                                    </div> -->
                                                                                 </div>
                                                                             </a>
                                                                         </div>
@@ -368,9 +368,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 <div style="font-size: 22px;">
                                                                                     <i class="fas fa-eye"></i>
                                                                                 </div>
-                                                                                <div style="font-size: 8px;">
+                                                                                <!-- <div style="font-size: 8px;">
                                                                                     <font>No. AJU GB & Berita Acara Terisi!</font>
-                                                                                </div>
+                                                                                </div> -->
                                                                             </div>
                                                                         </font>
                                                                     </a>
@@ -385,9 +385,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div style="font-size: 22px;">
                                                                             <i class="fas fa-warning"></i>
                                                                         </div>
-                                                                        <div style="font-size: 8px;">
+                                                                        <!-- <div style="font-size: 8px;">
                                                                             <font>Cek Barang Keluar!</font>
-                                                                        </div>
+                                                                        </div> -->
                                                                     </div>
                                                                 </font>
                                                             </a>
