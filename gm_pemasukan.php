@@ -207,7 +207,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <!-- Nomor Pengajuan PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -719,7 +719,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="13">
+                                        <td colspan="9">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
