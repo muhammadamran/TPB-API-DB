@@ -243,11 +243,11 @@ $dataBarang = json_decode($contentBarang, true);
                                                         </div>
                                                     </td>
                                                     <td style="text-align: center;">
-                                                        <div style="width: 100px;">
+                                                        <div style="width: 120px;">
                                                             <?php if ($rowBarang['SESUAI'] == NULL) { ?>
                                                                 <?= $rowBarang['NETTO']; ?>
                                                             <?php } else { ?>
-                                                                <div style="margin-bottom: 5px;"> Nilai Awal: <?= $rowBarang['NETTO']; ?></div>
+                                                                <div style="margin-bottom: 0px;"> Nilai Awal: <?= $rowBarang['NETTO']; ?></div>
                                                                 <div><b>Hasil Cek: <?= $rowBarang['SESUAI']; ?>.0000</b></div>
                                                             <?php } ?>
                                                         </div>
@@ -288,7 +288,11 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
-                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." id="IDSesuai" value="<?= $rowBarang['SESUAI'] ?>" readonly>
+                                                                                    <?php if ($rowBarang['SESUAI'] == NULL) { ?>
+                                                                                        <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." value="<?= $pcs ?>" readonly>
+                                                                                    <?php } else { ?>
+                                                                                        <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." value="<?= $rowBarang['SESUAI'] ?>" readonly>
+                                                                                    <?php } ?>
                                                                                     <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                                     <input type="hidden" name="AJU" value="<?= $rowBarang['NOMOR_AJU']; ?>">
                                                                                     <input type="hidden" name="Total" value="<?= $pcs; ?>">
@@ -297,25 +301,41 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Kurang</label>
-                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." id="IDKurang" onkeyup="sumSesuai();" value="<?= $rowBarang['KURANG'] ?>" required>
+                                                                                    <?php if ($rowBarang['KURANG'] == NULL) { ?>
+                                                                                        <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="0" required>
+                                                                                    <?php } else { ?>
+                                                                                        <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="<?= $rowBarang['KURANG'] ?>" required>
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Lebih</label>
-                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." id="IDLebih" onkeyup="sumSesuai();" value="<?= $rowBarang['LEBIH'] ?>" required>
+                                                                                    <?php if ($rowBarang['LEBIH'] == NULL) { ?>
+                                                                                        <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="0" required>
+                                                                                    <?php } else { ?>
+                                                                                        <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $rowBarang['LEBIH'] ?>" required>
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Pecah</label>
-                                                                                    <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $rowBarang['PECAH'] ?>" required>
+                                                                                    <?php if ($rowBarang['PECAH'] == NULL) { ?>
+                                                                                        <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="0" required>
+                                                                                    <?php } else { ?>
+                                                                                        <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $rowBarang['PECAH'] ?>" required>
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Rusak</label>
-                                                                                    <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $rowBarang['RUSAK'] ?>" required>
+                                                                                    <?php if ($rowBarang['RUSAK'] == NULL) { ?>
+                                                                                        <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="0" required>
+                                                                                    <?php } else { ?>
+                                                                                        <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $rowBarang['RUSAK'] ?>" required>
+                                                                                    <?php } ?>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
