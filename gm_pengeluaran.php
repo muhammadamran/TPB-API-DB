@@ -303,7 +303,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: flex-start;align-items: center;width: 300px;">
+                                                <div style="display: flex;justify-content: center;align-items: center;width: 300px;">
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['tpb_total_All']) { ?>
                                                         <div>
                                                             <a href="gm_pengeluaran_detail.php?AJU=<?= $row['ID'] ?>" class="btn btn-success" target="_blank">
