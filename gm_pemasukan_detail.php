@@ -167,10 +167,10 @@ $dataBarang = json_decode($contentBarang, true);
     }
 
     .line-page-cek {
-        height: 1.5px;
-        margin: 0px 0px 15px 0px;
+        height: 0.5px;
+        margin: 6px 866px 23px -2px;
         background: #444e66;
-        box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
+        box-shadow: -1px 1px 12px 1px rgb(0 0 0 / 52%);
     }
 </style>
 <!-- begin #content -->
@@ -429,10 +429,9 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
-                                                                                    <label>
-                                                                                        <font style="color: transparent;">Submit</font>
-                                                                                    </label>
-                                                                                    <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
+                                                                                    <div>
+                                                                                        <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
