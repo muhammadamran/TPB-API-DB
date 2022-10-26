@@ -23,9 +23,6 @@ if (isset($_POST["update_"])) {
     $Total             = $_POST['Total'];
 
     $validasi = $Sesuai + $Kurang + $Lebih + $Pecah + $Rusak;
-    var_dump($validasi);
-    var_dump($Total);
-    exit;
     if ($validasi == $Total) {
         $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&ID=' . $ID . '&AJU=' . $AJU . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&Sesuai=' . $Sesuai . '&Kurang=' . $Kurang . '&Lebih=' . $Lebih . '&Pecah=' . $Pecah . '&Rusak=' . $Rusak);
         $data = json_decode($content, true);
