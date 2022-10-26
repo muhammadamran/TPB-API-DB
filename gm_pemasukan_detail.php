@@ -429,8 +429,8 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
-                                                                                    <div>
-                                                                                        <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
+                                                                                    <div style="margin-top: 26px;">
+                                                                                        <button type="submit" name="update_" class="btn btn-block btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
