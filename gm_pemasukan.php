@@ -375,7 +375,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Masuk!">
                                                                     <div style="display: grid;">
-                                                                        <div style="font-size: 22px;">
+                                                                        <div style="font-size: 12px;">
                                                                             <i class="fas fa-check-circle"></i>
                                                                         </div>
                                                                         <!-- <div style="font-size: 8px;">
@@ -391,7 +391,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
                                                                     <font data-toggle="popover" data-trigger="hover" data-title="Add Nomor Pengajuan GB!" data-placement="top" data-content="Klik untuk menginput Nomor Pengajuan GB!">
                                                                         <div>
-                                                                            <div style="font-size: 22px;">
+                                                                            <div style="font-size: 12px;">
                                                                                 <i class="fas fa-plus-circle"></i>
                                                                             </div>
                                                                             <!-- <div style="font-size: 8px;">
@@ -406,7 +406,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div>
                                                                             <a href="#edit<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
                                                                                 <div>
-                                                                                    <div style="font-size: 22px;">
+                                                                                    <div style="font-size: 12px;">
                                                                                         <i class="fas fa-edit"></i>
                                                                                     </div>
                                                                                     <!-- <div style="font-size: 8px;">
@@ -418,7 +418,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div style="margin-left: 10px;">
                                                                             <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
                                                                                 <div>
-                                                                                    <div style="font-size: 22px;">
+                                                                                    <div style="font-size: 12px;">
                                                                                         <i class="fas fa-file"></i>
                                                                                     </div>
                                                                                     <!-- <div style="font-size: 8px;">
@@ -432,7 +432,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     <a href="#detail<?= $row['ID'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
                                                                         <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Masuk Barang Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
                                                                             <div>
-                                                                                <div style="font-size: 22px;">
+                                                                                <div style="font-size: 12px;">
                                                                                     <i class="fas fa-eye"></i>
                                                                                 </div>
                                                                                 <!-- <div style="font-size: 8px;">
@@ -449,7 +449,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                             <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
                                                                     <div>
-                                                                        <div style="font-size: 22px;">
+                                                                        <div style="font-size: 12px;">
                                                                             <i class="fas fa-warning"></i>
                                                                         </div>
                                                                         <!-- <div style="font-size: 8px;">
