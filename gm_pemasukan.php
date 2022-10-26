@@ -198,7 +198,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
                                     <th colspan="3" class="text-nowrap" style="text-align: center;">Nomor Pengajuan PLB</th>
-                                    <th colspan="6" class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal PLB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
@@ -208,14 +208,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
-                                    <!-- Jumlah Barang -->
-                                    <th class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Sesuai"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Kurang"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Lebih"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Pecah"</th>
-                                    <th class="text-nowrap" style="text-align: center;">Barang "Rusak"</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -270,56 +262,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     </center>
                                                 <?php } else { ?>
                                                     <?= $row['JUMLAH_BARANG']; ?> Barang
-                                                <?php } ?>
-                                            </td>
-                                            <!-- Total Barang "Sesuai" -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['total_Sesuai'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <span class="label label-success"><?= $row['total_Sesuai']; ?> Barang</span>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- Total Barang "Kurang" -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['total_Kurang'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <span class="label label-danger"><?= $row['total_Kurang']; ?> Barang</span>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- Total Barang "Lebih" -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['total_Lebih'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <span class="label label-lime"><?= $row['total_Lebih']; ?> Barang</span>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- Total Barang "Pecah" -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['total_Pecah'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <span class="label label-danger"><?= $row['total_Pecah']; ?> Barang</span>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- Total Barang "Rusak" -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['total_Rusak'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <span class="label label-warning"><?= $row['total_Rusak']; ?> Barang</span>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
