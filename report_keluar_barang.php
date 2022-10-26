@@ -21,11 +21,13 @@ if (isset($_POST['filter_date'])) {
         $EndTanggal     = $_POST['EndTanggal'];
         // $rEndTanggal  = str_replace("-", "", $_POST['EndTanggal']);
     }
+
+    $Filter = 'work';
 }
 
 // API - 
 include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal);
+$content = get_content($resultAPI['url_api'] . 'reportKeluarBarang.php?function=get_lap&StartTanggal=' . $StartTanggal . '&EndTanggal=' . $EndTanggal . '&Filter=' . $Filter);
 $data = json_decode($content, true);
 ?>
 
@@ -342,13 +344,6 @@ include "include/jsDatatables.php";
     // TableBarangTarif
     $(document).ready(function() {
         $('#table-keluar-barang').DataTable({
-            // dom: 'Bfrtip',
-            // buttons: [
-            //     'copyHtml5',
-            //     'excelHtml5',
-            //     'csvHtml5',
-            //     'pdfHtml5'
-            // ]
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
