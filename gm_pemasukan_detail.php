@@ -244,14 +244,16 @@ $dataBarang = json_decode($contentBarang, true);
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                Cek Barang Masuk
-                                                <hr>
-                                                <!-- Sesuai ALl -->
-                                                <form action="" method="POST" style="margin-left: 0px;">
-                                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
-                                                </form>
+                                                <div>
+                                                    Cek Barang Masuk
+                                                    <hr>
+                                                    <!-- Sesuai ALl -->
+                                                    <form action="" method="POST" style="margin-left: 0px;">
+                                                        <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
+                                                        <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
+                                                        <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
+                                                    </form>
+                                                </div>
                                             </th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                             <th colspan="6" style="text-align: center;">Barang</th>
