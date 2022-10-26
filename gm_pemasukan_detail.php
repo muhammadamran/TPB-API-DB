@@ -243,12 +243,14 @@ $dataBarang = json_decode($contentBarang, true);
                                                         </div>
                                                     </td>
                                                     <td style="text-align: center;">
-                                                        <?php if ($rowBarang['SESUAI'] == NULL) { ?>
-                                                            <?= $rowBarang['NETTO']; ?>
-                                                        <?php } else { ?>
-                                                            Nilai Awal: <?= $rowBarang['NETTO']; ?>
-                                                            <b>Hasil Cek: <?= $rowBarang['SESUAI']; ?>.0000</b>
-                                                        <?php } ?>
+                                                        <div style="width: 100px;">
+                                                            <?php if ($rowBarang['SESUAI'] == NULL) { ?>
+                                                                <?= $rowBarang['NETTO']; ?>
+                                                            <?php } else { ?>
+                                                                <div style="margin-bottom: 5px;"> Nilai Awal: <?= $rowBarang['NETTO']; ?></div>
+                                                                <div><b>Hasil Cek: <?= $rowBarang['SESUAI']; ?>.0000</b></div>
+                                                            <?php } ?>
+                                                        </div>
                                                     </td>
                                                     <td style="text-align: center;">
                                                         <div style="width: 155px;">
