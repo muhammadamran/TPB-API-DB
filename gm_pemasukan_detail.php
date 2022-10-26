@@ -136,7 +136,11 @@ $dataBarang = json_decode($contentBarang, true);
                                                     <form action="" method="POST" style="margin-left: 0px;">
                                                         <input type="text" name="AJU" value="<?= $DATAAJU; ?>">
                                                         <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                        <input type="text" name="NETTO" value="<?= $pcs; ?>">
+                                                        <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
+                                                            <?php $jml_pcsH = $rowBarang['NETTO']; ?>
+                                                            <?php $pcsH = str_replace(".0000", "", "$jml_pcsH"); ?>
+                                                        <?php } ?>
+                                                        <input type="text" name="NETTO" value="<?= $pcsH; ?>">
                                                         <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
                                                     </form>
                                                 </div>
