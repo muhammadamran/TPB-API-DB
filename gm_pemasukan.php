@@ -344,7 +344,20 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                     <?php } else { ?>
                                                         <div>
-                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-yellow" target="_blank">
+                                                            <form action="http://plb.itinventory-sarinah.com/login_gn_detail.php"></form>
+                                                            <?php
+                                                            // USER
+                                                            $user = $_SESSION['username'];
+                                                            $dataUSER = $dbcon->query("SELECT USERNAME,PASSWORD FROM view_privileges WHERE USERNAME='$user' ORDER BY id ASC LIMIT 1");
+                                                            $resultUSER = mysqli_fetch_array($dataUSER);
+                                                            ?>
+                                                            <!-- USERNAME -->
+                                                            <input type="text" name="username" value="<?= $resultUSER['USERNAME']; ?>">
+                                                            <!-- PASSWORD -->
+                                                            <input type="text" name="password" value="<?= $resultUSER['PASSWORD']; ?>">
+                                                            <!-- AJU -->
+                                                            <input type="text" name="AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                            <button type="submit" name="submit" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
@@ -352,7 +365,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         </div>
                                                                     </div>
                                                                 </font>
-                                                            </a>
+                                                            </button>
+                                                            </form>
                                                         </div>
                                                     <?php } ?>
                                                 </div>
