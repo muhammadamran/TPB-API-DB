@@ -246,6 +246,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                         <?php if ($rowBarang['SESUAI'] == NULL) { ?>
                                                             <?= $rowBarang['NETTO']; ?>
                                                         <?php } else { ?>
+                                                            Nilai Awal: <?= $rowBarang['NETTO']; ?>
                                                             <b>Hasil Cek: <?= $rowBarang['SESUAI']; ?>.0000</b>
                                                         <?php } ?>
                                                     </td>
