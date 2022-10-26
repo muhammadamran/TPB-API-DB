@@ -71,7 +71,7 @@ include "include/cssDatatables.php";
                     <div class="row">
                         <div class="col-xl-7 col-lg-8">
                             <div class="mb-3 text-grey">
-                                <b>Barang Masuk</b>
+                                <b>Barang Masuk <small>Antrian PLB</small></b>
                                 <span class="ml-2">
                                     <i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Barang Masuk" data-placement="top" data-content="Gate Mandiri - Monitoring Data Barang Masuk, In Warehouse dan Barang Keluar"></i>
                                 </span>
