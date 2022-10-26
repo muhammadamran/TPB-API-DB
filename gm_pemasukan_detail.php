@@ -165,6 +165,13 @@ $dataBarang = json_decode($contentBarang, true);
         font-size: 10px;
         padding: 5px;
     }
+
+    .line-page-cek {
+        height: 1.5px;
+        margin: 0px 0px 15px 0px;
+        background: #444e66;
+        box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
+    }
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -387,14 +394,6 @@ $dataBarang = json_decode($contentBarang, true);
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <style>
-                                                                                .line-page-cek {
-                                                                                    height: 1.5px;
-                                                                                    margin: 0px 0px 15px 0px;
-                                                                                    background: #444e66;
-                                                                                    box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
-                                                                                }
-                                                                            </style>
                                                                             <div class="line-page-cek"></div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
@@ -428,6 +427,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
+                                                                                    <label style="color: transparent;">.</label>
                                                                                     <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
                                                                                 </div>
                                                                             </div>
