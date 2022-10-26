@@ -22,14 +22,19 @@ if (isset($_POST["update_"])) {
     $Rusak             = $_POST['Rusak'];
     $Total             = $_POST['Total'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&ID=' . $ID . '&AJU=' . $AJU . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&Sesuai=' . $Sesuai . '&Kurang=' . $Kurang . '&Lebih=' . $Lebih . '&Pecah=' . $Pecah . '&Rusak=' . $Rusak . '&Total=' . $Total);
-    $data = json_decode($content, true);
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
-    } else if ($data['status'] == NULL) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU&Alert=Failed;</script>";
-    } else if ($data['status'] == 404) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+    $validasi = $Sesuai + $Kurang + $Lebih + $Pecah + $Rusak;
+
+    if ($validasi == $Total) {
+        $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangUpdate&ID=' . $ID . '&AJU=' . $AJU . '&OPERATOR_ONE=' . $OPERATOR_ONE . '&Sesuai=' . $Sesuai . '&Kurang=' . $Kurang . '&Lebih=' . $Lebih . '&Pecah=' . $Pecah . '&Rusak=' . $Rusak);
+        $data = json_decode($content, true);
+
+        if ($data['status'] == 200) {
+            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$DATAAJU;</script>";
+        } else if ($data['status'] == 404) {
+            echo "<script>window.location.href='gm_pemasukan_detail.php?SaveFailed=true';</script>";
+        }
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&Alert=Failed;</script>";
     }
 }
 
