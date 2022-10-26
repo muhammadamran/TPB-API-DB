@@ -204,7 +204,7 @@ $data = json_decode($content, true);
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
                                     <tr>
-                                        <td colspan="12">
+                                        <td colspan="14">
                                             <center>
                                                 <div style="display: flex;justify-content: center; align-items: center">
                                                     <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
