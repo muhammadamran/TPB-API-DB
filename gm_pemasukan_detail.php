@@ -364,7 +364,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                     </td>
                                                 </tr>
                                                 <!-- cekPCS -->
-                                                <div class="modal fade" id="cekPCS<?= $row['ID'] ?>">
+                                                <div class="modal fade" id="cekPCS<?= $rowBarang['ID'] ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <form action="" method="POST" enctype="multipart/form-data">
