@@ -279,7 +279,7 @@ $dataBarang = json_decode($contentBarang, true);
                                         <?php if ($dataBarang['status'] == 200) { ?>
                                             <?php $noBarang = 0; ?>
                                             <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
-                                                <?php $jml_pcs = $rowBarang['JUMLAH_SATUAN']; ?>
+                                                <?php $jml_pcs = $rowBarang['NETTO']; ?>
                                                 <?php $pcs = str_replace(".0000", "", "$jml_pcs"); ?>
                                                 <?php $noBarang++ ?>
                                                 <tr class="odd gradeX">
@@ -363,6 +363,60 @@ $dataBarang = json_decode($contentBarang, true);
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <!-- cekPCS -->
+                                                <div class="modal fade" id="cekPCS<?= $row['ID'] ?>">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <form action="" method="POST" enctype="multipart/form-data">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">[Barang] Cek Data Barang Masuk</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <fieldset>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Sesuai</label>
+                                                                                    <input type="text" name="Sesuai" class="form-control" placeholder="Sesuai ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Kurang</label>
+                                                                                    <input type="text" name="Kurang" class="form-control" placeholder="Kurang ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Lebih</label>
+                                                                                    <input type="text" name="Lebih" class="form-control" placeholder="Lebih ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Pecah</label>
+                                                                                    <input type="text" name="Pecah" class="form-control" placeholder="Pecah ...">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-group">
+                                                                                    <label>Rusak</label>
+                                                                                    <input type="text" name="Rusak" class="form-control" placeholder="Rusak ...">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                                    <button type="submit" name="update_" class="btn btn-warning"><i class="fas fa-clipboard-check"></i> Status</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End cekPCS -->
                                             <?php } ?>
                                         <?php } else { ?>
                                             <tr>
