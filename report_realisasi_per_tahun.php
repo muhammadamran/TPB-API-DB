@@ -8,7 +8,8 @@ include "include/top-sidebar.php";
 // include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
-// Get
+
+// _GET
 if (isset($_GET['find_TahunAju'])) {
 	$WGetTahunAju = $_GET['TahunAju'];
 
@@ -28,7 +29,7 @@ if (isset($_GET['find_TahunAju'])) {
                            VALUES
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 }
-// End Get
+// End _GET
 ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">

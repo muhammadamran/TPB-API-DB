@@ -239,7 +239,6 @@ if (isset($_POST["EditAPInDB"])) {
         })
         history.replaceState({}, '', './adm_api.php');
     }
-
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
         Swal.fire({

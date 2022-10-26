@@ -250,29 +250,29 @@ $dataBarang = json_decode($contentBarang, true);
                                     <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
                                 </form>
                                 <!-- Kurang All -->
-                                <form action="" method="POST" style="margin-left: 5px;">
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
-                                </form>
+                                </form> -->
                                 <!-- Lebih ALl -->
-                                <form action="" method="POST" style="margin-left: 5px;">
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
-                                </form>
+                                </form> -->
                                 <!-- Pecah ALl -->
-                                <form action="" method="POST" style="margin-left: 5px;">
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
-                                </form>
+                                </form> -->
                                 <!-- Rusak ALl -->
-                                <form action="" method="POST" style="margin-left: 5px;">
+                                <!-- <form action="" method="POST" style="margin-left: 5px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <button type="submit" name="All_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
-                                </form>
+                                </form> -->
                             </div>
                             <hr>
                             <div class="table-responsive">
@@ -281,12 +281,6 @@ $dataBarang = json_decode($contentBarang, true);
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                <!-- <div style="width: 110px;">
-                                                    <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');">
-                                                        <i class="fa-solid fa-list-check"></i>
-                                                        <font style="font-size: 10px;font-weight: 300;">Barang Masuk</font>
-                                                    </button>
-                                                </div> -->
                                                 Cek Barang Masuk
                                             </th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
