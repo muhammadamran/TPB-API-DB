@@ -583,12 +583,12 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12">
+                                                                            <!-- <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <h4>Berita Acara Barang Masuk</h4>
                                                                                 </div>
                                                                             </div>
-                                                                            <hr>
+                                                                            <hr> -->
                                                                             <div class="col-md-12">
                                                                                 <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
                                                                                 </object>
@@ -628,12 +628,12 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bk_nama_operator']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12">
+                                                                            <!-- <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <h4>Berita Acara Barang Keluar</h4>
                                                                                 </div>
                                                                             </div>
-                                                                            <hr>
+                                                                            <hr> -->
                                                                             <div class="col-md-12">
                                                                                 <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
                                                                                 </object>
