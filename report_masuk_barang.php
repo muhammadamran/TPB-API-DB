@@ -293,20 +293,35 @@ $data = json_decode($content, true);
                                                 </div>
                                             </td>
                                             <td style="text-align: center">
-                                                <?= $row['TGL_CEK']; ?>
+                                                <?php if ($row['TGL_CEK'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['TGL_CEK']; ?>
+                                                <?php } ?>
                                             </td>
-                                            <td>
-                                                <?= $row['OPERATOR_ONE']; ?>
+                                            <td style="text-align: center">
+                                                <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['OPERATOR_ONE']; ?>
+                                                <?php } ?>
                                             </td>
                                             <td>
                                                 <?= $row['URAIAN_KANTOR']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <a href="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" target="_blank">
-                                                    <span class="badge badge-default" data-toggle="tooltip" title="Open File PDF">
-                                                        <i class="far fa-file"></i> Lihat
-                                                    </span>
-                                                </a>
+                                                <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <a href="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" target="_blank">
+                                                        <span class="badge badge-default" data-toggle="tooltip" title="Open File PDF">
+                                                            <i class="far fa-file"></i> Lihat
+                                                        </span>
+                                                    </a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
