@@ -285,7 +285,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
-                                                        <a href="#cekPCS<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Jumlah Barang Masuk. Kode Barang:<?= $rowBarang['KODE_BARANG']; ?> - Total: <?= $pcs; ?> Pcs">
+                                                        <a href="#cekPCS<?= $rowBarang['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Jumlah Barang Masuk. Kode Barang:<?= $rowBarang['KODE_BARANG']; ?> - Total: <?= $pcs; ?> Pcs">
                                                             <font data-toggle="popover" data-trigger="hover" data-title="Cek Jumlah Barang Masuk Berdasarkan Ketegori Sesuai, Kurang, Lebih, Pecah, Rusak" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk pada Kode Barang: <?= $rowBarang['KODE_BARANG']; ?>.">
                                                                 <div>
                                                                     <div style="font-size: 12px;">
