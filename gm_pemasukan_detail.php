@@ -288,7 +288,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
-                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." value="<?= $rowBarang['SESUAI'] ?>" required>
+                                                                                    <input type="number" name="Sesuai" class="form-control" placeholder="Sesuai ..." id="IDSesuai" value="<?= $rowBarang['SESUAI'] ?>" readonly>
                                                                                     <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                                     <input type="hidden" name="AJU" value="<?= $rowBarang['NOMOR_AJU']; ?>">
                                                                                     <input type="hidden" name="Total" value="<?= $pcs; ?>">
@@ -297,13 +297,13 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Kurang</label>
-                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="<?= $rowBarang['KURANG'] ?>" required>
+                                                                                    <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." id="IDKurang" onkeyup="sumSesuai();" value="<?= $rowBarang['KURANG'] ?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Lebih</label>
-                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $rowBarang['LEBIH'] ?>" required>
+                                                                                    <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." id="IDLebih" onkeyup="sumSesuai();" value="<?= $rowBarang['LEBIH'] ?>" required>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-2">
@@ -416,5 +416,17 @@ $dataBarang = json_decode($contentBarang, true);
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
         history.replaceState({}, '', './gm_pemasukan_detail.php');
+    }
+
+    function sumSesuai() {
+        var Kurang = document.getElementById('IDKurang').value;
+        var Lebih = document.getElementById('IDLebih').value;
+        var Pecah = document.getElementById('IDPecah').value;
+        var Rusak = document.getElementById('IDRusak').value;
+        var result = parseFloat(Kurang) - parseFloat(Lebih);
+
+        if (!isNaN(result)) {
+            document.getElementById('IDSesuai').value = result;
+        }
     }
 </script>
