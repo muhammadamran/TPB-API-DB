@@ -378,9 +378,10 @@ $dataBarang = json_decode($contentBarang, true);
                                                                             <div class="col-sm-12">
                                                                                 <div>
                                                                                     <div>
-                                                                                        <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                        <i class="fas fa-info"></i>
                                                                                     </div>
                                                                                     <div>
+                                                                                        <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
                                                                                         <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
                                                                                     </div>
                                                                                 </div>
