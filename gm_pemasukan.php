@@ -344,28 +344,28 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                     <?php } else { ?>
                                                         <div>
-                                                            <form action="http://plb.itinventory-sarinah.com/login_gn_detail.php"></form>
-                                                            <?php
-                                                            // USER
-                                                            $user = $_SESSION['username'];
-                                                            $dataUSER = $dbcon->query("SELECT username,PASSWORD FROM view_privileges WHERE username='$user' ORDER BY id ASC LIMIT 1");
-                                                            $resultUSER = mysqli_fetch_array($dataUSER);
-                                                            ?>
-                                                            <!-- USERNAME -->
-                                                            <input type="hidden" name="username" value="<?= $resultUSER['username']; ?>">
-                                                            <!-- PASSWORD -->
-                                                            <input type="hidden" name="password" value="<?= $resultUSER['PASSWORD']; ?>">
-                                                            <!-- AJU -->
-                                                            <input type="hidden" name="AJU" value="<?= $row['NOMOR_AJU']; ?>">
-                                                            <button type="submit" name="submit" class="btn btn-yellow" target="_blank">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
-                                                                    <div>
-                                                                        <div style="font-size: 12px;">
-                                                                            <i class="fas fa-warning"></i>
+                                                            <form action="http://plb.itinventory-sarinah.com/login_gm_detail.php" method="POST">
+                                                                <?php
+                                                                // USER
+                                                                $user = $_SESSION['username'];
+                                                                $dataUSER = $dbcon->query("SELECT username,PASSWORD FROM view_privileges WHERE username='$user' ORDER BY id ASC LIMIT 1");
+                                                                $resultUSER = mysqli_fetch_array($dataUSER);
+                                                                ?>
+                                                                <!-- USERNAME -->
+                                                                <input type="hidden" name="username" value="<?= $resultUSER['username']; ?>">
+                                                                <!-- PASSWORD -->
+                                                                <input type="hidden" name="password" value="<?= $resultUSER['PASSWORD']; ?>">
+                                                                <!-- AJU -->
+                                                                <input type="hidden" name="AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                <button type="submit" name="submit" class="btn btn-yellow" target="_blank">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-warning"></i>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </font>
-                                                            </button>
+                                                                    </font>
+                                                                </button>
                                                             </form>
                                                         </div>
                                                     <?php } ?>
