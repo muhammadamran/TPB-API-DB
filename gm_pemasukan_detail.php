@@ -16,9 +16,8 @@ if (isset($_POST["All_sesuai"])) {
     $ID                = $_POST['ID'];
     $STATUS            = $_POST['STATUS'];
     $OPERATOR_ONE      = $_POST['OPERATOR_ONE'];
-    $NETTO             = $_POST['NETTO'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU . '&NETTO=' . $NETTO);
+    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostBarangSesuaiAll&OPERATOR_ONE=' . $OPERATOR_ONE . '&AJU=' . $AJU);
     $data = json_decode($content, true);
 
     if ($data['status'] == 200) {
@@ -136,11 +135,6 @@ $dataBarang = json_decode($contentBarang, true);
                                                     <form action="" method="POST" style="margin-left: 0px;">
                                                         <input type="text" name="AJU" value="<?= $DATAAJU; ?>">
                                                         <input type="text" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                        <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
-                                                            <?php $jml_pcsH = $rowBarang['NETTO']; ?>
-                                                            <?php $pcsH = str_replace(".0000", "", "$jml_pcsH"); ?>
-                                                        <?php } ?>
-                                                        <input type="text" name="NETTO" value="<?= $pcsH; ?>">
                                                         <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
                                                     </form>
                                                 </div>
