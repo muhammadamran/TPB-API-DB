@@ -17,20 +17,6 @@ if (isset($_POST['add_'])) {
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
-    // $bm_remarks             = preg_replace('/[^a-zA-Z0-9]/', ' ', $_POST['bm_remarks']);
-    // File
-    // $filename = $_FILES['uploadBA']['name'];
-    // $tmpname = $_FILES['uploadBA']['tmp_name'];
-    // $sizename = $_FILES['uploadBA']['size'];
-    // $exp = explode('.', $filename);
-    // $ext = end($exp);
-    // $uniq_file =  "Berita-Acara-PLB" . '_' . time();
-    // $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    // $config['upload_path'] = './files/ck5plb/BA/PLB/';
-    // $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
-    // $config['max_size'] = '2000000';
-    // $config['file_name'] = $newname;
-    // move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
     $data = json_decode($content, true);
@@ -48,21 +34,6 @@ if (isset($_POST['edit_'])) {
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
-    // $bm_remarks             = preg_replace('/[^a-zA-Z0-9]/', ' ', $_POST['bm_remarks']);
-    // File
-    // $filename = $_FILES['uploadBA']['name'];
-    // $tmpname = $_FILES['uploadBA']['tmp_name'];
-    // $sizename = $_FILES['uploadBA']['size'];
-    // $exp = explode('.', $filename);
-    // $ext = end($exp);
-    // $uniq_file =  "Berita-Acara-PLB" . '_' . time();
-    // $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    // $config['upload_path'] = './files/ck5plb/BA/PLB/';
-    // $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
-    // $config['max_size'] = '2000000';
-    // $config['file_name'] = $newname;
-    // move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
-
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
@@ -378,9 +349,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div style="font-size: 12px;">
                                                                             <i class="fas fa-check-circle"></i>
                                                                         </div>
-                                                                        <!-- <div style="font-size: 8px;">
-                                                                            <font>Barang Masuk Sudah diCek!</font>
-                                                                        </div> -->
                                                                     </div>
                                                                 </font>
                                                             </a>
@@ -394,9 +362,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div style="font-size: 12px;">
                                                                                 <i class="fas fa-plus-circle"></i>
                                                                             </div>
-                                                                            <!-- <div style="font-size: 8px;">
-                                                                                <font>Add</font>
-                                                                            </div> -->
                                                                         </div>
                                                                     </font>
                                                                 </a>
@@ -409,9 +374,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <div style="font-size: 12px;">
                                                                                         <i class="fas fa-edit"></i>
                                                                                     </div>
-                                                                                    <!-- <div style="font-size: 8px;">
-                                                                                        <font>Update No. AJU GB</font>
-                                                                                    </div> -->
                                                                                 </div>
                                                                             </a>
                                                                         </div>
@@ -421,9 +383,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <div style="font-size: 12px;">
                                                                                         <i class="fas fa-file"></i>
                                                                                     </div>
-                                                                                    <!-- <div style="font-size: 8px;">
-                                                                                        <font>Upload Berita Acara!</font>
-                                                                                    </div> -->
                                                                                 </div>
                                                                             </a>
                                                                         </div>
@@ -435,9 +394,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 <div style="font-size: 12px;">
                                                                                     <i class="fas fa-eye"></i>
                                                                                 </div>
-                                                                                <!-- <div style="font-size: 8px;">
-                                                                                    <font>No. AJU GB & Berita Acara Terisi!</font>
-                                                                                </div> -->
                                                                             </div>
                                                                         </font>
                                                                     </a>
@@ -452,9 +408,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div style="font-size: 12px;">
                                                                             <i class="fas fa-warning"></i>
                                                                         </div>
-                                                                        <!-- <div style="font-size: 8px;">
-                                                                            <font>Cek Barang Masuk!</font>
-                                                                        </div> -->
                                                                     </div>
                                                                 </font>
                                                             </a>
@@ -528,22 +481,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Remarks Barang Masuk</label>
-                                                                                    <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
-                                                                                </div>
-                                                                            </div> -->
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                        <label>Upload Berita Acara Kembali!</label>
-                                                                                    <?php } else { ?>
-                                                                                        <label>Upload Berita Acara</label>
-                                                                                    <?php } ?>
-                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                                </div>
-                                                                            </div> -->
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
@@ -551,12 +488,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
-                                                                                <!-- <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <font>Berita Acara Barang Masuk</font>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr> -->
                                                                                 <div class="col-md-12">
                                                                                     <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
@@ -647,22 +578,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Remarks Barang Masuk</label>
-                                                                                    <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
-                                                                                </div>
-                                                                            </div> -->
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                        <label>Upload Berita Acara Kembali!</label>
-                                                                                    <?php } else { ?>
-                                                                                        <label>Upload Berita Acara</label>
-                                                                                    <?php } ?>
-                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                                </div>
-                                                                            </div> -->
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
@@ -726,51 +641,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
-                                                                            <!-- <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan PLB</label>
-                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                        <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                            <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } else { ?>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } ?>
-                                                                                        <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
-                                                                                            <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
-                                                                                        <?php } ?>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
-                                                                                    <?php
-                                                                                    $tgl_msk = $row['bm_tgl_masuk'];
-                                                                                    $tgl = substr($tgl_msk, 0, 10);
-                                                                                    $time = substr($tgl_msk, 10, 20);
-                                                                                    ?>
-                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
-                                                                                </div>
-                                                                            </div> -->
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Remarks Barang Masuk</label>
-                                                                                    <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
-                                                                                </div>
-                                                                            </div> -->
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
                                                                                     <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
@@ -789,12 +659,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
-                                                                                <!-- <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <font>Berita Acara Barang Masuk</font>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr> -->
                                                                                 <div class="col-md-12">
                                                                                     <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
@@ -884,22 +748,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <label>Remarks Barang Masuk</label>
-                                                                                    <textarea name="bm_remarks" class="form-control" placeholder="Remarks Barang Masuk ..."></textarea>
-                                                                                </div>
-                                                                            </div> -->
-                                                                            <!-- <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                        <label>Upload Berita Acara Kembali!</label>
-                                                                                    <?php } else { ?>
-                                                                                        <label>Upload Berita Acara</label>
-                                                                                    <?php } ?>
-                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                                </div>
-                                                                            </div> -->
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
@@ -907,12 +755,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                         <div class="col-6">
                                                                             <div class="row">
-                                                                                <!-- <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <font>Berita Acara Barang Masuk</font>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr> -->
                                                                                 <div class="col-md-12">
                                                                                     <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
@@ -921,16 +763,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         </div>
                                                                     <?php } else { ?>
                                                                     <?php } ?>
-                                                                    <!-- End Barang Keluar -->
-                                                                    <!-- <div class="col-md-12">
-                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
-                                                                    </div> -->
                                                                 </div>
                                                             </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <!-- <button type="submit" name="add_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button> -->
                                                         </div>
                                                     </form>
                                                 </div>

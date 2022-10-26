@@ -281,48 +281,17 @@ $dataBarang = json_decode($contentBarang, true);
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
-                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Sesuai">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FSesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Kurang">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FKurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Lebih">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FLebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Pecah">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FPecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Rusak">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
-                                                            </form>
-                                                        </div>
+                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
+                                                            <font data-toggle="popover" data-trigger="hover" data-title="Add Nomor Pengajuan GB!" data-placement="top" data-content="Klik untuk menginput Nomor Pengajuan GB!">
+                                                                <div>
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-plus-circle"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </font>
+                                                        </a>
+                                                    </td>
+                                                    <td style="text-align: center;">
                                                         <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                             <?php if ($rowBarang['STATUS'] != NULL) { ?>
                                                                 <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
