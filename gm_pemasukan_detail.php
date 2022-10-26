@@ -242,7 +242,13 @@ $dataBarang = json_decode($contentBarang, true);
                                                             <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
                                                         </div>
                                                     </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <?php if ($rowBarang['SESUAI'] == NULL) { ?>
+                                                            <?= $rowBarang['NETTO']; ?>
+                                                        <?php } else { ?>
+                                                            <b>Hasil Cek: <?= $rowBarang['SESUAI']; ?>.0000</b>
+                                                        <?php } ?>
+                                                    </td>
                                                     <td style="text-align: center;">
                                                         <div style="width: 155px;">
                                                             <?= Rupiah($rowBarang['POS_TARIF']); ?>
