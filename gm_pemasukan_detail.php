@@ -376,16 +376,18 @@ $dataBarang = json_decode($contentBarang, true);
                                                                     <fieldset>
                                                                         <div class="row">
                                                                             <div class="col-sm-12">
-                                                                                <div>
-                                                                                    <div>
+                                                                                <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                    <div style="font-size: 40px;">
                                                                                         <i class="fas fa-info"></i>
                                                                                     </div>
-                                                                                    <div>
+                                                                                    <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
                                                                                         <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                        <br>
                                                                                         <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+                                                                            <hr>
                                                                             <div class="col-sm-2">
                                                                                 <div class="form-group">
                                                                                     <label>Sesuai</label>
