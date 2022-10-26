@@ -33197,8 +33197,8 @@ div+.widget-input.widget-input-rounded {
 .widget-stats,.widget.widget-stats {
 	position: relative;
 	color: #fff;
-	/* padding: 15px; */
-	padding: 55px;
+	padding: 15px;
+	/* padding: 55px; */
 	-webkit-border-radius: 4px;
 	border-radius: 10px;
 }
