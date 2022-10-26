@@ -292,8 +292,10 @@ $dataBarang = json_decode($contentBarang, true);
                                                                 </div>
                                                             </font>
                                                         </a>
-                                                        <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
-                                                            <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
+                                                        <div style="margin-top: 5px;font-size: 9px;">
+                                                            <?php if ($rowBarang['STATUS'] != NULL) { ?>
+                                                                <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                     <td style="text-align: left;">
