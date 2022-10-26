@@ -56,7 +56,7 @@ include "include/cssDatatables.php";
 
     <div class="row" style="padding: 10px;">
         <div class="col-xl-12">
-            <div>
+            <div style="font-size: 22px;font-weight: 900;margin-bottom: 5px;text-shadow: 2px 0px 4px black;">
                 <font>Gate Mandiri</font> <small>Monitoring</small>
             </div>
         </div>
