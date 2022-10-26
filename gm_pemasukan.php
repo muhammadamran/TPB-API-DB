@@ -363,6 +363,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </font>
                                                                 </button>
                                                             </form> -->
+                                                            <!-- DATA -->
                                                             <a href="http://plb.itinventory-sarinah.com:8091/gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-yellow" target="_blank">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Masuk Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Masuk.">
                                                                     <div>
