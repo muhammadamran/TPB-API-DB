@@ -238,7 +238,7 @@ $data = json_decode($content, true);
                                                     <?= $row['NOMOR_DAFTAR']; ?>
                                                 <?php } ?>
                                             </td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: left">
                                                 <?php if ($row['ck5_plb_submit'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
@@ -250,7 +250,7 @@ $data = json_decode($content, true);
                                                     ?>
                                                     <div style="display: grid;">
                                                         <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?></font>
-                                                        <font style="margin-left: -26px;"><i class="fa-solid fa-clock"></i> <?= $time ?></font>
+                                                        <font><i class="fa-solid fa-clock"></i> <?= $time ?></font>
                                                     </div>
                                                 <?php } ?>
                                             </td>
