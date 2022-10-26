@@ -291,3 +291,17 @@
 #RD {
     box-shadow: 7px 8px 4px rgb(0 0 0 / 52%);
 }
+
+.btn-RD {
+        background: #2d353c;
+        border-color: #2d353c;
+        color: #fff;
+        font-weight: 200;
+}
+
+.btn-RD:hover {
+    background: #d9e0e7;
+    border-color: #d9e0e7;
+    color: #2d353c;
+    font-weight: 200;
+}

@@ -61,7 +61,7 @@ include "include/cssDatatables.php";
                     <font>Gate Mandiri</font> <small>Monitoring</small>
                 </div>
                 <div>
-                    <a class="btn btn-sm btn-dark"><i class="fas fa-dashboard"></i> Lihat Dahsboard</a>
+                    <a class="btn btn-sm btn-RD"><i class="fas fa-chart-line"></i> Lihat Dahsboard ...</a>
                 </div>
             </div>
         </div>
