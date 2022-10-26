@@ -199,17 +199,7 @@ $dataBarang = json_decode($contentBarang, true);
                                                                 <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
                                                             <?php } else { ?>
                                                                 <font><i class="fa-solid fa-user-pen"></i>: <?= $rowBarang['OPERATOR_ONE']; ?></font>
-                                                                <?php if ($rowBarang['STATUS'] == 'Sesuai') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-success"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Kurang') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-danger"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Lebih') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-lime"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Pecah') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-dark"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Rusak') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-warning"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } ?>
+                                                                <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-success"><?= $rowBarang['STATUS']; ?></span></font>
                                                             <?php } ?>
                                                         </div>
                                                     </td>
