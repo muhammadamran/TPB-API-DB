@@ -244,7 +244,7 @@ $dataBarang = json_decode($contentBarang, true);
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
                                             <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                <div>
+                                                <div style="width: 135px;">
                                                     Cek Barang Masuk
                                                     <hr>
                                                     <!-- Sesuai ALl -->
