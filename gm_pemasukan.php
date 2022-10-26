@@ -348,11 +348,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                             <?php
                                                             // USER
                                                             $user = $_SESSION['username'];
-                                                            $dataUSER = $dbcon->query("SELECT USERNAME,PASSWORD FROM view_privileges WHERE USERNAME='$user' ORDER BY id ASC LIMIT 1");
+                                                            $dataUSER = $dbcon->query("SELECT username,PASSWORD FROM view_privileges WHERE username='$user' ORDER BY id ASC LIMIT 1");
                                                             $resultUSER = mysqli_fetch_array($dataUSER);
                                                             ?>
                                                             <!-- USERNAME -->
-                                                            <input type="text" name="username" value="<?= $resultUSER['USERNAME']; ?>">
+                                                            <input type="text" name="username" value="<?= $resultUSER['username']; ?>">
                                                             <!-- PASSWORD -->
                                                             <input type="text" name="password" value="<?= $resultUSER['PASSWORD']; ?>">
                                                             <!-- AJU -->
