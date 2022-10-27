@@ -173,6 +173,43 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         margin: 6px 866px 23px 0px;
         background: #444e66;
     }
+
+    /* Check Box */
+    .form-check-input:checked[type=checkbox] {
+        background-image: url('assets/img/svg/download.svg');
+    }
+
+    .form-check-input:checked {
+        background-color: #348fe2;
+        border-color: #348fe2;
+    }
+
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+    }
+
+    .form-check .form-check-input {
+        float: left;
+        margin-left: -2em;
+    }
+
+    .form-check-input {
+        width: 1.5em;
+        height: 1.5em;
+        margin-top: 0;
+        vertical-align: top;
+        background-color: var(--app-component-bg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: 1px solid rgba(var(--bs-black-rgb), .25);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        print-color-adjust: exact;
+    }
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -322,7 +359,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <div>
+                                                            <div style="margin-left: 25px;">
                                                                 <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                             </div>
                                                         </td>
