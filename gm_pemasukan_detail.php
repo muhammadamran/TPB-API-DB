@@ -235,212 +235,356 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
                             <hr>
-                            <div style="margin-bottom: 10px;">
-                                <font style="font-weight: 800;">Status Barang:</font>
-                            </div>
-                            <div style="display: flex;justify-content: flex-start;align-content: baseline;">
-                                <!-- Sesuai ALl -->
-                                <form action="" method="POST" style="margin-left: 0px;">
+                            <form id="form-submit" action="" method="POST">
+                                <div style="margin-bottom: 10px;">
+                                    <font style="font-weight: 800;">Status Barang:</font>
+                                </div>
+                                <div style="display: flex;justify-content: flex-start;align-content: baseline;">
+                                    <!-- Sesuai ALl -->
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Simpan Barang Masuk!</button>
-                                </form>
-                                <!-- Kurang All -->
-                                <!-- <form action="" method="POST" style="margin-left: 5px;">
-                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" name="All_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
-                                </form> -->
-                                <!-- Lebih ALl -->
-                                <!-- <form action="" method="POST" style="margin-left: 5px;">
-                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" name="All_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
-                                </form> -->
-                                <!-- Pecah ALl -->
-                                <!-- <form action="" method="POST" style="margin-left: 5px;">
-                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" name="All_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
-                                </form> -->
-                                <!-- Rusak ALl -->
-                                <!-- <form action="" method="POST" style="margin-left: 5px;">
-                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" name="All_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
-                                </form> -->
-                            </div>
-                            <hr>
-                            <div class="table-responsive">
-                                <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
-                                    <thead>
-                                        <tr>
-                                            <th rowspan="2" width="1%">No.</th>
-                                            <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                Cek Barang Masuk
-                                            </th>
-                                            <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
-                                            <th colspan="6" style="text-align: center;">Barang</th>
-                                            <th colspan="3" style="text-align: center;">Jumlah</th>
-                                            <th rowspan="2" style="text-align: center;">CIF</th>
-                                            <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
-                                            <th rowspan="2" style="text-align: center;">NETTO</th>
-                                            <th rowspan="2" style="text-align: center;">Pos Tarif</th>
-                                        </tr>
-                                        <tr>
-                                            <th style="text-align: center;">Kode</th>
-                                            <th style="text-align: center;">Seri Barang</th>
-                                            <th style="text-align: center;">Uraian</th>
-                                            <th style="text-align: center;">Tipe</th>
-                                            <th style="text-align: center;">Ukuran</th>
-                                            <th style="text-align: center;">Spesifikasi Barang</th>
-                                            <th style="text-align: center;">Jumlah Bahan Baku</th>
-                                            <th style="text-align: center;">Jumlah Kemasan</th>
-                                            <th style="text-align: center;">Jumlah Satuan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-                                        if (mysqli_num_rows($dataTable) > 0) {
-                                            $noBarang = 0;
-                                            while ($rowBarang = mysqli_fetch_array($dataTable)) {
-                                                $noBarang++;
-                                        ?>
-                                                <tr class="odd gradeX">
-                                                    <td><?= $noBarang ?>. </td>
-                                                    <td style="text-align: center;">
-                                                        <!-- MAIN -->
-                                                        <!-- <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>"> -->
-                                                        <!-- END MAIN -->
-                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
-                                                        <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
-                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
-                                                            <!-- <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Sesuai">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FSesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                                            </form> -->
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Kurang">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FKurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Lebih">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FLebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Pecah">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FPecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
-                                                            </form>
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
-                                                                <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
-                                                                <input type="hidden" name="STATUS" value="Rusak">
-                                                                <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                                                <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                <button type="submit" name="FRusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
-                                                            </form>
-                                                        </div>
-                                                        <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
-                                                            <?php if ($rowBarang['STATUS'] != NULL) { ?>
-                                                                <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
-                                                            <?php } ?>
-                                                        </div>
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <div style="display: grid;font-size: 10px;width: 115px;">
-                                                            <?php if ($rowBarang['STATUS'] == NULL) { ?>
-                                                                <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
-                                                                <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
-                                                            <?php } else { ?>
-                                                                <font><i class="fa-solid fa-user-pen"></i>: <?= $rowBarang['OPERATOR_ONE']; ?></font>
-                                                                <?php if ($rowBarang['STATUS'] == 'Sesuai') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-success"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Kurang') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-danger"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Lebih') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-lime"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Pecah') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-dark"><?= $rowBarang['STATUS']; ?></span></font>
-                                                                <?php } else if ($rowBarang['STATUS'] == 'Rusak') { ?>
-                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-warning"><?= $rowBarang['STATUS']; ?></span></font>
+                                    <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Simpan Barang Masuk!</button>
+                                </div>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" width="1%">No.</th>
+                                                <th rowspan="2" class="no-sort" style="text-align: center;">
+                                                    Cek Barang Masuk
+                                                </th>
+                                                <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
+                                                <th colspan="6" style="text-align: center;">Barang</th>
+                                                <th colspan="3" style="text-align: center;">Jumlah</th>
+                                                <th rowspan="2" style="text-align: center;">CIF</th>
+                                                <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
+                                                <th rowspan="2" style="text-align: center;">NETTO</th>
+                                                <th rowspan="2" style="text-align: center;">Pos Tarif</th>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align: center;">Kode</th>
+                                                <th style="text-align: center;">Seri Barang</th>
+                                                <th style="text-align: center;">Uraian</th>
+                                                <th style="text-align: center;">Tipe</th>
+                                                <th style="text-align: center;">Ukuran</th>
+                                                <th style="text-align: center;">Spesifikasi Barang</th>
+                                                <th style="text-align: center;">Jumlah Bahan Baku</th>
+                                                <th style="text-align: center;">Jumlah Kemasan</th>
+                                                <th style="text-align: center;">Jumlah Satuan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+                                            if (mysqli_num_rows($dataTable) > 0) {
+                                                $noBarang = 0;
+                                                while ($rowBarang = mysqli_fetch_array($dataTable)) {
+                                                    $noBarang++;
+                                            ?>
+                                                    <tr class="odd gradeX">
+                                                        <td><?= $noBarang ?>. </td>
+                                                        <td style="text-align: center;">
+                                                            <!-- <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>"> -->
+                                                            <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
+                                                            <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
+                                                            <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
+                                                                <!-- Kurang -->
+                                                                <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
+                                                                <!-- Lebih -->
+                                                                <a href="#Lebih<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a>
+                                                                <!-- Pecah -->
+                                                                <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a>
+                                                                <!-- Rusak -->
+                                                                <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a>
+                                                            </div>
+                                                            <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
+                                                                <?php if ($rowBarang['STATUS'] != NULL) { ?>
+                                                                    <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
                                                                 <?php } ?>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <div style="display: grid;font-size: 10px;width: 115px;">
+                                                                <?php if ($rowBarang['STATUS'] == NULL) { ?>
+                                                                    <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
+                                                                    <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
+                                                                <?php } else { ?>
+                                                                    <font><i class="fa-solid fa-user-pen"></i>: <?= $rowBarang['OPERATOR_ONE']; ?></font>
+                                                                    <?php if ($rowBarang['STATUS'] == 'Sesuai') { ?>
+                                                                        <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-success"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                    <?php } else if ($rowBarang['STATUS'] == 'Kurang') { ?>
+                                                                        <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-danger"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                    <?php } else if ($rowBarang['STATUS'] == 'Lebih') { ?>
+                                                                        <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-lime"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                    <?php } else if ($rowBarang['STATUS'] == 'Pecah') { ?>
+                                                                        <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-dark"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                    <?php } else if ($rowBarang['STATUS'] == 'Rusak') { ?>
+                                                                        <font><i class="fa-solid fa-file-circle-check"></i>: <span class="label label-warning"><?= $rowBarang['STATUS']; ?></span></font>
+                                                                    <?php } ?>
+                                                                <?php } ?>
+                                                            </div>
+                                                        </td>
+                                                        <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
+                                                        </td>
+                                                        <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
+                                                        <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
+                                                        <td style="text-align: center">
+                                                            <?php if ($rowBarang['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
+                                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                                </font>
+                                                            <?php } else { ?>
+                                                                <?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?>
                                                             <?php } ?>
+                                                        </td>
+                                                        <td style="text-align: center">
+                                                            <?php if ($rowBarang['JUMLAH_KEMASAN'] == NULL) { ?>
+                                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                                </font>
+                                                            <?php } else { ?>
+                                                                <?= $rowBarang['JUMLAH_KEMASAN']; ?>
+                                                            <?php } ?>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <div style="display: flex;justify-content: space-evenly;align-items:center">
+                                                                <font><?= $rowBarang['KODE_SATUAN']; ?></font>
+                                                                <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
+                                                        <td style="text-align: center;">
+                                                            <div style="width: 155px;">
+                                                                <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
+                                                        <td style="text-align: center;">
+                                                            <div style="width: 155px;">
+                                                                <?= Rupiah($rowBarang['POS_TARIF']); ?>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Kurang -->
+                                                    <div class="modal fade" id="Kurang<?= $rowBarang['ID'] ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">[Kurang] Barang Masuk</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                        <div style="font-size: 40px;">
+                                                                                            <i class="fas fa-info"></i>
+                                                                                        </div>
+                                                                                        <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                            <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                            <br>
+                                                                                            <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="line-page-cek"></div>
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <div class="form-group">
+                                                                                        <label>Kurang</label>
+                                                                                        <?php if ($rowBarang['KURANG'] == NULL) { ?>
+                                                                                            <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="0" required>
+                                                                                        <?php } else { ?>
+                                                                                            <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="<?= $rowBarang['KURANG'] ?>" required>
+                                                                                        <?php } ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <div class="form-group">
+                                                                                        <div style="margin-top: 26px;">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                                        <button type="submit" name="kurang_" class="btn btn-block btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                    </td>
-                                                    <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
-                                                    </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
-                                                    <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
-                                                    <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
-                                                    <td style="text-align: center">
-                                                        <?php if ($rowBarang['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
-                                                        <?php } else { ?>
-                                                            <?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?>
-                                                        <?php } ?>
-                                                    </td>
-                                                    <td style="text-align: center">
-                                                        <?php if ($rowBarang['JUMLAH_KEMASAN'] == NULL) { ?>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
-                                                        <?php } else { ?>
-                                                            <?= $rowBarang['JUMLAH_KEMASAN']; ?>
-                                                        <?php } ?>
-                                                    </td>
-                                                    <td style="text-align: center;">
-                                                        <div style="display: flex;justify-content: space-evenly;align-items:center">
-                                                            <font><?= $rowBarang['KODE_SATUAN']; ?></font>
-                                                            <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
+                                                    </div>
+                                                    <!-- End Kurang -->
+                                                    <!-- Lebih -->
+                                                    <div class="modal fade" id="Lebih<?= $rowBarang['ID'] ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">[Lebih] Barang Masuk</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                        <div style="font-size: 40px;">
+                                                                                            <i class="fas fa-info"></i>
+                                                                                        </div>
+                                                                                        <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                            <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                            <br>
+                                                                                            <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="line-page-cek"></div>
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <div class="form-group">
+                                                                                        <label>Lebih</label>
+                                                                                        <?php if ($rowBarang['LEBIH'] == NULL) { ?>
+                                                                                            <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="0" required>
+                                                                                        <?php } else { ?>
+                                                                                            <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $rowBarang['LEBIH'] ?>" required>
+                                                                                        <?php } ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                                        <button type="submit" name="lebih_" class="btn btn-block btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                    </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
-                                                    <td style="text-align: center;">
-                                                        <div style="width: 155px;">
-                                                            <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
+                                                    </div>
+                                                    <!-- End Lebih -->
+                                                    <!-- Pecah -->
+                                                    <div class="modal fade" id="Pecah<?= $rowBarang['ID'] ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">[Pecah] Barang Masuk</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                        <div style="font-size: 40px;">
+                                                                                            <i class="fas fa-info"></i>
+                                                                                        </div>
+                                                                                        <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                            <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                            <br>
+                                                                                            <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="line-page-cek"></div>
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <div class="form-group">
+                                                                                        <label>Pecah</label>
+                                                                                        <?php if ($rowBarang['PECAH'] == NULL) { ?>
+                                                                                            <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="0" required>
+                                                                                        <?php } else { ?>
+                                                                                            <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $rowBarang['PECAH'] ?>" required>
+                                                                                        <?php } ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                                        <button type="submit" name="pecah_" class="btn btn-block btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
-                                                    </td>
-                                                    <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
-                                                    <td style="text-align: center;">
-                                                        <div style="width: 155px;">
-                                                            <?= Rupiah($rowBarang['POS_TARIF']); ?>
+                                                    </div>
+                                                    <!-- End Pecah -->
+                                                    <!-- Rusak -->
+                                                    <div class="modal fade" id="Rusak<?= $rowBarang['ID'] ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form action="" method="POST" enctype="multipart/form-data">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">[Rusak] Barang Masuk</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                        <div style="font-size: 40px;">
+                                                                                            <i class="fas fa-info"></i>
+                                                                                        </div>
+                                                                                        <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                            <font>Pengecekan Kode Barang: <?= $rowBarang['KODE_BARANG'] ?></font>
+                                                                                            <br>
+                                                                                            <font>Jumlah Satuan: <?= $pcs ?> <?= $rowBarang['KODE_SATUAN'] ?></font>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="line-page-cek"></div>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="form-group">
+                                                                                        <label>Rusak</label>
+                                                                                        <?php if ($rowBarang['RUSAK'] == NULL) { ?>
+                                                                                            <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="0" required>
+                                                                                        <?php } else { ?>
+                                                                                            <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $rowBarang['RUSAK'] ?>" required>
+                                                                                        <?php } ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                                        <button type="submit" name="rusak_" class="btn btn-block btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <!-- End Rusak -->
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <tr>
+                                                    <td colspan="51">
+                                                        <center>
+                                                            <div style="display: grid;">
+                                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                            </div>
+                                                        </center>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
-                                        <?php } else { ?>
-                                            <tr>
-                                                <td colspan="51">
-                                                    <center>
-                                                        <div style="display: grid;">
-                                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                        </div>
-                                                    </center>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
                         </div>
                         <!-- End IDBarang -->
                     </div>
@@ -486,8 +630,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
 
     // SESUAI
     $("#btn-sesuai").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangSesuaiAll?AJU=<?= $DATAAJU ?>&OPERATOR_ONE=<?= $_SESSION['username']; ?>`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
         var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
 
         if (confirm)
@@ -497,7 +640,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     });
     // KURANG
     $("#btn-kurang").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangKurangAll`)
         $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=kurang`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
 
@@ -508,7 +650,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     });
     // LEBIH
     $("#btn-lebih").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangLebihAll`)
         $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=lebih`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
 
@@ -519,8 +660,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     });
     // PECAH
     $("#btn-pecah").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangPecahAll`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
         var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
 
         if (confirm)
@@ -530,8 +670,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     });
     // RUSAK
     $("#btn-rusak").click(function() {
-        $("#form-submit").attr('action', `<?= $resultAPI['url_api'] ?>gmBarangMasukProses.php?function=PostBarangRusakAll?AJU=<?= $DATAAJU ?>&OPERATOR_ONE=<?= $_SESSION['username']; ?>`)
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
         // console.log($("#form-submit").attr('action'))
         // return;
         if (confirm)
