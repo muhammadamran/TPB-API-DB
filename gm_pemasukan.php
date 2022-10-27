@@ -281,9 +281,9 @@ if (isset($_POST['show_all'])) {
                                                                 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC LIMIT 100", 0);
                                 }
                                 if (mysqli_num_rows($dataTable) > 0) {
-                                    $noHeader = 0;
-                                    while ($rowHeader = mysqli_fetch_array($dataTable)) {
-                                        $noHeader++;
+                                    $no = 0;
+                                    while ($row = mysqli_fetch_array($dataTable)) {
+                                        $no++;
                                 ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
