@@ -157,7 +157,7 @@ if (isset($_POST["ct_submit"])) {
     $pcs = str_replace(".0000", "", "$jml_pcs");
 
     // TOTAL BOTOL
-    $botol = explode('X', $dataBarang['TOTAL_BOTOL']);
+    $botol = explode('X', $dataBarang['UKURAN']);
     $t_botol = $botol[0];
     // TOTAL LITER
     $liter =  $botol[1];
@@ -166,9 +166,9 @@ if (isset($_POST["ct_submit"])) {
 
     for ($i = 0; $i < $pcs; $i++) {
         $sql = $dbcon->query("INSERT INTO plb_barang_ct 
-                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG)
+                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
-                            ('','$dataBarang[NOMOR_AJU]','$dataBarang[ID_BARANG]','$dataBarang[KODE_BARANG]')
+                            ('','$dataBarang[NOMOR_AJU]','$dataBarang[ID]','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
                             ");
     }
 
