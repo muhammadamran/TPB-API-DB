@@ -117,7 +117,7 @@ if (isset($_POST['show_all'])) {
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th class="no-sort" style="text-align: center;">
-                                        <input type="checkbox">
+                                        <input type="checkbox" id="checkAll">
                                     </th>
                                     <th width="1%">#</th>
                                     <th style="text-align: center;">Ukuran</th>
