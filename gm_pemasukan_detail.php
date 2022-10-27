@@ -158,9 +158,11 @@ if (isset($_POST["ct_submit"])) {
     $VALIDASI = $_POST['VALIDASI'];
 
     for ($i = 1; $i <= $VALIDASI; $i++) {
-        $sql = $dbcon->query("INSERT INTO plb_barang_ct (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
+        $sql = $dbcon->query("INSERT INTO plb_barang_ct 
+                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
-                            ('','" . $NOMOR_AJU[$i] . ",'" . $ID_BARANG[$i] . ",'" . $KODE_BARANG[$i] . ",'" . $TOTAL_BOTOL[$i] . "','" . $TOTAL_LITER[$i] . ")");
+                            ('','$NOMOR_AJU[$i]','$ID_BARANG[$i]','$KODE_BARANG[$i]','$TOTAL_BOTOL[$i]','$TOTAL_LITER[$i]')
+                            ");
     }
     var_dump($sql);
     exit;
