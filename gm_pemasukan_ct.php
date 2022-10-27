@@ -158,7 +158,7 @@ if (isset($_POST['show_all'])) {
                 <div class="card-body">
                     <h4 class="card-title">Detail Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></h4>
                     <h6 class="card-subtitle mb-10px text-muted">Harga Penyerahan <?= Rupiah($resultList['HARGA_PENYERAHAN']) ?></h6>
-                    <hr>
+                    <p class="card-text">Uraian Barang: <?= $resultList['URAIAN'] ?></p>
                     <a href="javascript:;" class="card-link">Ukuran <?= $resultList['UKURAN'] ?></a>
                     <a href="javascript:;" class="card-link">Golongan <?= $resultList['SPESIFIKASI_LAIN'] ?></a>
                 </div>
