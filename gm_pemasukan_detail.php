@@ -218,7 +218,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                         </li>
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link">
-                                <?php if ($dataBarangCek['total_cek'] != NULL) { ?>
+                                <?php if ($dataBarangCek['total_cek'] == NULL) { ?>
                                     <span class="d-sm-none">Proses Barang Masuk</span>
                                     <span class="d-sm-block d-none">
                                         <font class="blink_me" style="color: green;">
