@@ -5,7 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
 if (isset($_FILES["file_upload"])) {
 	$dir = "files/ck5plb/";
-	$timeUpload = date('Y-m-d h:m:i');
+	$timeUpload = date('Y-m-d H:m:i');
 	$file_name = $timeUpload."_".$_FILES["file_upload"]["name"];
 	$size = $_FILES["file_upload"]["size"];
 	$tmp_file_name = $_FILES["file_upload"]["tmp_name"];
@@ -71,7 +71,7 @@ if (isset($_FILES["file_upload"])) {
  //    $InputModul           = 'Report/PLB CK5';
  //    $InputDescription     = $me . " Upload Excel PLB CK5 nama file: ".$file_name.", Simpan Data Sebagai Report PLB CK5";
  //    $InputAction          = 'Upload PLB CK5';
- //    $InputDate            = date('Y-m-d h:m:i');
+ //    $InputDate            = date('Y-m-d H:m:i');
 
  //    $query = $dbcon->query("INSERT INTO tbl_aktifitas
  //                           (id,IDUNIQ,username,modul,description,action,date_created)
@@ -85,4 +85,3 @@ if (isset($_FILES["file_upload"])) {
 	echo "File not selected";
     echo "<script>window.location.href='report_ck5_plb.php?UploadFailed=true';</script>";
 }
-?>

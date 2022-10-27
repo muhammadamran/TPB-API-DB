@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
         $resultme = mysqli_fetch_array($datame);
 
         $IDUNIQme             = $resultme['USRIDUNIQ'];
-        $InputDate            = date('Y-m-d h:m:i');
+        $InputDate            = date('Y-m-d H:m:i');
         $InputUsername        = $me;
         $InputModul           = 'Sign In';
         $InputDescription     = $me . " Sign In: " .  $InputDate . ", Simpan Data Sebagai Log Sign In";

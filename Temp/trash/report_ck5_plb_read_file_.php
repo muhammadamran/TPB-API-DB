@@ -20,7 +20,7 @@ $InputUsername        = $me;
 $InputModul           = 'Report/PLB CK5';
 $InputDescription     = $me . " Upload Excel PLB CK5 nama file: ".$file_name.", Simpan Data Sebagai Report PLB CK5";
 $InputAction          = 'Upload PLB CK5';
-$InputDate            = date('Y-m-d h:m:i');
+$InputDate            = date('Y-m-d H:m:i');
 
 $query = $dbcon->query("INSERT INTO tbl_aktifitas
                        (id,IDUNIQ,username,modul,description,action,date_created)
@@ -393,4 +393,3 @@ if (mysqli_query($dbcon, $insertquery)) {
 // 	echo "Error: " . $insertquery . "<br>" . mysqli_error($dbcon);
 // }
 mysqli_close($dbcon);
-?>

@@ -19,7 +19,7 @@ if (isset($_GET["find_"])) {
 	$InputModul           = 'Report/Log System';
 	$InputDescription     = $me . " Expot Data Excel: " .  $startdate . " s.d " .  $enddate . ", Simpan Data Sebagai Export Report Log System";
 	$InputAction          = 'Export Excel Laporan Log System';
-	$InputDate            = date('Y-m-d h:m:i');
+	$InputDate            = date('Y-m-d H:m:i');
 
 	$query = $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)

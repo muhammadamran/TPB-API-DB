@@ -28,7 +28,7 @@ if (isset($_GET['find_'])) {
 	$InputModul           = 'Report/Laporan Realisasi';
 	$InputDescription     = $me . " Lihat Laporan Realisasi Mitra: " .  $shoWGetNamaCompany . " Tahun " .  $WGetTahunAju . ", Simpan Data Sebagai Report Laporan Realisasi";
 	$InputAction          = 'Laporan Per Mitra';
-	$InputDate            = date('Y-m-d h:m:i');
+	$InputDate            = date('Y-m-d H:m:i');
 
 	$query = $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)

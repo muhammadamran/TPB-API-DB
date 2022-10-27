@@ -182,6 +182,7 @@ include "include/cssForm.php";
                         </li>
                     </ul>
                     <!-- Menu -->
+
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDHeader -->
@@ -190,155 +191,155 @@ include "include/cssForm.php";
                                 <table id="TableHeader" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center" width="100%">Detail</th>
-                                            <th style="text-align: center">NOMOR AJU</th>
+                                            <th Width="1%">No.</th>
+                                            <th style="text-align: center" Width="100%">Detail</th>
+                                            <th style="text-align: center">Nomor Pengajuan</th>
                                             <th style="text-align: center">KPPBC</th>
-                                            <th style="text-align: center">PERUSAHAAN</th>
-                                            <th style="text-align: center">PEMASOK</th>
-                                            <th style="text-align: center">STATUS</th>
-                                            <th style="text-align: center">KODE DOKUMEN PABEAN</th>
+                                            <th style="text-align: center">Perusahaan</th>
+                                            <th style="text-align: center">Pemasok</th>
+                                            <th style="text-align: center">Status</th>
+                                            <th style="text-align: center">Kode Dokumen Pabean</th>
                                             <th style="text-align: center">NPPJK</th>
-                                            <th style="text-align: center">ALAMAT PEMASOK</th>
-                                            <th style="text-align: center">ALAMAT PEMILIK</th>
-                                            <th style="text-align: center">ALAMAT PENERIMA BARANG</th>
-                                            <th style="text-align: center">ALAMAT PENGIRIM</th>
-                                            <th style="text-align: center">ALAMAT PENGUSAHA</th>
-                                            <th style="text-align: center">ALAMAT PPJK</th>
-                                            <th style="text-align: center">API PEMILIK</th>
-                                            <th style="text-align: center">API PENERIMA</th>
-                                            <th style="text-align: center">API PENGUSAHA</th>
-                                            <th style="text-align: center">ASAL DATA</th>
-                                            <th style="text-align: center">ASURANSI</th>
-                                            <th style="text-align: center">BIAYA TAMBAHAN</th>
-                                            <th style="text-align: center">BRUTO</th>
+                                            <th style="text-align: center">Alamat Pemasok</th>
+                                            <th style="text-align: center">Alamat Pemilik</th>
+                                            <th style="text-align: center">Alamat Penerima Barang</th>
+                                            <th style="text-align: center">Alamat Pengirim</th>
+                                            <th style="text-align: center">Alamat Pengusaha</th>
+                                            <th style="text-align: center">Alamat PPJK</th>
+                                            <th style="text-align: center">Api Pemilik</th>
+                                            <th style="text-align: center">Api Penerima</th>
+                                            <th style="text-align: center">Api Pengusaha</th>
+                                            <th style="text-align: center">Asal Data</th>
+                                            <th style="text-align: center">Asuransi</th>
+                                            <th style="text-align: center">Biaya Tambahan</th>
+                                            <th style="text-align: center">Bruto</th>
                                             <th style="text-align: center">CIF</th>
-                                            <th style="text-align: center">CIF RUPIAH</th>
-                                            <th style="text-align: center">DISKON</th>
-                                            <th style="text-align: center">FLAG PEMILIK</th>
-                                            <th style="text-align: center">URL DOKUMEN PABEAN</th>
-                                            <th style="text-align: center">FOB</th>
-                                            <th style="text-align: center">FREIGHT</th>
-                                            <th style="text-align: center">HARGA BARANG LDP</th>
-                                            <th style="text-align: center">HARGA INVOICE</th>
-                                            <th style="text-align: center">HARGA PENYERAHAN</th>
-                                            <th style="text-align: center">HARGA TOTAL</th>
-                                            <th style="text-align: center">ID MODUL</th>
-                                            <th style="text-align: center">ID PEMASOK</th>
-                                            <th style="text-align: center">ID PEMILIK</th>
-                                            <th style="text-align: center">ID PENERIMA BARANG</th>
-                                            <th style="text-align: center">ID PENGIRIM</th>
-                                            <th style="text-align: center">ID PENGUSAHA</th>
+                                            <th style="text-align: center">CIF Rp.</th>
+                                            <th style="text-align: center">Diskon</th>
+                                            <th style="text-align: center">Flag Pemilik</th>
+                                            <th style="text-align: center">Url Dokumen Pabean</th>
+                                            <th style="text-align: center">Fob</th>
+                                            <th style="text-align: center">Freight</th>
+                                            <th style="text-align: center">Harga Barang Ldp</th>
+                                            <th style="text-align: center">Harga Invoice</th>
+                                            <th style="text-align: center">Harga Penyerahan</th>
+                                            <th style="text-align: center">Harga Total</th>
+                                            <th style="text-align: center">ID Modul</th>
+                                            <th style="text-align: center">ID Pemasok</th>
+                                            <th style="text-align: center">ID Pemilik</th>
+                                            <th style="text-align: center">ID Penerima Barang</th>
+                                            <th style="text-align: center">ID Pengirim</th>
+                                            <th style="text-align: center">ID Pengusaha</th>
                                             <th style="text-align: center">ID PPJK</th>
-                                            <th style="text-align: center">JABATAN Tth</th>
-                                            <th style="text-align: center">JUMLAH BARANG</th>
-                                            <th style="text-align: center">JUMLAH KEMASAN</th>
-                                            <th style="text-align: center">JUMLAH KONTAINER</th>
-                                            <th style="text-align: center">KESESUAIAN DOKUMEN</th>
-                                            <th style="text-align: center">KETERANGAN</th>
-                                            <th style="text-align: center">KODE ASAL BARANG</th>
-                                            <th style="text-align: center">KODE ASURANSI</th>
-                                            <th style="text-align: center">KODE BENDERA</th>
-                                            <th style="text-align: center">KODE CARA ANGKUT</th>
-                                            <th style="text-align: center">KODE CARA BAYAR</th>
-                                            <th style="text-align: center">KODE DAERAH ASAL</th>
-                                            <th style="text-align: center">KODE FASILITAS</th>
-                                            <th style="text-align: center">KODE FTZ</th>
-                                            <th style="text-align: center">KODE HARGA</th>
-                                            <th style="text-align: center">KODE ID PEMASOK</th>
-                                            <th style="text-align: center">KODE ID PEMILIK</th>
-                                            <th style="text-align: center">KODE ID PENERIMA BARANG</th>
-                                            <th style="text-align: center">KODE ID PENGIRIM</th>
-                                            <th style="text-align: center">KODE ID PENGUSAHA</th>
-                                            <th style="text-align: center">KODE ID PPJK</th>
-                                            <th style="text-align: center">KODE JENIS API</th>
-                                            <th style="text-align: center">KODE JENIS API PEMILIK</th>
-                                            <th style="text-align: center">KODE JENIS API PENERIMA</th>
-                                            <th style="text-align: center">KODE JENIS API PENGUSAHA</th>
-                                            <th style="text-align: center">KODE JENIS BARANG</th>
-                                            <th style="text-align: center">KODE JENIS BC25</th>
-                                            <th style="text-align: center">KODE JENIS NILAI</th>
-                                            <th style="text-align: center">KODE JENIS PEMASUKAN01</th>
-                                            <th style="text-align: center">KODE JENIS PEMASUKAN 02</th>
-                                            <th style="text-align: center">KODE JENIS TPB</th>
-                                            <th style="text-align: center">KODE KANTOR BONGKAR</th>
-                                            <th style="text-align: center">KODE KANTOR TUJUAN</th>
-                                            <th style="text-align: center">KODE LOKASI BAYAR</th>
-                                            <th style="text-align: center">KODE NEGARA PEMASOK</th>
-                                            <th style="text-align: center">KODE NEGARA PENGIRIM</th>
-                                            <th style="text-align: center">KODE NEGARA PEMILIK</th>
-                                            <th style="text-align: center">KODE NEGARA TUJUAN</th>
-                                            <th style="text-align: center">KODE PEL BONGKAR</th>
-                                            <th style="text-align: center">KODE PEL MUAT</th>
-                                            <th style="text-align: center">KODE PEL TRANSIT</th>
-                                            <th style="text-align: center">KODE PEMBAYAR</th>
-                                            <th style="text-align: center">KODE STATUS PENGUSAHA</th>
-                                            <th style="text-align: center">STATUS PERBAIKAN</th>
-                                            <th style="text-align: center">KODE TPS</th>
-                                            <th style="text-align: center">KODE TUJUAN PEMASUKAN</th>
-                                            <th style="text-align: center">KODE TUJUAN PENGIRIMAN</th>
-                                            <th style="text-align: center">KODE TUJUAN TPB</th>
-                                            <th style="text-align: center">KODE TUTUP PU</th>
-                                            <th style="text-align: center">KODE VALUTA</th>
-                                            <th style="text-align: center">KOTA Tth</th>
-                                            <th style="text-align: center">NAMA PEMILIK</th>
-                                            <th style="text-align: center">NAMA PENERIMA BARANG</th>
-                                            <th style="text-align: center">NAMA PENGANGKUT</th>
-                                            <th style="text-align: center">NAMA PENGIRIM</th>
-                                            <th style="text-align: center">NAMA PPJK</th>
-                                            <th style="text-align: center">NAMA Tth</th>
-                                            <th style="text-align: center">NDPBM</th>
-                                            <th style="text-align: center">NETTO</th>
-                                            <th style="text-align: center">NILAI INCOTERM</th>
-                                            <th style="text-align: center">NIPER PENERIMA</th>
-                                            <th style="text-align: center">NOMOR API</th>
-                                            <th style="text-align: center">NOMOR BC11</th>
-                                            <th style="text-align: center">NOMOR BILLING</th>
-                                            <th style="text-align: center">NOMOR DAFTAR</th>
-                                            <th style="text-align: center">NOMOR IJIN BPK PEMASOK</th>
-                                            <th style="text-align: center">NOMOR IJIN BPK PENGUSAHA</th>
-                                            <th style="text-align: center">NOMOR IJIN TPB</th>
-                                            <th style="text-align: center">NOMOR IJIN TPB PENERIMA</th>
-                                            <th style="text-align: center">NOMOR VOYV FLIGHT</th>
-                                            <th style="text-align: center">NPWP BILLING</th>
-                                            <th style="text-align: center">POS BC11</th>
-                                            <th style="text-align: center">SERI</th>
-                                            <th style="text-align: center">SUBPOS BC11</th>
-                                            <th style="text-align: center">SUB SUBPOS BC11</th>
-                                            <th style="text-align: center">TANGGAL BC11</th>
-                                            <th style="text-align: center">TANGGAL BERANGKAT</th>
-                                            <th style="text-align: center">TANGGAL BILLING</th>
-                                            <th style="text-align: center">TANGGAL DAFTAR</th>
-                                            <th style="text-align: center">TANGGAL IJIN BPK PEMASOK</th>
-                                            <th style="text-align: center">TANGGAL IJIN BPK PENGUSAHA</th>
-                                            <th style="text-align: center">TANGGAL IJIN TPB</th>
-                                            <th style="text-align: center">TANGGAL NPPPJK</th>
-                                            <th style="text-align: center">TANGGAL TIBA</th>
-                                            <th style="text-align: center">TANGGAL Tth</th>
-                                            <th style="text-align: center">TANGGAL JATUH TEMPO</th>
-                                            <th style="text-align: center">TOTAL BAYAR</th>
-                                            <th style="text-align: center">TOTAL BEBAS</th>
-                                            <th style="text-align: center">TOTAL DILUNASI</th>
-                                            <th style="text-align: center">TOTAL JAMIN</th>
-                                            <th style="text-align: center">TOTAL SUDAH DILUNASI</th>
-                                            <th style="text-align: center">TOTAL TANGGUH</th>
-                                            <th style="text-align: center">TOTAL TANGGUNG</th>
-                                            <th style="text-align: center">TOTAL TIDAK DIPUNGUT</th>
-                                            <th style="text-align: center">URL DOKUMEN PABEAN</th>
-                                            <th style="text-align: center">VERSI MODUL</th>
-                                            <th style="text-align: center">VOLUME</th>
-                                            <th style="text-align: center">WAKTU BONGKAR</th>
-                                            <th style="text-align: center">WAKTU STUFFING</th>
-                                            <th style="text-align: center">NOMOR POLISI</th>
-                                            <th style="text-align: center">CALL SIGN</th>
-                                            <th style="text-align: center">JUMLAH TANDA PENGAMAN</th>
-                                            <th style="text-align: center">KODE JENIS TANDA PENGAMAN</th>
-                                            <th style="text-align: center">KODE KANTOR MUAT</th>
-                                            <th style="text-align: center">KODE PEL TUJUAN</th>
-                                            <th style="text-align: center">TANGGAL STUFFING</th>
-                                            <th style="text-align: center">TANGGAL MUAT</th>
-                                            <th style="text-align: center">KODE GUDANG ASAL</th>
-                                            <th style="text-align: center">KODE GUDANG TUJUAN</th>
+                                            <th style="text-align: center">Jabatan Tth</th>
+                                            <th style="text-align: center">Jumlah Barang</th>
+                                            <th style="text-align: center">Jumlah Kemasan</th>
+                                            <th style="text-align: center">Jumlah Kontainer</th>
+                                            <th style="text-align: center">Kesesuaian Dokumen</th>
+                                            <th style="text-align: center">Keterangan</th>
+                                            <th style="text-align: center">Kode Asal Barang</th>
+                                            <th style="text-align: center">Kode Asuransi</th>
+                                            <th style="text-align: center">Kode Bendera</th>
+                                            <th style="text-align: center">Kode Cara Angkut</th>
+                                            <th style="text-align: center">Kode Cara Bayar</th>
+                                            <th style="text-align: center">Kode Daerah Asal</th>
+                                            <th style="text-align: center">Kode Fasilitas</th>
+                                            <th style="text-align: center">Kode Ftz</th>
+                                            <th style="text-align: center">Kode Harga</th>
+                                            <th style="text-align: center">Kode Id Pemasok</th>
+                                            <th style="text-align: center">Kode Id Pemilik</th>
+                                            <th style="text-align: center">Kode Id Penerima Barang</th>
+                                            <th style="text-align: center">Kode Id Pengirim</th>
+                                            <th style="text-align: center">Kode Id Pengusaha</th>
+                                            <th style="text-align: center">Kode Id Ppjk</th>
+                                            <th style="text-align: center">Kode Jenis Api</th>
+                                            <th style="text-align: center">Kode Jenis Api Pemilik</th>
+                                            <th style="text-align: center">Kode Jenis Api Penerima</th>
+                                            <th style="text-align: center">Kode Jenis Api Pengusaha</th>
+                                            <th style="text-align: center">Kode Jenis Barang</th>
+                                            <th style="text-align: center">Kode Jenis Bc25</th>
+                                            <th style="text-align: center">Kode Jenis Nilai</th>
+                                            <th style="text-align: center">Kode Jenis Pemasukan01</th>
+                                            <th style="text-align: center">Kode Jenis Pemasukan 02</th>
+                                            <th style="text-align: center">Kode Jenis Tpb</th>
+                                            <th style="text-align: center">Kode Kantor Bongkar</th>
+                                            <th style="text-align: center">Kode Kantor Tujuan</th>
+                                            <th style="text-align: center">Kode Lokasi Bayar</th>
+                                            <th style="text-align: center">Kode Negara Pemasok</th>
+                                            <th style="text-align: center">Kode Negara Pengirim</th>
+                                            <th style="text-align: center">Kode Negara Pemilik</th>
+                                            <th style="text-align: center">Kode Negara Tujuan</th>
+                                            <th style="text-align: center">Kode Pel Bongkar</th>
+                                            <th style="text-align: center">Kode Pel Muat</th>
+                                            <th style="text-align: center">Kode Pel Transit</th>
+                                            <th style="text-align: center">Kode Pembayar</th>
+                                            <th style="text-align: center">Kode Status Pengusaha</th>
+                                            <th style="text-align: center">Status Perbaikan</th>
+                                            <th style="text-align: center">Kode Tps</th>
+                                            <th style="text-align: center">Kode Tujuan Pemasukan</th>
+                                            <th style="text-align: center">Kode Tujuan Pengiriman</th>
+                                            <th style="text-align: center">Kode Tujuan Tpb</th>
+                                            <th style="text-align: center">Kode Tutup Pu</th>
+                                            <th style="text-align: center">Kode Valuta</th>
+                                            <th style="text-align: center">Kota Tth</th>
+                                            <th style="text-align: center">Nama Pemilik</th>
+                                            <th style="text-align: center">Nama Penerima Barang</th>
+                                            <th style="text-align: center">Nama Pengangkut</th>
+                                            <th style="text-align: center">Nama Pengirim</th>
+                                            <th style="text-align: center">Nama Ppjk</th>
+                                            <th style="text-align: center">Nama Tth</th>
+                                            <th style="text-align: center">Ndpbm</th>
+                                            <th style="text-align: center">Netto</th>
+                                            <th style="text-align: center">Nilai Incoterm</th>
+                                            <th style="text-align: center">Niper Penerima</th>
+                                            <th style="text-align: center">Nomor Api</th>
+                                            <th style="text-align: center">Nomor Bc11</th>
+                                            <th style="text-align: center">Nomor Billing</th>
+                                            <th style="text-align: center">Nomor Daftar</th>
+                                            <th style="text-align: center">Nomor Ijin Bpk Pemasok</th>
+                                            <th style="text-align: center">Nomor Ijin Bpk Pengusaha</th>
+                                            <th style="text-align: center">Nomor Ijin Tpb</th>
+                                            <th style="text-align: center">Nomor Ijin Tpb Penerima</th>
+                                            <th style="text-align: center">Nomor Voyv Flight</th>
+                                            <th style="text-align: center">Npwp Billing</th>
+                                            <th style="text-align: center">Pos Bc11</th>
+                                            <th style="text-align: center">Seri</th>
+                                            <th style="text-align: center">Subpos Bc11</th>
+                                            <th style="text-align: center">Sub Subpos Bc11</th>
+                                            <th style="text-align: center">Tanggal Bc11</th>
+                                            <th style="text-align: center">Tanggal Berangkat</th>
+                                            <th style="text-align: center">Tanggal Billing</th>
+                                            <th style="text-align: center">Tanggal Daftar</th>
+                                            <th style="text-align: center">Tanggal Ijin Bpk Pemasok</th>
+                                            <th style="text-align: center">Tanggal Ijin Bpk Pengusaha</th>
+                                            <th style="text-align: center">Tanggal Ijin Tpb</th>
+                                            <th style="text-align: center">Tanggal Npppjk</th>
+                                            <th style="text-align: center">Tanggal Tiba</th>
+                                            <th style="text-align: center">Tanggal Tth</th>
+                                            <th style="text-align: center">Tanggal Jatuh Tempo</th>
+                                            <th style="text-align: center">Total Bayar</th>
+                                            <th style="text-align: center">Total Bebas</th>
+                                            <th style="text-align: center">Total Dilunasi</th>
+                                            <th style="text-align: center">Total Jamin</th>
+                                            <th style="text-align: center">Total Sudah Dilunasi</th>
+                                            <th style="text-align: center">Total Tangguh</th>
+                                            <th style="text-align: center">Total Tanggung</th>
+                                            <th style="text-align: center">Total Tidak Dipungut</th>
+                                            <th style="text-align: center">Url Dokumen Pabean</th>
+                                            <th style="text-align: center">Versi Modul</th>
+                                            <th style="text-align: center">Volume</th>
+                                            <th style="text-align: center">Waktu Bongkar</th>
+                                            <th style="text-align: center">Waktu Stuffing</th>
+                                            <th style="text-align: center">Nomor Polisi</th>
+                                            <th style="text-align: center">Call Sign</th>
+                                            <th style="text-align: center">Jumlah Tanda Pengaman</th>
+                                            <th style="text-align: center">Kode Jenis Tanda Pengaman</th>
+                                            <th style="text-align: center">Kode Kantor Muat</th>
+                                            <th style="text-align: center">Kode Pel Tujuan</th>
+                                            <th style="text-align: center">Tanggal Stuffing</th>
+                                            <th style="text-align: center">Tanggal Muat</th>
+                                            <th style="text-align: center">Kode Gudang Asal</th>
+                                            <th style="text-align: center">Kode Gudang Tujuan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -530,9 +531,9 @@ include "include/cssForm.php";
                                 <table id="TableBahanBaku" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Barang</th>
                                             <th style="text-align: center;">SERI BAHAN BAKU</th>
                                             <th style="text-align: center;">CIF</th>
                                             <th style="text-align: center;">CIF RUPIAH</th>
@@ -627,22 +628,22 @@ include "include/cssForm.php";
                                 <table id="TableBahanBakuTarif" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
-                                            <th style="text-align: center;">SERI BAHAN BAKU</th>
-                                            <th style="text-align: center;">JENIS TARIF</th>
-                                            <th style="text-align: center;">JUMLAH SATUAN</th>
-                                            <th style="text-align: center;">KODE ASAL BAHAN BAKU</th>
-                                            <th style="text-align: center;">KODE FASILITAS</th>
-                                            <th style="text-align: center;">KODE KOMODITI CUKAI</th>
-                                            <th style="text-align: center;">KODE SATUAN</th>
-                                            <th style="text-align: center;">KODE TARIF</th>
-                                            <th style="text-align: center;">NILAI BAYAR</th>
-                                            <th style="text-align: center;">NILAI FASILITAS</th>
-                                            <th style="text-align: center;">NILAI SUDAH DILUNASI</th>
-                                            <th style="text-align: center;">TARIF</th>
-                                            <th style="text-align: center;">TARIF FASILITAS</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Barang</th>
+                                            <th style="text-align: center;">Seri Bahan Baku</th>
+                                            <th style="text-align: center;">Jenis Tarif</th>
+                                            <th style="text-align: center;">Jumlah Satuan</th>
+                                            <th style="text-align: center;">Kode Asal Bahan Baku</th>
+                                            <th style="text-align: center;">Kode Fasilitas</th>
+                                            <th style="text-align: center;">Kode Komoditi Cukai</th>
+                                            <th style="text-align: center;">Kode Satuan</th>
+                                            <th style="text-align: center;">Kode Tarif</th>
+                                            <th style="text-align: center;">Nilai Bayar</th>
+                                            <th style="text-align: center;">Nilai Fasilitas</th>
+                                            <th style="text-align: center;">Nilai Sudah Dilunasi</th>
+                                            <th style="text-align: center;">Tarif</th>
+                                            <th style="text-align: center;">Tarif Fasilitas</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -694,12 +695,12 @@ include "include/cssForm.php";
                                 <table id="TableBahanBakuDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
-                                            <th style="text-align: center;">SERI BAHAN BAKU</th>
-                                            <th style="text-align: center;">SERI DOKUMEN</th>
-                                            <th style="text-align: center;">KODE ASAL BAHAN BAKU</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Barang</th>
+                                            <th style="text-align: center;">Seri Bahan Baku</th>
+                                            <th style="text-align: center;">Seri Dokumen</th>
+                                            <th style="text-align: center;">Kode Asal Bahan Baku</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -741,57 +742,57 @@ include "include/cssForm.php";
                                 <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
-                                            <th style="text-align: center;">ASURANSI</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Barang</th>
+                                            <th style="text-align: center;">Asuransi</th>
                                             <th style="text-align: center;">CIF</th>
-                                            <th style="text-align: center;">CIF RUPIAH</th>
-                                            <th style="text-align: center;">DISKON</th>
-                                            <th style="text-align: center;">FLAG KENDARAAN</th>
+                                            <th style="text-align: center;">CIF Rp.</th>
+                                            <th style="text-align: center;">Diskon</th>
+                                            <th style="text-align: center;">Flag Kendaraan</th>
                                             <th style="text-align: center;">FOB</th>
                                             <th style="text-align: center;">FREIGHT</th>
-                                            <th style="text-align: center;">BARANG BARANG LDP</th>
-                                            <th style="text-align: center;">HARGA INVOICE</th>
-                                            <th style="text-align: center;">HARGA PENYERAHAN</th>
-                                            <th style="text-align: center;">HARGA SATUAN</th>
-                                            <th style="text-align: center;">JENIS KENDARAAN</th>
-                                            <th style="text-align: center;">JUMLAH BAHAN BAKU</th>
-                                            <th style="text-align: center;">JUMLAH KEMASAN</th>
-                                            <th style="text-align: center;">JUMLAH SATUAN</th>
-                                            <th style="text-align: center;">KAPASITAS SILINDER</th>
-                                            <th style="text-align: center;">KATEGORI BARANG</th>
-                                            <th style="text-align: center;">KODE_ASAL BARANG</th>
-                                            <th style="text-align: center;">KODE BARANG</th>
-                                            <th style="text-align: center;">KODE FASILITAS</th>
-                                            <th style="text-align: center;">KODE GUNA</th>
-                                            <th style="text-align: center;">KODE JENIS NILAI</th>
-                                            <th style="text-align: center;">KODE KEMASAN</th>
-                                            <th style="text-align: center;">KODE LEBIH DARI 4 TAHUN</th>
-                                            <th style="text-align: center;">KODE NEGARA ASAL</th>
-                                            <th style="text-align: center;">KODE SATUAN</th>
-                                            <th style="text-align: center;">KODE SKEMA TARIF</th>
-                                            <th style="text-align: center;">KODE STATUS</th>
-                                            <th style="text-align: center;">KONDISI BARANG</th>
-                                            <th style="text-align: center;">MERK</th>
+                                            <th style="text-align: center;">Barang Barang LDP</th>
+                                            <th style="text-align: center;">Harga Invoice</th>
+                                            <th style="text-align: center;">Harga Penyerahan</th>
+                                            <th style="text-align: center;">Harga Satuan</th>
+                                            <th style="text-align: center;">Jenis Kendaraan</th>
+                                            <th style="text-align: center;">Jumlah Bahan Baku</th>
+                                            <th style="text-align: center;">Jumlah KEMASAN</th>
+                                            <th style="text-align: center;">Jumlah Satuan</th>
+                                            <th style="text-align: center;">Kapasitas Silinder</th>
+                                            <th style="text-align: center;">Kategori Barang</th>
+                                            <th style="text-align: center;">Kode Asa; Barang</th>
+                                            <th style="text-align: center;">Kode Barang</th>
+                                            <th style="text-align: center;">Kode Fasilitas</th>
+                                            <th style="text-align: center;">Kode Guna</th>
+                                            <th style="text-align: center;">Kode Jenis Nilai</th>
+                                            <th style="text-align: center;">Kode Kemasan</th>
+                                            <th style="text-align: center;">Kode Lebih Dari 4 Tahun</th>
+                                            <th style="text-align: center;">Kode Negara Asal</th>
+                                            <th style="text-align: center;">Kode Satuan</th>
+                                            <th style="text-align: center;">Kode Skema Tarif</th>
+                                            <th style="text-align: center;">Kode Status</th>
+                                            <th style="text-align: center;">Kondisi Barang</th>
+                                            <th style="text-align: center;">Merk</th>
                                             <th style="text-align: center;">NETTO</th>
-                                            <th style="text-align: center;">NILAI INCOTERM</th>
-                                            <th style="text-align: center;">NILAI PABEAN</th>
-                                            <th style="text-align: center;">NOMOR MESIN</th>
-                                            <th style="text-align: center;">POS TARIF</th>
-                                            <th style="text-align: center;">SERI POS TARIF</th>
-                                            <th style="text-align: center;">SPESIFIKASI LAIN</th>
-                                            <th style="text-align: center;">TAHUN PEMBUATAN</th>
-                                            <th style="text-align: center;">TIPE</th>
-                                            <th style="text-align: center;">UKURAN</th>
-                                            <th style="text-align: center;">URAIAN</th>
-                                            <th style="text-align: center;">VOLUME</th>
-                                            <th style="text-align: center;">SERI IJIN</th>
-                                            <th style="text-align: center;">ID EKSPORTIR</th>
-                                            <th style="text-align: center;">NAMA EKSPORTIR</th>
-                                            <th style="text-align: center;">ALAMAT EKSPORTIR</th>
-                                            <th style="text-align: center;">KODE PERHITUNGAN</th>
-                                            <th style="text-align: center;">SERI BARANG DOK ASAL</th>
+                                            <th style="text-align: center;">Nilai Incoterm</th>
+                                            <th style="text-align: center;">Nilai Pabean</th>
+                                            <th style="text-align: center;">No. Mesin</th>
+                                            <th style="text-align: center;">Pos Tarif</th>
+                                            <th style="text-align: center;">Seri Pos Tarif</th>
+                                            <th style="text-align: center;">Spesifikasi Lain</th>
+                                            <th style="text-align: center;">Tahun Pembuatan</th>
+                                            <th style="text-align: center;">Tipe</th>
+                                            <th style="text-align: center;">Ukuran</th>
+                                            <th style="text-align: center;">Uraian</th>
+                                            <th style="text-align: center;">Volume</th>
+                                            <th style="text-align: center;">Seri Ijin</th>
+                                            <th style="text-align: center;">ID Eksportir</th>
+                                            <th style="text-align: center;">Nama Eksportir</th>
+                                            <th style="text-align: center;">Alamat Eksportir</th>
+                                            <th style="text-align: center;">Kode Perhitungan</th>
+                                            <th style="text-align: center;">Seri Barang Dok. Asal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -878,20 +879,20 @@ include "include/cssForm.php";
                                 <table id="TableBarangTarif" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
-                                            <th style="text-align: center;">JENIS TARIF</th>
-                                            <th style="text-align: center;">JUMLAH SATUAN</th>
-                                            <th style="text-align: center;">KODE FASILITAS</th>
-                                            <th style="text-align: center;">KODE KOMODITI CUKAI</th>
-                                            <th style="text-align: center;">TARIF KODE SATUAN</th>
-                                            <th style="text-align: center;">TARIF KODE TARIF</th>
-                                            <th style="text-align: center;">TARIF NILAI BAYAR</th>
-                                            <th style="text-align: center;">TARIF NILAI FASILITAS</th>
-                                            <th style="text-align: center;">TARIF NILAI SUDAH DILUNASI</th>
-                                            <th style="text-align: center;">TARIF</th>
-                                            <th style="text-align: center;">TARIF FASILITAS</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Barang</th>
+                                            <th style="text-align: center;">Jenis Tarif</th>
+                                            <th style="text-align: center;">Jumlah Satuan</th>
+                                            <th style="text-align: center;">Kode Fasilitas</th>
+                                            <th style="text-align: center;">Kode Komoditi Cukai</th>
+                                            <th style="text-align: center;">Tarif Kode Satuan</th>
+                                            <th style="text-align: center;">Tarif Kode Tarif</th>
+                                            <th style="text-align: center;">Tarif NILAI BAYAR</th>
+                                            <th style="text-align: center;">Tarif NILAI Fasilitas</th>
+                                            <th style="text-align: center;">Tarif NILAI SUDAH DILUNASI</th>
+                                            <th style="text-align: center;">Tarif</th>
+                                            <th style="text-align: center;">Tarif Fasilitas</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -941,10 +942,10 @@ include "include/cssForm.php";
                                 <table id="TableBarangDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI BARANG</th>
-                                            <th style="text-align: center;">SERI DOKUMEN</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Barang</th>
+                                            <th style="text-align: center;">Seri Dokumen</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -984,15 +985,15 @@ include "include/cssForm.php";
                                 <table id="TableDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI DOKUMEN</th>
-                                            <th style="text-align: center;">FLAG URL DOKUMEN</th>
-                                            <th style="text-align: center;">KODE JENIS DOKUMEN</th>
-                                            <th style="text-align: center;">NOMOR DOKUMEN</th>
-                                            <th style="text-align: center;">TANGGAL DOKUMEN</th>
-                                            <th style="text-align: center;">TIPE DOKUMEN</th>
-                                            <th style="text-align: center;">URL DOKUMEN</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Dokumen</th>
+                                            <th style="text-align: center;">Flag URL Dokumen</th>
+                                            <th style="text-align: center;">Kode Jenis Dokumen</th>
+                                            <th style="text-align: center;">No. Dokumen</th>
+                                            <th style="text-align: center;">Tanggal Dokumen</th>
+                                            <th style="text-align: center;">Tipe Dokumen</th>
+                                            <th style="text-align: center;">URL Dokumen</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1037,20 +1038,20 @@ include "include/cssForm.php";
                                 <table id="TableKemasan" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI KEMASAN</th>
-                                            <th style="text-align: center;">JUMLAH KEMASAN</th>
-                                            <th style="text-align: center;">KESESUAIAN DOKUMEN</th>
-                                            <th style="text-align: center;">KETERANGAN</th>
-                                            <th style="text-align: center;">KODE JENIS KEMASAN</th>
-                                            <th style="text-align: center;">MEREK KEMASAN</th>
-                                            <th style="text-align: center;">NIP GATE IN</th>
-                                            <th style="text-align: center;">NIP GATE OUT</th>
-                                            <th style="text-align: center;">NOMOR POLISI</th>
-                                            <th style="text-align: center;">NOMOR SEGEL</th>
-                                            <th style="text-align: center;">WAKTU GATE IN</th>
-                                            <th style="text-align: center;">WAKTU GATE OUT</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Kemasan</th>
+                                            <th style="text-align: center;">Jumlah Kemasan</th>
+                                            <th style="text-align: center;">Kesesuaian Dokumen</th>
+                                            <th style="text-align: center;">Ket.</th>
+                                            <th style="text-align: center;">Kode Jenis Kemasan</th>
+                                            <th style="text-align: center;">Merek Kemasan</th>
+                                            <th style="text-align: center;">NIP Gate IN</th>
+                                            <th style="text-align: center;">NIP Gate OUT</th>
+                                            <th style="text-align: center;">No. Polisi</th>
+                                            <th style="text-align: center;">No. Segel</th>
+                                            <th style="text-align: center;">Waktu Gate IN</th>
+                                            <th style="text-align: center;">Waktu Gate OUT</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1100,21 +1101,21 @@ include "include/cssForm.php";
                                 <table id="TableKontainer" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center;">NOMOR AJU</th>
-                                            <th style="text-align: center;">SERI KONTAINER</th>
-                                            <th style="text-align: center;">KESESUAIAN DOKUMEN</th>
-                                            <th style="text-align: center;">KETERANGAN</th>
-                                            <th style="text-align: center;">KODE STUFFING</th>
-                                            <th style="text-align: center;">KODE TIPE KONTAINER</th>
-                                            <th style="text-align: center;">KODE UKURAN KONTAINER</th>
-                                            <th style="text-align: center;">FLAG GATE IN</th>
-                                            <th style="text-align: center;">FLAG GATE OUT</th>
-                                            <th style="text-align: center;">NOMOR POLISI</th>
-                                            <th style="text-align: center;">NOMOR KONTAINER</th>
-                                            <th style="text-align: center;">NOMOR SEGEL</th>
-                                            <th style="text-align: center;">WAKTU GATE IN</th>
-                                            <th style="text-align: center;">WAKTU GATE OUT</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center;">Nomor Pengajuan</th>
+                                            <th style="text-align: center;">Seri Kontainer</th>
+                                            <th style="text-align: center;">Kesesuaian Dokumen</th>
+                                            <th style="text-align: center;">Ket.</th>
+                                            <th style="text-align: center;">Kode Stuffing</th>
+                                            <th style="text-align: center;">Kode Tipe Kontainer</th>
+                                            <th style="text-align: center;">Kode Ukuran Kontainer</th>
+                                            <th style="text-align: center;">Flag Gate IN</th>
+                                            <th style="text-align: center;">Flag Gate OUT</th>
+                                            <th style="text-align: center;">No. Polisi</th>
+                                            <th style="text-align: center;">No. Kontainer</th>
+                                            <th style="text-align: center;">No. Segel</th>
+                                            <th style="text-align: center;">Waktu Gate IN</th>
+                                            <th style="text-align: center;">Waktu Gate OUT</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1165,12 +1166,12 @@ include "include/cssForm.php";
                                 <table id="TableRespon" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center">NOMOR AJU</th>
-                                            <th style="text-align: center">KODE RESPON</th>
-                                            <th style="text-align: center">NOMOR RESPON</th>
-                                            <th style="text-align: center">TANGGAL RESPON</th>
-                                            <th style="text-align: center">WAKTU RESPON</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center">Nomor Pengajuan</th>
+                                            <th style="text-align: center">Kode Respon</th>
+                                            <th style="text-align: center">No. Respon</th>
+                                            <th style="text-align: center">Tanggal Respon</th>
+                                            <th style="text-align: center">Waktu Respon</th>
                                             <th style="text-align: center">BYTE STRAM PDF</th>
                                         </tr>
                                     </thead>
@@ -1214,10 +1215,10 @@ include "include/cssForm.php";
                                 <table id="TableStatus" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
-                                            <th style="text-align: center">NOMOR AJU</th>
-                                            <th style="text-align: center">KODE RESPON</th>
-                                            <th style="text-align: center">NOMOR RESPON</th>
+                                            <th width="1%">No.</th>
+                                            <th style="text-align: center">Nomor Pengajuan</th>
+                                            <th style="text-align: center">Kode Respon</th>
+                                            <th style="text-align: center">No. Respon</th>
                                             <th style="text-align: center">Date Submit CK5 PLB</th>
                                             <th style="text-align: center">Date Export CK5 PLB</th>
                                             <th style="text-align: center">Date GB Submit Sarinah</th>
@@ -1263,7 +1264,7 @@ include "include/cssForm.php";
                                             <?php } ?>
                                         <?php } else { ?>
                                             <tr>
-                                                <td colspan="4">
+                                                <td colspan="8">
                                                     <center>
                                                         <div style="display: grid;">
                                                             <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -1283,7 +1284,7 @@ include "include/cssForm.php";
                                 <table id="TableLog" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center">USERNAME</th>
                                             <th style="text-align: center">NAMA FILE</th>
                                             <th style="text-align: center">TOTAL DATA</th>

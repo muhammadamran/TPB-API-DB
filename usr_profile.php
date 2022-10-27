@@ -65,7 +65,7 @@ if (isset($_POST["ChangePictures"])) {
     $InputModul           = 'Profile';
     $InputDescription     = $me . " Update Pictures Profile, Simpan Data Sebagai Log Profile";
     $InputAction          = 'Update';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
@@ -84,7 +84,7 @@ if (isset($_POST["SaveInput"])) {
 
     $tahunLahir = $_POST['InputTanggalLahir'];
     $unixTimeSaatIni = time();
-    $unixTimeTahunLahir= strtotime($tahunLahir);
+    $unixTimeTahunLahir = strtotime($tahunLahir);
     $unixTimeDalamSetahun = 31536000;
     $hitungUsia = ($unixTimeSaatIni - $unixTimeTahunLahir) / $unixTimeDalamSetahun;
     $DataUsia = floor($hitungUsia);
@@ -128,7 +128,7 @@ if (isset($_POST["SaveInput"])) {
     $InputModul           = 'Profile';
     $InputDescription     = $me . " Update Data Profile, Simpan Data Sebagai Log Profile";
     $InputAction          = 'Update';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
@@ -147,7 +147,7 @@ if (isset($_POST["SaveEdit"])) {
 
     $tahunLahir = $_POST['EditTanggalLahir'];
     $unixTimeSaatIni = time();
-    $unixTimeTahunLahir= strtotime($tahunLahir);
+    $unixTimeTahunLahir = strtotime($tahunLahir);
     $unixTimeDalamSetahun = 31536000;
     $hitungUsia = ($unixTimeSaatIni - $unixTimeTahunLahir) / $unixTimeDalamSetahun;
     $DataUsia = floor($hitungUsia);
@@ -192,7 +192,7 @@ if (isset($_POST["SaveEdit"])) {
     $InputModul           = 'Profile';
     $InputDescription     = $me . " Update Profile, Simpan Data Sebagai Log Profile";
     $InputAction          = 'Update';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)

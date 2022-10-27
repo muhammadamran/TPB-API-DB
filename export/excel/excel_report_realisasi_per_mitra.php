@@ -23,7 +23,7 @@ if (isset($_GET["find_"])) {
 	$InputModul           = 'Report/Laporan Realisasi';
 	$InputDescription     = $me . " Expot Data Excel Laporan Realisasi Mitra: " .  $shoWGetNamaCompany . " Tahun " .  $WGetTahunAju . ", Simpan Data Sebagai Export Report Laporan Realisasi Per Mitra";
 	$InputAction          = 'Export Excel Laporan Realisasi Per Mitra';
-	$InputDate            = date('Y-m-d h:m:i');
+	$InputDate            = date('Y-m-d H:m:i');
 
 	$query = $dbcon->query("INSERT INTO tbl_aktifitas
 		(id,IDUNIQ,username,modul,description,action,date_created)

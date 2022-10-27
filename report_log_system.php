@@ -22,9 +22,9 @@ if (isset($_GET['findRange'])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Report/Log System';
-    $InputDescription     = $me . " Cari Data: " .  $startdate ." s.d " .  $enddate .", Simpan Data Sebagai Report Log System";
+    $InputDescription     = $me . " Cari Data: " .  $startdate . " s.d " .  $enddate . ", Simpan Data Sebagai Report Log System";
     $InputAction          = 'Cari Data';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query = $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
@@ -138,9 +138,9 @@ if (isset($_GET['findRange'])) {
                         .button-top-table {
                             margin-bottom: 15px;
                         }
-                        
+
                         .icon-primary-excel {
-                            width:  20px;
+                            width: 20px;
                         }
 
                         .btn-primary-excel {
@@ -158,16 +158,16 @@ if (isset($_GET['findRange'])) {
                         }
                     </style>
                     <?php if (isset($_GET['findRange'])) { ?>
-                    <div class="button-top-table">
-                        <form action="export/excel_log_system.php" method="GET">
-                            <input type="hidden" name="startdate" value="<?= $startdate ?>">
-                            <input type="hidden" name="enddate" value="<?= $enddate ?>">
-                            <input type="hidden" name="me" value="<?= $_SESSION['username'] ?>">
-                            <button class="btn btn-primary-excel" name="find_">
-                                <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
-                            </button>
-                        </form>
-                    </div>
+                        <div class="button-top-table">
+                            <form action="export/excel_log_system.php" method="GET">
+                                <input type="hidden" name="startdate" value="<?= $startdate ?>">
+                                <input type="hidden" name="enddate" value="<?= $enddate ?>">
+                                <input type="hidden" name="me" value="<?= $_SESSION['username'] ?>">
+                                <button class="btn btn-primary-excel" name="find_">
+                                    <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
+                                </button>
+                            </form>
+                        </div>
                     <?php } ?>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-td-valign-middle">
@@ -194,15 +194,15 @@ if (isset($_GET['findRange'])) {
                                     while ($row = mysqli_fetch_array($dataTable)) {
                                         $no++;
                                 ?>
-                                <tr>
-                                    <!-- 21 -->
-                                    <td><?= $no ?>. </td>
-                                    <td style="text-align: left;"><i class="fas fa-calendar-alt"></i> <?= date_indo(SUBSTR($row['date_created'],0,10),TRUE) ?></td>
-                                    <td style="text-align: left;"><i class="fas fa-clock"></i> <?= SUBSTR($row['date_created'],11) ?></td>
-                                    <td style="text-align: center;"><?= $row['username'] ?></td>
-                                    <td><?= $row['description'] ?></td>
-                                </tr>
-                                <?php } ?>
+                                        <tr>
+                                            <!-- 21 -->
+                                            <td><?= $no ?>. </td>
+                                            <td style="text-align: left;"><i class="fas fa-calendar-alt"></i> <?= date_indo(SUBSTR($row['date_created'], 0, 10), TRUE) ?></td>
+                                            <td style="text-align: left;"><i class="fas fa-clock"></i> <?= SUBSTR($row['date_created'], 11) ?></td>
+                                            <td style="text-align: center;"><?= $row['username'] ?></td>
+                                            <td><?= $row['description'] ?></td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } else { ?>
                                     <tr>
                                         <td colspan="5">

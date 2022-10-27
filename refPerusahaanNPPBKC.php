@@ -30,7 +30,7 @@ if (isset($_POST["add_nppbkc"])) {
     $InputModul           = 'Referensi/Perusahaan';
     $InputDescription     = $me . " Update Data: " .  $UpdateNameDepartment . ", Simpan Data Sebagai Log Referensi Perusahaan";
     $InputAction          = 'Update';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
@@ -75,61 +75,54 @@ if (isset($_POST["add_nppbkc"])) {
                 </div>
                 <div class="panel-body text-inverse">
                     <?php if ($data['status'] == 404) { ?>
-                    <center>
-                        <div style="display: grid;">
-                            <i class="far fa-times-circle no-data"></i> Tidak ada data
-                        </div>
-                    </center>
+                        <center>
+                            <div style="display: grid;">
+                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                            </div>
+                        </center>
                     <?php } else { ?>
-                    <?php foreach ($data['result'] as $row) { ?>
-                    <form action="" method="POST">
-                        <div class="modal-header">
-                            <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-text="true">×</button>
-                        </div>
-                        <div class="modal-body">
-                            <fieldset>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="IdCARTON">NPWP</label>
-                                            <input type="text" class="form-control" placeholder="NPWP"
-                                                value="<?= $row['NPWP']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="IdLITER">Nama</label>
-                                            <input type="text" class="form-control" value="<?= $row['NAMA'] ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
-                                            <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC"
-                                                placeholder="NPPBKC" required>
-                                            <input type="hidden" class="form-control" name="UNIQID"
-                                                value="<?= $_GET['id'] ?>">
-                                            <input type="hidden" class="form-control" name="UNIQNWPW"
-                                                value="<?= $_GET['NPWP'] ?>">
-                                            <input type="hidden" class="form-control" name="UNIQNAMA"
-                                                value="<?= $row['NAMA'] ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
-                                    </div>
+                        <?php foreach ($data['result'] as $row) { ?>
+                            <form action="" method="POST">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-text="true">×</button>
                                 </div>
-                            </fieldset>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
-                                    class="fas fa-times-circle"></i> Tutup</a>
-                            <button type="submit" name="add_nppbkc" class="btn btn-warning"><i
-                                    class="fas fa-plus-circle"></i> NPPBKC</button>
-                        </div>
-                    </form>
-                    <?php } ?>
+                                <div class="modal-body">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="IdCARTON">NPWP</label>
+                                                    <input type="text" class="form-control" placeholder="NPWP" value="<?= $row['NPWP']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="IdLITER">Nama</label>
+                                                    <input type="text" class="form-control" value="<?= $row['NAMA'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
+                                                    <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC" placeholder="NPPBKC" required>
+                                                    <input type="hidden" class="form-control" name="UNIQID" value="<?= $_GET['id'] ?>">
+                                                    <input type="hidden" class="form-control" name="UNIQNWPW" value="<?= $_GET['NPWP'] ?>">
+                                                    <input type="hidden" class="form-control" name="UNIQNAMA" value="<?= $row['NAMA'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <font style="color: red;">*</font> <i>Wajib diisi.</i>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                    <button type="submit" name="add_nppbkc" class="btn btn-warning"><i class="fas fa-plus-circle"></i> NPPBKC</button>
+                                </div>
+                            </form>
+                        <?php } ?>
                     <?php } ?>
 
                 </div>
@@ -145,28 +138,28 @@ if (isset($_POST["add_nppbkc"])) {
 <?php include "include/jsDatatables.php"; ?>
 <script src="https://unpkg.com/imask"></script>
 <script type="text/javascript">
-// NO KK
-var numberMask = IMask(
-    document.getElementById('IDNPPBKC'), {
-        mask: '0000.000000',
-    });
+    // NO KK
+    var numberMask = IMask(
+        document.getElementById('IDNPPBKC'), {
+            mask: '0000.000000',
+        });
 
-// UPDATE SUCCESS
-if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
-    Swal.fire({
-        title: 'Data berhasil diupdate!',
-        icon: 'success',
-        text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './ref_perusahaan.php');
-}
-// UPDATE FAILED
-if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
-    Swal.fire({
-        title: 'Data gagal diupdate!',
-        icon: 'error',
-        text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './ref_perusahaan.php');
-}
+    // UPDATE SUCCESS
+    if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil diupdate!',
+            icon: 'success',
+            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './ref_perusahaan.php');
+    }
+    // UPDATE FAILED
+    if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal diupdate!',
+            icon: 'error',
+            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './ref_perusahaan.php');
+    }
 </script>

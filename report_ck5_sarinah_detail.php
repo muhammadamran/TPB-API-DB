@@ -247,7 +247,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     $InputModul           = 'LAPORAN CK5 Sarinah - Halaman 1';
     $InputDescription     = $me . " Update Data: " .  $NameDepartment . ", Simpan Data Sebagai Log LAPORAN CK5 Sarinah - Halaman 1";
     $InputAction          = 'Update';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
@@ -278,13 +278,13 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     <meta content="" name="description" />
     <meta content="" name="author" />
     <?php if ($resultHeadSetting['icon'] == NULL) { ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
     <?php } else { ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
     <?php } ?>
     <link href="assets/css/ck5plb.css" rel="stylesheet" />
 
@@ -299,8 +299,7 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     <link href="assets/plugins/tag-it/css/jquery.tagit.css" rel="stylesheet" />
     <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
     <link href="assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="assets/plugins/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
-        rel="stylesheet" />
+    <link href="assets/plugins/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css" rel="stylesheet" />
     <link href="assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.css" rel="stylesheet" />
     <link href="assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-fontawesome.css" rel="stylesheet" />
@@ -327,21 +326,19 @@ if (isset($_POST["update_ck5tpb_oke"])) {
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <!-- FONTAWESON 5 -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css"
-        integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css"
-        integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-Q66YLEFFZ2');
+        gtag('config', 'G-Q66YLEFFZ2');
     </script>
 </head>
 <?php
@@ -349,76 +346,76 @@ if (isset($_POST["update_ck5tpb_oke"])) {
 // include "include/cssDatatables.php";
 ?>
 <style type="text/css">
-.nav-top-content {
-    padding: 20px;
-    margin-top: 30px;
-}
-
-@media (max-width: 767.5px) {
     .nav-top-content {
         padding: 20px;
-        margin-top: 0px;
+        margin-top: 30px;
     }
-}
 
-.for-area-one {
-    border: transparent;
-    height: 90px;
-    width: 325px;
-}
+    @media (max-width: 767.5px) {
+        .nav-top-content {
+            padding: 20px;
+            margin-top: 0px;
+        }
+    }
 
-.for-area-one-oke {
-    /*border: transparent;*/
-    height: 90px;
-    width: 325px;
-}
-
-.for-area-two {
-    border: transparent;
-    height: 90px;
-    width: 400px;
-}
-
-@media (max-width: 1366.5px) {
     .for-area-one {
         border: transparent;
-        height: 110px;
-        width: 260px;
+        height: 90px;
+        width: 325px;
     }
 
     .for-area-one-oke {
         /*border: transparent;*/
-        height: 110px;
-        width: 260px;
+        height: 90px;
+        width: 325px;
     }
 
     .for-area-two {
         border: transparent;
-        height: 110px;
-        width: 310px;
+        height: 90px;
+        width: 400px;
     }
-}
 
-.area-big {
-    border: transparent;
-    width: 130px;
-}
+    @media (max-width: 1366.5px) {
+        .for-area-one {
+            border: transparent;
+            height: 110px;
+            width: 260px;
+        }
 
-@media (max-width: 1156.5px) {
+        .for-area-one-oke {
+            /*border: transparent;*/
+            height: 110px;
+            width: 260px;
+        }
+
+        .for-area-two {
+            border: transparent;
+            height: 110px;
+            width: 310px;
+        }
+    }
+
     .area-big {
         border: transparent;
-        width: 88px;
+        width: 130px;
     }
-}
 
-label {
-    font-size: 12px;
-}
+    @media (max-width: 1156.5px) {
+        .area-big {
+            border: transparent;
+            width: 88px;
+        }
+    }
 
-div.table-responsive>div.dataTables_wrapper>div.row {
-    margin: 0;
-    font-size: 12px;
-}
+    label {
+        font-size: 12px;
+    }
+
+    div.table-responsive>div.dataTables_wrapper>div.row {
+        margin: 0;
+        font-size: 12px;
+    }
 </style>
 
 <body>
@@ -426,21 +423,17 @@ div.table-responsive>div.dataTables_wrapper>div.row {
         <div class="invoice-company">
             <div style="display: flex;justify-content: space-between;margin-bottom: -18px;">
                 <div>
-                    <a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>"
-                        class="btn btn-sm btn-primary m-b-10" title="Halaman 1 CK5PLB" style="padding: 7px;">
+                    <a href="./report_ck5_sarinah_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-primary m-b-10" title="Halaman 1 CK5PLB" style="padding: 7px;">
                         <div style="display: flex;justify-content: space-between;align-items: end;">
                             <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1
                         </div>
                     </a>
-                    <a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>"
-                        class="btn btn-sm btn-default m-b-10" title="Halaman 1A CK5PLB" style="padding: 7px;">
+                    <a href="./report_ck5_sarinah_detailA.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Halaman 1A CK5PLB" style="padding: 7px;">
                         <div style="display: flex;justify-content: space-between;align-items: end;">
                             <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal 1A
                         </div>
                     </a>
-                    <a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>"
-                        class="btn btn-sm btn-default m-b-10" title="Halaman Detail Barang CK5PLB"
-                        style="padding: 7px;">
+                    <a href="./report_ck5_sarinah_hal_detail_barang.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-default m-b-10" title="Halaman Detail Barang CK5PLB" style="padding: 7px;">
                         <div style="display: flex;justify-content: space-between;align-items: end;">
                             <i class="fas fa-file" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Hal Detail
                             Barang
@@ -456,11 +449,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                 </a>
             </div> -->
                 <div>
-                    <a href="./report_ck5_sarinah.php" class="btn btn-sm btn-white m-b-10" title="Update CK5PLB"
-                        style="padding: 7px;">
+                    <a href="./report_ck5_sarinah.php" class="btn btn-sm btn-white m-b-10" title="Update CK5PLB" style="padding: 7px;">
                         <div style="display: flex;justify-content: space-between;align-items: end;">
-                            <i class="far fa-arrow-alt-circle-left"
-                                style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Kembali
+                            <i class="far fa-arrow-alt-circle-left" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Kembali
                         </div>
                     </a>
                     <!-- Update CK5 Sarinah -->
@@ -475,16 +466,14 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 <form action="report_ck5_sarinah_detail.php" method="POST">
                                     <div class="modal-header">
                                         <h4 class="modal-title">[Update CK5 Sarinah] AJU <?= $dataGETAJU ?></h4>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">×</button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-12"
-                                                            style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
+                                                        <div class="col-md-12" style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
                                                             <label for="IDHEADER">HEADER</label>
                                                         </div>
                                                     </div>
@@ -494,36 +483,30 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                             <div class="form-group">
                                                                 <label for="IdJenisBarangKenaCukai">A. Jenis Barang Kena
                                                                     Cukai</label>
-                                                                <select class="default-select2 form-control"
-                                                                    name="InputJenisBarangKenaCukai"
-                                                                    id="IdJenisBarangKenaCukai">
+                                                                <select class="default-select2 form-control" name="InputJenisBarangKenaCukai" id="IdJenisBarangKenaCukai">
                                                                     <?php if ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == NULL || $resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
-                                                                        <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
-                                                                        - Etil Alkohol</option>
-                                                                    <?php } elseif ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
-                                                                        <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
-                                                                        - MMEA</option>
-                                                                    <?php } elseif ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 3) { ?>
-                                                                    <option
-                                                                        value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
-                                                                        <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
-                                                                        - Hasil Tembakau</option>
-                                                                    <?php } elseif ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 4) { ?>
-                                                                    <option
-                                                                        value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
-                                                                        <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
-                                                                        -
-                                                                        <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA']; ?>
-                                                                    </option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 1) { ?>
+                                                                            <option value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
+                                                                                <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
+                                                                                - Etil Alkohol</option>
+                                                                        <?php } elseif ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 2) { ?>
+                                                                            <option value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
+                                                                                <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
+                                                                                - MMEA</option>
+                                                                        <?php } elseif ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 3) { ?>
+                                                                            <option value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
+                                                                                <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
+                                                                                - Hasil Tembakau</option>
+                                                                        <?php } elseif ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI'] == 4) { ?>
+                                                                            <option value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>">
+                                                                                <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI']; ?>
+                                                                                -
+                                                                                <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA']; ?>
+                                                                            </option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Etil Alkohol</option>
                                                                     <option value="2">2 - MMEA</option>
@@ -532,16 +515,11 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6" id="LainnyaHeaderA"
-                                                            style="display: none;">
+                                                        <div class="col-md-6" id="LainnyaHeaderA" style="display: none;">
                                                             <div class="form-group">
                                                                 <label for="IdJenisBarangKenaCukaiLainnya">Jenis Barang
                                                                     Kena Cukai Lainnya</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="InputJenisBarangKenaCukaiLainnya"
-                                                                    id="IdJenisBarangKenaCukaiLainnya"
-                                                                    placeholder="Jenis Barang Kena Cukai Lainnya ..."
-                                                                    value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA']; ?>" />
+                                                                <input type="text" class="form-control" name="InputJenisBarangKenaCukaiLainnya" id="IdJenisBarangKenaCukaiLainnya" placeholder="Jenis Barang Kena Cukai Lainnya ..." value="<?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA']; ?>" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -551,28 +529,24 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="IdCaraPelunasan">B. Cara Pelunasan</label>
-                                                                <select class="form-control" name="InputCaraPelunasan"
-                                                                    id="IdCaraPelunasan">
+                                                                <select class="form-control" name="InputCaraPelunasan" id="IdCaraPelunasan">
                                                                     <?php if ($resultDataCK5PLB['KODE_CARA_BAYAR'] == NULL || $resultDataCK5PLB['KODE_CARA_BAYAR'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultDataCK5PLB['KODE_CARA_BAYAR'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?> -
-                                                                        Pembayaran</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_CARA_BAYAR'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?> -
-                                                                        Pelekatan Pita Cukai</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_CARA_BAYAR'] == 3) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?> -
-                                                                        Pembubuhan Tanda Lunas Cukai Lainnya</option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultDataCK5PLB['KODE_CARA_BAYAR'] == 1) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?> -
+                                                                                Pembayaran</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_CARA_BAYAR'] == 2) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?> -
+                                                                                Pelekatan Pita Cukai</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_CARA_BAYAR'] == 3) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_CARA_BAYAR']; ?> -
+                                                                                Pembubuhan Tanda Lunas Cukai Lainnya</option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Pembayaran</option>
                                                                     <option value="2">2 - Pelekatan Pita Cukai</option>
@@ -590,23 +564,20 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="IdStatusCukai">C. Status Cukai</label>
-                                                                <select class="form-control" name="InputStatusCukai"
-                                                                    id="IdStatusCukai">
+                                                                <select class="form-control" name="InputStatusCukai" id="IdStatusCukai">
                                                                     <?php if ($resultDataCK5PLB['KODE_FASILITAS'] == NULL || $resultDataCK5PLB['KODE_FASILITAS'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultDataCK5PLB['KODE_FASILITAS'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_FASILITAS']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_FASILITAS']; ?> -
-                                                                        Belum Dilunasi</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_FASILITAS'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_FASILITAS']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_FASILITAS']; ?> -
-                                                                        Sudah Dilunasi</option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultDataCK5PLB['KODE_FASILITAS'] == 1) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_FASILITAS']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_FASILITAS']; ?> -
+                                                                                Belum Dilunasi</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_FASILITAS'] == 2) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_FASILITAS']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_FASILITAS']; ?> -
+                                                                                Sudah Dilunasi</option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Belum Dilunasi</option>
                                                                     <option value="2">2 - Sudah Dilunasi</option>
@@ -623,36 +594,30 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                             <div class="form-group">
                                                                 <label for="IdJenisPemberitahuan">D. Jenis
                                                                     Pemberitahuan</label>
-                                                                <select class="form-control"
-                                                                    name="InputJenisPemberitahuan"
-                                                                    id="IdJenisPemberitahuan">
+                                                                <select class="form-control" name="InputJenisPemberitahuan" id="IdJenisPemberitahuan">
                                                                     <?php if ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == NULL || $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
-                                                                        - Dibayar</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
-                                                                        - Tidak Dipungut</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 3) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
-                                                                        - Dibebaskan</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 4) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
-                                                                        -
-                                                                        <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA']; ?>
-                                                                    </option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 1) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
+                                                                                - Dibayar</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 2) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
+                                                                                - Tidak Dipungut</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 3) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
+                                                                                - Dibebaskan</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN'] == 4) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN']; ?>
+                                                                                -
+                                                                                <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA']; ?>
+                                                                            </option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Dibayar</option>
                                                                     <option value="2">2 - Tidak Dipungut</option>
@@ -661,16 +626,11 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6" id="LainnyaHeaderD"
-                                                            style="display: none;">
+                                                        <div class="col-md-6" id="LainnyaHeaderD" style="display: none;">
                                                             <div class="form-group">
                                                                 <label for="IdJenisPemberitahuanLainnya">Jenis
                                                                     Pemberitahuan Lainnya</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="InputJenisPemberitahuanLainnya"
-                                                                    id="IdJenisPemberitahuanLainnya"
-                                                                    placeholder="Jenis Pemberitahuan Lainnya ..."
-                                                                    value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA']; ?>" />
+                                                                <input type="text" class="form-control" name="InputJenisPemberitahuanLainnya" id="IdJenisPemberitahuanLainnya" placeholder="Jenis Pemberitahuan Lainnya ..." value="<?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA']; ?>" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -679,8 +639,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-12"
-                                                            style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
+                                                        <div class="col-md-12" style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
                                                             <label for="IDDATAPEMBERITAHUAN">E. DATA
                                                                 PEMBERITAHUAN</label>
                                                         </div>
@@ -689,73 +648,54 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <label for="IDTEMPATASALPEMASOK"><u>TEMPAT ASAL
                                                                     PEMASOK</u></label>
-                                                            <div
-                                                                style="display: flex;justify-content: flex-start;align-items: center;font-size: 12px;font-weight: 500;">
-                                                                <input type="checkbox" id="myCheck"
-                                                                    onclick="myFunction()" name="DataCheckPemasok"
-                                                                    value="1">
+                                                            <div style="display: flex;justify-content: flex-start;align-items: center;font-size: 12px;font-weight: 500;">
+                                                                <input type="checkbox" id="myCheck" onclick="myFunction()" name="DataCheckPemasok" value="1">
                                                                 <font style="margin-left: 5px;">Ganti Data Pemasok
                                                                 </font>
                                                             </div>
-                                                            <div class="form-group" id="text"
-                                                                style="display:none;background-color: yellow">
+                                                            <div class="form-group" id="text" style="display:none;background-color: yellow">
                                                                 <label for="IdNamaTempatAsalPemasok">Nama</label>
-                                                                <input type="hidden" name="OnePemasok"
-                                                                    value="<?= $resultDataCK5PLB['ID_PENGUSAHA'] ?>">
-                                                                <input type="hidden" name="TwoPemasok"
-                                                                    value="<?= $resultDataCK5PLB['NAMA_PENGUSAHA'] ?>">
-                                                                <input type="hidden" name="ThreePemasok"
-                                                                    value="<?= $resultDataCK5PLB['ALAMAT_PENGUSAHA'] ?>">
-                                                                <select class="form-control"
-                                                                    name="InputNamaTempatAsalPemasok"
-                                                                    id="IdNamaTempatAsalPemasok"
-                                                                    onchange="showTempatAsalPemasok(this.value)"
-                                                                    style="background: yellow;">
+                                                                <input type="hidden" name="OnePemasok" value="<?= $resultDataCK5PLB['ID_PENGUSAHA'] ?>">
+                                                                <input type="hidden" name="TwoPemasok" value="<?= $resultDataCK5PLB['NAMA_PENGUSAHA'] ?>">
+                                                                <input type="hidden" name="ThreePemasok" value="<?= $resultDataCK5PLB['ALAMAT_PENGUSAHA'] ?>">
+                                                                <select class="form-control" name="InputNamaTempatAsalPemasok" id="IdNamaTempatAsalPemasok" onchange="showTempatAsalPemasok(this.value)" style="background: yellow;">
                                                                     <option>-- Nama Pengusaha --</option>
                                                                     <?php
                                                                     $resultIdentitasTwo = $dbcon->query("SELECT ID,NPWP,NAMA FROM referensi_pengusaha WHERE NPWP!='' ORDER BY NAMA ASC");
                                                                     foreach ($resultIdentitasTwo as $rowIdentitasTwo) {
                                                                     ?>
-                                                                    <option value="<?= $rowIdentitasTwo['NAMA'] ?>">
-                                                                        <?= $rowIdentitasTwo['NAMA'] ?> -
-                                                                        <?= $rowIdentitasTwo['NPWP'] ?></option>
+                                                                        <option value="<?= $rowIdentitasTwo['NAMA'] ?>">
+                                                                            <?= $rowIdentitasTwo['NAMA'] ?> -
+                                                                            <?= $rowIdentitasTwo['NPWP'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
                                                             <div id="TempatAsalPemasok"></div>
                                                             <div class="form-group">
                                                                 <label for="IdNamaKodeOne">Nama, Kode Kantor</label>
-                                                                <div
-                                                                    class="input-group bootstrap-NULL bootstrap-touchspin-injected">
-                                                                    <select class="form-control" name="InputNamaKodeOne"
-                                                                        id="IdNamaKodeOne"
-                                                                        onchange="showKodeOne(this.value)">
+                                                                <div class="input-group bootstrap-NULL bootstrap-touchspin-injected">
+                                                                    <select class="form-control" name="InputNamaKodeOne" id="IdNamaKodeOne" onchange="showKodeOne(this.value)">
                                                                         <?php if ($resultDataCK5PLB['KODE_KANTOR'] == NULL || $resultDataCK5PLB['KODE_KANTOR'] == '') { ?>
-                                                                        <option>-- Kantor Pabean --</option>
+                                                                            <option>-- Kantor Pabean --</option>
                                                                         <?php } else { ?>
-                                                                        <option
-                                                                            value="<?= $resultDataCK5PLB['KODE_KANTOR']; ?>">
-                                                                            <?= $resultDataNamaKantor['URAIAN_KANTOR']; ?>
-                                                                            - <?= $resultDataCK5PLB['KODE_KANTOR']; ?>
-                                                                        </option>
-                                                                        <option>-- Kantor Pabean --</option>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_KANTOR']; ?>">
+                                                                                <?= $resultDataNamaKantor['URAIAN_KANTOR']; ?>
+                                                                                - <?= $resultDataCK5PLB['KODE_KANTOR']; ?>
+                                                                            </option>
+                                                                            <option>-- Kantor Pabean --</option>
                                                                         <?php } ?>
                                                                         <?php
                                                                         $resultKodeOne = $dbcon->query("SELECT * FROM referensi_kantor_pabean 
                                                                                                     ORDER BY URAIAN_KANTOR ASC");
                                                                         foreach ($resultKodeOne as $rowKodeOne) {
                                                                         ?>
-                                                                        <option
-                                                                            value="<?= $rowKodeOne['KODE_KANTOR'] ?>">
-                                                                            <?= $rowKodeOne['URAIAN_KANTOR'] ?> -
-                                                                            <?= $rowKodeOne['KODE_KANTOR'] ?></option>
+                                                                            <option value="<?= $rowKodeOne['KODE_KANTOR'] ?>">
+                                                                                <?= $rowKodeOne['URAIAN_KANTOR'] ?> -
+                                                                                <?= $rowKodeOne['KODE_KANTOR'] ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                     <span class="input-group-btn input-group-append">
-                                                                        <a href="#!"
-                                                                            class="btn btn-default bootstrap-touchspin-profil"
-                                                                            data-toggle="tooltip" data-placement="top"
-                                                                            title="" data-original-title="Kode Kantor">
+                                                                        <a href="#!" class="btn btn-default bootstrap-touchspin-profil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Kode Kantor">
                                                                             <div id="InputshowKodeOne">KD</div>
                                                                         </a>
                                                                     </span>
@@ -765,73 +705,54 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <label for="IDTEMPATTUJUANPENGGUNA"><u>TEMPAT TUJUAN
                                                                     PENGGUNA</u></label>
-                                                            <div
-                                                                style="display: flex;justify-content: flex-start;align-items: center;font-size: 12px;font-weight: 500;">
-                                                                <input type="checkbox" id="myCheckTujuan"
-                                                                    onclick="myFunctionTujuan()" name="DataCheckTujuan"
-                                                                    value="1">
+                                                            <div style="display: flex;justify-content: flex-start;align-items: center;font-size: 12px;font-weight: 500;">
+                                                                <input type="checkbox" id="myCheckTujuan" onclick="myFunctionTujuan()" name="DataCheckTujuan" value="1">
                                                                 <font style="margin-left: 5px;">Ganti Data Tujuan</font>
                                                             </div>
-                                                            <div class="form-group" id="textTujuan"
-                                                                style="display:none;background-color: yellow;">
+                                                            <div class="form-group" id="textTujuan" style="display:none;background-color: yellow;">
                                                                 <label for="IdNamaNamaTempatTujuan">Nama</label>
-                                                                <input type="hidden" name="OneTujuan"
-                                                                    value="<?= $resultDataCK5PLB['ID_PENERIMA_BARANG'] ?>">
-                                                                <input type="hidden" name="TwoTujuan"
-                                                                    value="<?= $resultDataCK5PLB['NAMA_PENERIMA_BARANG'] ?>">
-                                                                <input type="hidden" name="ThreeTujuan"
-                                                                    value="<?= $resultDataCK5PLB['ALAMAT_PENERIMA_BARANG'] ?>">
-                                                                <select class="form-control"
-                                                                    name="InputNamaTempatTujuan"
-                                                                    id="IdNamaNamaTempatTujuan"
-                                                                    onchange="showTempatTujuan(this.value)"
-                                                                    style="background: yellow;">
+                                                                <input type="hidden" name="OneTujuan" value="<?= $resultDataCK5PLB['ID_PENERIMA_BARANG'] ?>">
+                                                                <input type="hidden" name="TwoTujuan" value="<?= $resultDataCK5PLB['NAMA_PENERIMA_BARANG'] ?>">
+                                                                <input type="hidden" name="ThreeTujuan" value="<?= $resultDataCK5PLB['ALAMAT_PENERIMA_BARANG'] ?>">
+                                                                <select class="form-control" name="InputNamaTempatTujuan" id="IdNamaNamaTempatTujuan" onchange="showTempatTujuan(this.value)" style="background: yellow;">
                                                                     <option>-- Nama Pengusaha --</option>
                                                                     <?php
                                                                     $resultIdentitasTwo = $dbcon->query("SELECT ID,NPWP,NAMA FROM referensi_pengusaha WHERE NPWP!='' ORDER BY NAMA ASC");
                                                                     foreach ($resultIdentitasTwo as $rowIdentitasTwo) {
                                                                     ?>
-                                                                    <option value="<?= $rowIdentitasTwo['NAMA'] ?>">
-                                                                        <?= $rowIdentitasTwo['NAMA'] ?> -
-                                                                        <?= $rowIdentitasTwo['NPWP'] ?></option>
+                                                                        <option value="<?= $rowIdentitasTwo['NAMA'] ?>">
+                                                                            <?= $rowIdentitasTwo['NAMA'] ?> -
+                                                                            <?= $rowIdentitasTwo['NPWP'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
                                                             <div id="TempatTujuan"></div>
                                                             <div class="form-group">
                                                                 <label for="IdNamaKodeTwo">Nama, Kode Kantor</label>
-                                                                <div
-                                                                    class="input-group bootstrap-NULL bootstrap-touchspin-injected">
-                                                                    <select class="default-select2 form-control"
-                                                                        name="InputNamaKodeTwo" id="IdNamaKodeTwo"
-                                                                        onchange="showKodeTwo(this.value)">
+                                                                <div class="input-group bootstrap-NULL bootstrap-touchspin-injected">
+                                                                    <select class="default-select2 form-control" name="InputNamaKodeTwo" id="IdNamaKodeTwo" onchange="showKodeTwo(this.value)">
                                                                         <?php if ($resultDataCK5PLB['KODE_KANTOR_TUJUAN'] == NULL || $resultDataCK5PLB['KODE_KANTOR_TUJUAN'] == '') { ?>
-                                                                        <option>-- Kantor Pabean --</option>
+                                                                            <option>-- Kantor Pabean --</option>
                                                                         <?php } else { ?>
-                                                                        <option
-                                                                            value="<?= $resultDataCK5PLB['KODE_KANTOR_TUJUAN']; ?>">
-                                                                            <?= $resultDataNamaKantorTujuan['URAIAN_KANTOR']; ?>
-                                                                            -
-                                                                            <?= $resultDataCK5PLB['KODE_KANTOR_TUJUAN']; ?>
-                                                                        </option>
-                                                                        <option>-- Kantor Pabean --</option>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_KANTOR_TUJUAN']; ?>">
+                                                                                <?= $resultDataNamaKantorTujuan['URAIAN_KANTOR']; ?>
+                                                                                -
+                                                                                <?= $resultDataCK5PLB['KODE_KANTOR_TUJUAN']; ?>
+                                                                            </option>
+                                                                            <option>-- Kantor Pabean --</option>
                                                                         <?php } ?>
                                                                         <?php
                                                                         $resultKodeTwo = $dbcon->query("SELECT * FROM referensi_kantor_pabean 
                                                                                                     ORDER BY URAIAN_KANTOR ASC");
                                                                         foreach ($resultKodeTwo as $rowKodeTwo) {
                                                                         ?>
-                                                                        <option
-                                                                            value="<?= $rowKodeTwo['KODE_KANTOR'] ?>">
-                                                                            <?= $rowKodeTwo['URAIAN_KANTOR'] ?> -
-                                                                            <?= $rowKodeTwo['KODE_KANTOR'] ?></option>
+                                                                            <option value="<?= $rowKodeTwo['KODE_KANTOR'] ?>">
+                                                                                <?= $rowKodeTwo['URAIAN_KANTOR'] ?> -
+                                                                                <?= $rowKodeTwo['KODE_KANTOR'] ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                     <span class="input-group-btn input-group-append">
-                                                                        <a href="#!"
-                                                                            class="btn btn-default bootstrap-touchspin-profil"
-                                                                            data-toggle="tooltip" data-placement="top"
-                                                                            title="" data-original-title="Kode Kantor">
+                                                                        <a href="#!" class="btn btn-default bootstrap-touchspin-profil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Kode Kantor">
                                                                             <div id="InputshowKodeTwo">KD</div>
                                                                         </a>
                                                                     </span>
@@ -842,29 +763,24 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                             <div class="form-group">
                                                                 <label for="IdCaraPengangkutan">Cara
                                                                     Pengangkutan</label>
-                                                                <select class="form-control"
-                                                                    name="InputCaraPengangkutan"
-                                                                    id="IdCaraPengangkutan">
+                                                                <select class="form-control" name="InputCaraPengangkutan" id="IdCaraPengangkutan">
                                                                     <?php if ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == NULL || $resultDataCK5PLB['KODE_CARA_ANGKUT'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?> -
-                                                                        Darat</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?> -
-                                                                        Laut</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == 3) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?> -
-                                                                        Udara</option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == 1) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?> -
+                                                                                Darat</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == 2) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?> -
+                                                                                Laut</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_CARA_ANGKUT'] == 3) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_CARA_ANGKUT']; ?> -
+                                                                                Udara</option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Darat</option>
                                                                     <option value="2">2 - Laut</option>
@@ -876,8 +792,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-12"
-                                                            style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
+                                                        <div class="col-md-12" style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
                                                             <label for="IDPEMBERITAHUAN">G. PEMBERITAHUAN</label>
                                                         </div>
                                                     </div>
@@ -885,27 +800,21 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="IdNamaPIC">Nama PIC</label>
-                                                                <input type="hidden" class="form-control" name="InputID"
-                                                                    id="IdID" value="<?= $resultHeadSetting['id']; ?>">
-                                                                <input type="text" class="form-control"
-                                                                    name="InputNamaPIC" id="IdNamaPIC"
-                                                                    value="<?= $resultHeadSetting['pic_name']; ?>">
+                                                                <input type="hidden" class="form-control" name="InputID" id="IdID" value="<?= $resultHeadSetting['id']; ?>">
+                                                                <input type="text" class="form-control" name="InputNamaPIC" id="IdNamaPIC" value="<?= $resultHeadSetting['pic_name']; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="IdJabatanPIC">Jabatan PIC</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="InputJabatanPIC" id="IdJabatanPIC"
-                                                                    value="<?= $resultHeadSetting['pic_title']; ?>">
+                                                                <input type="text" class="form-control" name="InputJabatanPIC" id="IdJabatanPIC" value="<?= $resultHeadSetting['pic_title']; ?>">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-12"
-                                                            style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
+                                                        <div class="col-md-12" style="background: #ddd;display: flex;justify-content: left;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #000;font-size: 14px;font-weight: 800;border-radius: 5px;">
                                                             <label for="IDUNTUKPEMBAYARANJAMINAN">H. UNTUK PEMBAYARAN /
                                                                 JAMINAN</label>
                                                         </div>
@@ -914,28 +823,24 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="IdPembayaran">Pembayaran</label>
-                                                                <select class="form-control" name="InputPembayaran"
-                                                                    id="IdPembayaran">
+                                                                <select class="form-control" name="InputPembayaran" id="IdPembayaran">
                                                                     <?php if ($resultDataCK5PLB['KODE_PEMBAYAR'] == NULL || $resultDataCK5PLB['KODE_PEMBAYAR'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultDataCK5PLB['KODE_PEMBAYAR'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?> -
-                                                                        Bank Devisa</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_PEMBAYAR'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?> -
-                                                                        Kantor</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_PEMBAYAR'] == 3) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?> -
-                                                                        Kantor Pos</option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultDataCK5PLB['KODE_PEMBAYAR'] == 1) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?> -
+                                                                                Bank Devisa</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_PEMBAYAR'] == 2) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?> -
+                                                                                Kantor</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_PEMBAYAR'] == 3) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_PEMBAYAR']; ?> -
+                                                                                Kantor Pos</option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Bank Devisa</option>
                                                                     <option value="2">2 - Kantor</option>
@@ -950,34 +855,29 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="IdJaminan">Jaminan</label>
-                                                                <select class="form-control" name="InputJaminan"
-                                                                    id="IdJaminan">
+                                                                <select class="form-control" name="InputJaminan" id="IdJaminan">
                                                                     <?php if ($resultDataCK5PLB['KODE_JAMINAN'] == NULL || $resultDataCK5PLB['KODE_JAMINAN'] == '') { ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } else { ?>
-                                                                    <?php if ($resultDataCK5PLB['KODE_JAMINAN'] == 1) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> -
-                                                                        Tunai</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_JAMINAN'] == 2) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> - Bank
-                                                                        Garansi</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_JAMINAN'] == 3) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> -
-                                                                        Excise Bond</option>
-                                                                    <?php } elseif ($resultDataCK5PLB['KODE_JAMINAN'] == 4) { ?>
-                                                                    <option
-                                                                        value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
-                                                                        <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> -
-                                                                        <?= $resultDataCK5PLB['KODE_JAMINAN_LAINNYA']; ?>
-                                                                    </option>
-                                                                    <?php } ?>
-                                                                    <option>-- Pilih --</option>
+                                                                        <?php if ($resultDataCK5PLB['KODE_JAMINAN'] == 1) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> -
+                                                                                Tunai</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_JAMINAN'] == 2) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> - Bank
+                                                                                Garansi</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_JAMINAN'] == 3) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> -
+                                                                                Excise Bond</option>
+                                                                        <?php } elseif ($resultDataCK5PLB['KODE_JAMINAN'] == 4) { ?>
+                                                                            <option value="<?= $resultDataCK5PLB['KODE_JAMINAN']; ?>">
+                                                                                <?= $resultDataCK5PLB['KODE_JAMINAN']; ?> -
+                                                                                <?= $resultDataCK5PLB['KODE_JAMINAN_LAINNYA']; ?>
+                                                                            </option>
+                                                                        <?php } ?>
+                                                                        <option>-- Pilih --</option>
                                                                     <?php } ?>
                                                                     <option value="1">1 - Tunai</option>
                                                                     <option value="2">2 - Bank Garansi</option>
@@ -986,14 +886,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6" id="LainnyaJaminan"
-                                                            style="display: none;">
+                                                        <div class="col-md-6" id="LainnyaJaminan" style="display: none;">
                                                             <div class="form-group">
                                                                 <label for="IdJaminanLainnya">Jaminan Lainnya</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="InputJaminanLainnya" id="IdJaminanLainnya"
-                                                                    placeholder="Jaminan Lainnya ..."
-                                                                    value="<?= $resultDataCK5PLB['KODE_JAMINAN_LAINNYA']; ?>" />
+                                                                <input type="text" class="form-control" name="InputJaminanLainnya" id="IdJaminanLainnya" placeholder="Jaminan Lainnya ..." value="<?= $resultDataCK5PLB['KODE_JAMINAN_LAINNYA']; ?>" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1002,25 +898,21 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                         </fieldset>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i
-                                                class="fas fa-times-circle"></i> Tutup</a>
+                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
                                         <input type="hidden" name="AJUDATA" value="<?= $_GET['AJU']; ?>">
                                         <input type="hidden" name="AJUDATAID" value="<?= $dataGETAJUID; ?>">
-                                        <button type="submit" name="update_ck5tpb_oke" class="btn btn-primary"><i
-                                                class="fas fa-save"></i> Simpan</button>
+                                        <button type="submit" name="update_ck5tpb_oke" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <!-- Update CK5 Sarinah -->
-                    <a href="report_ck5_sarinah_detail_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank"
-                        class="btn btn-sm btn-white m-b-10">
+                    <a href="report_ck5_sarinah_detail_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
                         <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
                         Hal. 1
                     </a>
-                    <a href="report_ck5_sarinah_detail_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank"
-                        class="btn btn-sm btn-white m-b-10">
+                    <a href="report_ck5_sarinah_detail_print.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
                         <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print Hal. 1
                     </a>
                 </div>
@@ -1031,9 +923,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
             <div class="col-md-3">
                 <div style="display: flex;justify-content: center;">
                     <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                    <img src="assets/images/logo/logo-default.png" width="30%">
+                        <img src="assets/images/logo/logo-default.png" width="30%">
                     <?php } else { ?>
-                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                        <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
                     <?php } ?>
                 </div>
             </div>
@@ -1051,8 +943,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
         <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
         <div class="invoice-content">
             <div class="table-responsive">
-                <table border=0 cellpadding=0 cellspacing=0 width=1038 class=xl6911096
-                    style='border-collapse:collapse;table-layout:fixed;width:100%'>
+                <table border=0 cellpadding=0 cellspacing=0 width=1038 class=xl6911096 style='border-collapse:collapse;table-layout:fixed;width:100%'>
                     <col class=xl6911096 width=32 style='mso-width-source:userset;mso-width-alt:1170;width:24pt'>
                     <col class=xl6911096 width=158 style='mso-width-source:userset;mso-width-alt:5778;width:119pt'>
                     <col class=xl6911096 width=17 style='mso-width-source:userset;mso-width-alt:621;width:13pt'>
@@ -1078,8 +969,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                     <col class=xl6911096 width=62 style='mso-width-source:userset;mso-width-alt:2267;width:47pt'>
                     <col class=xl6911096 width=97 style='mso-width-source:userset;mso-width-alt:3547;width:73pt'>
                     <tr height=17 style='height:12.75pt'>
-                        <td height=17 class=xl6911096 width=32 style='height:12.75pt;width:24pt'><a
-                                name="RANGE!A1:Y89"></a></td>
+                        <td height=17 class=xl6911096 width=32 style='height:12.75pt;width:24pt'><a name="RANGE!A1:Y89"></a></td>
                         <td class=xl6911096 width=158 style='width:119pt'></td>
                         <td class=xl6911096 width=17 style='width:13pt'></td>
                         <td class=xl6911096 width=21 style='width:16pt'></td>
@@ -1106,30 +996,24 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl6911096 width=97 style='width:73pt'></td>
                     </tr>
                     <tr height=21 style='height:15.75pt'>
-                        <td colspan=24 height=21 class=xl14911096
-                            style='height:15.75pt;border-top: 0.5pt solid windowtext;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;'>
+                        <td colspan=24 height=21 class=xl14911096 style='height:15.75pt;border-top: 0.5pt solid windowtext;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;'>
                             PEMBERITAHUAN MUTASI BARANG KENA CUKAI ( PMBKC )</td>
-                        <td class=xl7011096
-                            style="border-top: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">CK<span
-                                style='mso-spacerun:yes'></span>5</td>
+                        <td class=xl7011096 style="border-top: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">CK<span style='mso-spacerun:yes'></span>5</td>
                     </tr>
                     <tr height=23 style='mso-height-source:userset;height:17.25pt'>
-                        <td colspan=25 class=xl8311096 colspan=2
-                            style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-top: 0.5pt solid windowtext;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">
+                        <td colspan=25 class=xl8311096 colspan=2 style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-top: 0.5pt solid windowtext;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">
                             HEADER</td>
                     </tr>
                     <tr height=17 style='height:12.75pt'>
                         <td class=xl15011096></td>
-                        <td colspan=1 style="height:12.75pt;border-top: 0.5pt solid windowtext;" height=17
-                            style='height:12.75pt'>Kantor</td>
+                        <td colspan=1 style="height:12.75pt;border-top: 0.5pt solid windowtext;" height=17 style='height:12.75pt'>Kantor</td>
                         <td class=xl7111096>&nbsp;</td>
                         <td class=xl7211096>:</td>
                         <td class=xl7111096 colspan=6><?= $resultDataNamaKantor['URAIAN_KANTOR']; ?></td>
                         <td class=xl7111096>&nbsp;</td>
                         <td class=xl7111096>&nbsp;</td>
                         <td class=xl7111096>&nbsp;</td>
-                        <td class=xl7111096 colspan=2>Kode<span
-                                style='mso-spacerun:yes'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+                        <td class=xl7111096 colspan=2>Kode<span style='mso-spacerun:yes'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
                         <td colspan=2 class=xl14411096 style='border-right:.5pt solid black'>
                             <?= $resultDataCK5PLB['KODE_KANTOR']; ?></td>
                         <td class=xl7211096>&nbsp;</td>
@@ -1234,10 +1118,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl6911096></td>
                         <td class=xl7611096>4.</td>
                         <?php if ($resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA'] == NULL || $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA'] == '' || $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA'] == 'Kosong') { ?>
-                        <td class=xl6911096 colspan=2>Lainnya……..</td>
+                            <td class=xl6911096 colspan=2>Lainnya……..</td>
                         <?php } else { ?>
-                        <td class=xl6911096 colspan=2>Lainnya:
-                            <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA'] ?></td>
+                            <td class=xl6911096 colspan=2>Lainnya:
+                                <?= $resultBahanBakuTarif['KODE_KOMODITI_CUKAI_LAINNYA'] ?></td>
                         <?php } ?>
                         <td class=xl7711096>&nbsp;</td>
                     </tr>
@@ -1300,10 +1184,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl6911096></td>
                         <td class=xl7611096>4.</td>
                         <?php if ($resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA'] == NULL || $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA'] == '' || $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA'] == 'Kosong') { ?>
-                        <td class=xl6911096 colspan=2>Lainnya……..</td>
+                            <td class=xl6911096 colspan=2>Lainnya……..</td>
                         <?php } else { ?>
-                        <td class=xl6911096 colspan=2>Lainnya:
-                            <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA'] ?></td>
+                            <td class=xl6911096 colspan=2>Lainnya:
+                                <?= $resultDataCK5PLB['KODE_JENIS_PEMBERITAHUAN_LAINNYA'] ?></td>
                         <?php } ?>
                         <td class=xl7711096>&nbsp;</td>
                     </tr>
@@ -1565,8 +1449,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl8211096>&nbsp;</td>
                     </tr>
                     <tr height=23 style='mso-height-source:userset;height:17.25pt'>
-                        <td colspan=25 class=xl8311096 colspan=2
-                            style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">
+                        <td colspan=25 class=xl8311096 colspan=2 style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">
                             E. <u>Data Pemberitahuan</u></td>
                     </tr>
                     <tr height=25 style='mso-height-source:userset;height:18.75pt'>
@@ -1678,8 +1561,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl8911096 width=62 style='width:47pt'></td>
                         <td class=xl8811096 width=20 style='width:15pt'></td>
                         <td class=xl6911096 colspan=6 style='border-right:.5pt solid black'>
-                            <textarea
-                                class="for-area-two"><?= $resultDataCK5PLB['ALAMAT_PENERIMA_BARANG']; ?></textarea>
+                            <textarea class="for-area-two"><?= $resultDataCK5PLB['ALAMAT_PENERIMA_BARANG']; ?></textarea>
                         </td>
                     </tr>
                     <tr height=21 style='mso-height-source:userset;height:15.75pt'>
@@ -1802,10 +1684,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 if (mysqli_num_rows($dataNISJ) > 0) {
                                     while ($rowdataNISJ = mysqli_fetch_array($dataNISJ)) {
                                 ?>
-                                <font><?= $rowdataNISJ['NOMOR_DOKUMEN']; ?></font>
-                                <?php } ?>
+                                        <font><?= $rowdataNISJ['NOMOR_DOKUMEN']; ?></font>
+                                    <?php } ?>
                                 <?php } else { ?>
-                                Kosong
+                                    Kosong
                                 <?php } ?>
                             </div>
                         </td>
@@ -1830,10 +1712,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                                 if (mysqli_num_rows($dataNISJTanggal) > 0) {
                                     while ($rowdataNISJTanggal = mysqli_fetch_array($dataNISJTanggal)) {
                                 ?>
-                                <font><?= $rowdataNISJTanggal['TANGGAL_DOKUMEN']; ?></font>
-                                <?php } ?>
+                                        <font><?= $rowdataNISJTanggal['TANGGAL_DOKUMEN']; ?></font>
+                                    <?php } ?>
                                 <?php } else { ?>
-                                Kosong
+                                    Kosong
                                 <?php } ?>
                             </div>
                         </td>
@@ -2063,32 +1945,24 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl8211096>&nbsp;</td>
                     </tr>
                     <tr height=19 style='mso-height-source:userset;height:14.25pt'>
-                        <td colspan=25 class=xl8311096 colspan=2
-                            style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">
+                        <td colspan=25 class=xl8311096 colspan=2 style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">
                             F. <u>Uraian Barang</u></td>
                     </tr>
                     <tr height=17 style='mso-height-source:userset;height:12.75pt'>
-                        <td rowspan=3 height=51 class=xl13811096 width=82
-                            style='border-bottom:.5pt solid black;height:38.25pt;width:74pt'>22.<br>No.Urut</td>
+                        <td rowspan=3 height=51 class=xl13811096 width=82 style='border-bottom:.5pt solid black;height:38.25pt;width:74pt'>22.<br>No.Urut</td>
                         <td rowspan=3 class=xl13811096 width=158 style='border-bottom:.5pt solid black;width:119pt'>23.
                             Perincian Jumlah Jenis Merk &amp; Nomor Koli</td>
-                        <td colspan=7 rowspan=3 class=xl13211096 width=185
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:140pt'>24. Uraian
+                        <td colspan=7 rowspan=3 class=xl13211096 width=185 style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:140pt'>24. Uraian
                             jenis Barang Secara lengkap</td>
-                        <td colspan=4 rowspan=3 class=xl13211096 width=92
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:70pt'>25. Jumlah
+                        <td colspan=4 rowspan=3 class=xl13211096 width=92 style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:70pt'>25. Jumlah
                             dan Jenis Satuan barang<span style='mso-spacerun:yes'></span></td>
-                        <td colspan=4 rowspan=3 class=xl13211096 width=164
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:123pt'>26. HJB
+                        <td colspan=4 rowspan=3 class=xl13211096 width=164 style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:123pt'>26. HJB
                             HJP*) (Rp.)</td>
-                        <td colspan=2 rowspan=3 class=xl13211096 width=82
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:62pt'>27. Tarif
+                        <td colspan=2 rowspan=3 class=xl13211096 width=82 style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:62pt'>27. Tarif
                             Cukai</td>
-                        <td colspan=2 rowspan=3 class=xl13211096 width=111
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:83pt'>28. Jumlah
+                        <td colspan=2 rowspan=3 class=xl13211096 width=111 style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:83pt'>28. Jumlah
                             Cukai (Rp.)</td>
-                        <td colspan=3 rowspan=3 class=xl13211096 width=117
-                            style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:88pt'>29. Jumlah
+                        <td colspan=3 rowspan=3 class=xl13211096 width=117 style='border-right:.5pt solid black;border-bottom:.5pt solid black;width:88pt'>29. Jumlah
                             Devisa (USD)</td>
                         <td rowspan=3 class=xl13811096 width=97 style='border-bottom:.5pt solid black;width:73pt'>
                             30.Keterangan</td>
@@ -2173,8 +2047,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl7711096>&nbsp;</td>
                         <td class=xl9811096 style='border-left:none'>&nbsp;</td>
                         <td class=xl9911096>&nbsp;</td>
-                        <td colspan=2 class=xl11311096 style='border-right:.5pt solid black;border-left:none'><span
-                                style='mso-spacerun:yes'></span>==== Terlampir===<span style='mso-spacerun:yes'></span>
+                        <td colspan=2 class=xl11311096 style='border-right:.5pt solid black;border-left:none'><span style='mso-spacerun:yes'></span>==== Terlampir===<span style='mso-spacerun:yes'></span>
                         </td>
                         <td class=xl6811096></td>
                         <td class=xl6811096></td>
@@ -2263,8 +2136,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl8211096>&nbsp;</td>
                     </tr>
                     <tr height=21 style='mso-height-source:userset;height:15.75pt'>
-                        <td height=21 class=xl10411096 colspan=2
-                            style="height:15.75pt;font-weight: 800;text-transform: uppercase;">G.
+                        <td height=21 class=xl10411096 colspan=2 style="height:15.75pt;font-weight: 800;text-transform: uppercase;">G.
                             <u>Pemberitahuan</u><span style='mso-spacerun:yes'></span>
                             <font class="font511096"></font>
                         </td>
@@ -2279,8 +2151,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                         <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                         <td class=xl7311096 style='border-top:none'>&nbsp;</td>
-                        <td class=xl10411096 colspan=5
-                            style="height:15.75pt;font-weight: 800;text-transform: uppercase;">H. <u>Untuk Pembayaran /
+                        <td class=xl10411096 colspan=5 style="height:15.75pt;font-weight: 800;text-transform: uppercase;">H. <u>Untuk Pembayaran /
                                 Jaminan</u></td>
                         <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                         <td class=xl7111096 style='border-top:none'>&nbsp;</td>
@@ -2303,8 +2174,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td></td>
                         <td class=xl6911096 colspan=2>1. Bank Devisa</td>
                         <td class=xl6911096 colspan=3>2. Kantor</td>
-                        <td class=xl6911096 colspan=1 style='border-right:.5pt solid black'><span
-                                style='mso-spacerun:yes'></span>3. Kantor Pos</td>
+                        <td class=xl6911096 colspan=1 style='border-right:.5pt solid black'><span style='mso-spacerun:yes'></span>3. Kantor Pos</td>
                     </tr>
                     <tr height=17 style='height:12.75pt'>
                         <td height=17 class=xl7811096 style='height:12.75pt'>&nbsp;</td>
@@ -2346,9 +2216,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl6911096></td>
                         <!-- <td class=xl6911096 colspan=2>4. Lainnya ...</td> -->
                         <?php if ($resultDataCK5PLB['KODE_JAMINAN_LAINNYA'] == NULL || $resultDataCK5PLB['KODE_JAMINAN_LAINNYA'] == '' || $resultDataCK5PLB['KODE_JAMINAN_LAINNYA'] == 'Kosong') { ?>
-                        <td class=xl6911096 colspan=2>4. Lainnya……..</td>
+                            <td class=xl6911096 colspan=2>4. Lainnya……..</td>
                         <?php } else { ?>
-                        <td class=xl6911096 colspan=2>4. Lainnya: <?= $resultDataCK5PLB['KODE_JAMINAN_LAINNYA'] ?></td>
+                            <td class=xl6911096 colspan=2>4. Lainnya: <?= $resultDataCK5PLB['KODE_JAMINAN_LAINNYA'] ?></td>
                         <?php } ?>
                         <td class=xl6911096></td>
                         <td class=xl6911096></td>
@@ -2411,8 +2281,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl7611096>:</td>
                         <td colspan=6 class=xl7511096 style="background: transparent;">
                             <?= $resultDataNPPBKCPemasok['NPPBKC']; ?></td>
-                        <td colspan=4 class=xl7611096 style='border-right:.5pt solid black'><span
-                                style='mso-spacerun:yes'></span></td>
+                        <td colspan=4 class=xl7611096 style='border-right:.5pt solid black'><span style='mso-spacerun:yes'></span></td>
                         <td class=xl7811096 style='border-left:none'>&nbsp;</td>
                         <td class=xl7611096>d.</td>
                         <td class=xl6911096 colspan=6>Tanggal Bukti Pembayaran/Jaminan</td>
@@ -2446,8 +2315,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td height=17 class=xl7811096 style='height:12.75pt'>&nbsp;</td>
                         <td class=xl6911096></td>
                         <td class=xl6911096></td>
-                        <td colspan=10 class=xl7611096 style='border-right:.5pt solid black'>Jakarta,<span
-                                style='mso-spacerun:yes'></span> <?= date_indo(date('Y-m-d')); ?></td>
+                        <td colspan=10 class=xl7611096 style='border-right:.5pt solid black'>Jakarta,<span style='mso-spacerun:yes'></span> <?= date_indo(date('Y-m-d')); ?></td>
                         <td class=xl7811096 style='border-left:none'>&nbsp;</td>
                         <td class=xl6911096></td>
                         <td class=xl6911096></td>
@@ -2697,9 +2565,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl8211096>&nbsp;</td>
                     </tr>
                     <tr height=17 style='height:12.75pt'>
-                        <td height=17
-                            style="border-left: 0.5pt solid windowtext;text-transform: uppercase;font-weight: 800;">I.
-                            <u>Diisi Oleh Pejabat Bea dan Cukai :</u><span style='mso-spacerun:yes'></span></td>
+                        <td height=17 style="border-left: 0.5pt solid windowtext;text-transform: uppercase;font-weight: 800;">I.
+                            <u>Diisi Oleh Pejabat Bea dan Cukai :</u><span style='mso-spacerun:yes'></span>
+                        </td>
                         <td class=xl10811096 colspan=5></td>
                         <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                         <td class=xl7111096 style='border-top:none'>&nbsp;</td>
@@ -2768,8 +2636,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl10011096 style='border-left:none'></td>
                         <td class=xl6911096></td>
                         <td class=xl6911096 colspan=3 style='border-right:.5pt solid black'>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jakarta, <span
-                                style='mso-spacerun:yes'></span><?= date_indo(date('Y-m-d')); ?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pejabat
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jakarta, <span style='mso-spacerun:yes'></span><?= date_indo(date('Y-m-d')); ?><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pejabat
                             Bea dan Cukai</td>
                     </tr>
                     <tr height=17 style='height:12.75pt'>
@@ -2898,8 +2765,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl6911096></td>
                         <td class=xl6911096></td>
                         <td class=xl6911096></td>
-                        <td colspan=5 class=xl7511096 style='border-right:.5pt solid black'>Nomor Buku Rekening<span
-                                style='mso-spacerun:yes'></span></td>
+                        <td colspan=5 class=xl7511096 style='border-right:.5pt solid black'>Nomor Buku Rekening<span style='mso-spacerun:yes'></span></td>
                         <td class=xl9511096 style='border-left:none'></td>
                         <td class=xl6911096></td>
                         <td class=xl6911096></td>
@@ -2980,8 +2846,7 @@ div.table-responsive>div.dataTables_wrapper>div.row {
                         <td class=xl8211096>&nbsp;</td>
                     </tr>
                     <tr height=19 style='height:14.25pt'>
-                        <td height=19 class=xl6812727 colspan=3 style='height:14.25pt'>*)<span
-                                style='mso-spacerun:yes'></span>Coret yang tidak perlu</td>
+                        <td height=19 class=xl6812727 colspan=3 style='height:14.25pt'>*)<span style='mso-spacerun:yes'></span>Coret yang tidak perlu</td>
                         <td class=xl6912727></td>
                         <td class=xl6912727></td>
                         <td class=xl6912727></td>
@@ -3034,138 +2899,138 @@ div.table-responsive>div.dataTables_wrapper>div.row {
     <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
     <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
     <script>
-    // Show and Hidden
-    $(function() {
-        $("#IdJenisBarangKenaCukai").change(function() {
-            if ($(this).val() == 4) {
-                $("#LainnyaHeaderA").show();
-            } else {
-                $("#LainnyaHeaderA").hide();
-            }
+        // Show and Hidden
+        $(function() {
+            $("#IdJenisBarangKenaCukai").change(function() {
+                if ($(this).val() == 4) {
+                    $("#LainnyaHeaderA").show();
+                } else {
+                    $("#LainnyaHeaderA").hide();
+                }
+            });
         });
-    });
-    $(function() {
-        $("#IdJenisPemberitahuan").change(function() {
-            if ($(this).val() == 4) {
-                $("#LainnyaHeaderD").show();
-            } else {
-                $("#LainnyaHeaderD").hide();
-            }
+        $(function() {
+            $("#IdJenisPemberitahuan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#LainnyaHeaderD").show();
+                } else {
+                    $("#LainnyaHeaderD").hide();
+                }
+            });
         });
-    });
-    $(function() {
-        $("#IdJaminan").change(function() {
-            if ($(this).val() == 4) {
-                $("#LainnyaJaminan").show();
-            } else {
-                $("#LainnyaJaminan").hide();
-            }
+        $(function() {
+            $("#IdJaminan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#LainnyaJaminan").show();
+                } else {
+                    $("#LainnyaJaminan").hide();
+                }
+            });
         });
-    });
 
-    // TempatAsalPemasok
-    function showTempatAsalPemasok(v_tap) {
-        if (v_tap == "") {
-            document.getElementById("TempatAsalPemasok").innerHTML = "";
-            return;
+        // TempatAsalPemasok
+        function showTempatAsalPemasok(v_tap) {
+            if (v_tap == "") {
+                document.getElementById("TempatAsalPemasok").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("TempatAsalPemasok").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_tap=" + v_tap, true);
+            xmlhttp.send();
         }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("TempatAsalPemasok").innerHTML = this.responseText;
+
+        // TempatTujuan
+        function showTempatTujuan(v_ttp) {
+            if (v_ttp == "") {
+                document.getElementById("TempatTujuan").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("TempatTujuan").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_ttp=" + v_ttp, true);
+            xmlhttp.send();
+        }
+
+        // showKodeOne
+        function showKodeOne(kode_one) {
+            if (kode_one == "") {
+                document.getElementById("InputshowKodeOne").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
+            xmlhttp.send();
+        }
+        // showKodeTwo
+        function showKodeTwo(kode_two) {
+            if (kode_two == "") {
+                document.getElementById("InputshowKodeTwo").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
+            xmlhttp.send();
+        }
+
+        // Ganti Data Asal Pemasok
+        function myFunction() {
+            var checkBox = document.getElementById("myCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
             }
         }
-        xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_tap=" + v_tap, true);
-        xmlhttp.send();
-    }
 
-    // TempatTujuan
-    function showTempatTujuan(v_ttp) {
-        if (v_ttp == "") {
-            document.getElementById("TempatTujuan").innerHTML = "";
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("TempatTujuan").innerHTML = this.responseText;
+        // Ganti Data Tujuan Pengguna
+        function myFunctionTujuan() {
+            var checkBox = document.getElementById("myCheckTujuan");
+            var text = document.getElementById("textTujuan");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
             }
         }
-        xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_ttp=" + v_ttp, true);
-        xmlhttp.send();
-    }
 
-    // showKodeOne
-    function showKodeOne(kode_one) {
-        if (kode_one == "") {
-            document.getElementById("InputshowKodeOne").innerHTML = "";
-            return;
+        // UPDATE SUCCESS
+        if (window?.location?.href?.indexOf('UpdateSuccess<?= $ID ?>') > -1) {
+            Swal.fire({
+                title: 'Data berhasil diupdate!',
+                icon: 'success',
+                text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            })
+            history.replaceState({}, '', './report_ck5_sarinah_detail.php?AJU=<?= $ID ?>');
         }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
-            }
+        // UPDATE FAILEDú
+        if (window?.location?.href?.indexOf('UpdateFailed<?= $ID ?>') > -1) {
+            Swal.fire({
+                title: 'Data gagal diupdate!',
+                icon: 'error',
+                text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            })
+            history.replaceState({}, '', './report_ck5_sarinah_detail.php?AJU=<?= $ID ?>');
         }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
-        xmlhttp.send();
-    }
-    // showKodeTwo
-    function showKodeTwo(kode_two) {
-        if (kode_two == "") {
-            document.getElementById("InputshowKodeTwo").innerHTML = "";
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
-            }
-        }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
-        xmlhttp.send();
-    }
-
-    // Ganti Data Asal Pemasok
-    function myFunction() {
-        var checkBox = document.getElementById("myCheck");
-        var text = document.getElementById("text");
-        if (checkBox.checked == true) {
-            text.style.display = "block";
-        } else {
-            text.style.display = "none";
-        }
-    }
-
-    // Ganti Data Tujuan Pengguna
-    function myFunctionTujuan() {
-        var checkBox = document.getElementById("myCheckTujuan");
-        var text = document.getElementById("textTujuan");
-        if (checkBox.checked == true) {
-            text.style.display = "block";
-        } else {
-            text.style.display = "none";
-        }
-    }
-
-    // UPDATE SUCCESS
-    if (window?.location?.href?.indexOf('UpdateSuccess<?= $ID ?>') > -1) {
-        Swal.fire({
-            title: 'Data berhasil diupdate!',
-            icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './report_ck5_sarinah_detail.php?AJU=<?= $ID ?>');
-    }
-    // UPDATE FAILEDú
-    if (window?.location?.href?.indexOf('UpdateFailed<?= $ID ?>') > -1) {
-        Swal.fire({
-            title: 'Data gagal diupdate!',
-            icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './report_ck5_sarinah_detail.php?AJU=<?= $ID ?>');
-    }
     </script>
 </body>
 

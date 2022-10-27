@@ -82,7 +82,7 @@ if (isset($_POST["update_pass"])) {
         $InputModul           = 'Profile/Ganti Password';
         $InputDescription     = $me . " Ganti Password, Simpan Data Sebagai Log Ganti Password";
         $InputAction          = 'Update';
-        $InputDate            = date('Y-m-d h:m:i');
+        $InputDate            = date('Y-m-d H:m:i');
 
         $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                                (id,IDUNIQ,username,modul,description,action,date_created)

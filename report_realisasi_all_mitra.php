@@ -23,7 +23,7 @@ if (isset($_GET["find_"])) {
     $InputModul           = 'Report/Laporan Realisasi';
     $InputDescription     = $me . " Lihat Semua Mitra, Simpan Data Sebagai Report Laporan Realisasi";
     $InputAction          = 'Lihat Semua Mitra';
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate            = date('Y-m-d H:m:i');
 
     $query = $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
@@ -78,9 +78,9 @@ if (isset($_GET["find_"])) {
                         .button-top-table {
                             margin-bottom: 15px;
                         }
-                        
+
                         .icon-primary-excel {
-                            width:  20px;
+                            width: 20px;
                         }
 
                         .btn-primary-excel {
@@ -1882,14 +1882,14 @@ if (isset($_GET["find_"])) {
                                             $per_crt_total = $jml_crt_gol_total / $JmlCarton * 100;
                                             $per_ltr_total = $jml_ltr_gol_total / $JmlLiter * 100;
                                             ?>
-                                            <th style="text-align: center;background: <?= $bg_per_crt_a; ?>;"><?= round($per_crt_a,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_ltr_a; ?>;"><?= round($per_ltr_a,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_crt_b; ?>;"><?= round($per_crt_b,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_ltr_b; ?>;"><?= round($per_ltr_b,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_crt_c; ?>;"><?= round($per_crt_c,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_ltr_c; ?>;"><?= round($per_ltr_c,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_crt_total; ?>;"><?= round($per_crt_total,0,PHP_ROUND_HALF_UP) ?>%</th>
-                                            <th style="text-align: center;background: <?= $bg_per_ltr_total; ?>;"><?= round($per_ltr_total,0,PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_crt_a; ?>;"><?= round($per_crt_a, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_ltr_a; ?>;"><?= round($per_ltr_a, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_crt_b; ?>;"><?= round($per_crt_b, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_ltr_b; ?>;"><?= round($per_ltr_b, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_crt_c; ?>;"><?= round($per_crt_c, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_ltr_c; ?>;"><?= round($per_ltr_c, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_crt_total; ?>;"><?= round($per_crt_total, 0, PHP_ROUND_HALF_UP) ?>%</th>
+                                            <th style="text-align: center;background: <?= $bg_per_ltr_total; ?>;"><?= round($per_ltr_total, 0, PHP_ROUND_HALF_UP) ?>%</th>
                                         </tr>
                                     </tfoot>
                                 </table>

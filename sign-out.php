@@ -31,10 +31,10 @@ $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
 $resultme = mysqli_fetch_array($datame);
 
 $IDUNIQme             = $resultme['USRIDUNIQ'];
-$InputDate            = date('Y-m-d h:m:i');
+$InputDate            = date('Y-m-d H:m:i');
 $InputUsername        = $me;
 $InputModul           = 'Sign Out';
-$InputDescription     = $me . " Sign Out: " .  $InputDate .", Simpan Data Sebagai Log Sign Out";
+$InputDescription     = $me . " Sign Out: " .  $InputDate . ", Simpan Data Sebagai Log Sign Out";
 $InputAction          = 'Sign Out';
 
 $query .= $dbcon->query("INSERT INTO tbl_aktifitas
