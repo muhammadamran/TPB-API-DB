@@ -118,13 +118,13 @@ if (isset($_POST['show_all'])) {
                             $result = mysqli_fetch_array($data);
                             ?>
                             <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
-                                <div class="col-sm-2">
+                                <div>
                                     <?= $i ?>.
                                 </div>
-                                <div class="col-sm-3">
+                                <div>
                                     <img src="assets/img/png/box.png" alt="">
                                 </div>
-                                <div class="col-sm-3">
+                                <div>
                                     <font><?= $result['UKURAN']; ?></font>
                                 </div>
                             <?php } ?>
