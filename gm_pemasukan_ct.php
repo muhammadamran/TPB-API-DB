@@ -112,23 +112,38 @@ if (isset($_POST['show_all'])) {
                 </div>
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
-                        <?php
-                        $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-                        $result = mysqli_fetch_array($data);
-                        ?>
-                        <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
-                            <div>
-                                <div>
-                                    <?= $i ?>.
-                                </div>
-                                <div>
-                                    <img src="assets/img/png/box.png" style="width: 70px;" alt="">
-                                </div>
-                                <div>
-                                    <font><?= $result['UKURAN']; ?></font>
-                                </div>
-                            </div>
-                        <?php } ?>
+                        <div class="table-responsive">
+                            <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
+                                <thead>
+                                    <tr>
+                                        <th width="1%">No.</th>
+                                        <th style="text-align: center;">CT</th>
+                                        <th style="text-align: center;">Ukuran</th>
+                                        <th style="text-align: center;">-</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+                                    $result = mysqli_fetch_array($data);
+                                    ?>
+                                    <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
+                                        <tr>
+                                            <td><?= $i ?>.</td>
+                                            <td>
+                                                <img src="assets/img/png/box.png" style="width: 70px;" alt="">
+                                            </td>
+                                            <td>
+                                                <font><?= $result['UKURAN']; ?></font>
+                                            </td>
+                                            <td>
+                                                <font><?= $result['UKURAN']; ?></font>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </form>
                 </div>
             </div>
