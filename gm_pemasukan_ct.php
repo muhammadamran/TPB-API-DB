@@ -172,13 +172,30 @@ if (isset($_POST['show_all'])) {
         $('#TableData').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
+                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+            ],
+            "order": [],
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
+            iDisplayLength: -1
         });
     });
+
+    function checkAll(checkId) {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
+                if (inputs[i].checked == true) {
+                    inputs[i].checked = false;
+                } else if (inputs[i].checked == false) {
+                    inputs[i].checked = true;
+                }
+            }
+        }
+    }
+
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
