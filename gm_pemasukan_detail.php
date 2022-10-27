@@ -322,7 +322,9 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                            <div>
+                                                                <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                            </div>
                                                         </td>
                                                         <td style="text-align: center;">
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
