@@ -292,7 +292,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $noBarang = 0;
                                                 while ($rowBarang = mysqli_fetch_array($dataTable)) {
-                                                    $jml_pcs = $rowBarang['NETTO'];
+                                                    $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
                                                     $noBarang++;
                                             ?>
