@@ -75,18 +75,10 @@ if (isset($_POST['filter'])) {
     if ($_POST["AJU_PLB"] != '') {
         $AJU_PLB   = $_POST['AJU_PLB'];
     }
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_noAJU&AJU_PLB=' . $AJU_PLB);
-    $data = json_decode($content, true);
 }
 
 if (isset($_POST['show_all'])) {
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasuk.php?function=get_all');
-    $data = json_decode($content, true);
 }
-
-// NOMOR PENGAJUAN GB
-$contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
-$dataAJUGB = json_decode($contentAJUGB, true);
 ?>
 
 <!-- begin #content -->
@@ -211,10 +203,88 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 200) { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                if (isset($_POST['filter'])) {
+                                    $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
+                                                                rcd.status,rcd.keterangan,plb.ck5_plb_submit,
+                                                                rcd.rcd_id,
+                                                                rcd.bm_no_aju_plb,
+                                                                rcd.bm_tgl_masuk,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bm_remarks,
+                                                                rcd.bk_no_aju_sarinah,
+                                                                rcd.bk_tgl_keluar,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bk_remarks,
+                                                                rcd.keterangan,
+                                                                rcd.upload_beritaAcara_PLB,
+                                                                rcd.upload_beritaAcara_GB,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Sesuai,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Kurang' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Kurang,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Lebih' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Lebih,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Pecah' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Pecah,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Rusak' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Rusak,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_All
+                                                                FROM plb_header AS hdr
+                                                                LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
+                                                                LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
+                                                                WHERE hdr.NOMOR_AJU LIKE '%" . $_POST['AJU_PLB'] . "%' GROUP BY hdr.NOMOR_AJU", 0);
+                                } else if (isset($_POST['show_all'])) {
+                                    $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
+                                                                rcd.status,rcd.keterangan,plb.ck5_plb_submit,
+                                                                rcd.rcd_id,
+                                                                rcd.bm_no_aju_plb,
+                                                                rcd.bm_tgl_masuk,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bm_remarks,
+                                                                rcd.bk_no_aju_sarinah,
+                                                                rcd.bk_tgl_keluar,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bk_remarks,
+                                                                rcd.keterangan,
+                                                                rcd.upload_beritaAcara_PLB,
+                                                                rcd.upload_beritaAcara_GB,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Sesuai,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Kurang' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Kurang,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Lebih' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Lebih,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Pecah' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Pecah,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Rusak' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Rusak,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All
+                                                                FROM plb_header AS hdr
+                                                                LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
+                                                                LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
+                                                                GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC", 0);
+                                } else {
+                                    $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
+                                                                rcd.status,rcd.keterangan,plb.ck5_plb_submit,
+                                                                rcd.rcd_id,
+                                                                rcd.bm_no_aju_plb,
+                                                                rcd.bm_tgl_masuk,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bm_remarks,
+                                                                rcd.bk_no_aju_sarinah,
+                                                                rcd.bk_tgl_keluar,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bk_remarks,
+                                                                rcd.keterangan,
+                                                                rcd.upload_beritaAcara_PLB,
+                                                                rcd.upload_beritaAcara_GB,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Sesuai,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Kurang' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Kurang,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Lebih' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Lebih,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Pecah' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Pecah,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Rusak' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Rusak,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All
+                                                                FROM plb_header AS hdr
+                                                                LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
+                                                                LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
+                                                                GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC LIMIT 100", 0);
+                                }
+                                if (mysqli_num_rows($dataTable) > 0) {
+                                    $noHeader = 0;
+                                    while ($rowHeader = mysqli_fetch_array($dataTable)) {
+                                        $noHeader++;
+                                ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center">
