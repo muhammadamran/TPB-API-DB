@@ -150,15 +150,11 @@ if (isset($_POST["All_rusak"])) {
 }
 
 // TOTAL BARANG
-$contentBarangTotal = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangTotal&AJU=' . $_GET['AJU']);
-$dataBarangTotal = json_decode($contentBarangTotal, true);
+$contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
-$contentBarangCek = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_BarangCek&AJU=' . $_GET['AJU']);
-$dataBarangCek = json_decode($contentBarangCek, true);
-// BARANG
-$contentBarang = get_content($resultAPI['url_api'] . 'BarangCK5PLB.php?function=get_Barang&AJU=' . $_GET['AJU']);
-$dataBarang = json_decode($contentBarang, true);
-
+$contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$dataBarangCek      = mysqli_fetch_array($contentBarangCek);
 ?>
 <style>
     .btn-custom {
@@ -304,10 +300,13 @@ $dataBarang = json_decode($contentBarang, true);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if ($dataBarang['status'] == 200) { ?>
-                                            <?php $noBarang = 0; ?>
-                                            <?php foreach ($dataBarang['result'] as $rowBarang) { ?>
-                                                <?php $noBarang++ ?>
+                                        <?php
+                                        $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+                                        if (mysqli_num_rows($dataTable) > 0) {
+                                            $noBarang = 0;
+                                            while ($rowBarang = mysqli_fetch_array($dataTable)) {
+                                                $noBarang++;
+                                        ?>
                                                 <tr class="odd gradeX">
                                                     <td><?= $noBarang ?>. </td>
                                                     <td style="text-align: center;">
