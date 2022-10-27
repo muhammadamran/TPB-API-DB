@@ -216,35 +216,61 @@ if (isset($_POST['show_all'])) {
                                         </div>
                                     </th>
                                     <th width="1%" class="no-sort" style="text-align: center;">#</th>
+                                    <th style="text-align: center;">Nomor Pengajuan</th>
+                                    <th style="text-align: center;">ID Barang</th>
+                                    <th style="text-align: center;">KODE Barang</th>
                                     <th style="text-align: center;">Total Botol</th>
                                     <th style="text-align: center;">Total Liter</th>
+                                    <th style="text-align: center;">Status</th>
+                                    <th style="text-align: center;">Remarks</th>
+                                    <th style="text-align: center;">File</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-                                $result = mysqli_fetch_array($data);
-                                $t_botol = explode('X', $result['UKURAN']);
-                                $t_liter = str_replace('Ltr', '', $t_botol[1]);
+                                $dataTable = $dbcon->query("SELECT * FROM plb_barang_ct ORDER BY ID DESC");
+                                if (mysqli_num_rows($dataTable) > 0) {
+                                    $no = 0;
+                                    while ($row = mysqli_fetch_array($dataTable)) {
+                                        $no++;
                                 ?>
-                                <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
-                                    <tr>
-                                        <td><?= $i ?>.</td>
-                                        <td width="1%" style="text-align: center;">
-                                            <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
-                                                <input type="checkbox" class="form-check-input" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <img src="assets/img/png/box.png" style="width: 70px;" alt="">
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <i class="fa-solid fa-bottle-droplet"></i> <?= $t_botol[0]; ?> Botol
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <i class="fa-solid fa-glass-water-droplet"></i> <?= $t_liter; ?> Liter
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td><?= $i ?>.</td>
+                                            <td width="1%" style="text-align: center;">
+                                                <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
+                                                    <input type="checkbox" class="form-check-input" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <img src="assets/img/png/box.png" style="width: 70px;" alt="">
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $row['NOMOR_PENGAJUAN']; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $row['ID_BARANG']; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $row['KODE_BARANG']; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <i class="fa-solid fa-bottle-droplet"></i> <?= $row['TOTAL_BOTOL']; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <i class="fa-solid fa-glass-water-droplet"></i> <?= $row['TOTAL_LITER']; ?> Liter
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $row['STATUS']; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $row['REMAKS']; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $row['DOKS']; ?> Botol
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } else { ?>
                                 <?php } ?>
                             </tbody>
                         </table>

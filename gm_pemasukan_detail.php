@@ -173,9 +173,9 @@ if (isset($_POST["ct_submit"])) {
     }
 
     if ($sql) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?InputIconSuccess=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?AJU=$dataBarang[NOMOR_AJU]&ID=$dataBarang[ID]&LOOP=$pcs';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?InputIconFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?InputIconFailed=true';</script>";
     }
 }
 
