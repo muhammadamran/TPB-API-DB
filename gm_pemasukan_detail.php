@@ -157,7 +157,7 @@ if (isset($_POST["ct_submit"])) {
     $TOTAL_LITER = $_POST['TOTAL_LITER'];
     $VALIDASI = $_POST['VALIDASI'];
 
-    for ($i = 0; $i <= $VALIDASI; $i++) {
+    for ($i = 1; $i <= $VALIDASI; $i++) {
         $sql = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
