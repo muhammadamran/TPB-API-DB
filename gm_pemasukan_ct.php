@@ -111,58 +111,55 @@ if (isset($_POST['show_all'])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <form action="" method="POST">
-                        <div class="table-responsive">
-                            <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
-                                <thead>
+                    <div class="table-responsive">
+                        <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
+                            <thead>
+                                <tr>
+                                    <th width="1%">No.</th>
+                                    <th class="no-sort" style="text-align: center;">
+                                        <input type="checkbox">
+                                    </th>
+                                    <th width="1%">#</th>
+                                    <th style="text-align: center;">Ukuran</th>
+                                    <th style="text-align: center;">Total Botol</th>
+                                    <th style="text-align: center;">Total Liter</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+                                $result = mysqli_fetch_array($data);
+                                $t_botol = explode('X', $result['UKURAN']);
+                                $t_liter = str_replace('Ltr', '', $t_botol[1]);
+                                ?>
+                                <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
                                     <tr>
-                                        <th width="1%">No.</th>
-                                        <th class="no-sort" style="text-align: center;">
+                                        <td><?= $i ?>.</td>
+                                        <td width="1%" style="text-align: center;">
                                             <input type="checkbox">
-                                        </th>
-                                        <th width="1%">#</th>
-                                        <th style="text-align: center;">Ukuran</th>
-                                        <th style="text-align: center;">Total Botol</th>
-                                        <th style="text-align: center;">Total Liter</th>
+                                        </td>
+                                        <td>
+                                            <img src="assets/img/png/box.png" style="width: 70px;" alt="">
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <font><?= $result['UKURAN']; ?></font>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <?= $t_botol[0]; ?> Botol
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <?= $t_liter; ?> Liter
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-                                    $result = mysqli_fetch_array($data);
-                                    $t_botol = explode('X', $result['UKURAN']);
-                                    $t_liter = str_replace('Ltr', '', $t_botol[1]);
-                                    ?>
-                                    <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
-                                        <tr>
-                                            <td><?= $i ?>.</td>
-                                            <td width="1%" style="text-align: center;">
-                                                <input type="checkbox">
-                                            </td>
-                                            <td>
-                                                <img src="assets/img/png/box.png" style="width: 70px;" alt="">
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <font><?= $result['UKURAN']; ?></font>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <?= $t_botol[0]; ?> Botol
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <?= $t_liter; ?> Liter
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </form>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- End Data CT -->
-
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
@@ -171,12 +168,6 @@ if (isset($_POST['show_all'])) {
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/jsForm.php"; ?>
 <script type="text/javascript">
-    $(".default-select2").select2();
-    $(function() {
-        $("#IDAJU_PLB").autocomplete({
-            source: 'function/autocomplete/nomor_aju_plb.php'
-        });
-    });
     $(document).ready(function() {
         $('#TableData').DataTable({
             dom: 'Bfrtip',
