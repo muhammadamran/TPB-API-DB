@@ -306,8 +306,22 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                     <?php } else { ?>
                                         <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
                                             <i class="fa-solid fa-hourglass-start"></i>
-                                            Cek Barang Masuk
+                                            Cek Satuan Botol
                                         </button>
+                                        <div>
+                                            <div>
+                                                <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
+                                            </div>
+                                            <div>
+                                                <p align="justify">Klik jika untuk melewati proses pengecekan Botol.</p>
+                                            </div>
+                                        </div>
+                                        <div id="buttonPilihAll" style="display:none">
+                                            <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                <i class="fa-solid fa-check-circle"></i>
+                                                Simpan Barang Masuk
+                                            </button>
+                                        </div>
                                     <?php } ?>
                                 </div>
                                 <hr>
@@ -798,5 +812,15 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
         history.replaceState({}, '', './gm_pemasukan_detail.php');
+    }
+
+    function MyCekBotolLewat() {
+        var checkBox = document.getElementById("CekBotolLewat");
+        var VarAll = document.getElementById("buttonPilihAll");
+        if (checkBox.checked == true) {
+            VarAll.style.display = "block";
+        } else {
+            VarAll.style.display = "none";
+        }
     }
 </script>
