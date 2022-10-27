@@ -317,9 +317,9 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;">
+                                            <div class="col-sm-12 form-check" style="margin-left: 20px;margin-top: 10px;">
                                                 <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
-                                                <p align="justify" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
+                                                <p align="justify" class="form-check-label" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
                                             </div>
                                         </div>
                                     <?php } ?>
