@@ -277,12 +277,13 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                             <tr>
                                                 <th rowspan="2" width="1%">No.</th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                    Cek Barang Masuk
-                                                    <hr>
                                                     <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
                                                         <i class="fa-solid fa-square-check"></i>
                                                         Pilih Semua Sesuai
                                                     </button>
+                                                </th>
+                                                <th rowspan="2" class="no-sort" style="text-align: center;">
+                                                    Cek Barang Masuk
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                                 <th colspan="6" style="text-align: center;">Barang</th>
@@ -318,6 +319,8 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
                                                             <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                        </td>
+                                                        <td style="text-align: center;">
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                             <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
