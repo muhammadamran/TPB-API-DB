@@ -277,10 +277,12 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                             <tr>
                                                 <th rowspan="2" width="1%">No.</th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                    <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
-                                                        <i class="fa-solid fa-square-check"></i>
-                                                        Pilih Semua Sesuai
-                                                    </button>
+                                                    <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
+                                                        <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
+                                                            <i class="fa-solid fa-square-check"></i>
+                                                            Pilih Semua Sesuai
+                                                        </button>
+                                                    </div>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     Cek Barang Masuk
@@ -318,7 +320,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
+                                                            <div class="form-check">
                                                                 <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                             </div>
                                                         </td>
