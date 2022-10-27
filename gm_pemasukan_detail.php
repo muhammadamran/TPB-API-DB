@@ -285,7 +285,9 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     </div>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                    Cek Barang Masuk
+                                                    <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
+                                                        Cek Barang Masuk
+                                                    </div>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                                 <th colspan="6" style="text-align: center;">Barang</th>
@@ -327,41 +329,38 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                         <td style="text-align: center;">
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
-                                                            <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                                <!-- Kurang -->
-                                                                <!-- <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a> -->
-                                                                <!-- Lebih -->
-                                                                <!-- <a href="#Lebih<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a> -->
-                                                                <!-- Pecah -->
-                                                                <!-- <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a> -->
-                                                                <!-- Rusak -->
-                                                                <!-- <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a> -->
-                                                                <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
-                                                                    <?php if ($pcs == 0) { ?>
-                                                                        <!-- No QTY -->
-                                                                        <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
-                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                            <br>
-                                                                            Cek <?= $pcs ?> CT
-                                                                        </a>
-                                                                    <?php } else { ?>
-                                                                        <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning" target="_blank">
-                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                            <br>
-                                                                            Cek <?= $pcs ?> CT
-                                                                        </a>
-                                                                    <?php } ?>
+                                                            <!-- Kurang -->
+                                                            <!-- <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a> -->
+                                                            <!-- Lebih -->
+                                                            <!-- <a href="#Lebih<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a> -->
+                                                            <!-- Pecah -->
+                                                            <!-- <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a> -->
+                                                            <!-- Rusak -->
+                                                            <!-- <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a> -->
+                                                            <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
+                                                                <?php if ($pcs == 0) { ?>
+                                                                    <!-- No QTY -->
+                                                                    <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
+                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                        <br>
+                                                                        Cek <?= $pcs ?> CT
+                                                                    </a>
                                                                 <?php } else { ?>
-                                                                    <!-- Disabled -->
-                                                                    <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-secondary">
+                                                                    <!-- Check -->
+                                                                    <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning" target="_blank">
                                                                         <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a>
                                                                 <?php } ?>
-
-                                                            </div>
+                                                            <?php } else { ?>
+                                                                <!-- Disabled -->
+                                                                <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-secondary">
+                                                                    <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                    <br>
+                                                                    Cek <?= $pcs ?> CT
+                                                                </a>
+                                                            <?php } ?>
                                                             <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                                 <?php if ($rowBarang['STATUS'] != NULL) { ?>
                                                                     <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
