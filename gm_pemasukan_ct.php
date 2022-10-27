@@ -120,6 +120,12 @@ if (isset($_POST['show_all'])) {
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
     }
+
+    .form-check-input {
+        position: inherit;
+        margin-top: 0;
+        margin-left: -1.25rem;
+    }
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -189,7 +195,9 @@ if (isset($_POST['show_all'])) {
                                     <tr>
                                         <td><?= $i ?>.</td>
                                         <td width="1%" style="text-align: center;">
-                                            <input type="checkbox" class="form-check-input" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
+                                            <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
+                                                <input type="checkbox" class="form-check-input" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
+                                            </div>
                                         </td>
                                         <td>
                                             <img src="assets/img/png/box.png" style="width: 70px;" alt="">
