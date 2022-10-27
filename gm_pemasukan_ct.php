@@ -126,6 +126,11 @@ if (isset($_POST['show_all'])) {
         margin-top: 0;
         margin-left: -1.25rem;
     }
+
+    .btn-custom {
+        font-size: 10px;
+        padding: 5px;
+    }
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -175,7 +180,7 @@ if (isset($_POST['show_all'])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <div style="display: flex;justify-content: flex-start;align-content: baseline;">
+                    <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:5px">
                         <button type="submit" name="CT_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
                         <button type="submit" name="CT_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
                         <button type="submit" name="CT_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
