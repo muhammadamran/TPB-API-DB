@@ -150,19 +150,24 @@ if (isset($_POST["All_rusak"])) {
 }
 
 if (isset($_POST["ct_submit"])) {
-    $NOMOR_AJU = $_POST['NOMOR_AJU'];
-    $ID_BARANG = $_POST['ID_BARANG'];
-    $KODE_BARANG = $_POST['KODE_BARANG'];
-    $TOTAL_BOTOL = $_POST['TOTAL_BOTOL'];
-    $TOTAL_LITER = $_POST['TOTAL_LITER'];
-    $VALIDASI = $_POST['VALIDASI'];
+    // $NOMOR_AJU = $_POST['NOMOR_AJU'];
+    // $ID_BARANG = $_POST['ID_BARANG'];
+    // $KODE_BARANG = $_POST['KODE_BARANG'];
+    // $TOTAL_BOTOL = $_POST['TOTAL_BOTOL'];
+    // $TOTAL_LITER = $_POST['TOTAL_LITER'];
+    // $VALIDASI = $_POST['VALIDASI'];
 
-    for ($i = 1; $i <= $VALIDASI; $i++) {
+    $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='2'");
+    $dataBarang    = mysqli_fetch_array($contentBarang);
+
+    $TOTAL_RECORD = mysqli_num_rows($contentBarang);
+
+    for ($i = 1; $i <= $TOTAL_RECORD; $i++) {
 
         $sql = $dbcon->query("INSERT INTO plb_barang_ct 
-                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
+                            (ID,NOMOR_AJU)
                             VALUES
-                            ('','$NOMOR_AJU[$i]','$ID_BARANG[$i]','$KODE_BARANG[$i]','$TOTAL_BOTOL[$i]','$TOTAL_LITER[$i]')
+                            ('','$dataBarang[NOMOR_AJU]')
                             ");
     }
 
