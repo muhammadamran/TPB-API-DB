@@ -423,7 +423,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <input type="text" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
                                                                         <input type="text" name="KODE_BARANG" value="<?= $rowBarang['KODE_BARANG'] ?>">
                                                                         <input type="text" name="TOTAL_BOTOL" value="<?= $t_botol[0] ?>">
-                                                                        <input type="text" name="TOTAL_LITER" value="<?= $t_botol[1] ?>">
+                                                                        <input type="text" name="TOTAL_LITER" value="<?= $t_liter ?>">
                                                                         <input type="text" name="VALIDASI" value="<?= $pcs ?>">
                                                                         <button class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
