@@ -138,7 +138,8 @@ if (isset($_POST['show_all'])) {
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item active">Barang Masuk</li>
+                <li class="breadcrumb-item"><a href="javascript:;">Detail Nomor AJU: <?= $_GET['AJU'] ?></a></li>
+                <li class="breadcrumb-item active">Cek <?= $_GET['LOOP'] ?> CT Data Barang Masuk</li>
             </ol>
         </div>
         <div>
@@ -147,6 +148,22 @@ if (isset($_POST['show_all'])) {
         </div>
     </div>
     <div class="line-page"></div>
+    <?php
+    $list = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+    $resultList = mysqli_fetch_array($list);
+    ?>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card border-0">
+                <div class="card-body">
+                    <h4 class="card-title">Detail Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></h4>
+                    <h6 class="card-subtitle mb-10px text-muted">Harga Penyerahan <?= Rupiah($resultList['HARGA_PENYERAHAN']) ?></h6>
+                    <a href="javascript:;" class="card-link">Ukuran <?= $resultList['UKURAN'] ?></a>
+                    <a href="javascript:;" class="card-link">Golongan <?= $resultList['SPESIFIKASI_LAIN'] ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Data CT -->
     <div class="row">
