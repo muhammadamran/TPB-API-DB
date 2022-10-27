@@ -150,7 +150,8 @@ if (isset($_POST["All_rusak"])) {
 }
 
 if (isset($_GET["ct_submit"])) {
-    $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "'");
+
+    $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID_BARANG'] . "'");
     $dataBarang    = mysqli_fetch_array($contentBarang);
     $jml_pcs = $dataBarang['JUMLAH_SATUAN'];
     $pcs = str_replace(".0000", "", "$jml_pcs");
@@ -448,7 +449,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         Cek <?= $pcs ?> CT
                                                                     </a> -->
                                                                     <form action="" method="GET">
-                                                                        <input type="text" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
+                                                                        <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
                                                                         <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
