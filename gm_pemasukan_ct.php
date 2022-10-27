@@ -117,7 +117,14 @@ if (isset($_POST['show_all'])) {
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th class="no-sort" style="text-align: center;">
-                                        <input type="checkbox" id="checkAll">
+                                        <div>
+                                            <div>
+                                                <button type="button" class="btn btn-info" id="chk_new" onclick="checkAll('chk');"><i class="icon-copy dw dw-checked"></i> Pilih Semua</button>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-info" id="chk_new" onclick="checkAllDel('chk');"><i class="icon-copy dw dw-checked"></i> Pilih Semua</button>
+                                            </div>
+                                        </div>
                                     </th>
                                     <th width="1%">#</th>
                                     <th style="text-align: center;">Ukuran</th>
@@ -184,6 +191,19 @@ if (isset($_POST['show_all'])) {
     });
 
     function checkAll(checkId) {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
+                if (inputs[i].checked == true) {
+                    inputs[i].checked = false;
+                } else if (inputs[i].checked == false) {
+                    inputs[i].checked = true;
+                }
+            }
+        }
+    }
+
+    function checkAllDel(checkId) {
         var inputs = document.getElementsByTagName("input");
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
