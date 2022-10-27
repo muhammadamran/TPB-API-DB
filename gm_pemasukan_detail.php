@@ -327,7 +327,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                             </div>
                                             <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;display: flex;">
                                                 <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
-                                                <p align="justify" style="margin-left: 5px;" class="form-check-label" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
+                                                <p align="justify" style="margin-left: 5px;" class="form-check-label" id="CekBotolLewat">Klik untuk melewati proses pengecekan Botol.</p>
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -380,6 +380,10 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
                                                     $noBarang++;
+                                                    // TOTAL BOTOL
+                                                    $t_botol = explode('X', $rowBarang['UKURAN']);
+                                                    // TOTAL LITER
+                                                    $t_liter = str_replace('Ltr', '', $t_botol[1]);
                                             ?>
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
@@ -409,11 +413,24 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </a>
                                                                 <?php } else { ?>
                                                                     <!-- Check -->
-                                                                    <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning" target="_blank">
+                                                                    <!-- <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning" target="_blank">
                                                                         <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
-                                                                    </a>
+                                                                    </a> -->
+                                                                    <form action="">
+                                                                        <input type="text" name="NOMOR_AJU" value="<?= $rowBarang['NOMOR_AJU'] ?>">
+                                                                        <input type="text" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
+                                                                        <input type="text" name="KODE_BARANG" value="<?= $rowBarang['KODE_BARANG'] ?>">
+                                                                        <input type="text" name="TOTAL_BOTOL" value="<?= $t_botol ?>">
+                                                                        <input type="text" name="TOTAL_LITER" value="<?= $t_liter ?>">
+                                                                        <input type="text" name="VALIDASI" value="<?= $pcs ?>">
+                                                                        <button class="btn btn-sm btn-custom btn-warning">
+                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                            <br>
+                                                                            Cek <?= $pcs ?> CT
+                                                                        </button>
+                                                                    </form>
                                                                 <?php } ?>
                                                             <?php } else { ?>
                                                                 <!-- Disabled -->
