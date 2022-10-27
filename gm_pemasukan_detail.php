@@ -263,9 +263,15 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                     $resultChecking = mysqli_fetch_array($checking);
                                     ?>
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Simpan Barang Masuk!</button>
+                                        <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                            <i class="fa-solid fa-check-circle"></i>
+                                            Simpan Barang Masuk!
+                                        </button>
                                     <?php } else { ?>
-                                        <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Cek Barang Masuk!</button>
+                                        <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
+                                            <i class="fa-solid fa-hourglass-start"></i>
+                                            Cek Barang Masuk!
+                                        </button>
                                     <?php } ?>
                                 </div>
                                 <hr>
