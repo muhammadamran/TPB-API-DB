@@ -165,6 +165,13 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     .sm {
         max-width: 471pxpx;
         margin: 16.75rem auto;
+        width: 375px;
+    }
+
+    .line-page-cek {
+        height: 0.5px;
+        margin: 6px 866px 23px 0px;
+        background: #444e66;
     }
 </style>
 <!-- begin #content -->
