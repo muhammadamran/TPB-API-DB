@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_array($sql)) {
 
 $check = json_encode($data);
 
-if ($check == NULL) {
+if ($check == null || $check == 'null') {
     $data = 'Tidak ada Nomor Pengajuan PLB';
 } else {
     echo json_encode($data);
