@@ -1217,8 +1217,6 @@ include "include/cssForm.php";
                                         <tr>
                                             <th width="1%">No.</th>
                                             <th style="text-align: center">Nomor Pengajuan</th>
-                                            <th style="text-align: center">Kode Respon</th>
-                                            <th style="text-align: center">No. Respon</th>
                                             <th style="text-align: center">Date Submit CK5 PLB</th>
                                             <th style="text-align: center">Date Export CK5 PLB</th>
                                             <th style="text-align: center">Date GB Submit Sarinah</th>
@@ -1235,9 +1233,7 @@ include "include/cssForm.php";
                                         ?>
                                                 <tr class="odd gradeX">
                                                     <td><?= $noStatus ?>. </td>
-                                                    <td><?= $rowStatus['NOMOR_AJU']; ?></td>
-                                                    <td><?= $rowStatus['KODE_RESPON']; ?></td>
-                                                    <td><?= $rowStatus['NOMOR_RESPON']; ?></td>
+                                                    <td><?= $rowStatus['NOMOR_AJU_PLB']; ?></td>
                                                     <td><?= $rowStatus['ck5_plb_submit']; ?></td>
                                                     <td>
                                                         <?php if ($rowStatus['ck5_plb_export'] == '0000-00-00 00:00:00' || $rowStatus['ck5_plb_export'] == NULL) { ?>
@@ -1264,7 +1260,7 @@ include "include/cssForm.php";
                                             <?php } ?>
                                         <?php } else { ?>
                                             <tr>
-                                                <td colspan="8">
+                                                <td colspan="6">
                                                     <center>
                                                         <div style="display: grid;">
                                                             <i class="far fa-times-circle no-data"></i> Tidak ada data

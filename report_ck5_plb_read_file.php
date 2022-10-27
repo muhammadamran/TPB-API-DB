@@ -79,7 +79,6 @@ if (mysqli_query($dbcon, $insertquery)) {
 	echo "Error: " . $insertquery . "<br>" . mysqli_error($dbcon);
 }
 
-
 // BahanBakuTarif
 $worksheet = $excel_Obj->getSheet('2');
 $colomncount = $worksheet->getHighestDataColumn();
