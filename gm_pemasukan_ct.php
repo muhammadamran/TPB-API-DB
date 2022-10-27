@@ -117,27 +117,38 @@ if (isset($_POST['show_all'])) {
                                 <thead>
                                     <tr>
                                         <th width="1%">No.</th>
-                                        <th width="1%">CT</th>
-                                        <th style="text-align: center;">Ukuran</th>
-                                        <th style="text-align: center;">-</th>
+                                        <th width="1%" style="text-align: center;">
+                                            <input type="checkbox">
+                                        </th>
+                                        <th width="1%">#</th>
+                                        <th style="text-align: center;">Kemasan</th>
+                                        <th style="text-align: center;">Total Botol</th>
+                                        <th style="text-align: center;">Total Liter</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
                                     $result = mysqli_fetch_array($data);
+                                    $t_exp = explode('X', '', $result['UKURAN'])
                                     ?>
                                     <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
                                         <tr>
                                             <td><?= $i ?>.</td>
+                                            <td width="1%" style="text-align: center;">
+                                                <input type="checkbox">
+                                            </td>
                                             <td>
                                                 <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                             </td>
-                                            <td>
+                                            <td style="text-align: center;">
                                                 <font><?= $result['UKURAN']; ?></font>
                                             </td>
-                                            <td>
-                                                <font><?= $result['UKURAN']; ?></font>
+                                            <td style="text-align: center;">
+                                                <?= $t_exp[0]; ?> Botol
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?= $t_exp[1]; ?> Liter
                                             </td>
                                         </tr>
                                     <?php } ?>
