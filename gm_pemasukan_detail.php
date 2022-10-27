@@ -149,6 +149,27 @@ if (isset($_POST["All_rusak"])) {
     }
 }
 
+if (isset($_POST["ct_submit"])) {
+    $NOMOR_AJU = $_POST['NOMOR_AJU'];
+    $ID_BARANG = $_POST['ID_BARANG'];
+    $KODE_BARANG = $_POST['KODE_BARANG'];
+    $TOTAL_BOTOL = $_POST['TOTAL_BOTOL'];
+    $TOTAL_LITER = $_POST['TOTAL_LITER'];
+    $VALIDASI = $_POST['VALIDASI'];
+
+    for ($i = 0; $i <= $VALIDASI; $i++) {
+        $sql = $dbcon->query("INSERT INTO plb_barang_ct (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
+                            VALUES
+                            ('','" . $NOMOR_AJU . ",'" . $ID_BARANG . ",'" . $KODE_BARANG . ",'" . $TOTAL_BOTOL . "','" . $TOTAL_LITER . ")");
+    }
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?InputIconSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?InputIconFailed=true';</script>";
+    }
+}
+
 // TOTAL BARANG
 $contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
@@ -418,14 +439,14 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a> -->
-                                                                    <form action="">
-                                                                        <input type="text" name="NOMOR_AJU" value="<?= $rowBarang['NOMOR_AJU'] ?>">
-                                                                        <input type="text" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
-                                                                        <input type="text" name="KODE_BARANG" value="<?= $rowBarang['KODE_BARANG'] ?>">
-                                                                        <input type="text" name="TOTAL_BOTOL" value="<?= $t_botol[0] ?>">
-                                                                        <input type="text" name="TOTAL_LITER" value="<?= $t_liter ?>">
+                                                                    <form action="" method="POST">
+                                                                        <input type="text" name="NOMOR_AJU[]" value="<?= $rowBarang['NOMOR_AJU'] ?>">
+                                                                        <input type="text" name="ID_BARANG[]" value="<?= $rowBarang['ID'] ?>">
+                                                                        <input type="text" name="KODE_BARANG[]" value="<?= $rowBarang['KODE_BARANG'] ?>">
+                                                                        <input type="text" name="TOTAL_BOTOL[]" value="<?= $t_botol[0] ?>">
+                                                                        <input type="text" name="TOTAL_LITER[]" value="<?= $t_liter ?>">
                                                                         <input type="text" name="VALIDASI" value="<?= $pcs ?>">
-                                                                        <button class="btn btn-sm btn-custom btn-warning">
+                                                                        <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
