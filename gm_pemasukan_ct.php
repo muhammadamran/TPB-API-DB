@@ -181,7 +181,7 @@ if (isset($_POST['show_all'])) {
                 </div>
                 <div class="panel-body text-inverse">
                     <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:10px">
-                        <div style="margin-left: 5px;">
+                        <div style="margin-left: 0px;">
                             <button type="submit" name="CT_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
                         </div>
                         <div style="margin-left: 5px;">
