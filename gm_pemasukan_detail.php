@@ -206,7 +206,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        border: 1px solid #000;
+        border: 2px solid #9e9e9e;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
