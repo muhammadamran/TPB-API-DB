@@ -161,6 +161,11 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         font-size: 10px;
         padding: 5px;
     }
+
+    .modal-sm {
+        max-width: 471pxpx;
+        margin: 16.75rem auto;
+    }
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -369,7 +374,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     </tr>
                                                     <!-- Kurang -->
                                                     <div class="modal fade" id="Kurang<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
@@ -424,7 +429,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <!-- End Kurang -->
                                                     <!-- Lebih -->
                                                     <div class="modal fade" id="Lebih<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
@@ -473,7 +478,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <!-- End Lebih -->
                                                     <!-- Pecah -->
                                                     <div class="modal fade" id="Pecah<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
@@ -522,7 +527,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <!-- End Pecah -->
                                                     <!-- Rusak -->
                                                     <div class="modal fade" id="Rusak<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
