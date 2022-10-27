@@ -158,12 +158,14 @@ if (isset($_POST["ct_submit"])) {
     $VALIDASI = $_POST['VALIDASI'];
 
     for ($i = 1; $i <= $VALIDASI; $i++) {
+
         $sql = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
                             ('','$NOMOR_AJU[$i]','$ID_BARANG[$i]','$KODE_BARANG[$i]','$TOTAL_BOTOL[$i]','$TOTAL_LITER[$i]')
                             ");
     }
+
     if ($sql) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?InputIconSuccess=true';</script>";
     } else {
@@ -446,7 +448,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <input type="text" name="KODE_BARANG[]" value="<?= $rowBarang['KODE_BARANG'] ?>">
                                                                         <input type="text" name="TOTAL_BOTOL[]" value="<?= $t_botol[0] ?>">
                                                                         <input type="text" name="TOTAL_LITER[]" value="<?= $t_liter ?>">
-                                                                        <input type="text" name="VALIDASI[]" value="<?= $pcs ?>">
+                                                                        <input type="text" name="VALIDASI" value="<?= $pcs ?>">
                                                                         <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
