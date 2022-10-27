@@ -319,7 +319,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
                                                             <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                                <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                                <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                             </div>
                                                         </td>
                                                         <td style="text-align: center;">
