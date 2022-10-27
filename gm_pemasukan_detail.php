@@ -221,7 +221,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                 <?php if ($dataBarangCek['total_cek'] != NULL) { ?>
                                     <span class="d-sm-none">Proses Barang Masuk</span>
                                     <span class="d-sm-block d-none">
-                                        <font class="blink_me">
+                                        <font class="blink_me" style="color: green;">
                                             Proses Pengecekan Barang:
                                             <?= $rowBarangCek['total_cek']; ?>
                                             Barang DiCek!
@@ -230,7 +230,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                 <?php } else { ?>
                                     <span class="d-sm-none">Proses Barang Masuk</span>
                                     <span class="d-sm-block d-none">
-                                        <font class="blink_me">Proses pengecekan Proses Barang Masuk!</font>
+                                        <font class="blink_me" style="color: red;">Proses pengecekan Proses Barang Masuk!</font>
                                     </span>
                                 <?php } ?>
                             </a>
