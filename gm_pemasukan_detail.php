@@ -311,7 +311,15 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                 <!-- <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a> -->
                                                                 <!-- Rusak -->
                                                                 <!-- <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a> -->
-                                                                <a href="#Karton<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning">
+                                                                <?php if ($pcs == 0) { ?>
+                                                                    <a href="#<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
+                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                        <br>
+                                                                        Cek <?= $pcs ?> CT
+                                                                    </a>
+                                                                <?php } else { ?>
+                                                                <?php } ?>
+                                                                <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning">
                                                                     <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                     <br>
                                                                     Cek <?= $pcs ?> CT
