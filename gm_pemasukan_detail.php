@@ -215,6 +215,12 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
     }
+
+    .form-check-input {
+        position: inherit;
+        margin-top: 0;
+        margin-left: -1.25rem;
+    }
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -319,9 +325,9 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;">
+                                            <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;display: flex;">
                                                 <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
-                                                <p align="justify" class="form-check-label" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
+                                                <p align="justify" style="margin-left: 5px;" class="form-check-label" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -378,7 +384,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <div style="margin-left: 25px;margin-bottom: 15px;">
+                                                            <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
                                                                 <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                             </div>
                                                         </td>
