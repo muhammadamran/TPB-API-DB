@@ -175,6 +175,10 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     }
 
     /* Check Box */
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+    }
+
     .form-check-input:checked[type=checkbox] {
         background-image: url('assets/img/svg/download.svg');
     }
@@ -208,7 +212,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         appearance: none;
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
-        print-color-adjust: exact;
     }
 </style>
 <!-- begin #content -->
