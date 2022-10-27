@@ -11,4 +11,9 @@ $sql = $dbcon->query("SELECT NOMOR_AJU FROM plb_header  WHERE NOMOR_AJU LIKE '%"
 while ($row = mysqli_fetch_array($sql)) {
     $data[] = $row['NOMOR_AJU'];
 }
-echo json_encode($data);
+
+if ($data == NULL) {
+    $data = 'Tidak ada Nomor Pengajuan PLB';
+} else {
+    echo json_encode($data);
+}
