@@ -212,22 +212,18 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                 <span class="d-sm-none">Barang Masuk</span>
                                 <span class="d-sm-block d-none">
                                     Total Barang Masuk:
-                                    <?php foreach ($dataBarangTotal['result'] as $rowBarangTotal) { ?>
-                                        <?= $rowBarangTotal['total']; ?>
-                                    <?php } ?>
+                                    <?= $dataBarangTotal['total']; ?>
                                     Barang
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#IDBarang" data-toggle="tab" class="nav-link">
-                                <?php if ($dataBarangCek['status'] == 200) { ?>
+                                <?php if ($dataBarangCek['total_cek'] != NULL) { ?>
                                     <span class="d-sm-none">Proses Barang Masuk</span>
                                     <span class="d-sm-block d-none">
                                         <font class="blink_me">
                                             Proses Pengecekan Barang:
-                                            <?php foreach ($dataBarangCek['result'] as $rowBarangCek) { ?>
-                                                <?= $rowBarangCek['total_cek']; ?>
-                                            <?php } ?>
+                                            <?= $rowBarangCek['total_cek']; ?>
                                             Barang DiCek!
                                         </font>
                                     </span>
