@@ -305,21 +305,21 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                         </button>
                                     <?php } else { ?>
                                         <div class="row">
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-12" style="display: flex;">
                                                 <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                     Cek Satuan Botol
                                                 </button>
-                                                <div id="buttonPilihAll" style="display:none">
+                                                <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
                                                     <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
                                                         <i class="fa-solid fa-check-circle"></i>
                                                         Simpan Barang Masuk
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;">
                                                 <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
-                                                <p align="justify">Klik jika untuk melewati proses pengecekan Botol.</p>
+                                                <p align="justify" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
                                             </div>
                                         </div>
                                     <?php } ?>
