@@ -143,7 +143,7 @@ if (isset($_POST['show_all'])) {
                                     <tr>
                                         <td><?= $i ?>.</td>
                                         <td width="1%" style="text-align: center;">
-                                            <input type="checkbox">
+                                            <input type="checkbox" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
                                         </td>
                                         <td>
                                             <img src="assets/img/png/box.png" style="width: 70px;" alt="">
