@@ -227,7 +227,7 @@ if ($resultRoleModules['da_two'] == 'none') {
                         </div>
                         <!-- End Dashboard Mitra -->
                         <!-- Nama Pengangkut -->
-                        <!-- <div class="col-xl-8">
+                        <div class="col-xl-8">
                             <div class="panel panel-inverse">
                                 <div class="panel-heading">
                                     <h4 class="panel-title"><i class="far fa-chart-bar"></i> Pengangkut
@@ -238,7 +238,7 @@ if ($resultRoleModules['da_two'] == 'none') {
                                     <div id="chart_pengangkut_bar"></div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- End Nama Pengangkut -->
                         <!-- Valuta -->
                         <!-- <div class="col-xl-4">
