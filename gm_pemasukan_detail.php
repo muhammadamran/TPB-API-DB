@@ -174,6 +174,48 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         background: #444e66;
     }
 </style>
+
+<style>
+    /* Check Box */
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+    }
+
+    .form-check-input:checked[type=checkbox] {
+        background-image: url('assets/img/svg/download.svg');
+    }
+
+    .form-check-input:checked {
+        background-color: #348fe2;
+        border-color: #348fe2;
+    }
+
+    .form-check-input[type=checkbox] {
+        border-radius: 0.25em;
+    }
+
+    .form-check .form-check-input {
+        float: left;
+        margin-left: -2em;
+    }
+
+    .form-check-input {
+        width: 1.5em;
+        height: 1.5em;
+        margin-top: 0;
+        vertical-align: top;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: 2px solid #9e9e9e;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+</style>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
