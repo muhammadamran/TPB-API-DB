@@ -255,7 +255,18 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                     <!-- Sesuai ALl -->
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Simpan Barang Masuk!</button>
+                                    <?php
+                                    $checking = $dbcon->query("SELECT brg.NOMOR_AJU,
+                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Done') AS checking,
+                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "') AS barang
+                                                            FROM plb_barang AS brg  WHERE brg.NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY brg.NOMOR_AJU");
+                                    $resultChecking = mysqli_fetch_array($checking);
+                                    ?>
+                                    <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
+                                        <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Simpan Barang Masuk!</button>
+                                    <?php } else { ?>
+                                        <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Cek Barang Masuk!</button>
+                                    <?php } ?>
                                 </div>
                                 <hr>
                                 <div class="table-responsive">
