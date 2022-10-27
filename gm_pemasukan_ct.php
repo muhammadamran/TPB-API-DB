@@ -113,11 +113,19 @@ if (isset($_POST['show_all'])) {
                 <div class="panel-body text-inverse">
                     <form action="" method="POST">
                         <div class="row">
+                            <?php
+                            $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+                            $result = mysqli_fetch_array($data);
+                            ?>
                             <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
                                 <div class="col-sm-2">
-                                    <?= $no ?>
+                                    <?= $i ?>.
                                 </div>
                                 <div class="col-sm-3">
+                                    <img src="assets/img/png/box.png" alt="">
+                                </div>
+                                <div class="col-sm-3">
+                                    <font><?= $result['UKURAN']; ?></font>
                                 </div>
                             <?php } ?>
                         </div>
