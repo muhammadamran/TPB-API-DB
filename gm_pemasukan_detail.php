@@ -311,7 +311,11 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                 <!-- <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a> -->
                                                                 <!-- Rusak -->
                                                                 <!-- <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a> -->
-                                                                <a href="#Karton<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fas fa-boxes"></i> Cek <?= $pcs ?> CT</a>
+                                                                <a href="#Karton<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning">
+                                                                    <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                    <br>
+                                                                    Cek <?= $pcs ?> CT
+                                                                </a>
                                                             </div>
                                                             <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                                 <?php if ($rowBarang['STATUS'] != NULL) { ?>
