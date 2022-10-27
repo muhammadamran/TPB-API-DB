@@ -304,23 +304,23 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                             Simpan Barang Masuk
                                         </button>
                                     <?php } else { ?>
-                                        <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
-                                            <i class="fa-solid fa-hourglass-start"></i>
-                                            Cek Satuan Botol
-                                        </button>
-                                        <div>
-                                            <div>
-                                                <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
+                                                    <i class="fa-solid fa-hourglass-start"></i>
+                                                    Cek Satuan Botol
+                                                </button>
+                                                <div id="buttonPilihAll" style="display:none">
+                                                    <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                        <i class="fa-solid fa-check-circle"></i>
+                                                        Simpan Barang Masuk
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div>
+                                            <div class="col-sm-12">
+                                                <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
                                                 <p align="justify">Klik jika untuk melewati proses pengecekan Botol.</p>
                                             </div>
-                                        </div>
-                                        <div id="buttonPilihAll" style="display:none">
-                                            <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
-                                                <i class="fa-solid fa-check-circle"></i>
-                                                Simpan Barang Masuk
-                                            </button>
                                         </div>
                                     <?php } ?>
                                 </div>
