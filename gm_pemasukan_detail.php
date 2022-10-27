@@ -261,12 +261,12 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
                                         <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
                                             <i class="fa-solid fa-check-circle"></i>
-                                            Simpan Barang Masuk!
+                                            Simpan Barang Masuk
                                         </button>
                                     <?php } else { ?>
                                         <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
                                             <i class="fa-solid fa-hourglass-start"></i>
-                                            Cek Barang Masuk!
+                                            Cek Barang Masuk
                                         </button>
                                     <?php } ?>
                                 </div>
@@ -278,6 +278,11 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                 <th rowspan="2" width="1%">No.</th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     Cek Barang Masuk
+                                                    <hr>
+                                                    <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
+                                                        <i class="fa-solid fa-square-check"></i>
+                                                        Pilih Semua Sesuai
+                                                    </button>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
                                                 <th colspan="6" style="text-align: center;">Barang</th>
@@ -312,7 +317,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <!-- <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>"> -->
+                                                            <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                             <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
