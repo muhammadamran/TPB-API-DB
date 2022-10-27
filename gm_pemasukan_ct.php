@@ -180,11 +180,19 @@ if (isset($_POST['show_all'])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:5px">
-                        <button type="submit" name="CT_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
-                        <button type="submit" name="CT_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
-                        <button type="submit" name="CT_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
-                        <button type="submit" name="CT_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
+                    <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:10px">
+                        <div style="margin-left: 5px;">
+                            <button type="submit" name="CT_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
+                        </div>
+                        <div style="margin-left: 5px;">
+                            <button type="submit" name="CT_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
+                        </div>
+                        <div style="margin-left: 5px;">
+                            <button type="submit" name="CT_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
+                        </div>
+                        <div style="margin-left: 5px;">
+                            <button type="submit" name="CT_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
