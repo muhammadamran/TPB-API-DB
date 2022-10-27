@@ -165,7 +165,7 @@ if (isset($_POST['show_all'])) {
             </div>
         </div>
     </div>
-
+    <br>
     <!-- Data CT -->
     <div class="row">
         <div class="col-xl-12">
