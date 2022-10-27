@@ -243,7 +243,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                 <form action="" method="POST" style="margin-left: 0px;">
                                     <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
                                     <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
-                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Pilih Semua Sesuai</button>
+                                    <button type="submit" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!"><i class="fa-solid fa-check-circle"></i> Simpan Barang Masuk!</button>
                                 </form>
                                 <!-- Kurang All -->
                                 <!-- <form action="" method="POST" style="margin-left: 5px;">
@@ -316,14 +316,14 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                         <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                         <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
-                                                            <form action="" method="POST">
+                                                            <!-- <form action="" method="POST">
                                                                 <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
                                                                 <input type="hidden" name="STATUS" value="Sesuai">
                                                                 <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                                                 <input type="hidden" name="TGL_CEK" value="<?= date('Y-m-d H:m:i') ?>">
                                                                 <button type="submit" name="FSesuai" class="btn btn-sm btn-custom btn-success"><i class="fa-solid fa-check-circle"></i> Sesuai</button>
-                                                            </form>
+                                                            </form> -->
                                                             <form action="" method="POST">
                                                                 <input type="hidden" name="AJU" value="<?= $_GET['AJU'] ?>">
                                                                 <input type="hidden" name="ID" value="<?= $rowBarang['ID']; ?>">
@@ -458,13 +458,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
 <script type="text/javascript">
     $(document).ready(function() {
         $('#TableData').DataTable({
-            // dom: 'Bfrtip',
-            // buttons: [
-            //     'copyHtml5',
-            //     'excelHtml5',
-            //     'csvHtml5',
-            //     'pdfHtml5'
-            // ]
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
