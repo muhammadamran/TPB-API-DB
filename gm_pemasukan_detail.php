@@ -415,7 +415,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                                        <button type="submit" name="kurang_" class="btn btn-block btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                                                                        <button type="submit" name="kurang_" class="btn btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -464,7 +464,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                                        <button type="submit" name="lebih_" class="btn btn-block btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                                                                        <button type="submit" name="lebih_" class="btn btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -513,7 +513,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                                        <button type="submit" name="pecah_" class="btn btn-block btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                                                                        <button type="submit" name="pecah_" class="btn btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -562,7 +562,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                                        <button type="submit" name="rusak_" class="btn btn-block btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                                                                        <button type="submit" name="rusak_" class="btn btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
