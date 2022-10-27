@@ -197,7 +197,6 @@ if (isset($_POST['show_all'])) {
                                         </div>
                                     </th>
                                     <th width="1%" style="text-align: center;">#</th>
-                                    <th style="text-align: center;">Ukuran</th>
                                     <th style="text-align: center;">Total Botol</th>
                                     <th style="text-align: center;">Total Liter</th>
                                 </tr>
@@ -221,13 +220,10 @@ if (isset($_POST['show_all'])) {
                                             <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                         </td>
                                         <td style="text-align: center;">
-                                            <font><?= $result['UKURAN']; ?></font>
+                                            <i class="fa-solid fa-bottle-droplet"></i> <?= $t_botol[0]; ?> Botol
                                         </td>
                                         <td style="text-align: center;">
-                                            <?= $t_botol[0]; ?> Botol
-                                        </td>
-                                        <td style="text-align: center;">
-                                            <?= $t_liter; ?> Liter
+                                            <i class="fa-solid fa-glass-water-droplet"></i> <?= $t_liter; ?> Liter
                                         </td>
                                     </tr>
                                 <?php } ?>
