@@ -318,10 +318,8 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                 </div>
                                             </div>
                                             <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;">
-                                                <div class="form-check mt-2 mb-2">
-                                                    <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
-                                                    <p align="justify" class="form-check-label" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
-                                                </div>
+                                                <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
+                                                <p align="justify" class="form-check-label" id="CekBotolLewat">Klik jika untuk melewati proses pengecekan Botol.</p>
                                             </div>
                                         </div>
                                     <?php } ?>
