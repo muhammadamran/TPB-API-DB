@@ -162,11 +162,11 @@ if (isset($_POST["ct_submit"])) {
 
     $TOTAL_RECORD = mysqli_num_rows($contentBarang);
 
-    for ($i = 0; $i < $TOTAL_RECORD; $i++) {
+    for ($i = 0; $i < 5; $i++) {
         $sql = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU)
                             VALUES
-                            ('','$dataBarang[NOMOR_AJU][$i]')
+                            ('','$dataBarang[NOMOR_AJU]')
                             ");
     }
 
