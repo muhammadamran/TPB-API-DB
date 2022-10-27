@@ -149,9 +149,9 @@ if (isset($_POST["All_rusak"])) {
     }
 }
 
-if (isset($_GET["ct_submit"])) {
+if (isset($_POST["ct_submit"])) {
 
-    $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID_BARANG'] . "'");
+    $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_POST['ID_BARANG'] . "'");
     $dataBarang    = mysqli_fetch_array($contentBarang);
     $jml_pcs = $dataBarang['JUMLAH_SATUAN'];
     $pcs = str_replace(".0000", "", "$jml_pcs");
@@ -166,9 +166,9 @@ if (isset($_GET["ct_submit"])) {
 
     for ($i = 0; $i < $pcs; $i++) {
         $sql = $dbcon->query("INSERT INTO plb_barang_ct 
-                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
+                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG)
                             VALUES
-                            ('','$dataBarang[NOMOR_AJU]','$dataBarang[ID_BARANG]','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
+                            ('','$dataBarang[NOMOR_AJU]','$dataBarang[ID_BARANG]','$dataBarang[KODE_BARANG]')
                             ");
     }
 
@@ -448,7 +448,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a> -->
-                                                                    <form action="" method="GET">
+                                                                    <form action="" method="POST">
                                                                         <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
                                                                         <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
