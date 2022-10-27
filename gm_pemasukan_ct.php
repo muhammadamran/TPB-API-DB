@@ -117,11 +117,11 @@ if (isset($_POST['show_all'])) {
                                 <thead>
                                     <tr>
                                         <th width="1%">No.</th>
-                                        <th width="1%" style="text-align: center;">
+                                        <th width="1%" class="no-sort" style="text-align: center;">
                                             <input type="checkbox">
                                         </th>
                                         <th width="1%">#</th>
-                                        <th style="text-align: center;">Kemasan</th>
+                                        <th style="text-align: center;">Ukuran</th>
                                         <th style="text-align: center;">Total Botol</th>
                                         <th style="text-align: center;">Total Liter</th>
                                     </tr>
@@ -130,7 +130,7 @@ if (isset($_POST['show_all'])) {
                                     <?php
                                     $data = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
                                     $result = mysqli_fetch_array($data);
-                                    $t_exp = explode('X', '', $result['UKURAN'])
+                                    $t_exp = explode('X', $result['UKURAN'])
                                     ?>
                                     <?php for ($i = 1; $i <= $_GET['LOOP']; $i++) { ?>
                                         <tr>
