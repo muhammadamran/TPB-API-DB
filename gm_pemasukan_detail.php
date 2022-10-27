@@ -318,12 +318,14 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                            <div style="display: flex;justify-content: space-evenly;align-content: center;width: 115px;">
+                                                                <input type="checkbox" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                            </div>
                                                         </td>
                                                         <td style="text-align: center;">
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
-                                                            <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
+                                                            <div style="display: flex;justify-content: space-evenly;align-content: center;width: 215px;">
                                                                 <!-- Kurang -->
                                                                 <!-- <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a> -->
                                                                 <!-- Lebih -->
