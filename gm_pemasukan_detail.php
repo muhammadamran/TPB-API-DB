@@ -162,7 +162,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         padding: 5px;
     }
 
-    .modal-sm {
+    .sm {
         max-width: 471pxpx;
         margin: 16.75rem auto;
     }
@@ -374,7 +374,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     </tr>
                                                     <!-- Kurang -->
                                                     <div class="modal fade" id="Kurang<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-sm">
+                                                        <div class="modal-dialog sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
@@ -399,7 +399,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                                 <div class="col-sm-12">
                                                                                     <div class="line-page-cek"></div>
                                                                                 </div>
-                                                                                <div class="col-sm-2">
+                                                                                <div class="col-sm-12">
                                                                                     <div class="form-group">
                                                                                         <label>Kurang</label>
                                                                                         <?php if ($rowBarang['KURANG'] == NULL) { ?>
@@ -429,7 +429,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <!-- End Kurang -->
                                                     <!-- Lebih -->
                                                     <div class="modal fade" id="Lebih<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-sm">
+                                                        <div class="modal-dialog sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
@@ -454,7 +454,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                                 <div class="col-sm-12">
                                                                                     <div class="line-page-cek"></div>
                                                                                 </div>
-                                                                                <div class="col-sm-2">
+                                                                                <div class="col-sm-12">
                                                                                     <div class="form-group">
                                                                                         <label>Lebih</label>
                                                                                         <?php if ($rowBarang['LEBIH'] == NULL) { ?>
@@ -478,7 +478,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <!-- End Lebih -->
                                                     <!-- Pecah -->
                                                     <div class="modal fade" id="Pecah<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-sm">
+                                                        <div class="modal-dialog sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
@@ -503,7 +503,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                                 <div class="col-sm-12">
                                                                                     <div class="line-page-cek"></div>
                                                                                 </div>
-                                                                                <div class="col-sm-2">
+                                                                                <div class="col-sm-12">
                                                                                     <div class="form-group">
                                                                                         <label>Pecah</label>
                                                                                         <?php if ($rowBarang['PECAH'] == NULL) { ?>
@@ -527,7 +527,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <!-- End Pecah -->
                                                     <!-- Rusak -->
                                                     <div class="modal fade" id="Rusak<?= $rowBarang['ID'] ?>">
-                                                        <div class="modal-sm">
+                                                        <div class="modal-dialog sm">
                                                             <div class="modal-content">
                                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                                     <div class="modal-header">
