@@ -117,12 +117,18 @@ if (isset($_POST['show_all'])) {
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th class="no-sort" style="text-align: center;">
-                                        <div>
+                                        <div style="display: flex;justify-content: center;align-content: center;width: 170px;">
                                             <div>
-                                                <button type="button" class="btn btn-info" id="chk_new" onclick="checkAll('chk');"><i class="icon-copy dw dw-checked"></i> Pilih Semua</button>
+                                                <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');">
+                                                    <i class="fa-solid fa-square-check"></i>
+                                                    Check Semua
+                                                </button>
                                             </div>
                                             <div>
-                                                <button type="button" class="btn btn-info" id="chk_new" onclick="checkAllDel('chk');"><i class="icon-copy dw dw-checked"></i> Pilih Semua</button>
+                                                <button type="button" class="btn btn-sm btn-danger" id="chk_new" onclick="checkAllDel('chk');">
+                                                    <i class="fa-regular fa-square-check"></i>
+                                                    Uncheck Semua
+                                                </button>
                                             </div>
                                         </div>
                                     </th>
