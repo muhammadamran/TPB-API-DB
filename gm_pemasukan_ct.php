@@ -117,7 +117,7 @@ if (isset($_POST['show_all'])) {
                                 <thead>
                                     <tr>
                                         <th width="1%">No.</th>
-                                        <th style="text-align: center;">CT</th>
+                                        <th width="1%">CT</th>
                                         <th style="text-align: center;">Ukuran</th>
                                         <th style="text-align: center;">-</th>
                                     </tr>
