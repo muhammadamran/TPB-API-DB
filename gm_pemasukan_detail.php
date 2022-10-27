@@ -318,12 +318,12 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         Cek <?= $pcs ?> CT
                                                                     </a>
                                                                 <?php } else { ?>
+                                                                    <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning">
+                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                        <br>
+                                                                        Cek <?= $pcs ?> CT
+                                                                    </a>
                                                                 <?php } ?>
-                                                                <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning">
-                                                                    <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                    <br>
-                                                                    Cek <?= $pcs ?> CT
-                                                                </a>
                                                             </div>
                                                             <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                                 <?php if ($rowBarang['STATUS'] != NULL) { ?>
