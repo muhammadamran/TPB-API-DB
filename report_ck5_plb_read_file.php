@@ -52,7 +52,6 @@ $insertquery = $insertquery . $subquery;
 $insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
 
 if (mysqli_query($dbcon, $insertquery)) {
-	// echo "Sheet 1 Uploaded <br>";
 } else {
 	echo "Error: " . $insertquery . "<br>" . mysqli_error($dbcon);
 }
