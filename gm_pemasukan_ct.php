@@ -121,13 +121,13 @@ if (isset($_POST['show_all'])) {
                                             <div>
                                                 <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
                                                     <i class="fa-solid fa-square-check"></i>
-                                                    Check Semua
+                                                    Check
                                                 </button>
                                             </div>
                                             <div style="margin-left: 5px;">
                                                 <button type="button" class="btn btn-sm btn-danger" id="chk_new" onclick="checkAllDel('chk');" style="font-size: 10px;">
                                                     <i class="fa-solid fa-rectangle-xmark"></i>
-                                                    Uncheck Semua
+                                                    Uncheck
                                                 </button>
                                             </div>
                                         </div>
