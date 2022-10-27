@@ -132,7 +132,7 @@ if (isset($_POST['show_all'])) {
                                             </div>
                                         </div>
                                     </th>
-                                    <th width="1%">#</th>
+                                    <th width="1%" style="text-align: center;">#</th>
                                     <th style="text-align: center;">Ukuran</th>
                                     <th style="text-align: center;">Total Botol</th>
                                     <th style="text-align: center;">Total Liter</th>

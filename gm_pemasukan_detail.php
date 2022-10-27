@@ -311,19 +311,31 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                 <!-- <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a> -->
                                                                 <!-- Rusak -->
                                                                 <!-- <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a> -->
-                                                                <?php if ($pcs == 0) { ?>
-                                                                    <a href="#<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
-                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                        <br>
-                                                                        Cek <?= $pcs ?> CT
-                                                                    </a>
+                                                                <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
+                                                                    <?php if ($pcs == 0) { ?>
+                                                                        <!-- No QTY -->
+                                                                        <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
+                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                            <br>
+                                                                            Cek <?= $pcs ?> CT
+                                                                        </a>
+                                                                    <?php } else { ?>
+                                                                        <!-- Check -->
+                                                                        <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning" target="_blank">
+                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                            <br>
+                                                                            Cek <?= $pcs ?> CT
+                                                                        </a>
+                                                                    <?php } ?>
                                                                 <?php } else { ?>
-                                                                    <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning">
+                                                                    <!-- Disabled -->
+                                                                    <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-secondary">
                                                                         <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a>
                                                                 <?php } ?>
+
                                                             </div>
                                                             <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                                 <?php if ($rowBarang['STATUS'] != NULL) { ?>
