@@ -292,6 +292,8 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $noBarang = 0;
                                                 while ($rowBarang = mysqli_fetch_array($dataTable)) {
+                                                    $jml_pcs = $rowBarang['NETTO'];
+                                                    $pcs = str_replace(".0000", "", "$jml_pcs");
                                                     $noBarang++;
                                             ?>
                                                     <tr class="odd gradeX">
@@ -302,13 +304,14 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                             <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
                                                             <div style="display: flex;justify-content: space-evenly;align-content: center;width: 315px;">
                                                                 <!-- Kurang -->
-                                                                <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
+                                                                <!-- <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a> -->
                                                                 <!-- Lebih -->
-                                                                <a href="#Lebih<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a>
+                                                                <!-- <a href="#Lebih<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a> -->
                                                                 <!-- Pecah -->
-                                                                <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a>
+                                                                <!-- <a href="#Pecah<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a> -->
                                                                 <!-- Rusak -->
-                                                                <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a>
+                                                                <!-- <a href="#Rusak<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a> -->
+                                                                <a href="#Karton<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fas fa-boxes"></i> Cek <?= $pcs ?> CT</a>
                                                             </div>
                                                             <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
                                                                 <?php if ($rowBarang['STATUS'] != NULL) { ?>
@@ -392,7 +395,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <fieldset>
                                                                             <div class="row">
                                                                                 <div class="col-sm-12">
-                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                    <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                                         <div style="font-size: 40px;">
                                                                                             <i class="fas fa-info"></i>
                                                                                         </div>
@@ -447,7 +450,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <fieldset>
                                                                             <div class="row">
                                                                                 <div class="col-sm-12">
-                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                    <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                                         <div style="font-size: 40px;">
                                                                                             <i class="fas fa-info"></i>
                                                                                         </div>
@@ -496,7 +499,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <fieldset>
                                                                             <div class="row">
                                                                                 <div class="col-sm-12">
-                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                    <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                                         <div style="font-size: 40px;">
                                                                                             <i class="fas fa-info"></i>
                                                                                         </div>
@@ -545,7 +548,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <fieldset>
                                                                             <div class="row">
                                                                                 <div class="col-sm-12">
-                                                                                    <div style="display: flex;justify-content: flex-start;align-content: center;">
+                                                                                    <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                                         <div style="font-size: 40px;">
                                                                                             <i class="fas fa-info"></i>
                                                                                         </div>
