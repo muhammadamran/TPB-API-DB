@@ -183,24 +183,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         background-image: url('assets/img/svg/download.svg');
     }
 
-    .form-check-input {
-        width: 1.5em;
-        height: 1.5em;
-        margin-top: 0;
-        vertical-align: top;
-        background-color: var(--app-component-bg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        border: 1px solid rgba(var(--bs-black-rgb), .25);
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        -webkit-print-color-adjust: exact;
-        color-adjust: exact;
-        print-color-adjust: exact;
-    }
-
     .form-check-input:checked {
         background-color: #348fe2;
         border-color: #348fe2;
@@ -220,11 +202,11 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
         height: 1.5em;
         margin-top: 0;
         vertical-align: top;
-        background-color: var(--app-component-bg);
+        background-color: #fff;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        border: 1px solid rgba(var(--bs-black-rgb), .25);
+        border: 1px solid #000;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
