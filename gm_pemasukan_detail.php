@@ -281,14 +281,14 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </a>
                                                                 <?php } else { ?>
                                                                     <!-- Check -->
-                                                                    <!-- <form action="/gm_pemasukan_ct.php" method="POST" target="_blank"> -->
-                                                                    <input type="hidden" name="CekBarangBotol[<?= $noBarang - 1; ?>][ID_BARANG]" value="<?= $rowBarang['ID'] ?>">
-                                                                    <button type="submit" id="ct_submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
-                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                        <br>
-                                                                        Cek <?= $pcs ?> CT
-                                                                    </button>
-                                                                    <!-- </form> -->
+                                                                    <form action="/gm_pemasukan_ct.php" method="POST" target="_blank">
+                                                                        <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
+                                                                        <button type="submit" id="ct_submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
+                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                            <br>
+                                                                            Cek <?= $pcs ?> CT
+                                                                        </button>
+                                                                    </form>
                                                                 <?php } ?>
                                                             <?php } else { ?>
                                                                 <!-- Disabled -->
@@ -413,15 +413,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     }
 
     // CEK BARANG
-    $("#ct_submit").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_ct.php`).attr('target', '_blank');
-        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
 
     // SESUAI
     $("#btn-sesuai").click(function() {
