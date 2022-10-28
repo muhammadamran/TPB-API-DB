@@ -1,31 +1,44 @@
 <?php
 include "include/connection.php";
+class Library
+{
+    public function __construct()
+    {
+        $host       = "localhost";
+        $dbname     = "inxmiles_tpb";
+        $username   = "inxmiles_tpb";
+        $password   = "Flatrone2241TPB";
+        $this->db = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
+    }
+
+    public function update_trn($table, $dataUpdate, $PengajuanID)
+    {
+
+        $this->db->where('PengajuanID', $PengajuanID);
+        $this->db->update($table, $dataUpdate);
+    }
+}
 
 $key = $_POST['CekBarang'];
-var_dump($key);
-exit;
 foreach ($key as $row) {
-    if (@$row['PengajuanID']) {
-        // TABEL simak_trn_pengajuan
-        $PengajuanID = $row['PengajuanID'];
+    if (@$row['ID']) {
+        $ID = $row['ID'];
+        $NOMOR_AJU = $row['NOMOR_AJU'];
+        $KODE_BARANG = $row['KODE_BARANG'];
+        $TOTAL_BOTOL = $row['TOTAL_BOTOL'];
+        $TOTAL_LITER = $row['TOTAL_LITER'];
+        $STATUS = $row['STATUS'];
+        $OPERATOR_ONE = $row['OPERATOR_ONE'];
+        $TGL_CEK = $row['TGL_CEK'];
+        $CHECKING = $row['CHECKING'];
+
         $dataUpdate = array(
-            'app_BAUK' => '10',
-            'Date_app_BAUK' => date('Y-m-d h:m:i'),
-            'status' => 'Terima BAUK - Generate VA - Pengajuan Mengulang Reguler',
-            'proses' => 'Terima BAUK - Generate VA',
-            'submit' => 'Terima BAUK - Generate VA',
-            'VA' => $row['VA']
+            'STATUS' => $row['STATUS'],
+            'OPERATOR_ONE' => $row['OPERATOR_ONE'],
+            'TGL_CEK' => $row['TGL_CEK'],
+            'CHECKING' => $row['CHECKING']
         );
 
-        // TABEL simak_trn_log
-        $dataLog = array(
-            'user_name' => $this->session->userdata('user_name'),
-            'transaksi' => 'Terima - BAUK - Generate VA - Pengajuan Mengulang Reguler ' . $row['MhswID'] . '-' . $row['NamaMhsw'],
-            'modul' => 'Mengulang Reguler',
-            'created_date' => date('Y-m-d h:m:i')
-        );
-
-        $this->Pengajuan_model->update_trn('simak_trn_pengajuan', $dataUpdate, $PengajuanID);
-        $this->db->insert('simak_trn_log', $dataLog);
+        $this->db->update_trn('plb_barang', $dataUpdate, $ID);
     }
 }
