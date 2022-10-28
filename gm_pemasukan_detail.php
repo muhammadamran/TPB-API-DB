@@ -279,7 +279,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" onClick="openWindowReload(this)"> class="btn btn-sm btn-custom btn-warning">
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" onClick="openWindowReload(this)" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
