@@ -276,7 +276,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" onclick="javascript:window.location.reload();"> class="btn btn-sm btn-custom btn-warning">
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" onClick="reloadThePage()" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
@@ -416,6 +416,10 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
     //         VarAll.style.display = "none";
     //     }
     // }
+
+    function reloadThePage() {
+        window.location.reload();
+    }
 
     // CEK BARANG
     $("#btn-all").click(function() {
