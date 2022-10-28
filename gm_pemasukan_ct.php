@@ -263,8 +263,14 @@ if (isset($_POST['show_all'])) {
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
-                                            <td>
-                                                <a href="">Botol</a>
+                                            <td style="text-align: center;">
+                                                <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Status!">
+                                                    <div>
+                                                        <div style="font-size: 12px;">
+                                                            <i class="fas fa-edit"></i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </td>
                                             <td>
                                                 <img src="assets/img/png/box.png" style="width: 70px;" alt="">
@@ -294,6 +300,55 @@ if (isset($_POST['show_all'])) {
                                                 <?= $row['DOKS']; ?>
                                             </td>
                                         </tr>
+
+                                        <!-- Status -->
+                                        <div class="modal fade" id="status<?= $row['KODE_BARANG'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Status] Data Barang Masuk</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <h4>Upload Berita Acara</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group">
+                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                                        <label>Upload Berita Acara Kembali!</label>
+                                                                                    <?php } else { ?>
+                                                                                        <label>Upload Berita Acara</label>
+                                                                                    <?php } ?>
+                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="upload_" class="btn btn-warning"><i class="fas fa-file"></i> Upload</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Status -->
                                     <?php } ?>
                                 <?php } else { ?>
                                 <?php } ?>
