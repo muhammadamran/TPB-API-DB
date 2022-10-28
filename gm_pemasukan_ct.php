@@ -133,9 +133,9 @@ if (isset($_POST["kurang_"])) {
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
     }
 }
 
@@ -158,9 +158,9 @@ if (isset($_POST["lebih_"])) {
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
     }
 }
 
@@ -185,9 +185,9 @@ if (isset($_POST["pecah_"])) {
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
     }
 }
 
@@ -212,9 +212,9 @@ if (isset($_POST["rusak_"])) {
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Rusak')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
     }
 }
 
@@ -225,10 +225,10 @@ if (isset($_POST["Delete_"])) {
     $ID_BARANG             = $_POST['ID_BARANG'];
     $KODE_BARANG             = $_POST['KODE_BARANG'];
 
-    $query = $dbcon->query("DELETE FROM plb_barang_ct WHERE ID='$ID_CT'");
+    $query = $dbcon->query("DELETE FROM plb_barang_ct WHERE ID='$ID_BARANG'");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteFailed=true';</script>";
     }
