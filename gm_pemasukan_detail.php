@@ -178,7 +178,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                     Cek Satuan Botol
                                                 </button>
                                                 <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                    <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                    <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
                                                         <i class="fa-solid fa-check-circle"></i>
                                                         Simpan Barang Masuk
                                                     </button>
@@ -418,7 +418,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
     }
 
     // CEK BARANG
-    $("#btn-sesuai").click(function() {
+    $("#btn-all").click(function() {
         $("#form-submit").attr('action', `gm_pemasukan_proses.php`)
         var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
 
