@@ -2,7 +2,7 @@
 include "include/connection.php";
 
 $key = $_POST['CekBarang'];
-var_dump(@$row['PengajuanID']);
+var_dump(@$row['ID']);
 exit;
 foreach ($key as $row) {
     if (@$row['PengajuanID']) {
