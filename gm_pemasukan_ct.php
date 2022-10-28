@@ -302,17 +302,31 @@ if (isset($_POST['show_all'])) {
                                             <td style="text-align: center;">
                                                 <i class="fa-solid fa-glass-water-droplet"></i> <?= $row['TOTAL_LITER']; ?> Liter
                                             </td>
-                                            <td style="text-align: center;">
-                                                <?= $row['STATUS']; ?>
+                                            <td style="text-align: center">
+                                                <?php if ($row['STATUS'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['STATUS']; ?>
+                                                <?php } ?>
                                             </td>
-                                            <td style="text-align: center;">
-                                                <?= $row['REMAKS']; ?>
+                                            <td style="text-align: center">
+                                                <?php if ($row['REMAKS'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['REMAKS']; ?>
+                                                <?php } ?>
                                             </td>
-                                            <td style="text-align: center;">
-                                                <?= $row['DOKS']; ?>
+                                            <td style="text-align: center">
+                                                <?php if ($row['DOKS'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['DOKS']; ?>
+                                                <?php } ?>
                                             </td>
                                         </tr>
-
 
                                         <!-- Kurang -->
                                         <div class="modal fade" id="Kurang<?= $row['ID'] ?>">
