@@ -222,7 +222,7 @@ if (isset($_POST["rusak_"])) {
 if (isset($_POST["simpan"])) {
 
     $ID             = $_POST['ID'];
-    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+    $NOMOR_AJU      = $_POST['NOMOR_AJU'];
 
 
     $query = $dbcon->query("UPDATE plb_barang SET CHECKING='Botol'
@@ -238,9 +238,9 @@ if (isset($_POST["simpan"])) {
 if (isset($_POST["Delete_"])) {
 
     $ID_CT             = $_POST['ID_CT'];
-    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
-    $ID_BARANG             = $_POST['ID_BARANG'];
-    $KODE_BARANG             = $_POST['KODE_BARANG'];
+    $NOMOR_AJU         = $_POST['NOMOR_AJU'];
+    $ID_BARANG         = $_POST['ID_BARANG'];
+    $KODE_BARANG       = $_POST['KODE_BARANG'];
 
     $query = $dbcon->query("DELETE FROM plb_barang_ct WHERE ID='$ID_BARANG'");
 

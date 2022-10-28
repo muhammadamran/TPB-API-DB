@@ -149,6 +149,16 @@ if (isset($_POST["All_rusak"])) {
     }
 }
 
+if (isset($_POST["PilihSemua"])) {
+
+    $key = $this->input->post('app_pengajuan');
+
+    foreach ($key as $row) {
+        if (@$row['PengajuanID']) {
+        }
+    }
+}
+
 // TOTAL BARANG
 $contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
@@ -307,7 +317,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                     $resultChecking = mysqli_fetch_array($checking);
                                     ?>
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
                                             <i class="fa-solid fa-check-circle"></i>
                                             Simpan Barang Masuk
                                         </button>
@@ -397,11 +407,10 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
                                                                 </div>
                                                             <?php } ?>
-
                                                         </td>
                                                         <td style="text-align: center;">
-                                                            <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>"> -->
-                                                            <!-- <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>"> -->
+                                                            <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
+                                                            <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
                                                             <!-- Kurang -->
                                                             <!-- <a href="#Kurang<?= $rowBarang['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a> -->
                                                             <!-- Lebih -->
@@ -437,7 +446,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     Cek <?= $pcs ?> CT
                                                                 </a>
                                                             <?php } ?>
-                                                            <div style="margin-top: 5px;font-size: 9px;margin-left: -145px;">
+                                                            <div style="margin-top: 5px;font-size: 9px;">
                                                                 <?php if ($rowBarang['STATUS'] != NULL) { ?>
                                                                     <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
                                                                 <?php } ?>
