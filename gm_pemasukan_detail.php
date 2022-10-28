@@ -149,49 +149,6 @@ if (isset($_POST["All_rusak"])) {
     }
 }
 
-if (isset($_POST["ct_submit"])) {
-
-    // CEK CT
-    $cekCT = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='" . $_POST['ID_BARANG'] . "'");
-    $dataCT    = mysqli_fetch_array($cekCT);
-
-    if ($dataCT['ID_BARANG'] == NULL) {
-        $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_POST['ID_BARANG'] . "'");
-        $dataBarang    = mysqli_fetch_array($contentBarang);
-        $jml_pcs = $dataBarang['JUMLAH_SATUAN'];
-        $pcs = str_replace(".0000", "", "$jml_pcs");
-
-        // TOTAL BOTOL
-        $botol = explode('X', $dataBarang['UKURAN']);
-        $t_botol = $botol[0];
-        // TOTAL LITER
-        $liter =  $botol[1];
-        $r_liter = str_replace('Ltr', '', $liter);
-        $t_liter = str_replace(',', '.', $r_liter);
-
-        for ($i = 0; $i < $pcs; $i++) {
-            $sql = $dbcon->query("INSERT INTO plb_barang_ct 
-                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
-                            VALUES
-                            ('','$dataBarang[NOMOR_AJU]','$dataBarang[ID]','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
-                            ");
-        }
-
-        if ($sql) {
-            // echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';'_blank'</script>";
-            echo "
-            <script>
-                window.open('gm_pemasukan_ct.php?ID=$dataBarang[ID]', '_blank');
-            </script>
-            ";
-        } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?InputIconFailed=true';</script>";
-        }
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataCT[ID_BARANG]';'_blank'</script>";
-    }
-}
-
 // TOTAL BARANG
 $contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
@@ -461,7 +418,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a> -->
-                                                                    <form action="" method="POST">
+                                                                    <form action="gm_pemasukan_ct.php" method="POST" target="_blank">
                                                                         <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
                                                                         <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
