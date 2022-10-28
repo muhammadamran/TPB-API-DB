@@ -236,11 +236,11 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $noBarang = 0;
                                                 while ($rowBarang = mysqli_fetch_array($dataTable)) {
-                                                    $jml_pcs = $dataBarang['JUMLAH_SATUAN'];
+                                                    $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
 
                                                     // TOTAL BOTOL
-                                                    $botol = explode('X', $dataBarang['UKURAN']);
+                                                    $botol = explode('X', $rowBarang['UKURAN']);
                                                     $t_botol = $botol[0];
                                                     // TOTAL LITER
                                                     $liter =  $botol[1];
