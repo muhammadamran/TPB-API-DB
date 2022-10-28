@@ -218,6 +218,23 @@ if (isset($_POST["rusak_"])) {
     }
 }
 
+
+if (isset($_POST["simpan"])) {
+
+    $ID             = $_POST['ID'];
+    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+
+
+    $query = $dbcon->query("UPDATE plb_barang SET CHECKING='Botol'
+                            WHERE ID='$ID'");
+
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan.php?AJU=$NOMOR_AJU';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?AJU=?ID=$NOMOR_AJU&DeleteFailed=true';</script>";
+    }
+}
+
 if (isset($_POST["Delete_"])) {
 
     $ID_CT             = $_POST['ID_CT'];
@@ -371,6 +388,7 @@ $resultList = mysqli_fetch_array($list);
                     </div> -->
                     <form action="" method="POST">
                         <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
+                        <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
                         <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
                     </form>
                     <br>
