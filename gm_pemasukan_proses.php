@@ -28,6 +28,3 @@ foreach ($key as $row) {
                               WHERE ID='$ID'");
     }
 }
-
-var_dump($CHE);
-exit;
