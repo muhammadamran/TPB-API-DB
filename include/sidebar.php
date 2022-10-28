@@ -144,6 +144,10 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             <li class="<?= $uriSegments[1] == 'index_report.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
                 <a href="index_report.php"><i class="fas fa-clipboard"></i> <span>Report</span></a>
             </li>
+            <!-- CK5PLB -->
+            <?php
+            include 'modules/CK5PLB/menu.php'
+            ?>
             <!-- Dokumen Pabean -->
             <?php include 'modules/DokumenPabean/menu.php' ?>
             <!-- Gate Mandiri -->
