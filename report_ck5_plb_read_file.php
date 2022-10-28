@@ -1,5 +1,6 @@
 <?php
 include 'include/connection.php';
+include 'include/api.php';
 if (!$dbcon) {
 	die("Connection failed: " . mysqli_connect_error());
 }
@@ -50,8 +51,7 @@ for ($row = 2; $row <= $rowcount; $row++) {
 }
 $insertquery = $insertquery . $subquery;
 $insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
-var_dump($insertquery);
-exit;
+$hdr = get_content($resultAPI['url_api'] . 'PLBInserProses.php?function=post_header&DATA=' . $insertquery);
 if (mysqli_query($dbcon, $insertquery)) {
 } else {
 	echo "Error: " . $insertquery . "<br>" . mysqli_error($dbcon);
