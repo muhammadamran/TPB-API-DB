@@ -25,5 +25,5 @@ foreach ($key as $row) {
 if ($CHE) {
     echo "<script>window.location.href='gm_pemasukan_detail.php?ID=$NOMOR_AJU';'_blank'</script>";
 } else {
-    echo "<script>window.location.href='gm_pemasukan_detail.php?ID=$NOMOR_AJU';'_blank'</script>";
+    echo "<script>window.location.href='gm_pemasukan_detail.php?ID=$NOMOR_AJU'?status=error;'_blank'</script>";
 }
