@@ -8,68 +8,6 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
 
-$AJU_PLB = '';
-// API - 
-include "include/api.php";
-
-if (isset($_POST['add_'])) {
-    $bm_no_aju_plb          = $_POST['bm_aju'];
-    $bk_no_aju_sarinah      = $_POST['bk_aju'];
-    $bm_tgl_masuk           = $_POST['bm_masuk'];
-    $bm_nama_operator       = $_POST['bm_operator'];
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
-    }
-}
-
-if (isset($_POST['edit_'])) {
-    $rcd_id                 = $_POST['rcd_id'];
-    $bm_no_aju_plb          = $_POST['bm_aju'];
-    $bk_no_aju_sarinah      = $_POST['bk_aju'];
-    $bm_tgl_masuk           = $_POST['bm_masuk'];
-    $bm_nama_operator       = $_POST['bm_operator'];
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
-    }
-}
-
-if (isset($_POST['upload_'])) {
-    $rcd_id                 = $_POST['rcd_id'];
-    // File
-    $filename = $_FILES['uploadBA']['name'];
-    $tmpname = $_FILES['uploadBA']['tmp_name'];
-    $sizename = $_FILES['uploadBA']['size'];
-    $exp = explode('.', $filename);
-    $ext = end($exp);
-    $uniq_file =  "Berita-Acara-PLB" . '_' . time();
-    $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
-    $config['upload_path'] = './files/ck5plb/BA/PLB/';
-    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
-    $config['max_size'] = '2000000';
-    $config['file_name'] = $newname;
-    move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
-
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
-    $data = json_decode($content, true);
-
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
-    }
-}
-
 // Submit CT
 if (isset($_POST["ct_submit"])) {
 
@@ -91,7 +29,7 @@ if (isset($_POST["ct_submit"])) {
         $r_liter = str_replace('Ltr', '', $liter);
         $t_liter = str_replace(',', '.', $r_liter);
 
-        for ($i = 0; $i < $pcs; $i++) {
+        for ($i = 1; $i < $pcs; $i++) {
             $sql = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES

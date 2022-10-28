@@ -352,6 +352,7 @@ if (isset($_POST['show_all'])) {
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
+
                                                 <div style="display: flex;justify-content: center;align-items: center;">
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>
@@ -426,6 +427,7 @@ if (isset($_POST['show_all'])) {
                                                         </div>
                                                     <?php } ?>
                                                 </div>
+
                                             </td>
                                         </tr>
                                         <!-- Add -->
