@@ -310,20 +310,6 @@ $resultList = mysqli_fetch_array($list);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <!-- <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:10px">
-                        <div style="margin-left: 0px;">
-                            <button type="submit" name="CT_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
-                        </div>
-                        <div style="margin-left: 5px;">
-                            <button type="submit" name="CT_lebih" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Pilih Semua Lebih</button>
-                        </div>
-                        <div style="margin-left: 5px;">
-                            <button type="submit" name="CT_pecah" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pilih Semua Pecah</button>
-                        </div>
-                        <div style="margin-left: 5px;">
-                            <button type="submit" name="CT_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
-                        </div>
-                    </div> -->
                     <form action="" method="POST">
                         <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
                         <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
@@ -460,21 +446,6 @@ $resultList = mysqli_fetch_array($list);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <!-- <div class="col-sm-12">
-                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
-                                                                            <div style="font-size: 40px;">
-                                                                                <i class="fas fa-info"></i>
-                                                                            </div>
-                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
-                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
-                                                                                <br>
-                                                                                <font>Total Botol: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-12">
-                                                                        <div class="line-page-cek"></div>
-                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Kurang</label>
@@ -521,21 +492,6 @@ $resultList = mysqli_fetch_array($list);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <!-- <div class="col-sm-12">
-                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
-                                                                            <div style="font-size: 40px;">
-                                                                                <i class="fas fa-info"></i>
-                                                                            </div>
-                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
-                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
-                                                                                <br>
-                                                                                <font>Total Botol: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-12">
-                                                                        <div class="line-page-cek"></div>
-                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Lebih</label>
@@ -576,21 +532,6 @@ $resultList = mysqli_fetch_array($list);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <!-- <div class="col-sm-12">
-                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
-                                                                            <div style="font-size: 40px;">
-                                                                                <i class="fas fa-info"></i>
-                                                                            </div>
-                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
-                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
-                                                                                <br>
-                                                                                <font>Total Botol: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-12">
-                                                                        <div class="line-page-cek"></div>
-                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Pecah</label>
@@ -630,21 +571,6 @@ $resultList = mysqli_fetch_array($list);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <!-- <div class="col-sm-12">
-                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
-                                                                            <div style="font-size: 40px;">
-                                                                                <i class="fas fa-info"></i>
-                                                                            </div>
-                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
-                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
-                                                                                <br>
-                                                                                <font>Total Botol: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-12">
-                                                                        <div class="line-page-cek"></div>
-                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Rusak</label>
