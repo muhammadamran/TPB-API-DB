@@ -165,10 +165,10 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;display: flex;">
+                                            <!-- <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;display: flex;">
                                                 <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
                                                 <p align="justify" style="margin-left: 5px;" class="form-check-label" id="CekBotolLewat">Klik untuk melewati proses pengecekan Botol.</p>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -398,16 +398,29 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
 
     function checkAll(checkId) {
         var inputs = document.getElementsByTagName("input");
+        var VarAll = document.getElementById("buttonPilihAll");
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
                 if (inputs[i].checked == true) {
+                    VarAll.style.display = "block";
                     inputs[i].checked = false;
                 } else if (inputs[i].checked == false) {
                     inputs[i].checked = true;
+                    VarAll.style.display = "none";
                 }
             }
         }
     }
+
+    // function MyCekBotolLewat() {
+    //     var checkBox = document.getElementById("CekBotolLewat");
+    //     var VarAll = document.getElementById("buttonPilihAll");
+    //     if (checkBox.checked == true) {
+    //         VarAll.style.display = "block";
+    //     } else {
+    //         VarAll.style.display = "none";
+    //     }
+    // }
 
     // CEK BARANG
     $("#btn-all").click(function() {
@@ -436,16 +449,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
         history.replaceState({}, '', './gm_pemasukan_detail.php');
-    }
-
-    function MyCekBotolLewat() {
-        var checkBox = document.getElementById("CekBotolLewat");
-        var VarAll = document.getElementById("buttonPilihAll");
-        if (checkBox.checked == true) {
-            VarAll.style.display = "block";
-        } else {
-            VarAll.style.display = "none";
-        }
     }
 </script>
 <script>
