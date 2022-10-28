@@ -26,7 +26,7 @@ if (isset($_POST["ct_submit"])) {
         $t_botol = $botol[0];
         // TOTAL LITER
         $liter =  $botol[1];
-        $r_liter = str_replace('Ltr', '', $liter);
+        $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
         $t_liter = str_replace(',', '.', $r_liter);
 
         for ($i = 0; $i < $pcs; $i++) {

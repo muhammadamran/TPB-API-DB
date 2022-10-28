@@ -244,7 +244,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                     $t_botol = $botol[0];
                                                     // TOTAL LITER
                                                     $liter =  $botol[1];
-                                                    $r_liter = str_replace('Ltr', '', $liter);
+                                                    $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
                                                     $t_liter = str_replace(',', '.', $r_liter);
                                             ?>
                                                     <tr class="odd gradeX">
