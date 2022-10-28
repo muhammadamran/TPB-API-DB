@@ -11,12 +11,6 @@ include "include/cssForm.php";
 // Submit CT
 if (isset($_POST["ct_submit"])) {
     $keyy = @$_POST['ID_BARANG'];
-
-
-
-    var_dump($keyy);
-    exit;
-
     // CEK CT
     $cekCT = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
     $dataCT    = mysqli_fetch_array($cekCT);
@@ -42,6 +36,9 @@ if (isset($_POST["ct_submit"])) {
                             ('','$dataBarang[NOMOR_AJU]','$$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
                             ");
         }
+
+        $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
+                                WHERE ID='$keyy");
 
         if ($sql) {
             echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$$keyy';'_blank'</script>";
