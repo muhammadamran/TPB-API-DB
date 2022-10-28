@@ -279,14 +279,11 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <form action="/gm_pemasukan_ct.php" method="POST" target="_blank">
-                                                                            <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
-                                                                            <button type="submit" id="ct_submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
-                                                                                <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                                <br>
-                                                                                Cek <?= $pcs ?> CT
-                                                                            </button>
-                                                                        </form>
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" class="btn btn-sm btn-custom btn-warning">
+                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                            <br>
+                                                                            Cek <?= $pcs ?> CT
+                                                                        </a>
                                                                     <?php } ?>
                                                                 <?php } ?>
                                                             <?php } else { ?>
