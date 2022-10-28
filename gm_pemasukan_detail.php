@@ -390,6 +390,8 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['CHECKING'] == 'Done') { ?>
                                                                 Pengecekan Botol & Liter
+                                                            <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
+                                                                Pengecekan Botol & Liter Selesai
                                                             <?php } else { ?>
                                                                 <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
                                                                     <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">

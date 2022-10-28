@@ -229,9 +229,9 @@ if (isset($_POST["simpan"])) {
                             WHERE ID='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan.php?AJU=$NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan.php?AJU=?ID=$NOMOR_AJU&DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=?ID=$NOMOR_AJU&DeleteFailed=true';</script>";
     }
 }
 
