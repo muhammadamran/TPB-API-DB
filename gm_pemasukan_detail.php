@@ -7,22 +7,16 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 
-if (isset($_POST["PilihSemua"])) {
-
-    $key = $_POS['CekBarang'];
-
-    foreach ($key as $row) {
-        if (@$row['PengajuanID']) {
-        }
-    }
-}
-
 // TOTAL BARANG
 $contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
 $contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
+
+// Data Barang
+$contentBarangAll = $dbcon->query("SELECT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$dataBarangAll    = mysqli_fetch_array($contentBarangAll);
 ?>
 <style>
     .btn-custom {
@@ -164,9 +158,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                     <font style="font-weight: 800;">Status Barang:</font>
                                 </div>
                                 <div style="display: flex;justify-content: flex-start;align-content: baseline;">
-                                    <!-- Sesuai ALl -->
-                                    <input type="hidden" name="AJU" value="<?= $DATAAJU; ?>">
-                                    <input type="hidden" name="OPERATOR_ONE" value="<?= $_SESSION['username']; ?>">
                                     <?php
                                     $checking = $dbcon->query("SELECT brg.NOMOR_AJU,
                                                             (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Done') AS checking,
@@ -265,6 +256,17 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                             <?php } else { ?>
                                                                 <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
                                                                     <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $row['ID'] ?>">
+                                                                    <!-- PLB_BARANG_CT -->
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][NOMOR_AJU]" value="<?= $row['NOMOR_AJU'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][KODE_BARANG]" value="<?= $row['KODE_BARANG'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
+                                                                    <!-- PLB_BARANG -->
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="DONE">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING]" value="DONE">
                                                                 </div>
                                                             <?php } ?>
                                                         </td>
@@ -413,6 +415,15 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
     }
 
     // CEK BARANG
+    $("#btn-sesuai").click(function() {
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php`)
+        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
 
     // SESUAI
     $("#btn-sesuai").click(function() {
