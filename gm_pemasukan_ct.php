@@ -37,8 +37,8 @@ if (isset($_POST["ct_submit"])) {
                             ");
         }
 
-        $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Done'
-                                WHERE ID='" . $_POST['ID_BARANG'] . "'");
+        var_dump($sql);
+        exit;
 
         if ($sql) {
             echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';'_blank'</script>";

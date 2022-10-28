@@ -257,7 +257,9 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['CHECKING'] == 'Done') { ?>
-                                                                Pengecekan Botol & Liter
+                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
+                                                                    <i class="fa-solid fa-hourglass-start"></i>
+                                                                </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
                                                                 Pengecekan Botol & Liter Selesai
                                                             <?php } else { ?>
