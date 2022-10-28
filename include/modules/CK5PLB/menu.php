@@ -6,11 +6,9 @@ if ($resultRoleModules['v_bc'] == 'show') {
 }
 ?>
 <li class="nav-header" style="display: <?= $TitleBC; ?>;">CK5 PLB <small>(Ref. Barang Masuk)</small> </li>
-<ul class="sub-menu">
-    <li class="<?= $uriSegments[1] == 'report_ck5_plb.php' ? 'active' : '' ?>">
-        <a href="report_ck5_plb.php">Upload CK5 PLB </a>
-    </li>
-</ul>
+<li class="<?= $uriSegments[1] == 'report_ck5_plb.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
+    <a href="report_ck5_plb.php"><i class="fas fa-clipboard"></i> <span>Upload CK5 PLB</span></a>
+</li>
 <!-- <li class="has-sub <?= $uriSegments[1] == 'dp_bc2_3.php' ||
                             $uriSegments[1] == 'dp_bc2_5.php' ||
                             $uriSegments[1] == 'dp_bc2_6_1.php' ||
