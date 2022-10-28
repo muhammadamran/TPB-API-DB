@@ -123,6 +123,17 @@ if (isset($_POST['show_all'])) {
 }
 ?>
 <style>
+    .btn-custom {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .sm {
+        max-width: 471pxpx;
+        margin: 16.75rem auto;
+        width: 375px;
+    }
+
     /* Check Box */
     .form-check-input[type=checkbox] {
         border-radius: 0.25em;
@@ -264,13 +275,14 @@ if (isset($_POST['show_all'])) {
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
-                                                <a href="#status<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Status!">
-                                                    <div>
-                                                        <div style="font-size: 12px;">
-                                                            <i class="fas fa-edit"></i>
-                                                        </div>
-                                                    </div>
-                                                </a>
+                                                <!-- Kurang -->
+                                                <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
+                                                <!-- Lebih -->
+                                                <a href="#Lebih<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a>
+                                                <!-- Pecah -->
+                                                <a href="#Pecah<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a>
+                                                <!-- Rusak -->
+                                                <a href="#Rusak<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a>
                                             </td>
                                             <td>
                                                 <img src="assets/img/png/box.png" style="width: 70px;" alt="">
@@ -301,54 +313,209 @@ if (isset($_POST['show_all'])) {
                                             </td>
                                         </tr>
 
-                                        <!-- Status -->
-                                        <div class="modal fade" id="status<?= $row['ID'] ?>">
-                                            <div class="modal-dialog">
+
+                                        <!-- Kurang -->
+                                        <div class="modal fade" id="Kurang<?= $row['ID'] ?>">
+                                            <div class="modal-dialog sm">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Status] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Kurang] Botol Barang Masuk</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>Upload Berita Acara</h4>
-                                                                                </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
+                                                                            <div style="font-size: 40px;">
+                                                                                <i class="fas fa-info"></i>
                                                                             </div>
-                                                                            <hr>
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                        <label>Upload Berita Acara Kembali!</label>
-                                                                                    <?php } else { ?>
-                                                                                        <label>Upload Berita Acara</label>
-                                                                                    <?php } ?>
-                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
-                                                                                </div>
+                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
+                                                                                <br>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="line-page-cek"></div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label>Kurang</label>
+                                                                            <?php if ($row['KURANG'] == NULL) { ?>
+                                                                                <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="0" required>
+                                                                            <?php } else { ?>
+                                                                                <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="<?= $row['KURANG'] ?>" required>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <div class="form-group">
+                                                                            <div style="margin-top: 26px;">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="upload_" class="btn btn-warning"><i class="fas fa-file"></i> Upload</button>
+                                                            <button type="submit" name="kurang_" class="btn btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Status -->
+                                        <!-- End Kurang -->
+                                        <!-- Lebih -->
+                                        <div class="modal fade" id="Lebih<?= $row['ID'] ?>">
+                                            <div class="modal-dialog sm">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Lebih] Botol Barang Masuk</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
+                                                                            <div style="font-size: 40px;">
+                                                                                <i class="fas fa-info"></i>
+                                                                            </div>
+                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
+                                                                                <br>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="line-page-cek"></div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label>Lebih</label>
+                                                                            <?php if ($row['LEBIH'] == NULL) { ?>
+                                                                                <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="0" required>
+                                                                            <?php } else { ?>
+                                                                                <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $row['LEBIH'] ?>" required>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="lebih_" class="btn btn-lime"><i class="fa-solid fa-plus"></i> Lebih</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Lebih -->
+                                        <!-- Pecah -->
+                                        <div class="modal fade" id="Pecah<?= $row['ID'] ?>">
+                                            <div class="modal-dialog sm">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Pecah] Botol Barang Masuk</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
+                                                                            <div style="font-size: 40px;">
+                                                                                <i class="fas fa-info"></i>
+                                                                            </div>
+                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
+                                                                                <br>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="line-page-cek"></div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label>Pecah</label>
+                                                                            <?php if ($row['PECAH'] == NULL) { ?>
+                                                                                <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="0" required>
+                                                                            <?php } else { ?>
+                                                                                <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $row['PECAH'] ?>" required>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="pecah_" class="btn btn-dark"><i class="fa-solid fa-tags"></i> Pecah</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Pecah -->
+                                        <!-- Rusak -->
+                                        <div class="modal fade" id="Rusak<?= $row['ID'] ?>">
+                                            <div class="modal-dialog sm">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Rusak] Botol Barang Masuk</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
+                                                                            <div style="font-size: 40px;">
+                                                                                <i class="fas fa-info"></i>
+                                                                            </div>
+                                                                            <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
+                                                                                <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
+                                                                                <br>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="line-page-cek"></div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label>Rusak</label>
+                                                                            <?php if ($row['RUSAK'] == NULL) { ?>
+                                                                                <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="0" required>
+                                                                            <?php } else { ?>
+                                                                                <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $row['RUSAK'] ?>" required>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="rusak_" class="btn btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Rusak -->
                                     <?php } ?>
                                 <?php } else { ?>
                                 <?php } ?>
