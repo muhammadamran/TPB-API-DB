@@ -167,7 +167,7 @@ if (isset($_POST["ct_submit"])) {
         // TOTAL LITER
         $liter =  $botol[1];
         $r_liter = str_replace('Ltr', '', $liter);
-        $t_liter = str_replace(',', '.', $liter);
+        $t_liter = str_replace(',', '.', $r_liter);
 
         for ($i = 0; $i < $pcs; $i++) {
             $sql = $dbcon->query("INSERT INTO plb_barang_ct 
