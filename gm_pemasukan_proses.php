@@ -20,13 +20,12 @@ $update = $dbcon->query("UPDATE plb_barang SET STATUS='$STATUS',
                                                CHECKING='$CHECKING'
                                             WHERE NOMOR_AJU='$NOMOR_AJU'");
 if ($update) {
-
     // CEK CT
     $cekCT = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$ID'");
     $dataCT    = mysqli_fetch_array($cekCT);
 
     if ($dataCT['ID_BARANG'] == NULL) {
-        $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
+        $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU'");
         $dataBarang    = mysqli_fetch_array($contentBarang);
         $jml_pcs = $dataBarang['JUMLAH_SATUAN'];
         $pcs = str_replace(".0000", "", "$jml_pcs");
