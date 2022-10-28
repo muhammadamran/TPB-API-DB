@@ -165,10 +165,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                     </button>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-sm-12" style="margin-left: 20px;margin-top: 10px;display: flex;">
-                                                <input type="checkbox" onclick="MyCekBotolLewat()" class="form-check-input" id="CekBotolLewat" name="CekBotolLewat">
-                                                <p align="justify" style="margin-left: 5px;" class="form-check-label" id="CekBotolLewat">Klik untuk melewati proses pengecekan Botol.</p>
-                                            </div> -->
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -305,7 +301,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                             <div style="display: grid;font-size: 10px;width: 115px;">
                                                                 <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
                                                                 <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
-                                                                <font><i class="fa-solid fa-user-pen"></i>: <?= $rowBarang['OPERATOR_ONE']; ?></font>
                                                             </div>
                                                         </td>
                                                         <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
