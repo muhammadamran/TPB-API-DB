@@ -43,7 +43,7 @@ if (isset($_POST['edit_'])) {
     $bm_nama_operator       = $_POST['bm_operator'];
     // $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
     // $data = json_decode($content, true);
-    $sql = $dbcon->query("UPDATE rcs_status SET bm_no_aju_plb='$bm_no_aju_plb',
+    $sql = $dbcon->query("UPDATE rcd_status SET bm_no_aju_plb='$bm_no_aju_plb',
                                                 bm_tgl_masuk='$bm_tgl_masuk',
                                                 bm_nama_operator='$bm_nama_operator',
                                                 bk_no_aju_sarinah='$bk_no_aju_sarinah'
@@ -74,7 +74,7 @@ if (isset($_POST['upload_'])) {
     // $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
     // $data = json_decode($content, true);
 
-    $sql = $dbcon->query("UPDATE rcs_status SET upload_beritaAcara_PLB='$newname'
+    $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_PLB='$newname'
                                             WHERE rcd_id='$rcd_id'");
 
     if ($sql) {
