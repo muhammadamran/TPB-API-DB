@@ -340,7 +340,7 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-sm-12">
+                                                                    <!-- <div class="col-sm-12">
                                                                         <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                             <div style="font-size: 40px;">
                                                                                 <i class="fas fa-info"></i>
@@ -354,7 +354,7 @@ if (isset($_POST['show_all'])) {
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <div class="line-page-cek"></div>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Kurang</label>
@@ -395,7 +395,7 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-sm-12">
+                                                                    <!-- <div class="col-sm-12">
                                                                         <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                             <div style="font-size: 40px;">
                                                                                 <i class="fas fa-info"></i>
@@ -409,7 +409,7 @@ if (isset($_POST['show_all'])) {
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <div class="line-page-cek"></div>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Lebih</label>
@@ -444,7 +444,7 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-sm-12">
+                                                                    <!-- <div class="col-sm-12">
                                                                         <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                             <div style="font-size: 40px;">
                                                                                 <i class="fas fa-info"></i>
@@ -458,7 +458,7 @@ if (isset($_POST['show_all'])) {
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <div class="line-page-cek"></div>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Pecah</label>
@@ -493,7 +493,7 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-sm-12">
+                                                                    <!-- <div class="col-sm-12">
                                                                         <div style="font-size: 14px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 15px;">
                                                                             <div style="font-size: 40px;">
                                                                                 <i class="fas fa-info"></i>
@@ -507,7 +507,7 @@ if (isset($_POST['show_all'])) {
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <div class="line-page-cek"></div>
-                                                                    </div>
+                                                                    </div> -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-group">
                                                                             <label>Rusak</label>
