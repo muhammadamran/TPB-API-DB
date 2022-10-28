@@ -282,7 +282,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                 <?php } else { ?>
                                                                     <!-- Check -->
                                                                     <form action="/gm_pemasukan_ct.php" method="POST" target="_blank">
-                                                                        <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
+                                                                        <input type="text" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
                                                                         <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
