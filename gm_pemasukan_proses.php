@@ -1,5 +1,5 @@
 <?php
-include "include/connection.php";
+// include "include/connection.php";
 class Library
 {
     public function __construct()
@@ -11,10 +11,10 @@ class Library
         $this->db = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
     }
 
-    public function update_trn($table, $dataUpdate, $PengajuanID)
+    public function update_trn($table, $dataUpdate, $ID)
     {
 
-        $this->db->where('PengajuanID', $PengajuanID);
+        $this->db->where('ID', $ID);
         $this->db->update($table, $dataUpdate);
     }
 }
