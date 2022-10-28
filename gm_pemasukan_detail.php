@@ -265,7 +265,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
                                                                 <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
                                                                     <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-success">
-                                                                        <i class="fas fa-check-circle" style="font-size: 22px;"></i>
+                                                                        <i class="fas fa-check-circle" style="font-size: 15px;"></i>
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a>
