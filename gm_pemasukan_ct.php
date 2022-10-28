@@ -242,8 +242,7 @@ if (isset($_POST['show_all'])) {
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th style="text-align: center;">Aksi</th>
-                                    <th width="1%">#</th>
-                                    <th width="1%" class="no-sort" style="text-align: center;">#</th>
+                                    <th width="1%" style="text-align: center;">#</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">ID Barang</th>
                                     <th style="text-align: center;">KODE Barang</th>
