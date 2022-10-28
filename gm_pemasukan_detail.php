@@ -236,7 +236,13 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
-                                                                Pengecekan Botol & Liter Selesai
+                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
+                                                                    <i class="fa-solid fa-check"></i>
+                                                                </span>
+                                                            <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
+                                                                <span class="btn btn-sm btn-success" data-toggle="popover" data-trigger="hover" data-title="Barang Di Simpan Di GB" data-placement="top" data-content="Barang Di Simpan Di GB!">
+                                                                    <i class="fa-solid fa-house-circle-check"></i>
+                                                                </span>
                                                             <?php } else { ?>
                                                                 <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
                                                                     <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $rowBarang['ID'] ?>">
