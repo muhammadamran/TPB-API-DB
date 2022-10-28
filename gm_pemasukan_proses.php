@@ -21,7 +21,11 @@ foreach ($key as $row) {
             'CHECKING' => $row['CHECKING']
         );
 
-        $CHE = $dbcon->query('UPDATE plb_barang SET', $dataUpdate, $ID);
+        $CHE = $dbcon->query("UPDATE plb_barang SET STATUS='$STATUS',
+                                                    OPERATOR_ONE='$OPERATOR_ONE',
+                                                    TGL_CEK='$TGL_CEK',
+                                                    CHECKING='$CHECKING'
+                              WHERE ID='$ID'");
     }
 }
 
