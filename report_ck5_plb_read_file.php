@@ -55,7 +55,7 @@ $insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
 $hdr = get_content($resultAPI['url_api'] . 'PLBInserProses.php?function=post_header&DATA=' . $insertquery);
 echo $hdr;
 // var_dump($insertquery);	
-// exit;
+exit;
 if (mysqli_query($dbcon, $insertquery)) {
 } else {
 	echo "Error: " . $insertquery . "<br>" . mysqli_error($dbcon);
