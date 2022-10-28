@@ -402,11 +402,11 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
                 if (inputs[i].checked == true) {
-                    VarAll.style.display = "block";
                     inputs[i].checked = false;
+                    VarAll.style.display = "none";
                 } else if (inputs[i].checked == false) {
                     inputs[i].checked = true;
-                    VarAll.style.display = "none";
+                    VarAll.style.display = "block";
                 }
             }
         }
