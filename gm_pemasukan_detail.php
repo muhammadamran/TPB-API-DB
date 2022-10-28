@@ -256,7 +256,7 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <?php if ($rowBarang['CHECKING'] == 'Done') { ?>
+                                                            <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
                                                                 <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
