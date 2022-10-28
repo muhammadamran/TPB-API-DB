@@ -413,11 +413,6 @@ $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
                                                                     </a>
                                                                 <?php } else { ?>
                                                                     <!-- Check -->
-                                                                    <!-- <a href="gm_pemasukan_ct.php?AJU=<?= $rowBarang['NOMOR_AJU'] ?>&ID=<?= $rowBarang['ID'] ?>&LOOP=<?= $pcs ?>" class="btn btn-sm btn-custom btn-warning" target="_blank">
-                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                        <br>
-                                                                        Cek <?= $pcs ?> CT
-                                                                    </a> -->
                                                                     <form action="/gm_pemasukan_ct.php" method="GET" target="_blank">
                                                                         <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
                                                                         <button type="submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
