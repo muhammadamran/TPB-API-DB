@@ -275,7 +275,7 @@ if (isset($_POST['show_all'])) {
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
-                                                <a href="#Carton<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                                <a href="#Delete<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-trash"></i></a>
                                                 <!-- Kurang -->
                                                 <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
                                                 <!-- Lebih -->
@@ -329,7 +329,7 @@ if (isset($_POST['show_all'])) {
                                             </td>
                                         </tr>
                                         <!-- Delete -->
-                                        <div class="modal fade" id="Kurang<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="Delete<?= $row['ID'] ?>">
                                             <div class="modal-dialog sm">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
