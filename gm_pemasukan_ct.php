@@ -29,7 +29,7 @@ if (isset($_POST["ct_submit"])) {
         $r_liter = str_replace('Ltr', '', $liter);
         $t_liter = str_replace(',', '.', $r_liter);
 
-        for ($i = 1; $i < $pcs; $i++) {
+        for ($i = 0; $i < $pcs; $i++) {
             $sql = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
