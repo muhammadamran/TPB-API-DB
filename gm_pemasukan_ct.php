@@ -164,7 +164,7 @@ if (isset($_POST["lebih_"])) {
     }
 }
 
-// pecah
+// PECAH
 if (isset($_POST["pecah_"])) {
 
     $ID_CT             = $_POST['ID_CT'];
