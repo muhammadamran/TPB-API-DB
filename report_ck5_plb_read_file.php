@@ -50,7 +50,8 @@ for ($row = 2; $row <= $rowcount; $row++) {
 }
 $insertquery = $insertquery . $subquery;
 $insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
-
+var_dump($insertquery);
+exit;
 if (mysqli_query($dbcon, $insertquery)) {
 } else {
 	echo "Error: " . $insertquery . "<br>" . mysqli_error($dbcon);
