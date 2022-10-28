@@ -1,23 +1,5 @@
 <?php
-// include "include/connection.php";
-class Library
-{
-    public function __construct()
-    {
-        $host       = "localhost";
-        $dbname     = "inxmiles_tpb";
-        $username   = "inxmiles_tpb";
-        $password   = "Flatrone2241TPB";
-        $this->db = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
-    }
-
-    public function update_trn($table, $dataUpdate, $ID)
-    {
-
-        $this->db->where('ID', $ID);
-        $this->db->update($table, $dataUpdate);
-    }
-}
+include "include/connection.php";
 
 $key = $_POST['CekBarang'];
 foreach ($key as $row) {
