@@ -449,13 +449,7 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <?php $col = '6'; ?>
-                                                                    <?php } else { ?>
-                                                                        <?php $col = '12'; ?>
-                                                                    <?php } ?>
-                                                                    <!-- Barang Masuk -->
-                                                                    <div class="col-<?= $col; ?>">
+                                                                    <div class="col-12">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
@@ -532,13 +526,7 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <?php $col = '6'; ?>
-                                                                    <?php } else { ?>
-                                                                        <?php $col = '12'; ?>
-                                                                    <?php } ?>
-                                                                    <!-- Barang Masuk -->
-                                                                    <div class="col-<?= $col; ?>">
+                                                                    <div class="col-12">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group">
@@ -588,26 +576,6 @@ if (isset($_POST['show_all'])) {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End Barang Masuk -->
-                                                                    <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <div class="col-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div class="form-group">
-                                                                                        <font>Berita Acara</font>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php } else { ?>
-                                                                    <?php } ?>
-                                                                    <!-- End Barang Keluar -->
                                                                     <div class="col-md-12">
                                                                         <small style="color: red"><i>(*) Harus diisi</i></small>
                                                                     </div>
@@ -635,47 +603,17 @@ if (isset($_POST['show_all'])) {
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <?php $col = '6'; ?>
-                                                                    <?php } else { ?>
-                                                                        <?php $col = '12'; ?>
-                                                                    <?php } ?>
-                                                                    <!-- Barang Masuk -->
-                                                                    <div class="col-<?= $col; ?>">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>Upload Berita Acara</h4>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr>
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                        <label>Upload Berita Acara Kembali!</label>
-                                                                                    <?php } else { ?>
-                                                                                        <label>Upload Berita Acara</label>
-                                                                                    <?php } ?>
-                                                                                    <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
-                                                                                </div>
-                                                                            </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                                <label>Upload Berita Acara Kembali!</label>
+                                                                            <?php } else { ?>
+                                                                                <label>Upload Berita Acara</label>
+                                                                            <?php } ?>
+                                                                            <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                            <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End Barang Masuk -->
-                                                                    <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <div class="col-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php } else { ?>
-                                                                    <?php } ?>
-                                                                    <!-- End Barang Keluar -->
                                                                     <div class="col-md-12">
                                                                         <small style="color: red"><i>(*) Harus diisi</i></small>
                                                                     </div>
