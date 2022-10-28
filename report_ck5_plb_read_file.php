@@ -65,7 +65,7 @@ $opts = array(
 $context  = stream_context_create($opts);
 
 $result = file_get_contents($resultAPI['url_api'], false, $context);
-var_dump($context);
+var_dump($insertquery);
 exit;
 if (mysqli_query($dbcon, $insertquery)) {
 } else {
