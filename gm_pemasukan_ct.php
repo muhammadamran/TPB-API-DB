@@ -37,7 +37,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                             ");
         }
 
-        $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='DONE'
+        $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
                                 WHERE ID='$keyy'");
 
         if ($sql) {
