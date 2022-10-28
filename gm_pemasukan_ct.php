@@ -275,7 +275,7 @@ if (isset($_POST['show_all'])) {
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
-                                                <a href="#Carton<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-trash"></i> 1 CT</a>
+                                                <a href="#Carton<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-trash"></i></a>
                                                 <!-- Kurang -->
                                                 <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
                                                 <!-- Lebih -->
@@ -328,7 +328,39 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                         </tr>
-
+                                        <!-- Delete -->
+                                        <div class="modal fade" id="Kurang<?= $row['ID'] ?>">
+                                            <div class="modal-dialog sm">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Delete] 1 CT Barang Masuk</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <p>Hapus 1 CT dengan Total <?= $row['TOTAL_BOTOL'] ?></p>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <div class="form-group">
+                                                                            <div style="margin-top: 26px;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</a>
+                                                            <button type="submit" name="Delete_" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Ya</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Delete -->
                                         <!-- Kurang -->
                                         <div class="modal fade" id="Kurang<?= $row['ID'] ?>">
                                             <div class="modal-dialog sm">
