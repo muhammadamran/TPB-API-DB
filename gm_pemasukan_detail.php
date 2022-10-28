@@ -276,7 +276,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" onClick="openWindowReload(this)" class="btn btn-sm btn-custom btn-warning">
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" onClick="openWindowReload(this)" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
@@ -407,6 +407,12 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
         }
     }
 
+    function openWindowReload(link) {
+        var href = link.href;
+        window.open(href, '_blank');
+        document.location.reload(true)
+    }
+
     // function MyCekBotolLewat() {
     //     var checkBox = document.getElementById("CekBotolLewat");
     //     var VarAll = document.getElementById("buttonPilihAll");
@@ -444,12 +450,5 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
         history.replaceState({}, '', './gm_pemasukan_detail.php');
-    }
-</script>
-<script>
-    function openWindowReload(link) {
-        var href = link.href;
-        window.open(href, '_blank');
-        document.location.reload(true)
     }
 </script>
