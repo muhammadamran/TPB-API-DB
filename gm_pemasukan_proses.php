@@ -39,6 +39,9 @@ foreach ($key as $row) {
             'CHECKING' => $row['CHECKING']
         );
 
-        $this->db->update_trn('plb_barang', $dataUpdate, $ID);
+        $CHE = $this->db->update_trn('plb_barang', $dataUpdate, $ID);
     }
 }
+
+var_dump($CHE);
+exit;
