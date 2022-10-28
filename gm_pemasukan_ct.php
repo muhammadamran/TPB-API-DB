@@ -133,9 +133,88 @@ if (isset($_POST["kurang_"])) {
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteSuccess=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+    }
+}
+
+// LEBIH
+if (isset($_POST["lebih_"])) {
+
+    $ID_CT             = $_POST['ID_CT'];
+    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+    $ID_BARANG             = $_POST['ID_BARANG'];
+    $KODE_BARANG             = $_POST['KODE_BARANG'];
+    $Lebih             = $_POST['Lebih'];
+    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
+
+    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL'
+                            WHERE ID='$ID_CT'");
+
+    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH)
+    VALUES
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih')");
+
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+    }
+}
+
+// pecah
+if (isset($_POST["pecah_"])) {
+
+    $ID_CT             = $_POST['ID_CT'];
+    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+    $ID_BARANG             = $_POST['ID_BARANG'];
+    $KODE_BARANG             = $_POST['KODE_BARANG'];
+    $Pecah             = $_POST['Pecah'];
+    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
+
+    $cek = $TOTAL_BOTOL - $Pecah;
+
+    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+                            WHERE ID='$ID_CT'");
+
+    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH)
+    VALUES
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah')");
+
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
+    }
+}
+
+// RUSAK
+if (isset($_POST["rusak_"])) {
+
+    $ID_CT             = $_POST['ID_CT'];
+    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+    $ID_BARANG             = $_POST['ID_BARANG'];
+    $KODE_BARANG             = $_POST['KODE_BARANG'];
+    $Rusak             = $_POST['Rusak'];
+    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
+
+    $cek = $TOTAL_BOTOL - $Rusak;
+
+    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+                            WHERE ID='$ID_CT'");
+
+    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,RUSAK)
+    VALUES
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Rusak')");
+
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_CT&DeleteFailed=true';</script>";
     }
 }
 
@@ -149,7 +228,7 @@ if (isset($_POST["Delete_"])) {
     $query = $dbcon->query("DELETE FROM plb_barang_ct WHERE ID='$ID_CT'");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteSuccess=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_CT';</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteFailed=true';</script>";
     }
