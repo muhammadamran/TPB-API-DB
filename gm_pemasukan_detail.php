@@ -428,57 +428,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
             return false;
     });
 
-    // SESUAI
-    $("#btn-sesuai").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=sesuai`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // KURANG
-    $("#btn-kurang").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=kurang`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Kurang!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // LEBIH
-    $("#btn-lebih").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=lebih`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Lebih!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // PECAH
-    $("#btn-pecah").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=pecah`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk Pecah!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-    // RUSAK
-    $("#btn-rusak").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=rusak`)
-        // console.log($("#form-submit").attr('action'))
-        // return;
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
