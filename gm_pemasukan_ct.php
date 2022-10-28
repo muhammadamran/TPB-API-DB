@@ -113,15 +113,24 @@ if (isset($_POST["ct_submit"])) {
 }
 
 // KURANG
-if (isset($_POST["Kurang_"])) {
+if (isset($_POST["kurang_"])) {
 
     $ID_CT             = $_POST['ID_CT'];
     $NOMOR_AJU             = $_POST['NOMOR_AJU'];
     $ID_BARANG             = $_POST['ID_BARANG'];
     $KODE_BARANG             = $_POST['KODE_BARANG'];
+    $Kurang             = $_POST['Kurang'];
+    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
 
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL=
+    $cek = $TOTAL_BOTOL - $Kurang;
+
+    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
+
+    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG)
+    VALUES
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang')");
 
     if ($query) {
         echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteSuccess=true';</script>";
@@ -379,7 +388,7 @@ if (isset($_POST['show_all'])) {
                                                                         <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                         <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                         <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                        <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                        <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     </div>
                                                                     <div class="col-sm-2">
                                                                         <div class="form-group">
@@ -405,7 +414,7 @@ if (isset($_POST['show_all'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Kurang] Botol Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Kurang] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -438,7 +447,8 @@ if (isset($_POST['show_all'])) {
                                                                             <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                             <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                             <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-2">
@@ -465,7 +475,7 @@ if (isset($_POST['show_all'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Lebih] Botol Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Lebih] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -498,7 +508,8 @@ if (isset($_POST['show_all'])) {
                                                                             <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                             <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                             <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -519,7 +530,7 @@ if (isset($_POST['show_all'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Pecah] Botol Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Pecah] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -551,7 +562,8 @@ if (isset($_POST['show_all'])) {
                                                                             <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                             <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                             <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -572,7 +584,7 @@ if (isset($_POST['show_all'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Rusak] Botol Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Rusak] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -604,7 +616,8 @@ if (isset($_POST['show_all'])) {
                                                                             <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                             <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                             <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
