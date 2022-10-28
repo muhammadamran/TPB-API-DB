@@ -264,7 +264,7 @@ if (isset($_POST['show_all'])) {
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
-                                                <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Status!">
+                                                <a href="#status<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Cek Status!">
                                                     <div>
                                                         <div style="font-size: 12px;">
                                                             <i class="fas fa-edit"></i>
