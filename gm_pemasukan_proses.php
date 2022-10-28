@@ -2,6 +2,8 @@
 include "include/connection.php";
 
 $key = $_POST['CekBarang'];
+// var_dump($key);
+// exit;
 foreach ($key as $row) {
     if (@$row['ID']) {
         $ID = $row['ID'];
@@ -21,7 +23,7 @@ foreach ($key as $row) {
                               WHERE ID='$ID'");
     }
 }
-
+$NOMOR_AJU = $row['NOMOR_AJU'];
 if ($CHE) {
     echo "<script>window.location.href='gm_pemasukan_detail.php?ID=$NOMOR_AJU';'_blank'</script>";
 } else {
