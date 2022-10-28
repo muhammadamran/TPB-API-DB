@@ -112,6 +112,40 @@ if (isset($_POST["ct_submit"])) {
     }
 }
 
+// KURANG
+if (isset($_POST["Kurang_"])) {
+
+    $ID_CT             = $_POST['ID_CT'];
+    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+    $ID_BARANG             = $_POST['ID_BARANG'];
+    $KODE_BARANG             = $_POST['KODE_BARANG'];
+
+    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL=
+                            WHERE ID='$ID_CT'");
+
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteFailed=true';</script>";
+    }
+}
+
+if (isset($_POST["Delete_"])) {
+
+    $ID_CT             = $_POST['ID_CT'];
+    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
+    $ID_BARANG             = $_POST['ID_BARANG'];
+    $KODE_BARANG             = $_POST['KODE_BARANG'];
+
+    $query = $dbcon->query("DELETE FROM plb_barang_ct WHERE ID='$ID_CT'");
+
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteFailed=true';</script>";
+    }
+}
+
 // Find
 if (isset($_POST['filter'])) {
     if ($_POST["AJU_PLB"] != '') {
@@ -342,6 +376,10 @@ if (isset($_POST['show_all'])) {
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
                                                                         <p>Hapus 1 CT dengan Total <?= $row['TOTAL_BOTOL'] ?></p>
+                                                                        <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                        <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                        <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                        <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     </div>
                                                                     <div class="col-sm-2">
                                                                         <div class="form-group">
@@ -396,6 +434,11 @@ if (isset($_POST['show_all'])) {
                                                                             <?php } else { ?>
                                                                                 <input type="number" name="Kurang" class="form-control" placeholder="Kurang ..." value="<?= $row['KURANG'] ?>" required>
                                                                             <?php } ?>
+
+                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-2">
@@ -451,6 +494,11 @@ if (isset($_POST['show_all'])) {
                                                                             <?php } else { ?>
                                                                                 <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $row['LEBIH'] ?>" required>
                                                                             <?php } ?>
+
+                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -500,6 +548,10 @@ if (isset($_POST['show_all'])) {
                                                                             <?php } else { ?>
                                                                                 <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $row['PECAH'] ?>" required>
                                                                             <?php } ?>
+                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -549,6 +601,10 @@ if (isset($_POST['show_all'])) {
                                                                             <?php } else { ?>
                                                                                 <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $row['RUSAK'] ?>" required>
                                                                             <?php } ?>
+                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                            <input type="hidden" name="KODE_BRANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                         </div>
                                                                     </div>
                                                                 </div>
