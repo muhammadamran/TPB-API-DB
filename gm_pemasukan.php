@@ -15,7 +15,7 @@ $AJU_PLB = '';
 if (isset($_POST['add_'])) {
     $bm_no_aju_plb          = $_POST['bm_aju'];
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
-    $bm_tgl_masuk           = $_POST['bm_masuk'] . date('H:m:i');
+    $bm_tgl_masuk           = $_POST['bm_masuk'] . ' ' . date('H:m:i');
     $bm_nama_operator       = $_POST['bm_operator'];
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
@@ -36,7 +36,7 @@ if (isset($_POST['edit_'])) {
     $rcd_id                 = $_POST['rcd_id'];
     $bm_no_aju_plb          = $_POST['bm_aju'];
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
-    $bm_tgl_masuk           = $_POST['bm_masuk'] . date('H:m:i');
+    $bm_tgl_masuk           = $_POST['bm_masuk'] . ' ' . date('H:m:i');
     $bm_nama_operator       = $_POST['bm_operator'];
     $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
