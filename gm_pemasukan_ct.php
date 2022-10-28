@@ -275,6 +275,7 @@ if (isset($_POST['show_all'])) {
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
+                                                <a href="#Carton<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-trash"></i> 1 CT</a>
                                                 <!-- Kurang -->
                                                 <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
                                                 <!-- Lebih -->
