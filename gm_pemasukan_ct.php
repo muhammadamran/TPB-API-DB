@@ -370,8 +370,10 @@ $resultList = mysqli_fetch_array($list);
                         </div>
                     </div> -->
                     <form action="" method="POST">
-                        <button type="submit" name="simpan">Simpan</button>
+                        <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
+                        <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
                     </form>
+                    <br>
                     <div class="table-responsive">
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
