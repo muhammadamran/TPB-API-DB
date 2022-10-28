@@ -49,6 +49,7 @@ for ($row = 2; $row <= $rowcount; $row++) {
 	$subquery = substr($subquery, 0, strlen($subquery) - 1);
 	$subquery = $subquery . ')' . ' , ';
 }
+
 $insertquery = $insertquery . $subquery;
 $insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
 // $hdr = get_content($resultAPI['url_api'] . 'PLBInserProses.php?function=post_header&DATA=' . $insertquery);
@@ -64,7 +65,7 @@ $opts = array(
 $context  = stream_context_create($opts);
 
 $result = file_get_contents($resultAPI['url_api'], false, $context);
-var_dump($result);
+var_dump($context);
 exit;
 if (mysqli_query($dbcon, $insertquery)) {
 } else {
