@@ -307,6 +307,10 @@ if (isset($_POST['show_all'])) {
         padding: 5px;
     }
 </style>
+<?php
+$list = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+$resultList = mysqli_fetch_array($list);
+?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -318,8 +322,8 @@ if (isset($_POST['show_all'])) {
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Detail Nomor AJU: <?= $_GET['AJU'] ?></a></li>
-                <li class="breadcrumb-item active">Cek <?= $_GET['LOOP'] ?> CT Data Barang Masuk</li>
+                <li class="breadcrumb-item"><a href="javascript:;">Detail Nomor AJU: <?= $resultList['NOMOR_AJU'] ?></a></li>
+                <li class="breadcrumb-item active">Cek CT Data Barang Masuk</li>
             </ol>
         </div>
         <div>
@@ -328,10 +332,6 @@ if (isset($_POST['show_all'])) {
         </div>
     </div>
     <div class="line-page"></div>
-    <?php
-    $list = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-    $resultList = mysqli_fetch_array($list);
-    ?>
     <div class="row">
         <div class="col-xl-12">
             <div class="card border-0">
@@ -369,6 +369,9 @@ if (isset($_POST['show_all'])) {
                             <button type="submit" name="CT_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
                         </div>
                     </div> -->
+                    <form action="" method="POST">
+                        <button type="submit" name="simpan">Simpan</button>
+                    </form>
                     <div class="table-responsive">
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
