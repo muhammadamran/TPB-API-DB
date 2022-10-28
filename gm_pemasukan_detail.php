@@ -263,7 +263,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                                     <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
                                                                     <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
                                                                     <!-- PLB_BARANG -->
-                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="DONE">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="Complete">
                                                                     <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username'] ?>">
                                                                     <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
                                                                     <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING]" value="DONE">
