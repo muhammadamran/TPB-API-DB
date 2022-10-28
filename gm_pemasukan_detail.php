@@ -217,6 +217,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $noBarang = 0;
                                                 while ($rowBarang = mysqli_fetch_array($dataTable)) {
+                                                    $noBarang++;
                                                     $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
 
