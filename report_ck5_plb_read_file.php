@@ -52,19 +52,7 @@ for ($row = 2; $row <= $rowcount; $row++) {
 
 $insertquery = $insertquery . $subquery;
 $insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
-// $hdr = get_content($resultAPI['url_api'] . 'PLBInserProses.php?function=post_header&DATA=' . $insertquery);
-$opts = array(
-	'http' =>
-	array(
-		'method'  => 'POST',
-		'header'  => 'Content-Type: application/x-www-form-urlencoded',
-		'content' => $insertquery
-	)
-);
-
-$context  = stream_context_create($opts);
-
-$result = file_get_contents($resultAPI['url_api'], false, $context);
+$hdr = get_content($resultAPI['url_api'] . 'PLBInserProses.php?function=post_header&DATA=' . $insertquery);
 var_dump($insertquery);
 exit;
 if (mysqli_query($dbcon, $insertquery)) {
