@@ -302,7 +302,7 @@ if (isset($_POST['show_all'])) {
                                         </tr>
 
                                         <!-- Status -->
-                                        <div class="modal fade" id="status<?= $row['KODE_BARANG'] ?>">
+                                        <div class="modal fade" id="status<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
