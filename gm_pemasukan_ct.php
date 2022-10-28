@@ -241,22 +241,8 @@ if (isset($_POST['show_all'])) {
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
-                                    <th class="no-sort" style="text-align: center;">
-                                        <div style="display: flex;justify-content: center;align-content: center;width: 150px;">
-                                            <div>
-                                                <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
-                                                    <i class="fa-solid fa-square-check"></i>
-                                                    Check
-                                                </button>
-                                            </div>
-                                            <div style="margin-left: 5px;">
-                                                <button type="button" class="btn btn-sm btn-danger" id="chk_new" onclick="checkAllDel('chk');" style="font-size: 10px;">
-                                                    <i class="fa-solid fa-rectangle-xmark"></i>
-                                                    Uncheck
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </th>
+                                    <th style="text-align: center;">Aksi</th>
+                                    <th width="1%">#</th>
                                     <th width="1%" class="no-sort" style="text-align: center;">#</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">ID Barang</th>
@@ -278,11 +264,9 @@ if (isset($_POST['show_all'])) {
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
-                                            <!-- <td width="1%" style="text-align: center;">
-                                                <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
-                                                    <input type="checkbox" class="form-check-input" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
-                                                </div>
-                                            </td> -->
+                                            <td>
+                                                <a href="">Botol</a>
+                                            </td>
                                             <td>
                                                 <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                             </td>
