@@ -41,10 +41,15 @@ if (isset($_POST['edit_'])) {
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
-    $data = json_decode($content, true);
+    // $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
+    // $data = json_decode($content, true);
+    $sql = $dbcon->query("UPDATE rcs_status SET bm_no_aju_plb='$bm_no_aju_plb',
+                                                bm_tgl_masuk='$bm_tgl_masuk',
+                                                bm_nama_operator='$bm_nama_operator',
+                                                bk_no_aju_sarinah
+                                            WHERE rcd_id='$rcd_id'");
 
-    if ($data['status'] == 200) {
+    if ($sql) {
         echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
@@ -66,11 +71,13 @@ if (isset($_POST['upload_'])) {
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
     move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+    // $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
+    // $data = json_decode($content, true);
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
-    $data = json_decode($content, true);
+    $sql = $dbcon->query("UPDATE rcs_status SET upload_beritaAcara_PLB='$newname'
+                                            WHERE rcd_id='$rcd_id'");
 
-    if ($data['status'] == 200) {
+    if ($sql) {
         echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
