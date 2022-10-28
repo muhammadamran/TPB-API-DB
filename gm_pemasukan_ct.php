@@ -348,7 +348,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
                                                                                 <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
                                                                                 <br>
-                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -403,7 +403,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
                                                                                 <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
                                                                                 <br>
-                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -452,7 +452,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
                                                                                 <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
                                                                                 <br>
-                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -501,7 +501,7 @@ if (isset($_POST['show_all'])) {
                                                                             <div style="font-size: 15px;font-weight: 600;text-transform: uppercase;margin-left: 10px;margin-top: 10px;">
                                                                                 <font>Pengecekan Kode Barang: <?= $row['KODE_BARANG'] ?></font>
                                                                                 <br>
-                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['KODE_SATUAN'] ?></font>
+                                                                                <font>Jumlah Satuan: <?= $pcs ?> <?= $row['TOTAL_BOTOL'] ?></font>
                                                                             </div>
                                                                         </div>
                                                                     </div>
