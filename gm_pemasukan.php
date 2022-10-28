@@ -46,7 +46,7 @@ if (isset($_POST['edit_'])) {
     $sql = $dbcon->query("UPDATE rcs_status SET bm_no_aju_plb='$bm_no_aju_plb',
                                                 bm_tgl_masuk='$bm_tgl_masuk',
                                                 bm_nama_operator='$bm_nama_operator',
-                                                bk_no_aju_sarinah
+                                                bk_no_aju_sarinah='$bk_no_aju_sarinah'
                                             WHERE rcd_id='$rcd_id'");
 
     if ($sql) {
