@@ -166,8 +166,8 @@ if (isset($_POST["ct_submit"])) {
         $t_botol = $botol[0];
         // TOTAL LITER
         $liter =  $botol[1];
-        $t_liter = str_replace('Ltr', '', $liter);
-
+        $r_liter = str_replace('Ltr', '', $liter);
+        $t_liter = str_replace(',', '.', $liter);
 
         for ($i = 0; $i < $pcs; $i++) {
             $sql = $dbcon->query("INSERT INTO plb_barang_ct 
@@ -178,7 +178,12 @@ if (isset($_POST["ct_submit"])) {
         }
 
         if ($sql) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';'_blank'</script>";
+            // echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';'_blank'</script>";
+            echo "
+            <script>
+                window.open('gm_pemasukan_ct.php?ID=$dataBarang[ID]', '_blank');
+            </script>
+            ";
         } else {
             echo "<script>window.location.href='gm_pemasukan_ct.php?InputIconFailed=true';</script>";
         }
