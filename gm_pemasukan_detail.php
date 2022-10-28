@@ -178,12 +178,12 @@ if (isset($_POST["ct_submit"])) {
         }
 
         if ($sql) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';</script>";
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';'_blank'</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan_ct.php?InputIconFailed=true';</script>";
         }
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataCT[ID_BARANG]';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataCT[ID_BARANG]';'_blank'</script>";
     }
 }
 

@@ -180,7 +180,7 @@ if (isset($_POST['show_all'])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:10px">
+                    <!-- <div style="display: flex;justify-content: flex-start;align-content: baseline;margin-bottom:10px">
                         <div style="margin-left: 0px;">
                             <button type="submit" name="CT_kurang" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Pilih Semua Kurang</button>
                         </div>
@@ -193,7 +193,7 @@ if (isset($_POST['show_all'])) {
                         <div style="margin-left: 5px;">
                             <button type="submit" name="CT_rusak" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Pilih Semua Rusak</button>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="table-responsive">
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
@@ -235,23 +235,23 @@ if (isset($_POST['show_all'])) {
                                         $no++;
                                 ?>
                                         <tr>
-                                            <td><?= $i ?>.</td>
-                                            <td width="1%" style="text-align: center;">
+                                            <td><?= $no ?>.</td>
+                                            <!-- <td width="1%" style="text-align: center;">
                                                 <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
                                                     <input type="checkbox" class="form-check-input" id="chk" name="pengajuankrs[<?= $no - 1; ?>][JadwalID]" value="<?= $row_rencana_studi['JadwalID'] ?>">
                                                 </div>
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                             </td>
                                             <td style="text-align: center;">
-                                                <?= $row['NOMOR_PENGAJUAN']; ?> Botol
+                                                <?= $row['NOMOR_AJU']; ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?= $row['ID_BARANG']; ?> Botol
+                                                <?= $row['ID_BARANG']; ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?= $row['KODE_BARANG']; ?> Botol
+                                                <?= $row['KODE_BARANG']; ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <i class="fa-solid fa-bottle-droplet"></i> <?= $row['TOTAL_BOTOL']; ?> Botol
@@ -260,13 +260,13 @@ if (isset($_POST['show_all'])) {
                                                 <i class="fa-solid fa-glass-water-droplet"></i> <?= $row['TOTAL_LITER']; ?> Liter
                                             </td>
                                             <td style="text-align: center;">
-                                                <?= $row['STATUS']; ?> Botol
+                                                <?= $row['STATUS']; ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?= $row['REMAKS']; ?> Botol
+                                                <?= $row['REMAKS']; ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?= $row['DOKS']; ?> Botol
+                                                <?= $row['DOKS']; ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
