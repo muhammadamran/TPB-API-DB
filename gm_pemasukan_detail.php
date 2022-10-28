@@ -263,23 +263,31 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                             <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
                                                             <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
-                                                                <?php if ($pcs == 0) { ?>
-                                                                    <!-- No QTY -->
-                                                                    <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
-                                                                        <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
+                                                                <?php } else { ?>
+                                                                    <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-sucess">
+                                                                        <i class="fas fa-check-circle" style="font-size: 22px;"></i>
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a>
-                                                                <?php } else { ?>
-                                                                    <!-- Check -->
-                                                                    <form action="/gm_pemasukan_ct.php" method="POST" target="_blank">
-                                                                        <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
-                                                                        <button type="submit" id="ct_submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
+                                                                    <?php if ($pcs == 0) { ?>
+                                                                        <!-- No QTY -->
+                                                                        <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
-                                                                        </button>
-                                                                    </form>
+                                                                        </a>
+                                                                    <?php } else { ?>
+                                                                        <!-- Check -->
+                                                                        <form action="/gm_pemasukan_ct.php" method="POST" target="_blank">
+                                                                            <input type="hidden" name="ID_BARANG" value="<?= $rowBarang['ID'] ?>">
+                                                                            <button type="submit" id="ct_submit" name="ct_submit" class="btn btn-sm btn-custom btn-warning">
+                                                                                <i class="fas fa-boxes" style="font-size: 22px;"></i>
+                                                                                <br>
+                                                                                Cek <?= $pcs ?> CT
+                                                                            </button>
+                                                                        </form>
+                                                                    <?php } ?>
                                                                 <?php } ?>
                                                             <?php } else { ?>
                                                                 <!-- Disabled -->
