@@ -71,7 +71,6 @@ if (isset($_POST['upload_'])) {
 }
 
 // Submit CT
-
 if (isset($_POST["ct_submit"])) {
 
     // CEK CT
@@ -99,6 +98,9 @@ if (isset($_POST["ct_submit"])) {
                             ('','$dataBarang[NOMOR_AJU]','$dataBarang[ID]','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
                             ");
         }
+
+        $query = $dbcon->query("UPDATE plb_barang SET CHECKING='Done'
+                                WHERE ID='" . $_POST['ID_BARANG'] . "'");
 
         if ($sql) {
             echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$dataBarang[ID]';'_blank'</script>";
