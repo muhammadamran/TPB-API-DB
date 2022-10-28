@@ -21,10 +21,14 @@ if (isset($_POST['add_'])) {
     $bm_tgl_masuk           = $_POST['bm_masuk'];
     $bm_nama_operator       = $_POST['bm_operator'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
-    $data = json_decode($content, true);
+    // $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
+    // $data = json_decode($content, true);
+    $sql = $dbcon->query("INSERT INTO rcd_status 
+                                (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bk_no_aju_sarinah)
+                                VALUES
+                                ('','$bm_no_aju_plb','$bm_tgl_masuk','$bm_nama_operator','$bk_no_aju_sarinah')");
 
-    if ($data['status'] == 200) {
+    if ($sql) {
         echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
@@ -501,19 +505,6 @@ if (isset($_POST['show_all'])) {
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Barang Masuk -->
-                                                                    <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <div class="col-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php } else { ?>
-                                                                    <?php } ?>
-                                                                    <!-- End Barang Keluar -->
                                                                     <div class="col-md-12">
                                                                         <small style="color: red"><i>(*) Harus diisi</i></small>
                                                                     </div>
