@@ -99,7 +99,7 @@ if (isset($_POST["ct_submit"])) {
                             ");
         }
 
-        $query = $dbcon->query("UPDATE plb_barang SET CHECKING='Done'
+        $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Done'
                                 WHERE ID='" . $_POST['ID_BARANG'] . "'");
 
         if ($sql) {
