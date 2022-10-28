@@ -236,13 +236,16 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $noBarang = 0;
                                                 while ($rowBarang = mysqli_fetch_array($dataTable)) {
-                                                    $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
+                                                    $jml_pcs = $dataBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
-                                                    $noBarang++;
+
                                                     // TOTAL BOTOL
-                                                    $t_botol = explode('X', $rowBarang['UKURAN']);
+                                                    $botol = explode('X', $dataBarang['UKURAN']);
+                                                    $t_botol = $botol[0];
                                                     // TOTAL LITER
-                                                    $t_liter = str_replace('Ltr', '', $t_botol[1]);
+                                                    $liter =  $botol[1];
+                                                    $r_liter = str_replace('Ltr', '', $liter);
+                                                    $t_liter = str_replace(',', '.', $r_liter);
                                             ?>
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
