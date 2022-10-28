@@ -39,7 +39,7 @@ foreach ($key as $row) {
             'CHECKING' => $row['CHECKING']
         );
 
-        $CHE = $this->db->update_trn('plb_barang', $dataUpdate, $ID);
+        $CHE = $dbcon->query('UPDATE plb_barang SET', $dataUpdate, $ID);
     }
 }
 
