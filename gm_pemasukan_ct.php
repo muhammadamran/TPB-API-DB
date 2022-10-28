@@ -11,8 +11,6 @@ include "include/cssForm.php";
 // Submit CT
 if (isset($_POST["ct_submit"])) {
     $keyy = @$_POST['ID_BARANG'];
-    var_dump($keyy);
-    exit;
     // CEK CT
     $cekCT = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
     $dataCT    = mysqli_fetch_array($cekCT);
