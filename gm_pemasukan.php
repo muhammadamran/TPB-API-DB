@@ -11,6 +11,9 @@ include "include/cssForm.php";
 $AJU_PLB = '';
 // API - 
 include "include/api.php";
+// NOMOR PENGAJUAN GB
+$contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
+$dataAJUGB = json_decode($contentAJUGB, true);
 
 if (isset($_POST['add_'])) {
     $bm_no_aju_plb          = $_POST['bm_aju'];
