@@ -33,20 +33,20 @@ if (isset($_POST["ct_submit"])) {
             $sql = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
-                            ('','$dataBarang[NOMOR_AJU]','$$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
+                            ('','$dataBarang[NOMOR_AJU]','$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
                             ");
         }
 
         $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
-                                WHERE ID='$keyy");
+                                WHERE ID='$keyy'");
 
         if ($sql) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$$keyy';'_blank'</script>";
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy';'_blank'</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan_ct.php?InputIconFailed=true';</script>";
         }
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$$keyy';'_blank'</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy';'_blank'</script>";
     }
 }
 
