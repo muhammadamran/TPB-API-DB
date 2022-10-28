@@ -126,25 +126,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                     Barang
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#IDBarang" data-toggle="tab" class="nav-link">
-                                <?php if ($dataBarangCek['total_cek'] == NULL) { ?>
-                                    <span class="d-sm-none">Proses Barang Masuk</span>
-                                    <span class="d-sm-block d-none">
-                                        <font class="blink_me" style="color: green;">
-                                            Proses Pengecekan Barang:
-                                            <?= $rowBarangCek['total_cek']; ?>
-                                            Barang DiCek!
-                                        </font>
-                                    </span>
-                                <?php } else { ?>
-                                    <span class="d-sm-none">Proses Barang Masuk</span>
-                                    <span class="d-sm-block d-none">
-                                        <font class="blink_me" style="color: red;">Proses pengecekan Proses Barang Masuk!</font>
-                                    </span>
-                                <?php } ?>
-                            </a>
-                        </li>
                     </ul>
                     <!-- Menu -->
 
@@ -168,7 +149,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
                                         <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
                                             <i class="fa-solid fa-check-circle"></i>
-                                            Simpan Barang Masuk
+                                            Barang Sudah DiCek!
                                         </button>
                                     <?php } else { ?>
                                         <div class="row">
