@@ -100,8 +100,10 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
-                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
+            <button class="btn btn-primary-css">
+                <i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span>
+            </button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -114,7 +116,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-
                     <!-- Menu -->
                     <ul class="nav nav-pills mb-2">
                         <li class="nav-item">
@@ -124,11 +125,11 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                     Total Barang Masuk:
                                     <?= $dataBarangTotal['total']; ?>
                                     Barang
+                                </span>
                             </a>
                         </li>
                     </ul>
                     <!-- Menu -->
-
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
