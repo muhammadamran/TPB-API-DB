@@ -217,7 +217,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                                     $noBarang++;
                                                     $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
-
                                                     // TOTAL BOTOL
                                                     $botol = explode('X', $rowBarang['UKURAN']);
                                                     $t_botol = $botol[0];
@@ -407,16 +406,6 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
             }
         }
     }
-
-    // function MyCekBotolLewat() {
-    //     var checkBox = document.getElementById("CekBotolLewat");
-    //     var VarAll = document.getElementById("buttonPilihAll");
-    //     if (checkBox.checked == true) {
-    //         VarAll.style.display = "block";
-    //     } else {
-    //         VarAll.style.display = "none";
-    //     }
-    // }
 
     // CEK BARANG
     $("#btn-all").click(function() {
