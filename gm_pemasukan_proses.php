@@ -31,8 +31,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
             //     $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
             //     $pcs             = str_replace(".0000", "", "$jml_pcs");
             //     // TOTAL BOTOL
-            //     $botol           = explode('X', $dataBarang['UKURAN']);
-            //     $t_botol         = $botol[0];
+            $botol           = explode('X', $rowWhile['UKURAN']);
+            $t_botol         = $botol[0];
             //     // TOTAL LITER
             //     $liter           =  $botol[1];
             //     $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
@@ -44,7 +44,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
                                                            DATE_CT='$InputDate'
-                                                        --    TOTAL_BOTOL='$t_botol',
+                                                           TOTAL_BOTOL='$t_botol'
                                                         --    TOTAL_BOTOL_AKHIR='Complete',
                                                         --    TOTAL_LITER='$t_liter',
                                                         --    TOTAL_LITER_AKHIR='Complete',
