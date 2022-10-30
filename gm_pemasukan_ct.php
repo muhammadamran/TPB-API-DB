@@ -25,24 +25,22 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
         $t_botol         = $botol[0];
         // TOTAL LITER
         $liter           =  $botol[1];
-        $r_liter        = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-        $t_liter = str_replace(',', '.', $r_liter);
+        $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+        $t_liter         = str_replace(',', '.', $r_liter);
 
         for ($i = 0; $i < $pcs; $i++) {
-            $sql = $dbcon->query("INSERT INTO plb_barang_ct 
+            $query = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
                             VALUES
                             ('','$dataBarang[NOMOR_AJU]','$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
                             ");
         }
-
-        $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
+        $query .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
                                 WHERE ID='$keyy'");
-
         // FOR AKTIFITAS
-        $me = $_SESSION['username'];
-        $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-        $resultme = mysqli_fetch_array($datame);
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
 
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
@@ -51,12 +49,12 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
         $InputAction          = 'Cek Barang Masuk';
         $InputDate            = date('Y-m-d h:m:i');
 
-        $sql .= $dbcon->query("INSERT INTO tbl_aktifitas
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                            (id,IDUNIQ,username,modul,description,action,date_created)
                            VALUES
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
-        if ($sql) {
+        if ($query) {
             echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
@@ -68,107 +66,193 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
 
 // KURANG
 if (isset($_POST["kurang_"])) {
-
-    $ID_CT             = $_POST['ID_CT'];
-    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
-    $ID_BARANG             = $_POST['ID_BARANG'];
-    $KODE_BARANG             = $_POST['KODE_BARANG'];
-    $Kurang             = $_POST['Kurang'];
-    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
-
-    $cek = $TOTAL_BOTOL - $Kurang;
-
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_K'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Kurang                 = $_POST['TOTAL_BOTOL_K'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        // VALIDASI KURANG
+        $cek                    = $TOTAL_BOTOL - $Kurang;
+        // END VALIDASI KURANG
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
-
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
+
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Kurang:" . $Kurang;
+        $InputAction          = 'Botol Kurang';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                       (id,IDUNIQ,username,modul,description,action,date_created)
+                       VALUES
+                       ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Failed';</script>";
+        }
     }
 }
 
 // LEBIH
 if (isset($_POST["lebih_"])) {
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_L'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Lebih                  = $_POST['TOTAL_BOTOL_L'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
 
-    $ID_CT             = $_POST['ID_CT'];
-    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
-    $ID_BARANG             = $_POST['ID_BARANG'];
-    $KODE_BARANG             = $_POST['KODE_BARANG'];
-    $Lebih             = $_POST['Lebih'];
-    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
-
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL'
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL'
                             WHERE ID='$ID_CT'");
 
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
+
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Lebih:" . $Lebih;
+        $InputAction          = 'Botol Lebih';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                       (id,IDUNIQ,username,modul,description,action,date_created)
+                       VALUES
+                       ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Failed';</script>";
+        }
     }
 }
 
 // PECAH
 if (isset($_POST["pecah_"])) {
-
-    $ID_CT             = $_POST['ID_CT'];
-    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
-    $ID_BARANG             = $_POST['ID_BARANG'];
-    $KODE_BARANG             = $_POST['KODE_BARANG'];
-    $Pecah             = $_POST['Pecah'];
-    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
-
-    $cek = $TOTAL_BOTOL - $Pecah;
-
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_P'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Pecah                  = $_POST['TOTAL_BOTOL_P'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        // VALIDASI PECAH
+        $cek = $TOTAL_BOTOL - $Pecah;
+        // END VALIDASI PECAH
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
 
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
+
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Pecah:" . $Pecah;
+        $InputAction          = 'Botol Pecah';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                   (id,IDUNIQ,username,modul,description,action,date_created)
+                   VALUES
+                   ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Failed';</script>";
+        }
     }
 }
 
 // RUSAK
 if (isset($_POST["rusak_"])) {
-
-    $ID_CT             = $_POST['ID_CT'];
-    $NOMOR_AJU             = $_POST['NOMOR_AJU'];
-    $ID_BARANG             = $_POST['ID_BARANG'];
-    $KODE_BARANG             = $_POST['KODE_BARANG'];
-    $Rusak             = $_POST['Rusak'];
-    $TOTAL_BOTOL             = $_POST['TOTAL_BOTOL'];
-
-    $cek = $TOTAL_BOTOL - $Rusak;
-
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_R'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Rusak                  = $_POST['TOTAL_BOTOL_R'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        // VALIDASI RUSAK
+        $cek = $TOTAL_BOTOL - $Rusak;
+        // END VALIDASI RUSAK
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
 
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,RUSAK)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Rusak')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=?ID=$ID_BARANG&DeleteFailed=true';</script>";
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
+
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Rusak:" . $Rusak;
+        $InputAction          = 'Botol Rusak';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                   (id,IDUNIQ,username,modul,description,action,date_created)
+                   VALUES
+                   ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Failed';</script>";
+        }
     }
 }
 
@@ -177,15 +261,42 @@ if (isset($_POST["simpan"])) {
 
     $ID             = $_POST['ID'];
     $NOMOR_AJU      = $_POST['NOMOR_AJU'];
+    $InputDate      = date('Y-m-d h:m:i');
+    // TOTAL BOTOL
+    $TOTAL_BOTOL    = $_POST['TOTAL_BOTOL'];
+    // TOTAL LITER
+    $TOTAL_LITER    = $_POST['TOTAL_LITER'];
+    // TOTAL CT
+    $TOTAL_CT    = $_POST['TOTAL_CT'];
 
-
-    $query = $dbcon->query("UPDATE plb_barang SET CHECKING='Botol'
+    $query = $dbcon->query("UPDATE plb_barang SET CHECKING='DONE',
+                                                  STATUS_CT='Complete',
+                                                  DATE_CT='$InputDate',
+                                                  TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
+                                                  TOTAL_LITER_AKHIR='$TOTAL_LITER',
+                                                  TOTAL_CT_AKHIR='$TOTAL_CT'
                             WHERE ID='$ID'");
+    // FOR AKTIFITAS
+    $me         = $_SESSION['username'];
+    $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+    $resultme   = mysqli_fetch_array($datame);
+
+    $IDUNIQme             = $resultme['USRIDUNIQ'];
+    $InputUsername        = $me;
+    $InputModul           = 'Gate In/Detail';
+    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Status: Complete";
+    $InputAction          = 'Cek Barang Masuk';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+               (id,IDUNIQ,username,modul,description,action,date_created)
+               VALUES
+               ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=?ID=$NOMOR_AJU&DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
     }
 }
 
@@ -195,28 +306,46 @@ if (isset($_POST["Delete_"])) {
     $NOMOR_AJU         = $_POST['NOMOR_AJU'];
     $ID_BARANG         = $_POST['ID_BARANG'];
     $KODE_BARANG       = $_POST['KODE_BARANG'];
+    $InputDate            = date('Y-m-d h:m:i');
 
-    $query = $dbcon->query("DELETE FROM plb_barang_ct WHERE ID='$ID_BARANG'");
+    $query = $dbcon->query("UPDATE plb_barang_ct SET STATUS_CT='Broken',
+                                                     DATE_CT='$InputDate'
+                            WHERE ID='$ID'");
+    // FOR AKTIFITAS
+    $me         = $_SESSION['username'];
+    $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+    $resultme   = mysqli_fetch_array($datame);
 
+    $IDUNIQme             = $resultme['USRIDUNIQ'];
+    $InputUsername        = $me;
+    $InputModul           = 'Gate In/Detail';
+    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Status: Broken CT";
+    $InputAction          = 'Cek Barang Masuk Broken CT';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+               (id,IDUNIQ,username,modul,description,action,date_created)
+               VALUES
+               ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Success';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?DeleteFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Failed';</script>";
     }
 }
 
 // DETAIL BARANG
-$list           = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-$resultList     = mysqli_fetch_array($list);
+$list                   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+$resultList             = mysqli_fetch_array($list);
 // FOR CT
-$forCT          = str_replace(".0000", "", $resultList['JUMLAH_SATUAN']);
+$forCT                  = str_replace(".0000", "", $resultList['JUMLAH_SATUAN']);
 // FOR BOTOL
-$botol          = explode('X', $resultList['UKURAN']);
-$forBTL         = $botol[0] * $forCT;
+$botol                  = explode('X', $resultList['UKURAN']);
+$forBTL                 = $botol[0] * $forCT;
 // FOR LITER
-$liter          =  $botol[1];
-$r_liter        = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-$forLTR         = str_replace(',', '.', $r_liter) * $forBTL;
+$liter                  =  $botol[1];
+$r_liter                = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+$forLTR                 = str_replace(',', '.', $r_liter) * $forBTL;
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
@@ -230,6 +359,20 @@ $NA_BOTOL               = mysqli_fetch_array($contentNA_BOTOL);
 // LITER
 $contentNA_LITER        = $dbcon->query("SELECT TOTAL_LITER AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
 $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
+
+// FOR STATUS BOTOL
+// -- KURANG
+$contentKURANG        = $dbcon->query("SELECT SUM(KURANG) AS s_KURANG FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_KURANG               = mysqli_fetch_array($contentKURANG);
+// -- LEBIH
+$contentLEBIH        = $dbcon->query("SELECT SUM(LEBIH) AS s_LEBIH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_LEBIH               = mysqli_fetch_array($contentLEBIH);
+// -- PECAH
+$contentPECAH        = $dbcon->query("SELECT SUM(PECAH) AS s_PECAH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_PECAH               = mysqli_fetch_array($contentPECAH);
+// -- RUSAK
+$contentRUSAK        = $dbcon->query("SELECT SUM(RUSAK) AS s_RUSAK FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
 ?>
 <style>
     .btn-custom {
@@ -470,6 +613,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                         <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;">
                             <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
                         </div>
+
                     </div>
                     <!-- END PETUGAS -->
                     <!-- DETAIL -->
@@ -485,10 +629,129 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                         </div>
                         <hr>
                     <?php } ?>
+                    <!-- Simpan -->
+                    <?php if ($_GET['AlertSimpan'] == 'Failed') { ?>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Simpan pengecekan Botol pada <b>Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></b>, Gagal disimpan!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- Kurang -->
+                    <?php if ($_GET['AlertKurang'] == 'Success') { ?>
+                        <div class="note note-success">
+                            <div class="note-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Berhasil Disimpan!</b></h4>
+                                <p> Jumlah Kekurangan Botol <b>Berhasil disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } else if ($_GET['AlertKurang'] == 'Failed') { ?>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Jumlah Kekurangan Botol <b>Gagal disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- End Kurang -->
+                    <!-- Lebih -->
+                    <?php if ($_GET['AlertLebih'] == 'Success') { ?>
+                        <div class="note note-success">
+                            <div class="note-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Berhasil Disimpan!</b></h4>
+                                <p> Jumlah Kelebihan Botol <b>Berhasil disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } else if ($_GET['AlertLebih'] == 'Failed') { ?>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Jumlah Kelebihan Botol <b>Gagal disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- End Lebih -->
+                    <!-- Pecah -->
+                    <?php if ($_GET['AlertPecah'] == 'Success') { ?>
+                        <div class="note note-success">
+                            <div class="note-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Berhasil Disimpan!</b></h4>
+                                <p> Jumlah Botol Pecah <b>Berhasil disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } else if ($_GET['AlertPecah'] == 'Failed') { ?>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Jumlah Botol Pecah <b>Gagal disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- End Pecah -->
+                    <!-- Rusak -->
+                    <?php if ($_GET['AlertRusak'] == 'Success') { ?>
+                        <div class="note note-success">
+                            <div class="note-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Berhasil Disimpan!</b></h4>
+                                <p> Jumlah Botol Rusak <b>Berhasil disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } else if ($_GET['AlertRusak'] == 'Failed') { ?>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Jumlah Botol Rusak <b>Gagal disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- End Rusak -->
+                    <!-- Broken -->
+                    <?php if ($_GET['AlertBroken'] == 'Success') { ?>
+                        <div class="note note-success">
+                            <div class="note-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Berhasil Disimpan!</b></h4>
+                                <p> Jumlah CT Broken <b>Berhasil disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } else if ($_GET['AlertBroken'] == 'Failed') { ?>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Jumlah CT Broken <b>Gagal disimpan</b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- End Broken -->
                     <!-- Alert -->
                     <form action="" method="POST">
                         <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
                         <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                        <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
+                        <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                        <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                         <button type="submit" name="simpan" class="btn btn-sm btn-primary"> <i class="fas fa-tasks"></i> Simpan Data</button>
                     </form>
                     <br>
@@ -512,7 +775,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='" . $_GET['ID'] . "' ORDER BY ID DESC");
+                                $dataTable = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL ORDER BY ID DESC");
                                 if (mysqli_num_rows($dataTable) > 0) {
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -657,6 +920,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -709,6 +973,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -761,6 +1026,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -813,6 +1079,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
