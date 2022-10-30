@@ -123,6 +123,15 @@ $datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
         </div>
     </div>
     <div class="line-page"></div>
+    <!-- BACK -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <a href="gm_pemasukan.php" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
+            </div>
+        </div>
+    </div>
+    <!-- END BACK -->
     <!-- begin row -->
     <div class="row">
         <div class="col-xl-12">
