@@ -233,7 +233,7 @@ $s_BOTOL                = ($NA_CT['p_CT']) * ($NA_BOTOL['p_BOTOL']);
 // LITER
 $contentNA_LITER        = $dbcon->query("SELECT TOTAL_LITER AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
 $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
-$s_LITER                = ($NA_BOTOL['p_BOTOL']) * (round($NA_LITER['p_LITER']));
+$s_LITER                = $NA_BOTOL['p_BOTOL'] * $NA_LITER['TOTAL_LITER'];
 ?>
 <style>
     .btn-custom {
