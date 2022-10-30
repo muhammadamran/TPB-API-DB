@@ -246,6 +246,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                     <!-- END PETUGAS -->
                     <!-- Kurang -->
                     <?php if ($_GET['AlertSimpan'] == 'Success') { ?>
+                        <hr>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="note-content">
