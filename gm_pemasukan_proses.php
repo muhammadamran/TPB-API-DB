@@ -19,6 +19,19 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     $meOK           = $_SESSION['username'];
 
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
+    foreach ($dataTable as $rowLine) {
+        if (@$rowLine['ID']) {
+            $UKR = $rowLine['UKURAN'];
+            $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+                                                           OPERATOR_ONE='$meOK',
+                                                           TGL_CEK='$InputDate',
+                                                           CHECKING='DONE',
+                                                           STATUS_CT='Complete',
+                                                           DATE_CT='$InputDate',
+                                                           TOTAL_BOTOL='" . $UKR . "'                                                       
+                                     WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
+        }
+    }
     if (mysqli_num_rows($dataTable) > 0) {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
 
