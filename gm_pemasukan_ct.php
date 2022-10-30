@@ -571,13 +571,13 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-                                                                <div class="row" style="display: grid;justify-content: center;">
-                                                                    <div class="col-sm-12">
+                                                                <div style="display: grid;justify-content: center;">
+                                                                    <div>
                                                                         <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                                                         <div class="card-body">
                                                                             <h4 class="card-title">1 CT Broken</h4>
                                                                             <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                            <a href="javascript:;" class="btn btn-sm btn-primary">Go somewhere</a>
+                                                                            <a href="javascript:;" class="btn btn-sm btn-default">Anda yakin ingin mengubah status CT</a>
                                                                         </div>
                                                                         <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                         <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
@@ -589,7 +589,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</a>
-                                                            <button type="submit" name="Delete_" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Ya</button>
+                                                            <button type="submit" name="Delete_" class="btn btn-danger"><i class="fas fa-box-open"></i> Ya</button>
                                                         </div>
                                                     </form>
                                                 </div>
