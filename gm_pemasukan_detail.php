@@ -68,6 +68,17 @@ $LTR                    = mysqli_fetch_array($contentLTR);
         border: 2px solid #2d353c !important;
         text-transform: uppercase;
     }
+
+    .total-ct-ak {
+        background: #2d353c;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        border: 2px solid #fff !important;
+        text-transform: uppercase;
+    }
 </style>
 
 <style>
@@ -194,6 +205,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                             </a>
                         </div>
                         <div style="padding: 0px;">
+                            <!-- NILAI AWAL -->
                             <div>
                                 <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AWAL BARANG</b></h5>
                             </div>
@@ -233,10 +245,11 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- NILAI AKTUAL -->
                             <div>
                                 <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
                             </div>
-                            <div class="total-ct">
+                            <div class="total-ct-ak">
                                 <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
                                     <tbody>
                                         <tr style="height: 18px;">
@@ -248,7 +261,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="total-ct">
+                            <div class="total-ct-ak">
                                 <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
                                     <tbody>
                                         <tr style="height: 18px;">
@@ -260,7 +273,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="total-ct">
+                            <div class="total-ct-ak">
                                 <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
                                     <tbody>
                                         <tr style="height: 18px;">
