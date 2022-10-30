@@ -156,7 +156,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                     <tbody>
                                         <tr style="height: 18px;">
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
-                                            <td style="width: 10px; height: 18px;">Total CT</td>
+                                            <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
                                             <td style="width: 10px; height: 18px; text-align: right;">0 CT</td>
                                         </tr>
@@ -168,7 +168,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                     <tbody>
                                         <tr style="height: 18px;">
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
-                                            <td style="width: 10px; height: 18px;">Total Botol</td>
+                                            <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
                                             <td style="width: 10px; height: 18px; text-align: right;">0 Botol</td>
                                         </tr>
@@ -180,7 +180,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                     <tbody>
                                         <tr style="height: 18px;">
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
-                                            <td style="width: 10px; height: 18px;">Total Liter</td>
+                                            <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
                                             <td style="width: 10px; height: 18px; text-align: right;">0 Liter</td>
                                         </tr>
