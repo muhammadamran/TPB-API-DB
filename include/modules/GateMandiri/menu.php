@@ -14,13 +14,13 @@
     <ul class="sub-menu">
         <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' ? 'active' : '' ?>">
             <a href="gm_pemasukan.php">
-                Barang Masuk
+                Gate In
                 <!-- <span class="label label-theme">0</span> -->
             </a>
         </li>
         <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' || $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
             <a href="gm_pengeluaran.php">
-                Barang Keluar
+                Gate Out
                 <!-- <span class="label label-theme">0</span> -->
             </a>
         </li>
