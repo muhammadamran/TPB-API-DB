@@ -34,7 +34,8 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
             $TOTAL_LITER_AKHIR  = $_POST['TOTAL_LITER_AKHIR'];
             $TOTAL_CT           = $_POST['TOTAL_CT'];
             $TOTAL_CT_AKHIR     = $_POST['TOTAL_CT_AKHIR'];
-            var_dump($NOMOR_AJU);
+
+            var_dump($key);
 
             $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU' AND ID='$ID' AND CHECKING IS NULL");
 
