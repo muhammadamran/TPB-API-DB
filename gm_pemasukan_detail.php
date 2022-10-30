@@ -33,6 +33,17 @@ $BTL                    = mysqli_fetch_array($contentBTL);
 $contentLTR             = $dbcon->query("SELECT SUM(JUMLAH_SATUAN*SUBSTRING_INDEX(UKURAN, 'X', 1)*(REPLACE(SUBSTRING_INDEX(UKURAN, 'X', -1),',','.'))) AS p_LITER
                                         FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $LTR                    = mysqli_fetch_array($contentLTR);
+// NILAI AKTUAL
+// CT
+$content_A_CT            = $dbcon->query("SELECT SUM(TOTAL_CT) AS a_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
+$A_CT                    = mysqli_fetch_array($content_A_CT);
+// BOTOL
+$content_A_BTL           = $dbcon->query("SELECT SUM(TOTAL_BOTOL_AKHIR*TOTAL_CT_AKHIR) AS a_BOTOL FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$A_BTL                   = mysqli_fetch_array($contentBTL);
+// LITER
+$content_A_LTR           = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR*TOTAL_BOTOL_AKHIR*TOTAL_LITER_AKHIR AS a_LITER
+                                        FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$A_LTR                   = mysqli_fetch_array($content_A_LTR);
 ?>
 <style>
     .btn-custom {
@@ -257,7 +268,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_CT['a_CT']; ?> CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -269,7 +280,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_BTL['a_BOTOL']; ?> Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -281,7 +292,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_LTR['a_LITER']; ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
