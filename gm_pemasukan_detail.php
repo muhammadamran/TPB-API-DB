@@ -76,6 +76,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
         font-size: 12px;
         font-weight: 800;
         margin-bottom: 10px;
+        color: #fff !important;
         border: 2px solid #fff !important;
         text-transform: uppercase;
     }
