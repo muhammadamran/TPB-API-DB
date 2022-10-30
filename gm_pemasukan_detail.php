@@ -378,7 +378,7 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
                                                         <button type="button" class="btn btn-sm btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
                                                             <i class="fa-solid fa-square-check"></i>
-                                                            Pilih Semua Sesuai
+                                                            Pilih Semua
                                                         </button>
                                                     </div>
                                                 </th>
