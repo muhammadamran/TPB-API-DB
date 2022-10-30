@@ -24,7 +24,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
             $ID = $rowLine['ID'];
 
             // CEK CT
-            $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
+            $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$ID'");
             $dataCT    = mysqli_fetch_array($cekCT);
 
             if ($dataCT['ID_BARANG'] == NULL) {
@@ -46,7 +46,14 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                 // TOTAL LITER
                 $total_ltr = $t_liter * $total_btl;
 
-                $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+                for ($i = 0; $i < $pcs; $i++) {
+                    $query = $dbcon->query("INSERT INTO plb_barang_ct 
+                                    (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,LITER,TOTAL_LITER)
+                                    VALUES
+                                    ('','$dataBarang[NOMOR_AJU]','$ID','$dataBarang[KODE_BARANG]','$t_botol','$t_liter','$total_ltr')
+                                    ");
+                }
+                $query .= $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
                                                            TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
@@ -59,6 +66,23 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            LITER='$t_liter',                                                      
                                                            NETTO_AKHIR='$total_netto'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
+
+                // FOR AKTIFITAS
+                $me         = $_SESSION['username'];
+                $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+                $resultme   = mysqli_fetch_array($datame);
+
+                $IDUNIQme             = $resultme['USRIDUNIQ'];
+                $InputUsername        = $me;
+                $InputModul           = 'Gate In/Detail/CT';
+                $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
+                $InputAction          = 'Simpan Barang Masuk';
+                $InputDate            = date('Y-m-d h:m:i');
+
+                $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                           (id,IDUNIQ,username,modul,description,action,date_created)
+                           VALUES
+                           ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
             }
         }
     }
