@@ -278,6 +278,23 @@ if (isset($_POST['show_all'])) {
         font-size: 10px;
         padding: 5px;
     }
+
+    .detail-barang-ct {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .total-ct {
+        background: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        border: 2px solid #2d353c !important;
+        text-transform: uppercase;
+    }
 </style>
 <?php
 $list = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
@@ -419,9 +436,9 @@ $resultList = mysqli_fetch_array($list);
                     <!-- Alert -->
                     <?php if ($_GET['Alert'] == 'CekBarangMasuk') { ?>
                         <div class="note note-secondary">
-                            <div class="note-icon"><i class="fas fa-info"></i></div>
+                            <div class="note-icon"><i class="fas fa-boxes"></i></div>
                             <div class="note-content">
-                                <h4><b>Informasi!</b></h4>
+                                <h4><b>Pengecekan Barang!</b></h4>
                                 <p> Silahkan lakukan pengecekan pada <b>Tipe Barang: </b>!</p>
                             </div>
                         </div>
