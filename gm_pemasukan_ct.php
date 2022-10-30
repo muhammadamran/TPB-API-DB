@@ -420,7 +420,7 @@ $s_LITER                = ($NA_CT['p_CT']) * ($NA_BOTOL['p_BOTOL']) * (round($NA
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $s_CT; ?> CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_CT['p_CT']; ?> - <?= $s_CT; ?> CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -432,7 +432,7 @@ $s_LITER                = ($NA_CT['p_CT']) * ($NA_BOTOL['p_BOTOL']) * (round($NA
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $s_BOTOl; ?> Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_BOTOL['p_BOTOL']; ?> - <?= $s_BOTOl; ?> Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -444,7 +444,7 @@ $s_LITER                = ($NA_CT['p_CT']) * ($NA_BOTOL['p_BOTOL']) * (round($NA
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $s_LITER; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_LITER['p_LITER']; ?> - <?= $s_LITER; ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
