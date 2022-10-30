@@ -22,23 +22,23 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     if (mysqli_num_rows($dataTable) > 0) {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
 
-            $arr = $rowWhile['ID'];
-            foreach ($arr as $ID) {
+            // $arr = $rowWhile['ID'];
+            // foreach ($arr as $ID) {
 
-                $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
-                $dataBarang      = mysqli_fetch_array($contentBarang);
+            //     $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
+            //     $dataBarang      = mysqli_fetch_array($contentBarang);
 
-                $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
-                $pcs             = str_replace(".0000", "", "$jml_pcs");
-                // TOTAL BOTOL
-                $botol           = explode('X', $dataBarang['UKURAN']);
-                $t_botol         = $botol[0];
-                // TOTAL LITER
-                $liter           =  $botol[1];
-                $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-                $t_liter         = str_replace(',', '.', $r_liter);
+            //     $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
+            //     $pcs             = str_replace(".0000", "", "$jml_pcs");
+            //     // TOTAL BOTOL
+            //     $botol           = explode('X', $dataBarang['UKURAN']);
+            //     $t_botol         = $botol[0];
+            //     // TOTAL LITER
+            //     $liter           =  $botol[1];
+            //     $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+            //     $t_liter         = str_replace(',', '.', $r_liter);
 
-                $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+            $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK'
                                                         --    TGL_CEK='$InputDate'
                                                         --    CHECKING='DONE',
@@ -50,7 +50,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                         --    TOTAL_LITER_AKHIR='Complete',
                                                         --    TOTAL_CT_AKHIR='$pcs'
                                      WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
-            }
+            // }
         }
         if ($query) {
             echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Success';</script>";
