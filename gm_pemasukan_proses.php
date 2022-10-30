@@ -12,6 +12,9 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
             $sql = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$row[ID]'");
             $row_ct = mysqli_fetch_array($sql);
 
+            var_dump($row_ct);
+            exit;
+
             $jml_pcs         = $row_ct['JUMLAH_SATUAN'];
             $pcs             = str_replace(".0000", "", "$jml_pcs");
             // TOTAL BOTOL
