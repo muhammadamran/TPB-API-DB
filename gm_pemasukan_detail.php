@@ -220,8 +220,8 @@ $datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
                                                     Cek Satuan Botol
                                                 </button>
                                                 <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                    <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
-                                                        <i class="fa-solid fa-check-circle"></i>
+                                                    <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                        <i class="fas fa-tasks"></i>
                                                         Simpan Barang Masuk
                                                     </button>
                                                 </div>
@@ -237,7 +237,7 @@ $datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
                                                 <th rowspan="2" width="1%">No.</th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                        <button type="button" class="btn btn-sm btn-info" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
+                                                        <button type="button" class="btn btn-sm btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
                                                             <i class="fa-solid fa-square-check"></i>
                                                             Pilih Semua Sesuai
                                                         </button>
