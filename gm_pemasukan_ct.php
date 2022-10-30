@@ -263,11 +263,14 @@ if (isset($_POST["simpan"])) {
     $NOMOR_AJU      = $_POST['NOMOR_AJU'];
     $InputDate      = date('Y-m-d h:m:i');
     // TOTAL BOTOL
+    $A_BOTOL        = $_POST['A_BOTOL'];
     $TOTAL_BOTOL    = $_POST['TOTAL_BOTOL'];
     // TOTAL LITER
+    $A_LITER        = $_POST['A_LITER'];
     $TOTAL_LITER    = $_POST['TOTAL_LITER'];
     // TOTAL CT
     $TOTAL_CT       = $_POST['TOTAL_CT'];
+    $NETTO_AKHIR    = $_POST['NETTO_AKHIR'];
     $meOK           = $_SESSION['username'];
 
     $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
@@ -276,9 +279,12 @@ if (isset($_POST["simpan"])) {
                                                   CHECKING='DONE',
                                                   STATUS_CT='Complete',
                                                   DATE_CT='$InputDate',
+                                                  BOTOL='$A_BOTOL',
                                                   TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
+                                                  LITER='$A_LITER',
                                                   TOTAL_LITER_AKHIR='$TOTAL_LITER',
-                                                  TOTAL_CT_AKHIR='$TOTAL_CT'
+                                                  TOTAL_CT_AKHIR='$TOTAL_CT',
+                                                  NETTO_AKHIR='$NETTO_AKHIR',
                             WHERE ID='$ID'");
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
@@ -346,10 +352,12 @@ $forCT                  = str_replace(".0000", "", $resultList['JUMLAH_SATUAN'])
 // FOR BOTOL
 $botol                  = explode('X', $resultList['UKURAN']);
 $forBTL                 = $botol[0] * $forCT;
+$add_forBTL             = $botol[0];
 // FOR LITER
 $liter                  =  $botol[1];
 $r_liter                = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
 $forLTR                 = str_replace(',', '.', $r_liter) * $forBTL;
+$add_forLTR             = str_replace(',', '.', $r_liter);
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
@@ -791,8 +799,17 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             </div>
                                             <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
                                             <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
-                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
+                                            <!-- BOTOL -->
+                                            <input type="hidden" name="A_BOTOL" value="<?= $add_forBTL ?>">
+                                            <!-- LITER -->
+                                            <input type="hidden" name="A_LITER" value="<?= $add_forLTR ?>">
+                                            <!-- NETTO -->
+                                            <input type="hidden" name="NETTO_AKHIR" value="<?= $NA_CT['p_CT'] * $add_forBTL * $add_forLTR ?>">
+                                            <!-- BOTOL AKHIR -->
+                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
+                                            <!-- LITER AKHIR -->
                                             <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                                            <!-- CT -->
                                             <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                                         </fieldset>
                                     </div>
