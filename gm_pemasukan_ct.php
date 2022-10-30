@@ -682,7 +682,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div style="display: flex;">
-                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #ffd900;font-size:221px"></i>
+                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #90ca4b;font-size:221px"></i>
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">1 CT Broken</h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
@@ -734,7 +734,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div style="display: flex;">
-                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #ffd900;font-size:221px"></i>
+                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #2d353c;font-size:221px"></i>
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">1 CT Broken</h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
@@ -786,7 +786,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div style="display: flex;">
-                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #ffd900;font-size:221px"></i>
+                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #f59c1a;font-size:221px"></i>
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">1 CT Broken</h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
