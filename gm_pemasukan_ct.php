@@ -350,6 +350,20 @@ $NA_BOTOL               = mysqli_fetch_array($contentNA_BOTOL);
 // LITER
 $contentNA_LITER        = $dbcon->query("SELECT TOTAL_LITER AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
 $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
+
+// FOR STATUS BOTOL
+// -- KURANG
+$contentKURANG        = $dbcon->query("SELECT SUM(KURANG) AS s_KURANG FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_KURANG               = mysqli_fetch_array($contentKURANG);
+// -- LEBIH
+$contentLEBIH        = $dbcon->query("SELECT SUM(LEBIH) AS s_LEBIH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_LEBIH               = mysqli_fetch_array($contentLEBIH);
+// -- PECAH
+$contentPECAH        = $dbcon->query("SELECT SUM(PECAH) AS s_PECAH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_PECAH               = mysqli_fetch_array($contentPECAH);
+// -- RUSAK
+$contentRUSAK        = $dbcon->query("SELECT SUM(RUSAK) AS s_RUSAK FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
 ?>
 <style>
     .btn-custom {
@@ -589,6 +603,28 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                     <div class="row">
                         <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;">
                             <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
+                        </div>
+                        <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;">
+                            <!-- Kurang -->
+                            <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-yellow"><i class="fa-solid fa-minus"></i> Kurang</a>
+                            <!-- Lebih -->
+                            <a href="#Lebih<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a>
+                            <!-- Pecah -->
+                            <a href="#Pecah<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a>
+                            <!-- Rusak -->
+                            <a href="#Rusak<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a>
+                            <?php if ($ST_KURANG['s_KURANG'] != 0) { ?>
+                                <span type="button" class="btn btn-sm btn-custom btn-yellow"><i class="fa-solid fa-minus"></i> <?= $ST_KURANG['s_KURANG']; ?> Kurang</span>
+                            <?php } ?>
+                            <?php if ($ST_LEBIH['s_LEBIH'] != 0) { ?>
+                                <span type="button" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> <?= $ST_LEBIH['s_LEBIH']; ?> Lebih</span>
+                            <?php } ?>
+                            <?php if ($ST_PECAH['s_PECAH'] != 0) { ?>
+                                <span type="button" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> <?= $ST_PECAH['s_PECAH']; ?> Pecah</span>
+                            <?php } ?>
+                            <?php if ($ST_RUSAK['s_RUSAK'] != 0) { ?>
+                                <span type="button" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> <?= $ST_RUSAK['s_RUSAK']; ?> Rusak</span>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- END PETUGAS -->
