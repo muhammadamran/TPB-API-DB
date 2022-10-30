@@ -11,11 +11,14 @@ include "include/cssDatatables.php";
 $contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
-$contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
 // Data Barang
-$contentBarangAll = $dbcon->query("SELECT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-$dataBarangAll    = mysqli_fetch_array($contentBarangAll);
+$contentBarangAll   = $dbcon->query("SELECT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$dataBarangAll      = mysqli_fetch_array($contentBarangAll);
+// PERUSAHAAN DAN TUJUAN
+$contentdatahdrbrg  = $dbcon->query("SELECT FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
 ?>
 <style>
     .btn-custom {
@@ -138,12 +141,12 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
                                 <div class="widget-card-cover rounded"></div>
                                 <div class="widget-card-content">
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>MAKING A DIFFERENCE</b></h5>
-                                    <h4 class="mb-10px text-pink"><b>Apple Heart<br> Study App</b></h4>
-                                    <i class="fa fa-heartbeat fa-5x text-pink text-opacity-50"></i>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>KODE BARANG: <?= $dataBarangAll['KODE_BARANG']; ?></b></h5>
+                                    <h4 class="mb-10px text-pink"><b>TOTAL: <?= $dataBarangTotal['total']; ?> - CEK:<?= $dataBarangCek['total_cek']; ?></b></h4>
+                                    <h4 class="mb-10px text-pink"><b><?= Rupiah($dataBarangAll['HARGA_PENYERAHAN']); ?></b></h4>
                                 </div>
                                 <div class="widget-card-content bottom">
-                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75">Opt in and help heart research.</b>
+                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
                                 </div>
                             </a>
                         </div>
@@ -158,7 +161,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 10px; height: 18px; text-align: right;">0 CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;">0 CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -170,7 +173,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 10px; height: 18px; text-align: right;">0 Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;">0 Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -182,7 +185,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 10px; height: 18px; text-align: right;">0 Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;">0 Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
