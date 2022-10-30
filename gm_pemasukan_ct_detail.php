@@ -33,7 +33,7 @@ $NA_CT                  = mysqli_fetch_array($contentNA_CT);
 $contentNA_BOTOL        = $dbcon->query("SELECT SUM(TOTAL_BOTOL) AS p_BOTOL FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL ORDER BY ID", 0);
 $NA_BOTOL               = mysqli_fetch_array($contentNA_BOTOL);
 // LITER
-$contentNA_LITER        = $dbcon->query("SELECT TOTAL_LITER AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
+$contentNA_LITER        = $dbcon->query("SELECT  SUM(TOTAL_BOTOL * LITER) AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
 $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
 
 // FOR STATUS BOTOL
