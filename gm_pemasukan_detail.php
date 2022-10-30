@@ -239,7 +239,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                     <hr>
                     <!-- PETUGAS -->
                     <div class="row">
-                        <div class="col-sm-6" style="margin-left: 5px;font-size: 18px;font-weight: 800;">
+                        <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;">
                             <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
                         </div>
                     </div>
