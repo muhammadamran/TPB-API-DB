@@ -620,7 +620,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                         <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div class="form-group">
                                                                             <label>Kurang</label>
-                                                                            <input type="hidden" name="TOTAL_BOTOL_K" class="form-control" placeholder="Isi Jumlah Kurang Botol">
+                                                                            <input type="number" name="TOTAL_BOTOL_K" class="form-control" placeholder="Isi Jumlah Kurang Botol" min="0" max="<?= $row['TOTAL_BOTOL']; ?>">
                                                                         </div>
                                                                     </div>
                                                                     <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
