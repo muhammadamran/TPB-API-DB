@@ -443,15 +443,15 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                                 <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
                                                                     <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $rowBarang['ID'] ?>">
                                                                     <!-- PLB_BARANG_CT -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][NOMOR_AJU]" value="<?= $rowBarang['NOMOR_AJU'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][KODE_BARANG]" value="<?= $rowBarang['KODE_BARANG'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][NOMOR_AJU]" value="<?= $rowBarang['NOMOR_AJU'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][KODE_BARANG]" value="<?= $rowBarang['KODE_BARANG'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
                                                                     <!-- PLB_BARANG -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="Complete">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING]" value="DONE">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="Complete">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username'] ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                    <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING]" value="DONE">
                                                                 </div>
                                                             <?php } ?>
                                                         </td>
