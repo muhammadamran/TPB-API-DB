@@ -19,52 +19,21 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     $meOK           = $_SESSION['username'];
 
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
+
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
+            $ID = $row['ID'];
             $UKR = $rowLine['UKURAN'];
+            var_dump($UKR);
+            exit;
             $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
                                                            TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
                                                            DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL='" . $UKR . "'                                                       
-                                     WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
-        }
-    }
-    if (mysqli_num_rows($dataTable) > 0) {
-        while ($rowWhile = mysqli_fetch_array($dataTable)) {
-
-            // $arr = $rowWhile['ID'];
-            // foreach ($arr as $ID) {
-
-            //     $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
-            //     $dataBarang      = mysqli_fetch_array($contentBarang);
-
-            //     $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
-            //     $pcs             = str_replace(".0000", "", "$jml_pcs");
-            //     // TOTAL BOTOL
-            $botol           = explode('X', $rowWhile['UKURAN']);
-            $t_botol         = $botol[0];
-            //     // TOTAL LITER
-            //     $liter           =  $botol[1];
-            //     $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-            //     $t_liter         = str_replace(',', '.', $r_liter);
-
-            $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
-                                                           OPERATOR_ONE='$meOK',
-                                                           TGL_CEK='$InputDate',
-                                                           CHECKING='DONE',
-                                                           STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL='" . $rowWhile['UKURAN'] . "'                                                       
-                                     WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
-            // }
-        }
-        if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Success';</script>";
-        } else {
-            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Failed';</script>";
+                                                           TOTAL_BOTOL='$UKR'                                                       
+                                     WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
         }
     }
 }
