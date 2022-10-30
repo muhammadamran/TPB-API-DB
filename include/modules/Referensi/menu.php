@@ -1,17 +1,19 @@
 <?php
-if ($resultRoleModules['v_daftar_barang'] == 'none' && 
-    $resultRoleModules['v_tarif_hs'] == 'none' && 
-    $resultRoleModules['v_pemasok'] == 'none' && 
-    $resultRoleModules['v_perusahaan'] == 'none' && 
-    $resultRoleModules['v_alat_angkut'] == 'none' && 
-    $resultRoleModules['v_tempat_penimbunan'] == 'none' && 
-    $resultRoleModules['v_kantor_bea_cukai'] == 'none' && 
-    $resultRoleModules['v_negara'] == 'none' && 
-    $resultRoleModules['v_pelabuhan_dn'] == 'none' && 
-    $resultRoleModules['v_pelabuhan_ln'] == 'none' && 
-    $resultRoleModules['v_mata_uang'] == 'none' && 
-    $resultRoleModules['v_satuan'] == 'none' && 
-    $resultRoleModules['v_kemasan'] == 'none') {
+if (
+    $resultRoleModules['v_daftar_barang'] == 'none' &&
+    $resultRoleModules['v_tarif_hs'] == 'none' &&
+    $resultRoleModules['v_pemasok'] == 'none' &&
+    $resultRoleModules['v_perusahaan'] == 'none' &&
+    $resultRoleModules['v_alat_angkut'] == 'none' &&
+    $resultRoleModules['v_tempat_penimbunan'] == 'none' &&
+    $resultRoleModules['v_kantor_bea_cukai'] == 'none' &&
+    $resultRoleModules['v_negara'] == 'none' &&
+    $resultRoleModules['v_pelabuhan_dn'] == 'none' &&
+    $resultRoleModules['v_pelabuhan_ln'] == 'none' &&
+    $resultRoleModules['v_mata_uang'] == 'none' &&
+    $resultRoleModules['v_satuan'] == 'none' &&
+    $resultRoleModules['v_kemasan'] == 'none'
+) {
     $TitleReferensi = 'none';
 } else {
     $TitleReferensi = 'show';
@@ -22,6 +24,7 @@ if ($resultRoleModules['v_daftar_barang'] == 'none' &&
                         $uriSegments[1] == 'ref_tarif_hs.php' ||
                         $uriSegments[1] == 'ref_pemasok.php' ||
                         $uriSegments[1] == 'ref_perusahaan.php' ||
+                        $uriSegments[1] == 'refPerusahaanNPPBKC.php' ||
                         $uriSegments[1] == 'ref_alat_angkut.php' ||
                         $uriSegments[1] == 'ref_tempat_penimbunan.php' ||
                         $uriSegments[1] == 'ref_kantor_beacukai.php' ||
@@ -47,7 +50,7 @@ if ($resultRoleModules['v_daftar_barang'] == 'none' &&
         <li class="<?= $uriSegments[1] == 'ref_pemasok.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pemasok']; ?>;">
             <a href="ref_pemasok.php">Pemasok</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'ref_perusahaan.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_perusahaan']; ?>;">
+        <li class="<?= $uriSegments[1] == 'ref_perusahaan.php' || $uriSegments[1] == 'refPerusahaanNPPBKC.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_perusahaan']; ?>;">
             <a href="ref_perusahaan.php">Perusahaan</a>
         </li>
         <li class="<?= $uriSegments[1] == 'ref_alat_angkut.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_alat_angkut']; ?>;">
@@ -60,12 +63,14 @@ if ($resultRoleModules['v_daftar_barang'] == 'none' &&
             <a href="ref_kantor_beacukai.php">Kantor Bea Cukai</a>
         </li>
         <?php
-        if ($resultRoleModules['v_negara'] == 'none' && 
-            $resultRoleModules['v_pelabuhan_dn'] == 'none' && 
-            $resultRoleModules['v_pelabuhan_ln'] == 'none' && 
-            $resultRoleModules['v_mata_uang'] == 'none' && 
-            $resultRoleModules['v_satuan'] == 'none' && 
-            $resultRoleModules['v_kemasan'] == 'none') {
+        if (
+            $resultRoleModules['v_negara'] == 'none' &&
+            $resultRoleModules['v_pelabuhan_dn'] == 'none' &&
+            $resultRoleModules['v_pelabuhan_ln'] == 'none' &&
+            $resultRoleModules['v_mata_uang'] == 'none' &&
+            $resultRoleModules['v_satuan'] == 'none' &&
+            $resultRoleModules['v_kemasan'] == 'none'
+        ) {
             $TitleReferensiSub = 'none';
         } else {
             $TitleReferensiSub = 'show';
