@@ -1,5 +1,11 @@
 <?php
 include "include/connection.php";
+include "include/restrict.php";
+include "include/head.php";
+include "include/alert.php";
+include "include/top-header.php";
+include "include/sidebar.php";
+include "include/cssDatatables.php";
 
 if (isset($_GET["aksi"]) == 'SubmitCT') {
     $NOMOR_AJU = $_POST['NOMOR_AJU'];
