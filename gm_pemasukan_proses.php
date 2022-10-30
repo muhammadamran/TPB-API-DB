@@ -23,8 +23,6 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
 
             $arr = $rowWhile['ID'];
-            var_dump($arr);
-            exit;
             foreach ($arr as $ID) {
 
                 $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
@@ -42,17 +40,16 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
 
                 $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
-                                                           TGL_CEK='$InputDate ',
+                                                           TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate ',
+                                                           DATE_CT='$InputDate',
                                                            TOTAL_BOTOL='$t_botol',
                                                            TOTAL_BOTOL_AKHIR='Complete',
-                                                           TOTAL_LITER='$t_liter ',
+                                                           TOTAL_LITER='$t_liter',
                                                            TOTAL_LITER_AKHIR='Complete',
                                                            TOTAL_CT_AKHIR='$pcs'
                                      WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
-                exit;
             }
         }
         if ($query) {
