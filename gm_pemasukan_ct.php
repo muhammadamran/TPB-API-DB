@@ -571,18 +571,18 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-                                                                <div class="row">
+                                                                <div class="row" style="display: grid;justify-content: center;">
                                                                     <div class="col-sm-12">
                                                                         <img src="assets/img/png/box.png" style="width: 70px;" alt="">
+                                                                        <div class="card-body">
+                                                                            <h4 class="card-title">1 CT Broken</h4>
+                                                                            <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
+                                                                            <a href="javascript:;" class="btn btn-sm btn-primary">Go somewhere</a>
+                                                                        </div>
                                                                         <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                         <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                         <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                         <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <h5 class="card-title mb-2">1 CT Broken</h5>
-                                                                        <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?></p>
-                                                                        <p class="card-text">Total Liter: <?= $row['TOTAL_LITER']; ?></p>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
