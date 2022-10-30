@@ -19,18 +19,35 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     $meOK           = $_SESSION['username'];
 
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
-
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
             $ID = $rowLine['ID'];
-            $UKR = $rowLine['UKURAN'];
-            $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+
+            // CEK CT
+            $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
+            $dataCT    = mysqli_fetch_array($cekCT);
+
+            if ($dataCT['ID_BARANG'] == NULL) {
+                $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
+                $dataBarang      = mysqli_fetch_array($contentBarang);
+
+                $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
+                $pcs             = str_replace(".0000", "", "$jml_pcs");
+
+                $UKR = $rowLine['UKURAN'];
+                $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
                                                            TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate'                                                      
+                                                           DATE_CT='$InputDate',
+                                                           TOTAL_BOTOL_AKHIR='$InputDate',
+                                                           TOTAL_LITER_AKHIR='$InputDate',
+                                                           TOTAL_CT_AKHIR='$pcs',
+                                                           BOTOL='$InputDate',
+                                                           LITER='$InputDate'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
+            }
         }
     }
     if ($query) {
