@@ -19,6 +19,8 @@ $update = $dbcon->query("UPDATE plb_barang SET STATUS='$STATUS',
                                                OPERATOR_ONE='$OPERATOR_ONE',
                                                CHECKING='$CHECKING'
                                             WHERE NOMOR_AJU='$NOMOR_AJU'");
+
+
 if ($update) {
 
     $contentBarang = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU'");

@@ -363,7 +363,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
-
                                                 <div style="display: flex;justify-content: center;align-items: center;">
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                         <div>

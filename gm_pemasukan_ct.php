@@ -267,9 +267,13 @@ if (isset($_POST["simpan"])) {
     // TOTAL LITER
     $TOTAL_LITER    = $_POST['TOTAL_LITER'];
     // TOTAL CT
-    $TOTAL_CT    = $_POST['TOTAL_CT'];
+    $TOTAL_CT       = $_POST['TOTAL_CT'];
+    $meOK           = $_SESSION['username'];
 
-    $query = $dbcon->query("UPDATE plb_barang SET CHECKING='DONE',
+    $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+                                                  OPERATOR_ONE='$meOK',
+                                                  TGL_CEK='$InputDate',
+                                                  CHECKING='DONE',
                                                   STATUS_CT='Complete',
                                                   DATE_CT='$InputDate',
                                                   TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
@@ -362,16 +366,16 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
 
 // FOR STATUS BOTOL
 // -- KURANG
-$contentKURANG        = $dbcon->query("SELECT SUM(KURANG) AS s_KURANG FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
-$ST_KURANG               = mysqli_fetch_array($contentKURANG);
+$contentKURANG          = $dbcon->query("SELECT SUM(KURANG) AS s_KURANG FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$ST_KURANG              = mysqli_fetch_array($contentKURANG);
 // -- LEBIH
-$contentLEBIH        = $dbcon->query("SELECT SUM(LEBIH) AS s_LEBIH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$contentLEBIH           = $dbcon->query("SELECT SUM(LEBIH) AS s_LEBIH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
 $ST_LEBIH               = mysqli_fetch_array($contentLEBIH);
 // -- PECAH
-$contentPECAH        = $dbcon->query("SELECT SUM(PECAH) AS s_PECAH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$contentPECAH           = $dbcon->query("SELECT SUM(PECAH) AS s_PECAH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
 $ST_PECAH               = mysqli_fetch_array($contentPECAH);
 // -- RUSAK
-$contentRUSAK        = $dbcon->query("SELECT SUM(RUSAK) AS s_RUSAK FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
+$contentRUSAK           = $dbcon->query("SELECT SUM(RUSAK) AS s_RUSAK FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
 $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
 ?>
 <style>
