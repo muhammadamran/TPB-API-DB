@@ -800,15 +800,19 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
                                             <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
                                             <!-- BOTOL -->
+                                            BOTOL
                                             <input type="text" name="A_BOTOL" value="<?= $add_forBTL ?>">
+                                            <!-- BOTOL AKHIR -->
+                                            BOTOL AKHIR
+                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
                                             <!-- LITER -->
+                                            LITER
                                             <input type="text" name="A_LITER" value="<?= $add_forLTR ?>">
+                                            <!-- LITER AKHIR -->
+                                            LITER AKHIR
+                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
                                             <!-- NETTO -->
                                             <input type="text" name="NETTO_AKHIR" value="<?= $NA_CT['p_CT'] * $add_forBTL * $add_forLTR ?>">
-                                            <!-- BOTOL AKHIR -->
-                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
-                                            <!-- LITER AKHIR -->
-                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
                                             <!-- CT -->
                                             <input type="text" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                                         </fieldset>
@@ -834,11 +838,11 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">ID Barang</th>
                                     <th style="text-align: center;">KD Barang</th>
-                                    <th style="text-align: center;">Total Botol</th>
-                                    <th style="text-align: center;">Total Liter</th>
-                                    <th style="text-align: center;">Status</th>
-                                    <th style="text-align: center;">Remarks</th>
-                                    <th style="text-align: center;">File</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">Liter</th>
+                                    <!-- <th style="text-align: center;">Status</th> -->
+                                    <!-- <th style="text-align: center;">Remarks</th> -->
+                                    <!-- <th style="text-align: center;">File</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -887,7 +891,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             <td style="text-align: center;">
                                                 <i class="fa-solid fa-glass-water-droplet"></i> <?= $row['TOTAL_LITER']; ?> Liter
                                             </td>
-                                            <td style="text-align: center">
+                                            <!-- <td style="text-align: center">
                                                 <?php if ($row['STATUS'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
@@ -910,7 +914,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                 <?php } else { ?>
                                                     <?= $row['DOKS']; ?>
                                                 <?php } ?>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <!-- Delete -->
                                         <div class="modal fade" id="Delete<?= $row['ID'] ?>">
