@@ -23,6 +23,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
 
             $arr[] = $rowWhile['ID'];
+            $data = $arr[]
+            var_dump($data);
             foreach ($arr as $ID) {
 
                 $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
