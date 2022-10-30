@@ -262,10 +262,19 @@ if (isset($_POST["simpan"])) {
     $ID             = $_POST['ID'];
     $NOMOR_AJU      = $_POST['NOMOR_AJU'];
     $InputDate      = date('Y-m-d h:m:i');
+    // TOTAL BOTOL
+    $TOTAL_BOTOL    = $_POST['TOTAL_BOTOL'];
+    // TOTAL LITER
+    $TOTAL_LITER    = $_POST['TOTAL_LITER'];
+    // TOTAL CT
+    $TOTAL_CT    = $_POST['TOTAL_CT'];
 
     $query = $dbcon->query("UPDATE plb_barang SET CHECKING='DONE',
                                                   STATUS_CT='Complete',
-                                                  DATE_CT='$InputDate'
+                                                  DATE_CT='$InputDate',
+                                                  TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
+                                                  TOTAL_LITER_AKHIR='$TOTAL_LITER',
+                                                  TOTAL_CT_AKHIR='$TOTAL_CT'
                             WHERE ID='$ID'");
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
@@ -285,7 +294,7 @@ if (isset($_POST["simpan"])) {
                ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
     }
@@ -753,6 +762,9 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <form action="" method="POST">
                         <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
                         <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                        <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
+                        <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                        <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                         <button type="submit" name="simpan" class="btn btn-sm btn-primary"> <i class="fas fa-tasks"></i> Simpan Data</button>
                     </form>
                     <br>
