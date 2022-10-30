@@ -22,7 +22,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
 
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
-            $ID = $row['ID'];
+            $ID = $rowLine['ID'];
             $UKR = $rowLine['UKURAN'];
             $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
