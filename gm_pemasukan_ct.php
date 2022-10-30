@@ -47,7 +47,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
 
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
-        $InputModul           = 'Administrator Tools/Pengaturan App TPB';
+        $InputModul           = 'Gate In/Detail/CT';
         $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
         $InputAction          = 'Cek Barang Masuk';
         $InputDate            = date('Y-m-d h:m:i');
@@ -58,12 +58,12 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
         if ($sql) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk'</script>";
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
         }
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk'</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
     }
 }
 
