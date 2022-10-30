@@ -635,8 +635,10 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                         <h4 class="card-title">1 CT Broken</h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
                                                                         <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <div>
+                                                                            <label>Kurang</label>
+                                                                        </div>
                                                                         <div class="input-group inline-group">
-                                                                            <label for="">Kurang</label>
                                                                             <div class="input-group-prepend">
                                                                                 <span type="button" class="btn btn-danger btn-minus">
                                                                                     <i class="fa fa-minus"></i>
