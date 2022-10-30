@@ -244,7 +244,6 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                         </div>
                     </div>
                     <!-- END PETUGAS -->
-                    <hr>
                     <!-- Kurang -->
                     <?php if ($_GET['AlertSimpan'] == 'Success') { ?>
                         <div class="note note-success">
@@ -254,7 +253,6 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                 <p> Detail CT <b>Berhasil disimpan</b>!</p>
                             </div>
                         </div>
-                        <hr>
                     <?php } ?>
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
