@@ -207,8 +207,17 @@ if (isset($_POST["Delete_"])) {
 }
 
 // DETAIL BARANG
-$list = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-$resultList = mysqli_fetch_array($list);
+$list           = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+$resultList     = mysqli_fetch_array($list);
+// FOR CT
+$forCT          = str_replace(".0000", "", $resultList['JUMLAH_SATUAN']);
+// FOR BOTOL
+$botol          = explode('X', $resultList['UKURAN']);
+$forBTL         = $botol[0];
+// FOR LITER
+$liter          =  $botol[1];
+$r_liter        = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+$forLTR         = str_replace(',', '.', $r_liter);
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
@@ -366,21 +375,21 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                                 <div><i class="fas fa-boxes"></i></div>
                                                 <div style="margin-left: 5px;">Total CT</div>
                                                 <div style="margin-left: 22px;">:</div>
-                                                <div style="margin-left: 50px;">20 CT</div>
+                                                <div style="margin-left: 12px;"><?= $forCT; ?> CT</div>
                                             </div>
                                             <!-- BTL -->
                                             <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
                                                 <div style="margin-left: 5px;">Total Botol</div>
                                                 <div style="margin-left: 4px;">:</div>
-                                                <div style="margin-left: 50px;">1 CT</div>
+                                                <div style="margin-left: 12px;"><?= $forBTL; ?> BTL</div>
                                             </div>
                                             <!-- LTR -->
                                             <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
                                                 <div style="margin-left: 5px;">Total Liter</div>
                                                 <div style="margin-left: 11px;">:</div>
-                                                <div style="margin-left: 50px;">100 CT</div>
+                                                <div style="margin-left: 12px;"><?= $forLTR; ?> LTR</div>
                                             </div>
                                         </div>
                                     </h5>
@@ -392,6 +401,8 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                         <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
                                         <b> <?= Rupiah($resultList['POS_TARIF']); ?></b>
                                     </h4>
+                                    <p>Ukuran: <?= $resultList['UKURAN']; ?></p>
+                                    <p>Uraian: <?= $resultList['URAIAN']; ?></p>
                                 </div>
                                 <div class="widget-card-content bottom">
                                     <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
