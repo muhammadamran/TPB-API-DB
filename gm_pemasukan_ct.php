@@ -574,7 +574,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                 <div style="display: grid;justify-content: center;">
                                                                     <div style="display: flex;">
                                                                         <img src="assets/img/png/box.png" style="width: 50%;" alt="">
-                                                                        <div class="card-body">
+                                                                        <div class="card-body" style="margin-left: -45px;">
                                                                             <h4 class="card-title">1 CT Broken</h4>
                                                                             <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
                                                                             <a href="javascript:;" class="btn btn-sm btn-default">Anda yakin ingin mengubah status CT?</a>
