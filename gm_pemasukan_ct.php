@@ -759,7 +759,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Broken -->
                     <!-- Alert -->
-                    <a href="#simpan" data-toggle="modal" class="btn btn-primary"><i class="fas fa-tasks"></i> Simpan Data</a>
+                    <a href="#simpan" data-toggle="modal" class="btn btn-primary" style="margin-bottom: 15px;"><i class="fas fa-tasks"></i> Simpan Data</a>
                     <!-- Simpan Data -->
                     <div class="modal fade" id="simpan">
                         <div class="modal-dialog sm">
