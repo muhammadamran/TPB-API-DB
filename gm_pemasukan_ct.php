@@ -401,8 +401,9 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                         <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
                                         <b> <?= Rupiah($resultList['POS_TARIF']); ?></b>
                                     </h4>
-                                    <p>Ukuran: <?= $resultList['UKURAN']; ?></p>
-                                    <p>Uraian: <?= $resultList['URAIAN']; ?></p>
+                                    <div style="margin-bottom: -35px;">
+                                        <p>Uraian: <?= $resultList['URAIAN']; ?><br>Ukuran: <?= $resultList['UKURAN']; ?></p>
+                                    </div>
                                 </div>
                                 <div class="widget-card-content bottom">
                                     <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
