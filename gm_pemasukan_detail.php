@@ -16,6 +16,10 @@ $dataBarangCek          = mysqli_fetch_array($contentBarangCek);
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
+// JUMLAH HARGA_PENYERAHAN DAN POS_TARIF
+$dataHPPT               = $dbcon->query("SELECT SUM(HARGA_PENYERAHAN) AS HP, SUM(POS_TARIF) AS PT
+                                        FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
+$HPPT                   = mysqli_fetch_array($dataHPPT);
 // CEK ADA PENGECEKAN BOTOL ATAU TIDAK
 $contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Checking Botol' ORDER BY ID ASC", 0);
 $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
@@ -162,7 +166,8 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                 <div class="widget-card-content">
                                     <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
                                     <h4 class="mb-10px text-blue"><b><i class="fas fa-layer-group"></i> TOTAL: <?= $dataBarangTotal['total']; ?> BARANG - <i class="fas fa-cubes"></i> CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</b></h4>
-                                    <h4 class="mb-10px text-blue"><b><?= Rupiah($datahdrbrg['HARGA_PENYERAHAN']); ?></b></h4>
+                                    <h4 class="mb-10px text-blue"><b>Harga Penyerahan: <?= Rupiah($HPPT['HP']); ?></b></h4>
+                                    <h4 class="mb-10px text-blue"><b>Pos Tarif: <?= Rupiah($HPPT['PT']); ?></b></h4>
                                 </div>
                                 <div class="widget-card-content bottom">
                                     <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
