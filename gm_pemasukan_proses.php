@@ -42,7 +42,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                 // TOTAL BOTOL
                 $total_btl = $t_botol * $pcs;
                 // TOTAL LITER
-                $total_ltr = $t_botol * $t_liter;
+                $total_ltr = $t_botol * $t_liter * $total_btl;
 
                 $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',

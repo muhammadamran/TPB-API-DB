@@ -887,7 +887,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                 <i class="fa-solid fa-bottle-droplet"></i> <?= $row['TOTAL_BOTOL']; ?> Botol
                                             </td>
                                             <td style="text-align: center;">
-                                                <i class="fa-solid fa-glass-water-droplet"></i> <?= $row['TOTAL_LITER']; ?> Liter
+                                                <i class="fa-solid fa-glass-water-droplet"></i> <?= $row['LITER']; ?> Liter
                                             </td>
                                             <!-- <td style="text-align: center">
                                                 <?php if ($row['STATUS'] == NULL) { ?>
