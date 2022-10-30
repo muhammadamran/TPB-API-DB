@@ -155,10 +155,10 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                 <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
                                     <tbody>
                                         <tr style="height: 18px;">
-                                            <td style="width: 10.2747%;"><i class="fas fa-boxes"></i></td>
-                                            <td style="width: 23.0587%; height: 18px;">Total CT</td>
-                                            <td style="width: 1.94126%; height: 18px;">:</td>
-                                            <td style="width: 64.7254%; height: 18px; text-align: right;">0 CT</td>
+                                            <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
+                                            <td style="width: 10px; height: 18px;">Total CT</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 10px; height: 18px; text-align: right;">0 CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -167,10 +167,10 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                 <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
                                     <tbody>
                                         <tr style="height: 18px;">
-                                            <td style="width: 10.2747%;"><i class="fa-solid fa-bottle-droplet"></i></td>
-                                            <td style="width: 23.0587%; height: 18px;">Total Botol</td>
-                                            <td style="width: 1.94126%; height: 18px;">:</td>
-                                            <td style="width: 64.7254%; height: 18px; text-align: right;">0 Botol</td>
+                                            <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
+                                            <td style="width: 10px; height: 18px;">Total Botol</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 10px; height: 18px; text-align: right;">0 Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -179,10 +179,10 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                 <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
                                     <tbody>
                                         <tr style="height: 18px;">
-                                            <td style="width: 10.2747%;"><i class="fa-solid fa-glass-water-droplet"></i></td>
-                                            <td style="width: 23.0587%; height: 18px;">Total Liter</td>
-                                            <td style="width: 1.94126%; height: 18px;">:</td>
-                                            <td style="width: 64.7254%; height: 18px; text-align: right;">0 Liter</td>
+                                            <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
+                                            <td style="width: 10px; height: 18px;">Total Liter</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 10px; height: 18px; text-align: right;">0 Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
