@@ -166,8 +166,14 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                 <div class="widget-card-content">
                                     <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
                                     <h4 class="mb-10px text-blue"><b><i class="fas fa-layer-group"></i> TOTAL: <?= $dataBarangTotal['total']; ?> BARANG - <i class="fas fa-cubes"></i> CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</b></h4>
-                                    <h4 class="mb-10px text-blue"><b>Harga Penyerahan: <?= Rupiah($HPPT['HP']); ?></b></h4>
-                                    <h4 class="mb-10px text-blue"><b>Pos Tarif: <?= Rupiah($HPPT['PT']); ?></b></h4>
+                                    <h4 class="mb-10px text-blue">
+                                        <font style="color:#000!important;">Harga Penyerahan:</font>
+                                        <b> <?= Rupiah($HPPT['HP']); ?></b>
+                                    </h4>
+                                    <h4 class="mb-10px text-blue">
+                                        <font style="color:#000!important;">Pos Tarif:</font>
+                                        <b> <?= Rupiah($HPPT['PT']); ?></b>
+                                    </h4>
                                 </div>
                                 <div class="widget-card-content bottom">
                                     <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
