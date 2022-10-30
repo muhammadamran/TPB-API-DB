@@ -75,6 +75,10 @@ if (isset($_POST["kurang_"])) {
     $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
     // VALIDASI KURANG
     $cek                    = $TOTAL_BOTOL - $Kurang;
+    var_dump($TOTAL_BOTOL);
+    var_dump($Kurang);
+    var_dump($cek);
+    exit;
     // END VALIDASI KURANG
     $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
