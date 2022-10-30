@@ -29,10 +29,10 @@ $access = mysqli_fetch_array($role);
             <span class="icon-bar"></span>
         </button>
         <div>
-            <a href="" class="btn btn-secondary"><i class="far fa-clock"></i></a>
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Riwayat Aktivitas" data-placement="bottom" data-content="Riwayat Aktivitas"><i class="far fa-clock"></i></a>
         </div>
-        <div>
-            <a href="" class="btn btn-secondary"><i class="fas fa-bullhorn"></i></a>
+        <div style="margin-left: 5px;">
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Pusat Bantuan" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-headset"></i></a>
         </div>
     </div>
     <!-- end navbar-header -->
