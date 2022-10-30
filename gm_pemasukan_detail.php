@@ -13,11 +13,8 @@ $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
 $contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
-// Data Barang
-$contentBarangAll   = $dbcon->query("SELECT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-$dataBarangAll      = mysqli_fetch_array($contentBarangAll);
-// PERUSAHAAN DAN TUJUAN
-$contentdatahdrbrg  = $dbcon->query("SELECT FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+// DETAIL, PERUSAHAAN DAN TUJUAN
+$contentdatahdrbrg  = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
 ?>
 <style>
@@ -141,9 +138,9 @@ $datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
                                 <div class="widget-card-cover rounded"></div>
                                 <div class="widget-card-content">
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>KODE BARANG: <?= $dataBarangAll['KODE_BARANG']; ?></b></h5>
-                                    <h4 class="mb-10px text-pink"><b>TOTAL: <?= $dataBarangTotal['total']; ?> - CEK:<?= $dataBarangCek['total_cek']; ?></b></h4>
-                                    <h4 class="mb-10px text-pink"><b><?= Rupiah($dataBarangAll['HARGA_PENYERAHAN']); ?></b></h4>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
+                                    <h4 class="mb-10px text-pink"><b><i class="fas fa-layer-group"></i> TOTAL: <?= $dataBarangTotal['total']; ?> BARANG - <i class="fas fa-cubes"></i> CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</b></h4>
+                                    <h4 class="mb-10px text-pink"><b><?= Rupiah($datahdrbrg['HARGA_PENYERAHAN']); ?></b></h4>
                                 </div>
                                 <div class="widget-card-content bottom">
                                     <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
