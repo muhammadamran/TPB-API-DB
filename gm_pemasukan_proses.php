@@ -40,15 +40,15 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
 
                 $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
-                                                           TGL_CEK='$InputDate',
-                                                           CHECKING='DONE',
-                                                           STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL='$t_botol',
-                                                           TOTAL_BOTOL_AKHIR='Complete',
-                                                           TOTAL_LITER='$t_liter',
-                                                           TOTAL_LITER_AKHIR='Complete',
-                                                           TOTAL_CT_AKHIR='$pcs'
+                                                           TGL_CEK='$InputDate'
+                                                        --    CHECKING='DONE',
+                                                        --    STATUS_CT='Complete',
+                                                        --    DATE_CT='$InputDate',
+                                                        --    TOTAL_BOTOL='$t_botol',
+                                                        --    TOTAL_BOTOL_AKHIR='Complete',
+                                                        --    TOTAL_LITER='$t_liter',
+                                                        --    TOTAL_LITER_AKHIR='Complete',
+                                                        --    TOTAL_CT_AKHIR='$pcs'
                                      WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
             }
         }
