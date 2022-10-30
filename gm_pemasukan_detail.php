@@ -622,8 +622,6 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
         }
     }
 
-
-
     // CEK BARANG
     $("#btn-all").click(function() {
         // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>`)

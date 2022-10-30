@@ -23,16 +23,18 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
         // TOTAL BOTOL
         $botol           = explode('X', $dataBarang['UKURAN']);
         $t_botol         = $botol[0];
-        // TOTAL LITER
+        // LITER
         $liter           =  $botol[1];
         $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
         $t_liter         = str_replace(',', '.', $r_liter);
+        // TOTAL LITER
+        $total_ltr = $t_botol * $t_liter;
 
         for ($i = 0; $i < $pcs; $i++) {
             $query = $dbcon->query("INSERT INTO plb_barang_ct 
-                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
+                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,LITER,TOTAL_LITER)
                             VALUES
-                            ('','$dataBarang[NOMOR_AJU]','$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
+                            ('','$dataBarang[NOMOR_AJU]','$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter','$total_ltr')
                             ");
         }
         $query .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
