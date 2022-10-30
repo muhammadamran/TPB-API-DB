@@ -167,11 +167,11 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                     <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
                                     <h4 class="mb-10px text-blue"><b><i class="fas fa-layer-group"></i> TOTAL: <?= $dataBarangTotal['total']; ?> BARANG - <i class="fas fa-cubes"></i> CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</b></h4>
                                     <h4 class="mb-10px text-blue">
-                                        <font style="color:#000!important;">Harga Penyerahan:</font>
+                                        <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
                                         <b> <?= Rupiah($HPPT['HP']); ?></b>
                                     </h4>
                                     <h4 class="mb-10px text-blue">
-                                        <font style="color:#000!important;">Pos Tarif:</font>
+                                        <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
                                         <b> <?= Rupiah($HPPT['PT']); ?></b>
                                     </h4>
                                 </div>
