@@ -24,6 +24,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
 
             $arr = $rowWhile['ID'];
             var_dump($arr);
+            // 
             foreach ($arr as $ID) {
 
                 $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
