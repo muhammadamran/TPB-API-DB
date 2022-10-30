@@ -43,7 +43,7 @@ include "include/cssForm.php";
                             <div class="col-xl-6">
                                 <div class="form-group">
                                     <div style="margin-bottom: 10px;justify-content: center;align-items: center;display: flex;">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/826px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png" style="width: 15%;">
+                                        <img src="assets/img/svg/upload-animate.svg" style="width: 15%;">
                                     </div>
                                 </div>
                             </div>
