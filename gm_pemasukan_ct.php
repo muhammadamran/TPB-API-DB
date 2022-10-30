@@ -221,6 +221,19 @@ $forLTR         = str_replace(',', '.', $r_liter) * $forBTL;
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
+// NILAI AKTUAL
+// CT
+$contentNA_CT           = $dbcon->query("SELECT COUNT(*) AS p_CT FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL ORDER BY ID", 0);
+$NA_CT                  = mysqli_fetch_array($contentNA_CT);
+$s_CT                   = $NA_CT['p_CT'];
+// BOTOL
+$contentNA_BOTOL        = $dbcon->query("SELECT SUM(TOTAL_BOTOL) AS p_BOTOL FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL ORDER BY ID", 0);
+$NA_BOTOL               = mysqli_fetch_array($contentNA_BOTOL);
+$s_BOTOL                = $NA_BOTOL['p_BOTOL'] * $s_CT;
+// LITER
+$contentNA_LITER        = $dbcon->query("SELECT SUM(TOTAL_LITER) AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL ORDER BY ID", 0);
+$NA_LITER               = mysqli_fetch_array($contentNA_LITER);
+$s_LITER                = $NA_LITER['p_LITER'] * $s_CT * $s_BOTOl;
 ?>
 <style>
     .btn-custom {
@@ -407,7 +420,7 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $s_CT; ?> CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -419,7 +432,7 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $s_BOTOl; ?> Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -431,7 +444,7 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $s_LITER; ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
