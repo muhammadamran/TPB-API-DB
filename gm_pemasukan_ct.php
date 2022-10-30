@@ -299,6 +299,7 @@ if (isset($_POST["simpan"])) {
                                                   TOTAL_CT_AKHIR='$TOTAL_CT',
                                                   NETTO_AKHIR='$NTS'
                             WHERE ID='$ID'");
+
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
     $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
