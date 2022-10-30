@@ -603,7 +603,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Kurang] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Kurang] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -649,7 +649,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Lebih] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Lebih] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -689,7 +689,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Pecah] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Pecah] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -728,7 +728,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Rusak] Botol Barang Masuk - Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Rusak] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
