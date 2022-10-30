@@ -23,7 +23,9 @@ $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
 $contentCBL             = $dbcon->query("SELECT UKURAN,JUMLAH_SATUAN,NETTO FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $CBL                    = mysqli_fetch_array($contentCBL);
 // FOR CT
-$jml_pcs                = $CBL['JUMLAH_SATUAN'];
+$jml_pcs                = array($CBL['JUMLAH_SATUAN']);
+var_dump($jml_pcs);
+exit;
 $pcs[]                  = str_replace(".0000", "", "$jml_pcs");
 $forCT                  = array_sum($pcs);
 // TOTAL BOTOL
