@@ -351,19 +351,6 @@ $NA_BOTOL               = mysqli_fetch_array($contentNA_BOTOL);
 $contentNA_LITER        = $dbcon->query("SELECT TOTAL_LITER AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
 $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
 
-// FOR STATUS BOTOL
-// -- KURANG
-$contentKURANG        = $dbcon->query("SELECT SUM(KURANG) AS s_KURANG FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
-$ST_KURANG               = mysqli_fetch_array($contentKURANG);
-// -- LEBIH
-$contentLEBIH        = $dbcon->query("SELECT SUM(LEBIH) AS s_LEBIH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
-$ST_LEBIH               = mysqli_fetch_array($contentLEBIH);
-// -- PECAH
-$contentPECAH        = $dbcon->query("SELECT SUM(PECAH) AS s_PECAH FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
-$ST_PECAH               = mysqli_fetch_array($contentPECAH);
-// -- RUSAK
-$contentRUSAK        = $dbcon->query("SELECT SUM(RUSAK) AS s_RUSAK FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
-$ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
 ?>
 <style>
     .btn-custom {
