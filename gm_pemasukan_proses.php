@@ -41,8 +41,10 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                 $t_liter         = str_replace(',', '.', $r_liter);
                 // TOTAL BOTOL
                 $total_btl = $t_botol * $pcs;
+                // TOTAL NETTO
+                $total_netto = $t_botol * $t_liter * $total_btl;
                 // TOTAL LITER
-                $total_ltr = $t_botol * $t_liter * $total_btl;
+                $total_ltr = $t_liter * $total_btl;
 
                 $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
@@ -54,7 +56,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TOTAL_LITER_AKHIR='$total_ltr',
                                                            TOTAL_CT_AKHIR='$pcs',
                                                            BOTOL='$t_botol',
-                                                           LITER='$t_liter'                                                      
+                                                           LITER='$t_liter',                                                      
+                                                           NETTO_AKHIR='$total_netto'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
             }
         }
