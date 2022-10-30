@@ -26,11 +26,11 @@ if (mysqli_num_rows($contentCBL) > 0) {
         $jml_pcs        = $CBL['JUMLAH_SATUAN'];
         $pcs            = str_replace(".0000", "", "$jml_pcs");
     }
+    $forCT                  = array_sum($pcs);
+    var_dump($forCT);
+    exit;
 }
-var_dump($pcs);
-exit;
 // FOR CT
-$forCT                  = array_sum($pcs);
 // TOTAL BOTOL
 $botol                  = explode('X', $CBL['UKURAN']);
 $t_botol[]              = $botol[0];
