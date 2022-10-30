@@ -762,36 +762,37 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <a href="#simpan" data-toggle="modal" class="btn btn-primary" style="margin-bottom: 15px;"><i class="fas fa-tasks"></i> Simpan Data</a>
                     <!-- Simpan Data -->
                     <div class="modal fade" id="simpan">
-                        <div class="modal-dialog sm">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">[Broken] 1 CT</h4>
+                                        <h4 class="modal-title">[Simpan Data] <b>Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></b></h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body">
                                         <fieldset>
                                             <div class="row">
-                                                <div class="col-sm-12">
-                                                    <i class="fas fa-warning"></i>
+                                                <div class="col-sm-12" style="display: grid;justify-content: center;align-content: center;">
+                                                    <i class="fas fa-warning" style="font-size: 150px;color: #f59c1a;"></i>
+                                                    <h4 style="color:#2d353c!important">Peringatan!</h4>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <div class="alert alert-danger">
-                                                        <h5><i class="fa fa-info-circle"></i> Alert Header</h5>
-                                                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                    <div class="alert alert-warning">
+                                                        <h5><i class="fa fa-info"></i> Anda yakin akan menyimpan data ini?</h5>
+                                                        <p>Data Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?> tidak dapat ubah jika sudah dilakukan penyimpanan kedalam sistem!</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
-                                            <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
-                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
-                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
-                                            <input type="text" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
+                                            <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
+                                            <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
+                                            <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                                            <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                                         </fieldset>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</a>
-                                        <button type="submit" name="simpan" class="btn btn-primary"><i class="fas fa-tasks"></i> Ya</button>
+                                        <button type="submit" name="simpan" class="btn btn-primary"><i class="fas fa-check-circle"></i> Ya</button>
                                     </div>
                                 </form>
                             </div>
