@@ -55,8 +55,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                         $liter           =  $botol[1];
                         $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
                         $t_liter         = str_replace(',', '.', $r_liter);
-                        var_dump($t_liter);
-                        exit;
+
                         for ($i = 0; $i < $pcs; $i++) {
                             $query = $dbcon->query("INSERT INTO plb_barang_ct 
                             (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
@@ -85,9 +84,9 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
                         if ($query) {
-                            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
+                            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "&AlertSimpan=Success'</script>";
                         } else {
-                            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
+                            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "&AlertSimpan=Failed';</script>";
                         }
                     } else {
                         // Sudah Ada di plb_barang_ct
