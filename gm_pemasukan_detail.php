@@ -234,6 +234,48 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                 </table>
                             </div>
                         </div>
+
+                        <div style="padding: 0px;">
+                            <div>
+                                <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
+                                            <td style="width: 110px; height: 18px;">Total CT</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
+                                            <td style="width: 110px; height: 18px;">Total Botol</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
+                                            <td style="width: 110px; height: 18px;">Total Liter</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <!-- DETAIL -->
                     <hr>
