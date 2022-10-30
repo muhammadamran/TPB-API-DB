@@ -11,7 +11,7 @@ include "include/cssDatatables.php";
 $contentBarangTotal     = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal        = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
-$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND STATUS_CT='Complete' AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek          = mysqli_fetch_array($contentBarangCek);
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
