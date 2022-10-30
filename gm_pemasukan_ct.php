@@ -806,7 +806,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             <br>
                                             <!-- BOTOL AKHIR -->
                                             BOTOL AKHIR
-                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
+                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
                                             <br>
                                             <!-- LITER -->
                                             LITER
@@ -814,7 +814,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             <br>
                                             <!-- LITER AKHIR -->
                                             LITER AKHIR
-                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $add_forLTR; ?>">
                                             <br>
                                             <!-- NETTO -->
                                             NETTO
