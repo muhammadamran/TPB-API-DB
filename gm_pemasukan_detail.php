@@ -481,6 +481,11 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
                                                                     </a>
+                                                                    <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-sm btn-custom btn-success">
+                                                                        <i class="fas fa-eye" style="font-size: 22px;"></i>
+                                                                        <br>
+                                                                        Cek <?= $pcs ?> CT
+                                                                    </a>
                                                                 <?php } else { ?>
                                                                     <?php if ($pcs == 0) { ?>
                                                                         <!-- No QTY -->
