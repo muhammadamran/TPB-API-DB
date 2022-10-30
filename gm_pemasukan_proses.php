@@ -24,8 +24,6 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
         if (@$rowLine['ID']) {
             $ID = $row['ID'];
             $UKR = $rowLine['UKURAN'];
-            var_dump($UKR);
-            exit;
             $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
                                                            TGL_CEK='$InputDate',
