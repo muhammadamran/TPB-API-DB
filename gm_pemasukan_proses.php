@@ -34,6 +34,11 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
         }
     }
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Success';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Failed';</script>";
+    }
 }
 
 // --    TOTAL_BOTOL_AKHIR='Complete',
