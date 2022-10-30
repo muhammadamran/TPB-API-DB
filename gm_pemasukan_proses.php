@@ -38,7 +38,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
             foreach ($rowWhile as $row) {
                 if (@$row['ID']) {
-                    $ID = $row['ID'];
+                    echo $ID = $row['ID'];
                 }
             }
         }
