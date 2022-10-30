@@ -799,21 +799,29 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             </div>
                                             <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
                                             <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                                            <br>
                                             <!-- BOTOL -->
                                             BOTOL
                                             <input type="text" name="A_BOTOL" value="<?= $add_forBTL ?>">
+                                            <br>
                                             <!-- BOTOL AKHIR -->
                                             BOTOL AKHIR
                                             <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
+                                            <br>
                                             <!-- LITER -->
                                             LITER
                                             <input type="text" name="A_LITER" value="<?= $add_forLTR ?>">
+                                            <br>
                                             <!-- LITER AKHIR -->
                                             LITER AKHIR
                                             <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                                            <br>
                                             <!-- NETTO -->
+                                            NETTO
                                             <input type="text" name="NETTO_AKHIR" value="<?= $NA_CT['p_CT'] * $add_forBTL * $add_forLTR ?>">
+                                            <br>
                                             <!-- CT -->
+                                            CT
                                             <input type="text" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                                         </fieldset>
                                     </div>
