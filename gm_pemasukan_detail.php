@@ -147,7 +147,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                 </div>
                             </a>
                         </div>
-                        <div style="padding: 70px;">
+                        <div style="padding: 0px;">
                             <div>
                                 <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
                             </div>
