@@ -365,22 +365,22 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                             <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
                                                 <div style="margin-left: 5px;">Total CT</div>
-                                                <div>:</div>
-                                                <div><?= $CT['p_CT']; ?> CT</div>
+                                                <div style="margin-left: 22px;">:</div>
+                                                <div style="margin-left: 50px;">20 CT</div>
                                             </div>
                                             <!-- BTL -->
                                             <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
                                                 <div style="margin-left: 5px;">Total Botol</div>
-                                                <div>:</div>
-                                                <div><?= $CT['p_CT']; ?> BTL</div>
+                                                <div style="margin-left: 4px;">:</div>
+                                                <div style="margin-left: 50px;">1 CT</div>
                                             </div>
                                             <!-- LTR -->
                                             <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
                                                 <div style="margin-left: 5px;">Total Liter</div>
-                                                <div>:</div>
-                                                <div><?= $CT['p_CT']; ?> LTR</div>
+                                                <div style="margin-left: 11px;">:</div>
+                                                <div style="margin-left: 50px;">100 CT</div>
                                             </div>
                                         </div>
                                     </h5>
