@@ -438,6 +438,12 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
+                        </div>
+                    </div>
                     <!-- DETAIL -->
                     <hr>
                     <!-- Alert -->
