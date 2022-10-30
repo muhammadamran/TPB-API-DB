@@ -23,13 +23,21 @@ $result_out = mysqli_fetch_array($gate_out);
         <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' ? 'active' : '' ?>">
             <a href="gm_pemasukan.php">
                 Gate In
-                <span class="label label-theme"><?= $result_in['total_in'] ?></span>
+                <?php if ($result_in['total_in']) { ?>
+                    <span class="label label-theme">0</span>
+                <?php } else { ?>
+                    <span class="label label-theme"><?= $result_in['total_in'] ?></span>
+                <?php } ?>
             </a>
         </li>
         <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' || $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
             <a href="gm_pengeluaran.php">
                 Gate Out
-                <span class="label label-theme"><?= $result_in['total_out'] ?></span>
+                <?php if ($result_out['total_out']) { ?>
+                    <span class="label label-theme">0</span>
+                <?php } else { ?>
+                    <span class="label label-theme"><?= $result_out['total_out'] ?></span>
+                <?php } ?>
             </a>
         </li>
     </ul>
