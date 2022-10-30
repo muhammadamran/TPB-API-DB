@@ -5,9 +5,7 @@ $key = $_POST['CekBarang'];
 foreach ($key as $row) {
     if (@$row['ID']) {
         // ID_BARANG
-        $ID             = $row['ID'];
-        var_dump($ID);
-        exit;
+        $ID      = $row['ID'];
         $NOMOR_AJU      = $row['NOMOR_AJU'];
         $KODE_BARANG    = $row['KODE_BARANG'];
         $STATUS         = $row['STATUS'];
@@ -25,7 +23,7 @@ foreach ($key as $row) {
         $TOTAL_CT = $row['TOTAL_CT'];
         $TOTAL_CT_AKHIR = $row['TOTAL_CT_AKHIR'];
 
-        $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU'");
+        $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU' WHERE CHEKING IS NULL");
         if (mysqli_num_rows($dataTable) > 0) {
             while ($row = mysqli_fetch_array($dataTable)) {
 
@@ -42,7 +40,6 @@ foreach ($key as $row) {
                 $t_liter         = str_replace(',', '.', $r_liter);
 
                 if ($dataCT['ID_BARANG'] == NULL) {
-
                     // INSERT TO PLB_BARANG_CT
                     for ($i = 0; $i < $pcs; $i++) {
                         $query = $dbcon->query("INSERT INTO plb_barang_ct 
@@ -58,12 +55,13 @@ foreach ($key as $row) {
                                                   CHECKING='DONE',
                                                   STATUS_CT='Complete',
                                                   DATE_CT='$InputDate',
-                                                  BOTOL='$A_BOTOL',
-                                                  TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
-                                                  LITER='$A_LITER',
-                                                  TOTAL_LITER_AKHIR='$TOTAL_LITER',
+                                                  BOTOL='$TOTAL_BOTOL',
+                                                  TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL_AKHIR',
+                                                  LITER='$TOTAL_LITER',
+                                                  TOTAL_LITER_AKHIR='$TOTAL_LITER_AKHIR',
                                                   TOTAL_CT_AKHIR='$TOTAL_CT'
                             WHERE ID='$ID'");
+
 
                     // FOR AKTIFITAS
                     $me         = $_SESSION['username'];
