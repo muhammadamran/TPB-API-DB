@@ -38,7 +38,13 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
             foreach ($rowWhile as $row) {
                 if (@$row['ID']) {
-                    echo $ID = $row['ID'];
+                    $keyy      = @$row['ID'];
+                    // CEK CT
+                    $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
+                    $dataCT    = mysqli_fetch_array($cekCT);
+
+                    var_dump($dataCT['ID_BARANG']);
+                    exit;
                 }
             }
         }
