@@ -9,7 +9,25 @@ include "include/cssDatatables.php";
 
 if (isset($_GET["aksi"]) == 'SubmitCT') {
     $NOMOR_AJU = $_GET['AJU'];
-    $meOK = $_SESSION['username'];
+    // ID_BARANG
+    $ID      = $row['ID'];
+    $NOMOR_AJU      = $row['NOMOR_AJU'];
+    $KODE_BARANG    = $row['KODE_BARANG'];
+    $STATUS         = $row['STATUS'];
+    $OPERATOR_ONE   = $row['OPERATOR_ONE'];
+    $TGL_CEK        = $row['TGL_CEK'];
+    $CHECKING       = $row['CHECKING'];
+    $meOK           = $_SESSION['username'];
+    $STATUS_CT = $row['STATUS_CT'];
+    $DATE_CT = $row['DATE_CT'];
+    $TOTAL_BOTOL = $row['TOTAL_BOTOL'];
+    $TOTAL_BOTOL_AKHIR = $row['TOTAL_BOTOL_AKHIR'];
+    $TOTAL_LITER = $row['TOTAL_LITER'];
+    $TOTAL_LITER_AKHIR = $row['TOTAL_LITER_AKHIR'];
+    $TOTAL_CT = $row['TOTAL_CT'];
+    $TOTAL_CT_AKHIR = $row['TOTAL_CT_AKHIR'];
+    var_dump($TOTAL_CT_AKHIR);
+    exit;
 
     $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING IS NULL");
     var_dump($sql);
