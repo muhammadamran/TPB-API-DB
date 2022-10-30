@@ -36,16 +36,16 @@ $LTR                    = mysqli_fetch_array($contentLTR);
 // NILAI AKTUAL
 // CT
 // $content_A_CT            = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR) AS p_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
-$content_A_CT            = $dbcon->query("SELECT COUNT(*) AS p_CT FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$content_A_CT            = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR) AS p_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_CT                    = mysqli_fetch_array($content_A_CT);
 // BOTOL
 // $content_A_BTL           = $dbcon->query("SELECT SUM(UKURAN*TOTAL_CT_AKHIR) AS p_BOTOL FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
-$content_A_BTL           = $dbcon->query("SELECT SUM(TOTAL_BOTOL) AS p_BOTOL FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$content_A_BTL           = $dbcon->query("SELECT SUM(TOTAL_BOTOL_AKHIR) AS p_BOTOL FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_BTL                   = mysqli_fetch_array($content_A_BTL);
 // LITER
 // $content_A_LTR           = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR*SUBSTRING_INDEX(UKURAN, 'X', 1)*(REPLACE(SUBSTRING_INDEX(UKURAN, 'X', -1),',','.'))) AS p_LITER
 //                                         FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
-$content_A_LTR           = $dbcon->query("SELECT SUM(TOTAL_LITER) AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$content_A_LTR           = $dbcon->query("SELECT SUM(NETTO_AKHIR) AS p_LITER FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_LTR                   = mysqli_fetch_array($content_A_LTR);
 ?>
 <style>
