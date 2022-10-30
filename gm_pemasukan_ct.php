@@ -776,6 +776,9 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                     <i class="fas fa-warning" style="font-size: 150px;color: #f59c1a;"></i>
                                                 </div>
                                                 <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-sm-12">
                                                     <div class="alert alert-warning">
                                                         <h5><i class="fa fa-info"></i> Anda yakin akan menyimpan data ini?</h5>
                                                         <p>Data Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?> tidak dapat ubah jika sudah dilakukan penyimpanan kedalam sistem!</p>
