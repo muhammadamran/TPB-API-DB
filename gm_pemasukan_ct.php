@@ -75,10 +75,6 @@ if (isset($_POST["kurang_"])) {
     $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
     // VALIDASI KURANG
     $cek                    = $TOTAL_BOTOL - $Kurang;
-    var_dump($TOTAL_BOTOL);
-    var_dump($Kurang);
-    var_dump($cek);
-    exit;
     // END VALIDASI KURANG
     $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
@@ -877,6 +873,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -929,6 +926,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -981,6 +979,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -1033,6 +1032,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                     <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
+                                                                    <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
