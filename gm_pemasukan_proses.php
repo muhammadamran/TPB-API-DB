@@ -10,7 +10,7 @@ include "include/cssDatatables.php";
 if (isset($_GET["aksi"]) == 'SubmitCT') {
     $NOMOR_AJU      = $_GET['AJU'];
     $meOK           = $_SESSION['username'];
-    $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING IS NULL");
+    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING IS NULL");
     if (mysqli_num_rows($dataTable) > 0) {
         while ($row = mysqli_fetch_array($dataTable)) {
 
