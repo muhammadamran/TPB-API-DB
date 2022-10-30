@@ -34,6 +34,20 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
         margin: 6px 866px 23px 0px;
         background: #444e66;
     }
+
+    .detail-barang-ct {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .total-ct {
+        background: bisque;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 800;
+    }
 </style>
 
 <style>
@@ -116,7 +130,7 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                 </div>
                 <div class="panel-body text-inverse">
                     <!-- Menu -->
-                    <div>
+                    <div class="detail-barang-ct">
                         <div>
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
                                 <div class="widget-card-cover rounded"></div>
@@ -130,14 +144,14 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                                 </div>
                             </a>
                         </div>
-                        <div>
-                            <div>
+                        <div style="padding: 70px;">
+                            <div class="total-ct">
                                 Total CT
                             </div>
-                            <div>
+                            <div class="total-ct">
                                 Total Botol
                             </div>
-                            <div>
+                            <div class="total-ct">
                                 Total Liter
                             </div>
                         </div>
