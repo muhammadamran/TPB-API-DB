@@ -774,7 +774,6 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             <div class="row">
                                                 <div class="col-sm-12" style="display: grid;justify-content: center;align-content: center;">
                                                     <i class="fas fa-warning" style="font-size: 150px;color: #f59c1a;"></i>
-                                                    <h4 style="color:#2d353c!important">Peringatan!</h4>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="alert alert-warning">
