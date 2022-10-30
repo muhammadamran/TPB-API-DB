@@ -40,13 +40,30 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
         $sql .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
                                 WHERE ID='$keyy'");
 
+        // FOR AKTIFITAS
+        $me = $_SESSION['username'];
+        $datame = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme = mysqli_fetch_array($datame);
+
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Administrator Tools/Pengaturan App TPB';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
+        $InputAction          = 'Cek Barang Masuk';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $sql .= $dbcon->query("INSERT INTO tbl_aktifitas
+                           (id,IDUNIQ,username,modul,description,action,date_created)
+                           VALUES
+                           ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+
         if ($sql) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy';'_blank'</script>";
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk'</script>";
         } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?InputIconFailed=true';</script>";
+            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
         }
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy';'_blank'</script>";
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk'</script>";
     }
 }
 
@@ -287,6 +304,16 @@ $resultList = mysqli_fetch_array($list);
         </div>
     </div>
     <div class="line-page"></div>
+    <!-- BACK -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
+                <a href="gm_pemasukan_detail.php?AJ=<?= $_GET['AJU'] ?>" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
+            </div>
+        </div>
+    </div>
+    <!-- END BACK -->
+
     <div class="row">
         <div class="col-xl-12">
             <div class="card border-0">
@@ -310,10 +337,101 @@ $resultList = mysqli_fetch_array($list);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <!-- DETAIL -->
+                    <div class="detail-barang-ct">
+                        <div>
+                            <a href="#" class="widget-card rounded mb-20px" data-id="widget">
+                                <div class="widget-card-cover rounded"></div>
+                                <div class="widget-card-content">
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
+                                    <h4 class="mb-10px text-blue">
+                                        <b>
+                                            <i class="fas fa-layer-group"></i>
+                                            TOTAL: <?= $dataBarangTotal['total']; ?> BARANG -
+                                            <i class="fas fa-cubes"></i>
+                                            <?php if ($dataBarangCek['total_cek'] == 0) { ?>
+                                                <font style="color:#6f7d87!important;">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
+                                            <?php } else if ($dataBarangCek['total_cek'] != 0 || $dataBarangCek['total_cek'] != $dataBarangTotal['total']) { ?>
+                                                <font style="color: #e91e63!important;" class="blink_me">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
+                                            <?php } else if ($dataBarangCek['total_cek'] == $dataBarangTotal['total']) { ?>
+                                                CEK: <?= $dataBarangCek['total_cek']; ?> BARANG
+                                            <?php } ?>
+                                        </b>
+                                    </h4>
+                                    <h4 class="mb-10px text-blue">
+                                        <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
+                                        <b> <?= Rupiah($HPPT['HP']); ?></b>
+                                    </h4>
+                                    <h4 class="mb-10px text-blue">
+                                        <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
+                                        <b> <?= Rupiah($HPPT['PT']); ?></b>
+                                    </h4>
+                                </div>
+                                <div class="widget-card-content bottom">
+                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="padding: 0px;">
+                            <div>
+                                <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
+                                            <td style="width: 110px; height: 18px;">Total CT</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
+                                            <td style="width: 110px; height: 18px;">Total Botol</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
+                                            <td style="width: 110px; height: 18px;">Total Liter</td>
+                                            <td style="width: 10px; height: 18px;">:</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DETAIL -->
+                    <hr>
+                    <!-- Alert -->
+                    <?php if ($_GET['Alert'] == 'CekBarangMasuk') { ?>
+                        <div class="note note-secondary">
+                            <div class="note-icon"><i class="fas fa-info"></i></div>
+                            <div class="note-content">
+                                <h4><b>Informasi!</b></h4>
+                                <p> Silahkan lakukan pengecekan pada <b>Tipe Barang: </b>!</p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php } ?>
+                    <!-- Alert -->
                     <form action="" method="POST">
-                        <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
-                        <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
-                        <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
+                        <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
+                        <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                        <button type="submit" name="simpan" class="btn btn-sm btn-primary"> <i class="fas fa-tasks"></i> Simpan Data</button>
                     </form>
                     <br>
                     <div class="table-responsive">

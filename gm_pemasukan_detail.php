@@ -158,7 +158,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <!-- Menu -->
+                    <!-- DETAIL -->
                     <div class="detail-barang-ct">
                         <div>
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
@@ -235,7 +235,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                             </div>
                         </div>
                     </div>
-                    <!-- Menu -->
+                    <!-- DETAIL -->
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
@@ -392,7 +392,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT" target="_blank" onClick="openWindowReload(this)" class="btn btn-sm btn-custom btn-warning">
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>" target=" _blank" onClick="openWindowReload(this)" class="btn btn-sm btn-custom btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
