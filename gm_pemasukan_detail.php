@@ -84,7 +84,7 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
     }
 
     .total-ct-ak {
-        background: #2d353c;
+        background: #00acac;
         border-radius: 5px;
         padding: 5px 10px 5px 10px;
         font-size: 12px;
