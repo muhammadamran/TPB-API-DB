@@ -759,14 +759,45 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Broken -->
                     <!-- Alert -->
-                    <form action="" method="POST">
-                        <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
-                        <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
-                        <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
-                        <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
-                        <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
-                        <button type="submit" name="simpan" class="btn btn-sm btn-primary"> <i class="fas fa-tasks"></i> Simpan Data</button>
-                    </form>
+                    <a href="#simpan" data-toggle="modal" class="btn btn-primary"><i class="fas fa-tasks"></i> Simpan Data</a>
+                    <!-- Simpan Data -->
+                    <div class="modal fade" id="simpan">
+                        <div class="modal-dialog sm">
+                            <div class="modal-content">
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">[Broken] 1 CT</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <i class="fas fa-warning"></i>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="alert alert-danger">
+                                                        <h5><i class="fa fa-info-circle"></i> Alert Header</h5>
+                                                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
+                                            <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
+                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                                            <input type="text" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
+                                        </fieldset>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</a>
+                                        <button type="submit" name="simpan" class="btn btn-primary"><i class="fas fa-tasks"></i> Ya</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Simpan Data -->
                     <br>
                     <div class="table-responsive">
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
