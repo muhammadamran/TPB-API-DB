@@ -797,20 +797,20 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
-                                            <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                                            <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
+                                            <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
                                             <!-- BOTOL -->
-                                            <input type="hidden" name="A_BOTOL" value="<?= $add_forBTL ?>">
+                                            <input type="text" name="A_BOTOL" value="<?= $add_forBTL ?>">
                                             <!-- LITER -->
-                                            <input type="hidden" name="A_LITER" value="<?= $add_forLTR ?>">
+                                            <input type="text" name="A_LITER" value="<?= $add_forLTR ?>">
                                             <!-- NETTO -->
-                                            <input type="hidden" name="NETTO_AKHIR" value="<?= $NA_CT['p_CT'] * $add_forBTL * $add_forLTR ?>">
+                                            <input type="text" name="NETTO_AKHIR" value="<?= $NA_CT['p_CT'] * $add_forBTL * $add_forLTR ?>">
                                             <!-- BOTOL AKHIR -->
-                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
+                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_CT['p_CT'] ?>">
                                             <!-- LITER AKHIR -->
-                                            <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
+                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?>">
                                             <!-- CT -->
-                                            <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
+                                            <input type="text" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                                         </fieldset>
                                     </div>
                                     <div class="modal-footer">
