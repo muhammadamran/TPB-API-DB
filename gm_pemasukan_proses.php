@@ -8,7 +8,7 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 
 if (isset($_GET["aksi"]) == 'SubmitCT') {
-    $NOMOR_AJU = $_POST['NOMOR_AJU'];
+    $NOMOR_AJU = $_GET['AJU'];
     $meOK = $_SESSION['username'];
 
     $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHEKING IS NULL");
