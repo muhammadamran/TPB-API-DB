@@ -613,20 +613,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                         <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;">
                             <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
                         </div>
-                        <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;margin-top: 10px;">
-                            <?php if ($ST_KURANG['s_KURANG'] != 0) { ?>
-                                <span type="button" class="btn btn-sm btn-custom btn-yellow"><i class="fa-solid fa-minus"></i> <b><?= $ST_KURANG['s_KURANG']; ?></b> Kurang</span>
-                            <?php } ?>
-                            <?php if ($ST_LEBIH['s_LEBIH'] != 0) { ?>
-                                <span type="button" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> <b><?= $ST_LEBIH['s_LEBIH']; ?></b> Lebih</span>
-                            <?php } ?>
-                            <?php if ($ST_PECAH['s_PECAH'] != 0) { ?>
-                                <span type="button" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> <b><?= $ST_PECAH['s_PECAH']; ?></b> Pecah</span>
-                            <?php } ?>
-                            <?php if ($ST_RUSAK['s_RUSAK'] != 0) { ?>
-                                <span type="button" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> <b><?= $ST_RUSAK['s_RUSAK']; ?></b> Rusak</span>
-                            <?php } ?>
-                        </div>
+
                     </div>
                     <!-- END PETUGAS -->
                     <!-- DETAIL -->
