@@ -491,7 +491,7 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                             </td>
                                             <td style="text-align: center;">
                                                 <!-- Kurang -->
-                                                <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
+                                                <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-yellow"><i class="fa-solid fa-minus"></i> Kurang</a>
                                                 <!-- Lebih -->
                                                 <a href="#Lebih<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> Lebih</a>
                                                 <!-- Pecah -->
