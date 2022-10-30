@@ -66,173 +66,193 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
 
 // KURANG
 if (isset($_POST["kurang_"])) {
-
-    $ID_CT                  = $_POST['ID_CT'];
-    $NOMOR_AJU              = $_POST['NOMOR_AJU'];
-    $ID_BARANG              = $_POST['ID_BARANG'];
-    $KODE_BARANG            = $_POST['KODE_BARANG'];
-    $Kurang                 = $_POST['TOTAL_BOTOL_K'];
-    $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
-    // VALIDASI KURANG
-    $cek                    = $TOTAL_BOTOL - $Kurang;
-    // END VALIDASI KURANG
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_K'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Kurang                 = $_POST['TOTAL_BOTOL_K'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        // VALIDASI KURANG
+        $cek                    = $TOTAL_BOTOL - $Kurang;
+        // END VALIDASI KURANG
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang')");
 
-    // FOR AKTIFITAS
-    $me         = $_SESSION['username'];
-    $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-    $resultme   = mysqli_fetch_array($datame);
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
 
-    $IDUNIQme             = $resultme['USRIDUNIQ'];
-    $InputUsername        = $me;
-    $InputModul           = 'Gate In/Detail/CT';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Kurang:" . $Kurang;
-    $InputAction          = 'Botol Kurang';
-    $InputDate            = date('Y-m-d h:m:i');
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Kurang:" . $Kurang;
+        $InputAction          = 'Botol Kurang';
+        $InputDate            = date('Y-m-d h:m:i');
 
-    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                        (id,IDUNIQ,username,modul,description,action,date_created)
                        VALUES
                        ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Success';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Failed';</script>";
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Failed';</script>";
+        }
     }
 }
 
 // LEBIH
 if (isset($_POST["lebih_"])) {
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_L'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Lebih                  = $_POST['TOTAL_BOTOL_L'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
 
-    $ID_CT                  = $_POST['ID_CT'];
-    $NOMOR_AJU              = $_POST['NOMOR_AJU'];
-    $ID_BARANG              = $_POST['ID_BARANG'];
-    $KODE_BARANG            = $_POST['KODE_BARANG'];
-    $Lebih                  = $_POST['TOTAL_BOTOL_L'];
-    $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
-
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL'
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL'
                             WHERE ID='$ID_CT'");
 
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih')");
 
-    // FOR AKTIFITAS
-    $me         = $_SESSION['username'];
-    $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-    $resultme   = mysqli_fetch_array($datame);
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
 
-    $IDUNIQme             = $resultme['USRIDUNIQ'];
-    $InputUsername        = $me;
-    $InputModul           = 'Gate In/Detail/CT';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Lebih:" . $Lebih;
-    $InputAction          = 'Botol Lebih';
-    $InputDate            = date('Y-m-d h:m:i');
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Lebih:" . $Lebih;
+        $InputAction          = 'Botol Lebih';
+        $InputDate            = date('Y-m-d h:m:i');
 
-    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                        (id,IDUNIQ,username,modul,description,action,date_created)
                        VALUES
                        ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Success';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Failed';</script>";
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Failed';</script>";
+        }
     }
 }
 
 // PECAH
 if (isset($_POST["pecah_"])) {
-
-    $ID_CT                  = $_POST['ID_CT'];
-    $NOMOR_AJU              = $_POST['NOMOR_AJU'];
-    $ID_BARANG              = $_POST['ID_BARANG'];
-    $KODE_BARANG            = $_POST['KODE_BARANG'];
-    $Pecah                  = $_POST['TOTAL_BOTOL_P'];
-    $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
-    // VALIDASI PECAH
-    $cek = $TOTAL_BOTOL - $Pecah;
-    // END VALIDASI PECAH
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_P'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Pecah                  = $_POST['TOTAL_BOTOL_P'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        // VALIDASI PECAH
+        $cek = $TOTAL_BOTOL - $Pecah;
+        // END VALIDASI PECAH
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
 
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah')");
 
-    // FOR AKTIFITAS
-    $me         = $_SESSION['username'];
-    $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-    $resultme   = mysqli_fetch_array($datame);
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
 
-    $IDUNIQme             = $resultme['USRIDUNIQ'];
-    $InputUsername        = $me;
-    $InputModul           = 'Gate In/Detail/CT';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Pecah:" . $Pecah;
-    $InputAction          = 'Botol Pecah';
-    $InputDate            = date('Y-m-d h:m:i');
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Pecah:" . $Pecah;
+        $InputAction          = 'Botol Pecah';
+        $InputDate            = date('Y-m-d h:m:i');
 
-    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                    (id,IDUNIQ,username,modul,description,action,date_created)
                    VALUES
                    ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Success';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Failed';</script>";
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Failed';</script>";
+        }
     }
 }
 
 // RUSAK
 if (isset($_POST["rusak_"])) {
-
-    $ID_CT                  = $_POST['ID_CT'];
-    $NOMOR_AJU              = $_POST['NOMOR_AJU'];
-    $ID_BARANG              = $_POST['ID_BARANG'];
-    $KODE_BARANG            = $_POST['KODE_BARANG'];
-    $Rusak                  = $_POST['TOTAL_BOTOL_R'];
-    $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
-    // VALIDASI RUSAK
-    $cek = $TOTAL_BOTOL - $Rusak;
-    // END VALIDASI RUSAK
-    $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+    $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
+    $v_ID_BARANG              = $_POST['ID_BARANG'];
+    if ($_POST['TOTAL_BOTOL_R'] == 0) {
+        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+    } else {
+        $ID_CT                  = $_POST['ID_CT'];
+        $NOMOR_AJU              = $_POST['NOMOR_AJU'];
+        $ID_BARANG              = $_POST['ID_BARANG'];
+        $KODE_BARANG            = $_POST['KODE_BARANG'];
+        $Rusak                  = $_POST['TOTAL_BOTOL_R'];
+        $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        // VALIDASI RUSAK
+        $cek = $TOTAL_BOTOL - $Rusak;
+        // END VALIDASI RUSAK
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
                             WHERE ID='$ID_CT'");
 
-    $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
+        $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,RUSAK)
     VALUES
     ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Rusak')");
 
-    // FOR AKTIFITAS
-    $me         = $_SESSION['username'];
-    $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
-    $resultme   = mysqli_fetch_array($datame);
+        // FOR AKTIFITAS
+        $me         = $_SESSION['username'];
+        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+        $resultme   = mysqli_fetch_array($datame);
 
-    $IDUNIQme             = $resultme['USRIDUNIQ'];
-    $InputUsername        = $me;
-    $InputModul           = 'Gate In/Detail/CT';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Rusak:" . $Rusak;
-    $InputAction          = 'Botol Rusak';
-    $InputDate            = date('Y-m-d h:m:i');
+        $IDUNIQme             = $resultme['USRIDUNIQ'];
+        $InputUsername        = $me;
+        $InputModul           = 'Gate In/Detail/CT';
+        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Rusak:" . $Rusak;
+        $InputAction          = 'Botol Rusak';
+        $InputDate            = date('Y-m-d h:m:i');
 
-    $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
                    (id,IDUNIQ,username,modul,description,action,date_created)
                    VALUES
                    ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
-    if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Success';</script>";
-    } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Failed';</script>";
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Failed';</script>";
+        }
     }
 }
 
