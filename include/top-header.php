@@ -32,7 +32,15 @@ $access = mysqli_fetch_array($role);
             <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Riwayat Aktivitas" data-placement="bottom" data-content="Riwayat Aktivitas"><i class="far fa-clock"></i></a>
         </div>
         <div style="margin-left: 5px;">
-            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Pusat Bantuan" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-headset"></i></a>
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Pusat Bantuan" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-question-circle"></i></a>
+        </div>
+        <!-- Gate In -->
+        <div style="margin-left: 5px;">
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Gate In" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i></a>
+        </div>
+        <!-- Gate Out -->
+        <div style="margin-left: 5px;">
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Gate Out" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i></a>
         </div>
     </div>
     <!-- end navbar-header -->
