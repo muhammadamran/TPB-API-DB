@@ -361,25 +361,21 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                     </h5>
                                     <h5 class="mb-10px text-blue">
                                         <div>
+                                            <!-- CT -->
                                             <div>
-                                                <div style="width: 10px;"><i class="fas fa-boxes"></i></div>
-                                                <div style="width: 110px; height: 18px;">Total CT</div>
-                                                <div style="width: 10px; height: 18px;">:</div>
-                                                <div style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</div>
+                                                <div><i class="fas fa-boxes"></i></div>
+                                                <div>Total CT</div>
+                                                <div>:</div>
+                                                <div><?= $CT['p_CT']; ?> CT</div>
+                                            </div>
+                                            <!-- BTL -->
+                                            <div>
+                                                <div><i class="fas fa-boxes"></i></div>
+                                                <div>Total CT</div>
+                                                <div>:</div>
+                                                <div><?= $CT['p_CT']; ?> CT</div>
                                             </div>
                                         </div>
-                                    </h5>
-                                    <h5 class="mb-10px text-blue">
-                                        <b>
-                                            <i class="fa-solid fa-bottle-droplet"></i>
-                                            TOTAL BOTOL: <?= $dataBarangTotal['total']; ?> Botol
-                                        </b>
-                                    </h5>
-                                    <h5 class="mb-10px text-blue">
-                                        <b>
-                                            <i class="fa-solid fa-glass-water-droplet"></i>
-                                            TOTAL LITER: <?= $dataBarangTotal['total']; ?> Liter
-                                        </b>
                                     </h5>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
