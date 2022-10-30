@@ -393,14 +393,14 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                             <!-- BTL -->
                                             <div style="display: flex;">
                                                 <div><i class="fa-solid fa-bottle-droplet"></i></div>
-                                                <div style="margin-left: 5px;">Total Botol</div>
+                                                <div style="margin-left: 13px;">Total Botol</div>
                                                 <div style="margin-left: 4px;">:</div>
                                                 <div style="margin-left: 12px;"><?= $forBTL; ?> BTL</div>
                                             </div>
                                             <!-- LTR -->
                                             <div style="display: flex;">
                                                 <div><i class="fa-solid fa-glass-water-droplet"></i></div>
-                                                <div style="margin-left: 5px;">Total Liter</div>
+                                                <div style="margin-left: 11px;">Total Liter</div>
                                                 <div style="margin-left: 11px;">:</div>
                                                 <div style="margin-left: 12px;"><?= $forLTR; ?> LTR</div>
                                             </div>
