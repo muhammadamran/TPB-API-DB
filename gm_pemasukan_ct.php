@@ -362,18 +362,25 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                     <h5 class="mb-10px text-blue">
                                         <div>
                                             <!-- CT -->
-                                            <div>
+                                            <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
-                                                <div>Total CT</div>
+                                                <div style="margin-left: 5px;">Total CT</div>
                                                 <div>:</div>
                                                 <div><?= $CT['p_CT']; ?> CT</div>
                                             </div>
                                             <!-- BTL -->
-                                            <div>
+                                            <div style="display: flex;">
                                                 <div><i class="fas fa-boxes"></i></div>
-                                                <div>Total CT</div>
+                                                <div style="margin-left: 5px;">Total Botol</div>
                                                 <div>:</div>
-                                                <div><?= $CT['p_CT']; ?> CT</div>
+                                                <div><?= $CT['p_CT']; ?> BTL</div>
+                                            </div>
+                                            <!-- LTR -->
+                                            <div style="display: flex;">
+                                                <div><i class="fas fa-boxes"></i></div>
+                                                <div style="margin-left: 5px;">Total Liter</div>
+                                                <div>:</div>
+                                                <div><?= $CT['p_CT']; ?> LTR</div>
                                             </div>
                                         </div>
                                     </h5>
