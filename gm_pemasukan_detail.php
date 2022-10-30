@@ -19,27 +19,16 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
 // CEK ADA PENGECEKAN BOTOL ATAU TIDAK
 $contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Checking Botol' ORDER BY ID ASC", 0);
 $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
-// CEK CT,BOTOL,LITER
-$contentCBL             = $dbcon->query("SELECT UKURAN,JUMLAH_SATUAN,NETTO FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
-if (mysqli_num_rows($contentCBL) > 0) {
-    while ($CBL = mysqli_fetch_array($contentCBL)) {
-        $jml_pcs        = $CBL['JUMLAH_SATUAN'];
-        $pcs[]            = str_replace(".0000", "", "$jml_pcs");
-        $forCT                  = array_sum($pcs);
-        var_dump($forCT);
-        exit;
-    }
-}
-// FOR CT
-// TOTAL BOTOL
-$botol                  = explode('X', $CBL['UKURAN']);
-$t_botol[]              = $botol[0];
-$forBTL                 = array_sum($t_botol);
-// TOTAL LITER
-$liter                  =  $botol[1];
-$r_liter                = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-$t_liter[]              = str_replace(',', '.', $r_liter);
-$forLTR                 = array_sum($t_liter);
+// CEK CT
+$contentCT             = $dbcon->query("SELECT SUM(JUMLAH_SATUAN) AS p_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
+$CT                    = mysqli_fetch_array($contentCT);
+// CEK BOTOL
+$contentBTL             = $dbcon->query("SELECT SUM(UKURAN*JUMLAH_SATUAN) AS p_BOTOL FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$BTL                    = mysqli_fetch_array($contentBTL);
+// CEK LITER
+$contentLTR             = $dbcon->query("SELECT SUM(JUMLAH_SATUAN*SUBSTRING_INDEX(UKURAN, 'X', 1)*(REPLACE(SUBSTRING_INDEX(UKURAN, 'X', -1),',','.'))) AS p_LITER
+                                        FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$LTR                    = mysqli_fetch_array($contentLTR);
 ?>
 <style>
     .btn-custom {
@@ -191,7 +180,7 @@ $forLTR                 = array_sum($t_liter);
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $forCT; ?> CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -203,7 +192,7 @@ $forLTR                 = array_sum($t_liter);
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $forBTL; ?> Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -215,7 +204,7 @@ $forLTR                 = array_sum($t_liter);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $forLTR; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
