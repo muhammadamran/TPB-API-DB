@@ -5,6 +5,8 @@ $key = $_POST['CekBarang'];
 foreach ($key as $row) {
     // ID_BARANG
     $ID             = $row['ID'];
+    var_dump($ID);
+    exit;
     $NOMOR_AJU      = $row['NOMOR_AJU'];
     $KODE_BARANG    = $row['KODE_BARANG'];
     $STATUS         = $row['STATUS'];
