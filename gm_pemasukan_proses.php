@@ -2,6 +2,7 @@
 include "include/connection.php";
 
 $NOMOR_AJU = $_POST['NOMOR_AJU'];
+$meOK = $_SESSION['username'];
 
 $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU' WHERE CHEKING IS NULL");
 if (mysqli_num_rows($dataTable) > 0) {
@@ -9,6 +10,7 @@ if (mysqli_num_rows($dataTable) > 0) {
 
         $sql = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$row[ID]'");
         $row_ct = mysqli_fetch_array($sql);
+
         $jml_pcs         = $row_ct['JUMLAH_SATUAN'];
         $pcs             = str_replace(".0000", "", "$jml_pcs");
         // TOTAL BOTOL
@@ -28,7 +30,6 @@ if (mysqli_num_rows($dataTable) > 0) {
                             ('','$row_ct[NOMOR_AJU]','$keyy','$row_ct[KODE_BARANG]','$t_botol','$t_liter')
                             ");
             }
-
             $query .= $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                   OPERATOR_ONE='$meOK',
                                                   TGL_CEK='$InputDate',
@@ -51,8 +52,8 @@ if (mysqli_num_rows($dataTable) > 0) {
             $IDUNIQme             = $resultme['USRIDUNIQ'];
             $InputUsername        = $me;
             $InputModul           = 'Gate In/Detail/CT';
-            $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
-            $InputAction          = 'Cek Barang Masuk';
+            $InputDescription     = $me . " Simpan Data Barang Masuk: Semua Sesuai";
+            $InputAction          = 'Simpan Barang Masuk';
             $InputDate            = date('Y-m-d h:m:i');
 
             $query .= $dbcon->query("INSERT INTO tbl_aktifitas
@@ -61,6 +62,7 @@ if (mysqli_num_rows($dataTable) > 0) {
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
         }
     }
+
     if ($query) {
         echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Success';</script>";
     } else {
