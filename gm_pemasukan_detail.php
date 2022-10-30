@@ -21,9 +21,12 @@ $contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING) AS validasi_cek 
 $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
 // CEK CT,BOTOL,LITER
 $contentCBL             = $dbcon->query("SELECT UKURAN,JUMLAH_SATUAN,NETTO FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
-$CBL                    = mysqli_num_rows($contentCBL);
+if (mysqli_num_rows($contentCBL) > 0) {
+    while ($CBL = mysqli_fetch_array($contentCBL)) {
+        $jml_pcs        = $CBL['JUMLAH_SATUAN'];
+    }
+}
 // FOR CT
-$jml_pcs                = array($CBL['JUMLAH_SATUAN']);
 var_dump($jml_pcs);
 exit;
 $pcs[]                  = str_replace(".0000", "", "$jml_pcs");
