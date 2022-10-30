@@ -165,7 +165,20 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                                 <div class="widget-card-cover rounded"></div>
                                 <div class="widget-card-content">
                                     <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
-                                    <h4 class="mb-10px text-blue"><b><i class="fas fa-layer-group"></i> TOTAL: <?= $dataBarangTotal['total']; ?> BARANG - <i class="fas fa-cubes"></i> CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</b></h4>
+                                    <h4 class="mb-10px text-blue">
+                                        <b>
+                                            <i class="fas fa-layer-group"></i>
+                                            TOTAL: <?= $dataBarangTotal['total']; ?> BARANG -
+                                            <i class="fas fa-cubes"></i>
+                                            <?php if ($dataBarangCek['total_cek'] == 0) { ?>
+                                                <font style="color:#6f7d87!important;">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
+                                            <?php } else if ($dataBarangCek['total_cek'] != 0 || $dataBarangCek['total_cek'] != $dataBarangTotal['total']) { ?>
+                                                <font style="color: #e91e63!important;" class="blink_me">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
+                                            <?php } else if ($dataBarangCek['total_cek'] == $dataBarangTotal['total']) { ?>
+                                                CEK: <?= $dataBarangCek['total_cek']; ?> BARANG
+                                            <?php } ?>
+                                        </b>
+                                    </h4>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
                                         <b> <?= Rupiah($HPPT['HP']); ?></b>
