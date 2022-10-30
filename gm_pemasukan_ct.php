@@ -282,6 +282,9 @@ if (isset($_POST["simpan"])) {
     // TOTAL CT
     $TOTAL_CT       = $_POST['TOTAL_CT'];
     $meOK           = $_SESSION['username'];
+    // TOTAL LITER SATUAN
+    $TLS = $A_BOTOL * $A_LITER;
+    $NTS = $TLS * $TOTAL_BOTOL;
 
     $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                   OPERATOR_ONE='$meOK',
@@ -292,8 +295,9 @@ if (isset($_POST["simpan"])) {
                                                   BOTOL='$A_BOTOL',
                                                   TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
                                                   LITER='$A_LITER',
-                                                  TOTAL_LITER_AKHIR='$TOTAL_LITER',
-                                                  TOTAL_CT_AKHIR='$TOTAL_CT'
+                                                  TOTAL_LITER_AKHIR='$TLS',
+                                                  TOTAL_CT_AKHIR='$TOTAL_CT',
+                                                  NETTO_AKHIR='$NTS'
                             WHERE ID='$ID'");
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
