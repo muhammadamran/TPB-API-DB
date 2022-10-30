@@ -34,13 +34,21 @@ $access = mysqli_fetch_array($role);
         <div style="margin-left: 5px;">
             <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Pusat Bantuan" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-question-circle"></i></a>
         </div>
+        <?php
+        // TOTAL GATE IN
+        $gate_in = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
+        $result_in = mysqli_fetch_array($gate_in);
+        // TOTAL GATE OUT
+        $gate_out = $dbcon->query("SELECT COUNT(*) AS total_out FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NOT NULL");
+        $result_out = mysqli_fetch_array($gate_out);
+        ?>
         <!-- Gate In -->
         <div style="margin-left: 5px;">
-            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Gate In" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i></a>
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Gate In" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i> Gate In <span class="label label-theme"><?= $result_in['total_in'] ?></span></a>
         </div>
         <!-- Gate Out -->
         <div style="margin-left: 5px;">
-            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Gate Out" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i></a>
+            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Gate Out" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i> Gate Out <span class="label label-theme"><?= $result_out['total_out'] ?></span></a>
         </div>
     </div>
     <!-- end navbar-header -->
