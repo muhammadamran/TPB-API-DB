@@ -8,14 +8,17 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 
 // TOTAL BARANG
-$contentBarangTotal = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-$dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
+$contentBarangTotal     = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$dataBarangTotal        = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
-$contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-$dataBarangCek      = mysqli_fetch_array($contentBarangCek);
+$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$dataBarangCek          = mysqli_fetch_array($contentBarangCek);
 // DETAIL, PERUSAHAAN DAN TUJUAN
-$contentdatahdrbrg  = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-$datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
+$contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
+// CEK ADA PENGECEKAN BOTOL ATAU TIDAK
+$contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Checking Botol' ORDER BY ID ASC", 0);
+$cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
 ?>
 <style>
     .btn-custom {
@@ -228,12 +231,22 @@ $datahdrbrg         = mysqli_fetch_array($contentdatahdrbrg);
                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                     Cek Satuan Botol
                                                 </button>
-                                                <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                    <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
-                                                        <i class="fas fa-tasks"></i>
-                                                        Simpan Barang Masuk
-                                                    </button>
-                                                </div>
+                                                <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
+                                                    <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
+                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                            <i class="fas fa-tasks"></i>
+                                                            Simpan Barang Masuk
+                                                        </button>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
+                                                        <button type="button" class="btn btn-sm btn-custom btn-warning" data-toggle="popover" data-trigger="hover" data-title="Selesaikan dahulu Data Pengecekan Barang!" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu!">
+                                                            <i class="fas fa-warning"></i>
+                                                            Simpan Barang Masuk
+                                                        </button>
+                                                        <small style="color: red;"><i>Anda masih memiliki pengecekan Data CT yang belum disimpan!</i></small>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     <?php } ?>
