@@ -8,7 +8,6 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 
 if (isset($_GET["aksi"]) == 'SubmitCT') {
-    $NOMOR_AJU      = $_GET['AJU'];
     $meOK           = $_SESSION['username'];
     $InputDate      = date('Y-m-d h:m:i');
 
