@@ -463,9 +463,9 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
-                                    <th style="text-align: center;">Statu CT</th>
-                                    <th style="text-align: center;">Aksi</th>
                                     <th width="1%" class="no-sort" style="text-align: center;">#</th>
+                                    <th class="no-sort" style="text-align: center;">Statu CT</th>
+                                    <th class="no-sort" style="text-align: center;">Aksi</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">ID Barang</th>
                                     <th style="text-align: center;">KD Barang</th>
@@ -487,6 +487,9 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
+                                                <img src="assets/img/png/box.png" style="width: 70px;" alt="">
+                                            </td>
+                                            <td style="text-align: center;">
                                                 <a href="#Delete<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-danger"><i class="fas fa-box-open"></i></a>
                                             </td>
                                             <td style="text-align: center;">
@@ -498,9 +501,6 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                                 <a href="#Pecah<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> Pecah</a>
                                                 <!-- Rusak -->
                                                 <a href="#Rusak<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</a>
-                                            </td>
-                                            <td>
-                                                <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                             </td>
                                             <td style="text-align: center;">
                                                 <?= $row['NOMOR_AJU']; ?>
