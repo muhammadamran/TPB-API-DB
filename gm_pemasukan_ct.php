@@ -310,7 +310,7 @@ if (isset($_POST["Delete_"])) {
 
     $query = $dbcon->query("UPDATE plb_barang_ct SET STATUS_CT='Broken',
                                                      DATE_CT='$InputDate'
-                            WHERE ID='$ID'");
+                            WHERE ID='$ID_CT'");
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
     $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
