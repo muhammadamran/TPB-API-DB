@@ -9,6 +9,8 @@ $result_out = mysqli_fetch_array($gate_out);
 <li class="nav-header">GATE MANDIRI</li>
 <li class="has-sub <?= $uriSegments[1] == 'gm_pemasukan.php' ||
                         $uriSegments[1] == 'gm_pemasukan_detail.php' ||
+                        $uriSegments[1] == 'gm_pemasukan_ct.php' ||
+                        $uriSegments[1] == 'gm_pemasukan_proses.php' ||
                         $uriSegments[1] == 'gm_pengeluaran.php' ||
                         $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
     <a href="javascript:;">
@@ -20,7 +22,7 @@ $result_out = mysqli_fetch_array($gate_out);
         </span>
     </a>
     <ul class="sub-menu">
-        <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' ? 'active' : '' ?>">
+        <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' || $uriSegments[1] == 'gm_pemasukan_ct.php' || $uriSegments[1] == 'gm_pemasukan_proses.php' ? 'active' : '' ?>">
             <a href="gm_pemasukan.php">
                 Gate In
                 <?php if ($result_in['total_in'] == NULL) { ?>
