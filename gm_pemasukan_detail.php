@@ -458,9 +458,9 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                                 <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_CT]" value="Complete">
                                                                 <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][DATE_CT]" value="<?= date('Y-m-d H:m:i') ?>">
                                                                 <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
-                                                                <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL_AKHIR]" value="<?= $t_botol ?>">
+                                                                <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL_AKHIR]" value="<?= $t_botol * $pcs ?>">
                                                                 <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
-                                                                <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER_AKHIR]" value="<?= $pcs * $t_liter ?>">
+                                                                <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER_AKHIR]" value="<?= $t_liter * ($t_botol * $pcs) ?>">
                                                                 <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_CT]" value="<?= $pcs ?>">
                                                                 <input type="text" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_CT_AKHIR]" value="<?= $pcs ?>">
                                                                 <!-- </div> -->
