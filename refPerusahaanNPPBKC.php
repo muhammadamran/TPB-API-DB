@@ -122,7 +122,7 @@ if (isset($_POST["add_nppbkc"])) {
                                         </div>
                                     </fieldset>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="margin-bottom: -15px;">
                                     <a href="javascript:;" class="btn btn-yellow" onclick="myFunction()"><i class="fas fa-refresh"></i> Reset</a>
                                     <button type="submit" name="add_nppbkc" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                 </div>
