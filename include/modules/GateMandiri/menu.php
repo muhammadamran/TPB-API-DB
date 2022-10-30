@@ -1,9 +1,9 @@
 <?php
 // TOTAL GATE IN
-$gate_in = $dbcon->query("SELECT COUNT(NOMOR_AJU) AS total_in FROM plb_barang WHERE STATUS_IN IS NULL");
+$gate_in = $dbcon->query("SELECT COUNT(NOMOR_AJU) AS total_in FROM plb_header WHERE STATUS_IN IS NULL");
 $result_in = mysqli_fetch_array($gate_in);
 // TOTAL GATE OUT
-$gate_out = $dbcon->query("SELECT COUNT(NOMOR_AJU) AS total_out FROM plb_barang WHERE STATUS_IN IS NOT NULL");
+$gate_out = $dbcon->query("SELECT COUNT(NOMOR_AJU) AS total_out FROM plb_header WHERE STATUS_IN IS NOT NULL");
 $result_out = mysqli_fetch_array($gate_out);
 ?>
 <li class="nav-header">GATE MANDIRI</li>
