@@ -203,11 +203,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <tbody>
                                 <?php
                                 if (isset($_POST['filter'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah='" . $_POST['AJU_GB'] . "' ORDER BY ID ASC", 0);
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah='" . $_POST['AJU_GB'] . "' ORDER BY rcd_id ASC", 0);
                                 } else if (isset($_POST['show_all'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY ID ASC", 0);
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY rcd_id ASC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY ID ASC LIMI 100", 0);
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY rcd_id ASC LIMIT 100", 0);
                                 }
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $rowBarang) :

@@ -18,17 +18,24 @@ if (isset($_POST['add_'])) {
     $bm_tgl_masuk           = $_POST['bm_masuk'] . ' ' . date('H:m:i');
     $bm_nama_operator       = $_POST['bm_operator'];
 
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
-    $data = json_decode($content, true);
-    $sql = $dbcon->query("INSERT INTO rcd_status 
+    $cekCT     = $dbcon->query("SELECT COUNT(*) AS cek,bm_no_aju_plb,bk_no_aju_sarinah FROM rcd_status WHERE bm_no_aju_plb='$bm_no_aju_plb' AND bk_no_aju_sarinah='$bk_no_aju_sarinah'");
+    $dataCT    = mysqli_fetch_array($cekCT);
+
+    if ($dataCT['cek'] == 0) {
+        $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
+        $data = json_decode($content, true);
+        $sql = $dbcon->query("INSERT INTO rcd_status 
                                 (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bk_no_aju_sarinah)
                                 VALUES
                                 ('','$bm_no_aju_plb','$bm_tgl_masuk','$bm_nama_operator','$bk_no_aju_sarinah')");
 
-    if ($sql) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        if ($sql) {
+            echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+        }
     } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     }
 }
 
