@@ -34,8 +34,6 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
 
 
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
-    var_dump($dataTable);
-    exit;
     if (mysqli_num_rows($dataTable) > 0) {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
 ?>
