@@ -360,16 +360,14 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                         </b>
                                     </h5>
                                     <h5 class="mb-10px text-blue">
-                                        <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                            <tbody>
-                                                <tr style="height: 18px;">
-                                                    <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
-                                                    <td style="width: 110px; height: 18px;">Total CT</td>
-                                                    <td style="width: 10px; height: 18px;">:</td>
-                                                    <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div>
+                                            <div>
+                                                <div style="width: 10px;"><i class="fas fa-boxes"></i></div>
+                                                <div style="width: 110px; height: 18px;">Total CT</div>
+                                                <div style="width: 10px; height: 18px;">:</div>
+                                                <div style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</div>
+                                            </div>
+                                        </div>
                                     </h5>
                                     <h5 class="mb-10px text-blue">
                                         <b>
