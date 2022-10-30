@@ -29,7 +29,7 @@ include "include/cssForm.php";
         </div>
     </div>
     <div class="line-page"></div>
-    <!-- begin row -->
+    <!-- UPLOAD CK5PLB -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
@@ -39,23 +39,21 @@ include "include/cssForm.php";
                 </div>
                 <div class="panel-body text-inverse">
                     <form action="report_ck5_plb_upload.php" method="post" enctype="multipart/form-data">
-                        <div class="row" style="display: flex;align-items: center;">
-                            <div class="col-xl-6">
-                                <div class="form-group">
-                                    <div style="margin-bottom: 10px;justify-content: center;align-items: center;display: flex;">
-                                        <img src="assets/img/svg/upload-animate.svg" style="width: 15%;">
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <div style="display: flex;justify-content: center;">
+                                <img src="assets/img/svg/upload-animate.svg" class="image" width="80%">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Upload Excel File CK5 PLB:</label>
+                                        <input type="hidden" class="form-control" name="username" value="<?= $_SESSION['username'] ?>" required>
+                                        <input type="file" class="form-control" name="file_upload" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="form-group">
-                                    <label>Upload Excel File CK5 PLB:</label>
-                                    <input type="hidden" class="form-control" name="username" value="<?= $_SESSION['username'] ?>" required>
-                                    <input type="file" class="form-control" name="file_upload" required>
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-block btn-primary" value="Upload"><i class="fas fa-upload"></i> Upload</button>
                                 </div>
-                            </div>
-                            <div class="col-xl-12">
-                                <button type="submit" class="btn btn-block btn-primary" value="Upload"><i class="fas fa-upload"></i> Upload</button>
                             </div>
                         </div>
                     </form>
@@ -63,6 +61,7 @@ include "include/cssForm.php";
             </div>
         </div>
     </div>
+    <!-- END UPLOAD CK5PLB -->
 
     <div class="row">
         <div class="col-xl-12">
