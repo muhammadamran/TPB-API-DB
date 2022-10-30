@@ -315,6 +315,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
     .inline-group {
         max-width: 9rem;
         padding: .5rem;
+        margin-left: -7px;
     }
 
     .inline-group .form-control-custom {
@@ -623,7 +624,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Kurang] Botol</h4>
+                                                            <h4 class="modal-title">[Kurang] 1 CT</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -635,14 +636,15 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
                                                                         <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div class="input-group inline-group">
+                                                                            <label for="">Kurang</label>
                                                                             <div class="input-group-prepend">
-                                                                                <span type="button" class="btn btn-outline-danger btn-minus">
+                                                                                <span type="button" class="btn btn-danger btn-minus">
                                                                                     <i class="fa fa-minus"></i>
                                                                                 </span>
                                                                             </div>
                                                                             <input class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_K" value="0" type="number">
                                                                             <div class="input-group-append">
-                                                                                <span type="button" class="btn btn-outline-primary btn-plus">
+                                                                                <span type="button" class="btn btn-primary btn-plus">
                                                                                     <i class="fa fa-plus"></i>
                                                                                 </span>
                                                                             </div>
