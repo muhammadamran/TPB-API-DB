@@ -306,7 +306,7 @@ if (isset($_POST["Delete_"])) {
     $NOMOR_AJU         = $_POST['NOMOR_AJU'];
     $ID_BARANG         = $_POST['ID_BARANG'];
     $KODE_BARANG       = $_POST['KODE_BARANG'];
-    $InputDate            = date('Y-m-d h:m:i');
+    $InputDate         = date('Y-m-d h:m:i');
 
     $query = $dbcon->query("UPDATE plb_barang_ct SET STATUS_CT='Broken',
                                                      DATE_CT='$InputDate'
