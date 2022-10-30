@@ -419,10 +419,8 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                         <tbody>
                                             <?php
                                             $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-                                            if (mysqli_num_rows($dataTable) > 0) {
-                                                $noBarang = 0;
-                                                while ($rowBarang = mysqli_fetch_array($dataTable)) {
-                                                    $noBarang++;
+                                            if ($dataTable) : $noBarang = 1;
+                                                foreach ($dataTable as $rowBarang) :
                                                     $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                     $pcs = str_replace(".0000", "", "$jml_pcs");
                                                     // TOTAL BOTOL
@@ -559,10 +557,13 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                <?php } ?>
-                                            <?php } else { ?>
+                                                <?php
+                                                    $noBarang++;
+                                                endforeach
+                                                ?>
+                                            <?php else : ?>
                                                 <tr>
-                                                    <td colspan="51">
+                                                    <td colspan="17">
                                                         <center>
                                                             <div style="display: grid;">
                                                                 <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -570,7 +571,7 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                         </center>
                                                     </td>
                                                 </tr>
-                                            <?php } ?>
+                                            <?php endif ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -620,6 +621,8 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
             }
         }
     }
+
+
 
     // CEK BARANG
     $("#btn-all").click(function() {
