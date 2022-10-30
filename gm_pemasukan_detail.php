@@ -42,11 +42,14 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
     }
 
     .total-ct {
-        background: bisque;
+        background: #fff;
         border-radius: 5px;
         padding: 10px;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 800;
+        margin-bottom: 10px;
+        border: 2px solid #2d353c !important;
+        text-transform: uppercase;
     }
 </style>
 
@@ -145,14 +148,44 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                             </a>
                         </div>
                         <div style="padding: 70px;">
-                            <div class="total-ct">
-                                Total CT
+                            <div>
+                                <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
                             </div>
                             <div class="total-ct">
-                                Total Botol
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10.2747%;"><i class="fas fa-boxes"></i></td>
+                                            <td style="width: 23.0587%; height: 18px;">Total CT</td>
+                                            <td style="width: 1.94126%; height: 18px;">:</td>
+                                            <td style="width: 64.7254%; height: 18px; text-align: right;">0 CT</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="total-ct">
-                                Total Liter
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10.2747%;"><i class="fa-solid fa-bottle-droplet"></i></td>
+                                            <td style="width: 23.0587%; height: 18px;">Total Botol</td>
+                                            <td style="width: 1.94126%; height: 18px;">:</td>
+                                            <td style="width: 64.7254%; height: 18px; text-align: right;">0 Botol</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="total-ct">
+                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                    <tbody>
+                                        <tr style="height: 18px;">
+                                            <td style="width: 10.2747%;"><i class="fa-solid fa-glass-water-droplet"></i></td>
+                                            <td style="width: 23.0587%; height: 18px;">Total Liter</td>
+                                            <td style="width: 1.94126%; height: 18px;">:</td>
+                                            <td style="width: 64.7254%; height: 18px; text-align: right;">0 Liter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
