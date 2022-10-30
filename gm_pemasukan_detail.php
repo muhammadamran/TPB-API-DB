@@ -24,11 +24,11 @@ $contentCBL             = $dbcon->query("SELECT UKURAN,JUMLAH_SATUAN,NETTO FROM 
 if (mysqli_num_rows($contentCBL) > 0) {
     while ($CBL = mysqli_fetch_array($contentCBL)) {
         $jml_pcs        = $CBL['JUMLAH_SATUAN'];
-        $pcs            = str_replace(".0000", "", "$jml_pcs");
+        $pcs[]            = str_replace(".0000", "", "$jml_pcs");
+        $forCT                  = array_sum($pcs);
+        var_dump($forCT);
+        exit;
     }
-    $forCT                  = array_sum($pcs);
-    var_dump($forCT);
-    exit;
 }
 // FOR CT
 // TOTAL BOTOL
