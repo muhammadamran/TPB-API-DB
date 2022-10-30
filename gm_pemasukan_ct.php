@@ -624,7 +624,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Kurang] 1 CT</h4>
+                                                            <h4 class="modal-title">[Kurang] Isi Jumlah Kekurangan Botol!</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
