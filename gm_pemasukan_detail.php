@@ -45,7 +45,7 @@ $A_BTL                   = mysqli_fetch_array($content_A_BTL);
 // LITER
 // $content_A_LTR           = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR*SUBSTRING_INDEX(UKURAN, 'X', 1)*(REPLACE(SUBSTRING_INDEX(UKURAN, 'X', -1),',','.'))) AS p_LITER
 //                                         FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
-$content_A_LTR           = $dbcon->query("SELECT SUM(NETTO_AKHIR) AS p_LITER FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$content_A_LTR           = $dbcon->query("SELECT SUM(TOTAL_BOTOL * LITER) AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_LTR                   = mysqli_fetch_array($content_A_LTR);
 ?>
 <style>
