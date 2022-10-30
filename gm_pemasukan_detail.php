@@ -236,6 +236,14 @@ $LTR                    = mysqli_fetch_array($contentLTR);
                         </div>
                     </div>
                     <!-- DETAIL -->
+                    <hr>
+                    <!-- PETUGAS -->
+                    <div class="row">
+                        <div class="col-sm-6" style="margin-left: 5px;font-size: 18px;font-weight: 800;">
+                            <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
+                        </div>
+                    </div>
+                    <!-- END PETUGAS -->
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
                         <!-- IDBarang -->
