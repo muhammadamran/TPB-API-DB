@@ -206,15 +206,12 @@ if (isset($_POST["Delete_"])) {
     }
 }
 
-// Find
-if (isset($_POST['filter'])) {
-    if ($_POST["AJU_PLB"] != '') {
-        $AJU_PLB   = $_POST['AJU_PLB'];
-    }
-}
-
-if (isset($_POST['show_all'])) {
-}
+// DETAIL BARANG
+$list = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
+$resultList = mysqli_fetch_array($list);
+// DETAIL, PERUSAHAAN DAN TUJUAN
+$contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
 ?>
 <style>
     .btn-custom {
@@ -296,10 +293,6 @@ if (isset($_POST['show_all'])) {
         text-transform: uppercase;
     }
 </style>
-<?php
-$list = $dbcon->query("SELECT * FROM plb_barang WHERE ID='" . $_GET['ID'] . "' ORDER BY ID ASC LIMIT 1");
-$resultList = mysqli_fetch_array($list);
-?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -312,7 +305,7 @@ $resultList = mysqli_fetch_array($list);
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Detail Nomor AJU: <?= $resultList['NOMOR_AJU'] ?></a></li>
-                <li class="breadcrumb-item active">Cek CT Data Barang Masuk</li>
+                <li class="breadcrumb-item active">Detail Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></li>
             </ol>
         </div>
         <div>
@@ -360,28 +353,29 @@ $resultList = mysqli_fetch_array($list);
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
                                 <div class="widget-card-cover rounded"></div>
                                 <div class="widget-card-content">
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> DETAIL TIPE BARANG: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $_GET['AJU']; ?></b></h5>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="fas fa-minus"></i> DETAIL TIPE BARANG: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></b></h5>
                                     <h4 class="mb-10px text-blue">
                                         <b>
                                             <i class="fas fa-layer-group"></i>
-                                            TOTAL: <?= $dataBarangTotal['total']; ?> BARANG -
+                                            TOTAL BOTOL: <?= $dataBarangTotal['total']; ?> Botol
                                             <i class="fas fa-cubes"></i>
-                                            <?php if ($dataBarangCek['total_cek'] == 0) { ?>
-                                                <font style="color:#6f7d87!important;">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
-                                            <?php } else if ($dataBarangCek['total_cek'] != 0 || $dataBarangCek['total_cek'] != $dataBarangTotal['total']) { ?>
-                                                <font style="color: #e91e63!important;" class="blink_me">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
-                                            <?php } else if ($dataBarangCek['total_cek'] == $dataBarangTotal['total']) { ?>
-                                                CEK: <?= $dataBarangCek['total_cek']; ?> BARANG
-                                            <?php } ?>
+                                        </b>
+                                    </h4>
+                                    <h4 class="mb-10px text-blue">
+                                        <b>
+                                            <i class="fas fa-layer-group"></i>
+                                            TOTAL LITER: <?= $dataBarangTotal['total']; ?> Liter
+                                            <i class="fas fa-cubes"></i>
                                         </b>
                                     </h4>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
-                                        <b> <?= Rupiah($HPPT['HP']); ?></b>
+                                        <b> <?= Rupiah($resultList['HARGA_PENYERAHAN']); ?></b>
                                     </h4>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
-                                        <b> <?= Rupiah($HPPT['PT']); ?></b>
+                                        <b> <?= Rupiah($resultList['POS_TARIF']); ?></b>
                                     </h4>
                                 </div>
                                 <div class="widget-card-content bottom">
