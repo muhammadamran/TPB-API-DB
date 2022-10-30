@@ -463,6 +463,7 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
+                                    <th style="text-align: center;">Statu CT</th>
                                     <th style="text-align: center;">Aksi</th>
                                     <th width="1%" class="no-sort" style="text-align: center;">#</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
@@ -486,7 +487,9 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
-                                                <a href="#Delete<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                                <a href="#Delete<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-danger"><i class="fas fa-box-open"></i></a>
+                                            </td>
+                                            <td style="text-align: center;">
                                                 <!-- Kurang -->
                                                 <a href="#Kurang<?= $row['ID'] ?>" data-toggle="modal" class="btn btn-sm btn-custom btn-danger"><i class="fa-solid fa-minus"></i> Kurang</a>
                                                 <!-- Lebih -->
