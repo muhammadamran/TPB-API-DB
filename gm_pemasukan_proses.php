@@ -39,6 +39,11 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TOTAL_CT_AKHIR='$pcs',
                                      WHERE NOMOR_AJU='$AJU'");
         }
+        if ($query) {
+            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
+        } else {
+            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
+        }
     }
 }
 
