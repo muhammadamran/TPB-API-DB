@@ -616,7 +616,7 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
 
     // CEK BARANG
     $("#btn-all").click(function() {
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCT`)
         var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
 
         if (confirm)
