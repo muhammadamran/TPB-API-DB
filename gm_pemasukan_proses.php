@@ -7,6 +7,41 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 
+if (isset($_GET["aksi"]) == 'SubmitCTT') {
+    $AJU            = $_GET['AJU'];
+    $InputDate      = date('Y-m-d h:m:i');
+    $meOK           = $_SESSION['username'];
+
+    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
+    if (mysqli_num_rows($dataTable) > 0) {
+        while ($rowWhile = mysqli_fetch_array($dataTable)) {
+
+            $jml_pcs         = $rowWhile['JUMLAH_SATUAN'];
+            $pcs             = str_replace(".0000", "", "$jml_pcs");
+            // TOTAL BOTOL
+            $botol           = explode('X', $rowWhile['UKURAN']);
+            $t_botol         = $botol[0];
+            // TOTAL LITER
+            $liter           =  $botol[1];
+            $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+            $t_liter         = str_replace(',', '.', $r_liter);
+
+            $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+                                                           OPERATOR_ONE='$meOK',
+                                                           TGL_CEK='$InputDate ',
+                                                           CHECKING='DONE',
+                                                           STATUS_CT='Complete',
+                                                           DATE_CT='$InputDate ',
+                                                           TOTAL_BOTOL='$t_botol',
+                                                           TOTAL_BOTOL_AKHIR='Complete',
+                                                           TOTAL_LITER='$t_liter ',
+                                                           TOTAL_LITER_AKHIR='Complete',
+                                                           TOTAL_CT_AKHIR='$pcs',
+                                     WHERE NOMOR_AJU='$AJU'");
+        }
+    }
+}
+
 if (isset($_GET["aksi"]) == 'SubmitCT') {
     $AJU            = $_GET['AJU'];
     $InputDate      = date('Y-m-d h:m:i');
