@@ -1,15 +1,16 @@
 <?php
 // TOTAL GATE IN
-$gate_in = $dbcon->query("SELECT COUNT(NOMOR_AJU) AS total_in FROM plb_header WHERE STATUS_IN IS NULL");
+$gate_in = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
 $result_in = mysqli_fetch_array($gate_in);
 // TOTAL GATE OUT
-$gate_out = $dbcon->query("SELECT COUNT(NOMOR_AJU) AS total_out FROM plb_header WHERE STATUS_IN IS NOT NULL");
+$gate_out = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NOT NULL");
 $result_out = mysqli_fetch_array($gate_out);
 ?>
 <li class="nav-header">GATE MANDIRI</li>
 <li class="has-sub <?= $uriSegments[1] == 'gm_pemasukan.php' ||
                         $uriSegments[1] == 'gm_pemasukan_detail.php' ||
                         $uriSegments[1] == 'gm_pemasukan_ct.php' ||
+                        $uriSegments[1] == 'gm_pemasukan_ct_detail.php' ||
                         $uriSegments[1] == 'gm_pemasukan_proses.php' ||
                         $uriSegments[1] == 'gm_pengeluaran.php' ||
                         $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
@@ -22,7 +23,7 @@ $result_out = mysqli_fetch_array($gate_out);
         </span>
     </a>
     <ul class="sub-menu">
-        <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' || $uriSegments[1] == 'gm_pemasukan_ct.php' || $uriSegments[1] == 'gm_pemasukan_proses.php' ? 'active' : '' ?>">
+        <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' || $uriSegments[1] == 'gm_pemasukan_ct.php' || $uriSegments[1] == 'gm_pemasukan_proses.php' || $uriSegments[1] == 'gm_pemasukan_ct_detail.php' ? 'active' : '' ?>">
             <a href="gm_pemasukan.php">
                 Gate In
                 <?php if ($result_in['total_in'] == NULL) { ?>
