@@ -29,8 +29,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL='$UKR'                                                       
+                                                           DATE_CT='$InputDate'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
         }
     }
