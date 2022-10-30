@@ -61,7 +61,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
     .total-ct {
         background: #fff;
         border-radius: 5px;
-        padding: 10px;
+        padding: 5px 10px 5px 10px;
         font-size: 12px;
         font-weight: 800;
         margin-bottom: 10px;
@@ -72,7 +72,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
     .total-ct-ak {
         background: #2d353c;
         border-radius: 5px;
-        padding: 10px;
+        padding: 5px 10px 5px 10px;
         font-size: 12px;
         font-weight: 800;
         margin-bottom: 10px;
