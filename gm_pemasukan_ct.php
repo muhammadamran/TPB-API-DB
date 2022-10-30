@@ -566,24 +566,23 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Delete] 1 CT Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Broken] 1 CT</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
-                                                                        <p>Hapus 1 CT dengan Total <?= $row['TOTAL_BOTOL'] ?></p>
+                                                                        <img src="assets/img/png/box.png" style="width: 70px;" alt="">
                                                                         <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                         <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
                                                                         <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                         <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     </div>
-                                                                    <div class="col-sm-2">
-                                                                        <div class="form-group">
-                                                                            <div style="margin-top: 26px;">
-                                                                            </div>
-                                                                        </div>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title mb-2">1 CT Broken</h5>
+                                                                        <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?></p>
+                                                                        <p class="card-text">Total Liter: <?= $row['TOTAL_LITER']; ?></p>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
