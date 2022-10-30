@@ -54,20 +54,14 @@ $data = json_decode($content, true);
                             <div class="col-xl-6">
                                 <div class="form-group">
                                     <label>Limit Baris</label>
-                                    <input type="number" class="form-control" name="LimitRow" value="<?= $LimitRow; ?>"
-                                        placeholder="Limit Baris" required>
-                                </div>
-                            </div>
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" name="SetLimit">Set Limit!</button>
+                                    <input type="number" class="form-control" name="LimitRow" value="<?= $LimitRow; ?>" placeholder="Limit Baris" required>
+                                    <button type="submit" class="btn btn-primary" name="SetLimit"><i class="fas fa-table"></i> Set Limit</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                     <div class="table-responsive">
-                        <table id="data-table-buttons"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
@@ -78,39 +72,39 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="3">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <tr class="odd gradeX">
-                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['KODE_PELABUHAN'] == NULL || $row['KODE_PELABUHAN'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['KODE_PELABUHAN'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <?php if ($row['URAIAN_PELABUHAN'] == NULL || $row['URAIAN_PELABUHAN'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['URAIAN_PELABUHAN'] ?>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php } ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr class="odd gradeX">
+                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KODE_PELABUHAN'] == NULL || $row['KODE_PELABUHAN'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_PELABUHAN'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <?php if ($row['URAIAN_PELABUHAN'] == NULL || $row['URAIAN_PELABUHAN'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['URAIAN_PELABUHAN'] ?>
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>

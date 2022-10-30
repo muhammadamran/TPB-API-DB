@@ -52,7 +52,7 @@ include "include/cssForm.php";
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-block btn-primary" value="Upload"><i class="fas fa-upload"></i> Upload</button>
+                                    <button type="submit" class="btn btn-primary" value="Upload"><i class="fas fa-upload"></i> Upload</button>
                                 </div>
                             </div>
                         </div>
