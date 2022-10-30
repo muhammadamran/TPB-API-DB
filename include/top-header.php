@@ -29,10 +29,10 @@ $access = mysqli_fetch_array($role);
             <span class="icon-bar"></span>
         </button>
         <div>
-            <a href="" class="btn btn-success"><i class="far fa-clock"></i></a>
+            <a href="" class="btn btn-secondary"><i class="far fa-clock"></i></a>
         </div>
         <div>
-            <a href="" class="btn btn-success"><i class="fas fa-bullhorn"></i></a>
+            <a href="" class="btn btn-secondary"><i class="fas fa-bullhorn"></i></a>
         </div>
     </div>
     <!-- end navbar-header -->
