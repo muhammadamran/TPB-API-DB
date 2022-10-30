@@ -44,11 +44,11 @@ $access = mysqli_fetch_array($role);
         ?>
         <!-- Gate In -->
         <div style="margin-left: 5px;">
-            <a href="" class="btn btn-default" style="width: 125px;" data-toggle="popover" data-trigger="hover" data-title="Gate In" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i> Gate In <span class="badge"><?= $result_in['total_in'] ?></span></a>
+            <a href="gm_pemasukan.php" class="btn btn-default" style="width: 125px;" data-toggle="popover" data-trigger="hover" data-title="Gate In" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i> Gate In <span class="badge"><?= $result_in['total_in'] ?></span></a>
         </div>
         <!-- Gate Out -->
         <div style="margin-left: 5px;">
-            <a href="" class="btn btn-default" style="width: 125px;" data-toggle="popover" data-trigger="hover" data-title="Gate Out" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i> Gate Out <span class="badge"><?= $result_out['total_out'] ?></span></a>
+            <a href="gm_pengeluaran.php" class="btn btn-default" style="width: 125px;" data-toggle="popover" data-trigger="hover" data-title="Gate Out" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i> Gate Out <span class="badge"><?= $result_out['total_out'] ?></span></a>
         </div>
     </div>
     <!-- end navbar-header -->
