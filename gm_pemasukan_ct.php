@@ -636,19 +636,21 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
                                                                         <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div>
-                                                                            <label>Kurang</label>
-                                                                        </div>
-                                                                        <div class="input-group inline-group">
-                                                                            <div class="input-group-prepend">
-                                                                                <span type="button" class="btn btn-danger btn-minus">
-                                                                                    <i class="fa fa-minus"></i>
-                                                                                </span>
+                                                                            <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
+                                                                                <label>Kurang</label>
                                                                             </div>
-                                                                            <input class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_K" value="0" type="number">
-                                                                            <div class="input-group-append">
-                                                                                <span type="button" class="btn btn-primary btn-plus">
-                                                                                    <i class="fa fa-plus"></i>
-                                                                                </span>
+                                                                            <div class="input-group inline-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span type="button" class="btn btn-danger btn-minus">
+                                                                                        <i class="fa fa-minus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="number" class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_K" value="0" readonly>
+                                                                                <div class="input-group-append">
+                                                                                    <span type="button" class="btn btn-yellow btn-plus">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
