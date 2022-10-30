@@ -728,7 +728,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='" . $_GET['ID'] . "' ORDER BY ID DESC");
+                                $dataTable = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL ORDER BY ID DESC");
                                 if (mysqli_num_rows($dataTable) > 0) {
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
