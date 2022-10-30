@@ -35,10 +35,9 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     var_dump($AJU);
 
     $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-    $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
-    var_dump($datahdrbrg['PERUSAHAAN']);
-
-    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU' AND CHECKING IS NULL");
+    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU' AND CHECKING IS NULL", 0);
+    var_dump($dataTable);
+    exit;
     if (mysqli_num_rows($dataTable) > 0) {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
             echo $rowWhile['ID'];
