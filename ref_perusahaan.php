@@ -113,7 +113,7 @@ $data = json_decode($content, true);
                                             <td style="text-align: center;">
                                                 <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
                                                     <?php if ($row['NPPBKC'] == NULL || $row['NPPBKC'] == '') { ?>
-                                                        <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>" class="btn btn-sm btn-warning" target="_blank" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i> NPPBKC</a>
+                                                        <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>" class="btn btn-sm btn-primary" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i></a>
                                                     <?php } else { ?>
                                                         <div style="display: flex;justify-content: space-evenly;align-content: center;">
                                                             <div>

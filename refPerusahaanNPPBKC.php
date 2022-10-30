@@ -82,7 +82,7 @@ if (isset($_POST["add_nppbkc"])) {
                         </center>
                     <?php } else { ?>
                         <?php foreach ($data['result'] as $row) { ?>
-                            <form action="" method="POST">
+                            <form action="" method="POST" id="myForm">
                                 <div class="modal-header">
                                     <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-text="true">×</button>
@@ -118,8 +118,8 @@ if (isset($_POST["add_nppbkc"])) {
                                     </fieldset>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                    <button type="submit" name="add_nppbkc" class="btn btn-warning"><i class="fas fa-plus-circle"></i> NPPBKC</button>
+                                    <a href="javascript:;" class="btn btn-yellow" onclick="myFunction()"><i class="fas fa-refresh"></i> Reset</a>
+                                    <button type="submit" name="add_nppbkc" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                 </div>
                             </form>
                         <?php } ?>
@@ -161,5 +161,9 @@ if (isset($_POST["add_nppbkc"])) {
             text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
         })
         history.replaceState({}, '', './ref_perusahaan.php');
+    }
+    // RESET
+    function myFunction() {
+        document.getElementById("myForm").reset();
     }
 </script>
