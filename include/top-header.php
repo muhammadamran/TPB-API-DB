@@ -31,6 +31,9 @@ $access = mysqli_fetch_array($role);
         <div>
             <a href="" class="btn btn-sucess"><i class="far fa-clock"></i></a>
         </div>
+        <div>
+            <a href="" class="btn btn-sucess"><i class="fas fa-bullhorn"></i></a>
+        </div>
     </div>
     <!-- end navbar-header -->
     <style>
