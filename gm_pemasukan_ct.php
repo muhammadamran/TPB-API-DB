@@ -270,7 +270,6 @@ if (isset($_POST["simpan"])) {
     $TOTAL_LITER    = $_POST['TOTAL_LITER'];
     // TOTAL CT
     $TOTAL_CT       = $_POST['TOTAL_CT'];
-    $NETTO_AKHIR    = $_POST['NETTO_AKHIR'];
     $meOK           = $_SESSION['username'];
 
     $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
@@ -283,8 +282,7 @@ if (isset($_POST["simpan"])) {
                                                   TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
                                                   LITER='$A_LITER',
                                                   TOTAL_LITER_AKHIR='$TOTAL_LITER',
-                                                  TOTAL_CT_AKHIR='$TOTAL_CT',
-                                                  NETTO_AKHIR='$NETTO_AKHIR',
+                                                  TOTAL_CT_AKHIR='$TOTAL_CT'
                             WHERE ID='$ID'");
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
@@ -797,32 +795,13 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="text" name="ID" value="<?= $resultList['ID'] ?>">
-                                            <input type="text" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
-                                            <br>
-                                            <!-- BOTOL -->
-                                            BOTOL
-                                            <input type="text" name="A_BOTOL" value="<?= $add_forBTL ?>">
-                                            <br>
-                                            <!-- BOTOL AKHIR -->
-                                            BOTOL AKHIR
-                                            <input type="text" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
-                                            <br>
-                                            <!-- LITER -->
-                                            LITER
-                                            <input type="text" name="A_LITER" value="<?= $add_forLTR ?>">
-                                            <br>
-                                            <!-- LITER AKHIR -->
-                                            LITER AKHIR
-                                            <input type="text" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $add_forLTR; ?>">
-                                            <br>
-                                            <!-- NETTO -->
-                                            NETTO
-                                            <input type="text" name="NETTO_AKHIR" value="<?= $NA_CT['p_CT'] * $add_forBTL * $add_forLTR ?>">
-                                            <br>
-                                            <!-- CT -->
-                                            CT
-                                            <input type="text" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
+                                            <input type="hidden" name="ID" value="<?= $resultList['ID'] ?>">
+                                            <input type="hidden" name="NOMOR_AJU" value="<?= $resultList['NOMOR_AJU'] ?>">
+                                            <input type="hidden" name="A_BOTOL" value="<?= $add_forBTL ?>">
+                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $NA_BOTOL['p_BOTOL'] ?>">
+                                            <input type="hidden" name="A_LITER" value="<?= $add_forLTR ?>">
+                                            <input type="hidden" name="TOTAL_LITER" value="<?= $NA_BOTOL['p_BOTOL'] * $add_forLTR; ?>">
+                                            <input type="hidden" name="TOTAL_CT" value="<?= $NA_CT['p_CT']; ?>">
                                         </fieldset>
                                     </div>
                                     <div class="modal-footer">
