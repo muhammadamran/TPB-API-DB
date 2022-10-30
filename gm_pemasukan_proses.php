@@ -44,11 +44,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
                                                            DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL='" . $rowWhile['UKURAN'] . "'
-                                                        --    TOTAL_BOTOL_AKHIR='Complete',
-                                                        --    TOTAL_LITER='$t_liter',
-                                                        --    TOTAL_LITER_AKHIR='Complete',
-                                                        --    TOTAL_CT_AKHIR='$pcs'
+                                                           TOTAL_BOTOL='" . $rowWhile['UKURAN'] . "'                                                       
                                      WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
             // }
         }
@@ -59,6 +55,11 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
         }
     }
 }
+
+// --    TOTAL_BOTOL_AKHIR='Complete',
+// --    TOTAL_LITER='$t_liter',
+// --    TOTAL_LITER_AKHIR='Complete',
+// --    TOTAL_CT_AKHIR='$pcs'
 
 if (isset($_GET["aksi"]) == 'SubmitCT') {
     $AJU            = $_GET['AJU'];
