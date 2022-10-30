@@ -13,7 +13,6 @@ $dataBarangTotal    = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
 $contentBarangCek   = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek      = mysqli_fetch_array($contentBarangCek);
-
 // Data Barang
 $contentBarangAll = $dbcon->query("SELECT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
@@ -117,18 +116,32 @@ $dataBarangAll    = mysqli_fetch_array($contentBarangAll);
                 </div>
                 <div class="panel-body text-inverse">
                     <!-- Menu -->
-                    <ul class="nav nav-pills mb-2">
-                        <li class="nav-item">
-                            <a href="#IDBarang" data-toggle="tab" class="nav-link active">
-                                <span class="d-sm-none">Barang Masuk</span>
-                                <span class="d-sm-block d-none">
-                                    Total Barang Masuk:
-                                    <?= $dataBarangTotal['total']; ?>
-                                    Barang
-                                </span>
+                    <div>
+                        <div>
+                            <a href="#" class="widget-card rounded mb-20px" data-id="widget">
+                                <div class="widget-card-cover rounded"></div>
+                                <div class="widget-card-content">
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>MAKING A DIFFERENCE</b></h5>
+                                    <h4 class="mb-10px text-pink"><b>Apple Heart<br> Study App</b></h4>
+                                    <i class="fa fa-heartbeat fa-5x text-pink text-opacity-50"></i>
+                                </div>
+                                <div class="widget-card-content bottom">
+                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75">Opt in and help heart research.</b>
+                                </div>
                             </a>
-                        </li>
-                    </ul>
+                        </div>
+                        <div>
+                            <div>
+                                Total CT
+                            </div>
+                            <div>
+                                Total Botol
+                            </div>
+                            <div>
+                                Total Liter
+                            </div>
+                        </div>
+                    </div>
                     <!-- Menu -->
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">
