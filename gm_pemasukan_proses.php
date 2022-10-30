@@ -8,6 +8,12 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 
 if (isset($_GET["aksi"]) == 'SubmitCTT') {
+
+    // $arr = $_POST['chk_id'];
+    // foreach ($arr as $id) {
+    // $query = mysql_query("DELETE FROM tb_user WHERE user_id='$id'");
+    // }
+
     $AJU            = $_GET['AJU'];
     $InputDate      = date('Y-m-d h:m:i');
     $meOK           = $_SESSION['username'];
@@ -15,6 +21,12 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
     if (mysqli_num_rows($dataTable) > 0) {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
+
+            $arr = $rowWhile['ID'];
+            var_dump($arr);
+            exit;
+            foreach ($arr as $ID) {
+            }
 
             $jml_pcs         = $rowWhile['JUMLAH_SATUAN'];
             $pcs             = str_replace(".0000", "", "$jml_pcs");
