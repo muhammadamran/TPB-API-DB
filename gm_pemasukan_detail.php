@@ -295,7 +295,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_LTR['p_LITER']; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= floor($A_LTR['p_LITER']); ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
