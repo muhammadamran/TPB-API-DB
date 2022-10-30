@@ -231,7 +231,6 @@ $NA_BOTOL               = mysqli_fetch_array($contentNA_BOTOL);
 // LITER
 $contentNA_LITER        = $dbcon->query("SELECT TOTAL_LITER AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "' AND STATUS_CT IS NULL GROUP BY ID ORDER BY ID LIMIT 1", 0);
 $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
-$s_LITER                = ($NA_BOTOL['p_BOTOL']) * ($NA_LITER['TOTAL_LITER']);
 ?>
 <style>
     .btn-custom {
@@ -418,7 +417,7 @@ $s_LITER                = ($NA_BOTOL['p_BOTOL']) * ($NA_LITER['TOTAL_LITER']);
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_CT['p_CT']; ?> - <?= $s_CT; ?> CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_CT['p_CT']; ?> CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -430,7 +429,7 @@ $s_LITER                = ($NA_BOTOL['p_BOTOL']) * ($NA_LITER['TOTAL_LITER']);
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_BOTOL['p_BOTOL']; ?> - <?= $s_BOTOl; ?> Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_BOTOL['p_BOTOL']; ?> Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -442,7 +441,7 @@ $s_LITER                = ($NA_BOTOL['p_BOTOL']) * ($NA_LITER['TOTAL_LITER']);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= round($NA_LITER['p_LITER']); ?> - <?= $s_LITER; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $NA_BOTOL['p_BOTOL'] * $NA_LITER['p_LITER']; ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
