@@ -36,13 +36,13 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TOTAL_BOTOL_AKHIR='Complete',
                                                            TOTAL_LITER='$t_liter ',
                                                            TOTAL_LITER_AKHIR='Complete',
-                                                           TOTAL_CT_AKHIR='$pcs',
-                                     WHERE NOMOR_AJU='$AJU'");
+                                                           TOTAL_CT_AKHIR='$pcs'
+                                     WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
         }
         if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
+            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Success';</script>";
         } else {
-            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
+            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Failed';</script>";
         }
     }
 }
