@@ -24,7 +24,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
 
             $arr = $rowWhile['ID'];
             var_dump($arr);
-            // 
+            exit;
             foreach ($arr as $ID) {
 
                 $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
@@ -52,7 +52,6 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TOTAL_LITER_AKHIR='Complete',
                                                            TOTAL_CT_AKHIR='$pcs'
                                      WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
-                var_dump($query);
                 exit;
             }
         }
