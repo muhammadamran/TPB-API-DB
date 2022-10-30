@@ -676,28 +676,40 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Lebih] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Lebih] Isi Jumlah Kelebihan Botol!</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="form-group">
-                                                                            <label>Lebih</label>
-                                                                            <?php if ($row['LEBIH'] == NULL) { ?>
-                                                                                <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="0" required>
-                                                                            <?php } else { ?>
-                                                                                <input type="number" name="Lebih" class="form-control" placeholder="Lebih ..." value="<?= $row['LEBIH'] ?>" required>
-                                                                            <?php } ?>
-
-                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
-                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
-                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
-                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                <div style="display: flex;">
+                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #ffd900;font-size:221px"></i>
+                                                                    <div class="card-body" style="margin-left: 0px;">
+                                                                        <h4 class="card-title">1 CT Broken</h4>
+                                                                        <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
+                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <div>
+                                                                            <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
+                                                                                <label>Lebih</label>
+                                                                            </div>
+                                                                            <div class="input-group inline-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span type="button" class="btn btn-danger btn-minus">
+                                                                                        <i class="fa fa-minus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="number" class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_L" value="0" readonly>
+                                                                                <div class="input-group-append">
+                                                                                    <span type="button" class="btn btn-yellow btn-plus">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                    <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                    <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                    <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -716,27 +728,40 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Pecah] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Pecah] Isi Jumlah Botol Pecah!</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="form-group">
-                                                                            <label>Pecah</label>
-                                                                            <?php if ($row['PECAH'] == NULL) { ?>
-                                                                                <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="0" required>
-                                                                            <?php } else { ?>
-                                                                                <input type="number" name="Pecah" class="form-control" placeholder="Pecah ..." value="<?= $row['PECAH'] ?>" required>
-                                                                            <?php } ?>
-                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
-                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
-                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
-                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                <div style="display: flex;">
+                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #ffd900;font-size:221px"></i>
+                                                                    <div class="card-body" style="margin-left: 0px;">
+                                                                        <h4 class="card-title">1 CT Broken</h4>
+                                                                        <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
+                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <div>
+                                                                            <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
+                                                                                <label>Pecah</label>
+                                                                            </div>
+                                                                            <div class="input-group inline-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span type="button" class="btn btn-danger btn-minus">
+                                                                                        <i class="fa fa-minus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="number" class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_P" value="0" readonly>
+                                                                                <div class="input-group-append">
+                                                                                    <span type="button" class="btn btn-yellow btn-plus">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                    <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                    <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                    <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -755,27 +780,40 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Rusak] Total Botol: <?= $row['TOTAL_BOTOL']; ?></h4>
+                                                            <h4 class="modal-title">[Rusak] Isi Jumlah Botol Rusak!</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-                                                                <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="form-group">
-                                                                            <label>Rusak</label>
-                                                                            <?php if ($row['RUSAK'] == NULL) { ?>
-                                                                                <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="0" required>
-                                                                            <?php } else { ?>
-                                                                                <input type="number" name="Rusak" class="form-control" placeholder="Rusak ..." value="<?= $row['RUSAK'] ?>" required>
-                                                                            <?php } ?>
-                                                                            <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
-                                                                            <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
-                                                                            <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
-                                                                            <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
-                                                                            <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                <div style="display: flex;">
+                                                                    <i class="fa-solid fa-bottle-droplet" style="color: #ffd900;font-size:221px"></i>
+                                                                    <div class="card-body" style="margin-left: 0px;">
+                                                                        <h4 class="card-title">1 CT Broken</h4>
+                                                                        <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
+                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <div>
+                                                                            <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
+                                                                                <label>Lebih</label>
+                                                                            </div>
+                                                                            <div class="input-group inline-group">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span type="button" class="btn btn-danger btn-minus">
+                                                                                        <i class="fa fa-minus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <input type="number" class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_R" value="0" readonly>
+                                                                                <div class="input-group-append">
+                                                                                    <span type="button" class="btn btn-yellow btn-plus">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
+                                                                    <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
+                                                                    <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
+                                                                    <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
