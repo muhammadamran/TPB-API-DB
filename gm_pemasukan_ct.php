@@ -460,7 +460,7 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                             <div class="note-icon"><i class="fas fa-boxes"></i></div>
                             <div class="note-content">
                                 <h4><b>Pengecekan Barang!</b></h4>
-                                <p> Silahkan lakukan pengecekan pada <b>Tipe Barang: </b>!</p>
+                                <p> Silahkan lakukan pengecekan pada <b>Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></b>!</p>
                             </div>
                         </div>
                         <hr>
