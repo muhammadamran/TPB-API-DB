@@ -325,7 +325,7 @@ $resultList = mysqli_fetch_array($list);
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
-                <a href="gm_pemasukan_detail.php?AJ=<?= $_GET['AJU'] ?>" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                <a href="gm_pemasukan_detail.php?AJU=<?= $_GET['AJU'] ?>" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
             </div>
         </div>
     </div>
@@ -360,7 +360,7 @@ $resultList = mysqli_fetch_array($list);
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
                                 <div class="widget-card-cover rounded"></div>
                                 <div class="widget-card-content">
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> DETAIL TIPE BARANG: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
                                     <h4 class="mb-10px text-blue">
                                         <b>
                                             <i class="fas fa-layer-group"></i>
@@ -435,7 +435,7 @@ $resultList = mysqli_fetch_array($list);
                     <hr>
                     <!-- Alert -->
                     <?php if ($_GET['Alert'] == 'CekBarangMasuk') { ?>
-                        <div class="note note-secondary">
+                        <div class="note note-warning">
                             <div class="note-icon"><i class="fas fa-boxes"></i></div>
                             <div class="note-content">
                                 <h4><b>Pengecekan Barang!</b></h4>
