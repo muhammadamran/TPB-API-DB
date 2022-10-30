@@ -19,6 +19,22 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
 // CEK ADA PENGECEKAN BOTOL ATAU TIDAK
 $contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Checking Botol' ORDER BY ID ASC", 0);
 $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
+// CEK CT,BOTOL,LITER
+$contentCBL             = $dbcon->query("SELECT UKURAN,JUMLAH_SATUAN,NETTO FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$CBL                    = mysqli_fetch_array($contentCBL);
+// FOR CT
+$jml_pcs                = $CBL['JUMLAH_SATUAN'];
+$pcs[]                  = str_replace(".0000", "", "$jml_pcs");
+$forCT                  = array_sum($pcs);
+// TOTAL BOTOL
+$botol                  = explode('X', $CBL['UKURAN']);
+$t_botol[]              = $botol[0];
+$forBTL                 = array_sum($t_botol);
+// TOTAL LITER
+$liter                  =  $botol[1];
+$r_liter                = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+$t_liter[]              = str_replace(',', '.', $r_liter);
+$forLTR                 = array_sum($t_liter);
 ?>
 <style>
     .btn-custom {
@@ -170,7 +186,7 @@ $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
                                             <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
                                             <td style="width: 110px; height: 18px;">Total CT</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;">0 CT</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $forCT; ?> CT</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -182,7 +198,7 @@ $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
                                             <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Botol</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;">0 Botol</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $forBTL; ?> Botol</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -194,7 +210,7 @@ $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;">0 Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $forLTR; ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -244,7 +260,7 @@ $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
                                                             <i class="fas fa-warning"></i>
                                                             Simpan Barang Masuk
                                                         </button>
-                                                        <small style="color: red;"><i>Anda masih memiliki pengecekan Data CT yang belum disimpan!</i></small>
+                                                        <small class="blink_me" style="color: red;"><i>(*) Anda masih memiliki pengecekan Data CT yang belum disimpan!</i></small>
                                                     </div>
                                                 <?php } ?>
                                             </div>
