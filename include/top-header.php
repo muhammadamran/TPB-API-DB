@@ -18,9 +18,9 @@ $access = mysqli_fetch_array($role);
             }
             ?>
             <?php if ($resultSetting['sd_one'] == NULL || $resultSetting['sd_two'] == NULL) { ?>
-            <b>Name 1</b>&nbsp;Name 2
+                <b>Name 1</b>&nbsp;Name 2
             <?php } else { ?>
-            <b><?= $resultSetting['sd_one'] ?></b>&nbsp;<?= $resultSetting['sd_two'] ?>
+                <b><?= $resultSetting['sd_one'] ?></b>&nbsp;<?= $resultSetting['sd_two'] ?>
             <?php } ?>
         </a>
         <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
@@ -28,32 +28,35 @@ $access = mysqli_fetch_array($role);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+        <div>
+            <a href="" class="btn btn-default"><i class="far fa-clock"></i></a>
+        </div>
     </div>
     <!-- end navbar-header -->
     <style>
-    #nav-clock {
-        margin-top: 18px;
-        font-size: 10px;
-    }
-
-    .nav-garis {
-        font-size: 35px;
-        font-weight: 100;
-        color: #c3c3c3;
-    }
-
-    @media (max-width: 996.5px) {
         #nav-clock {
             margin-top: 18px;
-            font-size: 0px;
+            font-size: 10px;
         }
 
         .nav-garis {
-            font-size: 0px;
-            font-weight: 0;
+            font-size: 35px;
+            font-weight: 100;
             color: #c3c3c3;
         }
-    }
+
+        @media (max-width: 996.5px) {
+            #nav-clock {
+                margin-top: 18px;
+                font-size: 0px;
+            }
+
+            .nav-garis {
+                font-size: 0px;
+                font-weight: 0;
+                color: #c3c3c3;
+            }
+        }
     </style>
     <!-- begin header-nav -->
     <ul class="navbar-nav navbar-right">
@@ -73,9 +76,9 @@ $access = mysqli_fetch_array($role);
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php if ($access['foto'] == NULL || $access['foto'] == 'default-user-images.jpeg') { ?>
-                <img src="assets/images/users/default-user-images.jpeg" alt="Foto Profile" />
+                    <img src="assets/images/users/default-user-images.jpeg" alt="Foto Profile" />
                 <?php } else { ?>
-                <img src="assets/images/users/<?= $access['foto'] ?>" alt="Foto Profile" />
+                    <img src="assets/images/users/<?= $access['foto'] ?>" alt="Foto Profile" />
                 <?php } ?>
                 <span class="d-none d-md-inline"><?= $access['USER_NAME'] ?></span> <b class="caret"></b>
             </a>
@@ -83,7 +86,7 @@ $access = mysqli_fetch_array($role);
                 <a href="usr_profile.php" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Profile</a>
                 <!-- <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a> -->
                 <?php if ($resultForPrivileges['UPDATE_PASSWORD'] == 'Y') { ?>
-                <a href="usr_password.php" class="dropdown-item"><i class="fa-solid fas fa-lock"></i> Ganti Password</a>
+                    <a href="usr_password.php" class="dropdown-item"><i class="fa-solid fas fa-lock"></i> Ganti Password</a>
                 <?php } ?>
                 <!-- <a href="javascript:;" class="dropdown-item">Setting</a> -->
                 <div class="dropdown-divider"></div>
