@@ -473,8 +473,6 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                             <?php } ?>
                                                         </td>
                                                         <td style="text-align: center;">
-                                                            <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username']; ?>">
-                                                            <input type="hidden" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
                                                                 <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
                                                                     <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-success">
