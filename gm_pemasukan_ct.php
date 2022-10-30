@@ -213,11 +213,11 @@ $resultList     = mysqli_fetch_array($list);
 $forCT          = str_replace(".0000", "", $resultList['JUMLAH_SATUAN']);
 // FOR BOTOL
 $botol          = explode('X', $resultList['UKURAN']);
-$forBTL         = $botol[0];
+$forBTL         = $botol[0] * $forCT;
 // FOR LITER
 $liter          =  $botol[1];
 $r_liter        = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-$forLTR         = str_replace(',', '.', $r_liter);
+$forLTR         = str_replace(',', '.', $r_liter) * $forBTL;
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
