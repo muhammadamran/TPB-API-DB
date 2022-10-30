@@ -352,7 +352,7 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
                                                         <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
                                                             <i class="fas fa-tasks"></i>
-                                                            Simpan Barang Masuk
+                                                            Simpan Barang Sesuai
                                                         </button>
                                                     </div>
                                                 <?php } else { ?>
