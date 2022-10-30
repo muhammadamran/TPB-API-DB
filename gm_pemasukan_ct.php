@@ -333,20 +333,6 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
     </div>
     <!-- END BACK -->
 
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card border-0">
-                <div class="card-body">
-                    <h4 class="card-title">Detail Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></h4>
-                    <h6 class="card-subtitle mb-10px text-muted">Harga Penyerahan <?= Rupiah($resultList['HARGA_PENYERAHAN']) ?></h6>
-                    <p class="card-text">Uraian Barang: <?= $resultList['URAIAN'] ?></p>
-                    <a href="javascript:;" class="card-link">Ukuran <?= $resultList['UKURAN'] ?></a>
-                    <a href="javascript:;" class="card-link">Golongan <?= $resultList['SPESIFIKASI_LAIN'] ?></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
     <!-- Data CT -->
     <div class="row">
         <div class="col-xl-12">
