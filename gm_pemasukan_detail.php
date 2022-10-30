@@ -318,6 +318,15 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                 <p> Detail CT <b>Berhasil disimpan</b>!</p>
                             </div>
                         </div>
+                    <?php } else if ($_GET['AlertSimpan'] == 'Failed') { ?>
+                        <hr>
+                        <div class="note note-danger">
+                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
+                            <div class="note-content">
+                                <h4><b>Gagal Disimpan!</b></h4>
+                                <p> Detail CT <b>Gagal disimpan</b>!</p>
+                            </div>
+                        </div>
                     <?php } ?>
                     <!-- Menu Tap -->
                     <div class="tab-content rounded bg-white mb-4">

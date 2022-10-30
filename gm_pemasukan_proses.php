@@ -14,12 +14,8 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     if (mysqli_num_rows($dataTable) > 0) {
         while ($row = mysqli_fetch_array($dataTable)) {
 
-            $sql = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$row[ID]'");
+            $sql    = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$row[ID]'");
             $row_ct = mysqli_fetch_array($sql);
-
-            var_dump($row_ct);
-            exit;
-
             $jml_pcs         = $row_ct['JUMLAH_SATUAN'];
             $pcs             = str_replace(".0000", "", "$jml_pcs");
             // TOTAL BOTOL
@@ -30,7 +26,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
             $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
             $t_liter         = str_replace(',', '.', $r_liter);
 
-            if ($dataCT['ID_BARANG'] == NULL) {
+            if ($row_ct['ID_BARANG'] == NULL) {
                 // INSERT TO PLB_BARANG_CT
                 for ($i = 0; $i < $pcs; $i++) {
                     $query = $dbcon->query("INSERT INTO plb_barang_ct 
@@ -39,6 +35,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                             ('','$row_ct[NOMOR_AJU]','$keyy','$row_ct[KODE_BARANG]','$t_botol','$t_liter')
                             ");
                 }
+
                 $query .= $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                   OPERATOR_ONE='$meOK',
                                                   TGL_CEK='$InputDate',
@@ -51,7 +48,6 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                                                   TOTAL_LITER_AKHIR='$TOTAL_LITER_AKHIR',
                                                   TOTAL_CT_AKHIR='$TOTAL_CT'
                             WHERE ID='$ID'");
-
 
                 // FOR AKTIFITAS
                 $me         = $_SESSION['username'];
@@ -69,13 +65,15 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                            (id,IDUNIQ,username,modul,description,action,date_created)
                            VALUES
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
-            }
-        }
 
-        if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Success';</script>";
-        } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Failed';</script>";
+                if ($query) {
+                    echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
+                } else {
+                    echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
+                }
+            } else {
+                echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
+            }
         }
     }
 }
