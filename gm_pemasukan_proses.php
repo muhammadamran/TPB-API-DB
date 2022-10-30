@@ -12,6 +12,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     $meOK = $_SESSION['username'];
 
     $sql = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' WHERE CHEKING IS NULL");
+    var_dump($sql);
     if (mysqli_num_rows($dataTable) > 0) {
         while ($row = mysqli_fetch_array($dataTable)) {
 
