@@ -98,7 +98,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Keluar Barang</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Barang Keluar</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
