@@ -38,7 +38,7 @@ $LTR                    = mysqli_fetch_array($contentLTR);
 $content_A_CT            = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR) AS p_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
 $A_CT                    = mysqli_fetch_array($content_A_CT);
 // BOTOL
-$content_A_BTL           = $dbcon->query("SELECT SUM(UKURAN*TOTAL_CT_AKHIR) AS p_BOTOL FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
+$content_A_BTL           = $dbcon->query("SELECT SUM(SUBSTRING_INDEX(UKURAN, 'X', 1)*TOTAL_CT_AKHIR) AS p_BOTOL FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_BTL                   = mysqli_fetch_array($contentBTL);
 // LITER
 $content_A_LTR           = $dbcon->query("SELECT SUM(TOTAL_CT_AKHIR*SUBSTRING_INDEX(UKURAN, 'X', 1)*(REPLACE(SUBSTRING_INDEX(UKURAN, 'X', -1),',','.'))) AS p_LITER
@@ -292,7 +292,7 @@ $A_LTR                   = mysqli_fetch_array($content_A_LTR);
                                             <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
                                             <td style="width: 110px; height: 18px;">Total Liter</td>
                                             <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_LTR['p_LITER']; ?> Liter</td>
+                                            <td style="width: 150px; height: 18px; text-align: right;"><?= round($A_LTR['p_LITER']); ?> Liter</td>
                                         </tr>
                                     </tbody>
                                 </table>
