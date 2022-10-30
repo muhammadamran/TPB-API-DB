@@ -763,7 +763,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <!-- Simpan Data -->
                     <div class="modal fade" id="simpan">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content sm">
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="modal-header">
                                         <h4 class="modal-title">[Simpan Data] <b>Tipe Barang: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></b></h4>
