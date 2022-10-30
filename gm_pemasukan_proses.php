@@ -43,7 +43,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate'
+                                                           DATE_CT='$InputDate',
                                                            TOTAL_BOTOL='$t_botol'
                                                         --    TOTAL_BOTOL_AKHIR='Complete',
                                                         --    TOTAL_LITER='$t_liter',
