@@ -35,10 +35,10 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
             $TOTAL_CT           = $_POST['TOTAL_CT'];
             $TOTAL_CT_AKHIR     = $_POST['TOTAL_CT_AKHIR'];
             $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$NOMOR_AJU' AND ID='$ID' AND CHECKING IS NULL");
-            var_dump($dataTable);
-            exit;
             if (mysqli_num_rows($dataTable) > 0) {
                 while ($rowWhile = mysqli_fetch_array($dataTable)) {
+                    echo $row['ID'];
+                    exit;
                 }
                 // CLOSE WHILE
             }
