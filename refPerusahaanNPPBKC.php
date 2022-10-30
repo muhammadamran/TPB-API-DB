@@ -92,44 +92,38 @@ if (isset($_POST["add_nppbkc"])) {
                     <?php } else { ?>
                         <?php foreach ($data['result'] as $row) { ?>
                             <form action="" method="POST" id="myForm">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-text="true">×</button>
-                                </div>
-                                <div class="modal-body">
-                                    <fieldset>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdCARTON">NPWP</label>
-                                                    <input type="text" class="form-control" placeholder="NPWP" value="<?= $row['NPWP']; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="IdLITER">Nama</label>
-                                                    <input type="text" class="form-control" value="<?= $row['NAMA'] ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
-                                                    <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC" placeholder="NPPBKC" required>
-                                                    <input type="hidden" class="form-control" name="UNIQID" value="<?= $_GET['id'] ?>">
-                                                    <input type="hidden" class="form-control" name="UNIQNWPW" value="<?= $_GET['NPWP'] ?>">
-                                                    <input type="hidden" class="form-control" name="UNIQNAMA" value="<?= $row['NAMA'] ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <font style="color: red;">*</font> <i>Wajib diisi.</i>
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="IdCARTON">NPWP</label>
+                                                <input type="text" class="form-control" placeholder="NPWP" value="<?= $row['NPWP']; ?>">
                                             </div>
                                         </div>
-                                    </fieldset>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="javascript:;" class="btn btn-yellow" onclick="myFunction()"><i class="fas fa-refresh"></i> Reset</a>
-                                    <button type="submit" name="add_nppbkc" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
-                                </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="IdLITER">Nama</label>
+                                                <input type="text" class="form-control" value="<?= $row['NAMA'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
+                                                <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC" placeholder="NPPBKC" required>
+                                                <input type="hidden" class="form-control" name="UNIQID" value="<?= $_GET['id'] ?>">
+                                                <input type="hidden" class="form-control" name="UNIQNWPW" value="<?= $_GET['NPWP'] ?>">
+                                                <input type="hidden" class="form-control" name="UNIQNAMA" value="<?= $row['NAMA'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <font style="color: red;">*</font> <i>Wajib diisi.</i>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <a href="javascript:;" class="btn btn-yellow" onclick="myFunction()"><i class="fas fa-refresh"></i> Reset</a>
+                                            <button type="submit" name="add_nppbkc" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </form>
                         <?php } ?>
                     <?php } ?>
