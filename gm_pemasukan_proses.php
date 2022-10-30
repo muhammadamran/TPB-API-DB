@@ -39,8 +39,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                 $t_liter         = str_replace(',', '.', $r_liter);
 
                 $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
-                                                           OPERATOR_ONE='$meOK',
-                                                           TGL_CEK='$InputDate'
+                                                           OPERATOR_ONE='$meOK'
+                                                        --    TGL_CEK='$InputDate'
                                                         --    CHECKING='DONE',
                                                         --    STATUS_CT='Complete',
                                                         --    DATE_CT='$InputDate',
