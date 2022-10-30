@@ -311,7 +311,28 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
         border: 2px solid #2d353c !important;
         text-transform: uppercase;
     }
+
+    .inline-group {
+        max-width: 9rem;
+        padding: .5rem;
+    }
+
+    .inline-group .form-control-custom {
+        text-align: right;
+    }
+
+    .form-control-custom[type="number"]::-webkit-inner-spin-button,
+    .form-control-custom[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 </style>
+<!-- CUSTOM FOR INPUT NUMBER -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -618,10 +639,22 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                                         <h4 class="card-title">1 CT Broken</h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
                                                                         <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
-                                                                        <br>
                                                                         <div class="form-group">
                                                                             <label>Kurang</label>
                                                                             <input type="number" name="TOTAL_BOTOL_K" class="form-control" placeholder="Isi Jumlah Kurang Botol" min="0" max="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                        </div>
+                                                                        <div class="input-group inline-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <button class="btn btn-outline-secondary btn-minus">
+                                                                                    <i class="fa fa-minus"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                            <input class="form-control-custom quantity" min="0" max="<?= $row['TOTAL_BOTOL']; ?>" name="TOTAL_BOTOL_K" value="1" type="number">
+                                                                            <div class="input-group-append">
+                                                                                <button class="btn btn-outline-secondary btn-plus">
+                                                                                    <i class="fa fa-plus"></i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
@@ -835,4 +868,13 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
         })
         history.replaceState({}, '', './gm_pemasukan.php');
     }
+
+    // !--CUSTOM FOR INPUT NUMBER-- >
+    $('.btn-plus, .btn-minus').on('click', function(e) {
+        const isNegative = $(e.target).closest('.btn-minus').is('.btn-minus');
+        const input = $(e.target).closest('.input-group').find('input');
+        if (input.is('input')) {
+            input[0][isNegative ? 'stepDown' : 'stepUp']()
+        }
+    })
 </script>
