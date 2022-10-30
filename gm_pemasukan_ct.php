@@ -79,10 +79,13 @@ if (isset($_POST["kurang_"])) {
         $KODE_BARANG            = $_POST['KODE_BARANG'];
         $Kurang                 = $_POST['TOTAL_BOTOL_K'];
         $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        $LITER                  = $_POST['LITER'];
         // VALIDASI KURANG
         $cek                    = $TOTAL_BOTOL - $Kurang;
+        $t_liter                = $cek * $LITER;
         // END VALIDASI KURANG
-        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek',
+                                                         TOTAL_LITER='$t_liter'
                             WHERE ID='$ID_CT'");
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG)
@@ -174,10 +177,13 @@ if (isset($_POST["pecah_"])) {
         $KODE_BARANG            = $_POST['KODE_BARANG'];
         $Pecah                  = $_POST['TOTAL_BOTOL_P'];
         $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        $LITER                  = $_POST['LITER'];
         // VALIDASI PECAH
-        $cek = $TOTAL_BOTOL - $Pecah;
+        $cek                    = $TOTAL_BOTOL - $Pecah;
+        $t_liter                = $cek * $LITER;
         // END VALIDASI PECAH
-        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek',
+                                                         TOTAL_LITER='$t_liter'
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
@@ -222,10 +228,13 @@ if (isset($_POST["rusak_"])) {
         $KODE_BARANG            = $_POST['KODE_BARANG'];
         $Rusak                  = $_POST['TOTAL_BOTOL_R'];
         $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
+        $LITER                  = $_POST['LITER'];
         // VALIDASI RUSAK
-        $cek = $TOTAL_BOTOL - $Rusak;
+        $cek                    = $TOTAL_BOTOL - $Rusak;
+        $t_liter                = $cek * $LITER;
         // END VALIDASI RUSAK
-        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek'
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek',
+                                                         TOTAL_LITER='$t_liter'
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
@@ -982,6 +991,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                    <input type="hidden" name="LITER" value="<?= $row['LITER']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -1035,6 +1045,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                    <input type="hidden" name="LITER" value="<?= $row['LITER']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -1088,6 +1099,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                    <input type="hidden" name="LITER" value="<?= $row['LITER']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
@@ -1141,6 +1153,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <input type="hidden" name="ID_BARANG" value="<?= $row['ID_BARANG']; ?>">
                                                                     <input type="hidden" name="KODE_BARANG" value="<?= $row['KODE_BARANG']; ?>">
                                                                     <input type="hidden" name="TOTAL_BOTOL" value="<?= $row['TOTAL_BOTOL']; ?>">
+                                                                    <input type="hidden" name="LITER" value="<?= $row['LITER']; ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
