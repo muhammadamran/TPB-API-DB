@@ -39,12 +39,60 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
             foreach ($rowWhile as $row) {
                 if (@$row['ID']) {
                     $keyy      = @$row['ID'];
+
                     // CEK CT
                     $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
                     $dataCT    = mysqli_fetch_array($cekCT);
+                    if ($dataCT['ID_BARANG'] == NULL) {
+                        $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$keyy'");
+                        $dataBarang      = mysqli_fetch_array($contentBarang);
+                        $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
+                        $pcs             = str_replace(".0000", "", "$jml_pcs");
+                        // TOTAL BOTOL
+                        $botol           = explode('X', $dataBarang['UKURAN']);
+                        $t_botol         = $botol[0];
+                        // TOTAL LITER
+                        $liter           =  $botol[1];
+                        $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+                        $t_liter         = str_replace(',', '.', $r_liter);
+                        var_dump($t_liter);
+                        exit;
+                        for ($i = 0; $i < $pcs; $i++) {
+                            $query = $dbcon->query("INSERT INTO plb_barang_ct 
+                            (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,TOTAL_LITER)
+                            VALUES
+                            ('','$dataBarang[NOMOR_AJU]','$keyy','$dataBarang[KODE_BARANG]','$t_botol','$t_liter')
+                            ");
+                        }
+                        $query .= $dbcon->query("UPDATE plb_barang SET CHECKING='Checking Botol'
+                                WHERE ID='$keyy'");
 
-                    var_dump($dataCT['ID_BARANG']);
-                    exit;
+                        // FOR AKTIFITAS
+                        $me         = $_SESSION['username'];
+                        $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+                        $resultme   = mysqli_fetch_array($datame);
+
+                        $IDUNIQme             = $resultme['USRIDUNIQ'];
+                        $InputUsername        = $me;
+                        $InputModul           = 'Gate In/Detail/CT';
+                        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
+                        $InputAction          = 'Cek Barang Masuk';
+                        $InputDate            = date('Y-m-d h:m:i');
+
+                        $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                           (id,IDUNIQ,username,modul,description,action,date_created)
+                           VALUES
+                           ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+
+                        if ($query) {
+                            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
+                        } else {
+                            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
+                        }
+                    } else {
+                        // Sudah Ada di plb_barang_ct
+                        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "'</script>";
+                    }
                 }
             }
         }
