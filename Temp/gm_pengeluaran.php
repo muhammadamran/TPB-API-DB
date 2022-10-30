@@ -201,17 +201,10 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if (isset($_POST['filter'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah='" . $_POST['AJU_GB'] . "' ORDER BY ID ASC", 0);
-                                } else if (isset($_POST['show_all'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY ID ASC", 0);
-                                } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY ID ASC LIMI 100", 0);
-                                }
-                                if ($dataTable) : $no = 1;
-                                    foreach ($dataTable as $rowBarang) :
-                                ?>
+                                <?php if ($data['status'] == 200) { ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <!-- PLB -->
@@ -660,11 +653,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </div>
                                         </div>
                                         <!-- End Detail -->
-                                    <?php
-                                        $no++;
-                                    endforeach
-                                    ?>
-                                <?php else : ?>
+                                    <?php } ?>
+                                <?php } else { ?>
                                     <tr>
                                         <td colspan="12">
                                             <center>
@@ -674,7 +664,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </center>
                                         </td>
                                     </tr>
-                                <?php endif ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
