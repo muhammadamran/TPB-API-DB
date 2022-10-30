@@ -22,7 +22,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     if (mysqli_num_rows($dataTable) > 0) {
         while ($rowWhile = mysqli_fetch_array($dataTable)) {
 
-            $arr = $rowWhile['ID'];
+            $arr[] = $rowWhile['ID'];
             foreach ($arr as $ID) {
 
                 $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
@@ -50,6 +50,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            TOTAL_LITER_AKHIR='Complete',
                                                            TOTAL_CT_AKHIR='$pcs'
                                      WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL");
+                var_dump($query);
+                exit;
             }
         }
         if ($query) {
