@@ -30,22 +30,31 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
             if ($dataCT['ID_BARANG'] == NULL) {
                 $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
                 $dataBarang      = mysqli_fetch_array($contentBarang);
-
                 $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
                 $pcs             = str_replace(".0000", "", "$jml_pcs");
+                // BOTOL
+                $botol           = explode('X', $dataBarang['UKURAN']);
+                $t_botol         = $botol[0];
+                // LITER
+                $liter           =  $botol[1];
+                $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+                $t_liter         = str_replace(',', '.', $r_liter);
+                // TOTAL BOTOL
+                $total_btl = $t_botol * $pcs;
+                // TOTAL LITER
+                $total_ltr = $t_botol * $t_liter;
 
-                $UKR = $rowLine['UKURAN'];
                 $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
                                                            TGL_CEK='$InputDate',
                                                            CHECKING='DONE',
                                                            STATUS_CT='Complete',
                                                            DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL_AKHIR='$InputDate',
-                                                           TOTAL_LITER_AKHIR='$InputDate',
+                                                           TOTAL_BOTOL_AKHIR='$total_btl',
+                                                           TOTAL_LITER_AKHIR='$total_ltr',
                                                            TOTAL_CT_AKHIR='$pcs',
-                                                           BOTOL='$InputDate',
-                                                           LITER='$InputDate'                                                      
+                                                           BOTOL='$t_botol',
+                                                           LITER='$t_liter'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
             }
         }
