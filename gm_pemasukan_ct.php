@@ -360,24 +360,27 @@ $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
                                         </b>
                                     </h5>
                                     <h5 class="mb-10px text-blue">
-                                        <b>
-                                            <i class="fas fa-boxes"></i>
-                                            TOTAL CT: <?= $dataBarangTotal['total']; ?> CT
-                                            <i class="fas fa-cubes"></i>
-                                        </b>
+                                        <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                            <tbody>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
+                                                    <td style="width: 110px; height: 18px;">Total CT</td>
+                                                    <td style="width: 10px; height: 18px;">:</td>
+                                                    <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </h5>
                                     <h5 class="mb-10px text-blue">
                                         <b>
                                             <i class="fa-solid fa-bottle-droplet"></i>
                                             TOTAL BOTOL: <?= $dataBarangTotal['total']; ?> Botol
-                                            <i class="fas fa-cubes"></i>
                                         </b>
                                     </h5>
                                     <h5 class="mb-10px text-blue">
                                         <b>
                                             <i class="fa-solid fa-glass-water-droplet"></i>
                                             TOTAL LITER: <?= $dataBarangTotal['total']; ?> Liter
-                                            <i class="fas fa-cubes"></i>
                                         </b>
                                     </h5>
                                     <h4 class="mb-10px text-blue">
