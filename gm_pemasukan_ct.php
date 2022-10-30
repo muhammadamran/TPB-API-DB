@@ -241,7 +241,7 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
     .sm {
         max-width: 471pxpx;
         margin: 16.75rem auto;
-        width: 375px;
+        width: 549px;
     }
 
     /* Check Box */
@@ -572,12 +572,12 @@ $NA_LITER               = mysqli_fetch_array($contentNA_LITER);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div style="display: grid;justify-content: center;">
-                                                                    <div>
-                                                                        <img src="assets/img/png/box.png" style="width: 70px;" alt="">
+                                                                    <div style="display: flex;">
+                                                                        <img src="assets/img/png/box.png" style="width: 50%;" alt="">
                                                                         <div class="card-body">
                                                                             <h4 class="card-title">1 CT Broken</h4>
                                                                             <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                            <a href="javascript:;" class="btn btn-sm btn-default">Anda yakin ingin mengubah status CT</a>
+                                                                            <a href="javascript:;" class="btn btn-sm btn-default">Anda yakin ingin mengubah status CT?</a>
                                                                         </div>
                                                                         <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                         <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
