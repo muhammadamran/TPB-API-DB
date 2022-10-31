@@ -59,7 +59,8 @@ if (isset($_POST["kurang_"])) {
         $t_liter                = $cek * $LITER;
         // END VALIDASI KURANG
         $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek',
-                                                         TOTAL_LITER='$t_liter'
+                                                         TOTAL_LITER='$t_liter',
+                                                         POSISI='OUT'
                             WHERE ID='$ID_CT'");
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
     (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG,POSISI)
@@ -105,13 +106,14 @@ if (isset($_POST["lebih_"])) {
         $Lebih                  = $_POST['TOTAL_BOTOL_L'];
         $TOTAL_BOTOL            = $_POST['TOTAL_BOTOL'];
 
-        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL'
-                            WHERE ID='$ID_CT'");
+        $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$TOTAL_BOTOL',
+        POSISI='OUT'
+                                WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
-    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH,POSISI)
-    VALUES
-    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih','OUT')");
+                                (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH,POSISI)
+                                VALUES
+                                ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih','OUT')");
 
         // FOR AKTIFITAS
         $me         = $_SESSION['username'];
@@ -157,13 +159,14 @@ if (isset($_POST["pecah_"])) {
         $t_liter                = $cek * $LITER;
         // END VALIDASI PECAH
         $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek',
-                                                         TOTAL_LITER='$t_liter'
+                                                         TOTAL_LITER='$t_liter',
+                                                         POSISI='OUT'
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
-    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH,POSISI)
-    VALUES
-    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah','OUT')");
+                                (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH,POSISI)
+                                VALUES
+                                ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah','OUT')");
 
         // FOR AKTIFITAS
         $me         = $_SESSION['username'];
@@ -208,7 +211,8 @@ if (isset($_POST["rusak_"])) {
         $t_liter                = $cek * $LITER;
         // END VALIDASI RUSAK
         $query = $dbcon->query("UPDATE plb_barang_ct SET TOTAL_BOTOL='$cek',
-                                                         TOTAL_LITER='$t_liter'
+                                                         TOTAL_LITER='$t_liter',
+                                                         POSISI='OUT'
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol

@@ -442,7 +442,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <input type="text" name="bk_nama_operator" class="form-control" placeholder="Nama Operator BC ...">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                                 <label>Upload Berita Acara Kembali!</label>
