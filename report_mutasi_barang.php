@@ -243,27 +243,30 @@ $data = json_decode($content, true);
                                     <th style="text-align: center;">Saldo Akhir</th>
                                     <th style="text-align: center;">Stock Opname</th>
                                     <th style="text-align: center;">Selisih</th>
+                                    <th style="text-align: center;">Petugas Sarinah</th>
+                                    <th style="text-align: center;">Petugas BC</th>
                                     <th style="text-align: center;">Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="14">
-                                            <center>
-                                                <div style="display: flex;justify-content: center; align-items: center">
-                                                    <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            -- BARANG CT
+                                                            LEFT OUTER JOIN plb_barang_ct AS ct ON plb.NOMOR_AJU=ct.NOMOR_AJU
+                                                            -- BARANG BOTOL + LITER
+                                                            LEFT OUTER JOIN plb_barang_ct_botol AS btl ON plb.NOMOR_AJU=ct.NOMOR_AJU
+                                                            -- OTHERS
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=hdr.NOMOR_AJU
+                                                            ORDER BY plb.ID ASC", 0);
+                                if ($dataTable) : $no = 1;
+                                    foreach ($dataTable as $row) :
+                                ?>
                                         <tr>
-                                            <!-- 9 -->
                                             <td><?= $no ?>.</td>
+                                            <!-- Kode Barang -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['KODE_BARANG'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
@@ -272,6 +275,40 @@ $data = json_decode($content, true);
                                                     <?= $row['KODE_BARANG']; ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- Barang -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['URAIAN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['URAIAN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KODE_JENIS_PABEAN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_JENIS_PABEAN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['SPESIFIKASI_LAIN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['SPESIFIKASI_LAIN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KODE_SATUAN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_SATUAN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Jenis -->
                                             <td><?= $row['URAIAN']; ?></td>
                                             <td><?= $row['UKURAN']; ?></td>
                                             <td><?= $row['TIPE']; ?></td>
@@ -290,8 +327,21 @@ $data = json_decode($content, true);
                                             <td>-</td>
                                             <td>-</td>
                                         </tr>
-                                    <?php } ?>
-                                <?php } ?>
+                                    <?php
+                                        $no++;
+                                    endforeach
+                                    ?>
+                                <?php else : ?>
+                                    <tr>
+                                        <td colspan="16">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
                             </tbody>
                         </table>
                     </div>
