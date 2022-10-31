@@ -24,6 +24,7 @@ if (isset($_POST['add_'])) {
     if ($dataCT['cek'] == 0) {
         $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
         $data = json_decode($content, true);
+
         $sql = $dbcon->query("INSERT INTO rcd_status 
                                 (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bk_no_aju_sarinah)
                                 VALUES

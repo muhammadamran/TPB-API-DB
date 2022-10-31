@@ -180,8 +180,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="5" class="text-nowrap" style="text-align: center;">PLB</th>
-                                    <th colspan="5" class="text-nowrap" style="text-align: center;">GB</th>
+                                    <th colspan="3" class="text-nowrap" style="text-align: center;">PLB</th>
+                                    <th colspan="2" class="text-nowrap" style="text-align: center;">GB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
@@ -189,25 +189,28 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
                                     <th class="text-nowrap" style="text-align: center;">Total Barang</th>
-                                    <th class="text-nowrap" style="text-align: center;">Asal PLB</th>
-                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <!-- GB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap" style="text-align: center;">Total Barang</th>
-                                    <th class="text-nowrap" style="text-align: center;">Asal GB</th>
-                                    <th class="text-nowrap" style="text-align: center;">Kode Negara</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if (isset($_POST['filter'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah='" . $_POST['AJU_GB'] . "' ORDER BY rcd_id ASC", 0);
+                                    $dataTable = $dbcon->query("SELECT * 
+                                                                FROM rcd_status AS rcd 
+                                                                LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
+                                                                WHERE rcd.bk_no_aju_sarinah LIKE '%" . $_POST['AJU_GB'] . "%' AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else if (isset($_POST['show_all'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY rcd_id ASC", 0);
+                                    $dataTable = $dbcon->query("SELECT * 
+                                                                FROM rcd_status AS rcd 
+                                                                LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
+                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status WHERE bk_no_aju_sarinah IS NOT NULL ORDER BY rcd_id ASC LIMIT 100", 0);
+                                    $dataTable = $dbcon->query("SELECT * 
+                                                                FROM rcd_status AS rcd 
+                                                                LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
+                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC LIMIT 100", 0);
                                 }
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $rowBarang) :
