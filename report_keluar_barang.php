@@ -226,20 +226,20 @@ $data = json_decode($content, true);
                                             ?>
                                             <td><?= $datTGLAJU; ?></td>
                                             <td style="text-align: center">
+                                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_DAFTAR']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- NOMOR BC 11 -->
+                                            <td style="text-align: center">
                                                 <?php if ($row['TANGGAL_DAFTAR'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
                                                     <?= $row['TANGGAL_DAFTAR']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- NOMOR BC 11 -->
-                                            <td style="text-align: center">
-                                                <?php if ($row['NOMOR_BC11'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NOMOR_BC11']; ?>
                                                 <?php } ?>
                                             </td>
                                             <!-- TGL BC 11 -->
