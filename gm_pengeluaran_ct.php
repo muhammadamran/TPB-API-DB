@@ -57,12 +57,12 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
         if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
         }
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
     }
 }
 
@@ -71,7 +71,7 @@ if (isset($_POST["kurang_"])) {
     $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
     $v_ID_BARANG              = $_POST['ID_BARANG'];
     if ($_POST['TOTAL_BOTOL_K'] == 0) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
     } else {
         $ID_CT                  = $_POST['ID_CT'];
         $NOMOR_AJU              = $_POST['NOMOR_AJU'];
@@ -110,9 +110,9 @@ if (isset($_POST["kurang_"])) {
                        ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
         if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Success';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Success';</script>";
         } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Failed';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertKurang=Failed';</script>";
         }
     }
 }
@@ -122,7 +122,7 @@ if (isset($_POST["lebih_"])) {
     $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
     $v_ID_BARANG              = $_POST['ID_BARANG'];
     if ($_POST['TOTAL_BOTOL_L'] == 0) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
     } else {
         $ID_CT                  = $_POST['ID_CT'];
         $NOMOR_AJU              = $_POST['NOMOR_AJU'];
@@ -157,9 +157,9 @@ if (isset($_POST["lebih_"])) {
                        ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
         if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Success';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Success';</script>";
         } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Failed';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertLebih=Failed';</script>";
         }
     }
 }
@@ -169,7 +169,7 @@ if (isset($_POST["pecah_"])) {
     $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
     $v_ID_BARANG              = $_POST['ID_BARANG'];
     if ($_POST['TOTAL_BOTOL_P'] == 0) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
     } else {
         $ID_CT                  = $_POST['ID_CT'];
         $NOMOR_AJU              = $_POST['NOMOR_AJU'];
@@ -208,9 +208,9 @@ if (isset($_POST["pecah_"])) {
                    VALUES
                    ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
         if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Success';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Success';</script>";
         } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Failed';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertPecah=Failed';</script>";
         }
     }
 }
@@ -220,7 +220,7 @@ if (isset($_POST["rusak_"])) {
     $v_NOMOR_AJU              = $_POST['NOMOR_AJU'];
     $v_ID_BARANG              = $_POST['ID_BARANG'];
     if ($_POST['TOTAL_BOTOL_R'] == 0) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$v_ID_BARANG&Alert=CekBarangMasuk&AJU=$v_NOMOR_AJU';</script>";
     } else {
         $ID_CT                  = $_POST['ID_CT'];
         $NOMOR_AJU              = $_POST['NOMOR_AJU'];
@@ -260,9 +260,9 @@ if (isset($_POST["rusak_"])) {
                    ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
         if ($query) {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Success';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Success';</script>";
         } else {
-            echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Failed';</script>";
+            echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertRusak=Failed';</script>";
         }
     }
 }
@@ -320,7 +320,7 @@ if (isset($_POST["simpan"])) {
     if ($query) {
         echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
     }
 }
 
@@ -352,9 +352,9 @@ if (isset($_POST["Delete_"])) {
                VALUES
                ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Success';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Success';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Failed';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID_BARANG&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertBroken=Failed';</script>";
     }
 }
 
