@@ -354,7 +354,7 @@ $data = json_decode($content, true);
                                     ?>
                                 <?php else : ?>
                                     <tr>
-                                        <td colspan="16">
+                                        <td colspan="35">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
