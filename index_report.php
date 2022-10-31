@@ -83,7 +83,7 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                             <div class="mb-3 text-grey">
-                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% compare to last week
+                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% Persen
                             </div>
                             <hr class="bg-white-transparent-2" />
                             <div class="row text-truncate">
@@ -133,7 +133,7 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                             <div class="mb-4 text-grey">
-                                <i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+                                <i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% Persen
                             </div>
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
@@ -192,7 +192,7 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                             <div class="mb-4 text-grey">
-                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% Persen
                             </div>
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">

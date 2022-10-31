@@ -286,6 +286,9 @@ $data = json_decode($content, true);
                                                             (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS BTL_masuk,
                                                             (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS CT_keluar,
                                                             (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS BTL_keluar,
+                                                            -- PENYESUAIAN
+                                                            (SELECT SUM(KURANG+LEBIH+PECAH+RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS PE_IN,
+                                                            (SELECT SUM(KURANG+LEBIH+PECAH+RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS OE_OUT,
                                                             -- IN
                                                             (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS K_IN,
                                                             (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS L_IN,
@@ -389,11 +392,11 @@ $data = json_decode($content, true);
                                             <!-- Penyesuaian -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?= $row['PE_IN']; ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?= $row['PE_OUT']; ?>
                                             </td>
                                             <!-- End Penyesuaian -->
                                             <!-- Saldo Akhir -->
