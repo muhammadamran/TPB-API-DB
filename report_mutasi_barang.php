@@ -353,6 +353,7 @@ $data = json_decode($content, true);
                                                 0
                                             </td>
                                             <!-- End Saldo Awal -->
+
                                             <!-- Mutasi Masuk -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
@@ -371,6 +372,7 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <!-- End Mutasi Masuk -->
+
                                             <!-- Mutasi keluar -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
@@ -389,6 +391,7 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <!-- End Mutasi keluar -->
+
                                             <!-- Penyesuaian -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
@@ -399,6 +402,7 @@ $data = json_decode($content, true);
                                                 <?= $row['PE_OUT']; ?>
                                             </td>
                                             <!-- End Penyesuaian -->
+
                                             <!-- Saldo Akhir -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
