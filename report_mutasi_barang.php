@@ -272,8 +272,9 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT *,brg.KODE_BARANG,
-                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct 
+                                $dataTable = $dbcon->query("SELECT *,brg.ID,brg.KODE_BARANG,
+                                                            (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID) AS CT,
+                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID) AS BTL,
                                                             FROM plb_barang AS brg
                                                             LEFT OUTER JOIN plb_barang_ct AS ct ON brg.NOMOR_AJU=ct.NOMOR_AJU AND brg.ID=ct.ID_BARANG
                                                             LEFT OUTER JOIN plb_barang_ct_botol AS btl ON brg.NOMOR_AJU=btl.NOMOR_AJU AND brg.ID=btl.ID_BARANG AND ct.ID=btl.ID_CT
@@ -317,9 +318,24 @@ $data = json_decode($content, true);
                                                     <?= $row['KODE_SATUAN']; ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- Saldo Awal -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?php if ($row['CT'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['CT']; ?>
+                                                <?php } ?>
                                             </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['BTL'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['BTL']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- End Saldo Awal -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
