@@ -232,8 +232,8 @@ $data = json_decode($content, true);
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th style="text-align: center;">Kode Barang</th>
-                                    <th style="text-align: center;">Barang</th>
-                                    <th style="text-align: center;">Jenis</th>
+                                    <th style="text-align: center;">Uraian Barang</th>
+                                    <!-- <th style="text-align: center;">Jenis</th> -->
                                     <th style="text-align: center;">Golongan</th>
                                     <th style="text-align: center;">Satuan</th>
                                     <th style="text-align: center;">Saldo Awal</th>
@@ -250,7 +250,7 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * 
+                                $dataTable = $dbcon->query("SELECT *,brg.ID_BARANG,
                                                             FROM plb_barang AS brg
                                                             LEFT OUTER JOIN plb_barang_ct AS ct ON brg.NOMOR_AJU=ct.NOMOR_AJU AND brg.ID=ct.ID_BARANG
                                                             LEFT OUTER JOIN plb_barang_ct_botol AS btl ON brg.NOMOR_AJU=btl.NOMOR_AJU AND brg.ID=btl.ID_BARANG AND ct.ID=btl.ID_CT
@@ -270,7 +270,7 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <!-- Barang -->
-                                            <td style="text-align: center;">
+                                            <td style="text-align: left;">
                                                 <?php if ($row['URAIAN'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                                     </font>
@@ -279,19 +279,11 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?php if ($row['KODE_JENIS_PABEAN'] == NULL) { ?>
+                                                <?php if ($row['TIPE'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['KODE_JENIS_PABEAN']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <?php if ($row['SPESIFIKASI_LAIN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['SPESIFIKASI_LAIN']; ?>
+                                                    <?= $row['TIPE']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
