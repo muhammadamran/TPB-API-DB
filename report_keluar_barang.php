@@ -242,15 +242,6 @@ $data = json_decode($content, true);
                                                     <?= $row['TANGGAL_DAFTAR']; ?>
                                                 <?php } ?>
                                             </td>
-                                            <!-- TGL BC 11 -->
-                                            <td style="text-align: center">
-                                                <?php if ($row['TANGGAL_BC11'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= SUBSTR($row['TANGGAL_BC11'], 0, 10); ?>
-                                                <?php } ?>
-                                            </td>
                                             <!-- NAMA PEMASOK -->
                                             <td style="text-align: center">
                                                 <?php if ($row['NAMA_PEMASOK'] == NULL) { ?>
