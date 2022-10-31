@@ -464,7 +464,80 @@ $data = json_decode($content, true);
                                                     <?= $row['bc_out']; ?>
                                                 <?php } ?>
                                             </td>
-
+                                            <!-- IN -->
+                                            <!-- KURANG -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['K_IN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['K_IN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- LEBIH -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['L_IN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['L_IN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- PECAH -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['P_IN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['P_IN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- RUSAK -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['R_IN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['R_IN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- OUT -->
+                                            <!-- KURANG -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['K_OUT'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['K_OUT']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- LEBIH -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['L_OUT'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['L_OUT']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- PECAH -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['P_OUT'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['P_OUT']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- RUSAK -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['R_OUT'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['R_OUT']; ?>
+                                                <?php } ?>
+                                            </td>
                                         </tr>
                                     <?php
                                         $no++;
