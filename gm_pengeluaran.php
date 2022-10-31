@@ -33,6 +33,7 @@ if (isset($_POST['edit_'])) {
 
 if (isset($_POST['upload_'])) {
     $rcd_id                 = $_POST['rcd_id'];
+    $bk_nama_operator       = $_POST['bk_nama_operator'];
     // File
     $filename               = $_FILES['uploadBA']['name'];
     $tmpname                = $_FILES['uploadBA']['tmp_name'];
@@ -50,7 +51,8 @@ if (isset($_POST['upload_'])) {
     $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
-    $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_GB='$newname'
+    $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_GB='$newname',
+                                            bc_out='$bk_nama_operator'
                                             WHERE rcd_id='$rcd_id'");
 
     if ($sql) {
@@ -434,6 +436,12 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Petugas BC</label>
+                                                                            <input type="text" name="bk_nama_operator" class="form-control" placeholder="Nama Operator BC ...">
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
