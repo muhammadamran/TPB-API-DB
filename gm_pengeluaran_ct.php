@@ -36,7 +36,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     if ($query) {
         echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$keyy&Alert=CekBarangMasuk&AJU=" . $_GET['AJU'] . "'</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=" . $_GET['AJU'] . "';</script>";
     }
 }
 
@@ -292,7 +292,7 @@ if (isset($_POST["simpan"])) {
                ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$NOMOR_AJU&AlertSimpan=Success';</script>";
     } else {
         echo "<script>window.location.href='gm_pengeluaran_ct.php?ID=$ID&Alert=CekBarangMasuk&AJU=$NOMOR_AJU&AlertSimpan=Failed';</script>";
     }
@@ -496,7 +496,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
-                <a href="gm_pemasukan_detail.php?AJU=<?= $_GET['AJU'] ?>" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                <a href="gm_pengeluaran_detail.php?AJU=<?= $_GET['AJU'] ?>" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
             </div>
         </div>
     </div>
@@ -1212,7 +1212,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
             icon: 'success',
             text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan.php');
+        history.replaceState({}, '', './gm_pengeluaran.php');
     }
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
@@ -1220,7 +1220,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
             icon: 'error',
             text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
         })
-        history.replaceState({}, '', './gm_pemasukan.php');
+        history.replaceState({}, '', './gm_pengeluaran.php');
     }
 
     // !--CUSTOM FOR INPUT NUMBER-- >
