@@ -77,7 +77,7 @@ include "include/cssDatatables.php";
                                 </span>
                             </div>
                             <div class="d-flex mb-1">
-                                <h2 class="mb-0">$<span data-animation="number" data-value="64559.25">0.00</span></h2>
+                                <h2 class="mb-0">Rp.<span data-animation="number" data-value="64559.25">0.00</span></h2>
                                 <div class="ml-auto mt-n1 mb-n1">
                                     <div id="total-sales-sparkline"></div>
                                 </div>
@@ -96,14 +96,14 @@ include "include/cssDatatables.php";
                                 </div>
                                 <div class="col-4">
                                     <div class="f-s-12 text-grey">In Warehouse</div>
-                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
+                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="41.20">0.00</span></div>
                                     <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                         <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="f-s-12 text-grey">Barang Keluar</div>
-                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
+                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="41.20">0.00</span></div>
                                     <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                         <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
@@ -123,7 +123,7 @@ include "include/cssDatatables.php";
                     <div class="card border-0 bg-dark text-white text-truncate mb-3" id="RD">
                         <div class="card-body">
                             <div class="mb-3 text-grey">
-                                <b class="mb-3">CONVERSION RATE</b>
+                                <b class="mb-3">Gate In</b>
                                 <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
                             </div>
                             <div class="d-flex align-items-center mb-1">
@@ -138,7 +138,7 @@ include "include/cssDatatables.php";
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-red f-s-8 mr-2"></i>
-                                    Added to cart
+                                    Kurang
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
                                     <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
@@ -148,7 +148,7 @@ include "include/cssDatatables.php";
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-                                    Reached checkout
+                                    Lebih
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
                                     <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
@@ -158,7 +158,17 @@ include "include/cssDatatables.php";
                             <div class="d-flex">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-lime f-s-8 mr-2"></i>
-                                    Sessions converted
+                                    Pecah
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="2.19">0.00</span>%</div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-yellow f-s-8 mr-2"></i>
+                                    Rusak
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
                                     <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="57">0</span>%</div>
@@ -172,7 +182,7 @@ include "include/cssDatatables.php";
                     <div class="card border-0 bg-dark text-white text-truncate mb-3" id="RD">
                         <div class="card-body">
                             <div class="mb-3 text-grey">
-                                <b class="mb-3">STORE SESSIONS</b>
+                                <b class="mb-3">Gate Out</b>
                                 <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
                             </div>
                             <div class="d-flex align-items-center mb-1">
@@ -187,7 +197,7 @@ include "include/cssDatatables.php";
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-                                    Mobile
+                                    Kurang
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
                                     <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
@@ -197,7 +207,7 @@ include "include/cssDatatables.php";
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-                                    Desktop
+                                    Lebih
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
                                     <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
@@ -207,7 +217,17 @@ include "include/cssDatatables.php";
                             <div class="d-flex">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
-                                    Tablet
+                                    Pecah
+                                </div>
+                                <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="5545">0</span></div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
+                                    Rusak
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
                                     <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="7.9">0.00</span>%</div>
