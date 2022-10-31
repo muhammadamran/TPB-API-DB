@@ -301,26 +301,20 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 </a>
                                                             <?php } else { ?>
                                                                 <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
-                                                                    <div style="display: flex;">
+                                                                    <a href="#edit<?= $row['rcd_id'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
                                                                         <div>
-                                                                            <a href="#edit<?= $row['rcd_id'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
-                                                                                <div>
-                                                                                    <div style="font-size: 12px;">
-                                                                                        <i class="fas fa-calendar-alt"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-calendar-alt"></i>
+                                                                            </div>
                                                                         </div>
-                                                                        <div style="margin-left: 10px;">
-                                                                            <a href="#upload<?= $row['rcd_id'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
-                                                                                <div>
-                                                                                    <div style="font-size: 12px;">
-                                                                                        <i class="fas fa-file"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
+                                                                    </a>
+                                                                    <a href="#upload<?= $row['rcd_id'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-file"></i>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </a>
                                                                 <?php } else { ?>
                                                                     <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
                                                                         <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Barang Keluar Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
