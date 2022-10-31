@@ -20,33 +20,40 @@ if (isset($_POST['edit_'])) {
     $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostEDIT&bk_tgl_keluar=' . $bk_tgl_keluar . '&bk_nama_operator=' . $bk_nama_operator . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
-    if ($data['status'] == 200) {
-        echo "<script>window.location.href='gm_pengeluaran.php?SaveSuccess=true;</script>";
+    $sql = $dbcon->query("UPDATE rcd_status SET bk_tgl_keluar='$bk_tgl_keluar',
+                                                bk_nama_operator='$bk_nama_operator'
+                                            WHERE rcd_id='$rcd_id'");
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     } else {
-        echo "<script>window.location.href='gm_pengeluaran.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
 }
 
 if (isset($_POST['upload_'])) {
     $rcd_id                 = $_POST['rcd_id'];
     // File
-    $filename = $_FILES['uploadBA']['name'];
-    $tmpname = $_FILES['uploadBA']['tmp_name'];
-    $sizename = $_FILES['uploadBA']['size'];
-    $exp = explode('.', $filename);
-    $ext = end($exp);
-    $uniq_file =  "Berita-Acara-GB" . '_' . time();
-    $newname =  "Berita-Acara-GB" . '_' . time() . "." . $ext;
-    $config['upload_path'] = './files/ck5plb/BA/GB/';
-    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
-    $config['max_size'] = '2000000';
-    $config['file_name'] = $newname;
+    $filename               = $_FILES['uploadBA']['name'];
+    $tmpname                = $_FILES['uploadBA']['tmp_name'];
+    $sizename               = $_FILES['uploadBA']['size'];
+    $exp                    = explode('.', $filename);
+    $ext                    = end($exp);
+    $uniq_file              =  "Berita-Acara-GB" . '_' . time();
+    $newname                =  "Berita-Acara-GB" . '_' . time() . "." . $ext;
+    $config['upload_path']      = './files/ck5plb/BA/GB/';
+    $config['allowed_types']    = "jpg|jpeg|png|jfif|gif|pdf";
+    $config['max_size']         = '2000000';
+    $config['file_name']        = $newname;
     move_uploaded_file($tmpname, "files/ck5plb/BA/GB/" . $newname);
 
     $content = get_content($resultAPI['url_api'] . 'gmBarangKeluarProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
     $data = json_decode($content, true);
 
-    if ($data['status'] == 200) {
+    $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_GB='$newname'
+                                            WHERE rcd_id='$rcd_id'");
+
+    if ($sql) {
         echo "<script>window.location.href='gm_pengeluaran.php?SaveSuccess=true;</script>";
     } else {
         echo "<script>window.location.href='gm_pengeluaran.php?SaveFailed=true';</script>";
@@ -343,7 +350,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Edit] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Edit] Data Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -366,7 +373,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
+                                                                                    <select name="bk_aju" class="default-select2 form-control" readonly>
                                                                                         <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
                                                                                             <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
                                                                                             <option value="">-- Nomor Pengajuan GB --</option>
@@ -381,14 +388,15 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
+                                                                                    <label>Tanggal Keluar</label>
                                                                                     <?php
-                                                                                    $tgl_msk = $row['bm_tgl_masuk'];
+                                                                                    $tgl_msk = $row['bk_tgl_keluar'];
                                                                                     $tgl = substr($tgl_msk, 0, 10);
                                                                                     $time = substr($tgl_msk, 10, 20);
                                                                                     ?>
-                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
+                                                                                    <input type="date" name="bk_tgl_keluar" class="form-control" placeholder="Tanggal Keluar ..." value="<?= $tgl; ?>">
                                                                                     <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                    <input type="hidden" name="bk_nama_operator" class="form-control" value="<?= $_SESSION['username']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
@@ -458,7 +466,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Detail] Data Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Detail] Data Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -469,7 +477,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     <?php } else { ?>
                                                                         <?php $col = '12'; ?>
                                                                     <?php } ?>
-                                                                    <!-- Barang Masuk -->
+                                                                    <!-- Barang Keluar -->
                                                                     <div class="col-<?= $col; ?>">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
@@ -519,7 +527,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End Barang Masuk -->
+                                                                    <!-- End Barang Keluar -->
                                                                     <!-- Barang Keluar -->
                                                                     <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                         <div class="col-6">
