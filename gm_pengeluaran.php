@@ -275,73 +275,65 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
-                                                <div>
-                                                    <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
-                                                        <div>
-                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-success">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['tpb_total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
-                                                                    <div style="display: grid;">
-                                                                        <div style="font-size: 12px;">
-                                                                            <i class="fas fa-check-circle"></i>
-                                                                        </div>
+                                                <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
+                                                    <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-success">
+                                                        <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['tpb_total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
+                                                            <div style="display: grid;">
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                        </font>
+                                                    </a>
+                                                    <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
+                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
+                                                            <font data-toggle="popover" data-trigger="hover" data-title="Add Nomor Pengajuan GB!" data-placement="top" data-content="Klik untuk menginput Nomor Pengajuan GB!">
+                                                                <div>
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-plus-circle"></i>
                                                                     </div>
-                                                                </font>
-                                                            </a>
-                                                        </div>
-                                                        <div style="margin-left: 10px;">
-                                                            <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
-                                                                <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
-                                                                    <font data-toggle="popover" data-trigger="hover" data-title="Add Nomor Pengajuan GB!" data-placement="top" data-content="Klik untuk menginput Nomor Pengajuan GB!">
-                                                                        <div>
-                                                                            <div style="font-size: 12px;">
-                                                                                <i class="fas fa-plus-circle"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </font>
-                                                                </a>
-                                                            <?php } else { ?>
-                                                                <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
-                                                                    <a href="#edit<?= $row['rcd_id'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
-                                                                        <div>
-                                                                            <div style="font-size: 12px;">
-                                                                                <i class="fas fa-calendar-alt"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#upload<?= $row['rcd_id'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
-                                                                        <div>
-                                                                            <div style="font-size: 12px;">
-                                                                                <i class="fas fa-file"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                <?php } else { ?>
-                                                                    <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
-                                                                        <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Barang Keluar Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
-                                                                            <div>
-                                                                                <div style="font-size: 12px;">
-                                                                                    <i class="fas fa-eye"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                        </font>
-                                                                    </a>
-                                                                <?php } ?>
-                                                            <?php } ?>
-                                                        </div>
+                                                                </div>
+                                                            </font>
+                                                        </a>
                                                     <?php } else { ?>
-                                                        <div>
-                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-warning">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Keluar.">
+                                                        <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
+                                                            <a href="#edit<?= $row['rcd_id'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
+                                                                <div>
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-calendar-alt"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#upload<?= $row['rcd_id'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
+                                                                <div>
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-file"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        <?php } else { ?>
+                                                            <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Barang Keluar Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
-                                                                            <i class="fas fa-warning"></i>
+                                                                            <i class="fas fa-eye"></i>
                                                                         </div>
                                                                     </div>
                                                                 </font>
                                                             </a>
-                                                        </div>
+                                                        <?php } ?>
                                                     <?php } ?>
-                                                </div>
+                                                <?php } else { ?>
+                                                    <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-warning">
+                                                        <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Keluar.">
+                                                            <div>
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-warning"></i>
+                                                                </div>
+                                                            </div>
+                                                        </font>
+                                                    </a>
+                                                <?php } ?>
                                             </td>
                                             <!-- Aksi -->
                                         </tr>
