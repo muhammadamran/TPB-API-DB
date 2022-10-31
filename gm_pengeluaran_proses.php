@@ -26,8 +26,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
             $dataBarang      = mysqli_fetch_array($contentBarang);
             $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
             $pcs             = str_replace(".0000", "", "$jml_pcs");
-            var_dump($pcs);
-            exit;
+            // var_dump($pcs);
+            // exit;
             // BOTOL
             $botol           = explode('X', $dataBarang['UKURAN']);
             $t_botol         = $botol[0];
@@ -42,20 +42,21 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
             // TOTAL LITER
             $total_ltr = $t_liter * $total_btl;
 
-            $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
-                                                           OPERATOR_ONE='$meOK',
-                                                           TGL_CEK='$InputDate',
-                                                           CHECKING='DONE',
-                                                           STATUS_CT='Complete',
-                                                           DATE_CT='$InputDate',
-                                                           TOTAL_BOTOL_AKHIR='$total_btl',
-                                                           TOTAL_LITER_AKHIR='$total_ltr',
-                                                           TOTAL_CT_AKHIR='$pcs',
-                                                           BOTOL='$t_botol',
-                                                           LITER='$t_liter',                                                      
-                                                           NETTO_AKHIR='$total_netto'                                                      
+            $query = $dbcon->query("UPDATE plb_barang SET STATUS_GB='Sesuai',
+                                                           OPERATOR_ONE_GB='$meOK',
+                                                           TGL_CEK_GB='$InputDate',
+                                                           CHECKING_GB='DONE',
+                                                           STATUS_CT_GB='Complete',
+                                                           DATE_CT_GB='$InputDate',
+                                                           TOTAL_BOTOL_AKHIR_GB='$total_btl',
+                                                           TOTAL_LITER_AKHIR_GB='$total_ltr',
+                                                           TOTAL_CT_AKHIR_GB='$pcs',
+                                                           BOTOL_GB='$t_botol',
+                                                           LITER_GB='$t_liter',                                                      
+                                                           NETTO_AKHIR_GB='$total_netto'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
-
+            var_dump($query);
+            exit;
             // FOR AKTIFITAS
             $me         = $_SESSION['username'];
             $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
