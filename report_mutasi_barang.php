@@ -331,16 +331,14 @@ $data = json_decode($content, true);
                                             <!-- Mutasi Masuk -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['CT_masuk'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['CT_masuk']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['BTL_masuk'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['BTL_masuk']; ?>
                                                 <?php } ?>
@@ -349,16 +347,14 @@ $data = json_decode($content, true);
                                             <!-- Mutasi keluar -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['CT_keluar'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['CT_keluar']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['BTL_keluar'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['BTL_keluar']; ?>
                                                 <?php } ?>
