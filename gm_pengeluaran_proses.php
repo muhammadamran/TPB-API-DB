@@ -16,8 +16,6 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
             $ID = $rowLine['ID'];
-            var_dump($ID);
-            exit;
             // CEK CT
             $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$ID'");
             $dataCT    = mysqli_fetch_array($cekCT);
