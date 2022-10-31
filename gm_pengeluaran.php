@@ -197,17 +197,17 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <tbody>
                                 <?php
                                 if (isset($_POST['filter'])) {
-                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
+                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah LIKE '%" . $_POST['AJU_GB'] . "%' AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else if (isset($_POST['show_all'])) {
-                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
+                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
+                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC LIMIT 100", 0);
