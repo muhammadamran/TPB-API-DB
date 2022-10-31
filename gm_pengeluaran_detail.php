@@ -11,7 +11,7 @@ include "include/cssDatatables.php";
 $contentBarangTotal     = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal        = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
-$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND STATUS_CT='Complete' AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING_2 IS NOT NULL AND STATUS_CT_2='Complete' AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek          = mysqli_fetch_array($contentBarangCek);
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
@@ -21,7 +21,7 @@ $dataHPPT               = $dbcon->query("SELECT SUM(HARGA_PENYERAHAN) AS HP, SUM
                                         FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
 $HPPT                   = mysqli_fetch_array($dataHPPT);
 // CEK ADA PENGECEKAN BOTOL ATAU TIDAK
-$contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Checking Botol' ORDER BY ID ASC", 0);
+$contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING_2) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING_2='Checking Botol' ORDER BY ID ASC", 0);
 $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
 // CEK CT
 $contentCT              = $dbcon->query("SELECT SUM(JUMLAH_SATUAN) AS p_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
@@ -154,7 +154,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Barang Masuk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;">Barang Keluar</a></li>
                 <li class="breadcrumb-item active">Detail Nomor AJU: <?= $_GET['AJU'] ?></li>
             </ol>
         </div>
@@ -180,7 +180,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Detail] Pengecekan Data Masuk Barang</h4>
+                    <h4 class="panel-title">[Detail] Pengecekan Data Barang Keluar</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -349,20 +349,20 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                     $resultChecking = mysqli_fetch_array($checking);
                                     ?>
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Keluar!">
                                             <i class="fa-solid fa-check-circle"></i>
                                             Barang Sudah DiCek!
                                         </button>
                                     <?php } else { ?>
                                         <div class="row">
                                             <div class="col-sm-12" style="display: flex;">
-                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
+                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Keluar!">
                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                     Cek Satuan Botol
                                                 </button>
                                                 <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Keluar!">
                                                             <i class="fas fa-tasks"></i>
                                                             Semua Barang Sesuai
                                                         </button>
@@ -371,7 +371,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
                                                         <button type="button" class="btn btn-sm btn-custom btn-warning" data-toggle="popover" data-trigger="hover" data-title="Selesaikan dahulu Data Pengecekan Barang!" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu!">
                                                             <i class="fas fa-warning"></i>
-                                                            Simpan Barang Masuk
+                                                            Simpan Barang Keluar
                                                         </button>
                                                         <small class="blink_me" style="color: red;"><i>(*) Anda masih memiliki pengecekan Data CT yang belum disimpan!</i></small>
                                                     </div>
@@ -396,7 +396,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                        Cek Barang Masuk
+                                                        Cek Barang Keluar
                                                     </div>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
@@ -438,11 +438,11 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
-                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
+                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Keluar!">
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
-                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
+                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Keluar!">
                                                                     <i class="fa-solid fa-check"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
@@ -457,13 +457,13 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][KODE_BARANG]" value="<?= $rowBarang['KODE_BARANG'] ?>">
                                                                     <!-- PLB_BARANG -->
                                                                     <!-- STATUS,OPERATOR_ONE,TGL_CEK -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="Sesuai">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING]" value="DONE">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_2]" value="Sesuai">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE_2]" value="<?= $_SESSION['username'] ?>">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK_2]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING_2]" value="DONE">
                                                                     <!-- STATUS_CT,DATE_CT,TOTAL_BOTOL_AKHIR,TOTAL_LITER_AKHIR,TOTAL_CT_AKHIR -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_CT]" value="Complete">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][DATE_CT]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_CT_2]" value="Complete">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][DATE_CT_2]" value="<?= date('Y-m-d H:m:i') ?>">
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL_AKHIR]" value="<?= $t_botol * $pcs ?>">
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
@@ -475,7 +475,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         </td>
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
-                                                                <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
+                                                                <?php if ($rowBarang['CHECKING_2'] == 'DONE') { ?>
                                                                     <a href="gm_pengeluaran_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-sm btn-custom btn-success">
                                                                         <i class="fas fa-eye" style="font-size: 16px;"></i>
                                                                         <br>
@@ -507,7 +507,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                 </a>
                                                             <?php } ?>
                                                             <div style="margin-top: 5px;font-size: 9px;">
-                                                                <?php if ($rowBarang['STATUS'] != NULL) { ?>
+                                                                <?php if ($rowBarang['STATUS_2'] != NULL) { ?>
                                                                     <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
                                                                 <?php } ?>
                                                             </div>
@@ -629,7 +629,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
     $("#btn-all").click(function() {
         // $("#form-submit").attr('action', `gm_pengeluaran_proses.php?aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>`)
         $("#form-submit").attr('action', `gm_pengeluaran_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
+        var confirm = window.confirm("Klik OK jika Barang Keluar sudah Sesuai!");
 
         if (confirm)
             $("#form-submit").submit();
