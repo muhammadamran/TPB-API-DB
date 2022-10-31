@@ -176,7 +176,7 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Keluar</th>
                                     <th colspan="2" style="text-align: center;">Petugas Penerima</th>
                                     <th rowspan="2" style="text-align: center;">Dokumen Upload</th>
                                 </tr>
@@ -282,13 +282,13 @@ $data = json_decode($content, true);
                                                 </div>
                                             </td>
                                             <td style="text-align: center">
-                                                -
+                                                <?= $row['bk_tgl_keluar']; ?>
                                             </td>
                                             <td>
-                                                Petugas Sarinah
+                                                <?= $row['bk_nama_operator']; ?>
                                             </td>
                                             <td>
-                                                Petugas BC
+                                                <?= $row['bc_out']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 -
