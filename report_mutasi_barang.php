@@ -245,7 +245,8 @@ $data = json_decode($content, true);
                                     <th colspan="2" style="text-align: center;">Selisih</th>
                                     <th colspan="2" style="text-align: center;">Petugas Sarinah</th>
                                     <th colspan="2" style="text-align: center;">Petugas BC</th>
-                                    <th rowspan="2" style="text-align: center;">Keterangan</th>
+                                    <th colspan="4" style="text-align: center;">Ket. Gate In</th>
+                                    <th colspan="4" style="text-align: center;">Ket. Gate Out</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">CT</th>
@@ -266,8 +267,16 @@ $data = json_decode($content, true);
                                     <th style="text-align: center;">Botol</th>
                                     <th style="text-align: center;">CT</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
-                                    <th style="text-align: center;">Botol</th>
+                                    <!-- Gate In -->
+                                    <th style="text-align: center;">Kurang</th>
+                                    <th style="text-align: center;">Lebih</th>
+                                    <th style="text-align: center;">Pecah</th>
+                                    <th style="text-align: center;">Rusak</th>
+                                    <!-- Gate Out -->
+                                    <th style="text-align: center;">Kurang</th>
+                                    <th style="text-align: center;">Lebih</th>
+                                    <th style="text-align: center;">Pecah</th>
+                                    <th style="text-align: center;">Rusak</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -276,7 +285,17 @@ $data = json_decode($content, true);
                                                             (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS CT_masuk,
                                                             (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS BTL_masuk,
                                                             (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS CT_keluar,
-                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS BTL_keluar
+                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS BTL_keluar,
+                                                            -- IN
+                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS K_IN,
+                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS L_IN,
+                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS P_IN,
+                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS R_IN,
+                                                            -- OUT
+                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS K_OUT,
+                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS L_OUT,
+                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS P_OUT,
+                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS R_OUT
                                                             FROM plb_barang AS brg
                                                             LEFT OUTER JOIN plb_barang_ct AS ct ON brg.NOMOR_AJU=ct.NOMOR_AJU AND brg.ID=ct.ID_BARANG
                                                             LEFT OUTER JOIN plb_barang_ct_botol AS btl ON brg.NOMOR_AJU=btl.NOMOR_AJU AND brg.ID=btl.ID_BARANG AND ct.ID=btl.ID_CT
