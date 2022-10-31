@@ -24,8 +24,8 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Gate In/Detail/CT';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
-    $InputAction          = 'Cek Barang Masuk';
+    $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'];
+    $InputAction          = 'Cek Barang Keluar';
     $InputDate            = date('Y-m-d h:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
@@ -74,7 +74,7 @@ if (isset($_POST["kurang_"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Gate In/Detail/CT';
-        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Kurang:" . $Kurang;
+        $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'] . " Botol Kurang:" . $Kurang;
         $InputAction          = 'Botol Kurang';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -121,7 +121,7 @@ if (isset($_POST["lebih_"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Gate In/Detail/CT';
-        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Lebih:" . $Lebih;
+        $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'] . " Botol Lebih:" . $Lebih;
         $InputAction          = 'Botol Lebih';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -173,7 +173,7 @@ if (isset($_POST["pecah_"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Gate In/Detail/CT';
-        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Pecah:" . $Pecah;
+        $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'] . " Botol Pecah:" . $Pecah;
         $InputAction          = 'Botol Pecah';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -224,7 +224,7 @@ if (isset($_POST["rusak_"])) {
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
         $InputModul           = 'Gate In/Detail/CT';
-        $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Botol Rusak:" . $Rusak;
+        $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'] . " Botol Rusak:" . $Rusak;
         $InputAction          = 'Botol Rusak';
         $InputDate            = date('Y-m-d h:m:i');
 
@@ -260,18 +260,18 @@ if (isset($_POST["simpan"])) {
     $TLS = $A_BOTOL * $A_LITER;
     $NTS = $TLS * $TOTAL_BOTOL;
 
-    $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
-                                                  OPERATOR_ONE='$meOK',
-                                                  TGL_CEK='$InputDate',
-                                                  CHECKING='DONE',
-                                                  STATUS_CT='Complete',
-                                                  DATE_CT='$InputDate',
-                                                  BOTOL='$A_BOTOL',
-                                                  TOTAL_BOTOL_AKHIR='$TOTAL_BOTOL',
-                                                  LITER='$A_LITER',
-                                                  TOTAL_LITER_AKHIR='$TLS',
-                                                  TOTAL_CT_AKHIR='$TOTAL_CT',
-                                                  NETTO_AKHIR='$NTS'
+    $query = $dbcon->query("UPDATE plb_barang SET STATUS_2='Sesuai',
+                                                  OPERATOR_ONE_2='$meOK',
+                                                  TGL_CEK_2='$InputDate',
+                                                  CHECKING_2='DONE',
+                                                  STATUS_CT_2='Complete',
+                                                  DATE_CT_2='$InputDate',
+                                                  BOTOL_2='$A_BOTOL',
+                                                  TOTAL_BOTOL_AKHIR_2='$TOTAL_BOTOL',
+                                                  LITER_2='$A_LITER',
+                                                  TOTAL_LITER_AKHIR_2='$TLS',
+                                                  TOTAL_CT_AKHIR_2='$TOTAL_CT',
+                                                  NETTO_AKHIR_2='$NTS'
                             WHERE ID='$ID'");
 
     // FOR AKTIFITAS
@@ -282,8 +282,8 @@ if (isset($_POST["simpan"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Gate In/Detail';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Status: Complete";
-    $InputAction          = 'Cek Barang Masuk';
+    $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'] . " Status: Complete";
+    $InputAction          = 'Cek Barang Keluar';
     $InputDate            = date('Y-m-d h:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
@@ -317,8 +317,8 @@ if (isset($_POST["Delete_"])) {
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
     $InputModul           = 'Gate In/Detail';
-    $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'] . " Status: Broken CT";
-    $InputAction          = 'Cek Barang Masuk Broken CT';
+    $InputDescription     = $me . " Cek Barang Keluar: ID Barang Keluar" . @$_GET['ID_BARANG'] . " Status: Broken CT";
+    $InputAction          = 'Cek Barang Keluar Broken CT';
     $InputDate            = date('Y-m-d h:m:i');
 
     $query .= $dbcon->query("INSERT INTO tbl_aktifitas
@@ -507,7 +507,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Data Barang Masuk: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Data Barang Keluar: <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?></h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
