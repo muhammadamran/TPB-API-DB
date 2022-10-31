@@ -437,15 +437,15 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
+                                                            <?php if ($rowBarang['CHECKING_2'] == 'Checking Botol') { ?>
                                                                 <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Keluar!">
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
-                                                            <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
+                                                            <?php } else if ($rowBarang['CHECKING_2'] == 'Botol') { ?>
                                                                 <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Keluar!">
                                                                     <i class="fa-solid fa-check"></i>
                                                                 </span>
-                                                            <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
+                                                            <?php } else if ($rowBarang['CHECKING_2'] == 'DONE') { ?>
                                                                 <span class="btn btn-sm btn-success" data-toggle="popover" data-trigger="hover" data-title="Barang Di Simpan Di GB" data-placement="top" data-content="Barang Di Simpan Di GB!">
                                                                     <i class="fa-solid fa-house-circle-check"></i>
                                                                 </span>
