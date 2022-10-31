@@ -305,9 +305,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <div style="font-size: 12px;">
                                                                                         <i class="fas fa-calendar-alt"></i>
                                                                                     </div>
-                                                                                    <!-- <div style="font-size: 8px;">
-                                                                                        <font>Update Tanggal Keluar</font>
-                                                                                    </div> -->
                                                                                 </div>
                                                                             </a>
                                                                         </div>
@@ -317,9 +314,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <div style="font-size: 12px;">
                                                                                         <i class="fas fa-file"></i>
                                                                                     </div>
-                                                                                    <!-- <div style="font-size: 8px;">
-                                                                                        <font>Upload Berita Acara!</font>
-                                                                                    </div> -->
                                                                                 </div>
                                                                             </a>
                                                                         </div>
@@ -331,9 +325,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 <div style="font-size: 12px;">
                                                                                     <i class="fas fa-eye"></i>
                                                                                 </div>
-                                                                                <!-- <div style="font-size: 8px;">
-                                                                                    <font>No. AJU GB & Berita Acara Terisi!</font>
-                                                                                </div> -->
                                                                             </div>
                                                                         </font>
                                                                     </a>
@@ -342,15 +333,12 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                     <?php } else { ?>
                                                         <div>
-                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['ID'] ?>" class="btn btn-yellow" target="_blank">
+                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-success">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Keluar.">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
                                                                             <i class="fas fa-warning"></i>
                                                                         </div>
-                                                                        <!-- <div style="font-size: 8px;">
-                                                                            <font>Cek Barang Keluar!</font>
-                                                                        </div> -->
                                                                     </div>
                                                                 </font>
                                                             </a>
