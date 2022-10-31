@@ -47,9 +47,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                     ");
                 }
 
-                $query .= $dbcon->query("UPDATE plb_barang SET STATUS_2='Sesuai',
-                                                           OPERATOR_ONE_2='$meOK',
-                                                           TGL_CEK_2='$InputDate'                                                     
+                $query .= $dbcon->query("UPDATE plb_barang SET STATUS_2='Sesuai'                                                     
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
 
                 // FOR AKTIFITAS
