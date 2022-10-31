@@ -25,9 +25,9 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
             $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
             $dataBarang      = mysqli_fetch_array($contentBarang);
             $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
-            var_dump($jml_pcs);
-            exit;
             $pcs             = str_replace(".0000", "", "$jml_pcs");
+            var_dump($pcs);
+            exit;
             // BOTOL
             $botol           = explode('X', $dataBarang['UKURAN']);
             $t_botol         = $botol[0];
