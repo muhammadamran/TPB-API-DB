@@ -250,17 +250,11 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            -- BARANG CT
-                                                            LEFT OUTER JOIN plb_barang_ct AS ct ON plb.NOMOR_AJU=ct.NOMOR_AJU
-                                                            -- BARANG BOTOL + LITER
-                                                            LEFT OUTER JOIN plb_barang_ct_botol AS btl ON plb.NOMOR_AJU=ct.NOMOR_AJU
-                                                            -- OTHERS
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=hdr.NOMOR_AJU
-                                                            ORDER BY plb.ID ASC", 0);
+                                $dataTable = $dbcon->query("SELECT * 
+                                                            FROM plb_barang AS brg
+                                                            LEFT OUTER JOIN plb_barang_ct AS ct ON brg.NOMOR_AJU=ct.NOMOR_AJU AND brg.ID=ct.ID_BARANG
+                                                            LEFT OUTER JOIN plb_barang_ct_botol AS btl ON brg.NOMOR_AJU=btl.NOMOR_AJU AND brg.ID=btl.ID_BARANG AND ct.ID=btl.ID_CT
+                                                            GROUP BY brg.ID", 0);
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
