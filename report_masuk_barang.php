@@ -304,7 +304,7 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <td>
-                                                <?= $row['bk_nama_operator']; ?>
+                                                <?= $row['bc_in']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
