@@ -55,8 +55,8 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                                            LITER_GB='$t_liter',                                                      
                                                            NETTO_AKHIR_GB='$total_netto'                                                      
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
-            var_dump($query);
-            exit;
+            // var_dump($query);
+            // exit;
             // FOR AKTIFITAS
             $me         = $_SESSION['username'];
             $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
@@ -76,9 +76,9 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
         }
     }
     if ($query) {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Success';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$AJU&AlertSimpan=Success';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSimpan=Failed';</script>";
+        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=$AJU&AlertSimpan=Failed';</script>";
     }
 }
 
@@ -164,13 +164,13 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
                            ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
 
                         if ($query) {
-                            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "&AlertSimpan=Success'</script>";
+                            echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=" . $_GET['AJU'] . "&AlertSimpan=Success'</script>";
                         } else {
-                            echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "&AlertSimpan=Failed';</script>";
+                            echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=" . $_GET['AJU'] . "&AlertSimpan=Failed';</script>";
                         }
                     } else {
                         // Sudah Ada di plb_barang_ct
-                        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=" . $_GET['AJU'] . "'</script>";
+                        echo "<script>window.location.href='gm_pengeluaran_detail.php?AJU=" . $_GET['AJU'] . "'</script>";
                     }
                 }
             }
