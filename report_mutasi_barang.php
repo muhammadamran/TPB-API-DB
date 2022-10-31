@@ -281,7 +281,7 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT *,brg.ID,brg.KODE_BARANG,
+                                $dataTable = $dbcon->query("SELECT *,brg.ID,brg.KODE_BARANG,rcd.bm_nama_operator,rcd.bk_nama_operator,rcd.bc_in,rcd.bc_out,
                                                             (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS CT_masuk,
                                                             (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS BTL_masuk,
                                                             (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS CT_keluar,
@@ -463,6 +463,7 @@ $data = json_decode($content, true);
                                                     <?= $row['bc_out']; ?>
                                                 <?php } ?>
                                             </td>
+
                                         </tr>
                                     <?php
                                         $no++;
