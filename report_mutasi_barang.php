@@ -294,24 +294,36 @@ $data = json_decode($content, true);
                                                     <?= $row['KODE_SATUAN']; ?>
                                                 <?php } ?>
                                             </td>
-                                            <!-- Jenis -->
-                                            <td><?= $row['URAIAN']; ?></td>
-                                            <td><?= $row['UKURAN']; ?></td>
-                                            <td><?= $row['TIPE']; ?></td>
-                                            <td>
-                                                <div style="display: flex;justify-content: space-between;align-items: center">
-                                                    <font><?= $row['KODE_SATUAN']; ?></font>
-                                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                                                </div>
+                                            <td style="text-align: center;">
+                                                0
                                             </td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
                                         </tr>
                                     <?php
                                         $no++;
