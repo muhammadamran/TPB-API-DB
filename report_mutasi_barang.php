@@ -263,10 +263,10 @@ $data = json_decode($content, true);
                                     <th style="text-align: center;">Botol</th>
                                     <th style="text-align: center;">CT</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
-                                    <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
-                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">In</th>
+                                    <th style="text-align: center;">Out</th>
+                                    <th style="text-align: center;">In</th>
+                                    <th style="text-align: center;">Out</th>
                                     <!-- Gate In -->
                                     <th style="text-align: center;">Kurang</th>
                                     <th style="text-align: center;">Lebih</th>
