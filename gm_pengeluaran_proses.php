@@ -23,10 +23,10 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
         if (@$rowLine['ID']) {
             $ID = $rowLine['ID'];
             $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
-            var_dump($contentBarang);
-            exit;
             $dataBarang      = mysqli_fetch_array($contentBarang);
             $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
+            var_dump($jml_pcs);
+            exit;
             $pcs             = str_replace(".0000", "", "$jml_pcs");
             // BOTOL
             $botol           = explode('X', $dataBarang['UKURAN']);
