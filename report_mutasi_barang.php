@@ -273,8 +273,10 @@ $data = json_decode($content, true);
                             <tbody>
                                 <?php
                                 $dataTable = $dbcon->query("SELECT *,brg.ID,brg.KODE_BARANG,
-                                                            (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID) AS CT,
-                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID) AS BTL
+                                                            (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS CT_masuk,
+                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='IN') AS BTL_masuk,
+                                                            (SELECT COUNT(*) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS CT_keluar,
+                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS BTL_keluar
                                                             FROM plb_barang AS brg
                                                             LEFT OUTER JOIN plb_barang_ct AS ct ON brg.NOMOR_AJU=ct.NOMOR_AJU AND brg.ID=ct.ID_BARANG
                                                             LEFT OUTER JOIN plb_barang_ct_botol AS btl ON brg.NOMOR_AJU=btl.NOMOR_AJU AND brg.ID=btl.ID_BARANG AND ct.ID=btl.ID_CT
@@ -320,34 +322,48 @@ $data = json_decode($content, true);
                                             </td>
                                             <!-- Saldo Awal -->
                                             <td style="text-align: center;">
-                                                <?php if ($row['CT'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['CT']; ?>
-                                                <?php } ?>
+                                                0
                                             </td>
                                             <td style="text-align: center;">
-                                                <?php if ($row['BTL'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['BTL']; ?>
-                                                <?php } ?>
+                                                0
                                             </td>
                                             <!-- End Saldo Awal -->
+                                            <!-- Mutasi Masuk -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?php if ($row['CT_masuk'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['CT_masuk']; ?>
+                                                <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                0
+                                                <?php if ($row['BTL_masuk'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['BTL_masuk']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- End Mutasi Masuk -->
+                                            <!-- Mutasi keluar -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['CT_keluar'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['CT_keluar']; ?>
+                                                <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                0
+                                                <?php if ($row['BTL_keluar'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['BTL_keluar']; ?>
+                                                <?php } ?>
                                             </td>
-                                            <td style="text-align: center;">
-                                                0
-                                            </td>
+                                            <!-- End Mutasi keluar -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
