@@ -13,6 +13,10 @@ $result_out = mysqli_fetch_array($gate_out);
                         $uriSegments[1] == 'gm_pemasukan_ct_detail.php' ||
                         $uriSegments[1] == 'gm_pemasukan_proses.php' ||
                         $uriSegments[1] == 'gm_pengeluaran.php' ||
+                        $uriSegments[1] == 'gm_pengeluaran_detail.php' ||
+                        $uriSegments[1] == 'gm_pengeluaran_ct.php' ||
+                        $uriSegments[1] == 'gm_pengeluaran_ct_detail.php' ||
+                        $uriSegments[1] == 'gm_pengeluaran_proses.php' ||
                         $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
     <a href="javascript:;">
         <b class="caret"></b>
@@ -33,7 +37,7 @@ $result_out = mysqli_fetch_array($gate_out);
                 <?php } ?>
             </a>
         </li>
-        <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' || $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
+        <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' || $uriSegments[1] == 'gm_pengeluaran_detail.php' || $uriSegments[1] == 'gm_pengeluaran_ct.php' || $uriSegments[1] == 'gm_pengeluaran_proses.php' || $uriSegments[1] == 'gm_pengeluaran_ct_detail.php' ? 'active' : '' ?>">
             <a href="gm_pengeluaran.php">
                 Gate Out
                 <?php if ($result_out['total_out'] == NULL) { ?>
