@@ -343,7 +343,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                 <div style="display: flex;justify-content: flex-start;align-content: baseline;">
                                     <?php
                                     $checking = $dbcon->query("SELECT brg.NOMOR_AJU,
-                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Done') AS checking,
+                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING_2='Done') AS checking,
                                                             (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "') AS barang
                                                             FROM plb_barang AS brg  WHERE brg.NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY brg.NOMOR_AJU");
                                     $resultChecking = mysqli_fetch_array($checking);
