@@ -197,22 +197,23 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <tbody>
                                 <?php
                                 if (isset($_POST['filter'])) {
-                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=plb.NOMOR_AJU AS total_All
+                                    $dataTable = $dbcon->query("SELECT *,rcd.bm_no_aju_plb,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS_GB IS NOT NULL AND NOMOR_AJU=rcd.bm_no_aju_plb) AS total_All
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah LIKE '%" . $_POST['AJU_GB'] . "%' AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else if (isset($_POST['show_all'])) {
-                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
+                                    $dataTable = $dbcon->query("SELECT *,rcd.bm_no_aju_plb,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS_GB IS NOT NULL AND NOMOR_AJU=rcd.bm_no_aju_plb) AS total_All
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
-                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
+                                                                WHERE rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT *,plb.NOMOR_AJU ,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=plb.NOMOR_AJU AS total_All
+                                    $dataTable = $dbcon->query("SELECT *,rcd.bm_no_aju_plb,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB,
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS_GB IS NOT NULL AND NOMOR_AJU=rcd.bm_no_aju_plb) AS total_All
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
-                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC LIMIT 100", 0);
+                                                                WHERE rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC LIMIT 100", 0);
                                 }
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
