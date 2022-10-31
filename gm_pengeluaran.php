@@ -182,7 +182,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <th rowspan="2" width="1%">No.</th>
                                     <th colspan="3" class="text-nowrap" style="text-align: center;">PLB</th>
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GB</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
                                     <!-- PLB -->
@@ -272,7 +272,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: center;align-items: center;width: 300px;">
+                                                <div>
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['tpb_total_All']) { ?>
                                                         <div>
                                                             <a href="gm_pengeluaran_detail.php?AJU=<?= $row['ID'] ?>" class="btn btn-success" target="_blank">
@@ -281,9 +281,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div style="font-size: 12px;">
                                                                             <i class="fas fa-check-circle"></i>
                                                                         </div>
-                                                                        <!-- <div style="font-size: 8px;">
-                                                                            <font>Barang Keluar Sudah diCek!</font>
-                                                                        </div> -->
                                                                     </div>
                                                                 </font>
                                                             </a>
@@ -296,9 +293,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div style="font-size: 12px;">
                                                                                 <i class="fas fa-plus-circle"></i>
                                                                             </div>
-                                                                            <!-- <div style="font-size: 8px;">
-                                                                                <font>Add</font>
-                                                                            </div> -->
                                                                         </div>
                                                                     </font>
                                                                 </a>
