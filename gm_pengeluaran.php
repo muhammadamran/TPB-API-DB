@@ -213,7 +213,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC LIMIT 100", 0);
                                 }
                                 if ($dataTable) : $no = 1;
-                                    foreach ($dataTable as $rowBarang) :
+                                    foreach ($dataTable as $row) :
                                 ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
