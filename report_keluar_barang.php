@@ -191,20 +191,15 @@ $data = json_decode($content, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="12">
-                                            <center>
-                                                <div style="display: flex;justify-content: center; align-items: center">
-                                                    <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            ORDER BY plb.ID ASC", 0);
+                                if ($dataTable) : $no = 1;
+                                    foreach ($dataTable as $row) :
+                                ?>
                                         <tr>
                                             <!-- 9 -->
                                             <!-- NO -->
@@ -308,8 +303,21 @@ $data = json_decode($content, true);
                                                 -
                                             </td>
                                         </tr>
-                                    <?php } ?>
-                                <?php } ?>
+                                    <?php
+                                        $no++;
+                                    endforeach
+                                    ?>
+                                <?php else : ?>
+                                    <tr>
+                                        <td colspan="15">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
                             </tbody>
                         </table>
                     </div>
