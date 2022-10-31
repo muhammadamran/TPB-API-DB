@@ -15,8 +15,6 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
 
     $query = $dbcon->query("UPDATE plb_barang SET CHECKING_2='Checking Botol'
                             WHERE ID='$keyy'");
-    var_dump($query);
-    exit;
 
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
