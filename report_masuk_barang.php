@@ -203,9 +203,9 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+                                $dataTable = $dbcon->query("SELECT * FROM plb_barang ORDER BY ID ASC", 0);
                                 if ($dataTable) : $noBarang = 1;
-                                    foreach ($dataTable as $rowBarang) :
+                                    foreach ($dataTable as $row) :
                                 ?>
                                         <tr>
                                             <!-- 9 -->
