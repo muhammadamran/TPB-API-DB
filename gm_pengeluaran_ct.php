@@ -16,7 +16,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     $dataCT    = mysqli_fetch_array($cekCT);
 
 
-    var_dump($cekCT);
+    var_dump($dataCT['ID_BARANG']);
     exit;
 
     if ($dataCT['ID_BARANG'] == NULL) {
