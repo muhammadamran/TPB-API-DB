@@ -192,7 +192,7 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                $dataTable = $dbcon->query("SELECT *,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
