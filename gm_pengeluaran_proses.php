@@ -13,8 +13,6 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     $meOK           = $_SESSION['username'];
 
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING_2 IS NULL", 0);
-    var_dump($dataTable);
-    exit;
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
             $ID = $rowLine['ID'];
