@@ -239,7 +239,7 @@ $data = json_decode($content, true);
                                     <th colspan="2" style="text-align: center;">Saldo Awal</th>
                                     <th colspan="2" style="text-align: center;">Mutasi Masuk</th>
                                     <th colspan="2" style="text-align: center;">Mutasi Keluar</th>
-                                    <th colspan="2" style="text-align: center;">Penyesuaian</th>
+                                    <!-- <th colspan="2" style="text-align: center;">Penyesuaian</th> -->
                                     <th colspan="2" style="text-align: center;">Saldo Akhir</th>
                                     <th colspan="2" style="text-align: center;">Stock Opname</th>
                                     <th colspan="2" style="text-align: center;">Selisih</th>
@@ -249,8 +249,8 @@ $data = json_decode($content, true);
                                     <th colspan="4" style="text-align: center;background: #90ca4b">Ket. Gate Out</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">CT</th>
-                                    <th style="text-align: center;">Botol</th>
+                                    <!-- <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th> -->
                                     <th style="text-align: center;">CT</th>
                                     <th style="text-align: center;">Botol</th>
                                     <th style="text-align: center;">CT</th>
@@ -394,13 +394,13 @@ $data = json_decode($content, true);
 
                                             <!-- Penyesuaian -->
                                             <!-- CT -->
-                                            <td style="text-align: center;">
+                                            <!-- <td style="text-align: center;">
                                                 <?= $row['PE_IN']; ?>
-                                            </td>
+                                            </td> -->
                                             <!-- Botol -->
-                                            <td style="text-align: center;">
+                                            <!-- <td style="text-align: center;">
                                                 <?= $row['PE_OUT']; ?>
-                                            </td>
+                                            </td> -->
                                             <!-- End Penyesuaian -->
 
                                             <!-- Saldo Akhir -->
@@ -437,8 +437,7 @@ $data = json_decode($content, true);
                                             <!-- IN -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['bm_nama_operator'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['bm_nama_operator']; ?>
                                                 <?php } ?>
@@ -446,8 +445,7 @@ $data = json_decode($content, true);
                                             <!-- OUT -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['bk_nama_operator'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['bk_nama_operator']; ?>
                                                 <?php } ?>
@@ -456,8 +454,7 @@ $data = json_decode($content, true);
                                             <!-- IN -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['bc_in'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['bc_in']; ?>
                                                 <?php } ?>
@@ -465,8 +462,7 @@ $data = json_decode($content, true);
                                             <!-- OUT -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['bc_out'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['bc_out']; ?>
                                                 <?php } ?>
@@ -475,8 +471,7 @@ $data = json_decode($content, true);
                                             <!-- KURANG -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['K_IN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['K_IN']; ?>
                                                 <?php } ?>
@@ -484,8 +479,7 @@ $data = json_decode($content, true);
                                             <!-- LEBIH -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['L_IN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['L_IN']; ?>
                                                 <?php } ?>
@@ -493,8 +487,7 @@ $data = json_decode($content, true);
                                             <!-- PECAH -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['P_IN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['P_IN']; ?>
                                                 <?php } ?>
@@ -502,8 +495,7 @@ $data = json_decode($content, true);
                                             <!-- RUSAK -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['R_IN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['R_IN']; ?>
                                                 <?php } ?>
@@ -512,8 +504,7 @@ $data = json_decode($content, true);
                                             <!-- KURANG -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['K_OUT'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['K_OUT']; ?>
                                                 <?php } ?>
@@ -521,8 +512,7 @@ $data = json_decode($content, true);
                                             <!-- LEBIH -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['L_OUT'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['L_OUT']; ?>
                                                 <?php } ?>
@@ -530,8 +520,7 @@ $data = json_decode($content, true);
                                             <!-- PECAH -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['P_OUT'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['P_OUT']; ?>
                                                 <?php } ?>
@@ -539,8 +528,7 @@ $data = json_decode($content, true);
                                             <!-- RUSAK -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['R_OUT'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    0
                                                 <?php } else { ?>
                                                     <?= $row['R_OUT']; ?>
                                                 <?php } ?>
