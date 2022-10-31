@@ -208,7 +208,7 @@ $data = json_decode($content, true);
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                                             ORDER BY plb.ID ASC", 0);
-                                if ($dataTable) : $noBarang = 1;
+                                if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
                                         <tr>
@@ -304,7 +304,7 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <td>
-                                                <?= $row['URAIAN_KANTOR']; ?>
+                                                <?= $row['KPPBC']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
@@ -413,7 +413,7 @@ $data = json_decode($content, true);
                                         </div>
                                         <!-- End Detail -->
                                     <?php
-                                        $noBarang++;
+                                        $no++;
                                     endforeach
                                     ?>
                                 <?php else : ?>
