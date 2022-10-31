@@ -245,8 +245,8 @@ $data = json_decode($content, true);
                                     <th colspan="2" style="text-align: center;">Selisih</th>
                                     <th colspan="2" style="text-align: center;">Petugas Sarinah</th>
                                     <th colspan="2" style="text-align: center;">Petugas BC</th>
-                                    <th colspan="4" style="text-align: center;">Ket. Gate In</th>
-                                    <th colspan="4" style="text-align: center;">Ket. Gate Out</th>
+                                    <th colspan="4" style="text-align: center;background: #f59c1a">Ket. Gate In</th>
+                                    <th colspan="4" style="text-align: center;background: #90ca4b">Ket. Gate Out</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">CT</th>
