@@ -344,9 +344,14 @@ $data = json_decode($content, true);
                                                                     <!-- Barang Masuk -->
                                                                     <div class="col-<?= $col; ?>">
                                                                         <div class="row">
-                                                                            <div class="col-md-12">
+                                                                            <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <h4>PLB</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <h4>GB</h4>
                                                                                 </div>
                                                                             </div>
                                                                             <hr>
