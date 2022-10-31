@@ -243,8 +243,8 @@ $data = json_decode($content, true);
                                     <th colspan="2" style="text-align: center;">Saldo Akhir</th>
                                     <th colspan="2" style="text-align: center;">Stock Opname</th>
                                     <th colspan="2" style="text-align: center;">Selisih</th>
-                                    <th rowspan="2" style="text-align: center;">Petugas Sarinah</th>
-                                    <th rowspan="2" style="text-align: center;">Petugas BC</th>
+                                    <th colspan="2" style="text-align: center;">Petugas Sarinah</th>
+                                    <th colspan="2" style="text-align: center;">Petugas BC</th>
                                     <th rowspan="2" style="text-align: center;">Keterangan</th>
                                 </tr>
                                 <tr>
@@ -321,14 +321,17 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <!-- Saldo Awal -->
+                                            <!-- CT -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
+                                            <!-- Botol -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
                                             <!-- End Saldo Awal -->
                                             <!-- Mutasi Masuk -->
+                                            <!-- CT -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['CT_masuk'] == NULL) { ?>
                                                     0
@@ -336,6 +339,7 @@ $data = json_decode($content, true);
                                                     <?= $row['CT_masuk']; ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- Botol -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['BTL_masuk'] == NULL) { ?>
                                                     0
@@ -345,6 +349,7 @@ $data = json_decode($content, true);
                                             </td>
                                             <!-- End Mutasi Masuk -->
                                             <!-- Mutasi keluar -->
+                                            <!-- CT -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['CT_keluar'] == NULL) { ?>
                                                     0
@@ -352,6 +357,7 @@ $data = json_decode($content, true);
                                                     <?= $row['CT_keluar']; ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- Botol -->
                                             <td style="text-align: center;">
                                                 <?php if ($row['BTL_keluar'] == NULL) { ?>
                                                     0
@@ -360,20 +366,83 @@ $data = json_decode($content, true);
                                                 <?php } ?>
                                             </td>
                                             <!-- End Mutasi keluar -->
+                                            <!-- Penyesuaian -->
+                                            <!-- CT -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
+                                            <!-- Botol -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
+                                            <!-- End Penyesuaian -->
+                                            <!-- Saldo Akhir -->
+                                            <!-- CT -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
+                                            <!-- Botol -->
                                             <td style="text-align: center;">
                                                 0
                                             </td>
+                                            <!-- End Saldo Akhir -->
+                                            <!-- Stok Opname -->
+                                            <!-- CT -->
                                             <td style="text-align: center;">
                                                 0
+                                            </td>
+                                            <!-- Botol -->
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <!-- End Stok Opname -->
+                                            <!-- Selisih -->
+                                            <!-- CT -->
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <!-- Botol -->
+                                            <td style="text-align: center;">
+                                                0
+                                            </td>
+                                            <!-- End Selisih -->
+                                            <!-- Petugas Sarinah-->
+                                            <!-- IN -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['bm_nama_operator'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['bm_nama_operator']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- OUT -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['bk_nama_operator'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['bk_nama_operator']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- Petugas BC -->
+                                            <!-- IN -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['bc_in'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['bc_in']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- OUT -->
+                                            <td style="text-align: center;">
+                                                <?php if ($row['bc_out'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['bc_out']; ?>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php
