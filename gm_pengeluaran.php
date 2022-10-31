@@ -275,7 +275,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div>
                                                     <?php if ($row['JUMLAH_BARANG'] == $row['tpb_total_All']) { ?>
                                                         <div>
-                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['ID'] ?>" class="btn btn-success" target="_blank">
+                                                            <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-success">
                                                                 <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['tpb_total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
                                                                     <div style="display: grid;">
                                                                         <div style="font-size: 12px;">
