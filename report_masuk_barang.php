@@ -206,7 +206,7 @@ $data = json_decode($content, true);
                                 $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                                             ORDER BY plb.ID ASC", 0);
                                 if ($dataTable) : $noBarang = 1;
                                     foreach ($dataTable as $row) :
