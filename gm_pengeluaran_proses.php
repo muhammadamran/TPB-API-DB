@@ -22,9 +22,9 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
             $ID = $rowLine['ID'];
-
-
             $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
+            var_dump($contentBarang);
+            exit;
             $dataBarang      = mysqli_fetch_array($contentBarang);
             $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
             $pcs             = str_replace(".0000", "", "$jml_pcs");
