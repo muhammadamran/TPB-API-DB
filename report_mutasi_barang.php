@@ -288,7 +288,7 @@ $data = json_decode($content, true);
                                                             (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS BTL_keluar,
                                                             -- PENYESUAIAN
                                                             (SELECT SUM(KURANG+LEBIH+PECAH+RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS PE_IN,
-                                                            (SELECT SUM(KURANG+LEBIH+PECAH+RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS OE_OUT,
+                                                            (SELECT SUM(KURANG+LEBIH+PECAH+RUSAK) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='OUT') AS PE_OUT,
                                                             -- IN
                                                             (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS K_IN,
                                                             (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE ID_BARANG=brg.ID AND POSISI='IN') AS L_IN,
