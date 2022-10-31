@@ -230,27 +230,50 @@ $data = json_decode($content, true);
                         <table id="table-mutasi-barang" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">No.</th>
-                                    <th style="text-align: center;">Kode Barang</th>
-                                    <th style="text-align: center;">Uraian Barang</th>
+                                    <th rowspan="2" width="1%">No.</th>
+                                    <th rowspan="2" style="text-align: center;">Kode Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Uraian Barang</th>
                                     <!-- <th style="text-align: center;">Jenis</th> -->
-                                    <th style="text-align: center;">Golongan</th>
-                                    <th style="text-align: center;">Satuan</th>
-                                    <th style="text-align: center;">Saldo Awal</th>
-                                    <th style="text-align: center;">Mutasi Masuk</th>
-                                    <th style="text-align: center;">Mutasi Keluar</th>
-                                    <th style="text-align: center;">Penyesuaian</th>
-                                    <th style="text-align: center;">Saldo Akhir</th>
-                                    <th style="text-align: center;">Stock Opname</th>
-                                    <th style="text-align: center;">Selisih</th>
-                                    <th style="text-align: center;">Petugas Sarinah</th>
-                                    <th style="text-align: center;">Petugas BC</th>
-                                    <th style="text-align: center;">Keterangan</th>
+                                    <th rowspan="2" style="text-align: center;">Golongan</th>
+                                    <th rowspan="2" style="text-align: center;">Satuan</th>
+                                    <th colspan="2" style="text-align: center;">Saldo Awal</th>
+                                    <th colspan="2" style="text-align: center;">Mutasi Masuk</th>
+                                    <th colspan="2" style="text-align: center;">Mutasi Keluar</th>
+                                    <th colspan="2" style="text-align: center;">Penyesuaian</th>
+                                    <th colspan="2" style="text-align: center;">Saldo Akhir</th>
+                                    <th colspan="2" style="text-align: center;">Stock Opname</th>
+                                    <th colspan="2" style="text-align: center;">Selisih</th>
+                                    <th rowspan="2" style="text-align: center;">Petugas Sarinah</th>
+                                    <th rowspan="2" style="text-align: center;">Petugas BC</th>
+                                    <th rowspan="2" style="text-align: center;">Keterangan</th>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
+                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Botol</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT *,brg.KODE_BARANG
+                                $dataTable = $dbcon->query("SELECT *,brg.KODE_BARANG,
+                                                            (SELECT SUM(TOTAL_BOTOL) FROM plb_barang_ct 
                                                             FROM plb_barang AS brg
                                                             LEFT OUTER JOIN plb_barang_ct AS ct ON brg.NOMOR_AJU=ct.NOMOR_AJU AND brg.ID=ct.ID_BARANG
                                                             LEFT OUTER JOIN plb_barang_ct_botol AS btl ON brg.NOMOR_AJU=btl.NOMOR_AJU AND brg.ID=btl.ID_BARANG AND ct.ID=btl.ID_CT
