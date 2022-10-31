@@ -197,17 +197,17 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <tbody>
                                 <?php
                                 if (isset($_POST['filter'])) {
-                                    $dataTable = $dbcon->query("SELECT * 
+                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah LIKE '%" . $_POST['AJU_GB'] . "%' AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else if (isset($_POST['show_all'])) {
-                                    $dataTable = $dbcon->query("SELECT * 
+                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * 
+                                    $dataTable = $dbcon->query("SELECT *,SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,,SUBSTR(rcd.bk_no_aju_sarinah,13,8) AS TGL_AJU_GB
                                                                 FROM rcd_status AS rcd 
                                                                 LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                                 WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.upload_beritaAcara_PLB IS NOT NULL ORDER BY rcd.rcd_id ASC LIMIT 100", 0);
@@ -240,41 +240,25 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 </div>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?php if ($row['JUMLAH_BARANG_PLB'] == NULL) { ?>
+                                                <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
                                                     <center>
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     </center>
                                                 <?php } else { ?>
-                                                    <?= $row['JUMLAH_BARANG_PLB']; ?> Barang
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['PERUSAHAAN']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['KODE_NEGARA_PEMASOK_PLB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['KODE_NEGARA_PEMASOK_PLB']; ?>
+                                                    <?= $row['JUMLAH_BARANG']; ?> Barang
                                                 <?php } ?>
                                             </td>
                                             <!-- TPB -->
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                                <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <?= $row['NOMOR_AJU']; ?>
+                                                    <?= $row['bk_no_aju_sarinah']; ?>
                                                 <?php } ?>
                                             </td>
                                             <?php
-                                            $dataTGLAJU_TPB = $row['TGL_AJU'];
+                                            $dataTGLAJU_TPB = $row['TGL_AJU_GB'];
                                             $dataTGLAJU_TPBY = substr($dataTGLAJU_TPB, 0, 4);
                                             $dataTGLAJU_TPBM = substr($dataTGLAJU_TPB, 4, 2);
                                             $dataTGLAJU_TPBD =  substr($dataTGLAJU_TPB, 6, 2);
@@ -285,31 +269,6 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div style="width: 85px;">
                                                     <i class="fas fa-calendar-alt"></i> <?= $datTGLAJU_TPB ?>
                                                 </div>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['JUMLAH_BARANG']; ?> Barang
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['NAMA_PENGUSAHA'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NAMA_PENGUSAHA']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['KODE_NEGARA_PEMASOK']; ?>
-                                                <?php } ?>
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
@@ -408,7 +367,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             <!-- Aksi -->
                                         </tr>
                                         <!-- Edit -->
-                                        <div class="modal fade" id="edit<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="edit<?= $row['rcd_id'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
@@ -474,7 +433,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                         </div>
                                         <!-- End Edit -->
                                         <!-- Upload -->
-                                        <div class="modal fade" id="upload<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="upload<?= $row['rcd_id'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
@@ -550,7 +509,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                         </div>
                                         <!-- End Upload -->
                                         <!-- Detail -->
-                                        <div class="modal fade" id="detail<?= $row['ID'] ?>">
+                                        <div class="modal fade" id="detail<?= $row['rcd_id'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
