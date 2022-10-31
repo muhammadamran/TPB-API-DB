@@ -15,6 +15,10 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$keyy'");
     $dataCT    = mysqli_fetch_array($cekCT);
 
+
+    var_dump($cekCT);
+    exit;
+
     if ($dataCT['ID_BARANG'] == NULL) {
         $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$keyy'");
         $dataBarang      = mysqli_fetch_array($contentBarang);
