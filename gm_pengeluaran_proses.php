@@ -12,10 +12,12 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     $InputDate      = date('Y-m-d h:m:i');
     $meOK           = $_SESSION['username'];
 
-    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING_2 IS NULL", 0);
+    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING_GB IS NULL", 0);
     foreach ($dataTable as $rowLine) {
         if (@$rowLine['ID']) {
             $ID = $rowLine['ID'];
+            var_dump($ID);
+            exit;
             // CEK CT
             $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$ID'");
             $dataCT    = mysqli_fetch_array($cekCT);
@@ -47,7 +49,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                     ");
                 }
 
-                $query .= $dbcon->query("UPDATE plb_barang SET STATUS_2='Sesuai'                                                     
+                $query .= $dbcon->query("UPDATE plb_barang SET STATUS_GB='Sesuai'                                                     
                                      WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
 
                 // FOR AKTIFITAS

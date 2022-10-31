@@ -11,7 +11,7 @@ include "include/cssDatatables.php";
 $contentBarangTotal     = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangTotal        = mysqli_fetch_array($contentBarangTotal);
 // CEK BARANG
-$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING_2 IS NOT NULL AND STATUS_CT_2='Complete' AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING_GB IS NOT NULL AND STATUS_CT_GB='Complete' AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek          = mysqli_fetch_array($contentBarangCek);
 // DETAIL, PERUSAHAAN DAN TUJUAN
 $contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
@@ -21,7 +21,7 @@ $dataHPPT               = $dbcon->query("SELECT SUM(HARGA_PENYERAHAN) AS HP, SUM
                                         FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
 $HPPT                   = mysqli_fetch_array($dataHPPT);
 // CEK ADA PENGECEKAN BOTOL ATAU TIDAK
-$contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING_2) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING_2='Checking Botol' ORDER BY ID ASC", 0);
+$contentcekbrgvalidasi  = $dbcon->query("SELECT COUNT(CHECKING_GB) AS validasi_cek FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING_GB='Checking Botol' ORDER BY ID ASC", 0);
 $cekbrgvalidasi         = mysqli_fetch_array($contentcekbrgvalidasi);
 // CEK CT
 $contentCT              = $dbcon->query("SELECT SUM(JUMLAH_SATUAN) AS p_CT FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY NOMOR_AJU ORDER BY ID", 0);
@@ -343,7 +343,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                 <div style="display: flex;justify-content: flex-start;align-content: baseline;">
                                     <?php
                                     $checking = $dbcon->query("SELECT brg.NOMOR_AJU,
-                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING_2='Done') AS checking,
+                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING_GB='Done') AS checking,
                                                             (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "') AS barang
                                                             FROM plb_barang AS brg  WHERE brg.NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY brg.NOMOR_AJU");
                                     $resultChecking = mysqli_fetch_array($checking);
@@ -437,15 +437,15 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                     <tr class="odd gradeX">
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
-                                                            <?php if ($rowBarang['CHECKING_2'] == 'Checking Botol') { ?>
+                                                            <?php if ($rowBarang['CHECKING_GB'] == 'Checking Botol') { ?>
                                                                 <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Keluar!">
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
-                                                            <?php } else if ($rowBarang['CHECKING_2'] == 'Botol') { ?>
+                                                            <?php } else if ($rowBarang['CHECKING_GB'] == 'Botol') { ?>
                                                                 <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Keluar!">
                                                                     <i class="fa-solid fa-check"></i>
                                                                 </span>
-                                                            <?php } else if ($rowBarang['CHECKING_2'] == 'DONE') { ?>
+                                                            <?php } else if ($rowBarang['CHECKING_GB'] == 'DONE') { ?>
                                                                 <span class="btn btn-sm btn-success" data-toggle="popover" data-trigger="hover" data-title="Barang Di Simpan Di GB" data-placement="top" data-content="Barang Di Simpan Di GB!">
                                                                     <i class="fa-solid fa-house-circle-check"></i>
                                                                 </span>
@@ -457,13 +457,13 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][KODE_BARANG]" value="<?= $rowBarang['KODE_BARANG'] ?>">
                                                                     <!-- PLB_BARANG -->
                                                                     <!-- STATUS,OPERATOR_ONE,TGL_CEK -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_2]" value="Sesuai">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE_2]" value="<?= $_SESSION['username'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK_2]" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING_2]" value="DONE">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_GB]" value="Sesuai">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE_GB]" value="<?= $_SESSION['username'] ?>">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK_GB]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING_GB]" value="DONE">
                                                                     <!-- STATUS_CT,DATE_CT,TOTAL_BOTOL_AKHIR,TOTAL_LITER_AKHIR,TOTAL_CT_AKHIR -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_CT_2]" value="Complete">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][DATE_CT_2]" value="<?= date('Y-m-d H:m:i') ?>">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_CT_GB]" value="Complete">
+                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][DATE_CT_GB]" value="<?= date('Y-m-d H:m:i') ?>">
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL_AKHIR]" value="<?= $t_botol * $pcs ?>">
                                                                     <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
@@ -475,7 +475,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         </td>
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
-                                                                <?php if ($rowBarang['CHECKING_2'] == 'DONE') { ?>
+                                                                <?php if ($rowBarang['CHECKING_GB'] == 'DONE') { ?>
                                                                     <a href="gm_pengeluaran_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-sm btn-custom btn-success">
                                                                         <i class="fas fa-eye" style="font-size: 16px;"></i>
                                                                         <br>
@@ -507,7 +507,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                 </a>
                                                             <?php } ?>
                                                             <div style="margin-top: 5px;font-size: 9px;">
-                                                                <?php if ($rowBarang['STATUS_2'] != NULL) { ?>
+                                                                <?php if ($rowBarang['STATUS_GB'] != NULL) { ?>
                                                                     <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
                                                                 <?php } ?>
                                                             </div>

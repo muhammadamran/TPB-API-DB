@@ -13,7 +13,7 @@ if (isset($_GET["aksi"]) == 'SubmitCT') {
     $keyy      = @$_GET['ID_BARANG'];
     // CEK CT
 
-    $query = $dbcon->query("UPDATE plb_barang SET CHECKING_2='Checking Botol'
+    $query = $dbcon->query("UPDATE plb_barang SET CHECKING_GB='Checking Botol'
                             WHERE ID='$keyy'");
 
     // FOR AKTIFITAS
@@ -260,18 +260,18 @@ if (isset($_POST["simpan"])) {
     $TLS = $A_BOTOL * $A_LITER;
     $NTS = $TLS * $TOTAL_BOTOL;
 
-    $query = $dbcon->query("UPDATE plb_barang SET STATUS_2='Sesuai',
-                                                  OPERATOR_ONE_2='$meOK',
-                                                  TGL_CEK_2='$InputDate',
-                                                  CHECKING_2='DONE',
-                                                  STATUS_CT_2='Complete',
-                                                  DATE_CT_2='$InputDate',
-                                                  BOTOL_2='$A_BOTOL',
-                                                  TOTAL_BOTOL_AKHIR_2='$TOTAL_BOTOL',
-                                                  LITER_2='$A_LITER',
-                                                  TOTAL_LITER_AKHIR_2='$TLS',
-                                                  TOTAL_CT_AKHIR_2='$TOTAL_CT',
-                                                  NETTO_AKHIR_2='$NTS'
+    $query = $dbcon->query("UPDATE plb_barang SET STATUS_GB='Sesuai',
+                                                  OPERATOR_ONE_GB='$meOK',
+                                                  TGL_CEK_GB='$InputDate',
+                                                  CHECKING_GB='DONE',
+                                                  STATUS_CT_GB='Complete',
+                                                  DATE_CT_GB='$InputDate',
+                                                  BOTOL_GB='$A_BOTOL',
+                                                  TOTAL_BOTOL_AKHIR_GB='$TOTAL_BOTOL',
+                                                  LITER_GB='$A_LITER',
+                                                  TOTAL_LITER_AKHIR_GB='$TLS',
+                                                  TOTAL_CT_AKHIR_GB='$TOTAL_CT',
+                                                  NETTO_AKHIR_GB='$NTS'
                             WHERE ID='$ID'");
 
     // FOR AKTIFITAS
