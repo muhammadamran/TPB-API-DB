@@ -88,9 +88,9 @@ if (isset($_POST["kurang_"])) {
                                                          TOTAL_LITER='$t_liter'
                             WHERE ID='$ID_CT'");
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
-    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG)
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,KURANG,POSISI)
     VALUES
-    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang')");
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Kurang','IN')");
 
         // FOR AKTIFITAS
         $me         = $_SESSION['username'];
@@ -135,9 +135,9 @@ if (isset($_POST["lebih_"])) {
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
-    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH)
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,LEBIH,'POSISI')
     VALUES
-    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih')");
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Lebih','IN')");
 
         // FOR AKTIFITAS
         $me         = $_SESSION['username'];
@@ -187,9 +187,9 @@ if (isset($_POST["pecah_"])) {
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
-    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH)
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,PECAH,'POSISI')
     VALUES
-    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah')");
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Pecah','IN')");
 
         // FOR AKTIFITAS
         $me         = $_SESSION['username'];
@@ -238,9 +238,9 @@ if (isset($_POST["rusak_"])) {
                             WHERE ID='$ID_CT'");
 
         $query .= $dbcon->query("INSERT INTO plb_barang_ct_botol
-    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,RUSAK)
+    (ID,ID_CT,NOMOR_AJU,ID_BARANG,KODE_BARANG,RUSAK,'POSISI')
     VALUES
-    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Rusak')");
+    ('','$ID_CT','$NOMOR_AJU','$ID_BARANG','$KODE_BARANG','$Rusak','IN')");
 
         // FOR AKTIFITAS
         $me         = $_SESSION['username'];
@@ -333,7 +333,8 @@ if (isset($_POST["Delete_"])) {
     $InputDate         = date('Y-m-d h:m:i');
 
     $query = $dbcon->query("UPDATE plb_barang_ct SET STATUS_CT='Broken',
-                                                     DATE_CT='$InputDate'
+                                                     DATE_CT='$InputDate',
+                                                     POSISI='IN'
                             WHERE ID='$ID_CT'");
     // FOR AKTIFITAS
     $me         = $_SESSION['username'];
