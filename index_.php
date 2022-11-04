@@ -19,36 +19,35 @@ include "include/top-header.php";
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span
-                    id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;">
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;">
                         <?= date('h:m:i a') ?></font></span></button>
         </div>
     </div>
     <div class="line-page"></div>
     <style type="text/css">
-    #for-alert-index {
-        margin-bottom: -35px;
-        padding: 10px;
-    }
+        #for-alert-index {
+            margin-bottom: -35px;
+            padding: 10px;
+        }
 
-    #for-info-index {
-        /*margin-top: 30px;*/
-        margin-bottom: -50px;
-        padding: 10px;
-    }
+        #for-info-index {
+            /*margin-top: 30px;*/
+            margin-bottom: -50px;
+            padding: 10px;
+        }
     </style>
     <!-- begin row -->
     <div class="col-xl-12 col-md-12" id="for-alert-index">
         <!-- Alert -->
         <?php if ($access['nama_lengkap'] == NULL) { ?>
-        <div class="note note-danger">
-            <div class="note-icon"><i class="fas fa-id-badge"></i></div>
-            <div class="note-content">
-                <h4><b>Lengkapi Profile Anda!</b></h4>
-                <p> Anda belum melengkapi profile anda! <a href="usr_profile.php" style="color:#bd0500;"><b>Klik
-                            disini!</b></a> untuk melengkapi data profile anda!</p>
+            <div class="note note-danger">
+                <div class="note-icon"><i class="fas fa-id-badge"></i></div>
+                <div class="note-content">
+                    <h4><b>Lengkapi Profile Anda!</b></h4>
+                    <p> Anda belum melengkapi profile anda! <a href="usr_profile.php" style="color:#bd0500;"><b>Klik
+                                disini!</b></a> untuk melengkapi data profile anda!</p>
+                </div>
             </div>
-        </div>
         <?php } else { ?>
         <?php } ?>
         <!-- End Alert -->
@@ -59,17 +58,15 @@ include "include/top-header.php";
         $resultForInfo = mysqli_fetch_array($dataForInfo);
         ?>
         <?php if ($resultForInfo['info_tipe'] == 'Text Berjalan') { ?>
-        <div style="background: <?= $resultForInfo['info_bg'] ?>;padding: 5px;border-radius: 5px;margin-bottom: 10px;">
-            <marquee style="color: <?= $resultForInfo['info_color'] ?>" class="text-announcement-m"><b><i
-                        class="<?= $resultForInfo['info_icon'] ?>"></i> <?= $resultForInfo['info_title'] ?></b>
-                <?= $resultForInfo['info_isi'] ?></marquee>
-        </div>
+            <div style="background: <?= $resultForInfo['info_bg'] ?>;padding: 5px;border-radius: 5px;margin-bottom: 10px;">
+                <marquee style="color: <?= $resultForInfo['info_color'] ?>" class="text-announcement-m"><b><i class="<?= $resultForInfo['info_icon'] ?>"></i> <?= $resultForInfo['info_title'] ?></b>
+                    <?= $resultForInfo['info_isi'] ?></marquee>
+            </div>
         <?php } else if ($resultForInfo['info_tipe'] == 'Blink') { ?>
-        <div style="background: <?= $resultForInfo['info_bg'] ?>;padding: 5px;border-radius: 5px;margin-bottom: 10px;">
-            <p style="color: <?= $resultForInfo['info_color'] ?>" class="text-announcement blink_me"><b><i
-                        class="<?= $resultForInfo['info_icon'] ?>"></i> <?= $resultForInfo['info_title'] ?></b>
-                <?= $resultForInfo['info_isi'] ?></p>
-        </div>
+            <div style="background: <?= $resultForInfo['info_bg'] ?>;padding: 5px;border-radius: 5px;margin-bottom: 10px;">
+                <p style="color: <?= $resultForInfo['info_color'] ?>" class="text-announcement blink_me"><b><i class="<?= $resultForInfo['info_icon'] ?>"></i> <?= $resultForInfo['info_title'] ?></b>
+                    <?= $resultForInfo['info_isi'] ?></p>
+            </div>
         <?php } else { ?>
         <?php } ?>
     </div>
@@ -77,82 +74,82 @@ include "include/top-header.php";
 
     <!-- Begin Row -->
     <style>
-    .row-choose {
-        display: flex;
-        margin-top: 30px;
-        /*margin-bottom: 30px;*/
-        justify-content: center;
-    }
+        .row-choose {
+            display: flex;
+            margin-top: 30px;
+            /*margin-bottom: 30px;*/
+            justify-content: center;
+        }
 
-    .class-utama {
-        padding: 10px;
-        width: 100%;
-    }
-
-    @media only screen and (min-width: 800px) {
         .class-utama {
             padding: 10px;
-            width: 30%;
+            width: 100%;
         }
-    }
 
-    .class-one {
-        background: #fff;
-        border-radius: 5px;
-    }
-
-    .class-one:hover {
-        box-shadow: 0 5px 25px rgb(0 0 0 / 30%)
-    }
-
-    .show-choose {
-        position: relative;
-    }
-
-    .image {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-
-    .overlay {
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        right: 0;
-        background-color: #4f78c9de;
-        overflow: hidden;
-        width: 100%;
-        height: 0;
-        transition: .5s ease;
-        border-radius: 5px;
-    }
-
-    .show-choose:hover .overlay {
-        bottom: 0;
-        height: 100%;
-    }
-
-    .text {
-        color: white;
-        font-size: 20px;
-        font-weight: 700;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-
-
-    @media (max-width: 992.5px) {
-        .row-choose {
-            display: grid;
-            justify-items: center;
+        @media only screen and (min-width: 800px) {
+            .class-utama {
+                padding: 10px;
+                width: 30%;
+            }
         }
-    }
+
+        .class-one {
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        .class-one:hover {
+            box-shadow: 0 5px 25px rgb(0 0 0 / 30%)
+        }
+
+        .show-choose {
+            position: relative;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background-color: #4f78c9de;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: .5s ease;
+            border-radius: 5px;
+        }
+
+        .show-choose:hover .overlay {
+            bottom: 0;
+            height: 100%;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+
+        @media (max-width: 992.5px) {
+            .row-choose {
+                display: grid;
+                justify-items: center;
+            }
+        }
     </style>
     <?php
     if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'none') {
@@ -240,7 +237,7 @@ include "include/top-header.php";
                 <div class="show-choose">
                     <img src="assets/img/icons/viewonline.png" alt="VIEW DATA" class="image">
                     <div class="overlay">
-                        <div class="text">VIEW DATA ONLINE</div>
+                        <div class="text">Data Online</div>
                     </div>
                 </div>
             </div>
@@ -270,13 +267,13 @@ include "include/footer.php";
 ?>
 
 <script type="text/javascript">
-// UPDATE PASSWORD SUCCESS
-if (window?.location?.href?.indexOf('SUpdatePasswordSuccessCC') > -1) {
-    Swal.fire({
-        title: 'Password berhasil diupdate!',
-        icon: 'success',
-        text: 'Password berhasil diupdate didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './index.php');
-}
+    // UPDATE PASSWORD SUCCESS
+    if (window?.location?.href?.indexOf('SUpdatePasswordSuccessCC') > -1) {
+        Swal.fire({
+            title: 'Password berhasil diupdate!',
+            icon: 'success',
+            text: 'Password berhasil diupdate didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './index.php');
+    }
 </script>

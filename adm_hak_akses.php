@@ -593,7 +593,7 @@ if (isset($_POST["NDeleteData"])) {
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Administrator Tools</a></li>
                 <li class="breadcrumb-item active">Hak Akses</li>
             </ol>
@@ -702,9 +702,9 @@ if (isset($_POST["NDeleteData"])) {
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Dashboard - Summary -->
-                                                                    <!-- View Data Online -->
+                                                                    <!-- Data Online -->
                                                                     <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
-                                                                        <label for="IDViewDataOnline">View Data Online</label>
+                                                                        <label for="IDViewDataOnline">Data Online</label>
                                                                     </div>
                                                                     <div class="col-xl-3">
                                                                         <div class="form-group">
@@ -912,7 +912,7 @@ if (isset($_POST["NDeleteData"])) {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End View Data Online -->
+                                                                    <!-- End Data Online -->
                                                                     <!-- Report -->
                                                                     <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
                                                                         <label for="IDReport">Report</label>

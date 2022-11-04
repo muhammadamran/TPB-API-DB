@@ -20,7 +20,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="IdDescription">Deskripsi </label>
-                                    <textarea type="text" class="form-control" name="NameDescription" id="IdDescription" placeholder="Deskripsi ..." ></textarea>
+                                    <textarea type="text" class="form-control" name="NameDescription" id="IdDescription" placeholder="Deskripsi ..."></textarea>
                                 </div>
                             </div>
                             <!-- Dashboard - Summary -->
@@ -30,8 +30,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label style="font-weight: 800;">DASHBOARD</label>
-                                    <input type="button" class="for-select-tpb" onclick='seDash()' value="Pilih Semua"/>
-                                    <input type="button" class="for-unselect-tpb" onclick='deDash()' value="Batalkan"/>
+                                    <input type="button" class="for-select-tpb" onclick='seDash()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deDash()' value="Batalkan" />
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -51,15 +51,15 @@
                                 </div>
                             </div>
                             <!-- End Dashboard - Summary -->
-                            <!-- View Data Online -->
+                            <!-- Data Online -->
                             <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
-                                <label for="IDViewDataOnline">View Data Online</label>
+                                <label for="IDViewDataOnline">Data Online</label>
                             </div>
                             <div class="col-xl-3">
                                 <div class="form-group">
                                     <label style="font-weight: 800;">DOKUMEN PABEAN</label>
-                                    <input type="button" class="for-select-tpb" onclick='seBC()' value="Pilih Semua"/>
-                                    <input type="button" class="for-unselect-tpb" onclick='deBC()' value="Batalkan"/>
+                                    <input type="button" class="for-select-tpb" onclick='seBC()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deBC()' value="Batalkan" />
                                     <div class="form-group">
                                         <label style="font-weight: 500;">1. BC</label>
                                         <input type="hidden" name="NameBC">
@@ -75,8 +75,8 @@
                             <div class="col-xl-3">
                                 <div class="form-group">
                                     <label style="font-weight: 800;">DATA</label>
-                                    <input type="button" class="for-select-tpb" onclick='seData()' value="Pilih Semua"/>
-                                    <input type="button" class="for-unselect-tpb" onclick='deData()' value="Batalkan"/>
+                                    <input type="button" class="for-select-tpb" onclick='seData()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deData()' value="Batalkan" />
                                     <div class="form-group">
                                         <label style="color: transparent;">DATA</label>
                                         <div class="form-group">
@@ -97,12 +97,12 @@
                             <div class="col-xl-3">
                                 <div class="form-group">
                                     <label style="font-weight: 800;">REFERENSI</label>
-                                    <input type="button" class="for-select-tpb" onclick='seRefAll()' value="Pilih Semua"/>
-                                    <input type="button" class="for-unselect-tpb" onclick='deRefAll()' value="Batalkan"/>
+                                    <input type="button" class="for-select-tpb" onclick='seRefAll()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deRefAll()' value="Batalkan" />
                                     <div class="form-group">
                                         <label style="font-weight: 500;">1. Referensi</label>
-                                        <input type="button" class="for-select-tpb" onclick='seRef()' value="Pilih Semua"/>
-                                        <input type="button" class="for-unselect-tpb" onclick='deRef()' value="Batalkan"/>
+                                        <input type="button" class="for-select-tpb" onclick='seRef()' value="Pilih Semua" />
+                                        <input type="button" class="for-unselect-tpb" onclick='deRef()' value="Batalkan" />
                                         <input type="hidden" name="NameReferensi">
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
@@ -147,8 +147,8 @@
                                             </div>
                                         </div>
                                         <label style="font-weight: 500;">1.1 Edifact</label>
-                                        <input type="button" class="for-select-tpb" onclick='seEdi()' value="Pilih Semua"/>
-                                        <input type="button" class="for-unselect-tpb" onclick='deEdi()' value="Batalkan"/>
+                                        <input type="button" class="for-select-tpb" onclick='seEdi()' value="Pilih Semua" />
+                                        <input type="button" class="for-unselect-tpb" onclick='deEdi()' value="Batalkan" />
                                         <input type="hidden" name="Edifact">
                                         <div style="margin-left: 15px;">
                                             <div class="form-group">
@@ -194,8 +194,8 @@
                             <div class="col-xl-3">
                                 <div class="form-group">
                                     <label style="font-weight: 800;">ADMINISTRATOR</label>
-                                    <input type="button" class="for-select-tpb" onclick='seAdm()' value="Pilih Semua"/>
-                                    <input type="button" class="for-unselect-tpb" onclick='deAdm()' value="Batalkan"/>
+                                    <input type="button" class="for-select-tpb" onclick='seAdm()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deAdm()' value="Batalkan" />
                                     <div class="form-group">
                                         <label style="color: transparent;">ADMINISTRATOR</label>
                                         <div class="form-group">
@@ -249,7 +249,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End View Data Online -->
+                            <!-- End Data Online -->
                             <!-- Report -->
                             <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
                                 <label for="IDReport">Report</label>
@@ -257,8 +257,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label style="font-weight: 800;">LAPORAN</label>
-                                    <input type="button" class="for-select-tpb" onclick='seLap()' value="Pilih Semua"/>
-                                    <input type="button" class="for-unselect-tpb" onclick='deLap()' value="Batalkan"/>
+                                    <input type="button" class="for-select-tpb" onclick='seLap()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deLap()' value="Batalkan" />
                                 </div>
                             </div>
                             <div class="col-md-3">

@@ -20,7 +20,7 @@ $data = json_decode($content, true);
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Referensi</a></li>
                 <li class="breadcrumb-item active">Kantor Bea Cukai</li>
             </ol>
@@ -41,8 +41,7 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
-                        <table id="data-table-buttons"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
@@ -52,39 +51,39 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="3">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <tr class="odd gradeX">
-                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['KODE_KANTOR'] == NULL || $row['KODE_KANTOR'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['KODE_KANTOR'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <?php if ($row['URAIAN_KANTOR'] == NULL || $row['URAIAN_KANTOR'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['URAIAN_KANTOR'] ?>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php } ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr class="odd gradeX">
+                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KODE_KANTOR'] == NULL || $row['KODE_KANTOR'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_KANTOR'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <?php if ($row['URAIAN_KANTOR'] == NULL || $row['URAIAN_KANTOR'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['URAIAN_KANTOR'] ?>
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>

@@ -20,7 +20,7 @@ $data = json_decode($content, true);
                 <font class="text-page">BC Master</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">BC Master</a></li>
                 <li class="breadcrumb-item active">BC 2.6.1</li>
             </ol>

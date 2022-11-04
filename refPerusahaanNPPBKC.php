@@ -54,7 +54,7 @@ if (isset($_POST["add_nppbkc"])) {
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Referensi</a></li>
                 <li class="breadcrumb-item active">Perusahaan</li>
             </ol>

@@ -72,7 +72,7 @@ if (isset($_POST["SaveInfo"])) {
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Administrator Tools</a></li>
                 <li class="breadcrumb-item active">Pengaturan Informasi</li>
             </ol>

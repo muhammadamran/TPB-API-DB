@@ -20,7 +20,7 @@ $data = json_decode($content, true);
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Referensi</a></li>
                 <li class="breadcrumb-item active">Tarif HS</li>
             </ol>
@@ -204,8 +204,7 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
-                        <table id="data-table-buttons"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
@@ -221,82 +220,82 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="9">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="9">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <tr class="odd gradeX">
-                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                    <td style="text-align: center;">
-                                        <?= $row['NOMOR_HS'] ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['TARIF_BM'] == NULL || $row['TARIF_BM'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['TARIF_BM'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['KD_SATUAN_BM'] == NULL || $row['KD_SATUAN_BM'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['KD_SATUAN_BM'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['TARIF_CUKAI'] == NULL || $row['TARIF_CUKAI'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['TARIF_CUKAI'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['KD_SATUAN_CUKAI'] == NULL || $row['KD_SATUAN_CUKAI'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['KD_SATUAN_CUKAI'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['TARIF_PPN'] == NULL || $row['TARIF_PPN'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['TARIF_PPN'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['TARIF_PPNBM'] == NULL || $row['TARIF_PPNBM'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['TARIF_PPNBM'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['TARIF_PPH'] == NULL || $row['TARIF_PPH'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                        <?php } else { ?>
-                                        <?= $row['TARIF_PPH'] ?>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php } ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr class="odd gradeX">
+                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                            <td style="text-align: center;">
+                                                <?= $row['NOMOR_HS'] ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['TARIF_BM'] == NULL || $row['TARIF_BM'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['TARIF_BM'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KD_SATUAN_BM'] == NULL || $row['KD_SATUAN_BM'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KD_SATUAN_BM'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['TARIF_CUKAI'] == NULL || $row['TARIF_CUKAI'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['TARIF_CUKAI'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KD_SATUAN_CUKAI'] == NULL || $row['KD_SATUAN_CUKAI'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KD_SATUAN_CUKAI'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['TARIF_PPN'] == NULL || $row['TARIF_PPN'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['TARIF_PPN'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['TARIF_PPNBM'] == NULL || $row['TARIF_PPNBM'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['TARIF_PPNBM'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['TARIF_PPH'] == NULL || $row['TARIF_PPH'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['TARIF_PPH'] ?>
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
@@ -314,44 +313,44 @@ $data = json_decode($content, true);
 <?php include "include/jsDatatables.php"; ?>
 
 <script type="text/javascript">
-$(function() {
-    $("#idBeaMasuk").change(function() {
-        if ($(this).val() == "1") {
-            $("#ForidBeaMasukLabel").hide();
-        } else if ($(this).val() == "2") {
-            $("#ForidBeaMasukLabel").show();
-        } else {
-            $("#ForidBeaMasukLabel").hide();
-        }
+    $(function() {
+        $("#idBeaMasuk").change(function() {
+            if ($(this).val() == "1") {
+                $("#ForidBeaMasukLabel").hide();
+            } else if ($(this).val() == "2") {
+                $("#ForidBeaMasukLabel").show();
+            } else {
+                $("#ForidBeaMasukLabel").hide();
+            }
+        });
+
+        $("#idCukai").change(function() {
+            if ($(this).val() == "1") {
+                $("#ForidCukaiLabel").hide();
+                $("#ForidCukaiRp").hide();
+            } else if ($(this).val() == "2") {
+                $("#ForidCukaiLabel").show();
+                $("#ForidCukaiRp").hide();
+            } else if ($(this).val() == "3") {
+                $("#ForidCukaiRp").show();
+                $("#ForidCukaiLabel").hide();
+            } else {
+                $("#ForidCukaiLabel").hide();
+                $("#ForidCukaiRp").hide();
+            }
+        });
     });
 
-    $("#idCukai").change(function() {
-        if ($(this).val() == "1") {
-            $("#ForidCukaiLabel").hide();
-            $("#ForidCukaiRp").hide();
-        } else if ($(this).val() == "2") {
-            $("#ForidCukaiLabel").show();
-            $("#ForidCukaiRp").hide();
-        } else if ($(this).val() == "3") {
-            $("#ForidCukaiRp").show();
-            $("#ForidCukaiLabel").hide();
-        } else {
-            $("#ForidCukaiLabel").hide();
-            $("#ForidCukaiRp").hide();
-        }
+    // AUTOCOMPLATE
+    $(function() {
+        $("#idBeaLabel").autocomplete({
+            source: 'libraries/autocomplete/auto_referensi_satuan.php'
+        });
     });
-});
 
-// AUTOCOMPLATE
-$(function() {
-    $("#idBeaLabel").autocomplete({
-        source: 'libraries/autocomplete/auto_referensi_satuan.php'
+    $(function() {
+        $("#idCukaiLabel").autocomplete({
+            source: 'libraries/autocomplete/auto_referensi_satuan.php'
+        });
     });
-});
-
-$(function() {
-    $("#idCukaiLabel").autocomplete({
-        source: 'libraries/autocomplete/auto_referensi_satuan.php'
-    });
-});
 </script>

@@ -27,7 +27,7 @@ if (isset($_GET['find'])) {
                 <font class="text-page">Filter Tabel TPB Inventory</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item active">Filter Tabel TPB Inventory</li>
             </ol>
         </div>
@@ -54,22 +54,22 @@ if (isset($_GET['find'])) {
                                 <div class="col-md-7">
                                     <select class="default-select2 form-control" name="TableName" required>
                                         <?php if ($TableName == NULL) { ?>
-                                        <option value="">-- Pilih Tabel --</option>
-                                        <?php
+                                            <option value="">-- Pilih Tabel --</option>
+                                            <?php
                                             $result = $dbcon->query("SELECT TABLE_NAME FROM view_select_table ORDER BY TABLE_NAME ASC");
                                             foreach ($result as $row) {
                                             ?>
-                                        <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
-                                        <?php } ?>
+                                                <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
+                                            <?php } ?>
                                         <?php } else { ?>
-                                        <option value="<?= $TableName ?>"><?= $TableName ?></option>
-                                        <option value="">-- Pilih Tabel --</option>
-                                        <?php
+                                            <option value="<?= $TableName ?>"><?= $TableName ?></option>
+                                            <option value="">-- Pilih Tabel --</option>
+                                            <?php
                                             $result = $dbcon->query("SELECT TABLE_NAME FROM view_select_table ORDER BY TABLE_NAME ASC");
                                             foreach ($result as $row) {
                                             ?>
-                                        <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
-                                        <?php } ?>
+                                                <option value="<?= $row['TABLE_NAME'] ?>"><?= $row['TABLE_NAME'] ?></option>
+                                            <?php } ?>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -78,11 +78,9 @@ if (isset($_GET['find'])) {
                                 <label class="col-md-3 col-form-label">Limit Data</label>
                                 <div class="col-md-7">
                                     <?php if ($FindLimit == NULL) { ?>
-                                    <input type="number" class="form-control" id="IDFindLimit" name="FindLimit"
-                                        placeholder="Limit Data ...">
+                                        <input type="number" class="form-control" id="IDFindLimit" name="FindLimit" placeholder="Limit Data ...">
                                     <?php } else { ?>
-                                    <input type="number" class="form-control" id="IDFindLimit" name="FindLimit"
-                                        placeholder="Limit Data ..." value="<?= $FindLimit ?>">
+                                        <input type="number" class="form-control" id="IDFindLimit" name="FindLimit" placeholder="Limit Data ..." value="<?= $FindLimit ?>">
                                     <?php } ?>
                                 </div>
                             </div>
@@ -115,49 +113,48 @@ if (isset($_GET['find'])) {
                 </div>
                 <div class="panel-body text-inverse">
                     <?php if ($TableName != NULL) { ?>
-                    <!-- Alert -->
-                    <div class="note note-secondary">
-                        <div class="note-icon"><i class="fas fa-info"></i></div>
-                        <div class="note-content">
-                            <?php
+                        <!-- Alert -->
+                        <div class="note note-secondary">
+                            <div class="note-icon"><i class="fas fa-info"></i></div>
+                            <div class="note-content">
+                                <?php
                                 $TotalDataAll = $dbcon->query("SELECT COUNT(*) AS total_data_all FROM $TableName");
                                 $ResultTotalDataAll = mysqli_fetch_array($TotalDataAll);
                                 ?>
-                            <h4><b>Total Data Tabel <?= $TableName ?></b></h4>
-                            <?php if ($FindLimit == NULL) { ?>
-                            <p> Anda menampilkan total data kesuluran <b><?= $ResultTotalDataAll['total_data_all']; ?>
-                                    data</b></p>
-                            <?php } else { ?>
-                            <p> Anda menampilkan total data sebanyak <b><?= $FindLimit ?> data</b> dari total data
-                                kesuluran <b><?= $ResultTotalDataAll['total_data_all']; ?> data</b></p>
-                            <?php } ?>
+                                <h4><b>Total Data Tabel <?= $TableName ?></b></h4>
+                                <?php if ($FindLimit == NULL) { ?>
+                                    <p> Anda menampilkan total data kesuluran <b><?= $ResultTotalDataAll['total_data_all']; ?>
+                                            data</b></p>
+                                <?php } else { ?>
+                                    <p> Anda menampilkan total data sebanyak <b><?= $FindLimit ?> data</b> dari total data
+                                        kesuluran <b><?= $ResultTotalDataAll['total_data_all']; ?> data</b></p>
+                                <?php } ?>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End Alert -->
+                        <!-- End Alert -->
                     <?php } ?>
                     <div class="table-responsive">
-                        <table id="data-table-buttons"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <?php
                                     if (isset($_GET['find'])) { ?>
-                                    <th class="text-nowrap">#</th>
-                                    <?php
+                                        <th class="text-nowrap">#</th>
+                                        <?php
                                         $TableName = $_GET['TableName'];
                                         $columns = $dbcon->query("SELECT COLUMN_NAME FROM information_schema.columns WHERE TABLE_NAME='$TableName'");
                                         foreach ($columns as $columns_name) {
                                         ?>
-                                    <th class="text-nowrap"><?= $columns_name['COLUMN_NAME'] ?></th>
-                                    <?php } ?>
+                                            <th class="text-nowrap"><?= $columns_name['COLUMN_NAME'] ?></th>
+                                        <?php } ?>
                                     <?php } else { ?>
-                                    <!-- <th class="text-nowrap"></th> -->
+                                        <!-- <th class="text-nowrap"></th> -->
                                     <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php if (isset($_GET['find'])) { ?>
-                                <?php
+                                    <?php
                                     // For Limit
                                     if ($FindLimit == NULL) {
                                         $forLimit = '';
@@ -168,59 +165,59 @@ if (isset($_GET['find'])) {
                                     $TableName = $_GET['TableName'];
                                     $data = $dbcon->query("SELECT * FROM $TableName $forLimit");
                                     ?>
-                                <?php if (mysqli_num_rows($data) > 0) {
+                                    <?php if (mysqli_num_rows($data) > 0) {
                                         $no = 0;
                                         while ($row_data = mysqli_fetch_array($data)) {
                                             $no++;
                                     ?>
-                                <tr class="odd gradeX">
-                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                    <?php
+                                            <tr class="odd gradeX">
+                                                <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                                <?php
                                                 $columns = $dbcon->query("SELECT COLUMN_NAME FROM information_schema.columns WHERE TABLE_NAME='$TableName'");
                                                 foreach ($columns as $columns_name) {
                                                 ?>
-                                    <?php if ($row_data[$columns_name['COLUMN_NAME']] == NULL || $row_data[$columns_name['COLUMN_NAME']] == '') { ?>
-                                    <td class="text-nowrap" style="text-align: left;">
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                        </font>
-                                    </td>
+                                                    <?php if ($row_data[$columns_name['COLUMN_NAME']] == NULL || $row_data[$columns_name['COLUMN_NAME']] == '') { ?>
+                                                        <td class="text-nowrap" style="text-align: left;">
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                            </font>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td class="text-nowrap"><?= $row_data[$columns_name['COLUMN_NAME']] ?></td>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </tr>
+                                        <?php } ?>
                                     <?php } else { ?>
-                                    <td class="text-nowrap"><?= $row_data[$columns_name['COLUMN_NAME']] ?></td>
-                                    <?php } ?>
-                                    <?php } ?>
-                                </tr>
-                                <?php } ?>
-                                <?php } else { ?>
-                                <?php
+                                    <?php
                                     }
                                     mysqli_close($dbcon);
                                     ?>
                                 <?php } else { ?>
-                                <?php if (isset($_GET['find'])) { ?>
-                                <?php
+                                    <?php if (isset($_GET['find'])) { ?>
+                                        <?php
                                         $count_column = $dbcon->query("SELECT COUNT(COLUMN_NAME) AS total_count_column FROM information_schema.columns WHERE TABLE_NAME='$TableName'");
                                         $result_count_column = mysqli_fetch_array($count_column);
                                         ?>
-                                <tr>
-                                    <td colspan="<?= $result_count_column['total_count_column'] ?>">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                                <?php } else { ?>
-                                <tr>
-                                    <td colspan="12">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                                <?php } ?>
+                                        <tr>
+                                            <td colspan="<?= $result_count_column['total_count_column'] ?>">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    <?php } else { ?>
+                                        <tr>
+                                            <td colspan="12">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>

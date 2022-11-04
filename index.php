@@ -138,7 +138,7 @@ if (
                 </div>
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" style="display: <?= $TitleReport ?>;">
                     <div class="icon-box">
-                        <div class="icon"><i class="fa-solid fa-laptop-file"></i></div>
+                        <div class="icon"><i class="fa-solid fa-file-invoice"></i></div>
                         <h4><a href="index_report.php">Laporan</a></h4>
                         <p>Menampilkan laporan Data PLB (Pusat Logistik Berikat) dan GB (Gudang Berikat) dari module Ciesa <?= $resultHeadSetting['company'] ?></p>
                         <div style="margin-top: 25px;">

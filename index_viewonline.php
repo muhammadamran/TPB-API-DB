@@ -66,7 +66,7 @@ $dataBC_41 = json_decode($contentBC_41, true);
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-globe icon-page"></i>
-                <font class="text-page">View Data Online</font>
+                <font class="text-page">Data Online</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Perusahaan: <?= $resultSetting['company']  ?></li>

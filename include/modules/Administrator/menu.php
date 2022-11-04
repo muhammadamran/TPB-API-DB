@@ -1,19 +1,22 @@
-<?php
-if (
-    $resultRoleModules['v_departemen'] == 'none' &&
-    $resultRoleModules['v_hak_akses'] == 'none' &&
-    $resultRoleModules['v_jabatan'] == 'none' &&
-    $resultRoleModules['v_kuota_mitra'] == 'none' &&
-    $resultRoleModules['v_pengaturan_tbb'] == 'none' &&
-    $resultRoleModules['v_pengaturan_realtime'] == 'none' &&
-    $resultRoleModules['v_pengaturan_informasi'] == 'none' &&
-    $resultRoleModules['v_user_manajemen'] == 'none'
-) {
-    $TitleADM = 'none';
-} else {
-    $TitleADM = 'show';
-}
-?>
+<li class="<?= $uriSegments[1] == 'index_settings.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
+    <a href="index_settings.php"><i class="fas fa-cog icon-page-sidebar"></i> <span>Settings</span></a>
+</li>
+<!-- <?php
+        if (
+            $resultRoleModules['v_departemen'] == 'none' &&
+            $resultRoleModules['v_hak_akses'] == 'none' &&
+            $resultRoleModules['v_jabatan'] == 'none' &&
+            $resultRoleModules['v_kuota_mitra'] == 'none' &&
+            $resultRoleModules['v_pengaturan_tbb'] == 'none' &&
+            $resultRoleModules['v_pengaturan_realtime'] == 'none' &&
+            $resultRoleModules['v_pengaturan_informasi'] == 'none' &&
+            $resultRoleModules['v_user_manajemen'] == 'none'
+        ) {
+            $TitleADM = 'none';
+        } else {
+            $TitleADM = 'show';
+        }
+        ?>
 <li class="nav-header" style="display: <?= $TitleADM; ?>;">ADMINISTRATOR</li>
 <li class="has-sub <?= $uriSegments[1] == 'adm_api.php' ||
                         $uriSegments[1] == 'adm_user_manajemen_web.php' ||
@@ -30,8 +33,8 @@ if (
                         ? 'active' : '' ?>" style="display: <?= $TitleADM; ?>;">
     <a href="javascript:;">
         <b class="caret"></b>
-        <i class="fab fa-adn icon-page-sidebar"></i>
-        <span>Administrator Tools</span>
+        <i class="fas fa-cog icon-page-sidebar"></i>
+        <span>Settings</span>
     </a>
     <ul class="sub-menu">
         <li class="<?= $uriSegments[1] == 'adm_api.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
@@ -62,4 +65,4 @@ if (
             <a href="adm_user_manajemen_web.php">User Manajemen Web</a>
         </li>
     </ul>
-</li>
+</li> -->

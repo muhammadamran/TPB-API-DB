@@ -83,10 +83,11 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             </li>
         </ul>
         <ul class="nav">
-            <li class="nav-header">NAVIGATION</li>
+            <li class="nav-header">MAIN</li>
             <li class="<?= $uriSegments[1] == 'index.php' ? 'active' : '' ?>">
                 <a href="index.php"><i class="fab fa-medapps icon-page-sidebar"></i> <span>Index</span></a>
             </li>
+            <li class="nav-header">NAVIGATION</li>
             <?php
             if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'none') {
                 $TitleDashboard = 'none';
@@ -130,7 +131,7 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             }
             ?>
             <li class="<?= $uriSegments[1] == 'index_viewonline.php' ? 'active' : '' ?>" style="display: <?= $TitleViewDataOnline ?>;">
-                <a href="index_viewonline.php"><i class="fas fa-globe icon-page-sidebar"></i> <span>View Data Online</span></a>
+                <a href="index_viewonline.php"><i class="fas fa-globe icon-page-sidebar"></i> <span>Data Online</span></a>
             </li>
             <?php
             if (
@@ -150,7 +151,7 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             }
             ?>
             <li class="<?= $uriSegments[1] == 'index_report.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
-                <a href="index_report.php"><i class="fas fa-clipboard icon-page-sidebar"></i> <span>Report</span></a>
+                <a href="index_report.php"><i class="fas fa-file-invoice icon-page-sidebar"></i> <span>Laporan</span></a>
             </li>
             <!-- CK5PLB -->
             <?php

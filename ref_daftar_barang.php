@@ -72,7 +72,7 @@ $data = json_decode($content, true);
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index_viewonline.php">View Data Online</a></li>
+                <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Referensi</a></li>
                 <li class="breadcrumb-item active">Daftar Barang</li>
             </ol>
@@ -93,8 +93,7 @@ $data = json_decode($content, true);
                 </div>
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
-                        <table id="data-table-buttons"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">#</th>
@@ -108,81 +107,81 @@ $data = json_decode($content, true);
                             </thead>
                             <tbody>
                                 <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="7">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="7">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
                                 <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                <?php $no++ ?>
-                                <tr class="odd gradeX">
-                                    <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['NOHS'] == NULL || $row['NOHS'] == '') { ?>
-                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum memiliki Tarif
-                                                HS</i></font>
-                                        <?php } else { ?>
-                                        <?= $row['NOHS'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <?php if ($row['URAIAN_BARANG'] == NULL || $row['URAIAN_BARANG'] == '') { ?>
-                                        <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                            </font>
-                                        </center>
-                                        <?php } else { ?>
-                                        <?= $row['URAIAN_BARANG'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <?php if ($row['MERK'] == NULL || $row['MERK'] == '') { ?>
-                                        <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                            </font>
-                                        </center>
-                                        <?php } else { ?>
-                                        <?= $row['MERK'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <?php if ($row['TIPE'] == NULL || $row['TIPE'] == '') { ?>
-                                        <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                            </font>
-                                        </center>
-                                        <?php } else { ?>
-                                        <?= $row['TIPE'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <?php if ($row['SPESIFIKASI_LAIN'] == NULL || $row['SPESIFIKASI_LAIN'] == '') { ?>
-                                        <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                            </font>
-                                        </center>
-                                        <?php } else { ?>
-                                        <?= $row['SPESIFIKASI_LAIN'] ?>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php if ($row['KODE_BARANG'] == NULL || $row['KODE_BARANG'] == '') { ?>
-                                        <center>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                            </font>
-                                        </center>
-                                        <?php } else { ?>
-                                        <?= $row['KODE_BARANG'] ?>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php } ?>
+                                    <?php $no = 0; ?>
+                                    <?php foreach ($data['result'] as $row) { ?>
+                                        <?php $no++ ?>
+                                        <tr class="odd gradeX">
+                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['NOHS'] == NULL || $row['NOHS'] == '') { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum memiliki Tarif
+                                                            HS</i></font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOHS'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <?php if ($row['URAIAN_BARANG'] == NULL || $row['URAIAN_BARANG'] == '') { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['URAIAN_BARANG'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <?php if ($row['MERK'] == NULL || $row['MERK'] == '') { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['MERK'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <?php if ($row['TIPE'] == NULL || $row['TIPE'] == '') { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['TIPE'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left;">
+                                                <?php if ($row['SPESIFIKASI_LAIN'] == NULL || $row['SPESIFIKASI_LAIN'] == '') { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['SPESIFIKASI_LAIN'] ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <?php if ($row['KODE_BARANG'] == NULL || $row['KODE_BARANG'] == '') { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_BARANG'] ?>
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
@@ -200,81 +199,81 @@ $data = json_decode($content, true);
 <?php include "include/jsDatatables.php"; ?>
 
 <script type="text/javascript">
-// <!-- Reset Form -->
-function myFunctionIDDaftarBarang() {
-    document.getElementById("myFormDaftarBarang").reset();
-}
-// <!-- End Reset Form -->
+    // <!-- Reset Form -->
+    function myFunctionIDDaftarBarang() {
+        document.getElementById("myFormDaftarBarang").reset();
+    }
+    // <!-- End Reset Form -->
 
-// DATA ALREADY
-if (window?.location?.href?.indexOf('DataAlready') > -1) {
-    Swal.fire({
-        title: 'Kode Barang sudah terdaftar!',
-        icon: 'info',
-        text: 'Kode Barang sudah terdaftar disistem, Kode Barang harus bersifat uniq atau tidak boleh sama!'
-    })
-    history.replaceState({}, '', './ref_daftar_barang.php');
-}
+    // DATA ALREADY
+    if (window?.location?.href?.indexOf('DataAlready') > -1) {
+        Swal.fire({
+            title: 'Kode Barang sudah terdaftar!',
+            icon: 'info',
+            text: 'Kode Barang sudah terdaftar disistem, Kode Barang harus bersifat uniq atau tidak boleh sama!'
+        })
+        history.replaceState({}, '', './ref_daftar_barang.php');
+    }
 
-// INSERT SUCCESS
-if (window?.location?.href?.indexOf('InputSuccess') > -1) {
-    Swal.fire({
-        title: 'Data berhasil disimpan!',
-        icon: 'success',
-        text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './ref_daftar_barang.php');
-}
-// INSERT FAILED
-if (window?.location?.href?.indexOf('InputFailed') > -1) {
-    Swal.fire({
-        title: 'Data gagal disimpan!',
-        icon: 'error',
-        text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './ref_daftar_barang.php');
-}
+    // INSERT SUCCESS
+    if (window?.location?.href?.indexOf('InputSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil disimpan!',
+            icon: 'success',
+            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './ref_daftar_barang.php');
+    }
+    // INSERT FAILED
+    if (window?.location?.href?.indexOf('InputFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal disimpan!',
+            icon: 'error',
+            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './ref_daftar_barang.php');
+    }
 
-// DELETE SUCCESS
-if (window?.location?.href?.indexOf('DeleteSuccess') > -1) {
-    Swal.fire({
-        title: 'Data berhasil dihapus!',
-        icon: 'success',
-        text: 'Data berhasil dihapus didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './ref_daftar_barang.php');
-}
-// DELETE FAILED
-if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
-    Swal.fire({
-        title: 'Data gagal dihapus!',
-        icon: 'error',
-        text: 'Data gagal dihapus didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './ref_daftar_barang.php');
-}
+    // DELETE SUCCESS
+    if (window?.location?.href?.indexOf('DeleteSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil dihapus!',
+            icon: 'success',
+            text: 'Data berhasil dihapus didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './ref_daftar_barang.php');
+    }
+    // DELETE FAILED
+    if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal dihapus!',
+            icon: 'error',
+            text: 'Data gagal dihapus didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './ref_daftar_barang.php');
+    }
 </script>
 
 <script type="text/javascript">
-$(function() {
-    $("#findby").change(function() {
-        if ($(this).val() == "opone") {
-            $("#fformone").show();
-            $("#fformtwo").hide();
-            $("#fformthree").hide();
-        } else if ($(this).val() == "optwo") {
-            $("#fformtwo").show();
-            $("#fformone").hide();
-            $("#fformthree").hide();
-        } else if ($(this).val() == "opthree") {
-            $("#fformthree").show();
-            $("#fformone").hide();
-            $("#fformtwo").hide();
-        } else {
-            $("#fformone").hide();
-            $("#fformtwo").hide();
-            $("#fformthree").hide();
-        }
+    $(function() {
+        $("#findby").change(function() {
+            if ($(this).val() == "opone") {
+                $("#fformone").show();
+                $("#fformtwo").hide();
+                $("#fformthree").hide();
+            } else if ($(this).val() == "optwo") {
+                $("#fformtwo").show();
+                $("#fformone").hide();
+                $("#fformthree").hide();
+            } else if ($(this).val() == "opthree") {
+                $("#fformthree").show();
+                $("#fformone").hide();
+                $("#fformtwo").hide();
+            } else {
+                $("#fformone").hide();
+                $("#fformtwo").hide();
+                $("#fformthree").hide();
+            }
+        });
     });
-});
 </script>
