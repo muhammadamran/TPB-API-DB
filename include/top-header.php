@@ -28,55 +28,32 @@ $access = mysqli_fetch_array($role);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <div>
-            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Riwayat Aktivitas" data-placement="bottom" data-content="Riwayat Aktivitas"><i class="far fa-clock"></i></a>
-        </div>
-        <div style="margin-left: 5px;">
-            <a href="" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-title="Pusat Bantuan" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-question-circle"></i></a>
-        </div>
-        <?php
-        // TOTAL GATE IN
-        $gate_in = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
-        $result_in = mysqli_fetch_array($gate_in);
-        // TOTAL GATE OUT
-        $gate_out = $dbcon->query("SELECT COUNT(*) AS total_out FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_GB IS NULL");
-        $result_out = mysqli_fetch_array($gate_out);
-        ?>
-        <!-- Gate In -->
-        <div style="margin-left: 5px;">
-            <a href="gm_pemasukan.php" class="btn btn-default" style="width: 125px;" data-toggle="popover" data-trigger="hover" data-title="Gate In" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i> Gate In <span class="badge"><?= $result_in['total_in'] ?></span></a>
-        </div>
-        <!-- Gate Out -->
-        <div style="margin-left: 5px;">
-            <a href="gm_pengeluaran.php" class="btn btn-default" style="width: 125px;" data-toggle="popover" data-trigger="hover" data-title="Gate Out" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i> Gate Out <span class="badge"><?= $result_out['total_out'] ?></span></a>
+        <div class="for-header">
+            <div>
+                <a href="" class="btn btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Riwayat Aktifitas"><i class="far fa-clock"></i></a>
+            </div>
+            <div style="margin-left: 5px;">
+                <a href="" class="btn btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-question-circle"></i></a>
+            </div>
+            <?php
+            // TOTAL GATE IN
+            $gate_in = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
+            $result_in = mysqli_fetch_array($gate_in);
+            // TOTAL GATE OUT
+            $gate_out = $dbcon->query("SELECT COUNT(*) AS total_out FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_GB IS NULL");
+            $result_out = mysqli_fetch_array($gate_out);
+            ?>
+            <!-- Gate In -->
+            <div style="margin-left: 5px;">
+                <a href="gm_pemasukan.php" class="btn btn-dark" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i> Gate In <span class="badge"><?= $result_in['total_in'] ?></span></a>
+            </div>
+            <!-- Gate Out -->
+            <div style="margin-left: 5px;">
+                <a href="gm_pengeluaran.php" class="btn btn-dark" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i> Gate Out <span class="badge"><?= $result_out['total_out'] ?></span></a>
+            </div>
         </div>
     </div>
     <!-- end navbar-header -->
-    <style>
-        #nav-clock {
-            margin-top: 18px;
-            font-size: 10px;
-        }
-
-        .nav-garis {
-            font-size: 35px;
-            font-weight: 100;
-            color: #c3c3c3;
-        }
-
-        @media (max-width: 996.5px) {
-            #nav-clock {
-                margin-top: 18px;
-                font-size: 0px;
-            }
-
-            .nav-garis {
-                font-size: 0px;
-                font-weight: 0;
-                color: #c3c3c3;
-            }
-        }
-    </style>
     <!-- begin header-nav -->
     <ul class="navbar-nav navbar-right">
         <li class="navbar-form" id="nav-clock">

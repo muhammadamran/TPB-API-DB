@@ -20,7 +20,7 @@ $result_out = mysqli_fetch_array($gate_out);
                         $uriSegments[1] == 'gm_pengeluaran_detail.php' ? 'active' : '' ?>">
     <a href="javascript:;">
         <b class="caret"></b>
-        <i class="fas fa-door-open"></i>
+        <i class="fas fa-door-open icon-page-sidebar"></i>
         <span>
             Gate Mandiri
             <!-- <span class="label label-theme">0</span> -->

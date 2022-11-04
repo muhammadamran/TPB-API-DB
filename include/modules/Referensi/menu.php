@@ -37,7 +37,7 @@ if (
                         ? 'active' : '' ?>" style="display: <?= $TitleReferensi; ?>;">
     <a href="javascript:;">
         <b class="caret"></b>
-        <i class="fas fa-book"></i>
+        <i class="fas fa-book icon-page-sidebar"></i>
         <span>Referensi</span>
     </a>
     <ul class="sub-menu">

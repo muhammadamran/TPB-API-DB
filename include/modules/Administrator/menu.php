@@ -30,44 +30,35 @@ if (
                         ? 'active' : '' ?>" style="display: <?= $TitleADM; ?>;">
     <a href="javascript:;">
         <b class="caret"></b>
-        <i class="fab fa-adn"></i>
+        <i class="fab fa-adn icon-page-sidebar"></i>
         <span>Administrator Tools</span>
     </a>
     <ul class="sub-menu">
-        <li class="<?= $uriSegments[1] == 'adm_api.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_api.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
             <a href="adm_api.php">API & Database</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_department.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_departemen']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_department.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_departemen']; ?>;">
             <a href="adm_department.php">Departemen</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_hak_akses.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_hak_akses']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_hak_akses.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_hak_akses']; ?>;">
             <a href="adm_hak_akses.php">Hak Akses</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_jabatan.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_jabatan']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_jabatan.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_jabatan']; ?>;">
             <a href="adm_jabatan.php">Jabatan</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_kuota.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_kuota_mitra']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_kuota.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_kuota_mitra']; ?>;">
             <a href="adm_kuota.php">Kuota Mitra</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_setting.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_pengaturan_tbb']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_setting.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_tbb']; ?>;">
             <a href="adm_setting.php">Pengaturan App TPB</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_time_reload.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_pengaturan_realtime']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_time_reload.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_realtime']; ?>;">
             <a href="adm_time_reload.php">Pengaturan RealTime Reload</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_info.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_info.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
             <a href="adm_info.php">Pengaturan Informasi</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_user_manajemen_web.php' || $uriSegments[1] == 'adm_user_manajemen_web_update.php' || $uriSegments[1] == 'adm_user_manajemen_web_resetpassword.php' ? 'active' : '' ?>"
-            style="display: <?= $resultRoleModules['v_user_manajemen']; ?>;">
+        <li class="<?= $uriSegments[1] == 'adm_user_manajemen_web.php' || $uriSegments[1] == 'adm_user_manajemen_web_update.php' || $uriSegments[1] == 'adm_user_manajemen_web_resetpassword.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_user_manajemen']; ?>;">
             <a href="adm_user_manajemen_web.php">User Manajemen Web</a>
         </li>
     </ul>

@@ -6,9 +6,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('assets/images/sidebar/sidebar-default.png');
-            background-repeat: no-repeat;
-            background-size: cover;
+            /* background-image: url('assets/images/sidebar/sidebar-default.png'); */
+            /* background-repeat: no-repeat; */
+            /* background-size: cover; */
+            background: #242b30;
         }
     </style>
 <?php } else { ?>
@@ -19,9 +20,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('assets/images/sidebar/<?= $resultSetting['bg_sidebar'] ?>');
-            background-repeat: no-repeat;
-            background-size: cover;
+            /* background-image: url('assets/images/sidebar/<?= $resultSetting['bg_sidebar'] ?>'); */
+            /* background-repeat: no-repeat; */
+            /* background-size: cover; */
+            background: #242b30;
         }
     </style>
 <?php } ?>
@@ -45,12 +47,16 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
                         <?php } ?>
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>
+                        <b class="caret pull-right" style="margin-top: -5px;"></b>
                         <!-- NAMA LENGKAP -->
                         <?php if ($accessSidebar['nama_lengkap'] == NULL) { ?>
                             Belum dilengkapi!
                         <?php } else { ?>
-                            <?= $accessSidebar['nama_lengkap'] ?>
+                            <?php
+                            $NL    = $accessSidebar['nama_lengkap'];
+                            $split = explode(" ", $NL);
+                            ?>
+                            <font style="text-transform: uppercase;"><?= $split[0] ?>.<?= end($split) ?></font>
                         <?php } ?>
                         <!-- END NAMA LENGKAP -->
                         <!-- HAK AKSES -->
@@ -61,9 +67,17 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             </li>
             <li>
                 <ul class="nav nav-profile">
-                    <li><a href="usr_profile.php"><i class="fa-solid fa-user-gear"></i> Profile</a></li>
+                    <li>
+                        <a href="usr_profile.php"><i class="fa-solid fa-user-gear icon-page-sidebar"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
                     <?php if ($resultForPrivileges['UPDATE_PASSWORD'] == 'Y') { ?>
-                        <li><a href="usr_password.php"><i class="fa-solid fas fa-lock"></i> Ganti Password</a></li>
+                        <li>
+                            <a href="usr_password.php"><i class="fa-solid fas fa-lock icon-page-sidebar"></i>
+                                <span>Ganti Password</span>
+                            </a>
+                        </li>
                     <?php } ?>
                 </ul>
             </li>
@@ -71,11 +85,8 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
         <ul class="nav">
             <li class="nav-header">NAVIGATION</li>
             <li class="<?= $uriSegments[1] == 'index.php' ? 'active' : '' ?>">
-                <a href="index.php"><i class="fas fa-chalkboard-teacher"></i> <span>Index</span></a>
+                <a href="index.php"><i class="fab fa-medapps icon-page-sidebar"></i> <span>Index</span></a>
             </li>
-            <!-- <li class="<?= $uriSegments[1] == 'dashboard.php' ? 'active' : '' ?>">
-				<a href="dashboard.php"><i class="fas fa-chart-pie"></i> <span>Dashboard</span></a>
-			</li> -->
             <?php
             if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'none') {
                 $TitleDashboard = 'none';
@@ -84,11 +95,8 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             }
             ?>
             <li class="<?= $uriSegments[1] == 'index_dashboard.php' ? 'active' : '' ?>" style="display: <?= $TitleDashboard ?>;">
-                <a href="index_dashboard.php"><i class="fas fa-chart-pie"></i> <span>Dashboard - Summary</span></a>
+                <a href="index_dashboard.php"><i class="fas fa-chart-pie icon-page-sidebar"></i> <span>Dashboard</span></a>
             </li>
-            <!-- <li class="<?= $uriSegments[1] == 'index_summary.php' ? 'active' : '' ?>">
-				<a href="index_summary.php"><i class="fas fa-tasks"></i> <span>Summary</span></a>
-			</li> -->
             <?php
             if (
                 $resultRoleModules['v_bc'] == 'none' &&
@@ -122,7 +130,7 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             }
             ?>
             <li class="<?= $uriSegments[1] == 'index_viewonline.php' ? 'active' : '' ?>" style="display: <?= $TitleViewDataOnline ?>;">
-                <a href="index_viewonline.php"><i class="fas fa-globe"></i> <span>View Data Online</span></a>
+                <a href="index_viewonline.php"><i class="fas fa-globe icon-page-sidebar"></i> <span>View Data Online</span></a>
             </li>
             <?php
             if (
@@ -142,7 +150,7 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             }
             ?>
             <li class="<?= $uriSegments[1] == 'index_report.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
-                <a href="index_report.php"><i class="fas fa-clipboard"></i> <span>Report</span></a>
+                <a href="index_report.php"><i class="fas fa-clipboard icon-page-sidebar"></i> <span>Report</span></a>
             </li>
             <!-- CK5PLB -->
             <?php
