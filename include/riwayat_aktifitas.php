@@ -7,7 +7,8 @@
 	.riwayat-aktifitas.riwayat-aktifitas-lg {
 		top: 0;
 		bottom: 0;
-		width: 260px;
+		/* width: 260px; */
+		width: 430px;
 		right: -260px;
 	}
 
@@ -69,17 +70,29 @@
 		<div class="line-page-RA"></div>
 		<div class="row m-t-10">
 			<div class="col-md-12">
-				<a href="javascript:;" class="btn btn-default btn-block btn-rounded" data-click="reset-local-storage"><b>Reset Local Storage</b></a>
-			</div>
-		</div>
-		<div class="divider"></div>
-		<div class="row m-t-10">
-			<div class="col-md-12">
-				<div class="panel-hellos">
-					<a href="http://hellos-id.com" target="_blank">
-						<img src="http://hellos-id.com/images/hellos.png" alt="Hellos-ID" style="width: 130px;">
-					</a>
-				</div>
+				<?php
+				$user      = $_SESSION['username'];
+				$dataRA = $dbcon->query("SELECT * FROM tbl_aktifitas WHERE username='$user' ORDER BY id DESC LIMIT 100", 0);
+				foreach ($dataRA as $rowRA) {
+					$alldate = $rowRA['date_created'];
+					$tgl = substr($alldate, 0, 10);
+					$time = substr($alldate, 10, 20);
+				?>
+					<div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;margin-bottom: 10px;">
+						<div style="margin-top: 6px;">
+							<i class="far fa-clock" style="font-size: 20px;font-weight:400"></i>
+						</div>
+						<div style="margin-left: 5px;">
+							<div style="font-size: 10px;">
+								<?= $rowRA['description']; ?>
+							</div>
+							<div style="font-size: 10px;">
+								<i class="far fa-calendar"></i> <?= $tgl ?> - <?= $time ?>
+							</div>
+						</div>
+					</div>
+					<hr>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
