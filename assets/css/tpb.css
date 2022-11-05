@@ -615,3 +615,19 @@ section {
     border-color: #fff;
     box-shadow: 0;
 }
+
+.btn-dark-custom {
+    color: #2d353c;
+    background-color: #fff;
+    border-color: #2d353c;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+
+.btn-dark-custom:hover {
+    color: #2d353c;
+    background-color: #fff;
+    border-color: #2d353c;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}

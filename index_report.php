@@ -368,7 +368,9 @@ include "include/cssDatatables.php";
 </div>
 <!-- end #content -->
 <?php
-// include "include/panel.php";
+include "include/pusat_bantuan.php";
+include "include/riwayat_aktifitas.php";
+include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 ?>

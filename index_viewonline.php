@@ -607,6 +607,7 @@ $dataBC_41 = json_decode($contentBC_41, true);
 </div>
 <!-- end #content -->
 <?php
+include "include/pusat_bantuan.php";
 include "include/riwayat_aktifitas.php";
 include "include/panel.php";
 include "include/footer.php";

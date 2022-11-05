@@ -15,7 +15,20 @@
 <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
 <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
 <script>
+        // RIAWYAT AKTIFITAS
         function showHideRA(ele) {
+                var srcElement = document.getElementById(ele);
+                if (srcElement != null) {
+                        if (srcElement.style.display == "block") {
+                                srcElement.style.display = 'none';
+                        } else {
+                                srcElement.style.display = 'block';
+                        }
+                        return false;
+                }
+        }
+        // PUSAT BANTUAN
+        function showHidePB(ele) {
                 var srcElement = document.getElementById(ele);
                 if (srcElement != null) {
                         if (srcElement.style.display == "block") {

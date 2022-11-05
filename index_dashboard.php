@@ -293,6 +293,9 @@ if ($resultRoleModules['da_two'] == 'none') {
     <?php include "include/creator.php"; ?>
 </div>
 <?php
+include "include/pusat_bantuan.php";
+include "include/riwayat_aktifitas.php";
+include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 ?>
