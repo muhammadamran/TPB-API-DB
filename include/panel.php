@@ -1,6 +1,6 @@
 <!-- begin theme-panel -->
 <div class="theme-panel theme-panel-lg">
-	<a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+	<a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fab fa-ethereum"></i></a>
 	<div class="theme-panel-content">
 		<h5>App Settings</h5>
 		<ul class="theme-list clearfix">

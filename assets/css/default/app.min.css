@@ -24368,6 +24368,14 @@ a:focus {
 	text-decoration: none;
 }
 
+.sidebar .nav>li:hover {
+	line-height: 20px;
+    color: rgba(255,255,255,.6);
+    display: block;
+    text-decoration: none;
+    background: #242b30;
+}
+
 .sidebar .nav>li>a i {
 	/* float: left;
 	margin-right: 10px;

@@ -30,7 +30,7 @@ $access = mysqli_fetch_array($role);
         </button>
         <div class="for-header">
             <div>
-                <a href="" class="btn btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Riwayat Aktifitas"><i class="far fa-clock"></i></a>
+                <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Riwayat Aktifitas"><i class="far fa-clock"></i></button>
             </div>
             <div style="margin-left: 5px;">
                 <a href="" class="btn btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Pusat Bantuan"><i class="far fa-question-circle"></i></a>
@@ -45,11 +45,11 @@ $access = mysqli_fetch_array($role);
             ?>
             <!-- Gate In -->
             <div style="margin-left: 5px;">
-                <a href="gm_pemasukan.php" class="btn btn-dark" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate In"><i class="fas fa-door-open"></i> Gate In <span class="badge"><?= $result_in['total_in'] ?></span></a>
+                <a href="gm_pemasukan.php" class="btn btn-dark" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate In <?= $result_in['total_in'] ?>"><i class="fas fa-door-open"></i> Gate In <span class="badge badge-success"><?= $result_in['total_in'] ?></span></a>
             </div>
             <!-- Gate Out -->
             <div style="margin-left: 5px;">
-                <a href="gm_pengeluaran.php" class="btn btn-dark" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate Out"><i class="fas fa-door-closed"></i> Gate Out <span class="badge"><?= $result_out['total_out'] ?></span></a>
+                <a href="gm_pengeluaran.php" class="btn btn-dark" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate Out <?= $result_out['total_out'] ?>"><i class="fas fa-door-closed"></i> Gate Out <span class="badge badge-success"><?= $result_out['total_out'] ?></span></a>
             </div>
         </div>
     </div>

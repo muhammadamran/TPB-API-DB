@@ -65,7 +65,7 @@ if (
         <div>
             <h1 class="page-header-css">
                 <i class="fab fa-medapps icon-page"></i>
-                <font class="text-page">Index / <?= $alertAppName ?></font>
+                <font class="text-page">Index</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Perusahaan: <?= $resultSetting['company']  ?></li>

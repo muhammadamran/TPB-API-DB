@@ -1,6 +1,5 @@
 <!-- begin scroll to top btn -->
-<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
-        class="fa fa-angle-up"></i></a>
+<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 <!-- end scroll to top btn -->
 </div>
 <!-- end page container -->
@@ -15,6 +14,19 @@
 <script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
 <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
 <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+<script>
+        function showHideRA(ele) {
+                var srcElement = document.getElementById(ele);
+                if (srcElement != null) {
+                        if (srcElement.style.display == "block") {
+                                srcElement.style.display = 'none';
+                        } else {
+                                srcElement.style.display = 'block';
+                        }
+                        return false;
+                }
+        }
+</script>
 </body>
 
 </html>
