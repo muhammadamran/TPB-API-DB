@@ -1,8 +1,14 @@
 <?php
+// Server Prod
 $dbhost = 'localhost';
+// DOMAIN
 $dbusername = 'inxmiles_tpb';
 $dbpassword = 'Flatrone2241TPB';
 $dbname = 'inxmiles_tpb';
+// LOCAL
+// $dbusername = 'root';
+// $dbpassword = '';
+// $dbname = 'tpb';
 $dbcon = new mysqli($dbhost, $dbusername, $dbpassword, $dbname) or die(mysqli_connect_errno());
 
 $dataDB = $dbcon->query("SELECT * FROM api WHERE id=1 LIMIT 1", 0);
