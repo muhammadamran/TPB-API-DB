@@ -8,32 +8,12 @@ include "include/top-sidebar.php";
 // include "include/sidebar.php";
 include "include/cssDatatables.php";
 ?>
-<style type="text/css">
-    .class-report {
-        display: flex;
-        /* justify-content: space-between; */
-        justify-content: center;
-        align-items: center;
-    }
-
-    .for-class-report {
-        width: 40%;
-        padding: 10px;
-    }
-
-    @media (max-width: 862.5px) {
-        .class-report {
-            display: grid;
-            justify-content: normal;
-            align-items: center;
-        }
-
-        .for-class-report {
-            width: 100%;
-            padding: 0px;
-        }
-    }
-</style>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Laporan App Name | Company </title>
+<?php } else { ?>
+    <title>Laporan - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
     <div class="page-title-css">

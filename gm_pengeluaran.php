@@ -7,7 +7,6 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
-
 $AJU_GB = '';
 // API - 
 include "include/api.php";
@@ -80,7 +79,12 @@ if (isset($_POST['show_all'])) {
 $contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
 $dataAJUGB = json_decode($contentAJUGB, true);
 ?>
-
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Gate Out App Name | Company </title>
+<?php } else { ?>
+    <title>Gate Out - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -92,7 +96,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item active">Barang Keluar</li>
+                <li class="breadcrumb-item active">Gate Out</li>
             </ol>
         </div>
         <div>
@@ -107,7 +111,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Barang Keluar</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Gate Out</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -115,7 +119,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
 
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <div style="display: flex;justify-content: center;">
-                                <img src="assets/img/svg/filter-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="80%">
+                                <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="80%">
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -144,7 +148,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Gate Mandiri] Data Barang Keluar</h4>
+                    <h4 class="panel-title">[Gate Mandiri] Data Gate Out</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -286,7 +290,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             <td style="text-align: center;">
                                                 <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
                                                     <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-success">
-                                                        <font data-toggle="popover" data-trigger="hover" data-title="Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['tpb_total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Barang Keluar!">
+                                                        <font data-toggle="popover" data-trigger="hover" data-title="Gate Out Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['tpb_total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Gate Out!">
                                                             <div style="display: grid;">
                                                                 <div style="font-size: 12px;">
                                                                     <i class="fas fa-check-circle"></i>
@@ -322,7 +326,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                             </a>
                                                         <?php } else { ?>
                                                             <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Barang Keluar Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
+                                                                <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Gate Out Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
                                                                             <i class="fas fa-eye"></i>
@@ -334,7 +338,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     <?php } ?>
                                                 <?php } else { ?>
                                                     <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-warning">
-                                                        <font data-toggle="popover" data-trigger="hover" data-title="Cek Barang Keluar Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Barang Keluar.">
+                                                        <font data-toggle="popover" data-trigger="hover" data-title="Cek Gate Out Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Gate Out.">
                                                             <div>
                                                                 <div style="font-size: 12px;">
                                                                     <i class="fas fa-warning"></i>
@@ -352,7 +356,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Edit] Data Barang Keluar</h4>
+                                                            <h4 class="modal-title">[Edit] Data Gate Out</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -474,7 +478,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Detail] Data Barang Keluar</h4>
+                                                            <h4 class="modal-title">[Detail] Data Gate Out</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -575,6 +579,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

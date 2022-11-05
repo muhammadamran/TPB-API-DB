@@ -63,12 +63,18 @@ include "include/api.php";
 $content = get_content($resultAPI['url_api'] . 'refDaftarBarang.php');
 $data = json_decode($content, true);
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Daftar Barang App Name | Company </title>
+<?php } else { ?>
+    <title>Daftar Barang - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-book icon-page"></i>
+                <i class="fas fa-asterisk icon-page"></i>
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
@@ -78,8 +84,7 @@ $data = json_decode($content, true);
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
-                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i><span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -91,6 +96,14 @@ $data = json_decode($content, true);
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> [Referensi] Daftar Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
+                <!-- begin alert -->
+                <div class="alert alert-secondary fade show">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>Menampilkan <b>Limit 100 Referensi Data Barang</b> terakhir. Silahkan tambah Limit Referensi Data Barang pada form Limit.<br> Total Referensi Data Barang pada Sistem sebanyak <b>0 Referensi Data Barang.</b></p>
+                </div>
+                <!-- end alert -->
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
@@ -194,10 +207,11 @@ $data = json_decode($content, true);
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
-
 <script type="text/javascript">
     // <!-- Reset Form -->
     function myFunctionIDDaftarBarang() {

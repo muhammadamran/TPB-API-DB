@@ -631,3 +631,53 @@ section {
     -webkit-box-shadow: 0;
     box-shadow: 0;
 }
+
+.row-dinding {
+    background: #fff;
+    border-radius: 5px;
+}
+
+.svg-img-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.images-svg {
+    width: 635px;
+}
+
+.widget-stats,
+.widget.widget-stats {
+    position: relative;
+    color: #fff;
+    /* padding: 15px; */
+    padding: 13px;
+    -webkit-border-radius: 4px;
+    border-radius: 10px;
+}
+
+.class-report {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    align-items: center;
+}
+
+.for-class-report {
+    width: 40%;
+    padding: 10px;
+}
+
+@media (max-width: 862.5px) {
+    .class-report {
+        display: grid;
+        justify-content: normal;
+        align-items: center;
+    }
+
+    .for-class-report {
+        width: 100%;
+        padding: 0px;
+    }
+}

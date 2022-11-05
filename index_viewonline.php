@@ -34,32 +34,12 @@ $dataBC_40 = json_decode($contentBC_40, true);
 $contentBC_41 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc41');
 $dataBC_41 = json_decode($contentBC_41, true);
 ?>
-<style type="text/css">
-    .row-dinding {
-        background: #fff;
-        border-radius: 5px;
-    }
-
-    .svg-img-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .images-svg {
-        width: 635px;
-    }
-
-    .widget-stats,
-    .widget.widget-stats {
-        position: relative;
-        color: #fff;
-        /* padding: 15px; */
-        padding: 13px;
-        -webkit-border-radius: 4px;
-        border-radius: 10px;
-    }
-</style>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Data Online App Name | Company </title>
+<?php } else { ?>
+    <title>Data Online - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">

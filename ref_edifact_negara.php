@@ -11,12 +11,18 @@ include "include/api.php";
 $content = get_content($resultAPI['url_api'] . 'refENegara.php');
 $data = json_decode($content, true);
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Negara App Name | Company </title>
+<?php } else { ?>
+    <title>Negara - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-book icon-page"></i>
+                <i class="fas fa-asterisk icon-page"></i>
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
@@ -37,7 +43,7 @@ $data = json_decode($content, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-negara">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> [Edifact] Negara</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> [Referensi - Edifact] Negara</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -97,6 +103,8 @@ $data = json_decode($content, true);
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

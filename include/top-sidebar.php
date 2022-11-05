@@ -113,7 +113,7 @@
                         ? 'active-top' : '' ?>" style="display: <?= $TitleReport ?>;">
             <a href="index_report.php">
                 <i class="fas fa-clipboard"></i>
-                <span>Report </span>
+                <span>Laporan </span>
             </a>
             <ul class="sub-menu">
                 <li class="<?= $uriSegmentsTop[1] == 'report_masuk_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>;"><a href="report_masuk_barang.php">Masuk Barang</a></li>

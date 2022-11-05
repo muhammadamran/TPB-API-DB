@@ -59,6 +59,12 @@ if (
     $TitleReport = 'show';
 }
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Index Menu Navigation App Name | Company </title>
+<?php } else { ?>
+    <title>Index Menu Navigation - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" style="padding: 20px">
     <div class="page-title-css">
@@ -159,7 +165,6 @@ include "include/riwayat_aktifitas.php";
 include "include/panel.php";
 include "include/footer.php";
 ?>
-
 <script type="text/javascript">
     // UPDATE PASSWORD SUCCESS
     if (window?.location?.href?.indexOf('SUpdatePasswordSuccessCC') > -1) {

@@ -33,6 +33,12 @@ if ($resultRoleModules['da_two'] == 'none') {
     $TitleDashboardTwo = 'show';
 }
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Dashboard App Name | Company </title>
+<?php } else { ?>
+    <title>Dashboard - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <!-- <div id="content" class="content"> -->
 <div id="content" class="nav-top-content">
@@ -40,7 +46,7 @@ if ($resultRoleModules['da_two'] == 'none') {
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-chart-pie icon-page"></i>
-                <font class="text-page">Dashboard - Summary</font>
+                <font class="text-page">Dashboard</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Perusahaan: <?= $resultSetting['company']  ?></li>
@@ -313,7 +319,6 @@ include "include/jsDatatables.php";
         })
         history.replaceState({}, '', './index.php');
     }
-
     // REALTIME DATA LOAD
     // Pengguna Aktifitas Sistem
     function RealTimePenggunaAktifitasSistem() {

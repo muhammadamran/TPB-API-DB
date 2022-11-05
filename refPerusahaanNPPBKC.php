@@ -45,12 +45,18 @@ if (isset($_POST["add_nppbkc"])) {
 }
 // END UPDATE NPPBKC
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>NPPBKC Perusahaan App Name | Company </title>
+<?php } else { ?>
+    <title>NPPBKC Perusahaan - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-book icon-page"></i>
+                <i class="fas fa-asterisk icon-page"></i>
                 <font class="text-page">Referensi</font>
             </h1>
             <ol class="breadcrumb">
@@ -138,6 +144,8 @@ if (isset($_POST["add_nppbkc"])) {
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

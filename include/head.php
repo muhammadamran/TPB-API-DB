@@ -12,24 +12,24 @@ $SetTime = $resultSetRealTime['reload'];
 
 <head>
     <meta charset="utf-8" />
-    <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <!-- <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>TPBERP | PT. Sarinah </title>
     <?php } else { ?>
     <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
-    <?php } ?>
+    <?php } ?> -->
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta name="google-site-verification" content="xCPKDnWuscYecDM1jazXhG73XUPYarecsPo0T559KAQ" />
     <meta content="" name="description" />
     <meta content="" name="author" />
     <?php if ($resultHeadSetting['icon'] == NULL) { ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
     <?php } else { ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
     <?php } ?>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -52,38 +52,36 @@ $SetTime = $resultSetRealTime['reload'];
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <!-- FONTAWESON 5 -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css"
-        integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css"
-        integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <!-- PRELOAD -->
     <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-Q66YLEFFZ2');
+        gtag('config', 'G-Q66YLEFFZ2');
     </script>
     <!-- <link rel="stylesheet" href="assets/new.css"> -->
 </head>
 
 <script type="text/javascript">
-function display_c() {
-    var refresh = 1000; // Refresh rate in milli seconds
-    mytime = setTimeout('display_ct()', refresh)
-}
+    function display_c() {
+        var refresh = 1000; // Refresh rate in milli seconds
+        mytime = setTimeout('display_ct()', refresh)
+    }
 
-function display_ct() {
-    var x = new Date()
-    document.getElementById('ct').innerHTML = x;
-    display_c();
-}
+    function display_ct() {
+        var x = new Date()
+        document.getElementById('ct').innerHTML = x;
+        display_c();
+    }
 </script>
 <?php
 // DATE
@@ -151,47 +149,47 @@ $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 ?>
 
 <style>
-/* Blink */
-.blink {
-    animation: 1s linear infinite condemned_blink_effect;
-}
-
-@keyframes condemned_blink_effect {
-    0% {
-        visibility: hidden;
+    /* Blink */
+    .blink {
+        animation: 1s linear infinite condemned_blink_effect;
     }
 
-    50% {
-        visibility: hidden;
+    @keyframes condemned_blink_effect {
+        0% {
+            visibility: hidden;
+        }
+
+        50% {
+            visibility: hidden;
+        }
+
+        100% {
+            visibility: visible;
+        }
     }
 
-    100% {
-        visibility: visible;
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #f2f3f2;
     }
-}
 
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background-color: #f2f3f2;
-}
-
-.preloader .loading {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 14px;
-}
+    .preloader .loading {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+    }
 </style>
 <script>
-$(document).ready(function() {
-    $(".preloader-load").fadeOut();
-})
+    $(document).ready(function() {
+        $(".preloader-load").fadeOut();
+    })
 </script>
 
 <body onload="display_ct()">
