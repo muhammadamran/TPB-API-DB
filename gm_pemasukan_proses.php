@@ -8,12 +8,6 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 
 if (isset($_GET["aksi"]) == 'SubmitCTT') {
-
-    // $arr = $_POST['chk_id'];
-    // foreach ($arr as $id) {
-    // $query = mysql_query("DELETE FROM tb_user WHERE user_id='$id'");
-    // }
-
     $AJU            = $_GET['AJU'];
     $InputDate      = date('Y-m-d h:m:i');
     $meOK           = $_SESSION['username'];
@@ -93,36 +87,9 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
     }
 }
 
-// --    TOTAL_BOTOL_AKHIR='Complete',
-// --    TOTAL_LITER='$t_liter',
-// --    TOTAL_LITER_AKHIR='Complete',
-// --    TOTAL_CT_AKHIR='$pcs'
-
 if (isset($_GET["aksi"]) == 'SubmitCT') {
     $AJU            = $_GET['AJU'];
     $InputDate      = date('Y-m-d h:m:i');
-
-    // // ID_BARANG
-    // $ID                 = $row['ID'];
-    // // <!-- PLB_BARANG_CT -->
-    // $NOMOR_AJU          = $_POST['NOMOR_AJU'];
-    // $KODE_BARANG        = $_POST['KODE_BARANG'];
-    // // <!-- PLB_BARANG -->
-    // // <!-- STATUS,OPERATOR_ONE,TGL_CEK -->
-    // $STATUS             = $_POST['STATUS'];
-    // $OPERATOR_ONE       = $_POST['OPERATOR_ONE'];
-    // $TGL_CEK            = $_POST['TGL_CEK'];
-    // $CHECKING           = $_POST['CHECKING'];
-    // // <!-- STATUS_CT,DATE_CT,TOTAL_BOTOL_AKHIR,TOTAL_LITER_AKHIR,TOTAL_CT_AKHIR -->
-    // $STATUS_CT          = $_POST['STATUS_CT'];
-    // $DATE_CT            = $_POST['DATE_CT'];
-    // $TOTAL_BOTOL        = $_POST['TOTAL_BOTOL'];
-    // $TOTAL_BOTOL_AKHIR  = $_POST['TOTAL_BOTOL_AKHIR'];
-    // $TOTAL_LITER        = $_POST['TOTAL_LITER'];
-    // $TOTAL_LITER_AKHIR  = $_POST['TOTAL_LITER_AKHIR'];
-    // $TOTAL_CT           = $_POST['TOTAL_CT'];
-    // $TOTAL_CT_AKHIR     = $_POST['TOTAL_CT_AKHIR'];
-
 
     $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
     if (mysqli_num_rows($dataTable) > 0) {

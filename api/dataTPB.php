@@ -204,7 +204,7 @@ function tpb_barang_penerima()
 function tpb_barang_tarif()
 {
     global $dbcon;
-    $dataTPB = $dbcon->query("SELECT * FROM tpb_barang_tarif ORDER BY ID DESC LIMIT 1", 0);
+    $dataTPB = $dbcon->query("SELECT * FROM tpb_barang_tarif ORDER BY ID_HEADER DESC LIMIT 1", 0);
     $cek = $dataTPB->num_rows;
 
     if ($cek > 0) {
