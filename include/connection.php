@@ -5,6 +5,7 @@ $dbhost = 'localhost';
 $dbusername = 'inxmiles_tpb';
 $dbpassword = 'Flatrone2241TPB';
 $dbname = 'inxmiles_tpb';
+
 // LOCAL
 // $dbusername = 'root';
 // $dbpassword = '';
