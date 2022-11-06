@@ -92,7 +92,7 @@ function tpb_bahan_baku_dokumen()
 function tpb_bahan_baku_tarif()
 {
     global $dbcon;
-    $dataTPB = $dbcon->query("SELECT * FROM tpb_bahan_baku_tarif ORDER BY ID DESC LIMIT 1", 0);
+    $dataTPB = $dbcon->query("SELECT * FROM tpb_bahan_baku_tarif ORDER BY ID_HEADER DESC LIMIT 1", 0);
     $cek = $dataTPB->num_rows;
 
     if ($cek > 0) {
