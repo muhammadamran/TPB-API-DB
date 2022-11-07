@@ -81,7 +81,7 @@ $data = json_decode($content, true);
 
 <script type="text/javascript">
     // UPDATE SUCCESS
-    if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
+    if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
         Swal.fire({
             title: 'Data berhasil diupload!',
             icon: 'success',
@@ -90,7 +90,7 @@ $data = json_decode($content, true);
         history.replaceState({}, '', './report_ck5_plb.php');
     }
     // UPDATE FAILED
-    if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
+    if (window?.location?.href?.indexOf('UploadFailed') > -1) {
         Swal.fire({
             title: 'Data gagal diupload!',
             icon: 'error',
