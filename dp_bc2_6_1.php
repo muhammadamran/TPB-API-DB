@@ -6,23 +6,25 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-// API - 
-include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'dataBC261.php');
-$data = json_decode($content, true);
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>BC 2.5 GB App Name | Company </title>
+<?php } else { ?>
+    <title>BC 2.5 GB - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-passport icon-page"></i>
-                <font class="text-page">BC Master</font>
+                <font class="text-page">BC GB</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">BC Master</a></li>
-                <li class="breadcrumb-item active">BC 2.6.1</li>
+                <li class="breadcrumb-item"><a href="javascript:;">BC GB</a></li>
+                <li class="breadcrumb-item active">BC 2.5</li>
             </ol>
         </div>
         <div>
@@ -36,7 +38,7 @@ $data = json_decode($content, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.6.1 / Master Data</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.5 / GB</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -59,20 +61,14 @@ $data = json_decode($content, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="8">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                $dataTable = $dbcon->query("SELECT *,sts.KODE_STATUS,sts.URAIAN_STATUS 
+                                                            FROM tpb_header AS hdr 
+                                                            JOIN referensi_status AS sts ON hdr.KODE_STATUS=sts.KODE_STATUS 
+                                                            WHERE hdr.KODE_DOKUMEN_PABEAN=25 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.NOMOR_AJU", 0);
+                                if ($dataTable) : $no = 1;
+                                    foreach ($dataTable as $row) :
+                                ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
@@ -83,8 +79,22 @@ $data = json_decode($content, true);
                                             <td style="text-align: center;"><?= $row['JUMLAH_KEMASAN'] ?></td>
                                             <td style="text-align: center;"><?= $row['URAIAN_STATUS'] ?></td>
                                         </tr>
-                                    <?php } ?>
-                                <?php } ?>
+                                    <?php
+                                        $no++;
+                                    endforeach
+                                    ?>
+                                <?php else : ?>
+                                    <tr>
+                                        <td colspan="17">
+                                            <center>
+                                                <div style="display: grid;">
+                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                            </tbody>
                             </tbody>
                         </table>
                     </div>
@@ -96,6 +106,8 @@ $data = json_decode($content, true);
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

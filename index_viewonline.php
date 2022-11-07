@@ -7,32 +7,121 @@ include "include/top-header.php";
 // include "include/top-sidebar.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-// API - 
-include "include/api.php";
 // PLB
-$contentPLB = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_PLB');
-$dataPLB = json_decode($contentPLB, true);
-// BC
-$contentBC = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bcTPB');
-$dataBC = json_decode($contentBC, true);
-// BC 2.3
-$contentBC_23 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc23');
-$dataBC_23 = json_decode($contentBC_23, true);
-// BC 2.5
-$contentBC_25 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc25');
-$dataBC_25 = json_decode($contentBC_25, true);
-// BC 2.6.1
-$contentBC_261 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc261');
-$dataBC_261 = json_decode($contentBC_261, true);
-// BC 2.7
-$contentBC_27 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc27');
-$dataBC_27 = json_decode($contentBC_27, true);
-// BC 4.0
-$contentBC_40 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc40');
-$dataBC_40 = json_decode($contentBC_40, true);
-// BC 4.1
-$contentBC_41 = get_content($resultAPI['url_api'] . 'viewDODashboard.php?function=get_bc41');
-$dataBC_41 = json_decode($contentBC_41, true);
+// TOTAL BC PLB
+$dataBCPLB = $dbcon->query("SELECT COUNT(*) AS total_bc_plb FROM plb_header");
+$resultBCPLB = mysqli_fetch_array($dataBCPLB);
+if ($resultBCPLB['total_bc_plb'] == NULL) {
+    $resultBCPLB_show = 0;
+} else {
+    $resultBCPLB_show = $resultBCPLB['total_bc_plb'];
+}
+// BC 23
+$dataBCPLB23 = $dbcon->query("SELECT COUNT(*) AS total_bc_23 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='23'");
+$resultBCPLB23 = mysqli_fetch_array($dataBCPLB23);
+if ($resultBCPLB23 == NULL) {
+    $resultBCPLB23_show = 0;
+} else {
+    $resultBCPLB23_show = $resultBCPLB23['total_bc_23'];
+}
+// BC 25
+$dataBCPLB25 = $dbcon->query("SELECT COUNT(*) AS total_bc_25 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='25'");
+$resultBCPLB25 = mysqli_fetch_array($dataBCPLB25);
+if ($resultBCPLB25 == NULL) {
+    $resultBCPLB25_show = 0;
+} else {
+    $resultBCPLB25_show = $resultBCPLB25['total_bc_25'];
+}
+// BC 261
+$dataBCPLB261 = $dbcon->query("SELECT COUNT(*) AS total_bc_261 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='261'");
+$resultBCPLB261 = mysqli_fetch_array($dataBCPLB261);
+if ($resultBCPLB261 == NULL) {
+    $resultBCPLB261_show = 0;
+} else {
+    $resultBCPLB261_show = $resultBCPLB261['total_bc_261'];
+}
+// BC 27
+$dataBCPLB27 = $dbcon->query("SELECT COUNT(*) AS total_bc_27 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='27'");
+$resultBCPLB27 = mysqli_fetch_array($dataBCPLB27);
+if ($resultBCPLB27 == NULL) {
+    $resultBCPLB27_show = 0;
+} else {
+    $resultBCPLB27_show = $resultBCPLB27['total_bc_27'];
+}
+// BC 40
+$dataBCPLB40 = $dbcon->query("SELECT COUNT(*) AS total_bc_40 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='40'");
+$resultBCPLB40 = mysqli_fetch_array($dataBCPLB40);
+if ($resultBCPLB40 == NULL) {
+    $resultBCPLB40_show = 0;
+} else {
+    $resultBCPLB40_show = $resultBCPLB40['total_bc_40'];
+}
+// BC 41
+$dataBCPLB41 = $dbcon->query("SELECT COUNT(*) AS total_bc_41 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='41'");
+$resultBCPLB41 = mysqli_fetch_array($dataBCPLB41);
+if ($resultBCPLB41_show == NULL) {
+    $resultBCPLB41_show = 0;
+} else {
+    $resultBCPLB41_show = $resultBCPLB41_show['total_bc_41'];
+}
+
+// GB
+// TOTAL BC GB
+$dataBCGB = $dbcon->query("SELECT COUNT(*) AS total_bc_gb FROM tpb_header");
+$resultBCGB = mysqli_fetch_array($dataBCGB);
+if ($resultBCGB == NULL) {
+    $resultBCGB_show = 0;
+} else {
+    $resultBCGB_show = $resultBCGB['total_bc_gb'];
+}
+// BC 23
+$dataBCGB23 = $dbcon->query("SELECT COUNT(*) AS total_bc_23 FROM tpb_header WHERE KODE_DOKUMEN_PABEAN='23'");
+$resultBCGB23 = mysqli_fetch_array($dataBCGB23);
+if ($resultBCGB23 == NULL) {
+    $resultBCGB23_show = 0;
+} else {
+    $resultBCGB23_show = $resultBCGB23['total_bc_23'];
+}
+// BC 25
+$dataBCGB25 = $dbcon->query("SELECT COUNT(*) AS total_bc_25 FROM tpb_header WHERE KODE_DOKUMEN_PABEAN='25'");
+$resultBCGB25 = mysqli_fetch_array($dataBCGB25);
+if ($resultBCGB25 == NULL) {
+    $resultBCGB25_show = 0;
+} else {
+    $resultBCGB25_show = $resultBCGB25['total_bc_25'];
+}
+// BC 261
+$dataBCGB261 = $dbcon->query("SELECT COUNT(*) AS total_bc_261 FROM tpb_header WHERE KODE_DOKUMEN_PABEAN='261'");
+$resultBCGB261 = mysqli_fetch_array($dataBCGB261);
+if ($resultBCGB261 == NULL) {
+    $resultBCGB261_show = 0;
+} else {
+    $resultBCGB261_show = $resultBCGB261['total_bc_261'];
+}
+// BC 27
+$dataBCGB27 = $dbcon->query("SELECT COUNT(*) AS total_bc_27 FROM tpb_header WHERE KODE_DOKUMEN_PABEAN='27'");
+$resultBCGB27 = mysqli_fetch_array($dataBCGB27);
+if ($resultBCGB27 == NULL) {
+    $resultBCGB27_show = 0;
+} else {
+    $resultBCGB27_show = $resultBCGB27['total_bc_27'];
+}
+// BC 40
+$dataBCGB40 = $dbcon->query("SELECT COUNT(*) AS total_bc_40 FROM tpb_header WHERE KODE_DOKUMEN_PABEAN='40'");
+$resultBCGB40 = mysqli_fetch_array($dataBCGB40);
+if ($resultBCGB40 == NULL) {
+    $resultBCGB40_show = 0;
+} else {
+    $resultBCGB40_show = $resultBCGB40['total_bc_40'];
+}
+// BC 41
+$dataBCGB41 = $dbcon->query("SELECT COUNT(*) AS total_bc_41 FROM tpb_header WHERE KODE_DOKUMEN_PABEAN='41'");
+$resultBCGB41 = mysqli_fetch_array($dataBCGB41);
+if ($resultBCGB41 == NULL) {
+    $resultBCGB41_show = 0;
+} else {
+    $resultBCGB41_show = $resultBCGB41['total_bc_41'];
+}
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Data Online App Name | Company </title>
@@ -59,43 +148,29 @@ $dataBC_41 = json_decode($contentBC_41, true);
     </div>
     <div class="line-page"></div>
 
-    <!-- begin row -->
     <div class="row" style="display: flex;justify-content: center;align-content: center;align-items: center;">
-        <!-- begin col-6 -->
         <div class="col-xl-6">
-            <!-- begin card -->
             <div class="card border-0 bg-dark text-white mb-3 overflow-hidden">
-                <!-- begin card-body -->
                 <div class="card-body" style="padding: 58px;">
-                    <!-- begin row -->
                     <div class="row">
-                        <!-- begin col-7 -->
                         <div class="col-xl-7 col-lg-8">
-                            <!-- begin title -->
                             <div class="mb-3 text-grey">
                                 <b>TOTAL SALES</b>
                                 <span class="ml-2">
-                                    <i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Total sales" data-placement="top" data-content="Net sales (gross sales minus discounts and returns) plus taxes and shipping. Includes orders from all sales channels."></i>
+                                    <i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Riwayat Aktifitas"></i>
                                 </span>
                             </div>
-                            <!-- end title -->
-                            <!-- begin total-sales -->
                             <div class="d-flex mb-1">
                                 <h2 class="mb-0">$<span data-animation="number" data-value="64559.25">0.00</span></h2>
                                 <div class="ml-auto mt-n1 mb-n1">
                                     <div id="total-sales-sparkline"></div>
                                 </div>
                             </div>
-                            <!-- end total-sales -->
-                            <!-- begin percentage -->
                             <div class="mb-3 text-grey">
                                 <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% compare to last week
                             </div>
-                            <!-- end percentage -->
                             <hr class="bg-white-transparent-2" />
-                            <!-- begin row -->
                             <div class="row text-truncate">
-                                <!-- begin col-6 -->
                                 <div class="col-6">
                                     <div class="f-s-12 text-grey">Total sales order</div>
                                     <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
@@ -103,8 +178,6 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                         <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
                                 </div>
-                                <!-- end col-6 -->
-                                <!-- begin col-6 -->
                                 <div class="col-6">
                                     <div class="f-s-12 text-grey">Avg. sales per order</div>
                                     <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
@@ -112,477 +185,173 @@ $dataBC_41 = json_decode($contentBC_41, true);
                                         <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
                                 </div>
-                                <!-- end col-6 -->
                             </div>
-                            <!-- end row -->
                         </div>
-                        <!-- end col-7 -->
-                        <!-- begin col-5 -->
                         <div class="col-xl-5 col-lg-4 align-items-center d-flex justify-content-center">
                             <img src="../assets/img/svg/img-1.svg" height="150px" class="d-none d-lg-block" />
                         </div>
-                        <!-- end col-5 -->
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end card-body -->
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col-6 -->
-        <!-- begin col-6 -->
         <div class="col-xl-6">
-            <!-- begin row -->
             <div class="row">
-                <!-- begin col-6 -->
                 <div class="col-sm-6">
-                    <!-- begin card -->
                     <div class="card border-0 bg-dark text-white text-truncate mb-3">
-                        <!-- begin card-body -->
                         <div class="card-body">
-                            <!-- begin title -->
                             <div class="mb-3 text-grey">
-                                <b class="mb-3">CONVERSION RATE</b>
-                                <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
+                                <b class="mb-3">DOKUMEN PABEAN PLB</b>
+                                <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean PLB"></i></span>
                             </div>
-                            <!-- end title -->
-                            <!-- begin conversion-rate -->
                             <div class="d-flex align-items-center mb-1">
-                                <h2 class="text-white mb-0"><span data-animation="number" data-value="2.19">0.00</span>%</h2>
+                                <h2 class="text-white mb-0"><span data-animation="number" data-value="<?= $resultBCPLB_show; ?>"></span></h2>
                                 <div class="ml-auto">
                                     <div id="conversion-rate-sparkline"></div>
                                 </div>
                             </div>
-                            <!-- end conversion-rate -->
-                            <!-- begin percentage -->
                             <div class="mb-4 text-grey">
-                                <i class="fa fa-caret-down"></i> <span data-animation="number" data-value="0.50">0.00</span>% compare to last week
+                                <i class="fa fa-calendar"></i> <?= date_indo(date('Y-m-d'), TRUE) ?>
                             </div>
-                            <!-- end percentage -->
-
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-red f-s-8 mr-2"></i>
-                                    Added to cart
+                                    BC 2.3
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB23_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-                                    Reached checkout
+                                    BC 2.5
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB25_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-red f-s-8 mr-2"></i>
-                                    Added to cart
+                                    BC 2.6.1
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB261_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-                                    Reached checkout
+                                    BC 2.7
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB27_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-red f-s-8 mr-2"></i>
-                                    Added to cart
+                                    BC 4.0
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="262">0</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.79">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB40_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
-                                    Reached checkout
+                                    BC 4.1
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="11">0</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="3.85">0.00</span>%</div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB41_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-
-
-
                         </div>
-                        <!-- end card-body -->
                     </div>
-                    <!-- end card -->
                 </div>
-                <!-- end col-6 -->
-                <!-- begin col-6 -->
                 <div class="col-sm-6">
-                    <!-- begin card -->
                     <div class="card border-0 bg-dark text-white text-truncate mb-3">
-                        <!-- begin card-body -->
                         <div class="card-body">
-                            <!-- begin title -->
                             <div class="mb-3 text-grey">
-                                <b class="mb-3">STORE SESSIONS</b>
-                                <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
+                                <b class="mb-3">DOKUMEN PABEAN GB</b>
+                                <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean GB"></i></span>
                             </div>
-                            <!-- end title -->
-                            <!-- begin store-session -->
                             <div class="d-flex align-items-center mb-1">
-                                <h2 class="text-white mb-0"><span data-animation="number" data-value="70719">0</span></h2>
+                                <h2 class="text-white mb-0"><span data-animation="number" data-value="<?= $resultBCGB_show; ?>"></span></h2>
                                 <div class="ml-auto">
                                     <div id="store-session-sparkline"></div>
                                 </div>
                             </div>
-                            <!-- end store-session -->
-                            <!-- begin percentage -->
                             <div class="mb-4 text-grey">
-                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="9.5">0.00</span>% compare to last week
+                                <i class="fa fa-calendar"></i> <?= date_indo(date('Y-m-d'), TRUE) ?>
                             </div>
-                            <!-- end percentage -->
-
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-                                    Mobile
+                                    BC 2.3
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB23_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-                                    Desktop
+                                    BC 2.5
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB25_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-                                    Mobile
+                                    BC 2.6.1
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB261_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-                                    Desktop
+                                    BC 2.7
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB27_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-teal f-s-8 mr-2"></i>
-                                    Mobile
+                                    BC 4.0
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="25.7">0.00</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="53210">0</span></div>
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB40_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
-                            <!-- begin info-row -->
                             <div class="d-flex mb-2">
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-circle text-blue f-s-8 mr-2"></i>
-                                    Desktop
+                                    BC 4.1
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
-                                    <div class="text-grey f-s-11"><i class="fa fa-caret-up"></i> <span data-animation="number" data-value="16.0">0.00</span>%</div>
-                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="11959">0</span></div>
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
+                                    <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB41_show; ?>"></span></div>
                                 </div>
                             </div>
-                            <!-- end info-row -->
 
                         </div>
-                        <!-- end card-body -->
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col-6 -->
-            </div>
-            <!-- end row -->
-        </div>
-        <!-- end col-6 -->
-    </div>
-    <!-- end row -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row" style="display: flex;justify-content: center;align-items: center;background: #fff;border-radius: 5px;margin-left: 0px;margin-right: 0px;padding: 15px 0px 0px 0px;">
-                <div class="col-md-3">
-                    <!-- <div class="row-dinding"> -->
-                    <div class="svg-img-center">
-                        <img src="assets/img/svg/data-extraction-animate.svg" class="images-svg">
-                    </div>
-                    <!-- </div> -->
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <!-- BC 2.3 -->
-                        <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 2.3</div>
-                                    <?php if ($dataBC_23['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC_23['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc23']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End BC 2.3 -->
-                        <!-- BC 2.5 -->
-                        <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 2.5</div>
-                                    <?php if ($dataBC_25['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC_25['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc25']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End BC 2.5 -->
-                        <!-- BC 2.6.1 -->
-                        <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 2.6.1</div>
-                                    <?php if ($dataBC_261['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC_261['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc261']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End BC 2.6.1 -->
-                        <!-- BC 2.7 -->
-                        <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 2.7</div>
-                                    <?php if ($dataBC_27['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC_27['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc27']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End BC 2.7 -->
-                        <!-- BC 4.0 -->
-                        <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 4.0</div>
-                                    <?php if ($dataBC_40['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC_40['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc40']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End BC 4.0 -->
-                        <!-- BC 4.1 -->
-                        <div class="col-xl-4 col-md-6">
-                            <div class="widget widget-stats bg-bc">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-clipboard fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data BC 4.1</div>
-                                    <?php if ($dataBC_41['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC_41['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc41']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End BC 4.1 -->
-                        <!-- PLB -->
-                        <div class="col-xl-6 col-md-6">
-                            <div class="widget widget-stats bg-plb">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-down fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data PLB</div>
-                                    <?php
-                                    $query = $dbcon->query("SELECT NOMOR_AJU,KODE_DOKUMEN_PABEAN,
-                                             (SELECT COUNT(*) AS total_bc FROM plb_header WHERE KODE_DOKUMEN_PABEAN IS NOT NULL) AS total_bc
-                                              FROM plb_header
-                                              WHERE KODE_DOKUMEN_PABEAN IS NOT NULL
-                                              ORDER BY ID DESC LIMIT 1");
-                                    $resultPLB = mysqli_fetch_array($query);
-                                    ?>
-                                    <?php if ($resultPLB['NOMOR_AJU'] == NULL) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: - <br> BC: -</div>
-                                    <?php } else { ?>
-                                        <div class="stats-number"><?= $resultPLB['total_bc']; ?> AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: <?= $resultPLB['NOMOR_AJU']; ?> <br> BC:
-                                            <?= $resultPLB['KODE_DOKUMEN_PABEAN']; ?>
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End PLB -->
-                        <!-- TPB -->
-                        <div class="col-xl-6 col-md-6">
-                            <div class="widget widget-stats bg-tpb">
-                                <div class="stats-icon stats-icon-lg"><i class="fa fa-circle-up fa-fw"></i></div>
-                                <div class="stats-content">
-                                    <div class="stats-title">Total Data TPB Module</div>
-                                    <?php if ($dataBC['status'] == 404) { ?>
-                                        <div class="stats-number">- AJU</div>
-                                        <div class="stats-progress progress">
-                                            <div class="progress-bar" style="width: 100%;"></div>
-                                        </div>
-                                        <div class="stats-desc">AJU Terakhir: - <br> BC: -</div>
-                                    <?php } else { ?>
-                                        <?php foreach ($dataBC['result'] as $row) { ?>
-                                            <div class="stats-number"><?= $row['total_bc']; ?> AJU</div>
-                                            <div class="stats-progress progress">
-                                                <div class="progress-bar" style="width: 100%;"></div>
-                                            </div>
-                                            <div class="stats-desc">AJU Terakhir: <?= $row['NOMOR_AJU']; ?> <br> BC:
-                                                <?= $row['KODE_DOKUMEN_PABEAN']; ?></div>
-                                        <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End TPB -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->

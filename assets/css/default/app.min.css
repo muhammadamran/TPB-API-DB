@@ -18369,7 +18369,7 @@ a.close.disabled {
 .bs-popover-auto[x-placement^=top]>.arrow::after,.bs-popover-top>.arrow::after {
 	bottom: 1px;
 	border-width: .5rem .5rem 0;
-	border-top-color: #fff;
+	border-top-color: #2d353c;
 }
 
 .bs-popover-auto[x-placement^=right],.bs-popover-right {

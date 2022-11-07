@@ -8,9 +8,9 @@ include "include/sidebar.php";
 include "include/cssDatatables.php";
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>BC 2.5 GB App Name | Company </title>
+    <title>BC 2.3 PLB App Name | Company </title>
 <?php } else { ?>
-    <title>BC 2.5 GB - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+    <title>BC 2.3 PLB - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
 <!-- begin #content -->
@@ -19,12 +19,12 @@ include "include/cssDatatables.php";
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-passport icon-page"></i>
-                <font class="text-page">BC GB</font>
+                <font class="text-page">BC PLB</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">BC GB</a></li>
-                <li class="breadcrumb-item active">BC 2.5</li>
+                <li class="breadcrumb-item"><a href="javascript:;">BC PLB</a></li>
+                <li class="breadcrumb-item active">BC 2.3</li>
             </ol>
         </div>
         <div>
@@ -38,7 +38,7 @@ include "include/cssDatatables.php";
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.5 / GB</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.3 / PLB</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -62,22 +62,19 @@ include "include/cssDatatables.php";
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT *,sts.KODE_STATUS,sts.URAIAN_STATUS 
-                                                            FROM tpb_header AS hdr 
-                                                            JOIN referensi_status AS sts ON hdr.KODE_STATUS=sts.KODE_STATUS 
-                                                            WHERE hdr.KODE_DOKUMEN_PABEAN=25 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.NOMOR_AJU", 0);
+                                $dataTable = $dbcon->query("SELECT * FROM plb_header WHERE KODE_DOKUMEN_PABEAN='23' ORDER BY ID DESC", 0);
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
-                                            <td style="text-align: center;"><?= $row['NAMA_PEMASOK'] ?></td>
+                                            <td style="text-align: center;"><?= $row['PEMASOK'] ?></td>
                                             <td style="text-align: center;"><?= $row['NAMA_PENGANGKUT'] ?></td>
                                             <td style="text-align: center;"><?= $row['JUMLAH_BARANG'] ?></td>
                                             <td style="text-align: center;"><?= $row['JUMLAH_KONTAINER'] ?></td>
                                             <td style="text-align: center;"><?= $row['JUMLAH_KEMASAN'] ?></td>
-                                            <td style="text-align: center;"><?= $row['URAIAN_STATUS'] ?></td>
+                                            <td style="text-align: center;"><?= $row['STATUS'] ?></td>
                                         </tr>
                                     <?php
                                         $no++;
