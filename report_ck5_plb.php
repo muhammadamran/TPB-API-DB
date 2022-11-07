@@ -78,3 +78,24 @@ $data = json_decode($content, true);
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
+
+<script type="text/javascript">
+    // UPDATE SUCCESS
+    if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil diupload!',
+            icon: 'success',
+            text: 'Data berhasil diupload pada <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './report_ck5_plb.php');
+    }
+    // UPDATE FAILED
+    if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal diupload!',
+            icon: 'error',
+            text: 'Data gagal diupload pada <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './report_ck5_plb.php');
+    }
+</script>
