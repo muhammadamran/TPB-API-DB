@@ -48,6 +48,12 @@ $A_BTL                  = mysqli_fetch_array($content_A_BTL);
 $content_A_LTR          = $dbcon->query("SELECT SUM(TOTAL_BOTOL * LITER) AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_LTR                  = mysqli_fetch_array($content_A_LTR);
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Gate In Detil Barang App Name | Company </title>
+<?php } else { ?>
+    <title>Gate In Detil Barang - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <style>
     .btn-custom {
         font-size: 10px;
@@ -312,7 +318,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                     </div>
                     <!-- END PETUGAS -->
                     <!-- Kurang -->
-                    <?php if ($_GET['AlertSimpan'] == 'Success') { ?>
+                    <?php if (isset($_GET['AlertSimpan']) == 'Success') { ?>
                         <hr>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
@@ -321,7 +327,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                 <p> Detail CT <b>Berhasil disimpan</b>!</p>
                             </div>
                         </div>
-                    <?php } else if ($_GET['AlertSimpan'] == 'Failed') { ?>
+                    <?php } else if (isset($_GET['AlertSimpan']) == 'Failed') { ?>
                         <hr>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>

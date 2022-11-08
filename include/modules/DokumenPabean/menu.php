@@ -20,11 +20,11 @@ if ($resultRoleModules['v_bc'] == 'show') {
         <i class="icon-page-sidebar">
             <font style="margin-left: -5px;">PLB</font>
         </i>
-        <span>BC PLB</span>
+        <span>BC PLB <span class="label label-theme"><?= $result_count_plb['total_plb'] ?></span></span>
     </a>
     <ul class="sub-menu">
         <li class="<?= $uriSegments[1] == 'dp_bc2_3_plb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_bc']; ?>">
-            <a href="dp_bc2_3_plb.php">BC 2.3</a>
+            <a href="dp_bc2_3_plb.php">BC 2.3 </a>
         </li>
         <li class="<?= $uriSegments[1] == 'dp_bc2_5_plb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_bc']; ?>">
             <a href="dp_bc2_5_plb.php">BC 2.5</a>
@@ -57,7 +57,7 @@ if ($resultRoleModules['v_bc'] == 'show') {
         <i class="icon-page-sidebar">
             <font style="margin-left: -3px;">GB</font>
         </i>
-        <span>BC GB</span>
+        <span>BC GB <span class="label label-theme"><?= $result_count_gb['total_gb'] ?></span></span>
     </a>
     <ul class="sub-menu">
         <li class="<?= $uriSegments[1] == 'dp_bc2_3.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_bc']; ?>">

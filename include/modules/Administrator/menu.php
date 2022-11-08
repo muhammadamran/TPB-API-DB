@@ -1,3 +1,4 @@
+<li class="nav-header">SETTINGS</li>
 <li class="<?= $uriSegments[1] == 'index_settings.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
     <a href="index_settings.php"><i class="fas fa-cog icon-page-sidebar"></i> <span>Settings</span></a>
 </li>

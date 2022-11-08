@@ -663,7 +663,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <!-- DETAIL -->
                     <hr>
                     <!-- Alert -->
-                    <?php if ($_GET['Alert'] == 'CekBarangMasuk') { ?>
+                    <?php if (isset($_GET['Alert']) == 'CekBarangMasuk') { ?>
                         <div class="note note-warning">
                             <div class="note-icon"><i class="fas fa-boxes"></i></div>
                             <div class="note-content">
@@ -674,7 +674,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                         <hr>
                     <?php } ?>
                     <!-- Simpan -->
-                    <?php if ($_GET['AlertSimpan'] == 'Failed') { ?>
+                    <?php if (isset($_GET['AlertSimpan']) == 'Failed') { ?>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                             <div class="note-content">
@@ -685,7 +685,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                         <hr>
                     <?php } ?>
                     <!-- Kurang -->
-                    <?php if ($_GET['AlertKurang'] == 'Success') { ?>
+                    <?php if (isset($_GET['AlertKurang']) == 'Success') { ?>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="note-content">
@@ -694,7 +694,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                             </div>
                         </div>
                         <hr>
-                    <?php } else if ($_GET['AlertKurang'] == 'Failed') { ?>
+                    <?php } else if (isset($_GET['AlertKurang']) == 'Failed') { ?>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                             <div class="note-content">
@@ -706,7 +706,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Kurang -->
                     <!-- Lebih -->
-                    <?php if ($_GET['AlertLebih'] == 'Success') { ?>
+                    <?php if (isset($_GET['AlertLebih']) == 'Success') { ?>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="note-content">
@@ -715,7 +715,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                             </div>
                         </div>
                         <hr>
-                    <?php } else if ($_GET['AlertLebih'] == 'Failed') { ?>
+                    <?php } else if (isset($_GET['AlertLebih']) == 'Failed') { ?>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                             <div class="note-content">
@@ -727,7 +727,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Lebih -->
                     <!-- Pecah -->
-                    <?php if ($_GET['AlertPecah'] == 'Success') { ?>
+                    <?php if (isset($_GET['AlertPecah']) == 'Success') { ?>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="note-content">
@@ -736,7 +736,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                             </div>
                         </div>
                         <hr>
-                    <?php } else if ($_GET['AlertPecah'] == 'Failed') { ?>
+                    <?php } else if (isset($_GET['AlertPecah']) == 'Failed') { ?>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                             <div class="note-content">
@@ -748,7 +748,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Pecah -->
                     <!-- Rusak -->
-                    <?php if ($_GET['AlertRusak'] == 'Success') { ?>
+                    <?php if (isset($_GET['AlertRusak']) == 'Success') { ?>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="note-content">
@@ -757,7 +757,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                             </div>
                         </div>
                         <hr>
-                    <?php } else if ($_GET['AlertRusak'] == 'Failed') { ?>
+                    <?php } else if (isset($_GET['AlertRusak']) == 'Failed') { ?>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                             <div class="note-content">
@@ -769,7 +769,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Rusak -->
                     <!-- Broken -->
-                    <?php if ($_GET['AlertBroken'] == 'Success') { ?>
+                    <?php if (isset($_GET['AlertBroken']) == 'Success') { ?>
                         <div class="note note-success">
                             <div class="note-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="note-content">
@@ -778,7 +778,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                             </div>
                         </div>
                         <hr>
-                    <?php } else if ($_GET['AlertBroken'] == 'Failed') { ?>
+                    <?php } else if (isset($_GET['AlertBroken']) == 'Failed') { ?>
                         <div class="note note-danger">
                             <div class="note-icon"><i class="fas fa-times-circle"></i></div>
                             <div class="note-content">

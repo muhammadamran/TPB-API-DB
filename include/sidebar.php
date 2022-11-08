@@ -31,6 +31,13 @@
 $user = $_SESSION['username'];
 $roleSidebar = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$user' ");
 $accessSidebar = mysqli_fetch_array($roleSidebar);
+
+// COUNT
+$count_plb        = $dbcon->query("SELECT COUNT(*) AS total_plb FROM plb_header");
+$result_count_plb = mysqli_fetch_array($count_plb);
+$count_gb        = $dbcon->query("SELECT COUNT(*) AS total_gb FROM tpb_header");
+$result_count_gb = mysqli_fetch_array($count_gb);
+// END COUNT
 ?>
 <?php $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
 <div id="sidebar" class="sidebar">
@@ -153,16 +160,12 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             <li class="<?= $uriSegments[1] == 'index_report.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
                 <a href="index_report.php"><i class="fas fa-file-invoice icon-page-sidebar"></i> <span>Laporan</span></a>
             </li>
-            <!-- CK5PLB -->
-            <?php
-            include 'modules/CK5PLB/menu.php'
-            ?>
-            <!-- Dokumen Pabean -->
-            <?php include 'modules/DokumenPabean/menu.php' ?>
             <!-- Gate Mandiri -->
             <?php
             include 'modules/GateMandiri/menu.php'
             ?>
+            <!-- Dokumen Pabean -->
+            <?php include 'modules/DokumenPabean/menu.php' ?>
             <!-- Komunikasi -->
             <?php
             // include 'modules/Komunikasi/menu.php' 
@@ -180,6 +183,10 @@ $accessSidebar = mysqli_fetch_array($roleSidebar);
             <!-- Report -->
             <?php
             // include 'modules/Report/menu.php' 
+            ?>
+            <!-- CK5PLB -->
+            <?php
+            include 'modules/CK5PLB/menu.php'
             ?>
             <!-- Administrator -->
             <?php include 'modules/Administrator/menu.php' ?>

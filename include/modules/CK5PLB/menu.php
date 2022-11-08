@@ -5,9 +5,9 @@ if ($resultRoleModules['v_bc'] == 'show') {
     $TitleBC = 'none';
 }
 ?>
-<li class="nav-header" style="display: <?= $TitleBC; ?>;">CK5 PLB <small>(Ref. Barang Masuk)</small> </li>
+<li class="nav-header" style="display: <?= $TitleBC; ?>;">UPLOAD</li>
 <li class="<?= $uriSegments[1] == 'report_ck5_plb.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
-    <a href="report_ck5_plb.php"><i class="fas fa-file-upload icon-page-sidebar"></i> <span>Upload CK5 PLB</span></a>
+    <a href="report_ck5_plb.php"><i class="fas fa-file-upload icon-page-sidebar"></i> <span>BC 2.7 PLB</span></a>
 </li>
 <!-- <li class="has-sub <?= $uriSegments[1] == 'dp_bc2_3.php' ||
                             $uriSegments[1] == 'dp_bc2_5.php' ||

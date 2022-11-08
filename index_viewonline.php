@@ -59,10 +59,10 @@ if ($resultBCPLB40 == NULL) {
 // BC 41
 $dataBCPLB41 = $dbcon->query("SELECT COUNT(*) AS total_bc_41 FROM plb_header WHERE KODE_DOKUMEN_PABEAN='41'");
 $resultBCPLB41 = mysqli_fetch_array($dataBCPLB41);
-if ($resultBCPLB41_show == NULL) {
+if ($resultBCPLB41 == NULL) {
     $resultBCPLB41_show = 0;
 } else {
-    $resultBCPLB41_show = $resultBCPLB41_show['total_bc_41'];
+    $resultBCPLB41_show = $resultBCPLB41['total_bc_41'];
 }
 
 // GB
@@ -151,7 +151,7 @@ if ($resultBCGB41 == NULL) {
     <div class="row" style="display: flex;justify-content: center;align-content: center;align-items: center;">
         <div class="col-xl-6">
             <div class="card border-0 bg-dark text-white mb-3 overflow-hidden">
-                <div class="card-body" style="padding: 58px;">
+                <div class="card-body" style="padding: 28px;">
                     <div class="row">
                         <div class="col-xl-7 col-lg-8">
                             <div class="mb-3 text-grey">
@@ -185,6 +185,20 @@ if ($resultBCGB41 == NULL) {
                                         <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
                                     </div>
                                 </div>
+                                <div class="col-6">
+                                    <div class="f-s-12 text-grey">Total sales order</div>
+                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
+                                    <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
+                                        <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="f-s-12 text-grey">Avg. sales per order</div>
+                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
+                                    <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
+                                        <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-4 align-items-center d-flex justify-content-center">
@@ -204,7 +218,7 @@ if ($resultBCGB41 == NULL) {
                                 <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean PLB"></i></span>
                             </div>
                             <div class="d-flex align-items-center mb-1">
-                                <h2 class="text-white mb-0"><span data-animation="number" data-value="<?= $resultBCPLB_show; ?>"></span></h2>
+                                <h2 class="text-white mb-0"><span data-animation="number" data-value="<?= $resultBCPLB_show; ?>"></span> AJU</h2>
                                 <div class="ml-auto">
                                     <div id="conversion-rate-sparkline"></div>
                                 </div>
@@ -218,6 +232,7 @@ if ($resultBCGB41 == NULL) {
                                     BC 2.3
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB23_show; ?>"></span></div>
                                 </div>
                             </div>
@@ -227,6 +242,7 @@ if ($resultBCGB41 == NULL) {
                                     BC 2.5
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB25_show; ?>"></span></div>
                                 </div>
                             </div>
@@ -236,6 +252,7 @@ if ($resultBCGB41 == NULL) {
                                     BC 2.6.1
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB261_show; ?>"></span></div>
                                 </div>
                             </div>
@@ -245,6 +262,7 @@ if ($resultBCGB41 == NULL) {
                                     BC 2.7
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB27_show; ?>"></span></div>
                                 </div>
                             </div>
@@ -254,6 +272,7 @@ if ($resultBCGB41 == NULL) {
                                     BC 4.0
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB40_show; ?>"></span></div>
                                 </div>
                             </div>
@@ -263,6 +282,7 @@ if ($resultBCGB41 == NULL) {
                                     BC 4.1
                                 </div>
                                 <div class="d-flex align-items-center ml-auto">
+                                    <div class="text-grey f-s-11"> <span data-animation="number" data-value=""></span>Data Pengajuan <i class="fa fa-caret-right"></i></div>
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCPLB41_show; ?>"></span></div>
                                 </div>
                             </div>
@@ -277,7 +297,7 @@ if ($resultBCGB41 == NULL) {
                                 <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean GB"></i></span>
                             </div>
                             <div class="d-flex align-items-center mb-1">
-                                <h2 class="text-white mb-0"><span data-animation="number" data-value="<?= $resultBCGB_show; ?>"></span></h2>
+                                <h2 class="text-white mb-0"><span data-animation="number" data-value="<?= $resultBCGB_show; ?>"></span> AJU</h2>
                                 <div class="ml-auto">
                                     <div id="store-session-sparkline"></div>
                                 </div>
