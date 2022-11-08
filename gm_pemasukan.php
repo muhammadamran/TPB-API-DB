@@ -488,8 +488,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                         <?php } else { ?>
                                                                                             <option value="">-- Nomor Pengajuan GB --</option>
                                                                                         <?php } ?>
-                                                                                        <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
-                                                                                            <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
+                                                                                        <?php
+                                                                                        $resultMitra = $dbcon->query("SELECT * FROM tpb_header");
+                                                                                        foreach ($resultMitra as $RowMitra) {
+                                                                                        ?>
+                                                                                            <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
                                                                                         <?php } ?>
                                                                                     </select>
                                                                                 </div>
