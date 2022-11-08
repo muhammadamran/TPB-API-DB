@@ -51,6 +51,10 @@ $access = mysqli_fetch_array($role);
             <div style="margin-left: 5px;">
                 <a href="gm_pengeluaran.php" class="btn btn-dark-custom" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Gate Out <?= $result_out['total_out'] ?>"><i class="fas fa-door-closed"></i> Gate Out <span class="badge badge-success"><?= $result_out['total_out'] ?></span></a>
             </div>
+            <!-- API -->
+            <div style="margin-left: 5px;">
+                <a href="http://api.itinventory-sarinah.com:8091/" class="btn btn-dark-custom" style="width: 125px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="API"><i class="fas fa-code"></i> API</a>
+            </div>
         </div>
     </div>
     <!-- end navbar-header -->
