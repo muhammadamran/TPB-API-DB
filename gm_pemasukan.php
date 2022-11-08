@@ -76,8 +76,6 @@ if (isset($_POST['upload_'])) {
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
     move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostUPLOAD&newname=' . $newname . '&rcd_id=' . $rcd_id);
-    $data = json_decode($content, true);
 
     $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_PLB='$newname',
                                                 bc_in='$bk_nama_operator'
