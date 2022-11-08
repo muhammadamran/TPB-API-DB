@@ -633,7 +633,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                 <label>Upload Berita Acara</label>
                                                                             <?php } ?>
                                                                             <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
-                                                                            <input type="text" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                            <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
