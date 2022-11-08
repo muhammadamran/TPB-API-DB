@@ -196,7 +196,7 @@ $data = json_decode($content, true);
                                     <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
                                     <th style="text-align: center;">Nomor Pengajuan PLB</th>
                                     <th style="text-align: center;">No. Daftar PLB</th>
-                                    <th style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
+                                    <th style="text-align: center;">Tanggal Submit/Upload BC 2.7 PLB</th>
                                     <th style="text-align: center;">Sarinah</th>
                                     <th style="text-align: center;">BC</th>
                                 </tr>

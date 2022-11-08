@@ -679,9 +679,9 @@ if (isset($_POST["NDeleteData"])) {
                                                                             <textarea type="text" class="form-control" name="UpdateNameDescription" id="IdUpdateDescription" placeholder="Deskripsi ..."><?= $row['description'] ?></textarea>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Dashboard - Summary -->
+                                                                    <!-- Dashboard -->
                                                                     <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
-                                                                        <label for="IDDahboardSummary">Dashboard - Summary</label>
+                                                                        <label for="IDDahboardSummary">Dashboard</label>
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <div class="form-group">
@@ -701,7 +701,7 @@ if (isset($_POST["NDeleteData"])) {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End Dashboard - Summary -->
+                                                                    <!-- End Dashboard -->
                                                                     <!-- Data Online -->
                                                                     <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
                                                                         <label for="IDViewDataOnline">Data Online</label>

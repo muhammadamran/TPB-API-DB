@@ -37,7 +37,7 @@
         <li class="<?= $uriSegmentsTop[1] == 'index_dashboard.php' ? 'active-top' : '' ?>" style="display: <?= $TitleDashboard ?>;">
             <a href="index_dashboard.php">
                 <i class="fas fa-chart-pie"></i>
-                <span>Dashboard - Summary </span>
+                <span>Dashboard </span>
             </a>
         </li>
         <?php
