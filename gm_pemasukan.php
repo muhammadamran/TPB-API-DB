@@ -81,6 +81,9 @@ if (isset($_POST['upload_'])) {
                                                 bc_in='$bk_nama_operator'
                                             WHERE rcd_id='$rcd_id'");
 
+    var_dump($sql);
+    exit;
+
     if ($sql) {
         echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     } else {
