@@ -155,13 +155,13 @@ if ($resultBCGB41 == NULL) {
                     <div class="row">
                         <div class="col-xl-7 col-lg-8">
                             <div class="mb-3 text-grey">
-                                <b>TOTAL SALES</b>
+                                <b>Barang IT Inventory</b>
                                 <span class="ml-2">
-                                    <i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Riwayat Aktifitas"></i>
+                                    <i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Barang IT Inventory"></i>
                                 </span>
                             </div>
                             <div class="d-flex mb-1">
-                                <h2 class="mb-0">$<span data-animation="number" data-value="64559.25">0.00</span></h2>
+                                <h2 class="mb-0" id="R_totalHP_awal"></h2>
                                 <div class="ml-auto mt-n1 mb-n1">
                                     <div id="total-sales-sparkline"></div>
                                 </div>
@@ -382,3 +382,39 @@ include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 ?>
+
+<script>
+    // HP Awal
+    function Page_totalHP_awal() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("R_totalHP_awal").innerHTML =
+                    this.responseText;
+            }
+        };
+        xhttp.open("GET", "realtime/viewdataonline.php?function=totalHP_awal", true);
+        xhttp.send();
+    }
+    setInterval(function() {
+        Page_totalHP_awal();
+    }, 1000);
+    window.onload = Page_totalHP_awal;
+
+    // HP Akhir
+    function Page_totalHP_akhir() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("R_totalHP_akhir").innerHTML =
+                    this.responseText;
+            }
+        };
+        xhttp.open("GET", "realtime/viewdataonline.php?function=totalHP_akhir", true);
+        xhttp.send();
+    }
+    setInterval(function() {
+        Page_totalHP_akhir();
+    }, 1000);
+    window.onload = Page_totalHP_akhir;
+</script>

@@ -361,7 +361,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                         <!-- IDBarang -->
                         <div class="tab-pane fade active show" id="IDBarang">
                             <hr>
-                            <form id="form-submit" action="" method="POST">
+                            <form id="form-submit" action="gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>" method="POST">
                                 <div style="margin-bottom: 10px;">
                                     <font style="font-weight: 800;">Status Barang:</font>
                                 </div>
