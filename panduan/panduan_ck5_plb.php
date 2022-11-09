@@ -16,13 +16,15 @@
                                 <font style="font-size: 18px;font-weight: 700;">Keterangan:</font>
                                 <ul>
                                     <li>Sebelum melakukan upload file Excel, silahkan Lakukan porses data cleansing pada file anda.</li>
-                                    <li>Upload file xls, xlxs pada page CK5 / PLB REPORT "form Upload Excel File CK5 PLB:"</li>
+                                    <li>Upload file xls, xlxs pada page CK5 / PLB REPORT "form Upload Excel File BC 2.7 PLB:"</li>
                                     <li>Klik button upload <button type="button" class="btn btn-sm btn-primary" value="Upload"><i class="fas fa-upload"></i> Upload</button></li>
-                                    <li>Setelah file berhasil diupload perhatikan Informasi File Upload Excel CK5 PLB! untuk mengetahui detail log upload CK5 PLB</li>
+                                    <li>Setelah file berhasil diupload perhatikan Informasi File Upload Excel BC 2.7 PLB! untuk mengetahui detail log upload BC 2.7 PLB</li>
                                     <li>Lihat Detail Dokumen berdasarkan Nomot AJU pada Tab Header</li>
                                     <li>
-                                        Klik Lihat detail untuk melihat dokumen 
-                                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i><br><font style="font-size: 8px;display: flex;width: 55px;justify-content: center;">Lihat Detail</font></a>
+                                        Klik Lihat detail untuk melihat dokumen
+                                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i><br>
+                                            <font style="font-size: 8px;display: flex;width: 55px;justify-content: center;">Lihat Detail</font>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

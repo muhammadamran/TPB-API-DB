@@ -50,6 +50,12 @@ $ST_PECAH               = mysqli_fetch_array($contentPECAH);
 $contentRUSAK           = $dbcon->query("SELECT SUM(RUSAK) AS s_RUSAK FROM plb_barang_ct_botol  WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND ID_BARANG='" . $_GET['ID'] . "'", 0);
 $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Gate In Detil Barang App Name | Company </title>
+<?php } else { ?>
+    <title>Gate In Detil Barang <?= $resultList['KODE_BARANG'] ?> - <?= $resultList['TIPE'] ?> - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <style>
     .btn-custom {
         font-size: 10px;
@@ -187,6 +193,20 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <div style="display: flex;justify-content: space-between;align-content: center;align-items: center;padding: 16px;background: #d9e0e7;font-size: 14px;font-weight: 600;margin-top: -15px;margin-bottom: 15px;">
+                        <!-- ASAL -->
+                        <div style="text-transform: uppercase;">
+                            Asal: <?= $datahdrbrg['PERUSAHAAN'] ?>
+                        </div>
+                        <!-- ICON -->
+                        <div>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                        </div>
+                        <!-- Tujuan -->
+                        <div style="text-transform: uppercase;">
+                            Tujuan: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>
+                        </div>
+                    </div>
                     <!-- DETAIL -->
                     <div class="detail-barang-ct">
                         <div>
@@ -230,14 +250,11 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                     </h4>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
-                                        <b> <?= Rupiah($resultList['POS_TARIF']); ?></b>
+                                        <b> <?= $resultList['POS_TARIF']; ?></b>
                                     </h4>
                                     <div style="margin-bottom: -35px;">
                                         <p>Uraian: <?= $resultList['URAIAN']; ?><br>Ukuran: <?= $resultList['UKURAN']; ?></p>
                                     </div>
-                                </div>
-                                <div class="widget-card-content bottom">
-                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
                                 </div>
                             </a>
                         </div>
@@ -291,16 +308,16 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                         </div>
                         <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;margin-top: 10px;">
                             <?php if ($ST_KURANG['s_KURANG'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-yellow"><i class="fa-solid fa-minus"></i> <b><?= $ST_KURANG['s_KURANG']; ?></b> Kurang</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-yellow" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Kurang <?= $ST_KURANG['s_KURANG']; ?>"><i class="fa-solid fa-minus"></i> <b><?= $ST_KURANG['s_KURANG']; ?></b> Kurang</button>
                             <?php } ?>
                             <?php if ($ST_LEBIH['s_LEBIH'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> <b><?= $ST_LEBIH['s_LEBIH']; ?></b> Lebih</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-lime" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Lebih <?= $ST_LEBIH['s_LEBIH']; ?>"><i class="fa-solid fa-plus"></i> <b><?= $ST_LEBIH['s_LEBIH']; ?></b> Lebih</button>
                             <?php } ?>
                             <?php if ($ST_PECAH['s_PECAH'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> <b><?= $ST_PECAH['s_PECAH']; ?></b> Pecah</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Pecah <?= $ST_PECAH['s_PECAH']; ?>"><i class="fa-solid fa-tags"></i> <b><?= $ST_PECAH['s_PECAH']; ?></b> Pecah</button>
                             <?php } ?>
                             <?php if ($ST_RUSAK['s_RUSAK'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> <b><?= $ST_RUSAK['s_RUSAK']; ?></b> Rusak</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-warning" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Rusak <?= $ST_RUSAK['s_RUSAK']; ?>"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> <b><?= $ST_RUSAK['s_RUSAK']; ?></b> Rusak</button>
                             <?php } ?>
                         </div>
                     </div>

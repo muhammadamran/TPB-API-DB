@@ -542,6 +542,20 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <div style="display: flex;justify-content: space-between;align-content: center;align-items: center;padding: 16px;background: #d9e0e7;font-size: 14px;font-weight: 600;margin-top: -15px;margin-bottom: 15px;">
+                        <!-- ASAL -->
+                        <div style="text-transform: uppercase;">
+                            Asal: <?= $datahdrbrg['PERUSAHAAN'] ?>
+                        </div>
+                        <!-- ICON -->
+                        <div>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                        </div>
+                        <!-- Tujuan -->
+                        <div style="text-transform: uppercase;">
+                            Tujuan: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>
+                        </div>
+                    </div>
                     <!-- DETAIL -->
                     <div class="detail-barang-ct">
                         <div>
@@ -585,14 +599,11 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                     </h4>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
-                                        <b> <?= Rupiah($resultList['POS_TARIF']); ?></b>
+                                        <b> <?= $resultList['POS_TARIF']; ?></b>
                                     </h4>
                                     <div style="margin-bottom: -35px;">
                                         <p>Uraian: <?= $resultList['URAIAN']; ?><br>Ukuran: <?= $resultList['UKURAN']; ?></p>
                                     </div>
-                                </div>
-                                <div class="widget-card-content bottom">
-                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
                                 </div>
                             </a>
                         </div>
@@ -646,16 +657,16 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                         </div>
                         <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;margin-top: 10px;">
                             <?php if ($ST_KURANG['s_KURANG'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-yellow"><i class="fa-solid fa-minus"></i> <b><?= $ST_KURANG['s_KURANG']; ?></b> Kurang</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-yellow" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Kurang <?= $ST_KURANG['s_KURANG']; ?>"><i class="fa-solid fa-minus"></i> <b><?= $ST_KURANG['s_KURANG']; ?></b> Kurang</button>
                             <?php } ?>
                             <?php if ($ST_LEBIH['s_LEBIH'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-lime"><i class="fa-solid fa-plus"></i> <b><?= $ST_LEBIH['s_LEBIH']; ?></b> Lebih</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-lime" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Lebih <?= $ST_LEBIH['s_LEBIH']; ?>"><i class="fa-solid fa-plus"></i> <b><?= $ST_LEBIH['s_LEBIH']; ?></b> Lebih</button>
                             <?php } ?>
                             <?php if ($ST_PECAH['s_PECAH'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-dark"><i class="fa-solid fa-tags"></i> <b><?= $ST_PECAH['s_PECAH']; ?></b> Pecah</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Pecah <?= $ST_PECAH['s_PECAH']; ?>"><i class="fa-solid fa-tags"></i> <b><?= $ST_PECAH['s_PECAH']; ?></b> Pecah</button>
                             <?php } ?>
                             <?php if ($ST_RUSAK['s_RUSAK'] != 0) { ?>
-                                <a href="#" class="btn btn-sm btn-custom btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> <b><?= $ST_RUSAK['s_RUSAK']; ?></b> Rusak</a>
+                                <button type="button" class="btn btn-sm btn-custom btn-warning" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Botol Rusak <?= $ST_RUSAK['s_RUSAK']; ?>"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> <b><?= $ST_RUSAK['s_RUSAK']; ?></b> Rusak</button>
                             <?php } ?>
                         </div>
                     </div>
@@ -790,7 +801,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                     <?php } ?>
                     <!-- End Broken -->
                     <!-- Alert -->
-                    <a href="#simpan" data-toggle="modal" class="btn btn-primary" style="margin-bottom: 15px;"><i class="fas fa-tasks"></i> Simpan Data</a>
+                    <a href="#simpan" data-toggle="modal" class="btn btn-warning" style="margin-bottom: 15px;"><i class="fas fa-tasks"></i> Simpan Item Barang</a>
                     <!-- Simpan Data -->
                     <div class="modal fade" id="simpan">
                         <div class="modal-dialog">
@@ -803,12 +814,6 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                     <div class="modal-body">
                                         <fieldset>
                                             <div class="row">
-                                                <div class="col-sm-12" style="display: grid;justify-content: center;align-content: center;">
-                                                    <i class="fas fa-warning" style="font-size: 150px;color: #f59c1a;"></i>
-                                                </div>
-                                                <div class="col-sm-12">
-                                                    <hr>
-                                                </div>
                                                 <div class="col-sm-12">
                                                     <div class="alert alert-warning">
                                                         <h5><i class="fa fa-info"></i> Anda yakin akan menyimpan data ini?</h5>
@@ -827,7 +832,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                     </div>
                                     <div class="modal-footer">
                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</a>
-                                        <button type="submit" name="simpan" class="btn btn-primary"><i class="fas fa-check-circle"></i> Ya</button>
+                                        <button type="submit" name="simpan" class="btn btn-warning"><i class="fas fa-check-circle"></i> Ya</button>
                                     </div>
                                 </form>
                             </div>
@@ -871,7 +876,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TOTAL_BOTOL'] == 0) { ?>
-                                                    <button class="btn btn-sm btn-warning" data-toggle="popover" data-trigger="hover" data-title="Jumlah Botol: <?= $row['TOTAL_BOTOL'] ?>" data-placement="top" data-content="Anda tidak dapat melakukan aksi pada status botol!"><i class="fas fa-warning"></i></button>
+                                                    <button class="btn btn-sm btn-warning" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Anda tidak dapat melakukan aksi pada status botol!"><i class="fas fa-warning"></i></button>
                                                     <small style="color: #e91e63;"><i>Jumlah Botol Habis!</i></small>
                                                 <?php } else { ?>
                                                     <!-- Kurang -->
@@ -1007,7 +1012,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="kurang_" class="btn btn-danger"><i class="fa-solid fa-minus"></i> Kurang</button>
+                                                            <button type="submit" name="kurang_" class="btn btn-yellow"><i class="fa-solid fa-minus"></i> Kurang</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -1241,7 +1246,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
         Swal.fire({
             title: 'Data berhasil disimpan!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './gm_pemasukan.php');
     }
@@ -1249,7 +1254,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
         Swal.fire({
             title: 'Data gagal disimpan!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan didalam!'
         })
         history.replaceState({}, '', './gm_pemasukan.php');
     }

@@ -96,6 +96,7 @@ function date_indo($date, $print_day = false)
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <!-- <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
@@ -103,7 +104,7 @@ function date_indo($date, $print_day = false)
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan CK5 PLB - Halaman 1A</title>
+    <title>Laporan BC 2.7 PLB - Halaman 1A</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -131,12 +132,15 @@ function date_indo($date, $print_day = false)
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-Q66YLEFFZ2');
-  </script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q66YLEFFZ2');
+    </script>
 </head>
 <style type="text/css">
     .nav-top-content {
@@ -212,9 +216,9 @@ function date_indo($date, $print_day = false)
 </style>
 
 <body>
-<div class="invoice">
-    <div class="invoice-content">
-        <!-- <div class="table-responsive"> -->
+    <div class="invoice">
+        <div class="invoice-content">
+            <!-- <div class="table-responsive"> -->
             <table border=0 cellpadding=0 cellspacing=0 width=695 class=xl6912727 style='border-collapse:collapse;table-layout:fixed;width:100%'>
                 <col class=xl6912727 width=64 span=8 style='width:48pt'>
                 <col class=xl6912727 width=15 style='mso-width-source:userset;mso-width-alt:548;width:11pt'>
@@ -775,129 +779,130 @@ function date_indo($date, $print_day = false)
                     <td width=168 style='width:126pt'></td>
                 </tr>
             </table>
-        <!-- </div> -->
+            <!-- </div> -->
+        </div>
     </div>
-</div>
-<?php
-// include "include/panel.php"; 
-?>
-<!-- <script src="assets/js/app.min.js"></script> -->
-<script src="assets/js/theme/default.min.js"></script>
-<script src="assets/plugins/d3/d3.min.js"></script>
-<script src="assets/plugins/nvd3/build/nv.d3.js"></script>
-<script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-<script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-<script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
-<script>
-    // Show and Hidden
-    $(function() {
-        $("#IDJenisBarangKenaCukai").change(function() {
-            if ($(this).val() == 4) {
-                $("#OthersJenisBarangKenaCukai").show();
-            } else {
-                $("#OthersJenisBarangKenaCukai").hide();
-            }
+    <?php
+    // include "include/panel.php"; 
+    ?>
+    <!-- <script src="assets/js/app.min.js"></script> -->
+    <script src="assets/js/theme/default.min.js"></script>
+    <script src="assets/plugins/d3/d3.min.js"></script>
+    <script src="assets/plugins/nvd3/build/nv.d3.js"></script>
+    <script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+    <script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+    <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+    <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <script>
+        // Show and Hidden
+        $(function() {
+            $("#IDJenisBarangKenaCukai").change(function() {
+                if ($(this).val() == 4) {
+                    $("#OthersJenisBarangKenaCukai").show();
+                } else {
+                    $("#OthersJenisBarangKenaCukai").hide();
+                }
+            });
         });
-    });
-    $(function() {
-        $("#IDJenisPemberitahuan").change(function() {
-            if ($(this).val() == 4) {
-                $("#OthersJenisPemberitahuan").show();
-            } else {
-                $("#OthersJenisPemberitahuan").hide();
-            }
+        $(function() {
+            $("#IDJenisPemberitahuan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#OthersJenisPemberitahuan").show();
+                } else {
+                    $("#OthersJenisPemberitahuan").hide();
+                }
+            });
         });
-    });
-    // IDNamaKodeNegaraTujuan
-    $(function() {
-        $("#IDNamaKodeNegaraTujuan").change(function() {
-            if ($(this).val() == 'NPPBKC') {
-                $("#IdentitasTwoNPPBKC").show();
-                $("#IdentitasTwoNPP").hide();
-            } else if ($(this).val() == 'NPP') {
-                $("#IdentitasTwoNPPBKC").hide();
-                $("#IdentitasTwoNPP").show();
-            } else {
-                $("#IdentitasTwoNPPBKC").hide();
-                $("#IdentitasTwoNPP").hide();
-            }
+        // IDNamaKodeNegaraTujuan
+        $(function() {
+            $("#IDNamaKodeNegaraTujuan").change(function() {
+                if ($(this).val() == 'NPPBKC') {
+                    $("#IdentitasTwoNPPBKC").show();
+                    $("#IdentitasTwoNPP").hide();
+                } else if ($(this).val() == 'NPP') {
+                    $("#IdentitasTwoNPPBKC").hide();
+                    $("#IdentitasTwoNPP").show();
+                } else {
+                    $("#IdentitasTwoNPPBKC").hide();
+                    $("#IdentitasTwoNPP").hide();
+                }
+            });
         });
-    });
-    // show-address-identitas-two
-    function showAddress(c_str) {
-        if (c_str == "") {
-            document.getElementById("show-address-identitas-two").innerHTML = "";
-            return;
+        // show-address-identitas-two
+        function showAddress(c_str) {
+            if (c_str == "") {
+                document.getElementById("show-address-identitas-two").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("show-address-identitas-two").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_c_client?c_id=" + c_str, true);
+            xmlhttp.send();
         }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("show-address-identitas-two").innerHTML = this.responseText;
-            }
-        }
-        xmlhttp.open("GET", "function/function_get.php/get_c_client?c_id=" + c_str, true);
-        xmlhttp.send();
-    }
 
-    // showKodeOne
-    function showKodeOne(kode_one) {
-        if (kode_one == "") {
-            document.getElementById("InputshowKodeOne").innerHTML = "";
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+        // showKodeOne
+        function showKodeOne(kode_one) {
+            if (kode_one == "") {
+                document.getElementById("InputshowKodeOne").innerHTML = "";
+                return;
             }
-        }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
-        xmlhttp.send();
-    }
-    // showKodeTwo
-    function showKodeTwo(kode_two) {
-        if (kode_two == "") {
-            document.getElementById("InputshowKodeTwo").innerHTML = "";
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+                }
             }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
+            xmlhttp.send();
         }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
-        xmlhttp.send();
-    }
-    // showKodeThree
-    function showKodeThree(kode_three) {
-        if (kode_three == "") {
-            document.getElementById("InputshowKodeThree").innerHTML = "";
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeThree").innerHTML = this.responseText;
+        // showKodeTwo
+        function showKodeTwo(kode_two) {
+            if (kode_two == "") {
+                document.getElementById("InputshowKodeTwo").innerHTML = "";
+                return;
             }
-        }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_three?c_kode_three=" + kode_three, true);
-        xmlhttp.send();
-    }
-    // Show and Hide
-    $(function() {
-        $("#IDJaminan").change(function() {
-            if ($(this).val() == 4) {
-                $("#OthersJaminan").show();
-            } else {
-                $("#OthersJaminan").hide();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+                }
             }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
+            xmlhttp.send();
+        }
+        // showKodeThree
+        function showKodeThree(kode_three) {
+            if (kode_three == "") {
+                document.getElementById("InputshowKodeThree").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeThree").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_three?c_kode_three=" + kode_three, true);
+            xmlhttp.send();
+        }
+        // Show and Hide
+        $(function() {
+            $("#IDJaminan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#OthersJaminan").show();
+                } else {
+                    $("#OthersJaminan").hide();
+                }
+            });
         });
-    });
-</script>
-<script type="text/javascript">
-    window.print();    
-</script>
+    </script>
+    <script type="text/javascript">
+        window.print();
+    </script>
 </body>
+
 </html>

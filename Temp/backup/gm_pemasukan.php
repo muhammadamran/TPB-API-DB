@@ -157,8 +157,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>CK5 PLB (Nomor Pengajuan)</label>
-                                        <input type="text" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        <label>BC 2.7 PLB (Nomor Pengajuan)</label>
+                                        <input type="text" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -194,7 +194,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     </h4>
                                     <hr>
                                     <div>
-                                        <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_PLB; ?></p>
+                                        <p class="mb-2">Nomor Pengajuan BC 2.7 PLB: <?= $AJU_PLB; ?></p>
                                     </div>
                                 </div>
                                 <figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
@@ -236,7 +236,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <!-- Nomor Pengajuan PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tanggal Submit/Upload BC 2.7 PLB</th>
                                     <!-- Jumlah Barang -->
                                     <th class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
                                     <th class="text-nowrap" style="text-align: center;">Barang "Sesuai"</th>

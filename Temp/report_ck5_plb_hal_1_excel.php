@@ -3,7 +3,7 @@ header("Content-type: application/vnd-ms-excel");
 date_default_timezone_set("Asia/Bangkok");
 $datenow = date('d-m-Y h-i-s');
 
-header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman-1_$datenow.xls");
+header("Content-Disposition: attachment; filename=Laporan BC 2.7 PLB-Halaman-1_$datenow.xls");
 ?>
 <!-- QUERY -->
 <?php
@@ -116,6 +116,7 @@ function date_indo($date, $print_day = false)
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <!-- <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
@@ -123,7 +124,7 @@ function date_indo($date, $print_day = false)
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan CK5 PLB - Halaman 1</title>
+    <title>Laporan BC 2.7 PLB - Halaman 1</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -154,7 +155,7 @@ function date_indo($date, $print_day = false)
     <link href="assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.css" rel="stylesheet" />
     <link href="assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-fontawesome.css" rel="stylesheet" />
     <link href="assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-glyphicons.css" rel="stylesheet" />
-    
+
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="assets/css/default/app.min.css" rel="stylesheet" />
@@ -181,11 +182,14 @@ function date_indo($date, $print_day = false)
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-Q66YLEFFZ2');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q66YLEFFZ2');
     </script>
 </head>
 <?php
@@ -194,7 +198,7 @@ header("Content-type: application/vnd-ms-excel");
 date_default_timezone_set("Asia/Bangkok");
 $datenow = date('d-m-Y h-i-s');
 
-header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman1_$datenow.xls");
+header("Content-Disposition: attachment; filename=Laporan BC 2.7 PLB-Halaman1_$datenow.xls");
 // include "include/cssForm.php";
 // include "include/cssDatatables.php";
 ?>
@@ -272,31 +276,31 @@ header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman1_$date
 </style>
 
 <body>
-<div class="invoice">
-    <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
-        <div class="col-md-3">
-            <div style="display: flex;justify-content: center;">
-                <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                    <img src="assets/images/logo/logo-default.png" width="30%">
-                <?php } else { ?>
-                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
-                <?php } ?>
+    <div class="invoice">
+        <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
+            <div class="col-md-3">
+                <div style="display: flex;justify-content: center;">
+                    <?php if ($resultHeadSetting['logo'] == NULL) { ?>
+                        <img src="assets/images/logo/logo-default.png" width="30%">
+                    <?php } else { ?>
+                        <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div style="display: grid;justify-content: left;">
+                    <font style="font-size: 24px;font-weight: 800;">LAPORAN BC 2.7 PLB - Halaman 1</font>
+                    <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
+                    <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
+                    <div class="line-page-table"></div>
+                    <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
+                </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div style="display: grid;justify-content: left;">
-                <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 PLB - Halaman 1</font>
-                <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
-                <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                <div class="line-page-table"></div>
-                <font style="font-size: 14px;font-weight: 400;"><?= $resultHeadSetting['address'] ?></font>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
-    <div class="invoice-content">
-        <!-- <div class="table-responsive"> -->
+        <br>
+        <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
+        <div class="invoice-content">
+            <!-- <div class="table-responsive"> -->
             <table border=0 cellpadding=0 cellspacing=0 width=1038 class=xl6911096 style='border-collapse:collapse;table-layout:fixed;width:100%'>
                 <col class=xl6911096 width=32 style='mso-width-source:userset;mso-width-alt:1170;width:24pt'>
                 <col class=xl6911096 width=158 style='mso-width-source:userset;mso-width-alt:5778;width:119pt'>
@@ -357,7 +361,7 @@ header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman1_$date
                     <td colspan=25 class=xl8311096 colspan=2 style="height:17.25pt;text-transform: uppercase;font-weight: 800;border-top: 0.5pt solid windowtext;border-left: 0.5pt solid windowtext;border-right: 0.5pt solid windowtext;">HEADER</td>
                 </tr>
                 <tr height=17 style='height:12.75pt'>
-                    <td class=xl15011096 ></td>
+                    <td class=xl15011096></td>
                     <td colspan=1 style="height:12.75pt;border-top: 0.5pt solid windowtext;" height=17 style='height:12.75pt'>Kantor</td>
                     <td class=xl7111096>&nbsp;</td>
                     <td class=xl7211096>:</td>
@@ -1019,11 +1023,11 @@ header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman1_$date
                         <div style="display: grid;">
                             <?php
                             $dataNISJ = $dbcon->query("SELECT NOMOR_AJU, NOMOR_DOKUMEN, TANGGAL_DOKUMEN FROM plb_dokumen WHERE NOMOR_AJU='$dataGETAJU'");
-                                if (mysqli_num_rows($dataNISJ) > 0) {
-                                    while ($rowdataNISJ = mysqli_fetch_array($dataNISJ)) {
+                            if (mysqli_num_rows($dataNISJ) > 0) {
+                                while ($rowdataNISJ = mysqli_fetch_array($dataNISJ)) {
                             ?>
-                                <font><?= $rowdataNISJ['NOMOR_DOKUMEN']; ?></font>
-                            <?php } ?>
+                                    <font><?= $rowdataNISJ['NOMOR_DOKUMEN']; ?></font>
+                                <?php } ?>
                             <?php } else { ?>
                                 Kosong
                             <?php } ?>
@@ -1047,11 +1051,11 @@ header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman1_$date
                         <div style="display: grid;">
                             <?php
                             $dataNISJTanggal = $dbcon->query("SELECT NOMOR_AJU, NOMOR_DOKUMEN, TANGGAL_DOKUMEN FROM plb_dokumen WHERE NOMOR_AJU='$dataGETAJU'");
-                                if (mysqli_num_rows($dataNISJTanggal) > 0) {
-                                    while ($rowdataNISJTanggal = mysqli_fetch_array($dataNISJTanggal)) {
+                            if (mysqli_num_rows($dataNISJTanggal) > 0) {
+                                while ($rowdataNISJTanggal = mysqli_fetch_array($dataNISJTanggal)) {
                             ?>
-                                <font><?= $rowdataNISJTanggal['TANGGAL_DOKUMEN']; ?></font>
-                            <?php } ?>
+                                    <font><?= $rowdataNISJTanggal['TANGGAL_DOKUMEN']; ?></font>
+                                <?php } ?>
                             <?php } else { ?>
                                 Kosong
                             <?php } ?>
@@ -2154,156 +2158,157 @@ header("Content-Disposition: attachment; filename=Laporan CK5 PLB-Halaman1_$date
                 </tr>
             </table>
             <br>
-        <!-- </div> -->
+            <!-- </div> -->
+        </div>
     </div>
-</div>
-<?php
-// include "include/panel.php"; 
-// include "include/footer.php";
-include "include/jsDatatables.php";
-include "include/jsForm.php";
-?>
-<!-- <script src="assets/js/app.min.js"></script> -->
-<script src="assets/js/theme/default.min.js"></script>
-<script src="assets/plugins/d3/d3.min.js"></script>
-<script src="assets/plugins/nvd3/build/nv.d3.js"></script>
-<script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-<script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-<script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
-<script>
-    // Show and Hidden
-    $(function() {
-        $("#IdJenisBarangKenaCukai").change(function() {
-            if ($(this).val() == 4) {
-                $("#LainnyaHeaderA").show();
-            } else {
-                $("#LainnyaHeaderA").hide();
-            }
+    <?php
+    // include "include/panel.php"; 
+    // include "include/footer.php";
+    include "include/jsDatatables.php";
+    include "include/jsForm.php";
+    ?>
+    <!-- <script src="assets/js/app.min.js"></script> -->
+    <script src="assets/js/theme/default.min.js"></script>
+    <script src="assets/plugins/d3/d3.min.js"></script>
+    <script src="assets/plugins/nvd3/build/nv.d3.js"></script>
+    <script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+    <script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+    <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+    <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <script>
+        // Show and Hidden
+        $(function() {
+            $("#IdJenisBarangKenaCukai").change(function() {
+                if ($(this).val() == 4) {
+                    $("#LainnyaHeaderA").show();
+                } else {
+                    $("#LainnyaHeaderA").hide();
+                }
+            });
         });
-    });
-    $(function() {
-        $("#IdJenisPemberitahuan").change(function() {
-            if ($(this).val() == 4) {
-                $("#LainnyaHeaderD").show();
-            } else {
-                $("#LainnyaHeaderD").hide();
-            }
+        $(function() {
+            $("#IdJenisPemberitahuan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#LainnyaHeaderD").show();
+                } else {
+                    $("#LainnyaHeaderD").hide();
+                }
+            });
         });
-    });
-    $(function() {
-        $("#IdJaminan").change(function() {
-            if ($(this).val() == 4) {
-                $("#LainnyaJaminan").show();
-            } else {
-                $("#LainnyaJaminan").hide();
-            }
+        $(function() {
+            $("#IdJaminan").change(function() {
+                if ($(this).val() == 4) {
+                    $("#LainnyaJaminan").show();
+                } else {
+                    $("#LainnyaJaminan").hide();
+                }
+            });
         });
-    });
 
-    // TempatAsalPemasok
-    function showTempatAsalPemasok(v_tap) {
-      if (v_tap == "") {
-        document.getElementById("TempatAsalPemasok").innerHTML = "";
-        return;
-      }
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("TempatAsalPemasok").innerHTML = this.responseText;
+        // TempatAsalPemasok
+        function showTempatAsalPemasok(v_tap) {
+            if (v_tap == "") {
+                document.getElementById("TempatAsalPemasok").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("TempatAsalPemasok").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_tap=" + v_tap, true);
+            xmlhttp.send();
         }
-      }
-      xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_tap=" + v_tap, true);
-      xmlhttp.send();
-    }
 
-    // TempatTujuan
-    function showTempatTujuan(v_ttp) {
-      if (v_ttp == "") {
-        document.getElementById("TempatTujuan").innerHTML = "";
-        return;
-      }
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("TempatTujuan").innerHTML = this.responseText;
+        // TempatTujuan
+        function showTempatTujuan(v_ttp) {
+            if (v_ttp == "") {
+                document.getElementById("TempatTujuan").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("TempatTujuan").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_ttp=" + v_ttp, true);
+            xmlhttp.send();
         }
-      }
-      xmlhttp.open("GET", "function/function_get.php/get_npwp_tap?v_ttp=" + v_ttp, true);
-      xmlhttp.send();
-    }
 
-    // showKodeOne
-    function showKodeOne(kode_one) {
-        if (kode_one == "") {
-            document.getElementById("InputshowKodeOne").innerHTML = "";
-            return;
+        // showKodeOne
+        function showKodeOne(kode_one) {
+            if (kode_one == "") {
+                document.getElementById("InputshowKodeOne").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
+            xmlhttp.send();
         }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+        // showKodeTwo
+        function showKodeTwo(kode_two) {
+            if (kode_two == "") {
+                document.getElementById("InputshowKodeTwo").innerHTML = "";
+                return;
+            }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
+            xmlhttp.send();
+        }
+
+        // Ganti Data Asal Pemasok
+        function myFunction() {
+            var checkBox = document.getElementById("myCheck");
+            var text = document.getElementById("text");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
             }
         }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
-        xmlhttp.send();
-    }
-    // showKodeTwo
-    function showKodeTwo(kode_two) {
-        if (kode_two == "") {
-            document.getElementById("InputshowKodeTwo").innerHTML = "";
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+
+        // Ganti Data Tujuan Pengguna
+        function myFunctionTujuan() {
+            var checkBox = document.getElementById("myCheckTujuan");
+            var text = document.getElementById("textTujuan");
+            if (checkBox.checked == true) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
             }
         }
-        xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
-        xmlhttp.send();
-    }
 
-    // Ganti Data Asal Pemasok
-    function myFunction() {
-      var checkBox = document.getElementById("myCheck");
-      var text = document.getElementById("text");
-      if (checkBox.checked == true){
-        text.style.display = "block";
-      } else {
-         text.style.display = "none";
-      }
-    }
-
-    // Ganti Data Tujuan Pengguna
-    function myFunctionTujuan() {
-      var checkBox = document.getElementById("myCheckTujuan");
-      var text = document.getElementById("textTujuan");
-      if (checkBox.checked == true){
-        text.style.display = "block";
-      } else {
-         text.style.display = "none";
-      }
-    }
-
-    // UPDATE SUCCESS
-    if (window?.location?.href?.indexOf('UpdateSuccess<?= $ID ?>') > -1) {
-        Swal.fire({
-            title: 'Data berhasil diupdate!',
-            icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './report_ck5_plb_hal_1.php?AJU=<?= $ID ?>');
-    }
-    // UPDATE FAILEDú
-    if (window?.location?.href?.indexOf('UpdateFailed<?= $ID ?>') > -1) {
-        Swal.fire({
-            title: 'Data gagal diupdate!',
-            icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './report_ck5_plb_hal_1.php?AJU=<?= $ID ?>');
-    }
-</script>
+        // UPDATE SUCCESS
+        if (window?.location?.href?.indexOf('UpdateSuccess<?= $ID ?>') > -1) {
+            Swal.fire({
+                title: 'Data berhasil diupdate!',
+                icon: 'success',
+                text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            })
+            history.replaceState({}, '', './report_ck5_plb_hal_1.php?AJU=<?= $ID ?>');
+        }
+        // UPDATE FAILEDú
+        if (window?.location?.href?.indexOf('UpdateFailed<?= $ID ?>') > -1) {
+            Swal.fire({
+                title: 'Data gagal diupdate!',
+                icon: 'error',
+                text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            })
+            history.replaceState({}, '', './report_ck5_plb_hal_1.php?AJU=<?= $ID ?>');
+        }
+    </script>
 </body>
+
 </html>

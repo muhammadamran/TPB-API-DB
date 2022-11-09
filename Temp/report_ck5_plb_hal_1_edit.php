@@ -222,7 +222,7 @@ if (isset($_POST["SimpanCK5PLB"])) {
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan CK5 PLB - Halaman 1</title>
+    <title>Laporan BC 2.7 PLB - Halaman 1</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -348,7 +348,7 @@ if (isset($_POST["SimpanCK5PLB"])) {
                         </a>
                         <button type="submit" name="SimpanCK5PLB" class="btn btn-sm btn-primary m-b-10" title="Update CK5PLB" style="padding: 7px;">
                             <div style="display: flex;justify-content: space-between;align-items: end;">
-                                <i class="fas fa-save" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Simpan CK5 PLB
+                                <i class="fas fa-save" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Simpan BC 2.7 PLB
                             </div>
                         </button>
                     </div>
@@ -368,7 +368,7 @@ if (isset($_POST["SimpanCK5PLB"])) {
                 </div>
                 <div class="col-md-9">
                     <div style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 PLB - Halaman 1</font>
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN BC 2.7 PLB - Halaman 1</font>
                         <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <div class="line-page-table"></div>
@@ -2505,7 +2505,7 @@ if (isset($_POST["SimpanCK5PLB"])) {
             </div>
             <div class="invoice-footer">
                 <p class="text-center m-b-5 f-w-600">
-                    Export CK5 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
+                    Export BC 2.7 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
                 </p>
                 <p class="text-center">
                     <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>

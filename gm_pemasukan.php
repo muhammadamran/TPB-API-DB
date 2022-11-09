@@ -10,32 +10,44 @@ include "include/cssForm.php";
 // API - 
 include "include/api.php";
 $AJU_PLB = '';
+
+// Kode Negara
+if (isset($_POST['KodeNegara_'])) {
+    $KodeNegara          = $_POST['KodeNegara'];
+    $NOAJU               = $_POST['NOAJU'];
+
+    $sql = $dbcon->query("UPDATE plb_header SET KODE_NEGARA_PEMASOK='$KodeNegara'
+                          WHERE NOMOR_AJU='$NOAJU'");
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+    }
+}
 // NOMOR PENGAJUAN GB
 if (isset($_POST['add_'])) {
     $bm_no_aju_plb          = $_POST['bm_aju'];
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
     $bm_tgl_masuk           = $_POST['bm_masuk'] . ' ' . date('H:m:i');
     $bm_nama_operator       = $_POST['bm_operator'];
-
-    $cekCT     = $dbcon->query("SELECT COUNT(*) AS cek,bm_no_aju_plb,bk_no_aju_sarinah FROM rcd_status WHERE bm_no_aju_plb='$bm_no_aju_plb' AND bk_no_aju_sarinah='$bk_no_aju_sarinah'");
-    $dataCT    = mysqli_fetch_array($cekCT);
-
-    if ($dataCT['cek'] == 0) {
-        $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostADD&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator);
-        $data = json_decode($content, true);
-
+    // CEK
+    $dataREF                = $dbcon->query("SELECT COUNT(*) AS total FROM rcd_status WHERE bm_no_aju_plb='$bm_no_aju_plb'");
+    $resultREF              = mysqli_fetch_array($dataREF);
+    // CEK
+    if ($resultREF['total'] != 0) {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+    } else {
         $sql = $dbcon->query("INSERT INTO rcd_status 
-                                (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bk_no_aju_sarinah)
-                                VALUES
-                                ('','$bm_no_aju_plb','$bm_tgl_masuk','$bm_nama_operator','$bk_no_aju_sarinah')");
+                        (rcd_id,bm_no_aju_plb,bm_tgl_masuk,bm_nama_operator,bk_no_aju_sarinah)
+                        VALUES
+                        ('','$bm_no_aju_plb','$bm_tgl_masuk','$bm_nama_operator','$bk_no_aju_sarinah')");
 
         if ($sql) {
             echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
         }
-    } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
     }
 }
 
@@ -45,8 +57,6 @@ if (isset($_POST['edit_'])) {
     $bk_no_aju_sarinah      = $_POST['bk_aju'];
     $bm_tgl_masuk           = $_POST['bm_masuk'] . ' ' . date('H:m:i');
     $bm_nama_operator       = $_POST['bm_operator'];
-    $content = get_content($resultAPI['url_api'] . 'gmBarangMasukProses.php?function=PostEDIT&bm_no_aju_plb=' . $bm_no_aju_plb . '&bk_no_aju_sarinah=' . $bk_no_aju_sarinah . '&bm_tgl_masuk=' . $bm_tgl_masuk . '&bm_nama_operator=' . $bm_nama_operator . '&rcd_id=' . $rcd_id);
-    $data = json_decode($content, true);
     $sql = $dbcon->query("UPDATE rcd_status SET bm_no_aju_plb='$bm_no_aju_plb',
                                                 bm_tgl_masuk='$bm_tgl_masuk',
                                                 bm_nama_operator='$bm_nama_operator',
@@ -142,8 +152,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>CK5 PLB (Nomor Pengajuan)</label>
-                                        <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="CK5 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        <label>BC 2.7 PLB (Nomor Pengajuan)</label>
+                                        <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -178,7 +188,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     </h4>
                                     <hr>
                                     <div>
-                                        <p class="mb-2">Nomor Pengajuan CK5 PLB: <?= $AJU_PLB; ?></p>
+                                        <p class="mb-2">Nomor Pengajuan BC 2.7 PLB: <?= $AJU_PLB; ?></p>
                                     </div>
                                 </div>
                                 <figcaption class="blockquote-footer mt-n2 mb-1 text-white text-opacity-75">
@@ -220,7 +230,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <!-- Nomor Pengajuan PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Submit/Upload CK5 PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Submit/Upload BC 2.7 PLB</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -238,13 +248,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 rcd.bk_nama_operator,
                                                                 rcd.bk_remarks,
                                                                 rcd.keterangan,
+                                                                rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Sesuai,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Kurang' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Kurang,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Lebih' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Lebih,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Pecah' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Pecah,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Rusak' AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_Rusak,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_All
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
@@ -263,13 +269,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 rcd.bk_nama_operator,
                                                                 rcd.bk_remarks,
                                                                 rcd.keterangan,
+                                                                rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Sesuai,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Kurang' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Kurang,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Lebih' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Lebih,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Pecah' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Pecah,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Rusak' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Rusak,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
@@ -288,13 +290,9 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 rcd.bk_nama_operator,
                                                                 rcd.bk_remarks,
                                                                 rcd.keterangan,
+                                                                rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Sesuai,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Kurang' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Kurang,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Lebih' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Lebih,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Pecah' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Pecah,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS='Rusak' AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_Rusak,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
@@ -365,91 +363,141 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                    <a href="#MKodeNegara<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Add Kode Negara">
+                                                            <div>
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-plus-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                        </font>
+                                                    </a>
                                                 <?php } else { ?>
                                                     <?= $row['KODE_NEGARA_PEMASOK']; ?>
                                                 <?php } ?>
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: center;align-items: center;">
-                                                    <?php if ($row['JUMLAH_BARANG'] == $row['total_All']) { ?>
-                                                        <div>
-                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Gate In Total: <?= $row['JUMLAH_BARANG']; ?> Barang! - Barang diCek: <?= $row['total_All']; ?> Barang!" data-placement="top" data-content="Anda sudah melakukan pengecekan Gate In!">
-                                                                    <div style="display: grid;">
+                                                <div style="display: flex;justify-content: center;align-items: center;margin-left: 5px">
+                                                    <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
+                                                        <!-- Cek Done -->
+                                                        <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success">
+                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Gate In Selesai, Klik jika ingin melihat Detail">
+                                                                <div style="display: grid;">
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-check-circle"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </font>
+                                                        </a>
+                                                        <!-- End Cek Done -->
+                                                        <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
+                                                            <!-- Add -->
+                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" style="margin-left: 5px">
+                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Add Data Gate In">
+                                                                    <div>
                                                                         <div style="font-size: 12px;">
-                                                                            <i class="fas fa-check-circle"></i>
+                                                                            <i class="fas fa-plus-circle"></i>
                                                                         </div>
                                                                     </div>
                                                                 </font>
                                                             </a>
-                                                        </div>
-
-                                                        <div style="margin-left: 10px;">
-                                                            <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
-                                                                <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Add">
-                                                                    <font data-toggle="popover" data-trigger="hover" data-title="Add Nomor Pengajuan GB!" data-placement="top" data-content="Klik untuk menginput Nomor Pengajuan GB!">
+                                                            <!-- End Add -->
+                                                        <?php } else { ?>
+                                                            <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                                <!-- Edit -->
+                                                                <a href="#edit<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" style="margin-left: 5px">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Data Gate In">
                                                                         <div>
                                                                             <div style="font-size: 12px;">
-                                                                                <i class="fas fa-plus-circle"></i>
+                                                                                <i class="fas fa-edit"></i>
                                                                             </div>
                                                                         </div>
                                                                     </font>
                                                                 </a>
-                                                            <?php } else { ?>
-                                                                <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                                    <div style="display: flex;">
+                                                                <!-- End Edit -->
+                                                                <!-- Upload -->
+                                                                <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" style="margin-left: 5px">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Upload Berita Acara Gate In">
                                                                         <div>
-                                                                            <a href="#edit<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" title="Add">
-                                                                                <div>
-                                                                                    <div style="font-size: 12px;">
-                                                                                        <i class="fas fa-edit"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div style="margin-left: 10px;">
-                                                                            <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Upload Berita Acara!">
-                                                                                <div>
-                                                                                    <div style="font-size: 12px;">
-                                                                                        <i class="fas fa-file"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                <?php } else { ?>
-                                                                    <a href="#detail<?= $row['ID'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
-                                                                        <font data-toggle="popover" data-trigger="hover" data-title="Data Lengkap, No. AJU GB & Berita Acara Terisi!" data-placement="top" data-content="Data Gate In Lengkap pada Nomor Pengajuan: <?= $row['NOMOR_AJU'] ?>!">
-                                                                            <div>
-                                                                                <div style="font-size: 12px;">
-                                                                                    <i class="fas fa-eye"></i>
-                                                                                </div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-upload"></i>
                                                                             </div>
-                                                                        </font>
-                                                                    </a>
-                                                                <?php } ?>
-                                                            <?php } ?>
-                                                        </div>
-                                                    <?php } else { ?>
-                                                        <div>
-                                                            <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-yellow">
-                                                                <font data-toggle="popover" data-trigger="hover" data-title="Cek Gate In Total: <?= $row['JUMLAH_BARANG']; ?> Barang!" data-placement="top" data-content="Klik untuk melakukan pengecekan Gate In.">
-                                                                    <div>
-                                                                        <div style="font-size: 12px;">
-                                                                            <i class="fas fa-warning"></i>
                                                                         </div>
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Upload -->
+                                                            <?php } else { ?>
+                                                                <!-- Detail -->
+                                                                <a href="#detail<?= $row['ID'] ?>" class="btn btn-dark" data-toggle="modal" style="margin-left: 5px">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Detail Data Gate In">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-eye"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Detail -->
+                                                            <?php } ?>
+                                                        <?php } ?>
+                                                    <?php } else { ?>
+                                                        <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-yellow" style="margin-left: 5px">
+                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lakukan Pengecekan Barang Gate In">
+                                                                <div>
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-warning"></i>
                                                                     </div>
-                                                                </font>
-                                                            </a>
-                                                        </div>
+                                                                </div>
+                                                            </font>
+                                                        </a>
                                                     <?php } ?>
                                                 </div>
-
                                             </td>
                                         </tr>
+
+                                        <!-- Kode Negara -->
+                                        <div class="modal fade" id="MKodeNegara<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Add] Kode Negara - No. AJU: <?= $row['NOMOR_AJU'] ?></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <label>Kode Negara <small style="color:red">*</small></label>
+                                                                        <select name="KodeNegara" class="default-select2 form-control" required>
+                                                                            <?php if ($row['KODE_NEGARA'] != NULL) { ?>
+                                                                                <option value="<?= $row['KODE_NEGARA']; ?>"><?= $row['KODE_NEGARA']; ?></option>
+                                                                                <option value="">Pilih Kode Negara</option>
+                                                                            <?php } else { ?>
+                                                                                <option value="">Pilih Kode Negara</option>
+                                                                                <?php
+                                                                                $dataKDN = $dbcon->query("SELECT * FROM referensi_negara");
+                                                                                foreach ($dataKDN as $rowKDN) { ?>
+                                                                                    <option value="<?= $rowKDN['KODE_NEGARA']; ?>"><?= $rowKDN['KODE_NEGARA']; ?> - <?= $rowKDN['URAIAN_NEGARA']; ?></option>
+                                                                                <?php } ?>
+                                                                            <?php } ?>
+                                                                        </select>
+                                                                        <input type="hidden" name="NOAJU" value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="KodeNegara_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Kode Negara -->
+
                                         <!-- Add -->
                                         <div class="modal fade" id="add<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
@@ -463,55 +511,53 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                             <fieldset>
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>PLB</h4>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan PLB</label>
-                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                        <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                            <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } else { ?>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } ?>
-                                                                                        <?php
-                                                                                        $resultMitra = $dbcon->query("SELECT * FROM tpb_header");
-                                                                                        foreach ($resultMitra as $RowMitra) {
-                                                                                        ?>
-                                                                                            <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
-                                                                                        <?php } ?>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
-                                                                                    <?php
-                                                                                    $tgl_msk = $row['bm_tgl_masuk'];
-                                                                                    $tgl = substr($tgl_msk, 0, 10);
-                                                                                    $time = substr($tgl_msk, 10, 20);
-                                                                                    ?>
-                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
+                                                                        <div class="form-group">
+                                                                            <h4>PLB</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Pengajuan PLB</label>
+                                                                            <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
+                                                                            <select name="bk_aju" class="default-select2 form-control" required>
+                                                                                <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
+                                                                                    <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
+                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                <?php } else { ?>
+                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                <?php } ?>
+                                                                                <?php
+                                                                                $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
+                                                                                                            LEFT JOIN rcd_status AS rcd ON plb.NOMOR_AJU=rcd.bk_no_aju_sarinah
+                                                                                                            WHERE rcd.bk_no_aju_sarinah IS NULL
+                                                                                                            ORDER BY plb.ID DESC");
+                                                                                foreach ($resultMitra as $RowMitra) {
+                                                                                ?>
+                                                                                    <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Petugas <?= $resultSetting['company'] ?></label>
+                                                                            <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Tanggal Gate In</label>
+                                                                            <?php
+                                                                            $tgl_msk = $row['bm_tgl_masuk'];
+                                                                            $tgl = substr($tgl_msk, 0, 10);
+                                                                            $time = substr($tgl_msk, 10, 20);
+                                                                            ?>
+                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Gate In -->
@@ -530,6 +576,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             </div>
                                         </div>
                                         <!-- End Add -->
+
                                         <!-- Edit -->
                                         <div class="modal fade" id="edit<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
@@ -542,58 +589,56 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>PLB</h4>
-                                                                                </div>
-                                                                            </div>
-                                                                            <hr>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan PLB</label>
-                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                        <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                            <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } else { ?>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } ?>
-                                                                                        <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
-                                                                                            <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
-                                                                                        <?php } ?>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
-                                                                                    <?php
-                                                                                    $tgl_msk = $row['bm_tgl_masuk'];
-                                                                                    $tgl = substr($tgl_msk, 0, 10);
-                                                                                    $time = substr($tgl_msk, 10, 20);
-                                                                                    ?>
-                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
-                                                                                    <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <h4>PLB</h4>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Pengajuan PLB</label>
+                                                                            <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Nomor Pengajuan GB</label>
+                                                                            <select name="bk_aju" class="default-select2 form-control" required>
+                                                                                <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
+                                                                                    <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
+                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                <?php } else { ?>
+                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                <?php } ?>
+                                                                                <?php
+                                                                                $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
+                                                                                                            LEFT JOIN rcd_status AS rcd ON plb.NOMOR_AJU=rcd.bk_no_aju_sarinah
+                                                                                                            WHERE rcd.bk_no_aju_sarinah IS NULL
+                                                                                                            ORDER BY plb.ID DESC");
+                                                                                foreach ($resultMitra as $RowMitra) {
+                                                                                ?>
+                                                                                    <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Petugas <?= $resultSetting['company'] ?></label>
+                                                                            <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Tanggal Gate In</label>
+                                                                            <?php
+                                                                            $tgl_msk = $row['bm_tgl_masuk'];
+                                                                            $tgl = substr($tgl_msk, 0, 10);
+                                                                            $time = substr($tgl_msk, 10, 20);
+                                                                            ?>
+                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
+                                                                            <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
@@ -685,23 +730,19 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                                    <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                        <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                            <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } else { ?>
-                                                                                            <option value="">-- Nomor Pengajuan GB --</option>
-                                                                                        <?php } ?>
-                                                                                        <?php foreach ($dataAJUGB['result'] as $rowAJUGB) { ?>
-                                                                                            <option value="<?= $rowAJUGB['NOMOR_AJU']; ?>"><?= $rowAJUGB['NOMOR_AJU']; ?></option>
-                                                                                        <?php } ?>
-                                                                                    </select>
+                                                                                    <label>Nomor Pengajuan GB</label>
+                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label>Tanggal Masuk</label>
+                                                                                    <label>Petugas <?= $resultSetting['company'] ?></label>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <div class="form-group">
+                                                                                    <label>Tanggal Gate In</label>
                                                                                     <?php
                                                                                     $tgl_msk = $row['bm_tgl_masuk'];
                                                                                     $tgl = substr($tgl_msk, 0, 10);
@@ -710,10 +751,10 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                                     <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label>Petugas</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                                    <label>Petugas BC</label>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bc_in']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -794,7 +835,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         Swal.fire({
             title: 'Data berhasil disimpan!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan!'
         })
         history.replaceState({}, '', './gm_pemasukan.php');
     }
@@ -802,7 +843,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         Swal.fire({
             title: 'Data gagal disimpan!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan!'
         })
         history.replaceState({}, '', './gm_pemasukan.php');
     }

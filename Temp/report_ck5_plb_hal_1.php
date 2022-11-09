@@ -239,8 +239,8 @@ if (isset($_POST["update_ck5plb_oke"])) {
 
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
-    $InputModul           = 'LAPORAN CK5 PLB - Halaman 1';
-    $InputDescription     = $me . " Update Data: " .  $NameDepartment . ", Simpan Data Sebagai Log LAPORAN CK5 PLB - Halaman 1";
+    $InputModul           = 'LAPORAN BC 2.7 PLB - Halaman 1';
+    $InputDescription     = $me . " Update Data: " .  $NameDepartment . ", Simpan Data Sebagai Log LAPORAN BC 2.7 PLB - Halaman 1";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d H:m:i');
 
@@ -268,7 +268,7 @@ if (isset($_POST["update_ck5plb_oke"])) {
     <?php } else { ?>
         <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
     <?php } ?> -->
-    <title>Laporan CK5 PLB - Halaman 1</title>
+    <title>Laporan BC 2.7 PLB - Halaman 1</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -448,11 +448,11 @@ if (isset($_POST["update_ck5plb_oke"])) {
                             <i class="far fa-arrow-alt-circle-left" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Kembali
                         </div>
                     </a>
-                    <!-- Update CK5 PLB -->
+                    <!-- Update BC 2.7 PLB -->
                     <a href="#modal-updateck5plb" class="btn btn-sm btn-warning m-b-10" data-toggle="modal" title="Update CK5PLB" style="padding: 7px;">
                         <!-- <a href="./report_ck5_plb_hal_1_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;"> -->
                         <div style="display: flex;justify-content: space-between;align-items: end;">
-                            <i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 PLB
+                            <i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update BC 2.7 PLB
                         </div>
                     </a>
                     <div class="modal fade" id="modal-updateck5plb">
@@ -460,7 +460,7 @@ if (isset($_POST["update_ck5plb_oke"])) {
                             <div class="modal-content">
                                 <form action="report_ck5_plb_hal_1.php" method="POST">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">[Update CK5 PLB] AJU <?= $dataGETAJU ?></h4>
+                                        <h4 class="modal-title">[Update BC 2.7 PLB] AJU <?= $dataGETAJU ?></h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body">
@@ -824,7 +824,7 @@ if (isset($_POST["update_ck5plb_oke"])) {
                             </div>
                         </div>
                     </div>
-                    <!-- Update CK5 PLB -->
+                    <!-- Update BC 2.7 PLB -->
                     <a href="report_ck5_plb_hal_1_excel.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-sm btn-white m-b-10">
                         <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel Hal. 1
                     </a>
@@ -847,7 +847,7 @@ if (isset($_POST["update_ck5plb_oke"])) {
             </div>
             <div class="col-md-9">
                 <div style="display: grid;justify-content: left;">
-                    <font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 PLB - Halaman 1</font>
+                    <font style="font-size: 24px;font-weight: 800;">LAPORAN BC 2.7 PLB - Halaman 1</font>
                     <font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
                     <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                     <div class="line-page-table"></div>
@@ -2742,7 +2742,7 @@ if (isset($_POST["update_ck5plb_oke"])) {
         </div>
         <div class="invoice-footer">
             <p class="text-center m-b-5 f-w-600">
-                Export CK5 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
+                Export BC 2.7 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
             </p>
             <p class="text-center">
                 <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>

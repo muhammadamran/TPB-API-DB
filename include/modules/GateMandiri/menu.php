@@ -1,11 +1,3 @@
-<?php
-// TOTAL GATE IN
-$gate_in = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
-$result_in = mysqli_fetch_array($gate_in);
-// TOTAL GATE OUT
-$gate_out = $dbcon->query("SELECT COUNT(*) AS total_out FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_GB IS NULL");
-$result_out = mysqli_fetch_array($gate_out);
-?>
 <li class="nav-header">GATE MANDIRI</li>
 <li class="has-sub <?= $uriSegments[1] == 'gm_pemasukan.php' ||
                         $uriSegments[1] == 'gm_pemasukan_detail.php' ||
@@ -30,22 +22,49 @@ $result_out = mysqli_fetch_array($gate_out);
         <li class="<?= $uriSegments[1] == 'gm_pemasukan.php' || $uriSegments[1] == 'gm_pemasukan_detail.php' || $uriSegments[1] == 'gm_pemasukan_ct.php' || $uriSegments[1] == 'gm_pemasukan_proses.php' || $uriSegments[1] == 'gm_pemasukan_ct_detail.php' ? 'active' : '' ?>">
             <a href="gm_pemasukan.php">
                 Gate In
-                <?php if ($result_in['total_in'] == NULL) { ?>
-                    <span class="label label-theme">0</span>
-                <?php } else { ?>
-                    <span class="label label-theme"><?= $result_in['total_in'] ?></span>
-                <?php } ?>
+                <span class="label label-theme" id="R_GateIn"></span>
             </a>
         </li>
         <li class="<?= $uriSegments[1] == 'gm_pengeluaran.php' || $uriSegments[1] == 'gm_pengeluaran_detail.php' || $uriSegments[1] == 'gm_pengeluaran_ct.php' || $uriSegments[1] == 'gm_pengeluaran_proses.php' || $uriSegments[1] == 'gm_pengeluaran_ct_detail.php' ? 'active' : '' ?>">
             <a href="gm_pengeluaran.php">
                 Gate Out
-                <?php if ($result_out['total_out'] == NULL) { ?>
-                    <span class="label label-theme">0</span>
-                <?php } else { ?>
-                    <span class="label label-theme"><?= $result_out['total_out'] ?></span>
-                <?php } ?>
+                <span class="label label-theme" id="R_GateOut"></span>
             </a>
         </li>
     </ul>
 </li>
+
+<script>
+    // GateIn
+    function R_GateIn() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("R_GateIn").innerHTML =
+                    this.responseText;
+            }
+        };
+        xhttp.open("GET", "realtime/sidebar-data.php?function=GateIn", true);
+        xhttp.send();
+    }
+    setInterval(function() {
+        R_GateIn();
+    }, 1000);
+    window.onload = R_GateIn;
+    // GateOut
+    function R_GateOut() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("R_GateOut").innerHTML =
+                    this.responseText;
+            }
+        };
+        xhttp.open("GET", "realtime/sidebar-data.php?function=GateOut", true);
+        xhttp.send();
+    }
+    setInterval(function() {
+        R_GateOut();
+    }, 1000);
+    window.onload = R_GateOut;
+</script>

@@ -42,6 +42,7 @@ include "include/cssForm.php";
             align-content: center;
             color: #1d2226;
         }
+
         #id-fl {
             background: linear-gradient(45deg, #00acac, #8753de);
             border-radius: 5px;
@@ -59,14 +60,16 @@ include "include/cssForm.php";
         <div class="col-xl-6">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <a href="https://itinventory-sarinah.com/report_ck5_plb_data.php" id="id-fr">
-                    <i class="fa-solid fa-table"></i> <font style="font-size: 9px; margin-top: 9px">Data CK5 PLB</font>
+                    <i class="fa-solid fa-table"></i>
+                    <font style="font-size: 9px; margin-top: 9px">Data BC 2.7 PLB</font>
                 </a>
             </div>
         </div>
         <div class="col-xl-6">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <a href="http://plb.itinventory-sarinah.com:8091/report_ck5_plb.php" id="id-fl">
-                    <i class="fa-solid fa-upload"></i> <font style="font-size: 8px; margin-top: 10px">Upload CK5 PLB</font>
+                    <i class="fa-solid fa-upload"></i>
+                    <font style="font-size: 8px; margin-top: 10px">Upload BC 2.7 PLB</font>
                 </a>
             </div>
         </div>
@@ -75,7 +78,7 @@ include "include/cssForm.php";
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-upload"></i> Upload Data CK5 PLB</h4>
+                    <h4 class="panel-title"><i class="fas fa-upload"></i> Upload Data BC 2.7 PLB</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -90,7 +93,7 @@ include "include/cssForm.php";
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group">
-                                    <label>Upload Excel File CK5 PLB:</label>
+                                    <label>Upload Excel File BC 2.7 PLB:</label>
                                     <input type="hidden" class="form-control" name="username" value="<?= $_GET['username'] ?>" required>
                                     <input type="file" class="form-control" name="file_upload" required>
                                 </div>

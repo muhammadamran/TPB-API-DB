@@ -100,24 +100,26 @@ function Rupiah($angka)
 	return $hasil;
 }
 
-function decimal($number) {
-    $hasil = number_format($number, 0, ",", ",");
-    return $hasil;
+function decimal($number)
+{
+	$hasil = number_format($number, 0, ",", ",");
+	return $hasil;
 }
 
 // NPWP
 function NPWP($value)
-{	
+{
 	// 12.345.678.9-012.345
-	$hasil = number_format($value, 0, ',','.' );
+	$hasil = number_format($value, 0, ',', '.');
 	return $hasil;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8" />
-	<title>Laporan CK5 PLB - Halaman Detail Barang</title>
+	<title>Laporan BC 2.7 PLB - Halaman Detail Barang</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -148,12 +150,16 @@ function NPWP($value)
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
 		gtag('js', new Date());
 
 		gtag('config', 'G-Q66YLEFFZ2');
 	</script>
 </head>
+
 <body>
 	<div class="invoice">
 		<div class="invoice-company">
@@ -178,7 +184,7 @@ function NPWP($value)
 				<div>
 					<!-- <a href="./report_ck5_plb_detail_edit.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-warning m-b-10" title="Update CK5PLB" style="padding: 7px;">
 						<div style="display: flex;justify-content: space-between;align-items: end;">
-							<i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update CK5 PLB
+							<i class="fas fa-edit" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Update BC 2.7 PLB
 						</div>
 					</a> -->
 					<!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
@@ -209,7 +215,7 @@ function NPWP($value)
 			</div>
 			<div class="col-md-9">
 				<div style="display: grid;justify-content: left;">
-					<font style="font-size: 24px;font-weight: 800;">LAPORAN CK5 PLB - Halaman Detail Barang</font>
+					<font style="font-size: 24px;font-weight: 800;">LAPORAN BC 2.7 PLB - Halaman Detail Barang</font>
 					<font style="font-size: 24px;font-weight: 800;">Nomor Pengajuan: <?= $dataGETAJU ?></font>
 					<font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
 					<div class="line-page-table"></div>
@@ -287,22 +293,22 @@ function NPWP($value)
 								$cJCA = array($cJC);
 								$cJCSUM = array_sum($cJCA);
 								// $JumlahRJJM = SUM($row['JUMLAH_SATUAN']);
-								?>
+						?>
 								<tr class="odd gradeX">
 									<td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
 									<td style="text-align: left;"><?= $row['JUMLAH_SATUAN'] ?> <?= $row['URAIAN_SATUAN'] ?> <?= $row['MEREK_SATUAN'] ?></td>
 									<td style="text-align: left;"><?= $row['URAIAN'] ?><br><?= $row['UKURAN'] ?></td>
 									<td style="text-align: right;"><?= $cHasil ?> <?= $row['URAIAN_SATUAN'] ?></td>
 									<td style="text-align: center;">-</td>
-									<td style="text-align: center;"><?= $row['TARIF'];?></td>
+									<td style="text-align: center;"><?= $row['TARIF']; ?></td>
 									<td style="text-align: center;"><?= Rupiah($cJC) ?></td>
 									<td style="text-align: center;">-</td>
 									<td style="text-align: center;"><?= $cJCSUM ?></td>
 								</tr>
 							<?php } ?>
-						</tbody>
-						<?php
-						$DataFooter = $dbcon->query("SELECT b.URAIAN_SATUAN,a.UKURAN,c.TARIF,
+					</tbody>
+					<?php
+							$DataFooter = $dbcon->query("SELECT b.URAIAN_SATUAN,a.UKURAN,c.TARIF,
 					                                (SELECT SUM(JUMLAH_SATUAN) FROM view_plb_barangtarif WHERE NOMOR_AJU='$dataGETAJU') AS jml_RJJM,
 					                                (SELECT SUM(JUMLAH_SATUAN * UKURAN) FROM plb_barangtarif WHERE NOMOR_AJU='$dataGETAJU') AS jml_JJSB
 													FROM plb_barang AS a 
@@ -312,39 +318,39 @@ function NPWP($value)
 													-- AND a.NOMOR_AJU='$dataGETAJU'
 													-- GROUP BY a.SERI_BARANG
 													");
-						$resultDataFooter = mysqli_fetch_array($DataFooter);
-						$Totalall = $resultDataFooter['jml_JJSB'] * $resultDataFooter['TARIF'];
-						?>
-						<tfoot>
-							<tr>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"><b> <?= decimal(round($resultDataFooter['jml_RJJM']))?> <?= $resultDataFooter['URAIAN_SATUAN']?></b></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"><b><?= decimal(round($resultDataFooter['jml_JJSB']))?> <?= $resultDataFooter['URAIAN_SATUAN']?></b></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"><b> <?= Rupiah($Totalall)?></b></td>
-								<td style="text-align: right;"></td>
-								<td style="text-align: right;"></td>
-							</tr>
-							<?php } else { ?>
-								<tr>
-									<td colspan="9">
-										<center>
-											<div style="display: grid;">
-												<i class="far fa-times-circle no-data"></i> Tidak ada data
-											</div>
-										</center>
-									</td>
-								</tr>
-							<?php } ?>
-						</tfoot>
+							$resultDataFooter = mysqli_fetch_array($DataFooter);
+							$Totalall = $resultDataFooter['jml_JJSB'] * $resultDataFooter['TARIF'];
+					?>
+					<tfoot>
+						<tr>
+							<td style="text-align: right;"></td>
+							<td style="text-align: right;"><b> <?= decimal(round($resultDataFooter['jml_RJJM'])) ?> <?= $resultDataFooter['URAIAN_SATUAN'] ?></b></td>
+							<td style="text-align: right;"></td>
+							<td style="text-align: right;"><b><?= decimal(round($resultDataFooter['jml_JJSB'])) ?> <?= $resultDataFooter['URAIAN_SATUAN'] ?></b></td>
+							<td style="text-align: right;"></td>
+							<td style="text-align: right;"></td>
+							<td style="text-align: right;"><b> <?= Rupiah($Totalall) ?></b></td>
+							<td style="text-align: right;"></td>
+							<td style="text-align: right;"></td>
+						</tr>
+					<?php } else { ?>
+						<tr>
+							<td colspan="9">
+								<center>
+									<div style="display: grid;">
+										<i class="far fa-times-circle no-data"></i> Tidak ada data
+									</div>
+								</center>
+							</td>
+						</tr>
+					<?php } ?>
+					</tfoot>
 				</table>
 			</div>
 		</div>
 		<div class="invoice-footer">
 			<p class="text-center m-b-5 f-w-600">
-				Export CK5 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
+				Export BC 2.7 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
 			</p>
 			<p class="text-center">
 				<span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
@@ -388,10 +394,10 @@ function NPWP($value)
 			$('#data-table-buttons-one').DataTable({
 				dom: 'Bfrtip',
 				buttons: [
-				'copyHtml5',
-				'excelHtml5',
-				'csvHtml5',
-				'pdfHtml5'
+					'copyHtml5',
+					'excelHtml5',
+					'csvHtml5',
+					'pdfHtml5'
 				]
 			});
 		});
@@ -400,13 +406,14 @@ function NPWP($value)
 			$('#data-table-buttons-two').DataTable({
 				dom: 'Bfrtip',
 				buttons: [
-				'copyHtml5',
-				'excelHtml5',
-				'csvHtml5',
-				'pdfHtml5'
+					'copyHtml5',
+					'excelHtml5',
+					'csvHtml5',
+					'pdfHtml5'
 				]
 			});
 		});
 	</script>
 </body>
+
 </html>

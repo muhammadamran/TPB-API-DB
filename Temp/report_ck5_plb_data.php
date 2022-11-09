@@ -115,7 +115,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <a href="https://itinventory-sarinah.com/report_ck5_plb_data.php" id="id-fr">
                     <i class="fa-solid fa-table"></i>
-                    <font style="font-size: 9px; margin-top: 9px">Data CK5 PLB</font>
+                    <font style="font-size: 9px; margin-top: 9px">Data BC 2.7 PLB</font>
                 </a>
             </div>
         </div>
@@ -123,7 +123,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <a href="http://plb.itinventory-sarinah.com:8091/report_ck5_plb.php" id="id-fl">
                     <i class="fa-solid fa-upload"></i>
-                    <font style="font-size: 8px; margin-top: 10px">Upload CK5 PLB</font>
+                    <font style="font-size: 8px; margin-top: 10px">Upload BC 2.7 PLB</font>
                 </a>
             </div>
         </div>
@@ -160,7 +160,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <div class="note note-default">
                                     <div class="note-icon"><i class="fas fa-history"></i></div>
                                     <div class="note-content">
-                                        <h4><b>Informasi File Upload Excel CK5 PLB!</b></h4>
+                                        <h4><b>Informasi File Upload Excel BC 2.7 PLB!</b></h4>
                                         <hr>
                                         <p style="display: grid;">
                                             <font>Terakhir diupload oleh: <?= $rowLogUpload['username']; ?></font>
@@ -1272,8 +1272,8 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                             <th style="text-align: center">NOMOR AJU</th>
                                             <th style="text-align: center">KODE RESPON</th>
                                             <th style="text-align: center">NOMOR RESPON</th>
-                                            <th style="text-align: center">Date Submit CK5 PLB</th>
-                                            <th style="text-align: center">Date Export CK5 PLB</th>
+                                            <th style="text-align: center">Date Submit BC 2.7 PLB</th>
+                                            <th style="text-align: center">Date Export BC 2.7 PLB</th>
                                             <th style="text-align: center">Date GB Submit Sarinah</th>
                                             <th style="text-align: center">Date GB Export Sarinah</th>
                                         </tr>

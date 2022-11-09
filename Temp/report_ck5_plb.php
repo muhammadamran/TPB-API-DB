@@ -63,7 +63,7 @@ include "include/cssForm.php";
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <a href="https://itinventory-sarinah.com/report_ck5_plb_data.php" id="id-fr">
                     <i class="fa-solid fa-table"></i>
-                    <font style="font-size: 9px; margin-top: 9px">Data CK5 PLB</font>
+                    <font style="font-size: 9px; margin-top: 9px">Data BC 2.7 PLB</font>
                 </a>
             </div>
         </div>
@@ -72,7 +72,7 @@ include "include/cssForm.php";
                 <!-- <a href="http://plb.itinventory-sarinah.com:8091/report_ck5_plb.php?username=<?= $_SESSION['username']; ?>" target="_blank" id="id-fl"> -->
                 <a href="https://itinventory-sarinah.com/report_ck5_plb_upload.php" target="_blank" id="id-fl">
                     <i class="fa-solid fa-upload"></i>
-                    <font style="font-size: 8px; margin-top: 10px">Upload CK5 PLB</font>
+                    <font style="font-size: 8px; margin-top: 10px">Upload BC 2.7 PLB</font>
                 </a>
             </div>
         </div>

@@ -44,11 +44,11 @@ $forTanggalSKEP = $resultDataCK5PLB['NOMOR_IJIN_TPB'];
 $DataTanggalSKEP = $dbcon->query("SELECT *, SUBSTR(TANGGAL_SKEP,1,10) AS for_tgl_skep FROM referensi_pengusaha WHERE NOMOR_SKEP='$forTanggalSKEP'");
 $resultDataTanggalSKEP = mysqli_fetch_array($DataTanggalSKEP);
 
-$YYAJU = SUBSTR($_GET['AJU'],12,4);
-$MMAJU = SUBSTR($_GET['AJU'],16,2);
-$DDAJU = SUBSTR($_GET['AJU'],18,2);
+$YYAJU = SUBSTR($_GET['AJU'], 12, 4);
+$MMAJU = SUBSTR($_GET['AJU'], 16, 2);
+$DDAJU = SUBSTR($_GET['AJU'], 18, 2);
 
-$DEKLARYYMMDD = $YYAJU.'-'.$MMAJU.'-'.$DDAJU;
+$DEKLARYYMMDD = $YYAJU . '-' . $MMAJU . '-' . $DDAJU;
 // DATE
 function date_indo($date, $print_day = false)
 {
@@ -89,34 +89,35 @@ function date_indo($date, $print_day = false)
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8" />
-	<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-		<title>TPBERP | PT. Sarinah </title>
-	<?php } else { ?>
-		<title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
-	<?php } ?>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-	<meta name=ProgId content=Excel.Sheet>
-	<meta name=Generator content="Microsoft Excel 15">
-	<link rel=File-List href="CK-5-DAW%2010%20Pallet%20TBB1_files/filelist.xml">
-	<?php if ($resultHeadSetting['icon'] == NULL) { ?>
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
-	<?php } else { ?>
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-	<?php } ?>
-	<link href="assets/css/tpb.css" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="assets/css/default/app.min.css" rel="stylesheet" />
-	<link href="assets/css/default/invoice-print.min.css" rel="stylesheet" />
-	<link href="assets/css/ck5plb.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+        <title>TPBERP | PT. Sarinah </title>
+    <?php } else { ?>
+        <title><?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['title'] ?></title>
+    <?php } ?>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+    <meta name=ProgId content=Excel.Sheet>
+    <meta name=Generator content="Microsoft Excel 15">
+    <link rel=File-List href="CK-5-DAW%2010%20Pallet%20TBB1_files/filelist.xml">
+    <?php if ($resultHeadSetting['icon'] == NULL) { ?>
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
+    <?php } else { ?>
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+    <?php } ?>
+    <link href="assets/css/tpb.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="assets/css/default/invoice-print.min.css" rel="stylesheet" />
+    <link href="assets/css/ck5plb.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
     <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
@@ -134,25 +135,28 @@ function date_indo($date, $print_day = false)
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-Q66YLEFFZ2');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q66YLEFFZ2');
     </script>
 </head>
 <style type="text/css">
-	.nav-top-content {
-		padding: 20px;
-		margin-top: 30px;
-	}
+    .nav-top-content {
+        padding: 20px;
+        margin-top: 30px;
+    }
 
-	@media (max-width: 767.5px) {
-		.nav-top-content {
-			padding: 20px;
-			margin-top: 0px;
-		}
-	}
+    @media (max-width: 767.5px) {
+        .nav-top-content {
+            padding: 20px;
+            margin-top: 0px;
+        }
+    }
 
     .for-area-one {
         border: transparent;
@@ -213,11 +217,12 @@ function date_indo($date, $print_day = false)
         font-size: 12px;
     }
 </style>
+
 <body>
-	<div id="content" class="nav-top-content">
-		<div class="invoice">
-			<div class="invoice-company">
-				<span class="pull-right hidden-print">
+    <div id="content" class="nav-top-content">
+        <div class="invoice">
+            <div class="invoice-company">
+                <span class="pull-right hidden-print">
                     <a href="./report_ck5_plb_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-sm btn-white m-b-10" title="Update CK5PLB" style="padding: 7px;">
                         <div style="display: flex;justify-content: space-between;align-items: end;">
                             <i class="far fa-arrow-alt-circle-left" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Kembali
@@ -259,34 +264,34 @@ function date_indo($date, $print_day = false)
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                   <!--  <?php
-                                                    $dataTable = $dbcon->query("SELECT * FROM referensi_pengusaha AS a
+                                                    <!--  <?php
+                                                            $dataTable = $dbcon->query("SELECT * FROM referensi_pengusaha AS a
                                                                                 LEFT JOIN referensi_status_pengusaha AS b ON a.KODE_ID=b.KODE_STATUS_PENGUSAHA ORDER BY a.ID DESC");
-                                                    if (mysqli_num_rows($dataTable) > 0) {
-                                                        $no = 0;
-                                                        while ($row = mysqli_fetch_array($dataTable)) {
-                                                            $no++;
+                                                            if (mysqli_num_rows($dataTable) > 0) {
+                                                                $no = 0;
+                                                                while ($row = mysqli_fetch_array($dataTable)) {
+                                                                    $no++;
                                                             ?> -->
-                                                            <tr class="odd gradeX">
-                                                                <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                                <td style="text-align: left;">
-                                                                </td>
-                                                            </tr>
-                                                        <!-- <?php } ?>
+                                                    <tr class="odd gradeX">
+                                                        <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                        </td>
+                                                    </tr>
+                                                    <!-- <?php } ?>
                                                     <?php } else { ?>
                                                         <tr>
                                                             <td colspan="9">
@@ -311,10 +316,10 @@ function date_indo($date, $print_day = false)
                     </div>
                     <!-- For Detail Mutasi Barang -->
                     <a href="javascript:;" class="btn btn-sm btn-white m-b-10">
-                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel">  Export Excel
+                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
                     </a>
                     <a href="report_ck5_plb_detail_print.php" class="btn btn-sm btn-white m-b-10">
-                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print">  Print
+                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print"> Print
                     </a>
                     <!-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10"><i class="fa fa-file-excel t-plus-1 text-success fa-fw fa-lg"></i> Export as xls</a> -->
                     <!-- <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> -->
@@ -451,7 +456,9 @@ function date_indo($date, $print_day = false)
                             <td colspan=2 height=17 class=xl7411096 style='height:12.75pt'>Nomor Pengajuan</td>
                             <td class=xl6911096></td>
                             <td class=xl7611096>:</td>
-                            <td class=xl6911096 colspan=8><font id="SHOW-IDNO-AJU"><?= $resultDataCK5PLB['NOMOR_AJU']; ?></font></td>
+                            <td class=xl6911096 colspan=8>
+                                <font id="SHOW-IDNO-AJU"><?= $resultDataCK5PLB['NOMOR_AJU']; ?></font>
+                            </td>
                             <td class=xl6911096></td>
                             <td class=xl6911096 colspan=2>Tanggal<span style='mso-spacerun:yes'></span>&nbsp;&nbsp;:</td>
                             <td class=xl12511096 colspan=3 style="background: transparent;"><?= date_indo($DEKLARYYMMDD); ?></td>
@@ -1220,7 +1227,7 @@ function date_indo($date, $print_day = false)
                         </tr>
                         <!-- Show Identitas Two -->
                         <!-- NPPBKC -->
-                         <tr id="IdentitasTwoNPPBKC" height=24 style='mso-height-source:userset;height:18.0pt;display: none;'>
+                        <tr id="IdentitasTwoNPPBKC" height=24 style='mso-height-source:userset;height:18.0pt;display: none;'>
                             <td height=24 class=xl8511096 style='height:18.0pt'></td>
                             <td class=xl6911096 colspan=2></td>
                             <td class=xl7611096></td>
@@ -1243,7 +1250,7 @@ function date_indo($date, $print_day = false)
                         </tr>
                         <!-- End NPPBKC -->
                         <!-- NPP -->
-                         <tr id="IdentitasTwoNPP" height=24 style='mso-height-source:userset;height:18.0pt;display: none;'>
+                        <tr id="IdentitasTwoNPP" height=24 style='mso-height-source:userset;height:18.0pt;display: none;'>
                             <td height=24 class=xl8511096 style='height:18.0pt'></td>
                             <td class=xl6911096 colspan=2></td>
                             <td class=xl7611096></td>
@@ -1419,7 +1426,7 @@ function date_indo($date, $print_day = false)
                             </td>
                             <td class=xl9211096>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                             <td class=xl6911096></td>
-                            <td class=xl6911096>&nbsp;&nbsp;1. Darat    2. Laut 3. Udara</td>
+                            <td class=xl6911096>&nbsp;&nbsp;1. Darat 2. Laut 3. Udara</td>
                             <td class=xl6911096 colspan=3></td>
                             <td class=xl7711096 colspan=2>&nbsp;</td>
                             <td class=xl7611096>19.</td>
@@ -1628,7 +1635,9 @@ function date_indo($date, $print_day = false)
                         </tr>
                         <tr height=17 style='height:12.75pt'>
                             <td height=17 class=xl9611096 style='height:12.75pt'>&nbsp;</td>
-                            <td class=xl9711096 style='border-left:none'><span style='mso-spacerun:yes'></span><center>======= Terlampir ======</center></td>
+                            <td class=xl9711096 style='border-left:none'><span style='mso-spacerun:yes'></span>
+                                <center>======= Terlampir ======</center>
+                            </td>
                             <td class=xl11011096 style='border-left:none'>&nbsp;</td>
                             <td class=xl11111096></td>
                             <td class=xl11111096></td>
@@ -1734,7 +1743,9 @@ function date_indo($date, $print_day = false)
                             <td class=xl8211096>&nbsp;</td>
                         </tr>
                         <tr height=21 style='mso-height-source:userset;height:15.75pt'>
-                            <td height=21 class=xl10411096 colspan=2 style='height:15.75pt'>G.<span style='mso-spacerun:yes'></span><font class="font511096">Pemberitahuan</font></td>
+                            <td height=21 class=xl10411096 colspan=2 style='height:15.75pt'>G.<span style='mso-spacerun:yes'></span>
+                                <font class="font511096">Pemberitahuan</font>
+                            </td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
@@ -1746,7 +1757,8 @@ function date_indo($date, $print_day = false)
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                             <td class=xl7311096 style='border-top:none'>&nbsp;</td>
-                            <td class=xl10411096 colspan=5>H. <font class="font511096">Untuk Pembayaran / Jaminan</font></td>
+                            <td class=xl10411096 colspan=5>H. <font class="font511096">Untuk Pembayaran / Jaminan</font>
+                            </td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
                             <td class=xl7111096 style='border-top:none'>&nbsp;</td>
@@ -1758,7 +1770,7 @@ function date_indo($date, $print_day = false)
                         <tr height=19 style='mso-height-source:userset;height:14.25pt'>
                             <td height=19 class=xl7811096 style='height:14.25pt'>&nbsp;</td>
                             <td class=xl6911096 colspan=10>Dengan ini saya menyatakan bertanggung jawab
-                            atas kebenaran</td>
+                                atas kebenaran</td>
                             <td class=xl6911096></td>
                             <td class=xl7711096>&nbsp;</td>
                             <td class=xl6911096 style="background: yellow;"></td>
@@ -3032,23 +3044,23 @@ function date_indo($date, $print_day = false)
             </div>
             <div class="invoice-footer">
                 <p class="text-center m-b-5 f-w-600">
-                   Export CK5 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
-               </p>
-               <p class="text-center">
-                   <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
-                   <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
-                   <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
-               </p>
-           </div>
-       </div>
-   </div>
-   <?php 
-		// include "include/panel.php"; 
-   ?>
-   <?php include "include/panel.php"; ?>
-   <?php include "include/footer.php"; ?>
-   <?php include "include/jsDatatables.php"; ?>
-   <script>
+                    Export BC 2.7 PLB | IT Inventory <?= $resultHeadSetting['company'] ?>
+                </p>
+                <p class="text-center">
+                    <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> <?= $resultHeadSetting['website'] ?></span>
+                    <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:<?= $resultHeadSetting['telp'] ?></span>
+                    <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> <?= $resultHeadSetting['email'] ?></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php
+    // include "include/panel.php"; 
+    ?>
+    <?php include "include/panel.php"; ?>
+    <?php include "include/footer.php"; ?>
+    <?php include "include/jsDatatables.php"; ?>
+    <script>
         // Show and Hidden
         $(function() {
             $("#IDJenisBarangKenaCukai").change(function() {
@@ -3085,67 +3097,67 @@ function date_indo($date, $print_day = false)
         });
         // show-address-identitas-two
         function showAddress(c_str) {
-          if (c_str == "") {
-            document.getElementById("show-address-identitas-two").innerHTML = "";
-            return;
-          }
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("show-address-identitas-two").innerHTML = this.responseText;
+            if (c_str == "") {
+                document.getElementById("show-address-identitas-two").innerHTML = "";
+                return;
             }
-          }
-          xmlhttp.open("GET", "function/function_get.php/get_c_client?c_id=" + c_str, true);
-          xmlhttp.send();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("show-address-identitas-two").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_c_client?c_id=" + c_str, true);
+            xmlhttp.send();
         }
 
         // showKodeOne
         function showKodeOne(kode_one) {
-          if (kode_one == "") {
-            document.getElementById("InputshowKodeOne").innerHTML = "";
-            return;
-          }
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+            if (kode_one == "") {
+                document.getElementById("InputshowKodeOne").innerHTML = "";
+                return;
             }
-          }
-          xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
-          xmlhttp.send();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeOne").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_one?c_kode_one=" + kode_one, true);
+            xmlhttp.send();
         }
         // showKodeTwo
         function showKodeTwo(kode_two) {
-          if (kode_two == "") {
-            document.getElementById("InputshowKodeTwo").innerHTML = "";
-            return;
-          }
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+            if (kode_two == "") {
+                document.getElementById("InputshowKodeTwo").innerHTML = "";
+                return;
             }
-          }
-          xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
-          xmlhttp.send();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeTwo").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_two?c_kode_two=" + kode_two, true);
+            xmlhttp.send();
         }
         // showKodeThree
         function showKodeThree(kode_three) {
-          if (kode_three == "") {
-            document.getElementById("InputshowKodeThree").innerHTML = "";
-            return;
-          }
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("InputshowKodeThree").innerHTML = this.responseText;
+            if (kode_three == "") {
+                document.getElementById("InputshowKodeThree").innerHTML = "";
+                return;
             }
-          }
-          xmlhttp.open("GET", "function/function_get.php/get_kode_three?c_kode_three=" + kode_three, true);
-          xmlhttp.send();
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("InputshowKodeThree").innerHTML = this.responseText;
+                }
+            }
+            xmlhttp.open("GET", "function/function_get.php/get_kode_three?c_kode_three=" + kode_three, true);
+            xmlhttp.send();
         }
         // Show and Hide
-         $(function() {
+        $(function() {
             $("#IDJaminan").change(function() {
                 if ($(this).val() == 4) {
                     $("#OthersJaminan").show();
@@ -3157,4 +3169,5 @@ function date_indo($date, $print_day = false)
     </script>
 
 </body>
+
 </html>

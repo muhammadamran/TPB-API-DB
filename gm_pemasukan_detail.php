@@ -160,7 +160,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Gate Mandiri</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Barang Masuk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;">Gate In</a></li>
                 <li class="breadcrumb-item active">Detail Nomor AJU: <?= $_GET['AJU'] ?></li>
             </ol>
         </div>
@@ -190,8 +190,22 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
+                    <div style="display: flex;justify-content: space-between;align-content: center;align-items: center;padding: 16px;background: #d9e0e7;font-size: 14px;font-weight: 600;margin-top: -15px;margin-bottom: 15px;">
+                        <!-- ASAL -->
+                        <div style="text-transform: uppercase;">
+                            Asal: <?= $datahdrbrg['PERUSAHAAN'] ?>
+                        </div>
+                        <!-- ICON -->
+                        <div>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                        </div>
+                        <!-- Tujuan -->
+                        <div style="text-transform: uppercase;">
+                            Tujuan: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>
+                        </div>
+                    </div>
                     <!-- DETAIL -->
-                    <div class="detail-barang-ct">
+                    <div class="detail-barang-ct" style="margin-left: -12px;">
                         <div>
                             <a href="#" class="widget-card rounded mb-20px" data-id="widget">
                                 <div class="widget-card-cover rounded"></div>
@@ -217,98 +231,103 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                     </h4>
                                     <h4 class="mb-10px text-blue">
                                         <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
-                                        <b> <?= Rupiah($HPPT['PT']); ?></b>
+                                        <b> <?= $HPPT['PT']; ?></b>
                                     </h4>
-                                </div>
-                                <div class="widget-card-content bottom">
-                                    <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><i class="fas fa-building"></i> Asal PLB: <?= $datahdrbrg['PERUSAHAAN'] ?> - Tujuan/Penerima: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>.</b>
                                 </div>
                             </a>
                         </div>
-                        <div style="padding: 0px;">
-                            <!-- NILAI AWAL -->
-                            <div>
-                                <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AWAL BARANG</b></h5>
+                    </div>
+                    <!-- DETAIL -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div style="padding: 0px;">
+                                <!-- NILAI AWAL -->
+                                <div>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AWAL BARANG</b></h5>
+                                </div>
+                                <div class="total-ct">
+                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                        <tbody>
+                                            <tr style="height: 18px;">
+                                                <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
+                                                <td style="width: 104px; height: 18px;">Total CT</td>
+                                                <td style="width: 10px; height: 18px;">:</td>
+                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="total-ct">
+                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                        <tbody>
+                                            <tr style="height: 18px;">
+                                                <td style="width: 15px;"><i class="fa-solid fa-bottle-droplet"></i></td>
+                                                <td style="width: 104px; height: 18px;">Total Botol</td>
+                                                <td style="width: 10px; height: 18px;">:</td>
+                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="total-ct">
+                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                        <tbody>
+                                            <tr style="height: 18px;">
+                                                <td style="width: 15px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
+                                                <td style="width: 104px; height: 18px;">Total Liter</td>
+                                                <td style="width: 10px; height: 18px;">:</td>
+                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="total-ct">
-                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                    <tbody>
-                                        <tr style="height: 18px;">
-                                            <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
-                                            <td style="width: 110px; height: 18px;">Total CT</td>
-                                            <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="total-ct">
-                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                    <tbody>
-                                        <tr style="height: 18px;">
-                                            <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
-                                            <td style="width: 110px; height: 18px;">Total Botol</td>
-                                            <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="total-ct">
-                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                    <tbody>
-                                        <tr style="height: 18px;">
-                                            <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
-                                            <td style="width: 110px; height: 18px;">Total Liter</td>
-                                            <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- NILAI AKTUAL -->
-                            <div>
-                                <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
-                            </div>
-                            <div class="total-ct-ak">
-                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                    <tbody>
-                                        <tr style="height: 18px;">
-                                            <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
-                                            <td style="width: 110px; height: 18px;">Total CT</td>
-                                            <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_CT['p_CT']; ?> CT</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="total-ct-ak">
-                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                    <tbody>
-                                        <tr style="height: 18px;">
-                                            <td style="width: 10px;"><i class="fa-solid fa-bottle-droplet"></i></td>
-                                            <td style="width: 110px; height: 18px;">Total Botol</td>
-                                            <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= $A_BTL['p_BOTOL']; ?> Botol</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="total-ct-ak">
-                                <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                    <tbody>
-                                        <tr style="height: 18px;">
-                                            <td style="width: 10px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
-                                            <td style="width: 110px; height: 18px;">Total Liter</td>
-                                            <td style="width: 10px; height: 18px;">:</td>
-                                            <td style="width: 150px; height: 18px; text-align: right;"><?= floor($A_LTR['p_LITER']); ?> Liter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        </div>
+                        <div class="col-sm-6">
+                            <div style="padding: 0px;">
+                                <!-- NILAI AKTUAL -->
+                                <div>
+                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
+                                </div>
+                                <div class="total-ct-ak">
+                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                        <tbody>
+                                            <tr style="height: 18px;">
+                                                <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
+                                                <td style="width: 104px; height: 18px;">Total CT</td>
+                                                <td style="width: 10px; height: 18px;">:</td>
+                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $A_CT['p_CT']; ?> CT</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="total-ct-ak">
+                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                        <tbody>
+                                            <tr style="height: 18px;">
+                                                <td style="width: 15px;"><i class="fa-solid fa-bottle-droplet"></i></td>
+                                                <td style="width: 104px; height: 18px;">Total Botol</td>
+                                                <td style="width: 10px; height: 18px;">:</td>
+                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $A_BTL['p_BOTOL']; ?> Botol</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="total-ct-ak">
+                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
+                                        <tbody>
+                                            <tr style="height: 18px;">
+                                                <td style="width: 15px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
+                                                <td style="width: 104px; height: 18px;">Total Liter</td>
+                                                <td style="width: 10px; height: 18px;">:</td>
+                                                <td style="width: 150px; height: 18px; text-align: right;"><?= floor($A_LTR['p_LITER']); ?> Liter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- DETAIL -->
                     <hr>
                     <!-- PETUGAS -->
                     <div class="row">
@@ -355,29 +374,29 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                     $resultChecking = mysqli_fetch_array($checking);
                                     ?>
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
                                             <i class="fa-solid fa-check-circle"></i>
                                             Barang Sudah DiCek!
                                         </button>
                                     <?php } else { ?>
                                         <div class="row">
                                             <div class="col-sm-12" style="display: flex;">
-                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-title="Selesaikan Pengecekan Barang" data-placement="top" data-content="Klik untuk selesaikan Barang Masuk!">
+                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Klik Pilih Semua atau Cek CT">
                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                     Cek Satuan Botol
                                                 </button>
                                                 <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-title="Simpan Data Pengecekan Barang" data-placement="top" data-content="Klik untuk Simpan Data Barang Masuk!">
+                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai">
                                                             <i class="fas fa-tasks"></i>
                                                             Semua Barang Sesuai
                                                         </button>
                                                     </div>
                                                 <?php } else { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="button" class="btn btn-sm btn-custom btn-warning" data-toggle="popover" data-trigger="hover" data-title="Selesaikan dahulu Data Pengecekan Barang!" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu!">
+                                                        <button type="button" class="btn btn-sm btn-custom btn-warning" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu">
                                                             <i class="fas fa-warning"></i>
-                                                            Simpan Barang Masuk
+                                                            Simpan Gate In
                                                         </button>
                                                         <small class="blink_me" style="color: red;"><i>(*) Anda masih memiliki pengecekan Data CT yang belum disimpan!</i></small>
                                                     </div>
@@ -394,15 +413,22 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 <th rowspan="2" width="1%">No.</th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                        <button type="button" class="btn btn-sm btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;">
-                                                            <i class="fa-solid fa-square-check"></i>
-                                                            Pilih Semua
-                                                        </button>
+                                                        <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
+                                                            <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-default" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
+                                                                <i class="fa-solid fa-check-circle"></i>
+                                                                Barang Sesuai
+                                                            </button>
+                                                        <?php } else { ?>
+                                                            <button type="button" class="btn btn-sm btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pilih Semua jika Semua Barang Sesuai">
+                                                                <i class="fa-solid fa-square-check"></i>
+                                                                Pilih Semua
+                                                            </button>
+                                                        <?php } ?>
                                                     </div>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                        Cek Barang Masuk
+                                                        Cek CT
                                                     </div>
                                                 </th>
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
@@ -414,7 +440,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 <th rowspan="2" style="text-align: center;">Pos Tarif</th>
                                             </tr>
                                             <tr>
-                                                <th style="text-align: center;">Kode</th>
+                                                <th style="text-align: center;">Kode Barang</th>
                                                 <th style="text-align: center;">Seri Barang</th>
                                                 <th style="text-align: center;">Uraian</th>
                                                 <th style="text-align: center;">Tipe</th>
@@ -444,38 +470,20 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
-                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
+                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
-                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Barang Masuk!">
+                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
                                                                     <i class="fa-solid fa-check"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
                                                                 <span class="btn btn-sm btn-success" data-toggle="popover" data-trigger="hover" data-title="Barang Di Simpan Di GB" data-placement="top" data-content="Barang Di Simpan Di GB!">
-                                                                    <i class="fa-solid fa-house-circle-check"></i>
+                                                                    <i class="fa-solid fa-circle-check"></i>
                                                                 </span>
                                                             <?php } else { ?>
                                                                 <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
-                                                                    <input type="checkbox" class="form-check-input" id="chk" name="CekBarang[<?= $noBarang - 1; ?>][ID]" value="<?= $rowBarang['ID'] ?>">
-                                                                    <!-- PLB_BARANG_CT -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][NOMOR_AJU]" value="<?= $rowBarang['NOMOR_AJU'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][KODE_BARANG]" value="<?= $rowBarang['KODE_BARANG'] ?>">
-                                                                    <!-- PLB_BARANG -->
-                                                                    <!-- STATUS,OPERATOR_ONE,TGL_CEK -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS]" value="Sesuai">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][OPERATOR_ONE]" value="<?= $_SESSION['username'] ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TGL_CEK]" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][CHECKING]" value="DONE">
-                                                                    <!-- STATUS_CT,DATE_CT,TOTAL_BOTOL_AKHIR,TOTAL_LITER_AKHIR,TOTAL_CT_AKHIR -->
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][STATUS_CT]" value="Complete">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][DATE_CT]" value="<?= date('Y-m-d H:m:i') ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL]" value="<?= $t_botol ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_BOTOL_AKHIR]" value="<?= $t_botol * $pcs ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER]" value="<?= $t_liter ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_LITER_AKHIR]" value="<?= $t_liter * ($t_botol * $pcs) ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_CT]" value="<?= $pcs ?>">
-                                                                    <input type="hidden" class="form-check-input" name="CekBarang[<?= $noBarang - 1; ?>][TOTAL_CT_AKHIR]" value="<?= $pcs ?>">
+                                                                    <input type="checkbox" class="form-check-input" id="chk" name="chk[<?= $noBarang - 1; ?>][ID]" value="<?= $rowBarang['ID'] ?>">
                                                                 </div>
                                                             <?php } ?>
                                                         </td>
@@ -524,8 +532,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                 <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
                                                             </div>
                                                         </td>
-                                                        <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?>
-                                                        </td>
+                                                        <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?></td>
                                                         <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
                                                         <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
                                                         <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
@@ -562,7 +569,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
                                                         <td style="text-align: center;">
                                                             <div style="width: 155px;">
-                                                                <?= Rupiah($rowBarang['POS_TARIF']); ?>
+                                                                <?= $rowBarang['POS_TARIF']; ?>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -596,6 +603,21 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<script>
+    // CEK BARANG
+    $("#btn-all").click(function() {
+        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>`)
+        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>`)
+        var confirm = window.confirm("Klik OK jika Semua Barang Sesuai!");
+
+        if (confirm)
+            $("#form-submit").submit();
+        else
+            return false;
+    });
+</script>
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
@@ -613,34 +635,6 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
             }],
             iDisplayLength: -1
         });
-    });
-
-    function checkAll(checkId) {
-        var inputs = document.getElementsByTagName("input");
-        var VarAll = document.getElementById("buttonPilihAll");
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
-                if (inputs[i].checked == true) {
-                    inputs[i].checked = false;
-                    VarAll.style.display = "none";
-                } else if (inputs[i].checked == false) {
-                    inputs[i].checked = true;
-                    VarAll.style.display = "block";
-                }
-            }
-        }
-    }
-
-    // CEK BARANG
-    $("#btn-all").click(function() {
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>`)
-        var confirm = window.confirm("Klik OK jika Barang Masuk sudah Sesuai!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
     });
 
     // SAVED SUCCESS

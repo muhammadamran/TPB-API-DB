@@ -15,6 +15,24 @@
 <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
 <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
 <script>
+        // gm_pemasukan_detail.php
+        function checkAll(checkId) {
+                var inputs = document.getElementsByTagName("input");
+                var VarAll = document.getElementById("buttonPilihAll");
+                for (var i = 0; i < inputs.length; i++) {
+                        if (inputs[i].type == "checkbox" && inputs[i].id == checkId) {
+                                if (inputs[i].checked == true) {
+                                        inputs[i].checked = false;
+                                        VarAll.style.display = "none";
+                                } else if (inputs[i].checked == false) {
+                                        inputs[i].checked = true;
+                                        VarAll.style.display = "block";
+                                }
+                        }
+                }
+        }
+        // End gm_pemasukan_detail.php
+
         // RIAWYAT AKTIFITAS
         function showHideRA(ele) {
                 var srcElement = document.getElementById(ele);
