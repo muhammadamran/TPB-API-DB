@@ -20,7 +20,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="IdDescription">Deskripsi </label>
-                                    <textarea type="text" class="form-control" name="NameDescription" id="IdDescription" placeholder="Deskripsi ..." ></textarea>
+                                    <textarea type="text" class="form-control" name="NameDescription" id="IdDescription" placeholder="Deskripsi ..."></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">

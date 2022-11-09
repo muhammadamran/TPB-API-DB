@@ -50,7 +50,7 @@ $data = json_decode($content, true);
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">#</th>
+                                    <th width="1%">No.</th>
                                     <th class="text-nowrap" style="text-align: center;">Nama Kapal</th>
                                     <th class="text-nowrap" style="text-align: center;">Bendera</th>
                                 </tr>

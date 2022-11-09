@@ -93,7 +93,7 @@ if (isset($_POST["EditAPInDB"])) {
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fab fa-adn icon-page"></i>
+                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
@@ -224,36 +224,36 @@ if (isset($_POST["EditAPInDB"])) {
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil disimpan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan!'
         })
         history.replaceState({}, '', './adm_api.php');
     }
     // SAVED FAILED
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan!'
         })
         history.replaceState({}, '', './adm_api.php');
     }
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil diupdate!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diupdate!'
         })
         history.replaceState({}, '', './adm_api.php');
     }
     // UPDATE FAILED
     if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal diupdate!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diupdate!'
         })
         history.replaceState({}, '', './adm_api.php');
     }

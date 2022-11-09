@@ -387,12 +387,18 @@ if (isset($_GET['findOne']) != '') {
 }
 
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>User Manajemen Web App Name | Company </title>
+<?php } else { ?>
+    <title>User Manajemen Web - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fab fa-adn icon-page"></i>
+                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
@@ -617,7 +623,7 @@ if (isset($_GET['findOne']) != '') {
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">#</th>
+                                    <th width="1%">No.</th>
                                     <th width="1%" data-orderable="false"></th>
                                     <th class="text-nowrap" style="text-align: center;">Username</th>
                                     <th class="text-nowrap" style="text-align: center;">Password</th>
@@ -950,7 +956,7 @@ if (isset($_GET['findOne']) != '') {
                                                         <div class="modal-body">
                                                             <div class="alert alert-danger m-b-0">
                                                                 <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus data ini?</h5>
-                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada sistem informasi TPB!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
+                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada aplikasi!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
                                                                 <input type="hidden" name="IDUNIQ" value="<?= $row['USRIDUNIQ'] ?>">
                                                             </div>
                                                         </div>
@@ -976,7 +982,7 @@ if (isset($_GET['findOne']) != '') {
                                                         <div class="modal-body">
                                                             <div class="alert alert-warning m-b-0">
                                                                 <h5><i class="fa fa-info-circle"></i> Anda yakin akan melakukan aktif user ini?</h5>
-                                                                <p>Jika anda melakukan aktif user, user akan dapat memulai <i>session</i> pada sistem informasi TPB!<br><i>"Silahkan klik <b>Aktif</b> untuk melanjutkan proses."</i></p>
+                                                                <p>Jika anda melakukan aktif user, user akan dapat memulai <i>session</i> pada aplikasi!<br><i>"Silahkan klik <b>Aktif</b> untuk melanjutkan proses."</i></p>
                                                                 <input type="hidden" name="status" value="0">
                                                                 <input type="hidden" name="IDUNIQ" value="<?= $row['USRIDUNIQ'] ?>">
                                                             </div>
@@ -1003,7 +1009,7 @@ if (isset($_GET['findOne']) != '') {
                                                         <div class="modal-body">
                                                             <div class="alert alert-warning m-b-0">
                                                                 <h5><i class="fa fa-info-circle"></i> Anda yakin akan melakukan non-aktif user ini?</h5>
-                                                                <p>Jika anda melakukan non-aktif user, user tidak akan dapat memulai <i>session</i> pada sistem informasi TPB!<br><i>"Silahkan klik <b>Non-Aktif</b> untuk melanjutkan proses."</i></p>
+                                                                <p>Jika anda melakukan non-aktif user, user tidak akan dapat memulai <i>session</i> pada aplikasi!<br><i>"Silahkan klik <b>Non-Aktif</b> untuk melanjutkan proses."</i></p>
                                                                 <input type="hidden" name="status" value="1">
                                                                 <input type="hidden" name="IDUNIQ" value="<?= $row['USRIDUNIQ'] ?>">
                                                             </div>
@@ -1089,18 +1095,18 @@ if (isset($_GET['findOne']) != '') {
     // INSERT SUCCESS
     if (window?.location?.href?.indexOf('UUMWInputSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil disimpan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // INSERT FAILED
     if (window?.location?.href?.indexOf('UUMWInputFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
@@ -1108,18 +1114,18 @@ if (isset($_GET['findOne']) != '') {
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil diupdate!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diupdate!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // UPDATE FAILED
     if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal diupdate!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diupdate!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
@@ -1127,18 +1133,18 @@ if (isset($_GET['findOne']) != '') {
     // DELETE SUCCESS
     if (window?.location?.href?.indexOf('DeleteSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil dihapus!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil dihapus didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil dihapus!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // DELETE FAILED
     if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal dihapus!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal dihapus didalam <?= $alertAppName ?>!'
+            text: 'Data gagal dihapus!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
@@ -1146,18 +1152,18 @@ if (isset($_GET['findOne']) != '') {
     // RESET PASSWORD SUCCESS
     if (window?.location?.href?.indexOf('ResetPasswordSuccess') > -1) {
         Swal.fire({
-            title: 'Password berhasil direset!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Password berhasil direset didalam <?= $alertAppName ?>!'
+            text: 'Password berhasil direset!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // RESET PASSWORD FAILED
     if (window?.location?.href?.indexOf('ResetPasswordFailed') > -1) {
         Swal.fire({
-            title: 'Password gagal direset!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Password gagal direset didalam <?= $alertAppName ?>!'
+            text: 'Password gagal direset!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
@@ -1165,18 +1171,18 @@ if (isset($_GET['findOne']) != '') {
     // ENABLED SUCCESS
     if (window?.location?.href?.indexOf('EnabledSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil diaktifkan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil diaktifkan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diaktifkan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // ENABLED FAILED
     if (window?.location?.href?.indexOf('EnabledFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal diaktifkan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal diaktifkan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diaktifkan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
@@ -1184,18 +1190,18 @@ if (isset($_GET['findOne']) != '') {
     // DISABLED SUCCESS
     if (window?.location?.href?.indexOf('DisabledSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil dinon-aktifkan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil dinon-aktifkan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil dinon-aktifkan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // DISABLED FAILED
     if (window?.location?.href?.indexOf('DisabledFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal dinon-aktifkan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal dinon-aktifkan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal dinon-aktifkan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
@@ -1203,18 +1209,18 @@ if (isset($_GET['findOne']) != '') {
     // RESIGN SUCCESS
     if (window?.location?.href?.indexOf('ResignSuccess') > -1) {
         Swal.fire({
-            title: 'Status Resign user berhasil disimpan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data Resign user berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data Resign user berhasil disimpan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }
     // RESIGN FAILED
     if (window?.location?.href?.indexOf('ResignFailed') > -1) {
         Swal.fire({
-            title: 'Status Resign user gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data Resign user gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data Resign user gagal disimpan!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web.php');
     }

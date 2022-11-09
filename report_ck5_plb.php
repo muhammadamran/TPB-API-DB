@@ -201,8 +201,8 @@ if (isset($_POST['find'])) {
                         <table id="example" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">#</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
+                                    <th width="1%">No.</th>
+                                    <th class="text-nowrap" style="text-align: center;" width="15%">Aksi</th>
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Pemilik</th>
                                     <th class="text-nowrap" style="text-align: center;">Tujuan/Penerima</th>
@@ -223,9 +223,9 @@ if (isset($_POST['find'])) {
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['CEK_BARANG'] == NULL) { ?>
-                                                    <a href="#delete<?= $row['ID'] ?>" class="btn btn-danger" data-toggle="modal" title="Tambah Kuota Mitra"><i class="fas fa-backspace"></i></a>
+                                                    <a href="#delete<?= $row['ID'] ?>" class="btn btn-danger" data-toggle="modal" title="Tambah Kuota Mitra"><i class="fas fa-trash"></i> Hapus</a>
                                                 <?php } else { ?>
-                                                    <button class="btn btn-sm btn-aksi btn-secondary" style="color:#fff;cursor:pointer" title="Disabled"><i class="fas fa-backspace"></i></button>
+                                                    <button class="btn btn-sm btn-aksi btn-secondary" style="color:#fff;cursor:pointer" title="Disabled"><i class="fas fa-trash"></i> Hapus</button>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
@@ -240,21 +240,21 @@ if (isset($_POST['find'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Delete] Data BC 2.7 PLB</h4>
+                                                            <h4 class="modal-title">[Hapus Data] BC 2.7 PLB - <?= $row['ID'] ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
-                                                                <div class="alert">
-                                                                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                                                    <strong>Danger!</strong> Anda yakin ingin menghapus data ini?
+                                                                <div class="alert alert-danger m-b-0">
+                                                                    <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus data ini?</h5>
+                                                                    <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada aplikasi!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
                                                                     <input type="hidden" name="ID" value="<?= $row['NOMOR_AJU'] ?>">
                                                                 </div>
                                                             </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</a>
-                                                            <button type="submit" name="Delete_" class="btn btn-danger"><i class="fas fa-box-open"></i> Ya</button>
+                                                            <button type="submit" name="Delete_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Ya</button>
                                                         </div>
                                                     </form>
                                                 </div>

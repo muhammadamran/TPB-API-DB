@@ -251,7 +251,7 @@ function date_indo($date, $print_day = false)
                                             <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle" style="width: 100%;font-size: 12px;font-weight: 400;">
                                                 <thead>
                                                     <tr>
-                                                        <th width="1%">#</th>
+                                                        <th width="1%">No.</th>
                                                         <th class="text-nowrap" style="text-align: center;">Rincian Jumlah, Jenis Merk & Nomor</th>
                                                         <th class="text-nowrap" style="text-align: center;">Uraian jenis barang secara lengkap</th>
                                                         <th class="text-nowrap" style="text-align: center;">Jumlah dan jenis satuan barang</th>

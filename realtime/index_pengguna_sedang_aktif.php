@@ -101,7 +101,7 @@ include "../include/restrict.php";
 <table id="data-table-fixed-header" class="table table-striped table-bordered table-td-valign-middle">
     <thead>
         <tr>
-            <th width="1%">#</th>
+            <th width="1%">No.</th>
             <th width="1%" data-orderable="false"></th>
             <th class="text-nowrap">Username</th>
             <th class="text-nowrap">Perangkat</th>

@@ -119,7 +119,7 @@ include "include/cssDatatables.php";
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">#</th>
+                                    <th width="1%">No.</th>
                                     <th class="text-nowrap" style="text-align: center;">NPWP</th>
                                     <th class="text-nowrap" style="text-align: center;">Nama</th>
                                     <th class="text-nowrap" style="text-align: center;">Alamat</th>

@@ -31,9 +31,9 @@
                                     <select type="text" class="default-select2 form-control" name="NameTahun" id="IDTahun">
                                         <option value="">-- Pilih Tahun --</option>
                                         <?php
-                                        for($i=date('Y'); $i>=date('Y')-32; $i-=1) {
+                                        for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
                                             echo "<option value='$i'> $i </option>";
-                                            }
+                                        }
                                         ?>
                                     </select>
                                 </div>
@@ -60,13 +60,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="IdCARTON">CARTON <font style="color: red;">*</font></label>
-                                    <input type="number" class="form-control" name="NameKuotaCARTON_A" id="IdKuotaCARTON_A" placeholder="Kuota CARTON" required>
+                                    <input type="number" class="form-control" name="NameKuotaCARTON_A" id="IdKuotaCARTON_A" placeholder="Kuota CARTON" value="0" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="IdLITER">LITER <font style="color: red;">*</font></label>
-                                    <input type="number" class="form-control" name="NameKuotaLITER_A" id="IdKuotaLITER_A" placeholder="Kuota LITER" required>
+                                    <input type="number" class="form-control" name="NameKuotaLITER_A" id="IdKuotaLITER_A" placeholder="Kuota LITER" value="0" required>
                                 </div>
                             </div>
                             <!-- End Golongan A -->
@@ -92,13 +92,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="IdCARTON">CARTON <font style="color: red;">*</font></label>
-                                    <input type="number" class="form-control" name="NameKuotaCARTON_B" id="IdKuotaCARTON_B" placeholder="Kuota CARTON" required>
+                                    <input type="number" class="form-control" name="NameKuotaCARTON_B" id="IdKuotaCARTON_B" placeholder="Kuota CARTON" value="0" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="IdLITER">LITER <font style="color: red;">*</font></label>
-                                    <input type="number" class="form-control" name="NameKuotaLITER_B" id="IdKuotaLITER_B" placeholder="Kuota LITER" required>
+                                    <input type="number" class="form-control" name="NameKuotaLITER_B" id="IdKuotaLITER_B" placeholder="Kuota LITER" value="0" required>
                                 </div>
                             </div>
                             <!-- End Golongan B -->
@@ -124,13 +124,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="IdCARTON">CARTON <font style="color: red;">*</font></label>
-                                    <input type="number" class="form-control" name="NameKuotaCARTON_C" id="IdKuotaCARTON_C" placeholder="Kuota CARTON" required>
+                                    <input type="number" class="form-control" name="NameKuotaCARTON_C" id="IdKuotaCARTON_C" placeholder="Kuota CARTON" value="0" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="IdLITER">LITER <font style="color: red;">*</font></label>
-                                    <input type="number" class="form-control" name="NameKuotaLITER_C" id="IdKuotaLITER_C" placeholder="Kuota LITER" required>
+                                    <input type="number" class="form-control" name="NameKuotaLITER_C" id="IdKuotaLITER_C" placeholder="Kuota LITER" value="0" required>
                                 </div>
                             </div>
                             <!-- End Golongan C -->

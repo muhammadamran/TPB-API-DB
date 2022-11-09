@@ -2,22 +2,22 @@
 <li class="<?= $uriSegments[1] == 'index_settings.php' ? 'active' : '' ?>" style="display: <?= $TitleReport ?>;">
     <a href="index_settings.php"><i class="fas fa-cog icon-page-sidebar"></i> <span>Settings</span></a>
 </li>
-<!-- <?php
-        if (
-            $resultRoleModules['v_departemen'] == 'none' &&
-            $resultRoleModules['v_hak_akses'] == 'none' &&
-            $resultRoleModules['v_jabatan'] == 'none' &&
-            $resultRoleModules['v_kuota_mitra'] == 'none' &&
-            $resultRoleModules['v_pengaturan_tbb'] == 'none' &&
-            $resultRoleModules['v_pengaturan_realtime'] == 'none' &&
-            $resultRoleModules['v_pengaturan_informasi'] == 'none' &&
-            $resultRoleModules['v_user_manajemen'] == 'none'
-        ) {
-            $TitleADM = 'none';
-        } else {
-            $TitleADM = 'show';
-        }
-        ?>
+<?php
+if (
+    $resultRoleModules['v_departemen'] == 'none' &&
+    $resultRoleModules['v_hak_akses'] == 'none' &&
+    $resultRoleModules['v_jabatan'] == 'none' &&
+    $resultRoleModules['v_kuota_mitra'] == 'none' &&
+    $resultRoleModules['v_pengaturan_tbb'] == 'none' &&
+    $resultRoleModules['v_pengaturan_realtime'] == 'none' &&
+    $resultRoleModules['v_pengaturan_informasi'] == 'none' &&
+    $resultRoleModules['v_user_manajemen'] == 'none'
+) {
+    $TitleADM = 'none';
+} else {
+    $TitleADM = 'show';
+}
+?>
 <li class="nav-header" style="display: <?= $TitleADM; ?>;">ADMINISTRATOR</li>
 <li class="has-sub <?= $uriSegments[1] == 'adm_api.php' ||
                         $uriSegments[1] == 'adm_user_manajemen_web.php' ||
@@ -34,13 +34,13 @@
                         ? 'active' : '' ?>" style="display: <?= $TitleADM; ?>;">
     <a href="javascript:;">
         <b class="caret"></b>
-        <i class="fas fa-cog icon-page-sidebar"></i>
-        <span>Settings</span>
+        <i class="fa-solid fa-screwdriver-wrench icon-page-sidebar"></i>
+        <span>Administrator Tools</span>
     </a>
     <ul class="sub-menu">
-        <li class="<?= $uriSegments[1] == 'adm_api.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
+        <!-- <li class="<?= $uriSegments[1] == 'adm_api.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_informasi']; ?>;">
             <a href="adm_api.php">API & Database</a>
-        </li>
+        </li> -->
         <li class="<?= $uriSegments[1] == 'adm_department.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_departemen']; ?>;">
             <a href="adm_department.php">Departemen</a>
         </li>
@@ -66,4 +66,4 @@
             <a href="adm_user_manajemen_web.php">User Manajemen Web</a>
         </li>
     </ul>
-</li> -->
+</li>

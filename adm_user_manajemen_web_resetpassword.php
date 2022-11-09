@@ -51,6 +51,12 @@ if (isset($_POST["ResetPassword"])) {
 }
 // END RESET PASSWORD
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>User Manajemen Web App Name | Company </title>
+<?php } else { ?>
+    <title>User Manajemen Web - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">

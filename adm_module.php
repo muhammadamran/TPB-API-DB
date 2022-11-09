@@ -165,12 +165,18 @@ if (isset($_POST["NDeleteData"])) {
 }
 // END DELETE Module
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Module App Name | Company </title>
+<?php } else { ?>
+    <title>Module - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fab fa-adn icon-page"></i>
+                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
@@ -208,7 +214,7 @@ if (isset($_POST["NDeleteData"])) {
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th rowspan="2" style="text-align: center;">Tahun</th>
                                     <th colspan="2" style="text-align: center;">Mitra</th>
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GOL A</th>
@@ -432,7 +438,7 @@ if (isset($_POST["NDeleteData"])) {
                                                                 <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus
                                                                     data ini?</h5>
                                                                 <p>Anda tidak akan melihat data ini lagi, data akan di hapus
-                                                                    secara permanen pada sistem informasi TPB!<br><i>"Silahkan
+                                                                    secara permanen pada aplikasi!<br><i>"Silahkan
                                                                         klik <b>Ya</b> untuk melanjutkan proses penghapusan
                                                                         data."</i></p>
                                                                 <input type="hidden" name="DeleteMitra" value="<?= $row['NAMA'] ?>">
@@ -484,7 +490,7 @@ if (isset($_POST["NDeleteData"])) {
     // DATA ALREADY
     if (window?.location?.href?.indexOf('DataAlready') > -1) {
         Swal.fire({
-            title: 'Data sudah terdaftar!',
+            title: 'Data Sudah Terdaftar!',
             icon: 'info',
             text: 'Data sudah terdaftar disistem, Data harus bersifat uniq atau tidak boleh sama!'
         })
@@ -494,18 +500,18 @@ if (isset($_POST["NDeleteData"])) {
     // INSERT SUCCESS
     if (window?.location?.href?.indexOf('InputSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil disimpan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan!'
         })
         history.replaceState({}, '', './adm_module.php');
     }
     // INSERT FAILED
     if (window?.location?.href?.indexOf('InputFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan!'
         })
         history.replaceState({}, '', './adm_module.php');
     }
@@ -513,18 +519,18 @@ if (isset($_POST["NDeleteData"])) {
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil diupdate!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diupdate!'
         })
         history.replaceState({}, '', './adm_module.php');
     }
     // UPDATE FAILEDú
     if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal diupdate!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diupdate!'
         })
         history.replaceState({}, '', './adm_module.php');
     }
@@ -532,18 +538,18 @@ if (isset($_POST["NDeleteData"])) {
     // DELETE SUCCESS
     if (window?.location?.href?.indexOf('DeleteSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil dihapus!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil dihapus didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil dihapus!'
         })
         history.replaceState({}, '', './adm_module.php');
     }
     // DELETE FAILED
     if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal dihapus!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal dihapus didalam <?= $alertAppName ?>!'
+            text: 'Data gagal dihapus!'
         })
         history.replaceState({}, '', './adm_module.php');
     }

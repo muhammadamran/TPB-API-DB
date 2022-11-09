@@ -37,6 +37,7 @@ if ($Month == '01') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <!-- <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
@@ -71,12 +72,15 @@ if ($Month == '01') {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-Q66YLEFFZ2');
-  </script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q66YLEFFZ2');
+    </script>
 </head>
 <?php
 // DATE
@@ -117,8 +121,9 @@ function date_indo($date, $print_day = false)
     return $tgl_indo;
 }
 ?>
+
 <body class="pace-done">
-<!-- <div class="row"> -->
+    <!-- <div class="row"> -->
     <div style="background: #fff;">
         <div class="col-xl-12">
             <div class="line-page-table"></div>
@@ -149,73 +154,73 @@ function date_indo($date, $print_day = false)
             <div class="panel-body text-inverse">
                 <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
                 <!-- <div class="table-responsive"> -->
-                    <table id="table-masuk-barang" class="table table-striped table-bordered table-td-valign-middle">
-                        <thead>
-                            <tr>
-                                <th width="1%">#</th>
-                                <th style="text-align: center;">Tanggal</th>
-                                <th style="text-align: center;">Kode Barang (No. HS)</th>
-                                <th style="text-align: center;">Barang</th>
-                                <th style="text-align: center;">Jenis</th>
-                                <th style="text-align: center;">Golongan</th>
-                                <th style="text-align: center;">Satuan</th>
-                                <th style="text-align: center;">Saldo Awal</th>
-                                <th style="text-align: center;">Mutasi Masuk</th>
-                                <th style="text-align: center;">Mutasi Keluar</th>
-                                <th style="text-align: center;">Penyesuaian</th>
-                                <th style="text-align: center;">Saldo Akhir</th>
-                                <th style="text-align: center;">Stock Opname</th>
-                                <th style="text-align: center;">Selisih</th>
-                                <th style="text-align: center;">Keterangan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $dataTable = $dbcon->query("SELECT brg.KODE_BARANG,brg.URAIAN,brg.UKURAN,brg.SPESIFIKASI_LAIN,brg.KODE_SATUAN,
+                <table id="table-masuk-barang" class="table table-striped table-bordered table-td-valign-middle">
+                    <thead>
+                        <tr>
+                            <th width="1%">No.</th>
+                            <th style="text-align: center;">Tanggal</th>
+                            <th style="text-align: center;">Kode Barang (No. HS)</th>
+                            <th style="text-align: center;">Barang</th>
+                            <th style="text-align: center;">Jenis</th>
+                            <th style="text-align: center;">Golongan</th>
+                            <th style="text-align: center;">Satuan</th>
+                            <th style="text-align: center;">Saldo Awal</th>
+                            <th style="text-align: center;">Mutasi Masuk</th>
+                            <th style="text-align: center;">Mutasi Keluar</th>
+                            <th style="text-align: center;">Penyesuaian</th>
+                            <th style="text-align: center;">Saldo Akhir</th>
+                            <th style="text-align: center;">Stock Opname</th>
+                            <th style="text-align: center;">Selisih</th>
+                            <th style="text-align: center;">Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $dataTable = $dbcon->query("SELECT brg.KODE_BARANG,brg.URAIAN,brg.UKURAN,brg.SPESIFIKASI_LAIN,brg.KODE_SATUAN,
                                                                         hdr.NOMOR_BC11,hdr.TANGGAL_BC11
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN plb_barang AS brg ON hdr.NOMOR_AJU=brg.NOMOR_AJU
                                                                 WHERE SUBSTR(hdr.TANGGAL_BC11,6,2) LIKE '%$Month%'
                                                                 AND SUBSTR(hdr.TANGGAL_BC11,1,4) LIKE '%$Year%'
                                                                 ORDER BY hdr.TANGGAL_BC11 ASC");
-                            if (mysqli_num_rows($dataTable) > 0) {
-                                $no = 0;
-                                while ($row = mysqli_fetch_array($dataTable)) {
-                                    $no++;
-                                    ?>
-                                    <tr>
-                                        <!-- 9 -->
-                                        <td><?= $no ?>.</td>
-                                        <td><?= $row['TANGGAL_BC11']; ?></td>
-                                        <td><?= $row['KODE_BARANG']; ?></td>
-                                        <td><?= $row['URAIAN']; ?></td>
-                                        <td><?= $row['UKURAN']; ?></td>
-                                        <td><?= $row['SPESIFIKASI_LAIN']; ?></td>
-                                        <td><?= $row['KODE_SATUAN']; ?></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                <?php } ?>
-                            <?php } else { ?>
+                        if (mysqli_num_rows($dataTable) > 0) {
+                            $no = 0;
+                            while ($row = mysqli_fetch_array($dataTable)) {
+                                $no++;
+                        ?>
                                 <tr>
-                                    <td colspan="14">
-                                        <center>
-                                            <div style="display: flex;justify-content: center; align-items: center">
-                                                <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                            </div>
-                                        </center>
-                                    </td>
+                                    <!-- 9 -->
+                                    <td><?= $no ?>.</td>
+                                    <td><?= $row['TANGGAL_BC11']; ?></td>
+                                    <td><?= $row['KODE_BARANG']; ?></td>
+                                    <td><?= $row['URAIAN']; ?></td>
+                                    <td><?= $row['UKURAN']; ?></td>
+                                    <td><?= $row['SPESIFIKASI_LAIN']; ?></td>
+                                    <td><?= $row['KODE_SATUAN']; ?></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
                                 </tr>
-                            <?php }
-                            mysqli_close($dbcon); ?>
-                        </tbody>
-                    </table>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <tr>
+                                <td colspan="14">
+                                    <center>
+                                        <div style="display: flex;justify-content: center; align-items: center">
+                                            <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
+                        <?php }
+                        mysqli_close($dbcon); ?>
+                    </tbody>
+                </table>
                 <!-- </div> -->
                 <hr>
                 <div class="invoice-footer">
@@ -232,15 +237,15 @@ function date_indo($date, $print_day = false)
         </div>
         <br>
     </div>
-<!-- </div> -->
-<!-- <script src="../assets/js/app.min.js"></script> -->
-<script src="../assets/js/theme/default.min.js"></script>
-<script src="../assets/plugins/d3/d3.min.js"></script>
-<script src="../assets/plugins/nvd3/build/nv.d3.js"></script>
-<script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-<script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-<script src="../assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-<script src="../assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <!-- </div> -->
+    <!-- <script src="../assets/js/app.min.js"></script> -->
+    <script src="../assets/js/theme/default.min.js"></script>
+    <script src="../assets/plugins/d3/d3.min.js"></script>
+    <script src="../assets/plugins/nvd3/build/nv.d3.js"></script>
+    <script src="../assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+    <script src="../assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+    <script src="../assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+    <script src="../assets/plugins/gritter/js/jquery.gritter.js"></script>
 </body>
 <?php
 // $html = ob_get_contents();
@@ -253,6 +258,7 @@ function date_indo($date, $print_day = false)
 // $pdf->Output('LaporanMasukBarang.pdf', 'D');
 ?>
 <script type="text/javascript">
-    window.print();    
+    window.print();
 </script>
+
 </html>

@@ -117,7 +117,7 @@ function date_indo($date, $print_day = false)
     <table id="example1" border="1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th rowspan="2" width="1%">#</th>
+                <th rowspan="2" width="1%">No.</th>
                 <th colspan="3" style="text-align: center;">Dokumen Pabean Masuk</th>
                 <th rowspan="2" style="text-align: center;">Tanggal Masuk</th>
                 <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>

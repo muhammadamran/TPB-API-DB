@@ -1,5 +1,5 @@
 <!-- Add Users -->
-<a href="#modal-User-Web-System" class="btn btn-sm btn-primary" data-toggle="modal" title="Tambah Jabatan"><i class="fas fa-plus-circle"></i> Tambah Jabatan</a>
+<a href="#modal-User-Web-System" class="btn btn-primary" data-toggle="modal" title="Tambah Jabatan"><i class="fas fa-plus-circle"></i> Tambah Jabatan</a>
 <div class="modal fade" id="modal-User-Web-System">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -20,7 +20,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="IdDescription">Deskripsi </label>
-                                    <textarea type="text" class="form-control" name="NameDescription" id="IdDescription" placeholder="Deskripsi ..." ></textarea>
+                                    <textarea type="text" class="form-control" name="NameDescription" id="IdDescription" placeholder="Deskripsi ..."></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">

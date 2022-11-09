@@ -40,7 +40,7 @@ include "include/cssDatatables.php";
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th rowspan="2" style="text-align: center;">Tahun</th>
                                     <th colspan="2" style="text-align: center;">Mitra</th>
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GOL A</th>
@@ -251,7 +251,7 @@ include "include/cssDatatables.php";
                                                         <div class="modal-body">
                                                             <div class="alert alert-danger m-b-0">
                                                                 <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus data ini?</h5>
-                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada sistem informasi TPB!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
+                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada aplikasi!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
                                                                 <input type="hidden" name="DeleteMitra" value="<?= $row['NAMA'] ?>">
                                                                 <input type="hidden" name="DeleteTahun" value="<?= $row['quota_year'] ?>">
                                                                 <input type="hidden" name="IDUNIQ" value="<?= $row['quota_id'] ?>">

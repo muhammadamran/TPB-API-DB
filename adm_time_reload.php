@@ -70,12 +70,18 @@ if (isset($_POST["EditReload"])) {
     }
 }
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Real Time App Name | Company </title>
+<?php } else { ?>
+    <title>Real Time - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fab fa-adn icon-page"></i>
+                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
@@ -154,18 +160,18 @@ if (isset($_POST["EditReload"])) {
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil disimpan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan!'
         })
         history.replaceState({}, '', './adm_time_reload.php');
     }
     // SAVED FAILED
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan!'
         })
         history.replaceState({}, '', './adm_time_reload.php');
     }
@@ -173,18 +179,18 @@ if (isset($_POST["EditReload"])) {
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil diupdate!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diupdate!'
         })
         history.replaceState({}, '', './adm_time_reload.php');
     }
     // UPDATE FAILED
     if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal diupdate!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diupdate!'
         })
         history.replaceState({}, '', './adm_time_reload.php');
     }

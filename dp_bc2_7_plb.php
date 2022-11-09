@@ -46,7 +46,7 @@ include "include/cssDatatables.php";
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th class="text-nowrap" rowspan="2" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" rowspan="2" style="text-align: center;">Pemasok</th>
                                     <th class="text-nowrap" rowspan="2" style="text-align: center;">Pengangkut</th>

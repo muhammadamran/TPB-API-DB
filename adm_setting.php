@@ -459,12 +459,18 @@ if (isset($_POST["EditSetting"])) {
 // END FOR SETTING TEXT
 ?>
 <!-- End Save Setting Text -->
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Pengaturan App Name | Company </title>
+<?php } else { ?>
+    <title>Pengaturan App - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fab fa-adn icon-page"></i>
+                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
@@ -906,7 +912,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Icon gagal disimpan!',
             icon: 'error',
-            text: 'Icon gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Icon gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -915,7 +921,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Logo berhasil disimpan!',
             icon: 'success',
-            text: 'Logo berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Logo berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -924,7 +930,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Logo gagal disimpan!',
             icon: 'error',
-            text: 'Logo gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Logo gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -933,7 +939,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Background Sign In berhasil disimpan!',
             icon: 'success',
-            text: 'Background Sign In berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Background Sign In berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -942,7 +948,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Background Sign In gagal disimpan!',
             icon: 'error',
-            text: 'Background Sign In gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Background Sign In gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -951,7 +957,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Background Sidebar berhasil disimpan!',
             icon: 'success',
-            text: 'Background Sidebar berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Background Sidebar berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -960,7 +966,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Background Sidebar gagal disimpan!',
             icon: 'error',
-            text: 'Background Sidebar gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Background Sidebar gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -969,7 +975,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Background Profile berhasil disimpan!',
             icon: 'success',
-            text: 'Background Profile berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Background Profile berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -978,7 +984,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Background Profile gagal disimpan!',
             icon: 'error',
-            text: 'Background Profile gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Background Profile gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -987,7 +993,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Data berhasil disimpan!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -996,7 +1002,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Data gagal disimpan!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -1006,7 +1012,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Data berhasil diupdate!',
             icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diupdate didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }
@@ -1015,7 +1021,7 @@ if (isset($_POST["EditSetting"])) {
         Swal.fire({
             title: 'Data gagal diupdate!',
             icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diupdate didalam!'
         })
         history.replaceState({}, '', './adm_setting.php');
     }

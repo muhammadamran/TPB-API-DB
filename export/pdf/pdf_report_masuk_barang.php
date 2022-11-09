@@ -23,13 +23,13 @@ $data = json_decode($content, true);
     <meta content="" name="description" />
     <meta content="" name="author" />
     <?php if ($resultHeadSetting['icon'] == NULL) { ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icon/icon-default.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icon/icon-default.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icon/icon-default.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icon/icon-default.png">
     <?php } else { ?>
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
     <?php } ?>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="../assets/css/default/app.min.css" rel="stylesheet" />
@@ -41,20 +41,18 @@ $data = json_decode($content, true);
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css"
-        integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css"
-        integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-Q66YLEFFZ2');
+        gtag('config', 'G-Q66YLEFFZ2');
     </script>
 </head>
 <?php
@@ -108,9 +106,9 @@ function date_indo($date, $print_day = false)
                 <div class="col-md-3">
                     <div style="display: flex;justify-content: center;">
                         <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                        <img src="../assets/images/logo/logo-default.png" width="30%">
+                            <img src="../assets/images/logo/logo-default.png" width="30%">
                         <?php } else { ?>
-                        <img src="../assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                            <img src="../assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
                         <?php } ?>
                     </div>
                 </div>
@@ -135,7 +133,7 @@ function date_indo($date, $print_day = false)
                 <table border="1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th rowspan="2" width="1%">#</th>
+                            <th rowspan="2" width="1%">No.</th>
                             <th colspan="3" style="text-align: center;">Dokumen Pabean</th>
                             <th rowspan="2" style="text-align: center;">Supplier</th>
                             <th rowspan="2" style="text-align: center;">Kode Barang (No. HS)</th>
@@ -151,53 +149,53 @@ function date_indo($date, $print_day = false)
                     </thead>
                     <tbody>
                         <?php if ($data['status'] == 404) { ?>
-                        <tr>
-                            <td colspan="9">
-                                <center>
-                                    <div style="display: flex;justify-content: center; align-items: center">
-                                        <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
-                                    </div>
-                                </center>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td colspan="9">
+                                    <center>
+                                        <div style="display: flex;justify-content: center; align-items: center">
+                                            <i class="fas fa-filter"></i>&nbsp;&nbsp;Filter Data
+                                        </div>
+                                    </center>
+                                </td>
+                            </tr>
                         <?php } else { ?>
-                        <?php $no = 0; ?>
-                        <?php foreach ($data['result'] as $row) { ?>
-                        <?php $no++ ?>
-                        <tr>
-                            <!-- 9 -->
-                            <td><?= $no ?>.</td>
-                            <td style="text-align: center">
-                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
-                            </td>
-                            <td style="text-align: center">
-                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                </font>
-                                <?php } else { ?>
-                                <?= $row['NOMOR_DAFTAR']; ?>
-                                <?php } ?>
-                            </td>
-                            <td style="text-align: center">
-                                <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                </font>
-                                <?php } else { ?>
-                                <?= $row['ck5_plb_submit']; ?>
-                                <?php } ?>
-                            </td>
-                            <td style="text-align: center">
-                                <?php if ($row['PEMASOK'] == NULL) { ?>
-                                <center>
-                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                    </font>
-                                </center>
-                                <?php } else { ?>
-                                <?= $row['PEMASOK']; ?>
-                                <?php } ?>
-                            </td>
-                            <td style="text-align: center">
-                                <?php
+                            <?php $no = 0; ?>
+                            <?php foreach ($data['result'] as $row) { ?>
+                                <?php $no++ ?>
+                                <tr>
+                                    <!-- 9 -->
+                                    <td><?= $no ?>.</td>
+                                    <td style="text-align: center">
+                                        BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                            </font>
+                                        <?php } else { ?>
+                                            <?= $row['NOMOR_DAFTAR']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['ck5_plb_submit'] == NULL) { ?>
+                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                            </font>
+                                        <?php } else { ?>
+                                            <?= $row['ck5_plb_submit']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php if ($row['PEMASOK'] == NULL) { ?>
+                                            <center>
+                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                </font>
+                                            </center>
+                                        <?php } else { ?>
+                                            <?= $row['PEMASOK']; ?>
+                                        <?php } ?>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <?php
                                         if ($row['KODE_BARANG'] == NULL) {
                                             $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
                                         } else {
@@ -209,23 +207,23 @@ function date_indo($date, $print_day = false)
                                             $POSTARIF = $row['POS_TARIF'];
                                         }
                                         ?>
-                                <?= $KDBRG ?>
-                            </td>
-                            <td><?= $row['URAIAN']; ?></td>
-                            <td>
-                                <div style="display: flex;justify-content: space-between;align-items: center">
-                                    <font><?= $row['KODE_SATUAN']; ?></font>
-                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                                </div>
-                            </td>
-                            <td>
-                                <div style="display: flex;justify-content: space-between;align-items: center">
-                                    <font><?= $row['KODE_VALUTA']; ?></font>
-                                    <font><?= $row['CIF']; ?></font>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php } ?>
+                                        <?= $KDBRG ?>
+                                    </td>
+                                    <td><?= $row['URAIAN']; ?></td>
+                                    <td>
+                                        <div style="display: flex;justify-content: space-between;align-items: center">
+                                            <font><?= $row['KODE_SATUAN']; ?></font>
+                                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex;justify-content: space-between;align-items: center">
+                                            <font><?= $row['KODE_VALUTA']; ?></font>
+                                            <font><?= $row['CIF']; ?></font>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -269,7 +267,7 @@ function date_indo($date, $print_day = false)
 // $pdf->Output('LaporanMasukBarang.pdf', 'D');
 ?>
 <script type="text/javascript">
-window.print();
+    window.print();
 </script>
 
 </html>

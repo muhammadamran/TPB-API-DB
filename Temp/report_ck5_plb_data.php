@@ -267,7 +267,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableHeader" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center" width="100%">Detail</th>
                                             <th style="text-align: center">NOMOR AJU</th>
                                             <th style="text-align: center">KPPBC</th>
@@ -605,7 +605,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableBahanBaku" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI BARANG</th>
                                             <th style="text-align: center;">SERI BAHAN BAKU</th>
@@ -700,7 +700,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableBahanBakuTarif" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI BARANG</th>
                                             <th style="text-align: center;">SERI BAHAN BAKU</th>
@@ -765,7 +765,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableBahanBakuDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI BARANG</th>
                                             <th style="text-align: center;">SERI BAHAN BAKU</th>
@@ -810,7 +810,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableBarang" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI BARANG</th>
                                             <th style="text-align: center;">ASURANSI</th>
@@ -945,7 +945,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableBarangTarif" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI BARANG</th>
                                             <th style="text-align: center;">JENIS TARIF</th>
@@ -1006,7 +1006,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableBarangDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI BARANG</th>
                                             <th style="text-align: center;">SERI DOKUMEN</th>
@@ -1047,7 +1047,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableDokumen" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI DOKUMEN</th>
                                             <th style="text-align: center;">FLAG URL DOKUMEN</th>
@@ -1098,7 +1098,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableKemasan" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI KEMASAN</th>
                                             <th style="text-align: center;">JUMLAH KEMASAN</th>
@@ -1159,7 +1159,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableKontainer" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center;">NOMOR AJU</th>
                                             <th style="text-align: center;">SERI KONTAINER</th>
                                             <th style="text-align: center;">KESESUAIAN DOKUMEN</th>
@@ -1222,7 +1222,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableRespon" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center">NOMOR AJU</th>
                                             <th style="text-align: center">KODE RESPON</th>
                                             <th style="text-align: center">NOMOR RESPON</th>
@@ -1268,7 +1268,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableStatus" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center">NOMOR AJU</th>
                                             <th style="text-align: center">KODE RESPON</th>
                                             <th style="text-align: center">NOMOR RESPON</th>
@@ -1334,7 +1334,7 @@ $dataLogUpload = json_decode($contentLogUpload, true);
                                 <table id="TableLog" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
-                                            <th width="1%">#</th>
+                                            <th width="1%">No.</th>
                                             <th style="text-align: center">USERNAME</th>
                                             <th style="text-align: center">NAMA FILE</th>
                                             <th style="text-align: center">TOTAL DATA</th>

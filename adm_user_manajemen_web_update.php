@@ -81,6 +81,12 @@ if (isset($_POST["update_pass"])) {
     }
 }
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Update Password App Name | Company </title>
+<?php } else { ?>
+    <title>Update Password - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div class="tpb-update-pass"></div>
 <div id="content" class="content-update-pass">
@@ -185,7 +191,7 @@ if (isset($_POST["update_pass"])) {
         Swal.fire({
             title: 'Data berhasil disimpan!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan didalam!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web_update.php');
     }
@@ -194,7 +200,7 @@ if (isset($_POST["update_pass"])) {
         Swal.fire({
             title: 'Data gagal disimpan!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan didalam!'
         })
         history.replaceState({}, '', './adm_user_manajemen_web_update.php');
     }

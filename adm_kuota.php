@@ -164,13 +164,29 @@ if (isset($_POST["NDeleteData"])) {
     }
 }
 // END DELETE KUOTA MITRA
+
+// FUNCTION SEARCHING
+$FindTahun = '';
+// END FUNCTION SEARCHING
+
+if (isset($_POST['FindFilter']) != '') {
+    if (isset($_POST['FindTahun'])) {
+        $FindTahun = $_POST['FindTahun'];
+    }
+}
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Kuota Mitra App Name | Company </title>
+<?php } else { ?>
+    <title>Kuota Mitra - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fab fa-adn icon-page"></i>
+                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
                 <font class="text-page">Administrator Tools</font>
             </h1>
             <ol class="breadcrumb">
@@ -185,6 +201,53 @@ if (isset($_POST["NDeleteData"])) {
         </div>
     </div>
     <div class="line-page"></div>
+
+    <!-- begin Search -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fas fa-filter"></i> Filter Kuota Mitra</h4>
+                    <?php include "include/panel-row.php"; ?>
+                </div>
+                <div class="panel-body text-inverse">
+                    <form action="" id="fformone" method="POST">
+                        <fieldset>
+                            <div class="form-group row m-b-15">
+                                <label class="col-md-3 col-form-label">Tahun</label>
+                                <div class="col-md-7">
+                                    <select type="text" class="default-select2 form-control" name="FindTahun">
+                                        <?php if ($FindTahun == NULL) { ?>
+                                            <option value="">Pilih Tahun</option>
+                                        <?php } else { ?>
+                                            <option value="<?= $FindTahun ?>"><?= $FindTahun ?></option>
+                                            <option value="">Pilih Tahun</option>
+                                        <?php } ?>
+                                        <?php
+                                        for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
+                                            echo "<option value='$i'> $i </option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-3">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindFilter">
+                                        <i class="fa fa-search"></i> Cari
+                                    </button>
+                                    <a href="adm_kuota.php" type="button" class="btn btn-yellow m-r-5">
+                                        <i class="fa fa-refresh"></i> Reset
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Search -->
 
     <!-- begin row -->
     <div class="row">
@@ -208,7 +271,7 @@ if (isset($_POST["NDeleteData"])) {
                         <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%">#</th>
+                                    <th rowspan="2" width="1%">No.</th>
                                     <th rowspan="2" style="text-align: center;">Tahun</th>
                                     <th colspan="2" style="text-align: center;">Mitra</th>
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GOL A</th>
@@ -229,8 +292,14 @@ if (isset($_POST["NDeleteData"])) {
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM tbl_cust_quota AS a 
-                                                            INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID HAVING a.quota_year ORDER BY a.quota_id DESC");
+                                $dateYB        = date('Y');
+                                if (isset($_POST['FindFilter'])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM tbl_cust_quota AS a 
+                                                            INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID WHERE a.quota_year='$FindTahun' HAVING a.quota_year ORDER BY a.quota_id DESC");
+                                } else {
+                                    $dataTable = $dbcon->query("SELECT * FROM tbl_cust_quota AS a 
+                                                            INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID WHERE a.quota_year='$dateYB' HAVING a.quota_year ORDER BY a.quota_id DESC");
+                                }
                                 if (mysqli_num_rows($dataTable) > 0) {
                                     $no = 0;
                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -419,7 +488,7 @@ if (isset($_POST["NDeleteData"])) {
                                                         <div class="modal-body">
                                                             <div class="alert alert-danger m-b-0">
                                                                 <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus data ini?</h5>
-                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada sistem informasi TPB!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
+                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada aplikasi!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
                                                                 <input type="hidden" name="DeleteMitra" value="<?= $row['NAMA'] ?>">
                                                                 <input type="hidden" name="DeleteTahun" value="<?= $row['quota_year'] ?>">
                                                                 <input type="hidden" name="IDUNIQ" value="<?= $row['quota_id'] ?>">
@@ -445,9 +514,89 @@ if (isset($_POST["NDeleteData"])) {
                                             </center>
                                         </td>
                                     </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
+                            <tfoot>
+                                <?php
+                                $dateYF        = date('Y');
+                                if (isset($_POST['FindFilter'])) {
+                                    // GOL A
+                                    $CT_A = $dbcon->query("SELECT SUM(a.gol_a_car) AS total_gol_a_car FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$FindTahun' ORDER BY a.quota_id DESC");
+                                    $resultCT_A = mysqli_fetch_array($CT_A);
+
+                                    $LTR_A = $dbcon->query("SELECT SUM(a.gol_a_ltr) AS total_gol_a_ltr FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$FindTahun' ORDER BY a.quota_id DESC");
+                                    $resultLTR_A = mysqli_fetch_array($LTR_A);
+
+                                    // GOL B
+                                    $CT_B = $dbcon->query("SELECT SUM(a.gol_b_car) AS total_gol_b_car FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$FindTahun' ORDER BY a.quota_id DESC");
+                                    $resultCT_B = mysqli_fetch_array($CT_B);
+
+                                    $LTR_B = $dbcon->query("SELECT SUM(a.gol_b_ltr) AS total_gol_b_ltr FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$FindTahun' ORDER BY a.quota_id DESC");
+                                    $resultLTR_B = mysqli_fetch_array($LTR_B);
+
+                                    // GOL C
+                                    $CT_C = $dbcon->query("SELECT SUM(a.gol_c_car) AS total_gol_c_car FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$FindTahun' ORDER BY a.quota_id DESC");
+                                    $resultCT_C = mysqli_fetch_array($CT_C);
+
+                                    $LTR_C = $dbcon->query("SELECT SUM(a.gol_c_ltr) AS total_gol_c_ltr FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$FindTahun' ORDER BY a.quota_id DESC");
+                                    $resultLTR_C = mysqli_fetch_array($LTR_C);
+                                } else {
+                                    // GOL A
+                                    $CT_A = $dbcon->query("SELECT SUM(a.gol_a_car) AS total_gol_a_car FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$dateYF' ORDER BY a.quota_id DESC");
+                                    $resultCT_A = mysqli_fetch_array($CT_A);
+
+                                    $LTR_A = $dbcon->query("SELECT SUM(a.gol_a_ltr) AS total_gol_a_ltr FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$dateYF' ORDER BY a.quota_id DESC");
+                                    $resultLTR_A = mysqli_fetch_array($LTR_A);
+
+                                    // GOL B
+                                    $CT_B = $dbcon->query("SELECT SUM(a.gol_b_car) AS total_gol_b_car FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$dateYF' ORDER BY a.quota_id DESC");
+                                    $resultCT_B = mysqli_fetch_array($CT_B);
+
+                                    $LTR_B = $dbcon->query("SELECT SUM(a.gol_b_ltr) AS total_gol_b_ltr FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$dateYF' ORDER BY a.quota_id DESC");
+                                    $resultLTR_B = mysqli_fetch_array($LTR_B);
+
+                                    // GOL C
+                                    $CT_C = $dbcon->query("SELECT SUM(a.gol_c_car) AS total_gol_c_car FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$dateYF' ORDER BY a.quota_id DESC");
+                                    $resultCT_C = mysqli_fetch_array($CT_C);
+
+                                    $LTR_C = $dbcon->query("SELECT SUM(a.gol_c_ltr) AS total_gol_c_ltr FROM tbl_cust_quota AS a 
+                                                           INNER JOIN referensi_pengusaha AS b ON a.tbb_nama=b.ID 
+                                                           WHERE a.quota_year='$dateYF' ORDER BY a.quota_id DESC");
+                                    $resultLTR_C = mysqli_fetch_array($LTR_C);
+                                }
+                                ?>
+                                <tr>
+                                    <th colspan="4" style="text-align: center;">TOTAL</th>
+                                    <th style="text-align: center;"><?= decimal($resultCT_A['total_gol_a_car']); ?></th>
+                                    <th style="text-align: center;"><?= decimal($resultLTR_A['total_gol_a_ltr']); ?></th>
+                                    <th style="text-align: center;"><?= decimal($resultCT_B['total_gol_b_car']); ?></th>
+                                    <th style="text-align: center;"><?= decimal($resultLTR_B['total_gol_b_ltr']); ?></th>
+                                    <th style="text-align: center;"><?= decimal($resultCT_C['total_gol_c_car']); ?></th>
+                                    <th style="text-align: center;"><?= decimal($resultLTR_C['total_gol_c_ltr']); ?></th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -468,7 +617,7 @@ if (isset($_POST["NDeleteData"])) {
     // DATA ALREADY
     if (window?.location?.href?.indexOf('DataAlready') > -1) {
         Swal.fire({
-            title: 'Data sudah terdaftar!',
+            title: 'Data Sudah Terdaftar!',
             icon: 'info',
             text: 'Data sudah terdaftar disistem, Data harus bersifat uniq atau tidak boleh sama!'
         })
@@ -478,18 +627,18 @@ if (isset($_POST["NDeleteData"])) {
     // INSERT SUCCESS
     if (window?.location?.href?.indexOf('InputSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil disimpan!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil disimpan!'
         })
         history.replaceState({}, '', './adm_kuota.php');
     }
     // INSERT FAILED
     if (window?.location?.href?.indexOf('InputFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
+            text: 'Data gagal disimpan!'
         })
         history.replaceState({}, '', './adm_kuota.php');
     }
@@ -497,18 +646,18 @@ if (isset($_POST["NDeleteData"])) {
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil diupdate!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil diupdate!'
         })
         history.replaceState({}, '', './adm_kuota.php');
     }
     // UPDATE FAILEDú
     if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal diupdate!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal diupdate didalam <?= $alertAppName ?>!'
+            text: 'Data gagal diupdate!'
         })
         history.replaceState({}, '', './adm_kuota.php');
     }
@@ -516,18 +665,18 @@ if (isset($_POST["NDeleteData"])) {
     // DELETE SUCCESS
     if (window?.location?.href?.indexOf('DeleteSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil dihapus!',
+            title: 'Sukses!',
             icon: 'success',
-            text: 'Data berhasil dihapus didalam <?= $alertAppName ?>!'
+            text: 'Data berhasil dihapus!'
         })
         history.replaceState({}, '', './adm_kuota.php');
     }
     // DELETE FAILED
     if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal dihapus!',
+            title: 'Gagal!',
             icon: 'error',
-            text: 'Data gagal dihapus didalam <?= $alertAppName ?>!'
+            text: 'Data gagal dihapus!'
         })
         history.replaceState({}, '', './adm_kuota.php');
     }

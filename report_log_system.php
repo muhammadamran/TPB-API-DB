@@ -173,7 +173,7 @@ if (isset($_GET['findRange'])) {
                         <table class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th width="1%">#</th>
+                                    <th width="1%">No.</th>
                                     <th style="text-align: center;">Tanggal</th>
                                     <th style="text-align: center;">Waktu</th>
                                     <th style="text-align: center;">Username</th>

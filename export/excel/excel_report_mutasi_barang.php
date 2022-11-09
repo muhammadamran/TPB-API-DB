@@ -145,7 +145,7 @@ function date_indo($date, $print_day = false)
     <table id="example1" border="1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th width="1%">#</th>
+                <th width="1%">No.</th>
                 <th style="text-align: center;">Kode Barang (No. HS)</th>
                 <th style="text-align: center;">Barang</th>
                 <th style="text-align: center;">Jenis</th>
