@@ -11,6 +11,21 @@ include "include/cssForm.php";
 include "include/api.php";
 $AJU_PLB = '';
 
+// Tanggal Upload
+if (isset($_POST['UploadBC27PLB_'])) {
+    $DateUpload          = $_POST['DateUpload'];
+    $NOAJU               = $_POST['NOAJU'];
+
+    $sql = $dbcon->query("UPDATE plb_status SET ck5_plb_submit='$DateUpload'
+                          WHERE NOMOR_AJU_PLB='$NOAJU'");
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+    }
+}
+
 // Kode Negara
 if (isset($_POST['KodeNegara_'])) {
     $KodeNegara          = $_POST['KodeNegara'];
@@ -131,7 +146,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i><span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i><span> <?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -230,7 +245,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <th rowspan="2" width="1%">No.</th>
                                     <th colspan="3" class="text-nowrap" style="text-align: center;">Nomor Pengajuan PLB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal PLB</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Tujuan</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
                                 </tr>
@@ -238,13 +254,14 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     <!-- Nomor Pengajuan PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Submit/Upload BC 2.7 PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload BC 2.7 PLB</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if (isset($_POST['filter'])) {
                                     $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
+                                                                hdr.NAMA_PENERIMA_BARANG,
                                                                 rcd.status,rcd.keterangan,plb.ck5_plb_submit,
                                                                 rcd.rcd_id,
                                                                 rcd.bm_no_aju_plb,
@@ -266,6 +283,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 WHERE hdr.NOMOR_AJU LIKE '%" . $_POST['AJU_PLB'] . "%' GROUP BY hdr.NOMOR_AJU", 0);
                                 } else if (isset($_POST['show_all'])) {
                                     $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
+                                                                hdr.NAMA_PENERIMA_BARANG,
                                                                 rcd.status,rcd.keterangan,plb.ck5_plb_submit,
                                                                 rcd.rcd_id,
                                                                 rcd.bm_no_aju_plb,
@@ -287,6 +305,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC", 0);
                                 } else {
                                     $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
+                                                                hdr.NAMA_PENERIMA_BARANG,
                                                                 rcd.status,rcd.keterangan,plb.ck5_plb_submit,
                                                                 rcd.rcd_id,
                                                                 rcd.bm_no_aju_plb,
@@ -314,7 +333,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                 ?>
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: left">
                                                 <?php if ($row['NOMOR_AJU'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
@@ -345,8 +364,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     $tgl = substr($alldate, 0, 10);
                                                     $time = substr($alldate, 10, 20);
                                                     ?>
-                                                    <div>
-                                                        <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?></font>
+                                                    <div style="display: flex;justify-content: center;">
+                                                        <font>
+                                                            <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?>
+                                                            <a href="#MUploadDate<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
+                                                        </font>
                                                     </div>
                                                 <?php } ?>
                                             </td>
@@ -360,12 +382,20 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     <?= $row['JUMLAH_BARANG']; ?> Barang
                                                 <?php } ?>
                                             </td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: left">
                                                 <?php if ($row['PERUSAHAAN'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
                                                 <?php } else { ?>
                                                     <?= $row['PERUSAHAAN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NAMA_PENERIMA_BARANG']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
@@ -462,6 +492,39 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 </div>
                                             </td>
                                         </tr>
+
+                                        <!-- EDIT TIME SUBMIT -->
+                                        <div class="modal fade" id="MUploadDate<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Edit Data] Tanggal Upload BC 2.7 PLB - No. AJU: <?= $row['NOMOR_AJU'] ?></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label>Nomor Pengajuan</label>
+                                                                        <input type="text" name="NOAJU" class="form-control" value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label>Tanggal Upload BC 2.7 PLB</label>
+                                                                        <input type="datetime-local" name="DateUpload" class="form-control" value="<?= $row['ck5_plb_submit']; ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="UploadBC27PLB_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END EDIT TIME SUBMIT -->
 
                                         <!-- Kode Negara -->
                                         <div class="modal fade" id="MKodeNegara<?= $row['ID'] ?>">

@@ -20,7 +20,7 @@ include "include/cssDatatables.php";
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-clipboard icon-page"></i>
-                <font class="text-page">Report</font>
+                <font class="text-page">Laporan</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Perusahaan: <?= $resultSetting['company']  ?></li>
@@ -268,7 +268,7 @@ include "include/cssDatatables.php";
             <div class="widget widget-stats bg-grey">
                 <div class="stats-icon"><i class="fa-solid fa-map-location"></i></div>
                 <div class="stats-info">
-                    <h4>Laporan </h4>
+                    <h4>Laporan PLB - GB</h4>
                     <p>Posisi Barang</p>
                 </div>
                 <div class="stats-link">
@@ -281,7 +281,7 @@ include "include/cssDatatables.php";
             <div class="widget widget-stats bg-grey">
                 <div class="stats-icon"><i class="fa-solid fa-check-to-slot"></i></div>
                 <div class="stats-info">
-                    <h4>Laporan </h4>
+                    <h4>Laporan Realisasi Kuota Mitra</h4>
                     <p>Realisasi</p>
                 </div>
                 <div class="stats-link">
@@ -294,7 +294,7 @@ include "include/cssDatatables.php";
             <div class="widget widget-stats bg-grey">
                 <div class="stats-icon"><i class="fa-solid fa-building-flag"></i></div>
                 <div class="stats-info">
-                    <h4>Laporan </h4>
+                    <h4>Laporan Tempat Penimbunan Berikat (TPB)</h4>
                     <p>Data TPB</p>
                 </div>
                 <div class="stats-link">
@@ -309,7 +309,7 @@ include "include/cssDatatables.php";
             <div class="widget widget-stats bg-grey">
                 <div class="stats-icon"><i class="fa-solid fa-arrow-right-to-city"></i></div>
                 <div class="stats-info">
-                    <h4>PLB Report </h4>
+                    <h4>Laporan Pusat Logistik Berikat</h4>
                     <p>CK5</p>
                 </div>
                 <div class="stats-link">
@@ -322,8 +322,8 @@ include "include/cssDatatables.php";
             <div class="widget widget-stats bg-grey">
                 <div class="stats-icon"><i class="fa-solid fa-school-lock"></i></div>
                 <div class="stats-info">
-                    <h4>GB - Sarinah Report </h4>
-                    <p>CK5</p>
+                    <h4>Laporan Gudang Berikat <?= $resultSetting['company']; ?></h4>
+                    <p>CK5 - Packing List - Invoice</p>
                 </div>
                 <div class="stats-link">
                     <a href="report_ck5_sarinah.php">View Report <i class="fa fa-arrow-alt-circle-right"></i></a>

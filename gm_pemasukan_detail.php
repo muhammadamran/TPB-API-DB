@@ -49,9 +49,9 @@ $content_A_LTR          = $dbcon->query("SELECT SUM(TOTAL_BOTOL * LITER) AS p_LI
 $A_LTR                  = mysqli_fetch_array($content_A_LTR);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>Gate In Detil Barang App Name | Company </title>
+    <title>Pengecekan Barang Masuk App Name | Company </title>
 <?php } else { ?>
-    <title>Gate In Detil Barang - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+    <title>Pengecekan Barang Masuk - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
 <style>
@@ -90,19 +90,79 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
     }
 
     .total-ct-ak {
-        background: #00acac;
+        background: #30373e;
         border-radius: 5px;
         padding: 5px 10px 5px 10px;
         font-size: 12px;
         font-weight: 800;
         margin-bottom: 10px;
         color: #fff !important;
-        border: 2px solid #fff !important;
+        border: 2px solid #30373e !important;
         text-transform: uppercase;
     }
 </style>
 
 <style>
+    .ct-content {
+        background: #f59c1a;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+    }
+
+    .ct-content:hover {
+        background: #f59c1a;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+        text-shadow: 3px 1px 5px black;
+    }
+
+    .ct-content-success {
+        background: #00acac;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+    }
+
+    .ct-content-success:hover {
+        background: #00acac;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+        text-shadow: 3px 1px 5px black;
+    }
+
+    .ct-danger {
+        background: #ff5b57;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+    }
+
+    .ct-danger:hover {
+        background: #ff5b57;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+        text-shadow: 3px 1px 5px black;
+    }
+
+    .ct-secondary {
+        background: #6c757d;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+    }
+
+    .ct-secondary:hover {
+        background: #6c757d;
+        color: #fff;
+        padding: 10px 10px 5px 10px;
+        border-radius: 5px;
+        text-shadow: 3px 1px 5px black;
+    }
+
     /* Check Box */
     .form-check-input[type=checkbox] {
         border-radius: 0.25em;
@@ -186,7 +246,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Detail] Pengecekan Data Masuk Barang</h4>
+                    <h4 class="panel-title">[Gate In Data] Pengecekan Barang Masuk</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -374,9 +434,9 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                     $resultChecking = mysqli_fetch_array($checking);
                                     ?>
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
+                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Masuk Sudah disimpan">
                                             <i class="fa-solid fa-check-circle"></i>
-                                            Barang Sudah DiCek!
+                                            Pengecekan Barang Masuk
                                         </button>
                                     <?php } else { ?>
                                         <div class="row">
@@ -387,11 +447,35 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 </button>
                                                 <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-primary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai">
-                                                            <i class="fas fa-tasks"></i>
+                                                        <a href="#modal-User-Web-System" name="All_sesuai" class="btn btn-primary" data-toggle="modal">
+                                                            <i class="fa-solid fa-square-check" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai"></i>
                                                             Semua Barang Sesuai
-                                                        </button>
+                                                        </a>
                                                     </div>
+                                                    <!-- Simpan Barang -->
+                                                    <div class="modal fade" id="modal-User-Web-System">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content sm">
+                                                                <form action="gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>" method="POST">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">[Semua Barang Sesuai] Gate In</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="alert alert-primary m-b-0">
+                                                                            <h5><i class="fa fa-info-circle"></i> Semua Barang Sesuai Data?</h5>
+                                                                            <p>Klik Ya jika Semua Barang Sesuai.</i></p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                                        <button type="submit" name="add_hak_akses" class="btn btn-primary"><i class="fa-solid fa-square-check"></i> Ya</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Simpan Barang -->
                                                 <?php } else { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
                                                         <button type="button" class="btn btn-warning" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu">
@@ -414,12 +498,12 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
                                                         <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                                            <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
+                                                            <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
                                                                 <i class="fa-solid fa-check-circle"></i>
                                                                 Barang Sesuai
                                                             </button>
                                                         <?php } else { ?>
-                                                            <button type="button" class="btn btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pilih Semua jika Semua Barang Sesuai">
+                                                            <button type="button" class="btn btn-primary" id="chk_new" onclick="checkAll('chk');" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pilih Semua jika Semua Barang Sesuai">
                                                                 <i class="fa-solid fa-square-check"></i>
                                                                 Pilih Semua
                                                             </button>
@@ -490,34 +574,42 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
                                                                 <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
-                                                                    <a href="gm_pemasukan_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-success">
-                                                                        <i class="fas fa-eye" style="font-size: 16px;"></i>
-                                                                        <br>
-                                                                        Cek <?= $pcs ?> CT
+                                                                    <a href="gm_pemasukan_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank">
+                                                                        <div class="ct-content-success">
+                                                                            <i class="fas fa-boxes" style="font-size: 18px;"></i>
+                                                                            <br>
+                                                                            <font><?= $pcs ?> CT</font>
+                                                                        </div>
                                                                     </a>
                                                                 <?php } else { ?>
                                                                     <?php if ($pcs == 0) { ?>
                                                                         <!-- No QTY -->
-                                                                        <a href="#" data-toggle="modal" class="btn btn-danger">
-                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                            <br>
-                                                                            Cek <?= $pcs ?> CT
+                                                                        <a href="#" data-toggle="modal">
+                                                                            <div class="ct-content-danger">
+                                                                                <i class="fas fa-boxes" style="font-size: 18px;"></i>
+                                                                                <br>
+                                                                                <font><?= $pcs ?> CT</font>
+                                                                            </div>
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>" onClick="openWindowReload(this)" target="_blank" class="btn btn-warning">
-                                                                            <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                            <br>
-                                                                            Cek <?= $pcs ?> CT
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>" onClick="openWindowReload(this)" target="_blank">
+                                                                            <div class="ct-content">
+                                                                                <i class="fas fa-boxes" style="font-size: 18px;"></i>
+                                                                                <br>
+                                                                                <font><?= $pcs ?> CT</font>
+                                                                            </div>
                                                                         </a>
                                                                     <?php } ?>
                                                                 <?php } ?>
                                                             <?php } else { ?>
                                                                 <!-- Disabled -->
-                                                                <a href="#" data-toggle="modal" class="btn btn-secondary">
-                                                                    <i class="fas fa-boxes" style="font-size: 22px;"></i>
-                                                                    <br>
-                                                                    Cek <?= $pcs ?> CT
+                                                                <a href="#" data-toggle="modal">
+                                                                    <div class="ct-content-secondary">
+                                                                        <i class="fas fa-boxes" style="font-size: 18px;"></i>
+                                                                        <br>
+                                                                        <font><?= $pcs ?> CT</font>
+                                                                    </div>
                                                                 </a>
                                                             <?php } ?>
                                                             <div style="margin-top: 5px;font-size: 9px;">

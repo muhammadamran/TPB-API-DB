@@ -47,6 +47,11 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                                     ('','$dataBarang[NOMOR_AJU]','$ID','$dataBarang[KODE_BARANG]','$t_botol','$t_liter','$total_ltr')
                                     ");
                 }
+                // PLB HEADER
+                $query .= $dbcon->query("UPDATE plb_header SET CEK_BARANG=1
+                                     WHERE NOMOR_AJU='$AJU'");
+
+                // PLB BARANG
                 $query .= $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
                                                            OPERATOR_ONE='$meOK',
                                                            TGL_CEK='$InputDate',
