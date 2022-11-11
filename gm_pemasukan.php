@@ -178,6 +178,14 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                     <h4 class="panel-title">[Gate Mandiri] Data Gate In</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
+                <!-- begin alert -->
+                <div class="alert alert-secondary fade show">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>Jika Barang <b>Gate In</b> sudah disimpan, silahkan lengkapi <b>Nomor Pengajuan GB</b>, <b>Tanggal Gate In</b> dan <b>Upload Berita Acara</b></p>
+                </div>
+                <!-- end alert -->
                 <div class="panel-body text-inverse">
                     <?php if (isset($_POST['filter'])) { ?>
                         <div class="card text-white border-0 bg-blue text-center mb-2">
@@ -337,9 +345,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     $tgl = substr($alldate, 0, 10);
                                                     $time = substr($alldate, 10, 20);
                                                     ?>
-                                                    <div style="display: grid;">
-                                                        <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?></font>
-                                                        <font style="margin-left: -26px;"><i class="fa-solid fa-clock"></i> <?= $time ?></font>
+                                                    <div>
+                                                        <font><i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?></font>
                                                     </div>
                                                 <?php } ?>
                                             </td>
@@ -364,7 +371,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                             <td style="text-align: center">
                                                 <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
                                                     <a href="#MKodeNegara<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal">
-                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Add Kode Negara">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Kode Negara">
                                                             <div>
                                                                 <div style="font-size: 12px;">
                                                                     <i class="fas fa-plus-circle"></i>
@@ -394,7 +401,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
                                                             <!-- Add -->
                                                             <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" style="margin-left: 5px">
-                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Add Data Gate In">
+                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Data Gate In">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
                                                                             <i class="fas fa-plus-circle"></i>
@@ -462,7 +469,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Kode Negara - No. AJU: <?= $row['NOMOR_AJU'] ?></h4>
+                                                            <h4 class="modal-title">[Tambah Data] Kode Negara - No. AJU: <?= $row['NOMOR_AJU'] ?></h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -504,7 +511,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Add] Data Gate In</h4>
+                                                            <h4 class="modal-title">[Tambah Data] Data Gate In</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -583,7 +590,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Edit] Data Gate In</h4>
+                                                            <h4 class="modal-title">[Edit Data] Gate In</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -658,7 +665,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Upload] Berita Acara</h4>
+                                                            <h4 class="modal-title">[Upload Data] Berita Acara</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -702,7 +709,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Detail] Data Gate In</h4>
+                                                            <h4 class="modal-title">[Detail Data] Gate In</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -737,7 +744,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
                                                                                     <label>Petugas <?= $resultSetting['company'] ?></label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-4">

@@ -845,7 +845,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TOTAL_BOTOL'] == 0) { ?>
-                                                    <button class="btn btn-sm btn-warning" data-toggle="popover" data-trigger="hover" data-title="Jumlah Botol: <?= $row['TOTAL_BOTOL'] ?>" data-placement="top" data-content="Anda tidak dapat melakukan aksi pada status botol!"><i class="fas fa-warning"></i></button>
+                                                    <button class="btn btn-warning" data-toggle="popover" data-trigger="hover" data-title="Jumlah Botol: <?= $row['TOTAL_BOTOL'] ?>" data-placement="top" data-content="Anda tidak dapat melakukan aksi pada status botol!"><i class="fas fa-warning"></i></button>
                                                     <small style="color: #e91e63;"><i>Jumlah Botol Habis!</i></small>
                                                 <?php } else { ?>
                                                     <!-- Kurang -->
@@ -915,7 +915,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                         <div class="card-body" style="margin-left: -45px;">
                                                                             <h4 class="card-title">1 CT Broken</h4>
                                                                             <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                            <a href="javascript:;" class="btn btn-sm btn-default">Anda yakin ingin mengubah status CT?</a>
+                                                                            <a href="javascript:;" class="btn btn-default">Anda yakin ingin mengubah status CT?</a>
                                                                         </div>
                                                                         <input type="hidden" name="ID_CT" value="<?= $row['ID']; ?>">
                                                                         <input type="hidden" name="NOMOR_AJU" value="<?= $row['NOMOR_AJU']; ?>">
@@ -950,7 +950,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">ID CT <?= $row['NOMOR_AJU']; ?></h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <a href="javascript:;" class="btn btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div>
                                                                             <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
                                                                                 <label>Kurang</label>
@@ -1004,7 +1004,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">ID CT <?= $row['NOMOR_AJU']; ?></h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <a href="javascript:;" class="btn btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div>
                                                                             <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
                                                                                 <label>Lebih</label>
@@ -1058,7 +1058,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">ID CT <?= $row['NOMOR_AJU']; ?></h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <a href="javascript:;" class="btn btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div>
                                                                             <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
                                                                                 <label>Pecah</label>
@@ -1112,7 +1112,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
                                                                     <div class="card-body" style="margin-left: 0px;">
                                                                         <h4 class="card-title">ID CT <?= $row['NOMOR_AJU']; ?></h4>
                                                                         <p class="card-text">Total Botol: <?= $row['TOTAL_BOTOL']; ?><br>Total Liter: <?= $row['TOTAL_BOTOL'] * $row['TOTAL_LITER']; ?></p>
-                                                                        <a href="javascript:;" class="btn btn-sm btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
+                                                                        <a href="javascript:;" class="btn btn-default">Jumlah Botol Saat Ini: <?= $row['TOTAL_BOTOL']; ?> Botol</a>
                                                                         <div>
                                                                             <div style="margin-top: 15px;margin-bottom: -13px;margin-left: 3px;font-size: 15px;font-weight: 700;">
                                                                                 <label>Lebih</label>

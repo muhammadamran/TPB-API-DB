@@ -374,27 +374,27 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                     $resultChecking = mysqli_fetch_array($checking);
                                     ?>
                                     <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
+                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
                                             <i class="fa-solid fa-check-circle"></i>
                                             Barang Sudah DiCek!
                                         </button>
                                     <?php } else { ?>
                                         <div class="row">
                                             <div class="col-sm-12" style="display: flex;">
-                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-sm btn-custom btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Klik Pilih Semua atau Cek CT">
+                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Klik Pilih Semua atau Cek CT">
                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                     Cek Satuan Botol
                                                 </button>
                                                 <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-sm btn-custom btn-primary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai">
+                                                        <button type="submit" id="btn-all" name="All_sesuai" class="btn btn-primary" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai">
                                                             <i class="fas fa-tasks"></i>
                                                             Semua Barang Sesuai
                                                         </button>
                                                     </div>
                                                 <?php } else { ?>
                                                     <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="button" class="btn btn-sm btn-custom btn-warning" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu">
+                                                        <button type="button" class="btn btn-warning" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu">
                                                             <i class="fas fa-warning"></i>
                                                             Simpan Gate In
                                                         </button>
@@ -414,12 +414,12 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 <th rowspan="2" class="no-sort" style="text-align: center;">
                                                     <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
                                                         <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                                            <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-sm btn-custom btn-default" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
+                                                            <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-default" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
                                                                 <i class="fa-solid fa-check-circle"></i>
                                                                 Barang Sesuai
                                                             </button>
                                                         <?php } else { ?>
-                                                            <button type="button" class="btn btn-sm btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pilih Semua jika Semua Barang Sesuai">
+                                                            <button type="button" class="btn btn-primary" id="chk_new" onclick="checkAll('chk');" style="font-size: 10px;" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pilih Semua jika Semua Barang Sesuai">
                                                                 <i class="fa-solid fa-square-check"></i>
                                                                 Pilih Semua
                                                             </button>
@@ -470,15 +470,15 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         <td><?= $noBarang ?>. </td>
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
-                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Sedang melakukan Pengecekan Barang" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
+                                                                <span class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
                                                                     <i class="fa-solid fa-hourglass-start"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
-                                                                <span class="btn btn-sm btn-yellow" data-toggle="popover" data-trigger="hover" data-title="Selesai melakukan Pengecekan Botol" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
+                                                                <span class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
                                                                     <i class="fa-solid fa-check"></i>
                                                                 </span>
                                                             <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
-                                                                <span class="btn btn-sm btn-success" data-toggle="popover" data-trigger="hover" data-title="Barang Di Simpan Di GB" data-placement="top" data-content="Barang Di Simpan Di GB!">
+                                                                <span class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Di Simpan Di GB!">
                                                                     <i class="fa-solid fa-circle-check"></i>
                                                                 </span>
                                                             <?php } else { ?>
@@ -490,7 +490,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         <td style="text-align: center;">
                                                             <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
                                                                 <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
-                                                                    <a href="gm_pemasukan_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-sm btn-custom btn-success">
+                                                                    <a href="gm_pemasukan_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-success">
                                                                         <i class="fas fa-eye" style="font-size: 16px;"></i>
                                                                         <br>
                                                                         Cek <?= $pcs ?> CT
@@ -498,14 +498,14 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                 <?php } else { ?>
                                                                     <?php if ($pcs == 0) { ?>
                                                                         <!-- No QTY -->
-                                                                        <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-danger">
+                                                                        <a href="#" data-toggle="modal" class="btn btn-danger">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
                                                                         </a>
                                                                     <?php } else { ?>
                                                                         <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>" onClick="openWindowReload(this)" target="_blank" class="btn btn-sm btn-custom btn-warning">
+                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>" onClick="openWindowReload(this)" target="_blank" class="btn btn-warning">
                                                                             <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                             <br>
                                                                             Cek <?= $pcs ?> CT
@@ -514,7 +514,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                                 <?php } ?>
                                                             <?php } else { ?>
                                                                 <!-- Disabled -->
-                                                                <a href="#" data-toggle="modal" class="btn btn-sm btn-custom btn-secondary">
+                                                                <a href="#" data-toggle="modal" class="btn btn-secondary">
                                                                     <i class="fas fa-boxes" style="font-size: 22px;"></i>
                                                                     <br>
                                                                     Cek <?= $pcs ?> CT
