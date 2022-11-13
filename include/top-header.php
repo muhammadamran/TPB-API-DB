@@ -17,10 +17,24 @@ $access = mysqli_fetch_array($role);
                 $alertAppName = $resultSetting['app_name'];
             }
             ?>
-            <?php if ($resultSetting['sd_one'] == NULL || $resultSetting['sd_two'] == NULL) { ?>
-                <b>Name 1</b>&nbsp;Name 2
+            <?php if ($resultSetting['app_name'] == NULL || $resultSetting['company'] == NULL) { ?>
+                <div>
+                    <div style="margin-top: 5px;">
+                        <b>APP NAME</b>
+                    </div>
+                    <div style="font-size: 9px;font-weight: 100;margin-top: -15px;">
+                        Company Name
+                    </div>
+                </div>
             <?php } else { ?>
-                <b><?= $resultSetting['sd_one'] ?></b>&nbsp;<?= $resultSetting['sd_two'] ?>
+                <div>
+                    <div style="margin-top: 5px;">
+                        <b><?= $resultSetting['app_name'] ?></b>
+                    </div>
+                    <div style="font-size: 9px;font-weight: 100;margin-top: -15px;">
+                        <?= $resultSetting['company'] ?>
+                    </div>
+                </div>
             <?php } ?>
         </a>
         <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
@@ -54,19 +68,10 @@ $access = mysqli_fetch_array($role);
     <!-- end navbar-header -->
     <!-- begin header-nav -->
     <ul class="navbar-nav navbar-right">
-        <li class="navbar-form" id="nav-clock">
-            <i class="fas fa-clock"></i>&nbsp;
-            <span id="ct"></span>
+        <li class="navbar-form" id="nav-clock" style="margin-right: -20px;">
+            <i class="fas fa-circle blink_me" style="color: #32a932;"></i> Online
         </li>
-        <div class="nav-garis">|</div>
-        <li class="navbar-form">
-            <form action="" method="POST" name="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Cari Data TPB ..." />
-                    <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                </div>
-            </form>
-        </li>
+
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php if ($access['foto'] == NULL || $access['foto'] == 'default-user-images.jpeg') { ?>

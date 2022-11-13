@@ -481,6 +481,8 @@ if (isset($_POST["NDeleteData"])) {
     <!-- end row -->
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

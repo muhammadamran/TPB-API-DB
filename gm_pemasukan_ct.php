@@ -287,7 +287,7 @@ if (isset($_POST["simpan"])) {
     $TOTAL_CT       = $_POST['TOTAL_CT'];
     $meOK           = $_SESSION['username'];
     // TOTAL LITER SATUAN
-    $TLS = $A_BOTOL * $A_LITER;
+    $TLS = $TOTAL_BOTOL * $A_LITER;
     $NTS = $TLS * $TOTAL_BOTOL;
 
     $query = $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',

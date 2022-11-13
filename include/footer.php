@@ -14,7 +14,7 @@
 <script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
 <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
 <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
-<script>
+<script type="text/javascript">
         // gm_pemasukan_detail.php
         function checkAll(checkId) {
                 var inputs = document.getElementsByTagName("input");
@@ -57,6 +57,76 @@
                         return false;
                 }
         }
+        // TABLE DEFAULT LENGHT
+        $(document).ready(function() {
+                $('#TableDefault_L').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+                        ],
+                        "order": [],
+                        lengthMenu: [
+                                [10, 25, 50, -1],
+                                [10, 25, 50, 'All'],
+                        ],
+                        "columnDefs": [{
+                                "targets": 'no-sort',
+                                "orderable": false,
+                        }],
+                        // iDisplayLength: -1
+                });
+        });
+        // TABLE DEFAULT
+        $(document).ready(function() {
+                $('#TableDefault').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+                        ],
+                        "order": [],
+                        lengthMenu: [
+                                [10, 25, 50, -1],
+                                [10, 25, 50, 'All'],
+                        ],
+                        iDisplayLength: -1
+                });
+        });
+
+        // COPY,PDF
+        // TABLE DEFAULT LENGHT
+        $(document).ready(function() {
+                $('#C_TableDefault_L').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                                'copyHtml5', 'pdfHtml5'
+                        ],
+                        "order": [],
+                        lengthMenu: [
+                                [10, 25, 50, -1],
+                                [10, 25, 50, 'All'],
+                        ],
+                        "columnDefs": [{
+                                "targets": 'no-sort',
+                                "orderable": true,
+                        }],
+                        // iDisplayLength: -1
+                });
+        });
+        // TABLE DEFAULT
+        $(document).ready(function() {
+                $('#C_TableDefault').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                                'copyHtml5', 'pdfHtml5'
+                        ],
+                        "order": [],
+                        lengthMenu: [
+                                [10, 25, 50, -1],
+                                [10, 25, 50, 'All'],
+                        ],
+                        iDisplayLength: -1
+                });
+        });
 </script>
 </body>
 

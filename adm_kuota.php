@@ -268,7 +268,7 @@ if (isset($_POST['FindFilter']) != '') {
                     <?php } ?>
                     <!-- end css-button -->
                     <div class="table-responsive">
-                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
@@ -277,7 +277,7 @@ if (isset($_POST['FindFilter']) != '') {
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GOL A</th>
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GOL B</th>
                                     <th colspan="2" class="text-nowrap" style="text-align: center;">GOL C</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">NPWP</th>
@@ -318,10 +318,14 @@ if (isset($_POST['FindFilter']) != '') {
                                             <td style="text-align: center;"><?= decimal($row['gol_c_ltr']) ?></td>
                                             <td style="text-align: center;">
                                                 <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
-                                                    <a href="#updateData<?= $row['quota_id'] ?>" class="btn btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i> Update</a>
+                                                    <a href="#updateData<?= $row['quota_id'] ?>" class="btn btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
+                                                        <font class="f-action">Update</font>
+                                                    </a>
                                                 <?php } ?>
                                                 <?php if ($resultForPrivileges['DELETE_DATA'] == 'Y') { ?>
-                                                    <a href="#deleteData<?= $row['quota_id'] ?>" class="btn btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                                                    <a href="#deleteData<?= $row['quota_id'] ?>" class="btn btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i>
+                                                        <font class="f-action">Hapus</font>
+                                                    </a>
                                                 <?php } ?>
                                             </td>
                                         </tr>
@@ -608,6 +612,8 @@ if (isset($_POST['FindFilter']) != '') {
     <!-- end row -->
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

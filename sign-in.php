@@ -160,27 +160,52 @@ $resultLoginSetting = mysqli_fetch_array($dataLoginSettting);
                     </div>
                 <?php } ?>
                 <div class="news-caption">
-                    <?php if ($resultLoginSetting['text_signin_one'] == NULL || $resultLoginSetting['text_signin_two'] == NULL) { ?>
+                    <?php if ($resultLoginSetting['text_signin_one'] == NULL || $resultLoginSetting['text_signin_two'] == NULL || $resultLoginSetting['app_name'] == NULL || $resultLoginSetting['company'] == NULL) { ?>
                         <h4 class="caption-title"><b>Text 1</b> Text 2</h4>
                     <?php } else { ?>
                         <h4 class="caption-title"><b><?= $resultLoginSetting['text_signin_one'] ?></b>
-                            <?= $resultLoginSetting['text_signin_two'] ?></h4>
+                            <?= $resultLoginSetting['text_signin_two'] ?> | <?= $resultLoginSetting['app_name']; ?> - <?= $resultLoginSetting['company']; ?></h4>
                     <?php } ?>
-                    <?php if ($resultLoginSetting['text_signin_detail'] == NULL) { ?>
+                    <?php if ($resultLoginSetting['text_signin_detail'] == NULL || $resultLoginSetting['address'] == NULL) { ?>
                         <p>&copy 2022 - <?= date('Y'); ?> ...</p>
                     <?php } else { ?>
-                        <p>&copy 2022 - <?= date('Y'); ?> <?= $resultLoginSetting['text_signin_detail'] ?></p>
+                        <p>&copy 2022 - <?= date('Y'); ?> <?= $resultLoginSetting['text_signin_detail'] ?> <br>
+                            <font style="font-size: 10px;"><i class="fas fa-map-marker-alt"></i> <?= $resultLoginSetting['address'] ?></font>
+                        </p>
                     <?php } ?>
                 </div>
             </div>
             <div class="right-content">
                 <div class="login-header">
                     <div class="brand">
-                        <?php if ($resultLoginSetting['text_signin_one'] == NULL || $resultLoginSetting['text_signin_two'] == NULL) { ?>
-                            <span class="logo"></span> <b>Name 1</b> Name 2
+                        <?php if ($resultLoginSetting['app_name'] == NULL || $resultLoginSetting['company'] == NULL) { ?>
+                            <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;">
+                                <div>
+                                    <span class="logo"></span>
+                                </div>
+                                <div>
+                                    <div>
+                                        <b>APP NAME</b>
+                                    </div>
+                                    <div style="margin-top: -25px;">
+                                        <font style="font-size: 14px;font-weight: 100;"> Company Name</font>
+                                    </div>
+                                </div>
+                            </div>
                         <?php } else { ?>
-                            <span class="logo"></span> <b><?= $resultLoginSetting['text_signin_one'] ?></b>
-                            <?= $resultLoginSetting['text_signin_two'] ?>
+                            <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;">
+                                <div>
+                                    <span class="logo"></span>
+                                </div>
+                                <div>
+                                    <div>
+                                        <b><?= $resultLoginSetting['app_name']; ?></b>
+                                    </div>
+                                    <div class="oke-login">
+                                        <font style="font-size: 14px;font-weight: 100;"> <?= $resultLoginSetting['company']; ?></font>
+                                    </div>
+                                </div>
+                            </div>
                         <?php } ?>
                         <small>Silahkan <b>Sign In</b> untuk memulai <i>session</i> anda.</small>
                     </div>

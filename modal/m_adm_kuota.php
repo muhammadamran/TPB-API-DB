@@ -1,5 +1,7 @@
 <!-- Add Kuota -->
-<a href="#modal-Kuota-Mitra" class="btn btn-primary" data-toggle="modal" title="Tambah Kuota Mitra"><i class="fas fa-plus-circle"></i> Tambah Kuota Mitra</a>
+<a href="#modal-Kuota-Mitra" class="btn btn-primary" data-toggle="modal" title="Tambah Kuota Mitra"><i class="fas fa-plus-circle"></i>
+    <font class="f-action">Tambah Kuota Mitra</font>
+</a>
 <div class="modal fade" id="modal-Kuota-Mitra">
     <div class="modal-dialog">
         <div class="modal-content">

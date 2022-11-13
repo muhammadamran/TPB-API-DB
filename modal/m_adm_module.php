@@ -1,5 +1,7 @@
 <!-- Add Module -->
-<a href="#modal-Manage-Module" class="btn btn-primary" data-toggle="modal" title="Tambah Module"><i class="fas fa-plus-circle"></i> Tambah Module</a>
+<a href="#modal-Manage-Module" class="btn btn-primary" data-toggle="modal" title="Tambah Module"><i class="fas fa-plus-circle"></i>
+    <font class="f-action">Tambah Module</font>
+</a>
 <div class="modal fade" id="modal-Manage-Module">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -31,9 +33,9 @@
                                     <select type="text" class="default-select2 form-control" name="NameTahun" id="IDTahun">
                                         <option value="">-- Pilih Tahun --</option>
                                         <?php
-                                        for($i=date('Y'); $i>=date('Y')-32; $i-=1) {
+                                        for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
                                             echo "<option value='$i'> $i </option>";
-                                            }
+                                        }
                                         ?>
                                     </select>
                                 </div>

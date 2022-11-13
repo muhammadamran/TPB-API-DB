@@ -38,7 +38,7 @@ if (isset($_GET["aksi"]) == 'SubmitCTT') {
                 // TOTAL NETTO
                 $total_netto = $t_botol * $t_liter * $total_btl;
                 // TOTAL LITER
-                $total_ltr = $t_liter * $total_btl;
+                $total_ltr = ($t_botol * $pcs) * $t_liter;
 
                 for ($i = 0; $i < $pcs; $i++) {
                     $query = $dbcon->query("INSERT INTO plb_barang_ct 

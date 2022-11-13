@@ -23965,7 +23965,8 @@ a:focus {
 .header .navbar-brand .navbar-logo {
 	margin-right: 10px;
 	background: #00acac;
-	border: 10px solid transparent;
+	/* border: 10px solid transparent; */
+	border: 15px solid transparent;
 	border-color: transparent rgba(0,0,0,.15) rgba(0,0,0,.3);
 	position: relative;
 	overflow: hidden;
@@ -29591,7 +29592,7 @@ a:focus {
 }
 
 .login.login-v2 .login-header .brand .logo,.login.login-with-news-feed .right-content .login-header .brand .logo {
-	border: 14px solid transparent;
+	border: 23px solid transparent;
 	border-color: transparent rgba(0,0,0,.15) rgba(0,0,0,.3);
 	background-color: #00acac;
 	width: 28px;
@@ -29602,6 +29603,10 @@ a:focus {
 	top: -11px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
+}
+
+.oke-login {
+	margin-top: -25px;
 }
 
 @media (max-width:575.98px) {
@@ -29812,9 +29817,15 @@ a:focus {
 	.login.login-with-news-feed .right-content .login-header .brand .logo {
 		width: 20px;
 		height: 20px;
-		border-width: 10px;
+		/* border-width: 10px; */
+		border-width: 20px;
 		top: -7px;
 	}
+
+	.oke-login {
+		margin-top: -15px;
+	}
+
 }
 
 .login.login-with-news-feed .right-content .login-header .brand small {

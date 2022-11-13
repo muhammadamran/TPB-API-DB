@@ -1,12 +1,3 @@
-<?php
-// QUERY SETTING APPLICATION
-$dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
-$resultHeadSetting = mysqli_fetch_array($dataHeadSettting);
-// QUERY SETTING REAL TIME
-$dataSetRealTime = $dbcon->query("SELECT * FROM tbl_realtime ORDER BY id DESC LIMIT 1");
-$resultSetRealTime = mysqli_fetch_array($dataSetRealTime);
-$SetTime = $resultSetRealTime['reload'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +47,6 @@ $SetTime = $resultSetRealTime['reload'];
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
-    <!-- PRELOAD -->
-    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -68,22 +57,11 @@ $SetTime = $resultSetRealTime['reload'];
 
         gtag('config', 'G-Q66YLEFFZ2');
     </script>
-    <!-- <link rel="stylesheet" href="assets/new.css"> -->
 </head>
-
-<script type="text/javascript">
-    function display_c() {
-        var refresh = 1000; // Refresh rate in milli seconds
-        mytime = setTimeout('display_ct()', refresh)
-    }
-
-    function display_ct() {
-        var x = new Date()
-        document.getElementById('ct').innerHTML = x;
-        display_c();
-    }
-</script>
 <?php
+// DATE DAFULT
+date_default_timezone_set("Asia/jakarta");
+
 // DATE
 function date_indo($date, $print_day = false)
 {
@@ -129,6 +107,7 @@ function Rupiah($angka)
     return $hasil;
 }
 
+// DECIMAL
 function decimal($number)
 {
     $hasil = number_format($number, 0, ",", ",");
@@ -148,58 +127,6 @@ $dataForPrivileges = $dbcon->query("SELECT INSERT_DATA,UPDATE_DATA,DELETE_DATA,K
 $resultForPrivileges = mysqli_fetch_array($dataForPrivileges);
 ?>
 
-<style>
-    /* Blink */
-    .blink {
-        animation: 1s linear infinite condemned_blink_effect;
-    }
-
-    @keyframes condemned_blink_effect {
-        0% {
-            visibility: hidden;
-        }
-
-        50% {
-            visibility: hidden;
-        }
-
-        100% {
-            visibility: visible;
-        }
-    }
-
-    .preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-        background-color: #f2f3f2;
-    }
-
-    .preloader .loading {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 14px;
-    }
-</style>
-<script>
-    $(document).ready(function() {
-        $(".preloader-load").fadeOut();
-    })
-</script>
-
-<body onload="display_ct()">
-    <!-- begin #page-loader -->
-    <!-- <div class="preloader-load">
-        <div class="loading">
-            <img src="assets/gif/1.gif" width="250">
-            <p style="margin-left: 95px;" class="blink">Loading ...</p>
-        </div>
-    </div> -->
-    <!-- end #page-loader -->
+<body>
     <!-- begin #page-container -->
     <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">

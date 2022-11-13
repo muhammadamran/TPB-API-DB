@@ -182,8 +182,7 @@ $data = json_decode($content, true);
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="4" style="text-align: center;">Dokumen Pabean</th>
-                                    <th rowspan="2" style="text-align: center;">Asal PLB</th>
+                                    <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Barang</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah</th>
@@ -193,10 +192,12 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align: center;">Dokumen Upload</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">Jenis Dok. Pabean PLB</th>
-                                    <th style="text-align: center;">Nomor Pengajuan PLB</th>
-                                    <th style="text-align: center;">No. Daftar PLB</th>
-                                    <th style="text-align: center;">Tanggal Submit/Upload BC 2.7 PLB</th>
+                                    <th class="no-sort" style="text-align: center;">Jenis Dokumen</th>
+                                    <th style="text-align: center;">Nomor Pengajuan</th>
+                                    <th style="text-align: center;">No. Daftar</th>
+                                    <th style="text-align: center;">Tanggal Upload</th>
+                                    <th style="text-align: center;">Asal</th>
+                                    <th style="text-align: center;">Tujuan</th>
                                     <th style="text-align: center;">Sarinah</th>
                                     <th style="text-align: center;">BC</th>
                                 </tr>
@@ -207,6 +208,7 @@ $data = json_decode($content, true);
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bm_tgl_masuk!='0000-00-00'
                                                             ORDER BY plb.ID ASC", 0);
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
@@ -257,6 +259,16 @@ $data = json_decode($content, true);
                                                     </center>
                                                 <?php } else { ?>
                                                     <?= $row['PERUSAHAAN']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                                    <center>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <?= $row['NAMA_PENERIMA_BARANG']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
@@ -481,23 +493,20 @@ include "include/jsDatatables.php";
     // TableBarangTarif
     $(document).ready(function() {
         $('#table-masuk-barang').DataTable({
-            // dom: 'Bfrtip',
-            // buttons: [
-            //     'copyHtml5',
-            //     'excelHtml5',
-            //     'csvHtml5',
-            //     'pdfHtml5'
-            // ]
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
             ],
             "order": [],
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, 'All'],
+            ],
             "columnDefs": [{
                 "targets": 'no-sort',
                 "orderable": false,
             }],
-            iDisplayLength: -1
+            // iDisplayLength: -1
         });
     });
 </script>

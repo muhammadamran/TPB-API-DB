@@ -188,6 +188,8 @@ if (isset($_POST["SaveInfo"])) {
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <script src="assets/plugins/jquery-migrate/dist/jquery-migrate.min.js"></script>

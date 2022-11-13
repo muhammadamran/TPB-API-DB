@@ -165,13 +165,13 @@ if (isset($_POST["NDeleteData"])) {
                     <?php } ?>
                     <!-- end css-button -->
                     <div class="table-responsive">
-                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
                                     <th style="text-align: center;">Jabatan</th>
                                     <th class="text-nowrap" style="text-align: center;">Deskripsi</th>
-                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -188,10 +188,14 @@ if (isset($_POST["NDeleteData"])) {
                                             <td style="text-align: left;"><?= $row['description'] ?></td>
                                             <td style="text-align: center;">
                                                 <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
-                                                    <a href="#updateData<?= $row['id'] ?>" class="btn btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i> Update</a>
+                                                    <a href="#updateData<?= $row['id'] ?>" class="btn btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
+                                                        <font class="f-action">Update</font>
+                                                    </a>
                                                 <?php } ?>
                                                 <?php if ($resultForPrivileges['DELETE_DATA'] == 'Y') { ?>
-                                                    <a href="#deleteData<?= $row['id'] ?>" class="btn btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                                                    <a href="#deleteData<?= $row['id'] ?>" class="btn btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i>
+                                                        <font class="f-action">Hapus</font>
+                                                    </a>
                                                 <?php } ?>
                                             </td>
                                         </tr>
@@ -284,6 +288,8 @@ if (isset($_POST["NDeleteData"])) {
     <!-- end row -->
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

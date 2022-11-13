@@ -358,6 +358,7 @@ if (isset($_POST["SimpanSetting"])) {
     $title                 = $_POST['title'];
     $app_name              = $_POST['app_name'];
     $company               = $_POST['company'];
+    $company_t             = $_POST['company_t'];
     $address               = $_POST['address'];
     $text_signin_one       = $_POST['text_signin_one'];
     $text_signin_two       = $_POST['text_signin_two'];
@@ -370,9 +371,9 @@ if (isset($_POST["SimpanSetting"])) {
     $dev_url               = $_POST['dev_url'];
 
     $query = $dbcon->query("INSERT INTO tbl_setting
-                                        (id,title,app_name,company,address,text_signin_one,text_signin_two,text_signin_detail,sd_one,sd_two,version,type,dev_by,dev_url)
+                                        (id,title,app_name,company,company_t,address,text_signin_one,text_signin_two,text_signin_detail,sd_one,sd_two,version,type,dev_by,dev_url)
                                         VALUES
-                                        ('','$title','$app_name','$company','$address','$text_signin_one','$text_signin_two','$text_signin_detail','$sd_one','$sd_two','$version','$release','$dev_by','$dev_url')");
+                                        ('','$title','$app_name','$company','$company_t','$address','$text_signin_one','$text_signin_two','$text_signin_detail','$sd_one','$sd_two','$version','$release','$dev_by','$dev_url')");
 
     // FOR AKTIFITAS
     $me = $_SESSION['username'];
@@ -404,6 +405,7 @@ if (isset($_POST["EditSetting"])) {
     $title                 = $_POST['title'];
     $app_name              = $_POST['app_name'];
     $company               = $_POST['company'];
+    $company_t             = $_POST['company_t'];
     $address               = $_POST['address'];
     $text_signin_one       = $_POST['text_signin_one'];
     $text_signin_two       = $_POST['text_signin_two'];
@@ -420,6 +422,7 @@ if (isset($_POST["EditSetting"])) {
     $query = $dbcon->query("UPDATE tbl_setting SET title='$title',
                                                    app_name='$app_name',
                                                    company='$company',
+                                                   company_t='$company_t',
                                                    address='$address',
                                                    pic_name='$pic_name',
                                                    pic_title='$pic_title',
@@ -713,10 +716,16 @@ if (isset($_POST["EditSetting"])) {
                                             <input type="text" class="form-control" name="app_name" placeholder="App Name ..." required />
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Nama Perusahaan</label>
                                             <input type="text" class="form-control" name="company" placeholder="Nama Perusahaan ..." required />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Nama Perusahaan</label>
+                                            <input type="text" class="form-control" name="company_t" placeholder="Nama Perusahaan ..." required />
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -801,10 +810,16 @@ if (isset($_POST["EditSetting"])) {
                                             <input type="text" class="form-control" name="app_name" placeholder="App Name ..." value="<?= $rowTwo['app_name'] ?>" />
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Nama Perusahaan</label>
                                             <input type="text" class="form-control" name="company" placeholder="Nama Perusahaan ..." value="<?= $rowTwo['company'] ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Nama Perusahaan</label>
+                                            <input type="text" class="form-control" name="company_t" placeholder="Nama Perusahaan ..." value="<?= $rowTwo['company_t'] ?>" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -895,6 +910,8 @@ if (isset($_POST["EditSetting"])) {
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <script type="text/javascript">

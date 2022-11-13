@@ -1,5 +1,7 @@
 <!-- Add Users -->
-<a href="#modal-User-Web-System" class="btn btn-primary" data-toggle="modal" title="Tambah User Manajemen Web"><i class="fas fa-plus-circle"></i> Tambah User Manajemen Web</a>
+<a href="#modal-User-Web-System" class="btn btn-primary" data-toggle="modal" title="Tambah User Manajemen Web"><i class="fas fa-plus-circle"></i>
+    <font class="f-action">Tambah User Manajemen Web</font>
+</a>
 <div class="modal fade" id="modal-User-Web-System">
     <div class="modal-dialog">
         <div class="modal-content">

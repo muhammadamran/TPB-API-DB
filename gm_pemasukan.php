@@ -199,6 +199,25 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <p>Jika Barang <b>Gate In</b> sudah disimpan, silahkan lengkapi <b>Nomor Pengajuan GB</b>, <b>Tanggal Gate In</b> dan <b>Upload Berita Acara</b></p>
+                    <p>
+                        Note:
+                    <ul>
+                        <li>1. Lakukan penyelesaian pengecekan <b>Barang Gate In</b> pada setiap <b>Nomor Pengajuan BC 2.7 PLB</b> yang telah diupload.</li>
+                        <li>
+                            2. Jika <b>Barang Gate In</b> pada setiap <b>Nomor Pengajuan BC 2.7 PLB</b> sudah sesuai, lengkapi <b>Nomor Pengajuan Gudang Berikat (GB)</b> pada module <b>CIESA</b> dan <b>Pilih Tanggal Gate In</b>.
+                            <ul>
+                                <li> Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan lihat <b>Laporan Masuk <?= $resultSetting['app_name'] ?></b>;</li>
+                                <li> Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan <b>Download (.xls)/Print Packing List </b>dan<b> Invoice</b> pada <b>Laporan Gudang Berikat <?= $resultSetting['company'] ?></b>;</li>
+                            </ul>
+                        </li>
+                        <li>
+                            3. Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan <b>Upload Berita Acara Gate In</b> dan <b>Isi Nama Petugas BeaCukai</b> yang mengawasi.
+                            <ul>
+                                <li>Jika <b>Upload Berita Acara Gate In</b> dan <b>Isi Nama Petugas BeaCukai</b> yang mengawasi sudah dilengkapi, <b>Status Barang Gate In</b> akan berubah <b>Status Barang Gate Out</b> pada <b><?= $resultSetting['app_name'] ?></b>;</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </p>
                 </div>
                 <!-- end alert -->
                 <div class="panel-body text-inverse">

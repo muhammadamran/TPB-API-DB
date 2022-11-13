@@ -620,7 +620,7 @@ if (isset($_GET['findOne']) != '') {
                     </div>
                     <!-- End Data Count -->
                     <div class="table-responsive">
-                        <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
@@ -629,8 +629,8 @@ if (isset($_GET['findOne']) != '') {
                                     <th class="text-nowrap" style="text-align: center;">Password</th>
                                     <th class="text-nowrap" style="text-align: center;">Hak Akses</th>
                                     <th class="text-nowrap" style="text-align: center;">Status</th>
-                                    <th class="text-nowrap" style="text-align: center;">Privileges</th>
-                                    <th class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Privileges</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -719,19 +719,43 @@ if (isset($_GET['findOne']) != '') {
                                                     <i>Lakukan perubahan pada halaman profile anda!</i> <a href="usr_profile.php"><b>Klik disini!</b></a>
                                                 <?php } else { ?>
                                                     <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
-                                                        <a href="#updateData<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i> Update</a>
+                                                        <a href="#updateData<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
+                                                            <font class="f-action">Update</font>
+                                                        </a>
                                                     <?php } ?>
                                                     <?php if ($resultForPrivileges['DELETE_DATA'] == 'Y') { ?>
-                                                        <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i> Hapus</a>
+                                                        <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i>
+                                                            <font class="f-action">Hapus</font>
+                                                        </a>
                                                     <?php } ?>
                                                     <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
-                                                        <a href="adm_user_manajemen_web_resetpassword.php?USER=<?= $row['USER_NAME'] ?>" class="btn btn-info" target="_blank" title="Reset Password"> <i class="fas fa-lock"></i> Reset Password</a>
+                                                        <div class="btn-group">
+                                                            <a href="javascript:;" class="btn btn-dark">Others</a>
+                                                            <a href="#" data-toggle="dropdown" class="btn btn-dark dropdown-toggle"><b class="caret"></b></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a href="adm_user_manajemen_web_resetpassword.php?USER=<?= $row['USER_NAME'] ?>" class="dropdown-item">Reset Password</a>
+                                                                <?php if ($row['status'] == 0) { ?>
+                                                                    <a href="#disabledData<?= $row['ID'] ?>" class="dropdown-item" data-toggle="modal">Non-Aktifkan</a>
+                                                                <?php } else if ($row['status'] == 1) { ?>
+                                                                    <a href="#enabledData<?= $row['ID'] ?>" class="dropdown-item" data-toggle="modal">Aktifkan</a>
+                                                                <?php } ?>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <a href="adm_user_manajemen_web_resetpassword.php?USER=<?= $row['USER_NAME'] ?>" class="btn btn-info" target="_blank" title="Reset Password"> <i class="fas fa-lock"></i>
+                                                            <font class="f-action">Reset Password</font>
+                                                        </a> -->
                                                         <?php if ($row['status'] == 0) { ?>
-                                                            <a href="#disabledData<?= $row['ID'] ?>" class="btn btn-inverse" data-toggle="modal" title="Non-Aktif Users"><i class="fas fa-user-slash"></i> Non-Aktifkan Users</a>
+                                                            <!-- <a href="#disabledData<?= $row['ID'] ?>" class="btn btn-inverse" data-toggle="modal" title="Non-Aktif Users"><i class="fas fa-user-slash"></i>
+                                                                <font class="f-action">Non-Aktifkan</font>
+                                                            </a> -->
                                                         <?php } else if ($row['status'] == 1) { ?>
-                                                            <a href="#enabledData<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Aktif Users"><i class="fas fa-user-check"></i> Aktifkan Users</a>
+                                                            <!-- <a href="#enabledData<?= $row['ID'] ?>" class="btn btn-success" data-toggle="modal" title="Aktif Users"><i class="fas fa-user-check"></i>
+                                                                <font class="f-action">Aktifkan</font>
+                                                            </a> -->
                                                         <?php } ?>
-                                                        <a href="#resignData<?= $row['ID'] ?>" class="btn btn-secondary" data-toggle="modal" title="Resign Users"><i class="fas fa-user-minus"></i> Resign Users</a>
+                                                        <a href="#resignData<?= $row['ID'] ?>" class="btn btn-secondary" data-toggle="modal" title="Resign Users"><i class="fas fa-user-minus"></i>
+                                                            <font class="f-action">Resign</font>
+                                                        </a>
                                                     <?php } ?>
                                                 <?php } ?>
                                             </td>
@@ -1087,6 +1111,8 @@ if (isset($_GET['findOne']) != '') {
     <!-- end row -->
 </div>
 <!-- end #content -->
+<?php include "include/pusat_bantuan.php"; ?>
+<?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>

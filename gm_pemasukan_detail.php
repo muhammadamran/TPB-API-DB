@@ -6,6 +6,7 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
+include "include/cssForm.php";
 
 // TOTAL BARANG
 $contentBarangTotal     = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
@@ -530,9 +531,9 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                 <th style="text-align: center;">Tipe</th>
                                                 <th style="text-align: center;">Ukuran</th>
                                                 <th style="text-align: center;">Spesifikasi Barang</th>
-                                                <th style="text-align: center;">Jumlah Bahan Baku</th>
-                                                <th style="text-align: center;">Jumlah Kemasan</th>
-                                                <th style="text-align: center;">Jumlah Satuan</th>
+                                                <th style="text-align: center;">Bahan Baku</th>
+                                                <th style="text-align: center;">Kemasan</th>
+                                                <th style="text-align: center;">Satuan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -713,6 +714,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
 <?php include "include/panel.php"; ?>
 <?php include "include/footer.php"; ?>
 <?php include "include/jsDatatables.php"; ?>
+<?php include "include/jsForm.php"; ?>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#TableData').DataTable({
