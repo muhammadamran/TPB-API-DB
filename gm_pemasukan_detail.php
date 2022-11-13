@@ -228,7 +228,7 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
         <div>
             <button class="btn btn-primary-css">
                 <i class="fas fa-calendar-alt"></i>
-                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:m:i A') ?></span>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i:m A') ?></span>
             </button>
         </div>
     </div>
