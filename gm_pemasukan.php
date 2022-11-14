@@ -10,7 +10,6 @@ include "include/cssForm.php";
 // API - 
 include "include/api.php";
 $AJU_PLB = '';
-
 // Tanggal Upload
 if (isset($_POST['UploadBC27PLB_'])) {
     $DateUpload          = $_POST['DateUpload'];
@@ -20,9 +19,9 @@ if (isset($_POST['UploadBC27PLB_'])) {
                           WHERE NOMOR_AJU_PLB='$NOAJU'");
 
     if ($sql) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?UpdateSuccess=true';</script>";
     } else {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?UpdateFailed=true';</script>";
     }
 }
 
@@ -35,11 +34,25 @@ if (isset($_POST['KodeNegara_'])) {
                           WHERE NOMOR_AJU='$NOAJU'");
 
     if ($sql) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true';</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
 }
+if (isset($_POST['UKodeNegara_'])) {
+    $KodeNegara          = $_POST['KodeNegara'];
+    $NOAJU               = $_POST['NOAJU'];
+
+    $sql = $dbcon->query("UPDATE plb_header SET KODE_NEGARA_PEMASOK='$KodeNegara'
+                          WHERE NOMOR_AJU='$NOAJU'");
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pemasukan.php?UpdateSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?UpdateFailed=true';</script>";
+    }
+}
+
 // NOMOR PENGAJUAN GB
 if (isset($_POST['add_'])) {
     $bm_no_aju_plb          = $_POST['bm_aju'];
@@ -59,7 +72,7 @@ if (isset($_POST['add_'])) {
                         ('','$bm_no_aju_plb','$bm_tgl_masuk','$bm_nama_operator','$bk_no_aju_sarinah')");
 
         if ($sql) {
-            echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+            echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true';</script>";
         } else {
             echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
         }
@@ -79,7 +92,7 @@ if (isset($_POST['edit_'])) {
                                             WHERE rcd_id='$rcd_id'");
 
     if ($sql) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true';</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
@@ -100,14 +113,17 @@ if (isset($_POST['upload_'])) {
     $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
     $config['max_size'] = '2000000';
     $config['file_name'] = $newname;
-    move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
-
-    $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_PLB='$newname',
-                                                bc_in='$bk_nama_operator'
-                                            WHERE rcd_id='$rcd_id'");
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'jfif' || $ext == 'gif' || $ext == 'pdf') {
+        move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+        $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_PLB='$newname',
+                                                    bc_in='$bk_nama_operator'
+                                                WHERE rcd_id='$rcd_id'");
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?UploadQuestion=true';</script>";
+    }
 
     if ($sql) {
-        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='gm_pemasukan.php?SaveSuccess=true';</script>";
     } else {
         echo "<script>window.location.href='gm_pemasukan.php?SaveFailed=true';</script>";
     }
@@ -122,8 +138,6 @@ if (isset($_POST['filter'])) {
 
 if (isset($_POST['show_all'])) {
 }
-$contentAJUGB = get_content($resultAPI['url_api'] . 'nomor_AJU.php?function=get_AJU_GB');
-$dataAJUGB = json_decode($contentAJUGB, true);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Gate In App Name | Company </title>
@@ -150,12 +164,13 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         </div>
     </div>
     <div class="line-page"></div>
+
     <!-- Search AJU PLB -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Find Data Gate In</h4>
+                    <h4 class="panel-title"><i class="fas fa-filter"></i> Find Data Gate In</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -172,9 +187,15 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                    <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i> Cari</button>
-                                    <a href="gm_pemasukan.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i> Reset</a>
-                                    <button type="submit" name="show_all" class="btn btn-default m-r-5"><i class="fas fa-calendar-check"></i> Tampilkan Semua</button>
+                                    <button type="submit" name="filter" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                        <font class="f-action">Cari</font>
+                                    </button>
+                                    <a href="gm_pemasukan.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                        <font class="f-action">Reset</font>
+                                    </a>
+                                    <button type="submit" name="show_all" class="btn btn-default m-r-5"><i class="fas fa-calendar-check"></i>
+                                        <font class="f-action">Tampilkan Semua</font>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +211,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Gate Mandiri] Data Gate In</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> [Gate Mandiri] Data Gate In</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <!-- begin alert -->
@@ -202,18 +223,18 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                     <p>
                         Note:
                     <ul>
-                        <li>1. Lakukan penyelesaian pengecekan <b>Barang Gate In</b> pada setiap <b>Nomor Pengajuan BC 2.7 PLB</b> yang telah diupload.</li>
+                        <li>Lakukan penyelesaian pengecekan <b>Barang Gate In</b> pada setiap <b>Nomor Pengajuan BC 2.7 PLB</b> yang telah diupload.</li>
                         <li>
-                            2. Jika <b>Barang Gate In</b> pada setiap <b>Nomor Pengajuan BC 2.7 PLB</b> sudah sesuai, lengkapi <b>Nomor Pengajuan Gudang Berikat (GB)</b> pada module <b>CIESA</b> dan <b>Pilih Tanggal Gate In</b>.
+                            Jika <b>Barang Gate In</b> pada setiap <b>Nomor Pengajuan BC 2.7 PLB</b> sudah sesuai, lengkapi <b>Nomor Pengajuan Gudang Berikat (GB)</b> pada module <b>CIESA</b> dan <b>Pilih Tanggal Gate In</b>.
                             <ul>
                                 <li> Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan lihat <b>Laporan Masuk <?= $resultSetting['app_name'] ?></b>;</li>
                                 <li> Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan <b>Download (.xls)/Print Packing List </b>dan<b> Invoice</b> pada <b>Laporan Gudang Berikat <?= $resultSetting['company'] ?></b>;</li>
                             </ul>
                         </li>
                         <li>
-                            3. Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan <b>Upload Berita Acara Gate In</b> dan <b>Isi Nama Petugas BeaCukai</b> yang mengawasi.
+                            Jika <b>Nomor Pengajuan Gudang Berikat (GB)</b> dan <b>Tanggal Gate In</b> sudah di lengkapi, silahkan <b>Upload Berita Acara Gate In</b> dan <b>Isi Nama Petugas BeaCukai</b> yang mengawasi.
                             <ul>
-                                <li>Jika <b>Upload Berita Acara Gate In</b> dan <b>Isi Nama Petugas BeaCukai</b> yang mengawasi sudah dilengkapi, <b>Status Barang Gate In</b> akan berubah <b>Status Barang Gate Out</b> pada <b><?= $resultSetting['app_name'] ?></b>;</li>
+                                <li>Jika <b>Upload Berita Acara Gate In</b> dan <b>Isi Nama Petugas BeaCukai</b> yang mengawasi sudah dilengkapi, <b>Status Barang Gate In</b> akan berubah menjadi <b>Status Barang Gate Out</b> pada <b><?= $resultSetting['app_name'] ?></b>;</li>
                             </ul>
                         </li>
                     </ul>
@@ -258,22 +279,22 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                         </div>
                     <?php } ?>
                     <div class="table-responsive">
-                        <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="3" class="text-nowrap" style="text-align: center;">Nomor Pengajuan PLB</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Total Barang PLB</th>
+                                    <th colspan="3" class="text-nowrap" style="text-align: center;">BC 2.7 PLB</th>
+                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Total Barang</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Tujuan</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Aksi</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Kode Negara</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
                                     <!-- Nomor Pengajuan PLB -->
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Tanggal</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload BC 2.7 PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -430,6 +451,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     </a>
                                                 <?php } else { ?>
                                                     <?= $row['KODE_NEGARA_PEMASOK']; ?>
+                                                    <a href="#MUKodeNegara<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                                                 <?php } ?>
                                             </td>
                                             <!-- Aksi -->
@@ -438,7 +460,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                     <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
                                                         <!-- Cek Done -->
                                                         <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success">
-                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Gate In Selesai, Klik jika ingin melihat Detail">
+                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Gate In Selesai, Klik jika ingin melihat Detil">
                                                                 <div style="display: grid;">
                                                                     <div style="font-size: 12px;">
                                                                         <i class="fas fa-check-circle"></i>
@@ -537,7 +559,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="UploadBC27PLB_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                            <button type="submit" name="UploadBC27PLB_" class="btn btn-default"><i class="fas fa-edit"></i> Edit</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -574,12 +596,62 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         </select>
                                                                         <input type="hidden" name="NOAJU" value="<?= $row['NOMOR_AJU']; ?>" readonly>
                                                                     </div>
+                                                                    <div class="col-md-12">
+                                                                        <br>
+                                                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
+                                                                    </div>
                                                                 </div>
                                                             </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
                                                             <button type="submit" name="KodeNegara_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Kode Negara -->
+
+                                        <!-- Kode Negara -->
+                                        <div class="modal fade" id="MUKodeNegara<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Edit Data] Kode Negara - No. AJU: <?= $row['NOMOR_AJU'] ?></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <label>Kode Negara <small style="color:red">*</small></label>
+                                                                        <select name="KodeNegara" class="default-select2 form-control" required>
+                                                                            <?php if ($row['KODE_NEGARA_PEMASOK'] != NULL) { ?>
+                                                                                <option value="<?= $row['KODE_NEGARA_PEMASOK']; ?>"><?= $row['KODE_NEGARA_PEMASOK']; ?></option>
+                                                                                <option value="">Pilih Kode Negara</option>
+                                                                            <?php } else { ?>
+                                                                                <option value="">Pilih Kode Negara</option>
+                                                                            <?php } ?>
+                                                                            <?php
+                                                                            $dataKDN = $dbcon->query("SELECT * FROM referensi_negara");
+                                                                            foreach ($dataKDN as $rowKDN) { ?>
+                                                                                <option value="<?= $rowKDN['KODE_NEGARA']; ?>"><?= $rowKDN['KODE_NEGARA']; ?> - <?= $rowKDN['URAIAN_NEGARA']; ?></option>
+                                                                            <?php } ?>
+                                                                        </select>
+                                                                        <input type="hidden" name="NOAJU" value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <br>
+                                                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="UKodeNegara_" class="btn btn-default"><i class="fas fa-edit"></i> Edit</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -640,18 +712,13 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label>Tanggal Gate In</label>
-                                                                            <?php
-                                                                            $tgl_msk = $row['bm_tgl_masuk'];
-                                                                            $tgl = substr($tgl_msk, 0, 10);
-                                                                            $time = substr($tgl_msk, 10, 20);
-                                                                            ?>
-                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
+                                                                            <label>Tanggal Gate In <small style="color:red">*</small></label>
+                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." required>
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Gate In -->
                                                                     <div class="col-md-12">
-                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
@@ -714,7 +781,11 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>Petugas <?= $resultSetting['company'] ?></label>
-                                                                            <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                            <?php if ($row['bm_nama_operator'] == NULL) { ?>
+                                                                                <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
+                                                                            <?php } else { ?>
+                                                                                <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bm_nama_operator'] ?>" readonly>
+                                                                            <?php } ?>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -755,8 +826,8 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label>Petugas BC</label>
-                                                                            <input type="text" name="bk_nama_operator" class="form-control" placeholder="Nama Operator BC ...">
+                                                                            <label>Petugas BeaCukai <font style="color: red;">*</font></label>
+                                                                            <input type="text" name="bk_nama_operator" class="form-control" placeholder="Nama Petugas BeaCukai ..." required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -764,14 +835,14 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                             <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
                                                                                 <label>Upload Berita Acara Kembali!</label>
                                                                             <?php } else { ?>
-                                                                                <label>Upload Berita Acara</label>
+                                                                                <label>Upload Berita Acara <font style="color: red;">*</font></label>
                                                                             <?php } ?>
-                                                                            <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                            <input type="file" name="uploadBA" class="form-control" placeholder="Upload Berita Acara ..." value="<?= $row['upload_beritaAcara_PLB']; ?>" required>
                                                                             <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
-                                                                        <small style="color: red"><i>(*) Harus diisi</i></small>
+                                                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
@@ -854,7 +925,7 @@ $dataAJUGB = json_decode($contentAJUGB, true);
                                                                         <div class="col-6">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <embed src="https://itinventory-sarinah.com/files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                    <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
                                                                                     </object>
                                                                                 </div>
                                                                             </div>
@@ -908,21 +979,10 @@ $dataAJUGB = json_decode($contentAJUGB, true);
             source: 'function/autocomplete/nomor_aju_plb.php'
         });
     });
-    $(document).ready(function() {
-        $('#TableData').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-        });
-    });
     // SAVED SUCCESS
     if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
         Swal.fire({
-            title: 'Data berhasil disimpan!',
+            title: 'Berhasil!',
             icon: 'success',
             text: 'Data berhasil disimpan!'
         })
@@ -930,9 +990,35 @@ $dataAJUGB = json_decode($contentAJUGB, true);
     }
     if (window?.location?.href?.indexOf('SaveFailed') > -1) {
         Swal.fire({
-            title: 'Data gagal disimpan!',
+            title: 'Gagal!',
             icon: 'error',
             text: 'Data gagal disimpan!'
+        })
+        history.replaceState({}, '', './gm_pemasukan.php');
+    }
+    // UPDATE SUCCESS
+    if (window?.location?.href?.indexOf('UpdateSuccess') > -1) {
+        Swal.fire({
+            title: 'Berhasil!',
+            icon: 'success',
+            text: 'Data berhasil diupdate!'
+        })
+        history.replaceState({}, '', './gm_pemasukan.php');
+    }
+    if (window?.location?.href?.indexOf('UpdateFailed') > -1) {
+        Swal.fire({
+            title: 'Gagal!',
+            icon: 'error',
+            text: 'Data gagal diupdate!'
+        })
+        history.replaceState({}, '', './gm_pemasukan.php');
+    }
+    // UPLOAD EXT TIDAK SESUAI!
+    if (window?.location?.href?.indexOf('UploadQuestion') > -1) {
+        Swal.fire({
+            title: 'Perhatikan Extensions File!',
+            icon: 'info',
+            html: 'Extensions File Tidak Sesuai, Silahkan Pilih Extensions File <b>.xlsx</b> atau <b>xls</b>!'
         })
         history.replaceState({}, '', './gm_pemasukan.php');
     }

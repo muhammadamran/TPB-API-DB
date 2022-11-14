@@ -9,10 +9,16 @@ if (isset($_FILES["file_upload"])) {
 	$file_name = $timeUpload . "_" . $_FILES["file_upload"]["name"];
 	$size = $_FILES["file_upload"]["size"];
 	$tmp_file_name = $_FILES["file_upload"]["tmp_name"];
-	move_uploaded_file($tmp_file_name, $dir . $file_name);
-
-	include 'report_ck5_plb_read_file.php';
-	echo "<script>window.location.href='report_ck5_plb.php?UploadSuccess=true';</script>";
+	$filename = $_FILES['file_upload']['name'];
+	$exp = explode('.', $filename);
+	$ext = end($exp);
+	if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'xlsm' || $ext == 'xlsb') {
+		move_uploaded_file($tmp_file_name, $dir . $file_name);
+		include 'report_ck5_plb_read_file.php';
+		echo "<script>window.location.href='report_ck5_plb.php?UploadSuccess=true';</script>";
+	} else {
+		echo "<script>window.location.href='report_ck5_plb.php?UploadQuestion=true';</script>";
+	}
 } else {
 	echo "File not selected";
 	echo "<script>window.location.href='report_ck5_plb.php?UploadFailed=true';</script>";

@@ -7,12 +7,6 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 ?>
-<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>BC 2.7 PLB App Name | Company </title>
-<?php } else { ?>
-    <title>BC 2.7 PLB - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
-        <?= $resultHeadSetting['title'] ?></title>
-<?php } ?>
 <?php
 // DELETE DATA NOMOR AJU PLB
 if (isset($_POST["Delete_"])) {
@@ -49,9 +43,9 @@ if (isset($_POST["Delete_"])) {
     $query      .= $dbcon->query('DELETE FROM plb_update_log WHERE NOMOR_AJU="' . $NOMOR_AJU . '"');
 
     if ($query) {
-        echo "<script>window.location.href='report_ck5_plb.php?DeleteSuccess=true;</script>";
+        echo "<script>window.location.href='report_ck5_plb.php?DeleteSuccess=true';</script>";
     } else {
-        echo "<script>window.location.href='report_ck5_plb.php?DeleteFailed=true;</script>";
+        echo "<script>window.location.href='report_ck5_plb.php?DeleteFailed=true';</script>";
     }
 }
 ?>
@@ -77,6 +71,12 @@ if (isset($_POST['find'])) {
     }
 }
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Upload BC 2.7 PLB App Name | Company </title>
+<?php } else { ?>
+    <title>Upload BC 2.7 PLB - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <style>
     .sm {
         max-width: 471pxpx;
@@ -141,7 +141,7 @@ if (isset($_POST['find'])) {
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Upload Excel File BC 2.7 PLB:</label>
+                                        <label>Upload Excel File BC 2.7 PLB <font style="color: red;">*</font></label>
                                         <input type="hidden" class="form-control" name="username" value="<?= $_SESSION['username'] ?>" required>
                                         <input type="file" class="form-control" name="file_upload" required>
                                     </div>
@@ -187,10 +187,12 @@ if (isset($_POST['find'])) {
                             </div>
                             <div class="col-sm-12" style="justify-content: end;">
                                 <button type="submit" name="find" class="btn btn-info" style="margin-top: -10px;margin-bottom: -10px;">
-                                    <i class="fas fa-search"></i> Cari
+                                    <i class="fas fa-search"></i>
+                                    <font class="f-action">Cari</font>
                                 </button>
                                 <a href="report_ck5_plb.php" class="btn btn-warning" style="margin-top: -10px;margin-bottom: -10px;">
-                                    <i class="fas fa-refresh"></i> Reset
+                                    <i class="fas fa-refresh"></i>
+                                    <font class="f-action">Reset</font>
                                 </a>
                             </div>
                         </div>
@@ -202,10 +204,10 @@ if (isset($_POST['find'])) {
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
-                                    <th class="text-nowrap" style="text-align: center;" width="15%">Aksi</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;" width="15%">Aksi</th>
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
-                                    <th class="text-nowrap" style="text-align: center;">Pemilik</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tujuan/Penerima</th>
+                                    <th class="text-nowrap" style="text-align: center;">Asal</th>
+                                    <th class="text-nowrap" style="text-align: center;">Tujuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
                                 </tr>
                             </thead>
@@ -223,9 +225,13 @@ if (isset($_POST['find'])) {
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['CEK_BARANG'] == NULL) { ?>
-                                                    <a href="#delete<?= $row['ID'] ?>" class="btn btn-danger" data-toggle="modal" title="Tambah Kuota Mitra"><i class="fas fa-trash"></i> Hapus</a>
+                                                    <a href="#delete<?= $row['ID'] ?>" class="btn btn-danger" data-toggle="modal" title="Tambah Kuota Mitra"><i class="fas fa-trash"></i>
+                                                        <font class="f-action">Hapus</font>
+                                                    </a>
                                                 <?php } else { ?>
-                                                    <button class="btn btn-sm btn-aksi btn-secondary" style="color:#fff;cursor:pointer" title="Disabled"><i class="fas fa-trash"></i> Hapus</button>
+                                                    <button class="btn btn-aksi btn-secondary" style="color:#fff;cursor:pointer" title="Disabled"><i class="fas fa-trash"></i>
+                                                        <font class="f-action">Hapus</font>
+                                                    </button>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
@@ -297,8 +303,15 @@ if (isset($_POST['find'])) {
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example').DataTable({
-            "lengthMenu": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
-            "pageLength": 5
+            "order": [],
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, 'All'],
+            ],
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
         });
     });
 
@@ -313,7 +326,7 @@ if (isset($_POST['find'])) {
     // UPDATE SUCCESS
     if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
         Swal.fire({
-            title: 'Data Berhasil Diupload!',
+            title: 'Berhasil!',
             icon: 'success',
             text: 'Data berhasil diupload!'
         })
@@ -322,7 +335,7 @@ if (isset($_POST['find'])) {
     // UPDATE FAILED
     if (window?.location?.href?.indexOf('UploadFailed') > -1) {
         Swal.fire({
-            title: 'Data Gagal Diupload!',
+            title: 'Gagal!',
             icon: 'error',
             text: 'Data gagal diupload!'
         })
@@ -332,7 +345,7 @@ if (isset($_POST['find'])) {
     // DELETE SUCCESS
     if (window?.location?.href?.indexOf('DeleteSuccess') > -1) {
         Swal.fire({
-            title: 'Data Berhasil Dihapus!',
+            title: 'Berhasil!',
             icon: 'success',
             text: 'Data berhasil dihapus!'
         })
@@ -341,7 +354,7 @@ if (isset($_POST['find'])) {
     // DELETE FAILED
     if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
         Swal.fire({
-            title: 'Data Gagal Dihapus!',
+            title: 'Gagal!',
             icon: 'error',
             text: 'Data gagal dihapus!'
         })
@@ -354,6 +367,15 @@ if (isset($_POST['find'])) {
             title: 'Data Sudah Tersedia!',
             icon: 'info',
             text: 'Ada Data dengan Nomor Pengajuan yang sama!'
+        })
+        history.replaceState({}, '', './report_ck5_plb.php');
+    }
+    // UPLOAD EXT TIDAK SESUAI!
+    if (window?.location?.href?.indexOf('UploadQuestion') > -1) {
+        Swal.fire({
+            title: 'Perhatikan Extensions File!',
+            icon: 'info',
+            html: 'Extensions File Tidak Sesuai, Silahkan Pilih Extensions File <b>.xlsx</b> atau <b>xls</b>!'
         })
         history.replaceState({}, '', './report_ck5_plb.php');
     }

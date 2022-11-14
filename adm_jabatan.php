@@ -266,7 +266,7 @@ if (isset($_POST["NDeleteData"])) {
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="7">
+                                        <td colspan="4">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -274,8 +274,7 @@ if (isset($_POST["NDeleteData"])) {
                                             </center>
                                         </td>
                                     </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

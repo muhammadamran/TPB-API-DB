@@ -496,7 +496,7 @@ $ST_RUSAK               = mysqli_fetch_array($contentRUSAK);
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
-                <a href="gm_pemasukan_detail.php?AJU=<?= $_GET['AJU'] ?>" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                <a href="gm_pemasukan_detail.php?AJU=<?= $_GET['AJU'] ?>" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
             </div>
         </div>
     </div>

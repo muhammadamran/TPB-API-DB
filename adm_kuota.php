@@ -234,10 +234,12 @@ if (isset($_POST['FindFilter']) != '') {
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-3">
                                     <button type="submit" class="btn btn-info m-r-5" name="FindFilter">
-                                        <i class="fa fa-search"></i> Cari
+                                        <i class="fa fa-search"></i>
+                                        <font class="f-action">Cari</font>
                                     </button>
-                                    <a href="adm_kuota.php" type="button" class="btn btn-yellow m-r-5">
-                                        <i class="fa fa-refresh"></i> Reset
+                                    <a href="adm_kuota.php" type="button" class="btn btn-warning m-r-5">
+                                        <i class="fa fa-refresh"></i>
+                                        <font class="f-action">Reset</font>
                                     </a>
                                 </div>
                             </div>

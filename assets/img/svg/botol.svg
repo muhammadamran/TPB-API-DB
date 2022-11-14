@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="227" height="478" viewBox="0 0 227 478">
+  <defs>
+    <clipPath id="clip-botol">
+      <rect width="227" height="478"/>
+    </clipPath>
+  </defs>
+  <g id="botol" clip-path="url(#clip-botol)">
+    <rect width="227" height="478" fill="rgba(255,255,255,0)"/>
+    <g id="Group_310" data-name="Group 310" transform="translate(-6 -5)">
+      <g id="Group_309" data-name="Group 309" transform="translate(-22 -3)" style="mix-blend-mode: hard-light;isolation: isolate">
+        <g id="Component_1_3" data-name="Component 1 – 3" transform="translate(68 21)">
+          <path id="Path_554" data-name="Path 554" d="M52.167,0H86.382V452.1H16.849S0,454.138,0,443.588V222.771c0-23.115,26.782-30.634,26.782-86.327,0-30.464,37.525-75.051,14.9-92.71A395.662,395.662,0,0,1,52.167,0Z" fill="rgba(0,0,0,0.07)"/>
+          <path id="Path_555" data-name="Path 555" d="M34.214,0H0V452.1H69.532s16.849,2.039,16.849-8.512V222.771c0-23.115-26.782-30.634-26.782-86.327,0-30.464-37.525-75.051-14.9-92.71A395.662,395.662,0,0,0,34.214,0Z" transform="translate(71)" fill="rgba(0,0,0,0.07)"/>
+        </g>
+        <rect id="Rectangle_30" data-name="Rectangle 30" width="157" height="63" transform="translate(68 292)" fill="rgba(0,0,0,0.07)"/>
+        <text id="BOTOL-2" data-name="BOTOL" transform="translate(100 334)" fill="rgba(0,0,0,0.07)" font-size="29" font-family="Poppins-SemiBoldItalic, Poppins" font-weight="600" font-style="italic"><tspan x="0" y="0">BOTOL</tspan></text>
+      </g>
+      <g id="Group_308" data-name="Group 308" transform="translate(-33 -3)">
+        <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(68 21)">
+          <path id="Path_554-2" data-name="Path 554" d="M52.167,0H86.382V452.1H16.849S0,454.138,0,443.588V222.771c0-23.115,26.782-30.634,26.782-86.327,0-30.464,37.525-75.051,14.9-92.71A395.662,395.662,0,0,1,52.167,0Z" fill="#d3bf9a"/>
+          <path id="Path_555-2" data-name="Path 555" d="M34.214,0H0V452.1H69.532s16.849,2.039,16.849-8.512V222.771c0-23.115-26.782-30.634-26.782-86.327,0-30.464-37.525-75.051-14.9-92.71A395.662,395.662,0,0,0,34.214,0Z" transform="translate(71)" fill="#d3bf9a"/>
+        </g>
+        <rect id="Rectangle_30-2" data-name="Rectangle 30" width="157" height="63" transform="translate(68 292)" fill="#8c6955"/>
+        <text id="BOTOL-3" data-name="BOTOL" transform="translate(100 334)" fill="#d3bf9a" font-size="29" font-family="Poppins-SemiBoldItalic, Poppins" font-weight="600" font-style="italic"><tspan x="0" y="0">BOTOL</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

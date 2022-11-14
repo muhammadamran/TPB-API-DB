@@ -444,10 +444,12 @@ if (isset($_GET['findOne']) != '') {
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-3">
                                     <button type="submit" class="btn btn-info m-r-5" name="findOne">
-                                        <i class="fa fa-search"></i> Cari
+                                        <i class="fa fa-search"></i>
+                                        <font class="f-action">Cari</font>
                                     </button>
-                                    <a href="adm_user_manajemen_web.php" type="button" class="btn btn-yellow m-r-5">
-                                        <i class="fa fa-refresh"></i> Reset
+                                    <a href="adm_user_manajemen_web.php" type="button" class="btn btn-warning m-r-5">
+                                        <i class="fa fa-refresh"></i>
+                                        <font class="f-action">Reset</font>
                                     </a>
                                 </div>
                             </div>
@@ -479,7 +481,7 @@ if (isset($_GET['findOne']) != '') {
                                     <button type="submit" class="btn btn-info m-r-5" name="findTwo">
                                         <i class="fa fa-search"></i> Cari
                                     </button>
-                                    <a href="adm_user_manajemen_web.php" type="button" class="btn btn-yellow m-r-5">
+                                    <a href="adm_user_manajemen_web.php" type="button" class="btn btn-warning m-r-5">
                                         <i class="fa fa-refresh"></i> Reset
                                     </a>
                                 </div>
@@ -505,7 +507,7 @@ if (isset($_GET['findOne']) != '') {
                             <?php } ?>
                         </div>
                         <button type="submit" class="btn btn-info m-r-5" name="findThree"><i class="fa fa-search"></i> Cari</button>
-                        <a href="adm_user_manajemen_web.php" type="button" class="btn btn-yellow"><i class="fa fa-refresh"></i> Reset</a>
+                        <a href="adm_user_manajemen_web.php" type="button" class="btn btn-warning"><i class="fa fa-refresh"></i> Reset</a>
                     </form>
                 </div>
             </div>
@@ -1097,8 +1099,7 @@ if (isset($_GET['findOne']) != '') {
                                             </center>
                                         </td>
                                     </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

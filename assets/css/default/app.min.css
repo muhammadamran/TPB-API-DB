@@ -30258,9 +30258,12 @@ a:focus {
 }
 
 .note.note-success {
-	border-color: #00acac;
+	/* border-color: #00acac;
 	background: #00dfdf;
-	color: #001313;
+	color: #001313; */
+	border-color: #00acac;
+    background: #00acac;
+    color: #fff;
 }
 
 .note.note-info {

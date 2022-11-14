@@ -7,6 +7,92 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
+// SIMPAN SEMUA BARANG SESUAI
+if (isset($_POST["SimpanSemuaSesuai_"])) {
+    $AJU            = $_GET['AJU'];
+    $InputDate      = date('Y-m-d h:m:i');
+    $meOK           = $_SESSION['username'];
+
+    $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='$AJU' AND CHECKING IS NULL", 0);
+    foreach ($dataTable as $rowLine) {
+        if (@$rowLine['ID']) {
+            $ID = $rowLine['ID'];
+
+            // CEK CT
+            $cekCT     = $dbcon->query("SELECT * FROM plb_barang_ct WHERE ID_BARANG='$ID'");
+            $dataCT    = mysqli_fetch_array($cekCT);
+
+            if ($dataCT['ID_BARANG'] == NULL) {
+                $contentBarang   = $dbcon->query("SELECT * FROM plb_barang WHERE ID='$ID'");
+                $dataBarang      = mysqli_fetch_array($contentBarang);
+                $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
+                $pcs             = str_replace(".0000", "", "$jml_pcs");
+                // BOTOL
+                $botol           = explode('X', $dataBarang['UKURAN']);
+                $t_botol         = $botol[0];
+                // LITER
+                $liter           =  $botol[1];
+                $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+                $t_liter         = str_replace(',', '.', $r_liter);
+                // TOTAL BOTOL
+                $total_btl = $t_botol * $pcs;
+                // TOTAL NETTO
+                $total_netto = $t_botol * $t_liter * $total_btl;
+                // TOTAL LITER
+                $total_ltr = ($t_botol * $pcs) * $t_liter;
+
+                for ($i = 0; $i < $pcs; $i++) {
+                    $query = $dbcon->query("INSERT INTO plb_barang_ct 
+                                    (ID,NOMOR_AJU,ID_BARANG,KODE_BARANG,TOTAL_BOTOL,LITER,TOTAL_LITER)
+                                    VALUES
+                                    ('','$dataBarang[NOMOR_AJU]','$ID','$dataBarang[KODE_BARANG]','$t_botol','$t_liter','$total_ltr')
+                                    ");
+                }
+                // PLB HEADER
+                $query .= $dbcon->query("UPDATE plb_header SET CEK_BARANG=1
+                                     WHERE NOMOR_AJU='$AJU'");
+
+                // PLB BARANG
+                $query .= $dbcon->query("UPDATE plb_barang SET STATUS='Sesuai',
+                                                           OPERATOR_ONE='$meOK',
+                                                           TGL_CEK='$InputDate',
+                                                           CHECKING='DONE',
+                                                           STATUS_CT='Complete',
+                                                           DATE_CT='$InputDate',
+                                                           TOTAL_BOTOL_AKHIR='$total_btl',
+                                                           TOTAL_LITER_AKHIR='$total_ltr',
+                                                           TOTAL_CT_AKHIR='$pcs',
+                                                           BOTOL='$t_botol',
+                                                           LITER='$t_liter',                                                      
+                                                           NETTO_AKHIR='$total_netto'                                                      
+                                     WHERE NOMOR_AJU='$AJU' AND ID='$ID'");
+
+                // FOR AKTIFITAS
+                $me         = $_SESSION['username'];
+                $datame     = $dbcon->query("SELECT * FROM view_privileges WHERE USER_NAME='$me'");
+                $resultme   = mysqli_fetch_array($datame);
+
+                $IDUNIQme             = $resultme['USRIDUNIQ'];
+                $InputUsername        = $me;
+                $InputModul           = 'Gate In/Detail/CT';
+                $InputDescription     = $me . " Cek Barang Masuk: ID Barang Masuk" . @$_GET['ID_BARANG'];
+                $InputAction          = 'Simpan Barang Masuk';
+                $InputDate            = date('Y-m-d h:m:i');
+
+                $query .= $dbcon->query("INSERT INTO tbl_aktifitas
+                           (id,IDUNIQ,username,modul,description,action,date_created)
+                           VALUES
+                           ('','$IDUNIQme','$InputUsername','$InputModul','$InputDescription','$InputAction','$InputDate')");
+            }
+        }
+    }
+    if ($query) {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertSuccess';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$AJU&AlertFailed';</script>";
+    }
+}
+// END SIMPAN SEMUA BARANG SESUAI
 
 // TOTAL BARANG
 $contentBarangTotal     = $dbcon->query("SELECT COUNT(*) AS total FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
@@ -15,7 +101,9 @@ $dataBarangTotal        = mysqli_fetch_array($contentBarangTotal);
 $contentBarangCek       = $dbcon->query("SELECT COUNT(*) AS total_cek FROM plb_barang WHERE CHECKING IS NOT NULL AND STATUS_CT='Complete' AND NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
 $dataBarangCek          = mysqli_fetch_array($contentBarangCek);
 // DETAIL, PERUSAHAAN DAN TUJUAN
-$contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+$contentdatahdrbrg      = $dbcon->query("SELECT * FROM plb_header AS plb
+                                         LEFT OUTER JOIN referensi_negara AS ngr ON ngr.KODE_NEGARA=plb.KODE_NEGARA_PEMASOK
+                                         WHERE plb.NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY plb.ID ASC", 0);
 $datahdrbrg             = mysqli_fetch_array($contentdatahdrbrg);
 // JUMLAH HARGA_PENYERAHAN DAN POS_TARIF
 $dataHPPT               = $dbcon->query("SELECT SUM(HARGA_PENYERAHAN) AS HP, SUM(POS_TARIF) AS PT
@@ -48,122 +136,29 @@ $A_BTL                  = mysqli_fetch_array($content_A_BTL);
 //                                         FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $content_A_LTR          = $dbcon->query("SELECT SUM(TOTAL_BOTOL * LITER) AS p_LITER FROM plb_barang_ct WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID", 0);
 $A_LTR                  = mysqli_fetch_array($content_A_LTR);
+
+// CEK PENYESUAIAN
+$contentPenyesuaian     = $dbcon->query("SELECT COUNT(btl.NOMOR_AJU) AS total_penyesuaian FROM plb_barang_ct_botol AS btl WHERE btl.NOMOR_AJU='" . $_GET['AJU'] . "'");
+$resultPenyesuaian      = mysqli_fetch_array($contentPenyesuaian);
+
+// CHECKING
+$checking               = $dbcon->query("SELECT brg.NOMOR_AJU,
+                                        (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Done') AS checking,
+                                        (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "') AS barang
+                                        FROM plb_barang AS brg  WHERE brg.NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY brg.NOMOR_AJU");
+$resultChecking         = mysqli_fetch_array($checking);
+
+// CEK PETUGAS COMPANY
+$contentPetugas         = $dbcon->query("SELECT * FROM rcd_status WHERE bm_no_aju_plb='" . $_GET['AJU'] . "'");
+$resultPetugas          = mysqli_fetch_array($contentPetugas);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>Pengecekan Barang Masuk App Name | Company </title>
+    <title>Pengecekan Barang Gate In App Name | Company </title>
 <?php } else { ?>
-    <title>Pengecekan Barang Masuk - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+    <title>Pengecekan Barang Gate In - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
 <style>
-    .btn-custom {
-        font-size: 10px;
-        padding: 5px;
-    }
-
-    .sm {
-        max-width: 471pxpx;
-        margin: 16.75rem auto;
-        width: 375px;
-    }
-
-    .line-page-cek {
-        height: 0.5px;
-        margin: 6px 866px 23px 0px;
-        background: #444e66;
-    }
-
-    .detail-barang-ct {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .total-ct {
-        background: #fff;
-        border-radius: 5px;
-        padding: 5px 10px 5px 10px;
-        font-size: 12px;
-        font-weight: 800;
-        margin-bottom: 10px;
-        border: 2px solid #2d353c !important;
-        text-transform: uppercase;
-    }
-
-    .total-ct-ak {
-        background: #30373e;
-        border-radius: 5px;
-        padding: 5px 10px 5px 10px;
-        font-size: 12px;
-        font-weight: 800;
-        margin-bottom: 10px;
-        color: #fff !important;
-        border: 2px solid #30373e !important;
-        text-transform: uppercase;
-    }
-</style>
-
-<style>
-    .ct-content {
-        background: #f59c1a;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-    }
-
-    .ct-content:hover {
-        background: #f59c1a;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-        text-shadow: 3px 1px 5px black;
-    }
-
-    .ct-content-success {
-        background: #00acac;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-    }
-
-    .ct-content-success:hover {
-        background: #00acac;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-        text-shadow: 3px 1px 5px black;
-    }
-
-    .ct-danger {
-        background: #ff5b57;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-    }
-
-    .ct-danger:hover {
-        background: #ff5b57;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-        text-shadow: 3px 1px 5px black;
-    }
-
-    .ct-secondary {
-        background: #6c757d;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-    }
-
-    .ct-secondary:hover {
-        background: #6c757d;
-        color: #fff;
-        padding: 10px 10px 5px 10px;
-        border-radius: 5px;
-        text-shadow: 3px 1px 5px black;
-    }
-
     /* Check Box */
     .form-check-input[type=checkbox] {
         border-radius: 0.25em;
@@ -237,442 +232,275 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
-                <a href="gm_pemasukan.php" class="btn btn-yellow"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
             </div>
         </div>
     </div>
     <!-- END BACK -->
-    <!-- begin row -->
+
+    <!-- Status Gate In -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title">[Gate In Data] Pengecekan Barang Masuk</h4>
+                    <h4 class="panel-title"><i class="fas fa-star"></i> Status Data Gate In</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <div style="display: flex;justify-content: space-between;align-content: center;align-items: center;padding: 16px;background: #d9e0e7;font-size: 14px;font-weight: 600;margin-top: -15px;margin-bottom: 15px;">
-                        <!-- ASAL -->
-                        <div style="text-transform: uppercase;">
-                            Asal: <?= $datahdrbrg['PERUSAHAAN'] ?>
+                    <div class="row" style="align-items: center;">
+                        <div class="col-sm-2">
+                            <img src="assets/img/svg/product-quality-animate.svg" alt="Status Data Gate In Images">
                         </div>
-                        <!-- ICON -->
-                        <div>
-                            <i class="fas fa-arrow-alt-circle-right"></i>
-                        </div>
-                        <!-- Tujuan -->
-                        <div style="text-transform: uppercase;">
-                            Tujuan: <?= $datahdrbrg['NAMA_PENERIMA_BARANG'] ?>
-                        </div>
-                    </div>
-                    <!-- DETAIL -->
-                    <div class="detail-barang-ct" style="margin-left: -12px;">
-                        <div>
-                            <a href="#" class="widget-card rounded mb-20px" data-id="widget">
-                                <div class="widget-card-cover rounded"></div>
-                                <div class="widget-card-content">
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
-                                    <h4 class="mb-10px text-blue">
-                                        <b>
-                                            <i class="fas fa-layer-group"></i>
-                                            TOTAL: <?= $dataBarangTotal['total']; ?> BARANG -
-                                            <i class="fas fa-cubes"></i>
-                                            <?php if ($dataBarangCek['total_cek'] == 0) { ?>
-                                                <font style="color:#6f7d87!important;">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
-                                            <?php } else if ($dataBarangCek['total_cek'] != 0 || $dataBarangCek['total_cek'] != $dataBarangTotal['total']) { ?>
-                                                <font style="color: #e91e63!important;" class="blink_me">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
-                                            <?php } else if ($dataBarangCek['total_cek'] == $dataBarangTotal['total']) { ?>
-                                                CEK: <?= $dataBarangCek['total_cek']; ?> BARANG
-                                            <?php } ?>
-                                        </b>
-                                    </h4>
-                                    <h4 class="mb-10px text-blue">
-                                        <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
-                                        <b> <?= Rupiah($HPPT['HP']); ?></b>
-                                    </h4>
-                                    <h4 class="mb-10px text-blue">
-                                        <font style="color:#000!important;font-size: .9375rem;">Pos Tarif:</font>
-                                        <b> <?= $HPPT['PT']; ?></b>
-                                    </h4>
+                        <div class="col-sm-10">
+                            <div class="row" style="align-items: center;">
+                                <div class="col-sm-4">
+                                    <!-- DETAIL -->
+                                    <div class="detail-barang-ct" style="margin-left: -12px;">
+                                        <div>
+                                            <a href="#" class="widget-card rounded mb-20px" data-id="widget">
+                                                <div class="widget-card-cover rounded"></div>
+                                                <div class="widget-card-content">
+                                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="far fa-star"></i> NOMOR PENGAJUAN PLB: <?= $datahdrbrg['NOMOR_AJU']; ?></b></h5>
+                                                    <h4 class="mb-10px text-blue">
+                                                        <b>
+                                                            <i class="fas fa-layer-group"></i>
+                                                            TOTAL: <?= $dataBarangTotal['total']; ?> BARANG -
+                                                            <i class="fas fa-cubes"></i>
+                                                            <?php if ($dataBarangCek['total_cek'] == 0) { ?>
+                                                                <font style="color:#6f7d87!important;">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
+                                                            <?php } else if ($dataBarangCek['total_cek'] != 0 || $dataBarangCek['total_cek'] != $dataBarangTotal['total']) { ?>
+                                                                <font style="color: #e91e63!important;" class="blink_me">CEK: <?= $dataBarangCek['total_cek']; ?> BARANG</font>
+                                                            <?php } else if ($dataBarangCek['total_cek'] == $dataBarangTotal['total']) { ?>
+                                                                CEK: <?= $dataBarangCek['total_cek']; ?> BARANG
+                                                            <?php } ?>
+                                                        </b>
+                                                    </h4>
+                                                    <h4 class="mb-10px text-blue">
+                                                        <font style="color:#000!important;font-size: .9375rem;">Harga Penyerahan:</font>
+                                                        <b> <?= Rupiah($HPPT['HP']); ?></b>
+                                                    </h4>
+                                                    <h4 class="mb-10px text-blue">
+                                                        <font style="color:#000!important;font-size: .9375rem;">Negara Asal:</font>
+                                                        <?php if ($datahdrbrg['URAIAN_NEGARA'] == NULL) { ?>
+                                                            <b style="color: red;"> Not Found</b>
+                                                        <?php } else { ?>
+                                                            <b> <?= $datahdrbrg['URAIAN_NEGARA']; ?></b>
+                                                        <?php } ?>
+                                                    </h4>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- DETAIL -->
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- DETAIL -->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div style="padding: 0px;">
-                                <!-- NILAI AWAL -->
-                                <div>
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AWAL BARANG</b></h5>
-                                </div>
-                                <div class="total-ct">
-                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                        <tbody>
-                                            <tr style="height: 18px;">
-                                                <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
-                                                <td style="width: 104px; height: 18px;">Total CT</td>
-                                                <td style="width: 10px; height: 18px;">:</td>
-                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $CT['p_CT']; ?> CT</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="total-ct">
-                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                        <tbody>
-                                            <tr style="height: 18px;">
-                                                <td style="width: 15px;"><i class="fa-solid fa-bottle-droplet"></i></td>
-                                                <td style="width: 104px; height: 18px;">Total Botol</td>
-                                                <td style="width: 10px; height: 18px;">:</td>
-                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $BTL['p_BOTOL']; ?> Botol</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="total-ct">
-                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                        <tbody>
-                                            <tr style="height: 18px;">
-                                                <td style="width: 15px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
-                                                <td style="width: 104px; height: 18px;">Total Liter</td>
-                                                <td style="width: 10px; height: 18px;">:</td>
-                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $LTR['p_LITER']; ?> Liter</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div style="padding: 0px;">
-                                <!-- NILAI AKTUAL -->
-                                <div>
-                                    <h5 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b>NILAI AKTUAL BARANG</b></h5>
-                                </div>
-                                <div class="total-ct-ak">
-                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                        <tbody>
-                                            <tr style="height: 18px;">
-                                                <td style="width: 10px;"><i class="fas fa-boxes"></i></td>
-                                                <td style="width: 104px; height: 18px;">Total CT</td>
-                                                <td style="width: 10px; height: 18px;">:</td>
-                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $A_CT['p_CT']; ?> CT</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="total-ct-ak">
-                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                        <tbody>
-                                            <tr style="height: 18px;">
-                                                <td style="width: 15px;"><i class="fa-solid fa-bottle-droplet"></i></td>
-                                                <td style="width: 104px; height: 18px;">Total Botol</td>
-                                                <td style="width: 10px; height: 18px;">:</td>
-                                                <td style="width: 150px; height: 18px; text-align: right;"><?= $A_BTL['p_BOTOL']; ?> Botol</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="total-ct-ak">
-                                    <table style="border-collapse: collapse; width: 100%; height: 18px;" border="0">
-                                        <tbody>
-                                            <tr style="height: 18px;">
-                                                <td style="width: 15px;"><i class="fa-solid fa-glass-water-droplet"></i></td>
-                                                <td style="width: 104px; height: 18px;">Total Liter</td>
-                                                <td style="width: 10px; height: 18px;">:</td>
-                                                <td style="width: 150px; height: 18px; text-align: right;"><?= floor($A_LTR['p_LITER']); ?> Liter</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <!-- PETUGAS -->
-                    <div class="row">
-                        <div class="col-sm-6" style="margin-left: 5px;font-size: 14px;font-weight: 800;">
-                            <i class="far fa-user-circle"></i> Petugas: <?= $_SESSION['username']; ?>
-                        </div>
-                    </div>
-                    <!-- END PETUGAS -->
-                    <!-- Kurang -->
-                    <?php if (isset($_GET['AlertSimpan']) == 'Success') { ?>
-                        <hr>
-                        <div class="note note-success">
-                            <div class="note-icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="note-content">
-                                <h4><b>Berhasil Disimpan!</b></h4>
-                                <p> Detail CT <b>Berhasil disimpan</b>!</p>
-                            </div>
-                        </div>
-                    <?php } else if (isset($_GET['AlertSimpan']) == 'Failed') { ?>
-                        <hr>
-                        <div class="note note-danger">
-                            <div class="note-icon"><i class="fas fa-times-circle"></i></div>
-                            <div class="note-content">
-                                <h4><b>Gagal Disimpan!</b></h4>
-                                <p> Detail CT <b>Gagal disimpan</b>!</p>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <!-- Menu Tap -->
-                    <div class="tab-content rounded bg-white mb-4">
-                        <!-- IDBarang -->
-                        <div class="tab-pane fade active show" id="IDBarang">
-                            <hr>
-                            <form id="form-submit" action="gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>" method="POST">
-                                <div style="margin-bottom: 10px;">
-                                    <font style="font-weight: 800;">Status Barang:</font>
-                                </div>
-                                <div style="display: flex;justify-content: flex-start;align-content: baseline;">
-                                    <?php
-                                    $checking = $dbcon->query("SELECT brg.NOMOR_AJU,
-                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' AND CHECKING='Done') AS checking,
-                                                            (SELECT COUNT(*) FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "') AS barang
-                                                            FROM plb_barang AS brg  WHERE brg.NOMOR_AJU='" . $_GET['AJU'] . "' GROUP BY brg.NOMOR_AJU");
-                                    $resultChecking = mysqli_fetch_array($checking);
-                                    ?>
-                                    <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Masuk Sudah disimpan">
-                                            <i class="fa-solid fa-check-circle"></i>
-                                            Pengecekan Barang Masuk
-                                        </button>
-                                    <?php } else { ?>
-                                        <div class="row">
-                                            <div class="col-sm-12" style="display: flex;">
-                                                <button type="button" id="btn-tidak" name="All_tidak" class="btn btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Klik Pilih Semua atau Cek CT">
-                                                    <i class="fa-solid fa-hourglass-start"></i>
-                                                    Cek Satuan Botol
-                                                </button>
-                                                <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
-                                                    <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <a href="#modal-User-Web-System" name="All_sesuai" class="btn btn-primary" data-toggle="modal">
-                                                            <i class="fa-solid fa-square-check" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai"></i>
-                                                            Semua Barang Sesuai
-                                                        </a>
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <!-- ASAL DAN TUJUAN -->
+                                        <div class="col-sm-12">
+                                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                    <div style="font-size: 30px;">
+                                                        <i class="fas fa-warehouse"></i>
                                                     </div>
-                                                    <!-- Simpan Barang -->
-                                                    <div class="modal fade" id="modal-User-Web-System">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content sm">
-                                                                <form action="gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>" method="POST">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title">[Semua Barang Sesuai] Gate In</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="alert alert-primary m-b-0">
-                                                                            <h5><i class="fa fa-info-circle"></i> Semua Barang Sesuai Data?</h5>
-                                                                            <p>Klik Ya jika Semua Barang Sesuai.</i></p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                                        <button type="submit" name="add_hak_akses" class="btn btn-primary"><i class="fa-solid fa-square-check"></i> Ya</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
+                                                    <div style="margin-left: 10px;">
+                                                        <div style="font-size: 17px;font-weight: 900;">
+                                                            <?= $datahdrbrg['PERUSAHAAN']; ?>
+                                                        </div>
+                                                        <div style="margin-top: -5px;font-size: 10px;">
+                                                            Asal BC 2.7 PLB
                                                         </div>
                                                     </div>
-                                                    <!-- End Simpan Barang -->
-                                                <?php } else { ?>
-                                                    <div id="buttonPilihAll" style="display:none;margin-left: 10px;">
-                                                        <button type="button" class="btn btn-warning" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Silahkan selesaikan pengecekatan CT anda terlebih dahulu">
-                                                            <i class="fas fa-warning"></i>
-                                                            Simpan Gate In
-                                                        </button>
-                                                        <small class="blink_me" style="color: red;"><i>(*) Anda masih memiliki pengecekan Data CT yang belum disimpan!</i></small>
+                                                </div>
+                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                    <div style="font-size: 30px;">
+                                                        <i class="fas fa-building"></i>
                                                     </div>
-                                                <?php } ?>
+                                                    <div style="margin-left: 10px;">
+                                                        <div style="font-size: 17px;font-weight: 900;">
+                                                            <?= $datahdrbrg['NAMA_PENERIMA_BARANG']; ?>
+                                                        </div>
+                                                        <div style="margin-top: -5px;font-size: 10px;">
+                                                            Tujuan BC 2.7 PLB
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    <?php } ?>
+                                        <div class="col-sm-12">
+                                            <style>
+                                                .line-page-detil {
+                                                    height: 1px;
+                                                    margin: 0px 0px 5px 0px;
+                                                    background: #444e66;
+                                                }
+                                            </style>
+                                            <div class="line-page-detil"></div>
+                                        </div>
+                                        <!-- NILAI AWAL -->
+                                        <div class="col-sm-6">
+                                            <div class="card border-0 bg-dark text-white text-truncate mb-3">
+                                                <div class="card-body">
+                                                    <div class="mb-3 text-grey">
+                                                        <b class="mb-3">NILAI AWAL</b>
+                                                        <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Nilai Awal." data-original-title="" title=""></i></span>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa fa-circle text-red f-s-8 mr-2"></i>
+                                                            TOTAL CT
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-auto">
+                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $CT['p_CT']; ?>">0</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa fa-circle text-warning f-s-8 mr-2"></i>
+                                                            TOTAL BOTOL
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-auto">
+                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $BTL['p_BOTOL']; ?>">0</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa fa-circle text-lime f-s-8 mr-2"></i>
+                                                            TOTAL LITER
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-auto">
+                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $LTR['p_LITER']; ?>">0</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- NILAI AKHIR -->
+                                        <div class="col-sm-6">
+                                            <div class="card border-0 bg-dark text-white text-truncate mb-3">
+                                                <div class="card-body">
+                                                    <div class="mb-3 text-grey">
+                                                        <b class="mb-3">NILAI AKHIR</b>
+                                                        <span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="NILAI AKHIR." data-original-title="" title=""></i></span>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa fa-circle text-teal f-s-8 mr-2"></i>
+                                                            TOTAL CT
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-auto">
+                                                            <?php if ($A_CT['p_CT'] == NULL) { ?>
+                                                                <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="0">0</span></div>
+                                                            <?php } else { ?>
+                                                                <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $A_CT['p_CT']; ?>">0</span></div>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa fa-circle text-blue f-s-8 mr-2"></i>
+                                                            TOTAL BOTOL
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-auto">
+                                                            <?php if ($A_BTL['p_BOTOL'] == NULL) { ?>
+                                                                <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="0">0</span></div>
+                                                            <?php } else { ?>
+                                                                <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $A_BTL['p_BOTOL']; ?>">0</span></div>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa fa-circle text-aqua f-s-8 mr-2"></i>
+                                                            TOTAL LITER
+                                                        </div>
+                                                        <div class="d-flex align-items-center ml-auto">
+                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= floor($A_LTR['p_LITER']); ?>">0</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if ($resultPenyesuaian['total_penyesuaian'] != 0) { ?>
+                        <div class="row">
+                            <div class="col-sm-12" style="margin-bottom: 10px;">
+                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                    <div style="font-size: 30px;">
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <div style="margin-left: 10px;">
+                                        <div style="font-size: 17px;font-weight: 900;">
+                                            DATA PENYESUAIAN
+                                        </div>
+                                        <div style="margin-top: -5px;font-size: 10px;">
+                                            Gate Mandiri - Gate In
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
                                 <div class="table-responsive">
-                                    <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
+                                    <table id="C_TableDefault_L_3" class="table table-striped table-bordered table-td-valign-middle">
                                         <thead>
                                             <tr>
                                                 <th rowspan="2" width="1%">No.</th>
-                                                <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                    <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                        <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
-                                                            <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Gate In Sudah disimpan">
-                                                                <i class="fa-solid fa-check-circle"></i>
-                                                                Barang Sesuai
-                                                            </button>
-                                                        <?php } else { ?>
-                                                            <button type="button" class="btn btn-primary" id="chk_new" onclick="checkAll('chk');" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pilih Semua jika Semua Barang Sesuai">
-                                                                <i class="fa-solid fa-square-check"></i>
-                                                                Pilih Semua
-                                                            </button>
-                                                        <?php } ?>
-                                                    </div>
-                                                </th>
-                                                <th rowspan="2" class="no-sort" style="text-align: center;">
-                                                    <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
-                                                        Cek CT
-                                                    </div>
-                                                </th>
-                                                <th rowspan="2" class="no-sort" style="text-align: center;">Status</th>
-                                                <th colspan="6" style="text-align: center;">Barang</th>
-                                                <th colspan="3" style="text-align: center;">Jumlah</th>
-                                                <th rowspan="2" style="text-align: center;">CIF</th>
-                                                <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
-                                                <th rowspan="2" style="text-align: center;">NETTO</th>
-                                                <th rowspan="2" style="text-align: center;">Pos Tarif</th>
+                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Barang</th>
+                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Uraian</th>
+                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Tipe</th>
+                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Ukuran</th>
+                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Spesifikasi Barang</th>
+                                                <th colspan="4" class="text-nowrap" style="text-align: center;">Kriteria</th>
                                             </tr>
                                             <tr>
-                                                <th style="text-align: center;">Kode Barang</th>
-                                                <th style="text-align: center;">Seri Barang</th>
-                                                <th style="text-align: center;">Uraian</th>
-                                                <th style="text-align: center;">Tipe</th>
-                                                <th style="text-align: center;">Ukuran</th>
-                                                <th style="text-align: center;">Spesifikasi Barang</th>
-                                                <th style="text-align: center;">Bahan Baku</th>
-                                                <th style="text-align: center;">Kemasan</th>
-                                                <th style="text-align: center;">Satuan</th>
+                                                <th class="text-nowrap no-sort" style="text-align: center;">
+                                                    <span class="btn btn-block btn-yellow"><i class="fa fa-minus"></i> Kurang</span>
+                                                </th>
+                                                <th class="text-nowrap no-sort" style="text-align: center;">
+                                                    <span class="btn btn-block btn-lime"><i class="fa fa-plus"></i> Lebih</span>
+                                                </th>
+                                                <th class="text-nowrap no-sort" style="text-align: center;">
+                                                    <span class="btn btn-block btn-dark"><i class="fa fa-tag"></i> Pecah</span>
+                                                </th>
+                                                <th class="text-nowrap no-sort" style="text-align: center;">
+                                                    <span class="btn btn-block btn-warning"><i class="fa-solid fa-magnifying-glass-arrow-right"></i> Rusak</span>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
-                                            if ($dataTable) : $noBarang = 1;
-                                                foreach ($dataTable as $rowBarang) :
-                                                    $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
-                                                    $pcs = str_replace(".0000", "", "$jml_pcs");
-                                                    // TOTAL BOTOL
-                                                    $botol = explode('X', $rowBarang['UKURAN']);
-                                                    $t_botol = $botol[0];
-                                                    // TOTAL LITER
-                                                    $liter =  $botol[1];
-                                                    $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
-                                                    $t_liter = str_replace(',', '.', $r_liter);
+                                            $dataKriteria = $dbcon->query("SELECT btl.KODE_BARANG,brg.URAIAN,brg.TIPE,brg.URAIAN,brg.UKURAN,brg.SPESIFIKASI_LAIN,
+                                                                           btl.KURANG AS t_KURANG,
+                                                                           btl.LEBIH AS t_LEBIH,
+                                                                           btl.PECAH AS t_PECAH,
+                                                                           btl.RUSAK AS t_RUSAK
+                                                                           FROM plb_barang_ct_botol AS btl
+                                                                           LEFT OUTER JOIN plb_barang AS brg ON brg.ID=btl.ID_BARANG
+                                                                           WHERE btl.NOMOR_AJU='" . $_GET['AJU'] . "' AND POSISI='IN' ORDER BY btl.ID DESC");
+                                            if (mysqli_num_rows($dataKriteria) > 0) {
+                                                $noKriteria = 0;
+                                                while ($rowKriteria = mysqli_fetch_array($dataKriteria)) {
+                                                    $noKriteria++;
                                             ?>
-                                                    <tr class="odd gradeX">
-                                                        <td><?= $noBarang ?>. </td>
-                                                        <td style="text-align: center;">
-                                                            <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
-                                                                <span class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
-                                                                    <i class="fa-solid fa-hourglass-start"></i>
-                                                                </span>
-                                                            <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
-                                                                <span class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Data Gate In!">
-                                                                    <i class="fa-solid fa-check"></i>
-                                                                </span>
-                                                            <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
-                                                                <span class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang Di Simpan Di GB!">
-                                                                    <i class="fa-solid fa-circle-check"></i>
-                                                                </span>
-                                                            <?php } else { ?>
-                                                                <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
-                                                                    <input type="checkbox" class="form-check-input" id="chk" name="chk[<?= $noBarang - 1; ?>][ID]" value="<?= $rowBarang['ID'] ?>">
-                                                                </div>
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td style="text-align: center;">
-                                                            <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
-                                                                <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
-                                                                    <a href="gm_pemasukan_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank">
-                                                                        <div class="ct-content-success">
-                                                                            <i class="fas fa-boxes" style="font-size: 18px;"></i>
-                                                                            <br>
-                                                                            <font><?= $pcs ?> CT</font>
-                                                                        </div>
-                                                                    </a>
-                                                                <?php } else { ?>
-                                                                    <?php if ($pcs == 0) { ?>
-                                                                        <!-- No QTY -->
-                                                                        <a href="#" data-toggle="modal">
-                                                                            <div class="ct-content-danger">
-                                                                                <i class="fas fa-boxes" style="font-size: 18px;"></i>
-                                                                                <br>
-                                                                                <font><?= $pcs ?> CT</font>
-                                                                            </div>
-                                                                        </a>
-                                                                    <?php } else { ?>
-                                                                        <!-- Check -->
-                                                                        <a href="gm_pemasukan_ct.php?ID_BARANG=<?= $rowBarang['ID'] ?>&aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>" onClick="openWindowReload(this)" target="_blank">
-                                                                            <div class="ct-content">
-                                                                                <i class="fas fa-boxes" style="font-size: 18px;"></i>
-                                                                                <br>
-                                                                                <font><?= $pcs ?> CT</font>
-                                                                            </div>
-                                                                        </a>
-                                                                    <?php } ?>
-                                                                <?php } ?>
-                                                            <?php } else { ?>
-                                                                <!-- Disabled -->
-                                                                <a href="#" data-toggle="modal">
-                                                                    <div class="ct-content-secondary">
-                                                                        <i class="fas fa-boxes" style="font-size: 18px;"></i>
-                                                                        <br>
-                                                                        <font><?= $pcs ?> CT</font>
-                                                                    </div>
-                                                                </a>
-                                                            <?php } ?>
-                                                            <div style="margin-top: 5px;font-size: 9px;">
-                                                                <?php if ($rowBarang['STATUS'] != NULL) { ?>
-                                                                    <font><i class="fa-solid fa-clock-rotate-left"></i> <i>Last Update: <?= $rowBarang['TGL_CEK'] ?> </i></font>
-                                                                <?php } ?>
-                                                            </div>
-                                                        </td>
-                                                        <td style="text-align: left;">
-                                                            <div style="display: grid;font-size: 10px;width: 115px;">
-                                                                <font><i class="fa-solid fa-user-pen"></i>: Petugas</font>
-                                                                <font><i class="fa-solid fa-file-circle-check"></i>: Status</font>
-                                                            </div>
-                                                        </td>
-                                                        <td style=" text-align: center;"><?= $rowBarang['KODE_BARANG']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
-                                                        <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
-                                                        <td style="text-align: center">
-                                                            <?php if ($rowBarang['JUMLAH_BAHAN_BAKU'] == NULL) { ?>
-                                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                                </font>
-                                                            <?php } else { ?>
-                                                                <?= $rowBarang['JUMLAH_BAHAN_BAKU']; ?>
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td style="text-align: center">
-                                                            <?php if ($rowBarang['JUMLAH_KEMASAN'] == NULL) { ?>
-                                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                                </font>
-                                                            <?php } else { ?>
-                                                                <?= $rowBarang['JUMLAH_KEMASAN']; ?>
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td style="text-align: center;">
-                                                            <div style="display: flex;justify-content: space-evenly;align-items:center">
-                                                                <font><?= $rowBarang['KODE_SATUAN']; ?></font>
-                                                                <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
-                                                            </div>
-                                                        </td>
-                                                        <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
-                                                        <td style="text-align: center;">
-                                                            <div style="width: 155px;">
-                                                                <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
-                                                            </div>
-                                                        </td>
-                                                        <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
-                                                        <td style="text-align: center;">
-                                                            <div style="width: 155px;">
-                                                                <?= $rowBarang['POS_TARIF']; ?>
-                                                            </div>
-                                                        </td>
+                                                    <tr>
+                                                        <td><?= $noKriteria; ?>.</td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['KODE_BARANG']; ?></td>
+                                                        <td style="text-align: left;"><?= $rowKriteria['URAIAN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['TIPE']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['UKURAN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['SPESIFIKASI_LAIN']; ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['t_KURANG'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_KURANG]" ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['t_LEBIH'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_LEBIH]" ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['t_PECAH'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_PECAH]" ?></td>
+                                                        <td style="text-align: center;"><?= $rowKriteria['t_RUSAK'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_RUSAK]" ?></td>
                                                     </tr>
-                                                <?php
-                                                    $noBarang++;
-                                                endforeach
-                                                ?>
-                                            <?php else : ?>
+                                                <?php } ?>
+                                            <?php } else { ?>
                                                 <tr>
-                                                    <td colspan="17">
+                                                    <td colspan="10">
                                                         <center>
                                                             <div style="display: grid;">
                                                                 <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -680,14 +508,342 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
                                                         </center>
                                                     </td>
                                                 </tr>
-                                            <?php endif ?>
+                                            <?php } ?>
                                         </tbody>
+                                        <tfoot>
+                                            <?php
+                                            // KURANG
+                                            $dataTKURANG = $dbcon->query("SELECT SUM(KURANG) AS f_KURANG FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $resultTKURANG = mysqli_fetch_array($dataTKURANG);
+                                            // LEBIH
+                                            $dataTLEBIH = $dbcon->query("SELECT SUM(LEBIH) AS f_LEBIH FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $resultTLEBIH = mysqli_fetch_array($dataTLEBIH);
+                                            // PECAH
+                                            $dataTPECAH = $dbcon->query("SELECT SUM(PECAH) AS f_PECAH FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $resultTPECAH = mysqli_fetch_array($dataTPECAH);
+                                            // RUSAK
+                                            $dataTRUSAK = $dbcon->query("SELECT SUM(RUSAK) AS f_RUSAK FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $resultTRUSAK = mysqli_fetch_array($dataTRUSAK);
+                                            ?>
+                                            <tr>
+                                                <th colspan="6" style="text-align: center;">TOTAL</th>
+
+                                                <th style="text-align: center;"><?= $resultTKURANG['f_KURANG'] == NULL ? '0' : "$resultTKURANG[f_KURANG]" ?></th>
+                                                <th style="text-align: center;"><?= $resultTLEBIH['f_LEBIH'] == NULL ? '0' : "$resultTLEBIH[f_LEBIH]" ?></th>
+                                                <th style="text-align: center;"><?= $resultTPECAH['f_PECAH'] == NULL ? '0' : "$resultTPECAH[f_PECAH]" ?></th>
+                                                <th style="text-align: center;"><?= $resultTRUSAK['f_RUSAK'] == NULL ? '0' : "$resultTRUSAK[f_RUSAK]" ?></th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-sm-3">
+                                <img src="assets/img/svg/research-paper-animate.svg" alt="Data Gate In Penyusuaian Images">
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Status Gate In -->
+
+    <!-- begin row -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-info-circle"></i> [Gate Mandiri] Data Gete In</h4>
+                    <?php include "include/panel-row.php"; ?>
+                </div>
+                <div class="panel-body text-inverse">
+                    <!-- ALERT NO SWEET -->
+                    <!-- BERHASIL -->
+                    <?php if (isset($_GET['AlertSuccess'])) { ?>
+                        <div class="alert alert-success fade show m-b-10">
+                            <button class="close" data-dismiss="alert">&times;</button>
+                            <strong>Berhasil!</strong>
+                            Data Gate In berhasil disimpan!
+                        </div>
+                    <?php } ?>
+                    <!-- END BERHASIL -->
+
+                    <!-- GAGAL -->
+                    <?php if (isset($_GET['AlertFailed'])) { ?>
+                        <div class="alert alert-danger fade show m-b-10">
+                            <button class="close" data-dismiss="alert">&times;</button>
+                            <strong>Gagal!</strong>
+                            Data Gate In gagal disimpan!
+                        </div>
+                    <?php } ?>
+                    <!-- END GAGAL -->
+                    <!-- END ALERT NO SWEET -->
+
+                    <!-- Menu Tap -->
+                    <div class="tab-content rounded bg-white mb-4">
+                        <!-- IDBarang -->
+                        <div class="tab-pane fade active show" id="IDBarang">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
+                                        <div class="note note-success m-b-15">
+                                            <div class="note-icon"><i class="fa-solid fa-check-circle"></i></div>
+                                            <div class="note-content">
+                                                <h4><b>Barang disimpan!</b></h4>
+                                                <p>
+                                                    Data <b>Gate In</b> pada <b>Nomor Pengajuan BC 2.7 PLB <?= $_GET['AJU']; ?></b> berhasil disimpan kedalam sistem <b><?= $resultSetting['app_name'] ?></b>.
+                                                    <br>
+                                                    Selanjutnya, lengkapi <b>Nomor Pengajuan BC 2.7 GB</b>, <b>Tanggal Gate In</b>, <b>Nama Petugas <?= $resultSetting['company'] ?></b>, <b>Berita Acara</b> dan <b>Petugas BeaCukai</b> yang mengawasi, pada halaman <a href="gm_pemasukan.php" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Klik Disini!"><b>Gate In</b></a>.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="note note-yellow m-b-15">
+                                            <div class="note-icon"><i class="fa-solid fa-warning"></i></div>
+                                            <div class="note-content">
+                                                <h4><b>Pengecekan Barang Gate In!</b></h4>
+                                                <p>
+                                                    Silahkan lakukan pengecekan data <b>Gate In</b> pada <b>Nomor Pengajuan BC 2.7 PLB <?= $_GET['AJU']; ?></b> <b><?= $resultSetting['app_name'] ?></b>.
+                                                <ul style="margin-top: -15px;">
+                                                    <li>Klik <b>Pilih Semua</b> pada tabel jika <b>Semua Barang Sesuai</b>.</li>
+                                                    <li>Silahkan pilih dan klik button <b>CT</b> pada setiap kolom jika terdapat <b>Kriteria Botol Kurang</b>, <b>Lebih</b>, <b>Pecah</b> atau <b>Rusak</b>.</li>
+                                                </ul>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="col-sm-12">
+                                    <!-- PETUGAS -->
+                                    <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                        <div style="font-size: 30px;">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <div style="margin-left: 10px;">
+                                            <div style="font-size: 17px;font-weight: 900;">
+                                                <?php if ($resultPetugas['bm_nama_operator'] == NULL) { ?>
+                                                    <?= $_SESSION['username']; ?>
+                                                <?php } else { ?>
+                                                    <?= $resultPetugas['bm_nama_operator']; ?>
+                                                <?php } ?>
+                                            </div>
+                                            <div style="margin-top: -5px;font-size: 10px;">
+                                                Petugas <?= $resultSetting['company']; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END PETUGAS -->
+                                    <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
+                                        <!-- BUTTON SAVE ALL -->
+                                        <div id="buttonPilihAll" style="display:none;margin-top: 15px;">
+                                            <a href="#modal-User-Web-System" name="All_sesuai" class="btn btn-primary" data-toggle="modal">
+                                                <i class="fa-solid fa-square-check" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Semua Barang Gate In Sesuai"></i>
+                                                Semua Barang Sesuai
+                                            </a>
+                                        </div>
+                                        <!-- Simpan Barang -->
+                                        <div class="modal fade" id="modal-User-Web-System">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content sm">
+                                                    <form action="" method="POST">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Gate Mandiri] Data Gate In</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="alert alert-primary m-b-0">
+                                                                <h5><i class="fa fa-info-circle"></i> Anda yakin akan meyimpan data ini Status Barang Sesuai?</h5>
+                                                                <p><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penyimpanan data dengan Status <b>Semua Barang Sesuai</b>."</i></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="SimpanSemuaSesuai_" class="btn btn-primary"><i class="fa-solid fa-square-check"></i> Ya</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Simpan Barang -->
+                                        <!-- END BUTTON SAVE ALL -->
+                                    <?php } else { ?>
+                                        <div class="note note-yellow m-t-15 m-b-15">
+                                            <div class="note-icon"><i class="fa-solid fa-hourglass-start"></i></div>
+                                            <div class="note-content">
+                                                <h4><b>Selesaikan Pengecekan Kriteria!</b></h4>
+                                                <p>
+                                                    Silahkan selesaikan Pengecekan <b>Kriteria Botol Kurang</b>, <b>Lebih</b>, <b>Pecah</b> atau <b>Rusak</b> untuk menyimpan data <b>Gate In</b>.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="table-responsive">
+                                <table id="C_TableDefault" class="table table-striped table-bordered table-td-valign-middle">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2" width="1%">No.</th>
+                                            <th rowspan="2" class="no-sort" style="text-align: center;">
+                                                <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
+                                                    <?php if ($resultChecking['checking'] == $resultChecking['barang']) { ?>
+                                                        <button type="submit" id="btn-sesuai" name="PilihSemua" class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang disimpan!">
+                                                            <i class="fa-solid fa-check-circle"></i>
+                                                        </button>
+                                                    <?php } else { ?>
+                                                        <?php if ($cekbrgvalidasi['validasi_cek'] == 0) { ?>
+                                                            <button type="button" class="btn btn-primary" id="chk_new" onclick="checkAll('chk');" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Klik jika Semua Barang Sesuai">
+                                                                <i class="fa-solid fa-square-check"></i>
+                                                                Pilih Semua
+                                                            </button>
+                                                        <?php } else { ?>
+                                                            <button type="button" class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Kriteria Botol.">
+                                                                <i class="fa-solid fa-hourglass-start"></i>
+                                                            </button>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </th>
+                                            <th rowspan="2" class="no-sort" style="text-align: center;">
+                                                <div style="display: flex;justify-content: space-evenly;align-content: center;width: 130px;">
+                                                    Cek CT
+                                                </div>
+                                            </th>
+                                            <th colspan="6" style="text-align: center;">Barang</th>
+                                            <th rowspan="2" style="text-align: center;">Jumlah Satuan</th>
+                                            <th rowspan="2" style="text-align: center;">CIF</th>
+                                            <th rowspan="2" style="text-align: center;">Harga Penyerahan</th>
+                                            <th rowspan="2" style="text-align: center;">NETTO</th>
+                                            <th rowspan="2" style="text-align: center;">Pos Tarif</th>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: center;">Kode Barang</th>
+                                            <th style="text-align: center;">Seri Barang</th>
+                                            <th style="text-align: center;">Uraian</th>
+                                            <th style="text-align: center;">Tipe</th>
+                                            <th style="text-align: center;">Ukuran</th>
+                                            <th style="text-align: center;">Spesifikasi Barang</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $dataTable = $dbcon->query("SELECT * FROM plb_barang WHERE NOMOR_AJU='" . $_GET['AJU'] . "' ORDER BY ID ASC", 0);
+                                        if ($dataTable) : $noBarang = 1;
+                                            foreach ($dataTable as $rowBarang) :
+                                                $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
+                                                $pcs = str_replace(".0000", "", "$jml_pcs");
+                                                // TOTAL BOTOL
+                                                $botol = explode('X', $rowBarang['UKURAN']);
+                                                $t_botol = $botol[0];
+                                                // TOTAL LITER
+                                                $liter =  $botol[1];
+                                                $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+                                                $t_liter = str_replace(',', '.', $r_liter);
+                                        ?>
+                                                <tr class="odd gradeX">
+                                                    <td><?= $noBarang ?>. </td>
+                                                    <td style="text-align: center;">
+                                                        <?php if ($rowBarang['CHECKING'] == 'Checking Botol') { ?>
+                                                            <span class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Kriteria Botol -> Klik kolom Cek CT.">
+                                                                <i class="fa-solid fa-hourglass-start"></i>
+                                                            </span>
+                                                        <?php } else if ($rowBarang['CHECKING'] == 'Botol') { ?>
+                                                            <span class="btn btn-yellow" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Sedang melakukan Pengecekan Kriteria Botol -> Klik kolom Cek CT.">
+                                                                <i class="fa-solid fa-check"></i>
+                                                            </span>
+                                                        <?php } else if ($rowBarang['CHECKING'] == 'DONE') { ?>
+                                                            <span class="btn btn-success" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Barang disimpan!">
+                                                                <i class="fa-solid fa-circle-check"></i>
+                                                            </span>
+                                                        <?php } else { ?>
+                                                            <div style="margin-left: 25px;margin-bottom: 15px;margin-top: 15px;">
+                                                                <input type="checkbox" class="form-check-input" id="chk" name="chk[<?= $noBarang - 1; ?>][ID]" value="<?= $rowBarang['ID'] ?>">
+                                                            </div>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td style="text-align: center;">
+                                                        <?php if ($rowBarang['KODE_BARANG'] != NULL) { ?>
+                                                            <?php if ($rowBarang['CHECKING'] == 'DONE') { ?>
+                                                                <a href="gm_pemasukan_ct_detail.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>" target="_blank" class="btn btn-block btn-success">
+                                                                    <i class="fas fa-boxes" style="font-size: 14px;"></i>
+                                                                    <font><?= $pcs ?> CT</font>
+                                                                </a>
+                                                            <?php } else { ?>
+                                                                <?php if ($pcs == 0) { ?>
+                                                                    <!-- No QTY -->
+                                                                    <a href="#" data-toggle="modal" class="btn btn-block btn-danger">
+                                                                        <i class="fas fa-boxes" style="font-size: 14px;"></i>
+                                                                        <font><?= $pcs ?> CT</font>
+                                                                    </a>
+                                                                <?php } else { ?>
+                                                                    <!-- Check -->
+                                                                    <a href="gm_pemasukan_ct.php?ID=<?= $rowBarang['ID'] ?>&AJU=<?= $_GET['AJU'] ?>&aksi=SubmitCT&Alert=CekBarangMasuk" onClick="openWindowReload(this)" target="_blank" class="btn btn-block btn-yellow">
+                                                                        <i class="fas fa-boxes" style="font-size: 14px;"></i>
+                                                                        <font><?= $pcs ?> CT</font>
+                                                                    </a>
+                                                                <?php } ?>
+                                                            <?php } ?>
+                                                        <?php } else { ?>
+                                                            <!-- Disabled -->
+                                                            <a href="#" data-toggle="modal">
+                                                                <div class="ct-content-secondary">
+                                                                    <i class="fas fa-boxes" style="font-size: 14px;"></i>
+                                                                    <br>
+                                                                    <font><?= $pcs ?> CT</font>
+                                                                </div>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <div style="margin-top: 5px;font-size: 9px;">
+                                                            <?php if ($rowBarang['STATUS'] != NULL) { ?>
+                                                                <font><i class="fa-solid fa-clock"></i> <i>Time: <?= $rowBarang['TGL_CEK'] ?> </i></font>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </td>
+                                                    <td style="text-align: center;"><?= $rowBarang['KODE_BARANG']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['SERI_BARANG']; ?></td>
+                                                    <td style="text-align: left;"><?= $rowBarang['URAIAN']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['TIPE']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['UKURAN']; ?></td>
+                                                    <td style="text-align: center;"><?= $rowBarang['SPESIFIKASI_LAIN']; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <div style="display: flex;justify-content: space-evenly;align-items:center">
+                                                            <font><?= $rowBarang['KODE_SATUAN']; ?></font>
+                                                            <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
+                                                        </div>
+                                                    </td>
+                                                    <td style="text-align: center;"><?= $rowBarang['CIF']; ?></td>
+                                                    <td style="text-align: left;">
+                                                        <?= Rupiah($rowBarang['HARGA_PENYERAHAN']); ?>
+                                                    </td>
+                                                    <td style="text-align: center;"><?= $rowBarang['NETTO']; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <?= $rowBarang['POS_TARIF']; ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $noBarang++;
+                                            endforeach
+                                            ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="14">
+                                                    <center>
+                                                        <div style="display: grid;">
+                                                            <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                                        </div>
+                                                    </center>
+                                                </td>
+                                            </tr>
+                                        <?php endif ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <!-- End IDBarang -->
                     </div>
+                    <!-- Menu Tap -->
                 </div>
             </div>
         </div>
@@ -696,19 +852,6 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
     <?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
-<script>
-    // CEK BARANG
-    $("#btn-all").click(function() {
-        // $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCT&AJU=<?= $_GET['AJU'] ?>`)
-        $("#form-submit").attr('action', `gm_pemasukan_proses.php?aksi=SubmitCTT&AJU=<?= $_GET['AJU'] ?>`)
-        var confirm = window.confirm("Klik OK jika Semua Barang Sesuai!");
-
-        if (confirm)
-            $("#form-submit").submit();
-        else
-            return false;
-    });
-</script>
 <?php include "include/pusat_bantuan.php"; ?>
 <?php include "include/riwayat_aktifitas.php"; ?>
 <?php include "include/panel.php"; ?>
@@ -716,40 +859,6 @@ $A_LTR                  = mysqli_fetch_array($content_A_LTR);
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/jsForm.php"; ?>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#TableData').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
-            ],
-            "order": [],
-            "columnDefs": [{
-                "targets": 'no-sort',
-                "orderable": false,
-            }],
-            iDisplayLength: -1
-        });
-    });
-
-    // SAVED SUCCESS
-    if (window?.location?.href?.indexOf('SaveSuccess') > -1) {
-        Swal.fire({
-            title: 'Data berhasil disimpan!',
-            icon: 'success',
-            text: 'Data berhasil disimpan didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './gm_pemasukan_detail.php?AJU=<?= $DATAAJU ?>');
-    }
-    if (window?.location?.href?.indexOf('SaveFailed') > -1) {
-        Swal.fire({
-            title: 'Data gagal disimpan!',
-            icon: 'error',
-            text: 'Data gagal disimpan didalam <?= $alertAppName ?>!'
-        })
-        history.replaceState({}, '', './gm_pemasukan_detail.php');
-    }
-</script>
-<script>
     function openWindowReload(link) {
         var href = link.href;
         window.open(href, '_blank');

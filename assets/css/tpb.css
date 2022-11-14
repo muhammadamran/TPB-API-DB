@@ -111,7 +111,7 @@
 
 .line-page-table {
     height: 1.5px;
-    margin: 0px 0px 15px 0px;
+    margin: 0px 0px 0px 0px;
     background: #1d2226;
 }
 
@@ -729,4 +729,112 @@ section {
     .f-action {
         display: none;
     }
+}
+
+.btn-custom {
+    font-size: 10px;
+    padding: 5px;
+}
+
+.sm {
+    max-width: 471pxpx;
+    margin: 16.75rem auto;
+    width: 375px;
+}
+
+.line-page-cek {
+    height: 0.5px;
+    margin: 6px 866px 23px 0px;
+    background: #444e66;
+}
+
+.detail-barang-ct {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-ct {
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    border: 2px solid #2d353c !important;
+    text-transform: uppercase;
+    width: 260px;
+}
+
+.total-ct-ak {
+    background: #30373e;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff !important;
+    border: 2px solid #30373e !important;
+    text-transform: uppercase;
+    width: 260px;
+}
+
+.ct-content {
+    background: #f59c1a;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.ct-content:hover {
+    background: #f59c1a;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+    text-shadow: 3px 1px 5px black;
+}
+
+.ct-content-success {
+    background: #00acac;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.ct-content-success:hover {
+    background: #00acac;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+    text-shadow: 3px 1px 5px black;
+}
+
+.ct-danger {
+    background: #ff5b57;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.ct-danger:hover {
+    background: #ff5b57;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+    text-shadow: 3px 1px 5px black;
+}
+
+.ct-secondary {
+    background: #6c757d;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.ct-secondary:hover {
+    background: #6c757d;
+    color: #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 5px;
+    text-shadow: 3px 1px 5px black;
 }

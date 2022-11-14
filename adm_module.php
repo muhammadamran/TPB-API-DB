@@ -467,8 +467,7 @@ if (isset($_POST["NDeleteData"])) {
                                             </center>
                                         </td>
                                     </tr>
-                                <?php }
-                                mysqli_close($dbcon); ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
