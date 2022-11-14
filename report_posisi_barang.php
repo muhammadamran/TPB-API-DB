@@ -495,8 +495,10 @@ if (isset($_POST['filter_date'])) {
                                                                         </div>
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                </object>
+                                                                                <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
+                                                                                    <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                    </object>
+                                                                                <?php } ?>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -538,8 +540,10 @@ if (isset($_POST['filter_date'])) {
                                                                         </div>
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <embed src="files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
-                                                                                </object>
+                                                                                <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
+                                                                                    <embed src="files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
+                                                                                    </object>
+                                                                                <?php } ?>
                                                                             </div>
                                                                         </div>
                                                                     </div>
