@@ -31784,6 +31784,7 @@ a:focus {
 .table thead tr th {
 	font-weight: 600;
 	border-bottom: 1px solid #b8c1ca;
+	background: #dadddf;
 }
 
 .table tbody tr td.with-btn,.table tbody tr td.with-btn-group,.table tbody tr td.with-checkbox,.table tbody tr td.with-form-control,.table tbody tr td.with-img,.table tbody tr td.with-input-group,.table tbody tr td.with-radio,.table tbody tr th.with-btn,.table tbody tr th.with-btn-group,.table tbody tr th.with-checkbox,.table tbody tr th.with-form-control,.table tbody tr th.with-img,.table tbody tr th.with-input-group,.table tbody tr th.with-radio,.table tfoot tr td.with-btn,.table tfoot tr td.with-btn-group,.table tfoot tr td.with-checkbox,.table tfoot tr td.with-form-control,.table tfoot tr td.with-img,.table tfoot tr td.with-input-group,.table tfoot tr td.with-radio,.table tfoot tr th.with-btn,.table tfoot tr th.with-btn-group,.table tfoot tr th.with-checkbox,.table tfoot tr th.with-form-control,.table tfoot tr th.with-img,.table tfoot tr th.with-input-group,.table tfoot tr th.with-radio,.table thead tr td.with-btn,.table thead tr td.with-btn-group,.table thead tr td.with-checkbox,.table thead tr td.with-form-control,.table thead tr td.with-img,.table thead tr td.with-input-group,.table thead tr td.with-radio,.table thead tr th.with-btn,.table thead tr th.with-btn-group,.table thead tr th.with-checkbox,.table thead tr th.with-form-control,.table thead tr th.with-img,.table thead tr th.with-input-group,.table thead tr th.with-radio {
@@ -34533,6 +34534,8 @@ body table.dataTable thead tr th.sorting:after,body table.dataTable thead tr th.
 	font-style: normal;
 	font-variant: normal;
 	text-rendering: auto;
+	right: 5px;
+    color: #0000007a;
 }
 
 body table.dataTable thead tr th.sorting:after {
@@ -34735,8 +34738,10 @@ body .DTFC_ScrollWrapper .DTFC_LeftWrapper .dataTable,body .DTFC_ScrollWrapper .
 }
 
 .dataTables_wrapper.dt-bootstrap .dataTables_paginate .pagination .paginate_button.active a,.dataTables_wrapper.dt-bootstrap4 .dataTables_paginate .pagination .paginate_button.active a {
-	border-color: #348fe2;
-	background: #348fe2;
+	/* border-color: #348fe2; */
+	/* background: #348fe2; */
+	border-color: #6c757d;
+    background: #6c757d;
 	color: #fff;
 }
 

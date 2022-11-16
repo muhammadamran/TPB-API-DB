@@ -42,6 +42,11 @@ $access = mysqli_fetch_array($role);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+    </div>
+    <!-- end navbar-header -->
+    <!-- begin header-nav -->
+    <ul class="navbar-nav navbar-right">
+        <!-- BUTTON -->
         <div class="for-header">
             <div>
                 <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Riwayat Aktifitas"><i class="far fa-clock"></i></button>
@@ -64,14 +69,10 @@ $access = mysqli_fetch_array($role);
                 <a href="http://api.itinventory-sarinah.com:8091/" target="_blank" class="btn btn-dark-custom" style="width: 63px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="API"><i class="fas fa-code"></i> API</a>
             </div>
         </div>
-    </div>
-    <!-- end navbar-header -->
-    <!-- begin header-nav -->
-    <ul class="navbar-nav navbar-right">
+        <!-- END BUTTON -->
         <li class="navbar-form" id="nav-clock" style="margin-right: -20px;">
             <i class="fas fa-circle blink_me" style="color: #32a932;"></i> Online
         </li>
-
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php if ($access['foto'] == NULL || $access['foto'] == 'default-user-images.jpeg') { ?>

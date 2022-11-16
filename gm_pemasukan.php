@@ -283,17 +283,16 @@ if (isset($_POST['show_all'])) {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="3" class="text-nowrap" style="text-align: center;">BC 2.7 PLB</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Total Barang</th>
-                                    <th rowspan="2" class="text-nowrap" style="text-align: center;">Asal</th>
+                                    <th colspan="2" class="text-nowrap" style="text-align: center;">BC 2.7 PLB</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Asal</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Tujuan</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Kode Negara</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Status</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Aksi</th>
                                 </tr>
                                 <tr>
                                     <!-- Nomor Pengajuan PLB -->
-                                    <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
-                                    <th class="text-nowrap" style="text-align: center;">Tanggal</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
                                 </tr>
                             </thead>
@@ -360,7 +359,8 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
+                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
@@ -374,27 +374,29 @@ if (isset($_POST['show_all'])) {
                                         <tr>
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: left">
-                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NOMOR_AJU']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <?php
-                                            $dataTGLAJU = $row['TGL_AJU'];
-                                            $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
-                                            $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
-                                            $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+                                                <?php
+                                                $dataTGLAJU = $row['TGL_AJU'];
+                                                $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                                                $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                                                $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
 
-                                            $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
-                                            ?>
-                                            <td style="text-align: center;">
-                                                <div style="width: 85px;">
-                                                    <i class="fas fa-calendar-alt"></i> <?= $datTGLAJU ?>
+                                                $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                                                ?>
+                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                    <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Nomor Pengajuan & Tanggal Pengajuan">
+                                                        <i class="fas fa-file-invoice"></i>
+                                                    </div>
+                                                    <div style="display: grid;margin-left:5px">
+                                                        <div>
+                                                            <?= $row['NOMOR_AJU']; ?>
+                                                        </div>
+                                                        <div style="margin-top: -5px;">
+                                                            <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= date_indo_s($datTGLAJU, TRUE) ?></font>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: left">
                                                 <?php if ($row['ck5_plb_submit'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                     </font>
@@ -404,31 +406,25 @@ if (isset($_POST['show_all'])) {
                                                     $tgl = substr($alldate, 0, 10);
                                                     $time = substr($alldate, 10, 20);
                                                     ?>
-                                                    <div style="display: flex;justify-content: center;">
-                                                        <font>
-                                                            <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?>
-                                                            <a href="#MUploadDate<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
-                                                        </font>
-                                                    </div>
+                                                    <?= date_indo_s($tgl, TRUE) ?> - <?= $time ?>
+                                                    <a href="#MUploadDate<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Edit Tanggal Upload"></i></a>
                                                 <?php } ?>
                                             </td>
                                             <!-- Total Barang PLB -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['JUMLAH_BARANG'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['JUMLAH_BARANG']; ?> Barang
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['PERUSAHAAN']; ?>
-                                                <?php } ?>
+                                            <td style="text-align: left;">
+                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                    <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Asal & Jumlah Barang">
+                                                        <i class="fas fa-warehouse"></i>
+                                                    </div>
+                                                    <div style="display: grid;margin-left:5px">
+                                                        <div>
+                                                            <?= $row['PERUSAHAAN']; ?>
+                                                        </div>
+                                                        <div style="margin-top: -5px;">
+                                                            <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= $row['JUMLAH_BARANG']; ?> Barang</font>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td style="text-align: left">
                                                 <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
@@ -451,86 +447,99 @@ if (isset($_POST['show_all'])) {
                                                     </a>
                                                 <?php } else { ?>
                                                     <?= $row['KODE_NEGARA_PEMASOK']; ?>
-                                                    <a href="#MUKodeNegara<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
+                                                    <a href="#MUKodeNegara<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tambah/Edit Kode Negara"></i></a>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['STATUS'] == $row['JUMLAH_BARANG']) { ?>
+                                                    <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
+                                                        <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input Pengajuan GB
+                                                    <?php } else if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                        <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara <?= $row['PERUSAHAAN'] ?>"></span> Upload Berita Acara
+                                                    <?php } else { ?>
+                                                        <span class="badge-dot badge-complete mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Complete"></span> Complete
+                                                    <?php } ?>
+                                                <?php } else if ($row['STATUS'] > 0) { ?>
+                                                    <span class="badge-dot badge-on-progress mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Proses Pengecekan <?= $row['PERUSAHAAN']; ?>, Sisa Barang <?= $row['JUMLAH_BARANG'] - $row['STATUS']; ?>"></span> On Process
+                                                <?php } else if ($row['STATUS'] == NULL) { ?>
+                                                    <span class="badge-dot badge-need-checking mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Cek Barang Masuk <?= $row['PERUSAHAAN']; ?>, Jumlah Barang <?= $row['JUMLAH_BARANG']; ?>"></span> Check
                                                 <?php } ?>
                                             </td>
                                             <!-- Aksi -->
-                                            <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: center;align-items: center;margin-left: 5px">
-                                                    <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
-                                                        <!-- Cek Done -->
-                                                        <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-success">
-                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Gate In Selesai, Klik jika ingin melihat Detil">
-                                                                <div style="display: grid;">
+                                            <td style="text-align: left;">
+                                                <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
+                                                    <!-- Cek Done -->
+                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-sm btn-success">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Gate In Selesai, Klik jika ingin melihat Detil">
+                                                            <div style="display: grid;">
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                        </font>
+                                                    </a>
+                                                    <!-- End Cek Done -->
+                                                    <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
+                                                        <!-- Add -->
+                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-sm btn-primary" data-toggle="modal">
+                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Data Gate In">
+                                                                <div>
                                                                     <div style="font-size: 12px;">
-                                                                        <i class="fas fa-check-circle"></i>
+                                                                        <i class="fas fa-plus-circle"></i>
                                                                     </div>
                                                                 </div>
                                                             </font>
                                                         </a>
-                                                        <!-- End Cek Done -->
-                                                        <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
-                                                            <!-- Add -->
-                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal" style="margin-left: 5px">
-                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Data Gate In">
+                                                        <!-- End Add -->
+                                                    <?php } else { ?>
+                                                        <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                            <!-- Edit -->
+                                                            <a href="#edit<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal">
+                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Data Gate In">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
-                                                                            <i class="fas fa-plus-circle"></i>
+                                                                            <i class="fas fa-edit"></i>
                                                                         </div>
                                                                     </div>
                                                                 </font>
                                                             </a>
-                                                            <!-- End Add -->
-                                                        <?php } else { ?>
-                                                            <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                                <!-- Edit -->
-                                                                <a href="#edit<?= $row['ID'] ?>" class="btn btn-info" data-toggle="modal" style="margin-left: 5px">
-                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Data Gate In">
-                                                                        <div>
-                                                                            <div style="font-size: 12px;">
-                                                                                <i class="fas fa-edit"></i>
-                                                                            </div>
+                                                            <!-- End Edit -->
+                                                            <!-- Upload -->
+                                                            <a href="#upload<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal">
+                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Upload Berita Acara Gate In">
+                                                                    <div>
+                                                                        <div style="font-size: 12px;">
+                                                                            <i class="fas fa-upload"></i>
                                                                         </div>
-                                                                    </font>
-                                                                </a>
-                                                                <!-- End Edit -->
-                                                                <!-- Upload -->
-                                                                <a href="#upload<?= $row['ID'] ?>" class="btn btn-warning" data-toggle="modal" style="margin-left: 5px">
-                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Upload Berita Acara Gate In">
-                                                                        <div>
-                                                                            <div style="font-size: 12px;">
-                                                                                <i class="fas fa-upload"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </font>
-                                                                </a>
-                                                                <!-- End Upload -->
-                                                            <?php } else { ?>
-                                                                <!-- Detail -->
-                                                                <a href="#detail<?= $row['ID'] ?>" class="btn btn-dark" data-toggle="modal" style="margin-left: 5px">
-                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Detail Data Gate In">
-                                                                        <div>
-                                                                            <div style="font-size: 12px;">
-                                                                                <i class="fas fa-eye"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </font>
-                                                                </a>
-                                                                <!-- End Detail -->
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    <?php } else { ?>
-                                                        <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-yellow" style="margin-left: 5px">
-                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lakukan Pengecekan Barang Gate In">
-                                                                <div>
-                                                                    <div style="font-size: 12px;">
-                                                                        <i class="fas fa-warning"></i>
                                                                     </div>
-                                                                </div>
-                                                            </font>
-                                                        </a>
+                                                                </font>
+                                                            </a>
+                                                            <!-- End Upload -->
+                                                        <?php } else { ?>
+                                                            <!-- Detail -->
+                                                            <a href="#detail<?= $row['ID'] ?>" class="btn btn-sm btn-success" data-toggle="modal">
+                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Detail Data Gate In">
+                                                                    <div>
+                                                                        <div style="font-size: 12px;">
+                                                                            <i class="fas fa-file-invoice"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </font>
+                                                            </a>
+                                                            <!-- End Detail -->
+                                                        <?php } ?>
                                                     <?php } ?>
-                                                </div>
+                                                <?php } else { ?>
+                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-sm btn-yellow">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lakukan Pengecekan Barang Gate In">
+                                                            <div>
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-warning"></i>
+                                                                </div>
+                                                            </div>
+                                                        </font>
+                                                    </a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
 

@@ -72,6 +72,11 @@ if (isset($_POST['show_all'])) {
     <title>Gate Out - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
+<style>
+    th {
+        text-transform: uppercase;
+    }
+</style>
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="page-title-css">
@@ -365,7 +370,7 @@ if (isset($_POST['show_all'])) {
                                                     $tgl = substr($alldate, 0, 10);
                                                     $time = substr($alldate, 10, 20);
                                                     ?>
-                                                    <div style="display: flex;justify-content: center;">
+                                                    <div style="display: flex;justify-content: center;width:200px">
                                                         <font>
                                                             <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?>
                                                         </font>
@@ -382,20 +387,24 @@ if (isset($_POST['show_all'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left">
-                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['PERUSAHAAN']; ?>
-                                                <?php } ?>
+                                                <div style="width:200px">
+                                                    <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['PERUSAHAAN']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: left">
-                                                <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NAMA_PENERIMA_BARANG']; ?>
-                                                <?php } ?>
+                                                <div style="width:200px">
+                                                    <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['NAMA_PENERIMA_BARANG']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: center">
                                                 <?= $row['KODE_NEGARA_PEMASOK']; ?>
@@ -426,16 +435,20 @@ if (isset($_POST['show_all'])) {
                                                 <?= $row['JUMLAH_BARANG_GB']; ?>
                                             </td>
                                             <td style="text-align: left">
-                                                <?= $row['NAMA_PENGUSAHA']; ?>
+                                                <div style="width:150px">
+                                                    <?= $row['NAMA_PENGUSAHA']; ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: left">
-                                                <?= $row['NAMA_PENERIMA_BARANG_GB']; ?>
+                                                <div style="width:150px">
+                                                    <?= $row['NAMA_PENERIMA_BARANG_GB']; ?>
+                                                </div>
                                             </td>
-                                            <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: center;align-items: center;margin-left: 5px">
+                                            <td style="text-align: left;">
+                                                <div style="width:150px">
                                                     <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
                                                         <!-- Cek Done -->
-                                                        <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-success">
+                                                        <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb'] ?>" class="btn btn-sm btn-success">
                                                             <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Gate Out Selesai, Klik jika ingin melihat Detil">
                                                                 <div style="display: grid;">
                                                                     <div style="font-size: 12px;">
@@ -447,7 +460,7 @@ if (isset($_POST['show_all'])) {
                                                         <!-- End Cek Done -->
                                                         <?php if ($row['bk_no_aju_sarinah'] == NULL) { ?>
                                                             <!-- Add -->
-                                                            <a href="#add<?= $row['IDH'] ?>" class="btn btn-primary" data-toggle="modal" style="margin-left: 5px">
+                                                            <a href="#add<?= $row['IDH'] ?>" class="btn btn-sm btn-primary" data-toggle="modal">
                                                                 <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Data Gate Out">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
@@ -460,7 +473,7 @@ if (isset($_POST['show_all'])) {
                                                         <?php } else { ?>
                                                             <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
                                                                 <!-- Edit -->
-                                                                <a href="#edit<?= $row['IDH'] ?>" class="btn btn-info" data-toggle="modal" style="margin-left: 5px">
+                                                                <a href="#edit<?= $row['IDH'] ?>" class="btn btn-sm btn-info" data-toggle="modal">
                                                                     <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Data Gate Out">
                                                                         <div>
                                                                             <div style="font-size: 12px;">
@@ -471,7 +484,7 @@ if (isset($_POST['show_all'])) {
                                                                 </a>
                                                                 <!-- End Edit -->
                                                                 <!-- Upload -->
-                                                                <a href="#upload<?= $row['IDH'] ?>" class="btn btn-warning" data-toggle="modal" style="margin-left: 5px">
+                                                                <a href="#upload<?= $row['IDH'] ?>" class="btn btn-sm btn-warning" data-toggle="modal">
                                                                     <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Upload Berita Acara Gate Out">
                                                                         <div>
                                                                             <div style="font-size: 12px;">
@@ -483,7 +496,7 @@ if (isset($_POST['show_all'])) {
                                                                 <!-- End Upload -->
                                                             <?php } else { ?>
                                                                 <!-- Detail -->
-                                                                <a href="#detail<?= $row['IDH'] ?>" class="btn btn-dark" data-toggle="modal" style="margin-left: 5px">
+                                                                <a href="#detail<?= $row['IDH'] ?>" class="btn btn-sm btn-dark" data-toggle="modal">
                                                                     <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Detail Data Gate Out">
                                                                         <div>
                                                                             <div style="font-size: 12px;">
@@ -496,7 +509,7 @@ if (isset($_POST['show_all'])) {
                                                             <?php } ?>
                                                         <?php } ?>
                                                     <?php } else { ?>
-                                                        <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb']; ?>" class="btn btn-yellow" style="margin-left: 5px">
+                                                        <a href="gm_pengeluaran_detail.php?AJU=<?= $row['bm_no_aju_plb']; ?>" class="btn btn-sm btn-yellow">
                                                             <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lakukan Pengecekan Barang Gate Out">
                                                                 <div>
                                                                     <div style="font-size: 12px;">

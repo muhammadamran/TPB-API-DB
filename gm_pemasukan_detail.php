@@ -207,6 +207,34 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
 </style>
 <!-- begin #content -->
 <div id="content" class="content">
+    <div class="header-page">
+        <div class="row">
+            <div class="col-sm-8">
+                <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+            </div>
+            <div class="col-sm-4">
+                <form action="" method="GET">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <select name="bk_aju" class="default-select2 form-control" required>
+                                <option value="<?= $_GET['AJU']; ?>"><?= $_GET['AJU']; ?></option>
+                                <option value="">-- Nomor Pengajuan GB --</option>
+                                <?php
+                                $resultMitra = $dbcon->query("SELECT NOMOR_AJU FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
+                                foreach ($resultMitra as $RowMitra) {
+                                ?>
+                                    <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="gm_pemasukan.php" class="btn btn-info"><i class="fas fa-search"></i> Cari</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
@@ -229,13 +257,20 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
     </div>
     <div class="line-page"></div>
     <!-- BACK -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-xl-12">
-            <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
-                <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+            <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- END BACK -->
 
     <!-- Status Gate In -->
@@ -448,12 +483,12 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                         <thead>
                                             <tr>
                                                 <th rowspan="2" width="1%">No.</th>
-                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Barang</th>
-                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Uraian</th>
-                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Tipe</th>
-                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Ukuran</th>
-                                                <th rowspan="2" class="text-nowrap" style="text-align: center;">Spesifikasi Barang</th>
-                                                <th colspan="4" class="text-nowrap" style="text-align: center;">Kriteria</th>
+                                                <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Barang</th>
+                                                <!-- <th rowspan="2" class="text-nowrap" style="text-align: center;">Uraian</th> -->
+                                                <!-- <th rowspan="2" class="text-nowrap" style="text-align: center;">Tipe</th> -->
+                                                <!-- <th rowspan="2" class="text-nowrap" style="text-align: center;">Ukuran</th> -->
+                                                <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Uraian</th>
+                                                <th colspan="4" class="text-nowrap no-sort" style="text-align: center;">Kriteria</th>
                                             </tr>
                                             <tr>
                                                 <th class="text-nowrap no-sort" style="text-align: center;">
@@ -487,11 +522,36 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                             ?>
                                                     <tr>
                                                         <td><?= $noKriteria; ?>.</td>
-                                                        <td style="text-align: center;"><?= $rowKriteria['KODE_BARANG']; ?></td>
-                                                        <td style="text-align: left;"><?= $rowKriteria['URAIAN']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowKriteria['TIPE']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowKriteria['UKURAN']; ?></td>
-                                                        <td style="text-align: center;"><?= $rowKriteria['SPESIFIKASI_LAIN']; ?></td>
+                                                        <td style="text-align: left;">
+                                                            <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                                <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Kode Barang, Tipe & Spesifikasi Lain">
+                                                                    <i class="fas fa-file-invoice"></i>
+                                                                </div>
+                                                                <div style="display: grid;margin-left:5px">
+                                                                    <div>
+                                                                        <?= $rowKriteria['KODE_BARANG']; ?>
+                                                                    </div>
+                                                                    <div style="margin-top: -5px;">
+                                                                        <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= $rowKriteria['SPESIFIKASI_LAIN']; ?> - <?= $rowKriteria['TIPE']; ?></font>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                                <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Uraian & Ukuran">
+                                                                    <i class="fas fa-file-invoice"></i>
+                                                                </div>
+                                                                <div style="display: grid;margin-left:5px">
+                                                                    <div>
+                                                                        <?= $rowKriteria['URAIAN']; ?>
+                                                                    </div>
+                                                                    <div style="margin-top: -5px;">
+                                                                        <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= $rowKriteria['UKURAN']; ?></font>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
                                                         <td style="text-align: center;"><?= $rowKriteria['t_KURANG'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_KURANG]" ?></td>
                                                         <td style="text-align: center;"><?= $rowKriteria['t_LEBIH'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_LEBIH]" ?></td>
                                                         <td style="text-align: center;"><?= $rowKriteria['t_PECAH'] == NULL ? "<font style='background:#000;width:100px'>Not Found</font>" : "$rowKriteria[t_PECAH]" ?></td>
@@ -500,7 +560,7 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <tr>
-                                                    <td colspan="10">
+                                                    <td colspan="7">
                                                         <center>
                                                             <div style="display: grid;">
                                                                 <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -513,21 +573,20 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                         <tfoot>
                                             <?php
                                             // KURANG
-                                            $dataTKURANG = $dbcon->query("SELECT SUM(KURANG) AS f_KURANG FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $dataTKURANG = $dbcon->query("SELECT SUM(KURANG) AS f_KURANG FROM plb_barang_ct_botol WHERE POSISI='IN' AND NOMOR_AJU='" . $_GET['AJU'] . "'");
                                             $resultTKURANG = mysqli_fetch_array($dataTKURANG);
                                             // LEBIH
-                                            $dataTLEBIH = $dbcon->query("SELECT SUM(LEBIH) AS f_LEBIH FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $dataTLEBIH = $dbcon->query("SELECT SUM(LEBIH) AS f_LEBIH FROM plb_barang_ct_botol WHERE POSISI='IN' AND NOMOR_AJU='" . $_GET['AJU'] . "'");
                                             $resultTLEBIH = mysqli_fetch_array($dataTLEBIH);
                                             // PECAH
-                                            $dataTPECAH = $dbcon->query("SELECT SUM(PECAH) AS f_PECAH FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $dataTPECAH = $dbcon->query("SELECT SUM(PECAH) AS f_PECAH FROM plb_barang_ct_botol WHERE POSISI='IN' AND NOMOR_AJU='" . $_GET['AJU'] . "'");
                                             $resultTPECAH = mysqli_fetch_array($dataTPECAH);
                                             // RUSAK
-                                            $dataTRUSAK = $dbcon->query("SELECT SUM(RUSAK) AS f_RUSAK FROM plb_barang_ct_botol WHERE POSISI='IN' NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                            $dataTRUSAK = $dbcon->query("SELECT SUM(RUSAK) AS f_RUSAK FROM plb_barang_ct_botol WHERE POSISI='IN' AND NOMOR_AJU='" . $_GET['AJU'] . "'");
                                             $resultTRUSAK = mysqli_fetch_array($dataTRUSAK);
                                             ?>
                                             <tr>
-                                                <th colspan="6" style="text-align: center;">TOTAL</th>
-
+                                                <th colspan="3" style="text-align: center;">TOTAL</th>
                                                 <th style="text-align: center;"><?= $resultTKURANG['f_KURANG'] == NULL ? '0' : "$resultTKURANG[f_KURANG]" ?></th>
                                                 <th style="text-align: center;"><?= $resultTLEBIH['f_LEBIH'] == NULL ? '0' : "$resultTLEBIH[f_LEBIH]" ?></th>
                                                 <th style="text-align: center;"><?= $resultTPECAH['f_PECAH'] == NULL ? '0' : "$resultTPECAH[f_PECAH]" ?></th>

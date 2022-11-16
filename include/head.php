@@ -100,6 +100,44 @@ function date_indo($date, $print_day = false)
     return $tgl_indo;
 }
 
+// DATE SPLIT
+function date_indo_s($date, $print_day = false)
+{
+    $day = array(
+        1 =>
+        'Sen',
+        'Sel',
+        'Rab',
+        'Kam',
+        'Jum',
+        'Sab',
+        'Min'
+    );
+    $month = array(
+        1 =>
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'Mei',
+        'Jun',
+        'Jul',
+        'Agu',
+        'Sep',
+        'Okt',
+        'Nov',
+        'Des'
+    );
+    $split    = explode('-', $date);
+    $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
+
+    if ($print_day) {
+        $num = date('N', strtotime($date));
+        return $day[$num] . ', ' . $tgl_indo;
+    }
+    return $tgl_indo;
+}
+
 // RUPIAH
 function Rupiah($angka)
 {
