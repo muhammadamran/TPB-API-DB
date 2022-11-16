@@ -453,16 +453,16 @@ if (isset($_POST['show_all'])) {
                                             <td style="text-align: center">
                                                 <?php if ($row['STATUS'] == $row['JUMLAH_BARANG']) { ?>
                                                     <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
-                                                        <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input Pengajuan GB
+                                                        <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB -> <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input Pengajuan GB
                                                     <?php } else if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                        <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara <?= $row['PERUSAHAAN'] ?>"></span> Upload Berita Acara
+                                                        <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara -> <?= $row['PERUSAHAAN'] ?>"></span> Upload Berita Acara
                                                     <?php } else { ?>
                                                         <span class="badge-dot badge-complete mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Complete"></span> Complete
                                                     <?php } ?>
                                                 <?php } else if ($row['STATUS'] > 0) { ?>
-                                                    <span class="badge-dot badge-on-progress mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Proses Pengecekan <?= $row['PERUSAHAAN']; ?>, Sisa Barang <?= $row['JUMLAH_BARANG'] - $row['STATUS']; ?>"></span> On Process
+                                                    <span class="badge-dot badge-on-progress mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Proses Pengecekan Barang -> <?= $row['PERUSAHAAN']; ?>, Sisa Barang <?= $row['JUMLAH_BARANG'] - $row['STATUS']; ?>"></span> On Process
                                                 <?php } else if ($row['STATUS'] == NULL) { ?>
-                                                    <span class="badge-dot badge-need-checking mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Cek Barang Masuk <?= $row['PERUSAHAAN']; ?>, Jumlah Barang <?= $row['JUMLAH_BARANG']; ?>"></span> Check
+                                                    <span class="badge-dot badge-need-checking mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Cek Barang Masuk -> <?= $row['PERUSAHAAN']; ?>, Jumlah Barang <?= $row['JUMLAH_BARANG']; ?>"></span> Check
                                                 <?php } ?>
                                             </td>
                                             <!-- Aksi -->
@@ -697,9 +697,9 @@ if (isset($_POST['show_all'])) {
                                                                             <select name="bk_aju" class="default-select2 form-control" required>
                                                                                 <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
                                                                                     <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } else { ?>
-                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } ?>
                                                                                 <?php
                                                                                 $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
@@ -771,9 +771,9 @@ if (isset($_POST['show_all'])) {
                                                                             <select name="bk_aju" class="default-select2 form-control" required>
                                                                                 <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
                                                                                     <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } else { ?>
-                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } ?>
                                                                                 <?php
                                                                                 $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb

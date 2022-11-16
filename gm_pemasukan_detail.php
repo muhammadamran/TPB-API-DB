@@ -7,6 +7,12 @@ include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
+$GetNew             = '';
+if (isset($_POST["GetNew_"])) {
+    $GetNew         = $_POST['GetNew'];
+    echo "<script>window.location.href='gm_pemasukan_detail.php?AJU=$GetNew';</script>";
+}
+
 // SIMPAN SEMUA BARANG SESUAI
 if (isset($_POST["SimpanSemuaSesuai_"])) {
     $AJU            = $_GET['AJU'];
@@ -208,32 +214,28 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
 <!-- begin #content -->
 <div id="content" class="content">
     <div class="header-page">
-        <div class="row">
-            <div class="col-sm-8">
-                <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+        <form action="" method="POST">
+            <div class="row">
+                <div class="col-sm-8">
+                    <a href="gm_pemasukan.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+                </div>
+                <div class="col-sm-3" style="display: flex;justify-content: end;">
+                    <select name="GetNew" class="default-select2 form-control" required>
+                        <option value="<?= $_GET['AJU']; ?>"><?= $_GET['AJU']; ?></option>
+                        <option value="">Pilih Nomor Pengajuan GB</option>
+                        <?php
+                        $resultMitra = $dbcon->query("SELECT NOMOR_AJU FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
+                        foreach ($resultMitra as $RowMitra) {
+                        ?>
+                            <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col-sm-1" style="display: flex;justify-content: end;">
+                    <button type="submit" name="GetNew_" class="btn btn-block btn-dark"><i class="fas fa-link"></i> Get</button>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <form action="" method="GET">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <select name="bk_aju" class="default-select2 form-control" required>
-                                <option value="<?= $_GET['AJU']; ?>"><?= $_GET['AJU']; ?></option>
-                                <option value="">-- Nomor Pengajuan GB --</option>
-                                <?php
-                                $resultMitra = $dbcon->query("SELECT NOMOR_AJU FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
-                                foreach ($resultMitra as $RowMitra) {
-                                ?>
-                                    <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="gm_pemasukan.php" class="btn btn-info"><i class="fas fa-search"></i> Cari</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
     <div class="page-title-css">
         <div>

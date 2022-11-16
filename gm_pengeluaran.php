@@ -551,9 +551,9 @@ if (isset($_POST['show_all'])) {
                                                                             <select name="bk_aju" class="default-select2 form-control" required>
                                                                                 <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
                                                                                     <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } else { ?>
-                                                                                    <option value="">-- Nomor Pengajuan GB --</option>
+                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } ?>
                                                                                 <?php
                                                                                 $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
