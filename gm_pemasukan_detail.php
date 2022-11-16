@@ -222,7 +222,7 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                 <div class="col-sm-3" style="display: flex;justify-content: end;">
                     <select name="GetNew" class="default-select2 form-control" required>
                         <option value="<?= $_GET['AJU']; ?>"><?= $_GET['AJU']; ?></option>
-                        <option value="">Pilih Nomor Pengajuan GB</option>
+                        <option value="">Pilih Nomor Pengajuan</option>
                         <?php
                         $resultMitra = $dbcon->query("SELECT NOMOR_AJU FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
                         foreach ($resultMitra as $RowMitra) {
@@ -405,7 +405,7 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                                             TOTAL LITER
                                                         </div>
                                                         <div class="d-flex align-items-center ml-auto">
-                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $LTR['p_LITER']; ?>">0</span></div>
+                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= round($LTR['p_LITER']); ?>">0</span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -451,7 +451,7 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                                             TOTAL LITER
                                                         </div>
                                                         <div class="d-flex align-items-center ml-auto">
-                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= floor($A_LTR['p_LITER']); ?>">0</span></div>
+                                                            <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= round($A_LTR['p_LITER']); ?>">0</span></div>
                                                         </div>
                                                     </div>
                                                 </div>

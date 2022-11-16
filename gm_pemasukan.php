@@ -464,7 +464,7 @@ if (isset($_POST['show_all'])) {
                                                     <?php } ?>
                                                 <?php } else if ($row['STATUS'] > 0) { ?>
                                                     <span class="badge-dot badge-on-progress mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Proses Pengecekan Barang -> <?= $row['PERUSAHAAN']; ?>, Sisa Barang <?= $row['JUMLAH_BARANG'] - $row['STATUS']; ?>"></span> On Process
-                                                <?php } else if ($row['STATUS'] == NULL) { ?>
+                                                <?php } else if ($row['STATUS'] == NULL || $row['STATUS'] == 0) { ?>
                                                     <span class="badge-dot badge-need-checking mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Cek Barang Masuk -> <?= $row['PERUSAHAAN']; ?>, Jumlah Barang <?= $row['JUMLAH_BARANG']; ?>"></span> Check
                                                 <?php } ?>
                                             </td>

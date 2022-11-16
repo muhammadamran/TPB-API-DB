@@ -6,10 +6,6 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-// API - 
-include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'refPerusahaan.php');
-$data = json_decode($content, true);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Perusahaan App Name | Company </title>
@@ -61,57 +57,46 @@ $data = json_decode($content, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="8">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                $dataTable = $dbcon->query("SELECT a.ID,a.ALAMAT,a.CONTACT_PERSON,a.EMAIL,a.FAX,a.ID_PENGENAL,a.JENISTPB,a.KODE_ID,a.KODE_KANTOR,a.NAMA,a.NOMOR_PENGENAL,a.NOMOR_SKEP,a.NPWP,a.STATUS_IMPORTIR,
+                                                                   a.TANGGAL_SKEP,a.TELEPON,
+                                                                   b.KODE_STATUS_PENGUSAHA,b.URAIAN_STATUS_PENGUSAHA,
+                                                                   c.NPPBKC
+                                                            FROM referensi_pengusaha AS a
+                                                            LEFT JOIN referensi_status_pengusaha AS b ON a.KODE_ID=b.KODE_STATUS_PENGUSAHA 
+                                                            LEFT JOIN tbl_ref_pengusaha AS c ON c.NPWP=a.NPWP
+                                                            ORDER BY a.ID DESC");
+                                if (mysqli_num_rows($dataTable) > 0) {
+                                    $no = 0;
+                                    while ($row = mysqli_fetch_array($dataTable)) {
+                                        $no++;
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['NPWP'] == NULL || $row['NPWP'] == '') { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                        </font>
-                                                    </center>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['NPWP'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['NAMA'] == NULL || $row['NAMA'] == '') { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                        </font>
-                                                    </center>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['NAMA'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['ALAMAT'] == NULL || $row['ALAMAT'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
-                                                    <a href="#AlamatMitra<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal" title="Alamat Mitra"><i class="fas fa-map"></i> Detail
-                                                        Alamat</a>
+                                                    <a href="#AlamatMitra<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal" title="Alamat Mitra"><i class="fas fa-map"></i> Detail Alamat</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['NOMOR_SKEP'] == NULL || $row['NOMOR_SKEP'] == '') { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                        </font>
-                                                    </center>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['NOMOR_SKEP'] ?>
                                                 <?php } ?>
@@ -119,41 +104,82 @@ $data = json_decode($content, true);
                                             <td style="text-align: center;">
                                                 <?php if ($resultForPrivileges['UPDATE_DATA'] == 'Y') { ?>
                                                     <?php if ($row['NPPBKC'] == NULL || $row['NPPBKC'] == '') { ?>
-                                                        <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>" class="btn btn-sm btn-primary" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i></a>
+                                                        <a href="#AddNPPBKC<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Tambah NPPBKC"><i class="fas fa-plus-circle"></i> NPPBKC</a>
                                                     <?php } else { ?>
-                                                        <div style="display: flex;justify-content: space-evenly;align-content: center;">
-                                                            <div>
-                                                                <?= $row['NPPBKC'] ?>
-                                                            </div>
-                                                            <div style="margin: -2px;">
-                                                                <a href="refPerusahaanNPPBKC.php?id=<?= $row['ID'] ?>&NPWP=<?= $row['NPWP']; ?>" class="label label-sm label-warning" target="_blank" title="Tambah NPPBKC"><i class="fas fa-edit"></i></a>
-                                                            </div>
-                                                        </div>
+                                                        <?= $row['NPPBKC'] ?>
                                                     <?php } ?>
                                                 <?php } else { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak ada akses!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak ada akses!</i></font>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['STATUS_IMPORTIR'] == NULL || $row['STATUS_IMPORTIR'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['STATUS_IMPORTIR'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['URAIAN_STATUS_PENGUSAHA'] == NULL || $row['URAIAN_STATUS_PENGUSAHA'] == '') { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                        </font>
-                                                    </center>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['URAIAN_STATUS_PENGUSAHA'] ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- <td>
+                                                <a href="#updateData<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i></a>
+                                                <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i></a>
+                                            </td> -->
                                         </tr>
+
+                                        <!-- Tambah NPPBKC -->
+                                        <div class="modal fade" id="AddNPPBKC<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[NPPBKC] Mitra - <?= $row['NAMA'] ?></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdCARTON">NPWP</label>
+                                                                            <input type="text" class="form-control" placeholder="NPWP" value="<?= $row['NPWP']; ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdLITER">Nama</label>
+                                                                            <input type="text" class="form-control" value="<?= $row['NAMA'] ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="IdLITER">NPPBKC <font style="color: red;">*</font></label>
+                                                                            <input type="text" class="form-control" name="NameNPPBKC" id="IDNPPBKC" placeholder="NPPBKC" required>
+                                                                            <input type="hidden" class="form-control" name="UNIQID" value="<?= $row['ID'] ?>">
+                                                                            <input type="hidden" class="form-control" name="UNIQNWPW" value="<?= $row['NPWP'] ?>">
+                                                                            <input type="hidden" class="form-control" name="UNIQNAMA" value="<?= $row['NAMA'] ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="add_nppbkc" class="btn btn-warning"><i class="fas fa-plus-circle"></i> NPPBKC</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Tambah NPPBKC -->
 
                                         <!-- Alamat -->
                                         <div class="modal fade" id="AlamatMitra<?= $row['ID'] ?>">
@@ -179,6 +205,7 @@ $data = json_decode($content, true);
                                         </div>
                                         <!-- End Alamat -->
                                     <?php } ?>
+                                <?php } else { ?>
                                 <?php } ?>
                             </tbody>
                         </table>

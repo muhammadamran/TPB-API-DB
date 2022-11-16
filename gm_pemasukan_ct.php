@@ -442,6 +442,13 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
 <!-- CUSTOM FOR INPUT NUMBER -->
 <!-- begin #content -->
 <div id="content" class="content">
+    <div class="header-page">
+        <div class="row">
+            <div class="col-sm-8">
+                <a href="gm_pemasukan_detail.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
+            </div>
+        </div>
+    </div>
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
@@ -461,15 +468,6 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
         </div>
     </div>
     <div class="line-page"></div>
-    <!-- BACK -->
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="panel panel-inverse" data-sortable-id="ui-icons-1" style="padding: 15px;">
-                <a href="gm_pemasukan_detail.php?AJU=<?= $_GET['AJU'] ?>" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
-            </div>
-        </div>
-    </div>
-    <!-- END BACK -->
 
     <!-- Status Gate In -->
     <div class="row">

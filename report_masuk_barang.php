@@ -32,7 +32,7 @@ if (isset($_POST['filter_date'])) {
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-desktop icon-page"></i>
+                <i class="fa-solid fa-circle-down icon-page"></i>
                 <font class="text-page">Laporan Masuk Barang</font>
             </h1>
             <ol class="breadcrumb">

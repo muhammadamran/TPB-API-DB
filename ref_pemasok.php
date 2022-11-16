@@ -6,10 +6,6 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-// API - 
-include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'refPemasok.php');
-$data = json_decode($content, true);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Pemasok App Name | Company </title>
@@ -49,35 +45,33 @@ $data = json_decode($content, true);
                     <table id="data-table-buttons" class="table table-striped table-bordered table-td-valign-middle">
                         <thead>
                             <tr>
-                                <th style="text-align:center">#</th>
+                                <th width="1%">No.</th>
                                 <th style="text-align:center">Nama</th>
                                 <th style="text-align:center">Alamat</th>
                                 <th style="text-align:center">Negara</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if ($data['status'] == 404) { ?>
-                                <tr>
-                                    <td colspan="4">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
-                            <?php } else { ?>
-                                <?php $no = 0; ?>
-                                <?php foreach ($data['result'] as $row) { ?>
-                                    <?php $no++ ?>
-                                    <tr>
-                                        <td><?= $no ?>.</td>
-                                        <td><?= $row['NAMA']; ?></td>
-                                        <td><?= $row['ALAMAT']; ?></td>
-                                        <td><?= $row['URAIAN_NEGARA']; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            <?php } ?>
+                            <?php
+                            $result2 = mysqli_query($dbcon, "SELECT * FROM referensi_pemasok AS a
+                                                             JOIN referensi_negara AS b ON a.KODE_NEGARA=b.KODE_NEGARA ");
+                            if (mysqli_num_rows($result2) > 0) {
+                                $no = 0;
+                                while ($row2 = mysqli_fetch_array($result2)) {
+                                    $no++;
+                                    echo "<tr>";
+                                    echo "<td>" . $no . ".</td>";
+                                    echo "<td>" . $row2['NAMA'] . "</td>";
+                                    echo "<td>" . $row2['ALAMAT'] . "</td>";
+                                    echo "<td>" . $row2['URAIAN_NEGARA'] . "</td>";
+                                    // echo "<td align= ''>
+                                    // <a href='#' data-toggle='modal' data-target='#myModal$row2[ID]' title='Edit' class='btn btn-success' title='View the Report'><i class='mdi mdi-table-edit'></i> Edit</a>
+                                    // <a href='#' data-toggle='modal' data-target='#del$row2[ID]' title='Delete' class='btn btn-danger' title='View the Report'><i class='fas fa-trash-alt'></i> Delete</a>
+                                    // </td>";
+                                    echo "</tr>";
+                            ?>
+                            <?php }
+                            } ?>
                         </tbody>
                     </table>
                 </div>

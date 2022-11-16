@@ -23,7 +23,7 @@ $result_out = mysqli_fetch_array($gate_out);
         <i class="fas fa-door-open icon-page-sidebar"></i>
         <span>
             Gate Mandiri
-            <!-- <span class="label label-theme">0</span> -->
+            <span class="label label-theme"><?= $result_in['total_in'] + $result_out['total_out'] ?></span>
         </span>
     </a>
     <ul class="sub-menu">

@@ -32,7 +32,7 @@ if (isset($_POST['filter_date'])) {
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-desktop icon-page"></i>
+                <i class="fa-solid fa-circle-up icon-page"></i>
                 <font class="text-page">Laporan Keluar Barang</font>
             </h1>
             <ol class="breadcrumb">
@@ -46,6 +46,19 @@ if (isset($_POST['filter_date'])) {
         </div>
     </div>
     <div class="line-page"></div>
+
+    <!-- INFORMASI -->
+    <div class="note note-secondary m-b-15">
+        <div class="note-icon"><i class="fa-solid fa-info-circle"></i></div>
+        <div class="note-content">
+            <h4><b>Informasi!</b></h4>
+            <p>Laporan Keluar Barang berdasarkan data Gate Out pada Barang dari <?= $resultSetting['company'] ?></p>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END INFORMASI -->
 
     <!-- begin Select Tabel -->
     <div class="row">

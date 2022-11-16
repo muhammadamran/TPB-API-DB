@@ -6,10 +6,6 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-// API - 
-include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'refENegara.php');
-$data = json_decode($content, true);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Negara App Name | Company </title>
@@ -57,40 +53,36 @@ $data = json_decode($content, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="3">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                $dataTable = $dbcon->query("SELECT * FROM referensi_negara ORDER BY URAIAN_NEGARA ASC");
+                                if (mysqli_num_rows($dataTable) > 0) {
+                                    $no = 0;
+                                    while ($row = mysqli_fetch_array($dataTable)) {
+                                        $no++;
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KODE_NEGARA'] == NULL || $row['KODE_NEGARA'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['KODE_NEGARA'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: left;">
                                                 <?php if ($row['URAIAN_NEGARA'] == NULL || $row['URAIAN_NEGARA'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['URAIAN_NEGARA'] ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- <td>
+                                                <a href="#updateData<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i></a>
+                                                <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i></a>
+                                            </td> -->
                                         </tr>
                                     <?php } ?>
+                                <?php } else { ?>
                                 <?php } ?>
                             </tbody>
                         </table>

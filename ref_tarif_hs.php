@@ -6,10 +6,6 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 include "include/cssDatatables.php";
-// API - 
-include "include/api.php";
-$content = get_content($resultAPI['url_api'] . 'refTarifHS.php');
-$data = json_decode($content, true);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Tarif HS (Harmonized System) App Name | Company </title>
@@ -225,20 +221,13 @@ $data = json_decode($content, true);
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($data['status'] == 404) { ?>
-                                    <tr>
-                                        <td colspan="9">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <?php $no = 0; ?>
-                                    <?php foreach ($data['result'] as $row) { ?>
-                                        <?php $no++ ?>
+                                <?php
+                                $dataTable = $dbcon->query("SELECT * FROM referensi_pos_tarif ORDER BY ID DESC");
+                                if (mysqli_num_rows($dataTable) > 0) {
+                                    $no = 0;
+                                    while ($row = mysqli_fetch_array($dataTable)) {
+                                        $no++;
+                                ?>
                                         <tr class="odd gradeX">
                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                             <td style="text-align: center;">
@@ -246,62 +235,201 @@ $data = json_decode($content, true);
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_BM'] == NULL || $row['TARIF_BM'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_BM'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KD_SATUAN_BM'] == NULL || $row['KD_SATUAN_BM'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['KD_SATUAN_BM'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_CUKAI'] == NULL || $row['TARIF_CUKAI'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_CUKAI'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['KD_SATUAN_CUKAI'] == NULL || $row['KD_SATUAN_CUKAI'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['KD_SATUAN_CUKAI'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_PPN'] == NULL || $row['TARIF_PPN'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_PPN'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_PPNBM'] == NULL || $row['TARIF_PPNBM'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_PPNBM'] ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
                                                 <?php if ($row['TARIF_PPH'] == NULL || $row['TARIF_PPH'] == '') { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['TARIF_PPH'] ?>
                                                 <?php } ?>
                                             </td>
+                                            <!-- <td>
+                                                <a href="#updateData<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i></a>
+                                                <a href="#deleteData<?= $row['ID'] ?>" class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus Data"><i class="fas fa-trash"></i></a>
+                                            </td> -->
                                         </tr>
+                                        <!-- Update Data -->
+                                        <div class="modal fade" id="updateData<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Update Data] Tarif HS - <?= $row['ID'] ?></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div style="margin-bottom: 10px;">
+                                                                            <font style="font-size: 20px;font-weight: 700;"><i class="fas fa-user-check"></i> Sign In Detail</font>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IDUsername">Username</label>
+                                                                            <input type="text" class="form-control" name="username" id="IDUsername" placeholder="Username ..." value="<?= $row['username'] ?>" readonly />
+                                                                            <input type="hidden" name="IDUNIQ" value="<?= $row['USRIDUNIQ'] ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IDPassword">Password</label>
+                                                                            <input type="password" class="form-control" id="IDPassword" placeholder="Password ..." value="<?= $row['PASSWORD'] ?>" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div style="margin-bottom: 10px;">
+                                                                            <font style="font-size: 20px;font-weight: 700;"><i class="fas fa-user-cog"></i> Hak Akses</font>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IDRole">Hak Akses</label>
+                                                                            <select type="text" class="form-control" name="HakAkses" id="IDRole" required>
+                                                                                <option value="<?= $row['role'] ?>"><?= $row['role'] ?></option>
+                                                                                <option value="">-- Pilih Hak Akses --</option>
+                                                                                <?php
+                                                                                $resultHakAkses = $dbcon->query("SELECT role FROM tbl_role ORDER BY role ASC");
+                                                                                foreach ($resultHakAkses as $rowHakAkses) {
+                                                                                ?>
+                                                                                    <option value="<?= $rowHakAkses['role'] ?>"><?= $rowHakAkses['role'] ?></option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="col-md-3 col-form-label">Privileges</label>
+                                                                        <!-- INSERT_DATA,UPDATE_DATA,DELETE_DATA,KIRIM_DATA,UPDATE_PASSWORD -->
+                                                                        <div class="col-md-9">
+                                                                            <div class="form-check form-check-inline">
+                                                                                <?php if ($row['INSERT_DATA'] == 'Y') { ?>
+                                                                                    <?php $insert_checked = 'checked'; ?>
+                                                                                <?php } else if ($row['INSERT_DATA'] == 'N') { ?>
+                                                                                    <?php $insert_checked = ''; ?>
+                                                                                <?php } ?>
+                                                                                <input type="checkbox" name="able_add" value="Y" id="checkbox-inline-c-1" class="form-check-input" <?= $insert_checked; ?> />
+                                                                                <label class="form-check-label" for="checkbox-inline-c-1">Insert Data</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <?php if ($row['UPDATE_DATA'] == 'Y') { ?>
+                                                                                    <?php $update_checked = 'checked'; ?>
+                                                                                <?php } else if ($row['UPDATE_DATA'] == 'N') { ?>
+                                                                                    <?php $update_checked = ''; ?>
+                                                                                <?php } ?>
+                                                                                <input type="checkbox" name="able_edit" value="Y" id="checkbox-inline-c-2" class="form-check-input" <?= $update_checked; ?> />
+                                                                                <label class="form-check-label" for="checkbox-inline-c-2">Update Data</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <?php if ($row['DELETE_DATA'] == 'Y') { ?>
+                                                                                    <?php $delete_checked = 'checked'; ?>
+                                                                                <?php } else if ($row['DELETE_DATA'] == 'N') { ?>
+                                                                                    <?php $delete_checked = ''; ?>
+                                                                                <?php } ?>
+                                                                                <input type="checkbox" name="able_delete" value="Y" id="checkbox-inline-c-3" class="form-check-input" <?= $delete_checked; ?> />
+                                                                                <label class="form-check-label" for="checkbox-inline-c-3">Hapus Data</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <?php if ($row['KIRIM_DATA'] == 'Y') { ?>
+                                                                                    <?php $send_checked = 'checked'; ?>
+                                                                                <?php } else if ($row['KIRIM_DATA'] == 'N') { ?>
+                                                                                    <?php $send_checked = ''; ?>
+                                                                                <?php } ?>
+                                                                                <input type="checkbox" name="able_send" value="Y" id="checkbox-inline-c-4" class="form-check-input" <?= $send_checked; ?> />
+                                                                                <label class="form-check-label" for="checkbox-inline-c-4">Kirim Data</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="checkbox checkbox-css m-b-20">
+                                                                            <?php if ($row['UPDATE_PASSWORD'] == 'Y') { ?>
+                                                                                <?php $pass_checked = 'checked'; ?>
+                                                                            <?php } else if ($row['UPDATE_PASSWORD'] == 'N') { ?>
+                                                                                <?php $pass_checked = ''; ?>
+                                                                            <?php } ?>
+                                                                            <input type="checkbox" id="nf_checkbox_css_c_1" name="able_password" value="Y" <?= $pass_checked; ?> />
+                                                                            <label for="nf_checkbox_css_c_1">Klik jika User dapat melakukan update password secara mandiri.</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="NUpdateData" class="btn btn-warning"><i class="fas fa-edit"></i> Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Update Data -->
+
+                                        <!-- Delete Data -->
+                                        <div class="modal fade" id="deleteData<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Hapus Data] Tarif HS - <?= $row['ID'] ?></h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="alert alert-danger m-b-0">
+                                                                <h5><i class="fa fa-info-circle"></i> Anda yakin akan menghapus data ini?</h5>
+                                                                <p>Anda tidak akan melihat data ini lagi, data akan di hapus secara permanen pada sistem informasi TPB!<br><i>"Silahkan klik <b>Ya</b> untuk melanjutkan proses penghapusan data."</i></p>
+                                                                <input type="hidden" name="IDUNIQ" value="<?= $row['ID'] ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tidak</button>
+                                                            <button type="submit" class="btn btn-danger" name="NDeleteData"><i class="fas fa-check-circle"></i> Ya</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Delete Data -->
                                     <?php } ?>
+                                <?php } else { ?>
                                 <?php } ?>
                             </tbody>
                         </table>

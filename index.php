@@ -112,7 +112,7 @@ if (
     <?php } else { ?>
     <?php } ?>
     <!-- End Informasi -->
-    <!-- End Begin Row -->
+    <!-- Begin Row -->
     <div id="services" class="services section-show" style="background: #fff;padding: 20px;border-radius: 5px;">
         <div class="col-xl-12 col-md-12">
             <div class="section-title">
