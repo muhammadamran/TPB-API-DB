@@ -183,7 +183,7 @@ if (isset($_POST['show_all'])) {
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>BC 2.7 PLB (Nomor Pengajuan)</label>
-                                        <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>" required>
+                                        <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -315,11 +315,13 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=" . $_POST['AJU_PLB'] . ") AS total_All
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
+                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
-                                                                WHERE hdr.NOMOR_AJU LIKE '%" . $_POST['AJU_PLB'] . "%' GROUP BY hdr.NOMOR_AJU", 0);
+                                                                WHERE hdr.NOMOR_AJU LIKE '%" . $_POST['AJU_PLB'] . "%'
+                                                                GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC", 0);
                                 } else if (isset($_POST['show_all'])) {
                                     $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
                                                                 hdr.NAMA_PENERIMA_BARANG,
@@ -337,7 +339,8 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
-                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All
+                                                                (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
+                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
@@ -955,7 +958,7 @@ if (isset($_POST['show_all'])) {
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="9">
+                                        <td colspan="8">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
