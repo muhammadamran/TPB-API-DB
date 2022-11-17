@@ -6,7 +6,7 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/sidebar.php";
 
-if (isset($_GET["a"]) == 'delete' && isset($_GET["m"]) == 'report_ck5_plb') {
+if (isset($_GET["a"]) == 'delete' && isset($_GET["m"]) == 'plb') {
     $NOMOR_AJU  = $_GET['NOMOR_AJU'];
     // plb_header
     $query      = $db->query('DELETE FROM plb_header WHERE NOMOR_AJU="' . $NOMOR_AJU . '"');
@@ -40,8 +40,8 @@ if (isset($_GET["a"]) == 'delete' && isset($_GET["m"]) == 'report_ck5_plb') {
     $query      .= $db->query('DELETE FROM plb_update_log WHERE NOMOR_AJU="' . $NOMOR_AJU . '"');
 
     if ($query) {
-        echo "<script>window.location.href='report_ck5_plb.php?SaveSuccess=true;</script>";
+        echo "<script>window.location.href='plb.php?SaveSuccess=true;</script>";
     } else {
-        echo "<script>window.location.href='report_ck5_plb.php?SaveFailed=true;</script>";
+        echo "<script>window.location.href='plb.php?SaveFailed=true;</script>";
     }
 }

@@ -283,8 +283,9 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php">
-                                        <input type="hidden">
+                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
+                                        <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
                                         <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
                                     </form>
                                 </div>
@@ -302,7 +303,12 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <button class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
+                                        <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
+                                        <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
+                                        <button type="submit" name="Find_RTU" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    </form>
                                 </div>
                                 <div class="btn-group m-r-5 m-b-5">
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
@@ -318,7 +324,12 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <button class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
+                                        <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
+                                        <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
+                                        <button type="submit" name="Find_RTM" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    </form>
                                 </div>
                                 <div class="btn-group m-r-5 m-b-5">
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>

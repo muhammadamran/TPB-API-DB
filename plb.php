@@ -43,9 +43,9 @@ if (isset($_POST["Delete_"])) {
     $query      .= $dbcon->query('DELETE FROM plb_update_log WHERE NOMOR_AJU="' . $NOMOR_AJU . '"');
 
     if ($query) {
-        echo "<script>window.location.href='report_ck5_plb.php?DeleteSuccess=true';</script>";
+        echo "<script>window.location.href='plb.php?DeleteSuccess=true';</script>";
     } else {
-        echo "<script>window.location.href='report_ck5_plb.php?DeleteFailed=true';</script>";
+        echo "<script>window.location.href='plb.php?DeleteFailed=true';</script>";
     }
 }
 ?>
@@ -133,7 +133,7 @@ if (isset($_POST['find'])) {
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <form action="report_ck5_plb_upload.php" method="post" enctype="multipart/form-data" style="margin: 142px 0px 142px 0px;">
+                    <form action="plb_upload.php" method="post" enctype="multipart/form-data" style="margin: 142px 0px 142px 0px;">
                         <div style="display: flex;justify-content: center;align-items: center;">
                             <div style="display: flex;justify-content: center;">
                                 <img src="assets/img/svg/upload-animate.svg" class="image" width="80%">
@@ -190,7 +190,7 @@ if (isset($_POST['find'])) {
                                     <i class="fas fa-search"></i>
                                     <font class="f-action">Cari</font>
                                 </button>
-                                <a href="report_ck5_plb.php" class="btn btn-warning" style="margin-top: -10px;margin-bottom: -10px;">
+                                <a href="plb.php" class="btn btn-warning" style="margin-top: -10px;margin-bottom: -10px;">
                                     <i class="fas fa-refresh"></i>
                                     <font class="f-action">Reset</font>
                                 </a>
@@ -319,7 +319,7 @@ if (isset($_POST['find'])) {
     function deleteData(NOMOR_AJU) {
         var r = confirm("Are you sure you want to delete this record?");
         if (r == true) {
-            location.href = "data_proses.php?a=delete&m=report_ck5_plb&NOMOR_AJU=" + NOMOR_AJU;
+            location.href = "plb_proses.php?a=delete&m=plb&NOMOR_AJU=" + NOMOR_AJU;
         }
     }
 
@@ -330,7 +330,7 @@ if (isset($_POST['find'])) {
             icon: 'success',
             text: 'Data berhasil diupload!'
         })
-        history.replaceState({}, '', './report_ck5_plb.php');
+        history.replaceState({}, '', './plb.php');
     }
     // UPDATE FAILED
     if (window?.location?.href?.indexOf('UploadFailed') > -1) {
@@ -339,7 +339,7 @@ if (isset($_POST['find'])) {
             icon: 'error',
             text: 'Data gagal diupload!'
         })
-        history.replaceState({}, '', './report_ck5_plb.php');
+        history.replaceState({}, '', './plb.php');
     }
 
     // DELETE SUCCESS
@@ -349,7 +349,7 @@ if (isset($_POST['find'])) {
             icon: 'success',
             text: 'Data berhasil dihapus!'
         })
-        history.replaceState({}, '', './report_ck5_plb.php');
+        history.replaceState({}, '', './plb.php');
     }
     // DELETE FAILED
     if (window?.location?.href?.indexOf('DeleteFailed') > -1) {
@@ -358,7 +358,7 @@ if (isset($_POST['find'])) {
             icon: 'error',
             text: 'Data gagal dihapus!'
         })
-        history.replaceState({}, '', './report_ck5_plb.php');
+        history.replaceState({}, '', './plb.php');
     }
 
     // UPLOAD ALREADY
@@ -368,7 +368,7 @@ if (isset($_POST['find'])) {
             icon: 'info',
             text: 'Ada Data dengan Nomor Pengajuan yang sama!'
         })
-        history.replaceState({}, '', './report_ck5_plb.php');
+        history.replaceState({}, '', './plb.php');
     }
     // UPLOAD EXT TIDAK SESUAI!
     if (window?.location?.href?.indexOf('UploadQuestion') > -1) {
@@ -377,6 +377,6 @@ if (isset($_POST['find'])) {
             icon: 'info',
             html: 'Extensions File Tidak Sesuai, Silahkan Pilih Extensions File <b>.xlsx</b> atau <b>xls</b>!'
         })
-        history.replaceState({}, '', './report_ck5_plb.php');
+        history.replaceState({}, '', './plb.php');
     }
 </script>

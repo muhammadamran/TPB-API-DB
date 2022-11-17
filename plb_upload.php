@@ -14,12 +14,12 @@ if (isset($_FILES["file_upload"])) {
 	$ext = end($exp);
 	if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'xlsm' || $ext == 'xlsb') {
 		move_uploaded_file($tmp_file_name, $dir . $file_name);
-		include 'report_ck5_plb_read_file.php';
-		echo "<script>window.location.href='report_ck5_plb.php?UploadSuccess=true';</script>";
+		include 'plb_read_file.php';
+		echo "<script>window.location.href='plb.php?UploadSuccess=true';</script>";
 	} else {
-		echo "<script>window.location.href='report_ck5_plb.php?UploadQuestion=true';</script>";
+		echo "<script>window.location.href='plb.php?UploadQuestion=true';</script>";
 	}
 } else {
 	echo "File not selected";
-	echo "<script>window.location.href='report_ck5_plb.php?UploadFailed=true';</script>";
+	echo "<script>window.location.href='plb.php?UploadFailed=true';</script>";
 }

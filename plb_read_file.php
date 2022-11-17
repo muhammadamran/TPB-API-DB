@@ -20,9 +20,9 @@ if (!$dbcon) {
 
 	$IDUNIQme             = $resultme['USRIDUNIQ'];
 	$InputUsername        = $me;
-	$InputModul           = 'Report/PLB CK5';
-	$InputDescription     = $me . " Upload Excel PLB CK5 nama file: " . $file_name . ", Simpan Data Sebagai Report PLB CK5";
-	$InputAction          = 'Upload PLB CK5';
+	$InputModul           = 'PLB';
+	$InputDescription     = $me . " Upload Excel PLB nama file: " . $file_name . ", Simpan Data Sebagai Report PLB";
+	$InputAction          = 'Upload PLB';
 	$InputDate            = date('Y-m-d H:m:i');
 
 	$query = $dbcon->query("INSERT INTO tbl_aktifitas
