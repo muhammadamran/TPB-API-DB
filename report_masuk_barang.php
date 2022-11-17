@@ -293,7 +293,11 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
+                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
+                                            <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
+                                            <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
+                                        </form>
                                         <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
                                     </div>
                                 </div>

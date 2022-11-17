@@ -41,43 +41,6 @@
     </script>
 </head>
 <?php
-// DATE
-function date_indo($date, $print_day = false)
-{
-    $day = array(
-        1 =>
-        'Senin',
-        'Selasa',
-        'Rabu',
-        'Kamis',
-        'Jumat',
-        'Sabtu',
-        'Minggu'
-    );
-    $month = array(
-        1 =>
-        'Januari',
-        'Februari',
-        'Maret',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Agustus',
-        'September',
-        'Oktober',
-        'November',
-        'Desember'
-    );
-    $split    = explode('-', $date);
-    $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
-
-    if ($print_day) {
-        $num = date('N', strtotime($date));
-        return $day[$num] . ', ' . $tgl_indo;
-    }
-    return $tgl_indo;
-}
 // DATE SPLIT
 function date_indo_s($date, $print_day = false)
 {
@@ -352,93 +315,11 @@ if (isset($_POST["Find_RTM"])) {
                                             <?php } ?>
                                         </td>
                                     </tr>
-
-                                    <!-- Detail -->
-                                    <div class="modal fade" id="detail<?= $row['rcd_id'] ?>">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form action="" method="POST" enctype="multipart/form-data">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">[Berita Acara] Laporan Barang Masuk</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>Nomor Pengajuan PLB</label>
-                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>Nomor Pengajuan GB</label>
-                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>Tanggal Masuk Barang</label>
-                                                                    <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_tgl_masuk']; ?>" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>Petugas <?= $resultHeadSetting['company']; ?></label>
-                                                                    <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label>Petugas BeaCukai</label>
-                                                                    <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bc_in']; ?>" readonly>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
-                                                                    <div style="font-size: 30px;">
-                                                                        <i class="fas fa-file-pdf"></i>
-                                                                    </div>
-                                                                    <div style="margin-left: 10px;">
-                                                                        <div style="font-size: 17px;font-weight: 900;">
-                                                                            Dokumen Berita Acara
-                                                                        </div>
-                                                                        <div style="margin-top: -5px;font-size: 10px;">
-                                                                            Lampiran Gate In
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                    </object>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Detail -->
                                 <?php
                                     $no++;
                                 endforeach
                                 ?>
                             <?php else : ?>
-                                <tr>
-                                    <td colspan="14">
-                                        <center>
-                                            <div style="display: grid;">
-                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                            </div>
-                                        </center>
-                                    </td>
-                                </tr>
                             <?php endif ?>
                         </tbody>
                     </table>
@@ -471,6 +352,7 @@ if (isset($_POST["Find_RTM"])) {
     <script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
     <script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
     <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <br>
 </body>
 <script type="text/javascript">
     window.print();
