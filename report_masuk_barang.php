@@ -7,74 +7,138 @@ include "include/top-header.php";
 include "include/top-sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
+
+
+// FUNCTION SEARCHING
+$FindNoAJU          = '';
+$Field_RTU          = '';
+$Field_RTM          = '';
+$ShowFindNoAJU      = '';
+$ShowField_RTU      = '';
+$ShowField_RTM      = '';
+
+// RTU
+if (isset($_POST["Find_NP"])) {
+    $FindNoAJU      = $_POST['FindNoAJU'];
+    $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
+}
+
+// RTU
+if (isset($_POST["Find_RTU"])) {
+    $Field_RTU      = $_POST['default-daterange-upload'];
+    $Field_RTUE     = explode(" - ", $Field_RTU);
+    $RTUStart       = $Field_RTUE[0];
+    $RTUStart_T     = strtotime($RTUStart);
+    $S_RTU          = date("Y-m-d", $RTUStart_T);
+    $RTUEnd         = $Field_RTUE[1];
+    $RTUEnd_T       = strtotime($RTUEnd);
+    $E_RTU          = date("Y-m-d", $RTUEnd_T);
+    $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
+}
+
+// RTM
+if (isset($_POST["Find_RTM"])) {
+    $Field_RTM      = $_POST['default-daterange-masuk'];
+    $Field_RTME     = explode(" - ", $Field_RTM);
+    $RTMStart       = $Field_RTME[0];
+    $RTMStart_T     = strtotime($RTMStart);
+    $S_RTM          = date("Y-m-d", $RTMStart_T);
+    $RTMEnd         = $Field_RTME[1];
+    $RTMEnd_T       = strtotime($RTMEnd);
+    $E_RTM          = date("Y-m-d", $RTMEnd_T);
+    $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
+}
+
 // START
 // TANGGAL UPLOAD FIRST
-$dataRangeFirstUpload = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
+$dataRangeFirstUpload   = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY sts.ck5_plb_submit ASC LIMIT 1");
 $resultRangeFirstUpload = mysqli_fetch_array($dataRangeFirstUpload);
-$iniUploadFirst = $resultRangeFirstUpload['ck5_plb_submit'];
-$alldateUploadFirst = $iniUploadFirst;
-$tglUFirst = substr($alldateUploadFirst, 0, 10);
-$tglUFirstE = explode("-", $tglUFirst);
-$RUFirst = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
+$iniUploadFirst         = $resultRangeFirstUpload['ck5_plb_submit'];
+$alldateUploadFirst     = $iniUploadFirst;
+$tglUFirst              = substr($alldateUploadFirst, 0, 10);
+$tglUFirstE             = explode("-", $tglUFirst);
+$RUFirst                = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
 // TANGGAL UPLOAD LAST
-$dataRangeLastUpload = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
+$dataRangeLastUpload    = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY sts.ck5_plb_submit DESC LIMIT 1");
-$resultRangeLastUpload = mysqli_fetch_array($dataRangeLastUpload);
-$iniUploadLast = $resultRangeLastUpload['ck5_plb_submit'];
-$alldateUploadLast = $iniUploadLast;
-$tglULast = substr($alldateUploadLast, 0, 10);
-$tglULastE = explode("-", $tglULast);
-$RULast = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
+$resultRangeLastUpload  = mysqli_fetch_array($dataRangeLastUpload);
+$iniUploadLast          = $resultRangeLastUpload['ck5_plb_submit'];
+$alldateUploadLast      = $iniUploadLast;
+$tglULast               = substr($alldateUploadLast, 0, 10);
+$tglULastE              = explode("-", $tglULast);
+$RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
 // END
 
 // START
 // TANGGAL MASUK FIRST
-$dataRangeFirstMasuk = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+$dataRangeFirstMasuk    = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY plb.TGL_CEK ASC LIMIT 1");
-$resultRangeFirstMasuk = mysqli_fetch_array($dataRangeFirstMasuk);
-$iniMasukFirst = $resultRangeFirstMasuk['TGL_CEK'];
-$alldateMasukFirst = $iniMasukFirst;
-$tglMFirst = substr($alldateMasukFirst, 0, 10);
-$tglMFirstE = explode("-", $tglMFirst);
-$RMFirst = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+$resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
+$iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
+$alldateMasukFirst      = $iniMasukFirst;
+$tglMFirst              = substr($alldateMasukFirst, 0, 10);
+$tglMFirstE             = explode("-", $tglMFirst);
+$RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
 // TANGGAL MASUK LAST
-$dataRangeLastMasuk = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+$dataRangeLastMasuk     = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY plb.TGL_CEK DESC LIMIT 1");
-$resultRangeLastMasuk = mysqli_fetch_array($dataRangeLastMasuk);
-$iniMasukLast = $resultRangeLastMasuk['TGL_CEK'];
-$alldateMasukLast = $iniMasukLast;
-$tglMLast = substr($alldateMasukLast, 0, 10);
-$tglMLastE = explode("-", $tglMLast);
-$RMLast = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+$resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
+$iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
+$alldateMasukLast       = $iniMasukLast;
+$tglMLast               = substr($alldateMasukLast, 0, 10);
+$tglMLastE              = explode("-", $tglMLast);
+$RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
 // END
 
-$StartTanggal = '';
-$EndTanggal = '';
-if (isset($_POST['filter_date'])) {
-    if ($_POST["StartTanggal"] != '') {
-        $StartTanggal   = $_POST['StartTanggal'];
-    }
+if (isset($_POST['Find_NP']) != '') {
+    $displayOne = 'show';
+    $displayTwo = 'none';
+    $displayThree = 'none';
 
-    if ($_POST["EndTanggal"] != '') {
-        $EndTanggal     = $_POST['EndTanggal'];
-    }
+    $selectOne = 'selected';
+    $selectTwo = '';
+    $selectThree = '';
+} else if (isset($_POST['Find_RTU']) != '') {
+    $displayOne = 'none';
+    $displayTwo = 'show';
+    $displayThree = 'none';
+
+    $selectOne = '';
+    $selectTwo = 'selected';
+    $selectThree = '';
+} else if (isset($_POST['Find_RTM']) != '') {
+    $displayOne = 'none';
+    $displayTwo = 'none';
+    $displayThree = 'show';
+
+    $selectOne = '';
+    $selectTwo = '';
+    $selectThree = 'selected';
+} else {
+    $displayOne = 'show';
+    $displayTwo = 'none';
+    $displayThree = 'none';
+
+    $selectOne = 'selected';
+    $selectTwo = '';
+    $selectThree = '';
 }
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
@@ -109,16 +173,16 @@ if (isset($_POST['filter_date'])) {
                 <div class="panel-heading">
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang Berdasarkan
                         <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
-                            <option value="NP">Nomor Pengajuan</option>
-                            <option value="TU">Tanggal Upload</option>
-                            <option value="RTM">Range Tanggal Masuk</option>
+                            <option value="NP" <?= $selectOne ?>>Nomor Pengajuan</option>
+                            <option value="RTU" <?= $selectTwo ?>>Range Tanggal Upload</option>
+                            <option value="RTM" <?= $selectThree ?>>Range Tanggal Masuk</option>
                         </select>
                     </h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
                     <!-- Nomor Pengajuan -->
-                    <div id="form_np" style="display: show">
+                    <div id="form_NP" style="display: <?= $displayOne ?>;">
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
@@ -128,7 +192,7 @@ if (isset($_POST['filter_date'])) {
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>BC 2.7 PLB (Nomor Pengajuan)</label>
-                                            <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                            <input type="number" id="IDAJU_PLB" name="FindNoAJU" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $FindNoAJU; ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -144,7 +208,7 @@ if (isset($_POST['filter_date'])) {
                         </form>
                     </div>
                     <!-- Tanggal Upload -->
-                    <div id="form_tu" style="display: none">
+                    <div id="form_RTU" style="display: <?= $displayTwo ?>;">
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
@@ -155,7 +219,7 @@ if (isset($_POST['filter_date'])) {
                                         <div class="form-group">
                                             <label>Range Tanggal Upload</label>
                                             <div class="input-group" id="default-daterange-upload">
-                                                <input type="text" name="default-daterange-upload" class="form-control" value="" placeholder="Pilih Range Tanggal Upload" />
+                                                <input type="text" name="default-daterange-upload" class="form-control" value="<?= $Field_RTU ?>" placeholder="Pilih Range Tanggal Upload" />
                                                 <span class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </span>
@@ -163,7 +227,7 @@ if (isset($_POST['filter_date'])) {
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" name="Find_TU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                        <button type="submit" name="Find_RTU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
                                             <font class="f-action">Cari</font>
                                         </button>
                                         <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
@@ -175,7 +239,7 @@ if (isset($_POST['filter_date'])) {
                         </form>
                     </div>
                     <!-- Range Tanggal Masuk -->
-                    <div id="form_rtm" style="display: none">
+                    <div id="form_RTM" style="display: <?= $displayThree ?>;">
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
@@ -186,7 +250,7 @@ if (isset($_POST['filter_date'])) {
                                         <div class="form-group">
                                             <label>Range Tanggal Masuk</label>
                                             <div class="input-group" id="default-daterange-masuk">
-                                                <input type="text" name="default-daterange-masuk" class="form-control" value="" placeholder="Pilih Range Tanggal Masuk" />
+                                                <input type="text" name="default-daterange-masuk" class="form-control" value="<?= $Field_RTM ?>" placeholder="Pilih Range Tanggal Masuk" />
                                                 <span class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </span>
@@ -194,7 +258,7 @@ if (isset($_POST['filter_date'])) {
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" name="Find_TU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                        <button type="submit" name="Find_RTM" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
                                             <font class="f-action">Cari</font>
                                         </button>
                                         <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
@@ -247,10 +311,11 @@ if (isset($_POST['filter_date'])) {
                         <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
                             PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                        <?php if (isset($_POST['filter_date'])) { ?>
-                            <font style="font-size: 14px;font-weight: 800;"><i class="fas fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
-                                <?= $EndTanggal ?></font>
-                        <?php } ?>
+                        <font style="font-size: 14px;font-weight: 800;">
+                            <?= $ShowFindNoAJU; ?>
+                            <?= $ShowField_RTU; ?>
+                            <?= $ShowField_RTM; ?>
+                        </font>
                         <div class="line-page-table"></div>
                         <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
                         <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
@@ -288,12 +353,39 @@ if (isset($_POST['filter_date'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                if (isset($_POST["Find_NP"])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                } else if (isset($_POST["Find_RTU"])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                } else if (isset($_POST["Find_RTM"])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                } else {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                                             WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                                             ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
+                                }
+
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
@@ -320,8 +412,8 @@ if (isset($_POST['filter_date'])) {
                                                     <?php } ?>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center">
-                                                <div style="width: 150px;">
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
                                                     <?php if ($row['ck5_plb_submit'] == NULL) { ?>
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                         </font>
@@ -571,21 +663,21 @@ include "include/jsForm.php";
     $(function() {
         $("#input-filter").change(function() {
             if ($(this).val() == "NP") {
-                $("#form_np").show();
-                $("#form_tu").hide();
-                $("#form_rtm").hide();
-            } else if ($(this).val() == "TU") {
-                $("#form_np").hide();
-                $("#form_tu").show();
-                $("#form_rtm").hide();
+                $("#form_NP").show();
+                $("#form_RTU").hide();
+                $("#form_RTM").hide();
+            } else if ($(this).val() == "RTU") {
+                $("#form_NP").hide();
+                $("#form_RTU").show();
+                $("#form_RTM").hide();
             } else if ($(this).val() == "RTM") {
-                $("#form_np").hide();
-                $("#form_tu").hide();
-                $("#form_rtm").show();
+                $("#form_NP").hide();
+                $("#form_RTU").hide();
+                $("#form_RTM").show();
             } else {
-                $("#form_np").show();
-                $("#form_tu").hide();
-                $("#form_rtm").hide();
+                $("#form_NP").show();
+                $("#form_RTU").hide();
+                $("#form_RTM").hide();
             }
         });
     });
