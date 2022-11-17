@@ -32,50 +32,6 @@ include "include/cssDatatables.php";
         </div>
     </div>
     <div class="line-page"></div>
-    <!-- Begin Row -->
-    <div id="services" class="services section-show" style="background: #fff;padding: 20px;border-radius: 5px;">
-        <div class="col-xl-12 col-md-12">
-            <div class="section-title">
-                <h2>Menu</h2>
-                <p style="color: #333;">NAVIGATION</p>
-            </div>
-            <hr>
-            <div class="row" style="justify-content: center;">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="display: <?= $TitleDashboard ?>;">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
-                        <h4><a href="index_dashboard.php">Dashboard</a></h4>
-                        <p>Menampilkan Monitoring Data PLB (Pusat Logistik Berikat) dan GB (Gudang Berikat) dari module Ciesa <?= $resultHeadSetting['company'] ?></p>
-                        <div style="margin-top: 25px;">
-                            <a href="index_dashboard.php" class="btn btn-default-index">Lihat Dahsboard</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" style="display: <?= $TitleViewDataOnline ?>;">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fa-solid fa-globe"></i></div>
-                        <h4><a href="index_viewonline.php">Data Online</a></h4>
-                        <p>Menampilkan Data online PLB (Pusat Logistik Berikat) dan GB (Gudang Berikat) dari module Ciesa <?= $resultHeadSetting['company'] ?></p>
-                        <div style="margin-top: 25px;">
-                            <a href="index_viewonline.php" class="btn btn-default-index">Lihat Data Online</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" style="display: <?= $TitleReport ?>;">
-                    <div class="icon-box">
-                        <div class="icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h4><a href="index_report.php">Laporan</a></h4>
-                        <p>Menampilkan laporan Data PLB (Pusat Logistik Berikat) dan GB (Gudang Berikat) dari module Ciesa <?= $resultHeadSetting['company'] ?></p>
-                        <div style="margin-top: 25px;">
-                            <a href="index_report.php" class="btn btn-default-index">Lihat Laporan</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <!-- End Begin Row -->
     <!-- begin row -->
     <div class="row">
         <div class="col-xl-12">
@@ -93,7 +49,215 @@ include "include/cssDatatables.php";
                 </div>
                 <!-- end alert -->
                 <div class="panel-body text-inverse">
-                    sss
+                    <div class="row">
+                        <!-- LAPORAN BARANG MASUK -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-circle-down"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_masuk_barang.php">Laporan Barang Masuk</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan <b>Data Gate In</b> setelah proses pengecekan barang dilakukan dan melengkapi <b>Nomor Pengajuan Gudang Berikat (GB)</b>, <b>Tanggal Gate In</b> pada <b>Nomor Pengajuan PLB</b>.</p>
+                                        <div>
+                                            <a href="report_masuk_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN BARANG KELUAR -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_keluar_barang']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-circle-up"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_keluar_barang.php">Laporan Barang Keluar</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan <b>Data Gate Out</b> setelah proses pengecekan barang dilakukan dan melengkapi <b>Tanggal Gate Out</b> pada <b>Nomor Pengajuan GB</b>.</p>
+                                        <div>
+                                            <a href="report_keluar_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN MUTASI -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-building-circle-exclamation"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_mutasi_barang.php">Laporan Mutasi Barang</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan pencatatan aktifitas barang berdasarkan <b>Data Gate In</b> dan <b>Data Gate Out</b>. Pencatatan aktivitas barang pada <b><?= $resultSetting['app_name'] ?></b> sesuai dengan aktivitas aktualnya.</p>
+                                        <div>
+                                            <a href="report_mutasi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN POSISI -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_posisi_barang']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-map-location"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_posisi_barang.php">Laporan Posisi Barang</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan Data Barang berdasarkan <b>Gate In</b> dan <b>Gate Out</b>. pada <b><?= $resultSetting['app_name'] ?></b>.</p>
+                                        <div>
+                                            <a href="report_posisi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN REALISASI -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_realisasi']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-check-to-slot"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_posisi_barang.php">Laporan Realisasi Barang</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan data monitoring <b>Kuota Mitra</b> berdasarkan Capaian <b>Realisasi Mitra</b> yang telah digunakan.</p>
+                                        <div>
+                                            <a href="report_posisi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN DATA TPB -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_data_tpb']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-building-flag"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_data_tpb.php">Laporan Data TPB</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan detil <b>Data Pusat Logistik Berikat (PLB)</b> dan <b>Data Gudang Berikat (GB)</b> pada <b><?= $resultSetting['app_name'] ?></b>.</p>
+                                        <div>
+                                            <a href="report_data_tpb.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN DATA PLB -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_ck_plb']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-arrow-right-to-city"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_ck5_plb_lap.php">Laporan Data PLB</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan <b>Dokumen CK5 Pusat Logistik Berikat</b>, <b>Packing List</b> dan <b>Inovice</b> barang <b><?= $resultSetting['app_name'] ?></b>.</p>
+                                        <div>
+                                            <a href="report_ck5_plb_lap.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN DATA GB -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_ck_sarinah']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-school-lock"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_ck5_sarinah.php">Laporan Data GB</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan <b>Dokumen CK5 Gudang Berikat</b>, <b>Packing List</b> dan <b>Inovice</b> barang <b><?= $resultSetting['app_name'] ?></b>.</p>
+                                        <div>
+                                            <a href="report_ck5_sarinah.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN AKTIFITAS -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_log']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-clipboard-question"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_log_system.php">Laporan Aktifitas (Log System)</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan Riwayat Aktifitas <b><?= $resultSetting['app_name'] ?></b> berdasarkan Pengguna.</p>
+                                        <div>
+                                            <a href="report_log_system.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

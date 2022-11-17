@@ -203,8 +203,8 @@ if (isset($_POST['show_all'])) {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="3" class="text-nowrap no-sort" style="text-align: center;">BC 2.7 Pusat Logistik Berikat (PLB)</th>
-                                    <th colspan="3" class="text-nowrap no-sort" style="text-align: center;">BC 2.7 Gudang Berikat (GB)</th>
+                                    <th colspan="3" class="text-nowrap no-sort" style="text-align: center;">BC 2.7 PLB</th>
+                                    <th colspan="3" class="text-nowrap no-sort" style="text-align: center;">BC 2.7 GB</th>
                                     <th rowspan="2" class="text-nowrap" style="text-align: center;">Kode Negara</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Status</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Aksi</th>

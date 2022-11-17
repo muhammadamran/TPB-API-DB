@@ -214,7 +214,7 @@ if (isset($_POST["SaveEdit"])) {
         <div class="container-fluid d-flex align-items-center">
             <div class="hello">
                 <?php if ($access['nama_lengkap'] == NULL) { ?>
-                    <h1 class="display-2 text-white">Hi, Belum dilengkapi!</h1>
+                    <h1 class="display-2 text-white">Lengkapi Profile anda!</h1>
                 <?php } else { ?>
                     <h1 class="display-2 text-white">Hi, <?= $access['nama_lengkap'] ?>!</h1>
                 <?php } ?>
@@ -223,7 +223,7 @@ if (isset($_POST["SaveEdit"])) {
                 <?php } else { ?>
                     <p class="text-white mt-0 mb-5">Ini adalah tampilan halaman profile anda. Di halaman profile, anda dapat melihat biodata dan status pengguna anda pada <br><b><i><?= $resultSetting['app_name'] ?></i></b>.</p>
                 <?php } ?>
-                <a href="#!" class="btn btn-neutral-tf"><i class="fas fa-calendar-alt"></i> <span id="ct"></span></a>
+                <a href="#!" class="btn btn-neutral-tf"><i class="fas fa-calendar-alt"></i> <?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></a>
             </div>
         </div>
     </div>
