@@ -6,10 +6,67 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/top-sidebar.php";
 include "include/cssDatatables.php";
+include "include/cssForm.php";
+// START
+// TANGGAL UPLOAD FIRST
+$dataRangeFirstUpload = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY sts.ck5_plb_submit ASC LIMIT 1");
+$resultRangeFirstUpload = mysqli_fetch_array($dataRangeFirstUpload);
+$iniUploadFirst = $resultRangeFirstUpload['ck5_plb_submit'];
+$alldateUploadFirst = $iniUploadFirst;
+$tglUFirst = substr($alldateUploadFirst, 0, 10);
+$tglUFirstE = explode("-", $tglUFirst);
+$RUFirst = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
+// TANGGAL UPLOAD LAST
+$dataRangeLastUpload = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY sts.ck5_plb_submit DESC LIMIT 1");
+$resultRangeLastUpload = mysqli_fetch_array($dataRangeLastUpload);
+$iniUploadLast = $resultRangeLastUpload['ck5_plb_submit'];
+$alldateUploadLast = $iniUploadLast;
+$tglULast = substr($alldateUploadLast, 0, 10);
+$tglULastE = explode("-", $tglULast);
+$RULast = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
+// END
+
+// START
+// TANGGAL MASUK FIRST
+$dataRangeFirstMasuk = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY plb.TGL_CEK ASC LIMIT 1");
+$resultRangeFirstMasuk = mysqli_fetch_array($dataRangeFirstMasuk);
+$iniMasukFirst = $resultRangeFirstMasuk['TGL_CEK'];
+$alldateMasukFirst = $iniMasukFirst;
+$tglMFirst = substr($alldateMasukFirst, 0, 10);
+$tglMFirstE = explode("-", $tglMFirst);
+$RMFirst = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+// TANGGAL MASUK LAST
+$dataRangeLastMasuk = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY plb.TGL_CEK DESC LIMIT 1");
+$resultRangeLastMasuk = mysqli_fetch_array($dataRangeLastMasuk);
+$iniMasukLast = $resultRangeLastMasuk['TGL_CEK'];
+$alldateMasukLast = $iniMasukLast;
+$tglMLast = substr($alldateMasukLast, 0, 10);
+$tglMLastE = explode("-", $tglMLast);
+$RMLast = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+// END
 
 $StartTanggal = '';
 $EndTanggal = '';
-
 if (isset($_POST['filter_date'])) {
     if ($_POST["StartTanggal"] != '') {
         $StartTanggal   = $_POST['StartTanggal'];
@@ -19,12 +76,11 @@ if (isset($_POST['filter_date'])) {
         $EndTanggal     = $_POST['EndTanggal'];
     }
 }
-
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>Laporan Masuk Barang App Name | Company </title>
+    <title>Laporan Barang Masuk App Name | Company </title>
 <?php } else { ?>
-    <title>Laporan Masuk Barang - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+    <title>Laporan Barang Masuk - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
 <!-- begin #content -->
@@ -33,12 +89,12 @@ if (isset($_POST['filter_date'])) {
         <div>
             <h1 class="page-header-css">
                 <i class="fa-solid fa-circle-down icon-page"></i>
-                <font class="text-page">Laporan Masuk Barang</font>
+                <font class="text-page">Laporan Barang Masuk</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
-                <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
-                <li class="breadcrumb-item active">Laporan Masuk Barang</li>
+                <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
+                <li class="breadcrumb-item active">Laporan Barang Masuk</li>
             </ol>
         </div>
         <div>
@@ -46,46 +102,109 @@ if (isset($_POST['filter_date'])) {
         </div>
     </div>
     <div class="line-page"></div>
-
     <!-- begin Select Tabel -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang Berdasarkan
+                        <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
+                            <option value="NP">Nomor Pengajuan</option>
+                            <option value="TU">Tanggal Upload</option>
+                            <option value="RTM">Range Tanggal Masuk</option>
+                        </select>
+                    </h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <!-- <form action="" method="POST">
-                        <div style="display: flex;justify-content: center;align-items: center;">
+                    <!-- Nomor Pengajuan -->
+                    <div id="form_np" style="display: show">
+                        <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
-                                <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-5">
-                                    <div class="form-group">
-                                        <label>Tanggal Mulai</label>
-                                        <input type="date" name="StartTanggal" class="form-control" value="<?= $StartTanggal; ?>" required>
-                                    </div>
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
                                 </div>
-                                <div class="col-xl-2" style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
-                                    <div class="form-group">
-                                        S.D
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>BC 2.7 PLB (Nomor Pengajuan)</label>
+                                            <input type="number" id="IDAJU_PLB" name="AJU_PLB" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $AJU_PLB; ?>">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-5">
-                                    <div class="form-group">
-                                        <label>Tanggal Selesai</label>
-                                        <input type="date" name="EndTanggal" class="form-control" value="<?= $EndTanggal; ?>" required>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_NP" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
-                                        Filter Tanggal</button>
                                 </div>
                             </div>
-                        </div>
-                    </form> -->
+                        </form>
+                    </div>
+                    <!-- Tanggal Upload -->
+                    <div id="form_tu" style="display: none">
+                        <form action="" method="POST">
+                            <div style="display: flex;justify-content: center;align-items: center;">
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Range Tanggal Upload</label>
+                                            <div class="input-group" id="default-daterange-upload">
+                                                <input type="text" name="default-daterange-upload" class="form-control" value="" placeholder="Pilih Range Tanggal Upload" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_TU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Range Tanggal Masuk -->
+                    <div id="form_rtm" style="display: none">
+                        <form action="" method="POST">
+                            <div style="display: flex;justify-content: center;align-items: center;">
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Range Tanggal Masuk</label>
+                                            <div class="input-group" id="default-daterange-masuk">
+                                                <input type="text" name="default-daterange-masuk" class="form-control" value="" placeholder="Pilih Range Tanggal Masuk" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_TU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,78 +215,52 @@ if (isset($_POST['filter_date'])) {
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
-                <div class="row">
-                    <div style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;">
-                        <div class="col-md-3">
-                            <div style="display: flex;justify-content: center;">
-                                <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                                    <img src="assets/images/logo/logo-default.png" width="30%">
-                                <?php } else { ?>
-                                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
-                                <?php } ?>
+                <div class="row" style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;padding: 25px;margin: 10px;">
+                    <div class="col-sm-12">
+                        <div style="display: flex;justify-content: end;">
+                            <div>
+                                <button class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                            </div>
+                            <div class="btn-group m-r-5 m-b-5">
+                                <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="javascript:;" class="dropdown-item">Download as XLS</a>
+                                    <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <div style="display: grid;justify-content: left;">
-                                <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
-                                    PABEAN</font>
-                                <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                                <?php if (isset($_POST['filter_date'])) { ?>
-                                    <font style="font-size: 14px;font-weight: 800;"><i class="fas fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
-                                        <?= $EndTanggal ?></font>
-                                <?php } ?>
-                                <div class="line-page-table"></div>
-                                <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
-                                <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
-                                </font>
-                            </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="col-md-3 m-b-20">
+                        <div style="display: flex;justify-content: center;">
+                            <?php if ($resultHeadSetting['logo'] == NULL) { ?>
+                                <img src="assets/images/logo/logo-default.png" width="30%">
+                            <?php } else { ?>
+                                <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                            <?php } ?>
                         </div>
+                    </div>
+                    <div class="col-md-9" style="display: grid;justify-content: left;">
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
+                            PABEAN</font>
+                        <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
+                        <?php if (isset($_POST['filter_date'])) { ?>
+                            <font style="font-size: 14px;font-weight: 800;"><i class="fas fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
+                                <?= $EndTanggal ?></font>
+                        <?php } ?>
+                        <div class="line-page-table"></div>
+                        <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
+                        <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
+                        </font>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: -40px;">
+                        <hr>
                     </div>
                 </div>
-                <style>
-                    .bar {
-                        display: flex;
-                        justify-content: end;
-                        background: transparent;
-                    }
-                </style>
                 <div class="panel-body text-inverse">
-                    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
-                    </div>
-                    <?php if (isset($_POST['filter_date'])) { ?>
-                        <div class="bar">
-                            <div style="padding: 5px;">
-                                <a href="./report_masuk_barang.php" class="btn btn-warning" title="Reset" style="padding: 8px;">
-                                    <div style="display: flex;justify-content: space-between;align-items: end;">
-                                        <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
-                                    </div>
-                                </a>
-                            </div>
-                            <div style="padding: 5px;">
-                                <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                    <button type="submit" name="find_" class="btn btn-secondary">
-                                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel" data-toggle="popover" data-trigger="hover" data-title="Export File Excel" data-placement="top" data-content="Klik untuk mengexport data dalam file Excel">
-                                        Export
-                                        Excel
-                                    </button>
-                                </form>
-                            </div>
-                            <div style="padding: 5px;">
-                                <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                    <button type="submit" name="find_" class="btn btn-secondary">
-                                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print" data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top" data-content="Klik untuk Print File">
-                                        Print
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
-                        </div>
-                    <?php } ?>
                     <div class="table-responsive">
                         <table id="C_TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
@@ -189,8 +282,8 @@ if (isset($_POST['filter_date'])) {
                                     <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
                                     <th style="text-align: center;">Asal</th>
                                     <th style="text-align: center;">Tujuan</th>
-                                    <th style="text-align: center;">Sarinah</th>
-                                    <th style="text-align: center;">BC</th>
+                                    <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
+                                    <th style="text-align: center;">BeaCukai</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -200,14 +293,14 @@ if (isset($_POST['filter_date'])) {
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                                             WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            ORDER BY hdr.ID DESC", 0);
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center">
-                                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?> PLB
+                                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?>
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['NOMOR_AJU'] == NULL) { ?>
@@ -218,49 +311,53 @@ if (isset($_POST['filter_date'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NOMOR_DAFTAR']; ?>
-                                                <?php } ?>
+                                                <div style="width: 80px;">
+                                                    <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['NOMOR_DAFTAR']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?php
-                                                    $alldate = $row['ck5_plb_submit'];
-                                                    $tgl = substr($alldate, 0, 10);
-                                                    $time = substr($alldate, 10, 20);
-                                                    ?>
-                                                    <div style="display: flex;justify-content: center;">
-                                                        <font>
-                                                            <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?>
-                                                        </font>
-                                                    </div>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <?php if ($row['PERUSAHAAN'] == NULL) { ?>
-                                                    <center>
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['ck5_plb_submit'] == NULL) { ?>
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                                         </font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['PERUSAHAAN']; ?>
-                                                <?php } ?>
+                                                    <?php } else { ?>
+                                                        <?php
+                                                        $alldate = $row['ck5_plb_submit'];
+                                                        $tgl = substr($alldate, 0, 10);
+                                                        $time = substr($alldate, 10, 20);
+                                                        ?>
+                                                        <?= date_indo_s($tgl, TRUE) ?> - <?= $time ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: left">
-                                                <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['NAMA_PENERIMA_BARANG']; ?>
-                                                <?php } ?>
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                                        <center>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                            </font>
+                                                        </center>
+                                                    <?php } else { ?>
+                                                        <?= $row['PERUSAHAAN']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                                        <center>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                            </font>
+                                                        </center>
+                                                    <?php } else { ?>
+                                                        <?= $row['NAMA_PENERIMA_BARANG']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: left">
                                                 <?php
@@ -277,7 +374,11 @@ if (isset($_POST['filter_date'])) {
                                                 ?>
                                                 <?= $KDBRG ?>
                                             </td>
-                                            <td><?= $row['URAIAN']; ?></td>
+                                            <td>
+                                                <div style="width: 280px;">
+                                                    <?= $row['URAIAN']; ?>
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">
                                                     <font><?= $row['KODE_SATUAN']; ?></font>
@@ -290,40 +391,46 @@ if (isset($_POST['filter_date'])) {
                                                     <font><?= $row['CIF']; ?></font>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['TGL_CEK'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['TGL_CEK']; ?>
-                                                <?php } ?>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['TGL_CEK'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['TGL_CEK']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['OPERATOR_ONE']; ?>
-                                                <?php } ?>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['OPERATOR_ONE']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['bc_in'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['bc_in']; ?>
-                                                <?php } ?>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['bc_in'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['bc_in']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i>
                                                     </font>
                                                 <?php } else { ?>
-                                                    <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
+                                                    <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
                                                         <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
                                                             <div>
                                                                 <div style="font-size: 12px;">
-                                                                    <i class="fas fa-eye"></i>
+                                                                    <i class="fas fa-file-invoice"></i>
                                                                 </div>
                                                             </div>
                                                         </font>
@@ -425,15 +532,18 @@ if (isset($_POST['filter_date'])) {
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Masuk Barang | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Barang Masuk | IT Inventory <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>
-                                <?= $resultHeadSetting['website'] ?></span>
+                                <?= $resultHeadSetting['website'] ?>
+                            </span>
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i>
-                                T:<?= $resultHeadSetting['telp'] ?></span>
+                                T:<?= $resultHeadSetting['telp'] ?>
+                            </span>
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i>
-                                <?= $resultHeadSetting['email'] ?></span>
+                                <?= $resultHeadSetting['email'] ?>
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -445,23 +555,64 @@ if (isset($_POST['filter_date'])) {
 </div>
 <!-- end #content -->
 <?php
+include "include/pusat_bantuan.php";
+include "include/riwayat_aktifitas.php";
 include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
+include "include/jsForm.php";
 ?>
 <script type="text/javascript">
     $(function() {
+        $("#IDAJU_PLB").autocomplete({
+            source: 'function/autocomplete/nomor_aju_plb.php'
+        });
+    });
+    $(function() {
         $("#input-filter").change(function() {
-            if ($(this).val() == "TGL") {
-                $("#form_tgl").show();
-                $("#form_aju").hide();
-            } else if ($(this).val() == "AJU") {
-                $("#form_tgl").hide();
-                $("#form_aju").show();
+            if ($(this).val() == "NP") {
+                $("#form_np").show();
+                $("#form_tu").hide();
+                $("#form_rtm").hide();
+            } else if ($(this).val() == "TU") {
+                $("#form_np").hide();
+                $("#form_tu").show();
+                $("#form_rtm").hide();
+            } else if ($(this).val() == "RTM") {
+                $("#form_np").hide();
+                $("#form_tu").hide();
+                $("#form_rtm").show();
             } else {
-                $("#form_tgl").hide();
-                $("#form_aju").hide();
+                $("#form_np").show();
+                $("#form_tu").hide();
+                $("#form_rtm").hide();
             }
         });
     });
+    var handleDateRangePicker = function() {
+        // RANGE TANGGAL UPLOAD
+        $('#default-daterange-upload').daterangepicker({
+            opens: 'right',
+            format: 'MM/DD/YYYY',
+            separator: ' to ',
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '<?= $RUFirst ?>',
+            maxDate: '<?= $RULast ?>',
+        }, function(start, end) {
+            $('#default-daterange-upload input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
+        // RANGE TANGGAL MASUK
+        $('#default-daterange-masuk').daterangepicker({
+            opens: 'right',
+            format: 'MM/DD/YYYY',
+            separator: ' to ',
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '<?= $RMFirst ?>',
+            maxDate: '<?= $RMLast ?>',
+        }, function(start, end) {
+            $('#default-daterange-masuk input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
+    };
 </script>
