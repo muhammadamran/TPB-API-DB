@@ -8,7 +8,6 @@ include "include/top-sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
 
-
 // FUNCTION SEARCHING
 $FindNoAJU          = '';
 $Field_RTU          = '';
@@ -280,21 +279,74 @@ if (isset($_POST['Find_NP']) != '') {
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
                 <div class="row" style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;padding: 25px;margin: 10px;">
-                    <div class="col-sm-12">
-                        <div style="display: flex;justify-content: end;">
-                            <div>
-                                <button class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
-                            </div>
-                            <div class="btn-group m-r-5 m-b-5">
-                                <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
-                                <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="javascript:;" class="dropdown-item">Download as XLS</a>
-                                    <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                    <?php if (isset($_POST["Find_NP"])) { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <form action="report_masuk_barang_pdf.php">
+                                        <input type="hidden">
+                                        <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    </form>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
+                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } else if (isset($_POST["Find_RTU"])) { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <button class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
+                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else if (isset($_POST["Find_RTM"])) { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <button class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
+                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <a href="report_masuk_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
+                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                     <div class="col-md-12">
                         <hr>
                     </div>
