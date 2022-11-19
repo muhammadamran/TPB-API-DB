@@ -95,29 +95,6 @@ include "include/cssDatatables.php";
                                 </div>
                             </div>
                         </div>
-                        <!-- LAPORAN MUTASI -->
-                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>">
-                            <div class="lap">
-                                <!-- ICON -->
-                                <div class="lap-icon-isi">
-                                    <i style="margin: 0px;" class="fa-solid fa-building-circle-exclamation"></i>
-                                </div>
-                                <!-- TITLE & DESC -->
-                                <div class="lap-t-d">
-                                    <!-- TITLE -->
-                                    <div>
-                                        <h4><a href="report_mutasi_barang.php">Laporan Mutasi Barang</a></h4>
-                                    </div>
-                                    <!-- DESC -->
-                                    <div>
-                                        <p>Menampilkan pencatatan aktifitas barang berdasarkan <b>Data Gate In</b> dan <b>Data Gate Out</b>. Pencatatan aktivitas barang pada <b><?= $resultSetting['app_name'] ?></b> sesuai dengan aktivitas aktualnya.</p>
-                                        <div>
-                                            <a href="report_mutasi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- LAPORAN POSISI -->
                         <div class="col-sm-6" style="display: <?= $resultRoleModules['re_posisi_barang']; ?>">
                             <div class="lap">
@@ -136,6 +113,29 @@ include "include/cssDatatables.php";
                                         <p>Menampilkan Data Barang berdasarkan <b>Gate In</b> dan <b>Gate Out</b>. pada <b><?= $resultSetting['app_name'] ?></b>.</p>
                                         <div>
                                             <a href="report_posisi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LAPORAN MUTASI -->
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>">
+                            <div class="lap">
+                                <!-- ICON -->
+                                <div class="lap-icon-isi">
+                                    <i style="margin: 0px;" class="fa-solid fa-building-circle-exclamation"></i>
+                                </div>
+                                <!-- TITLE & DESC -->
+                                <div class="lap-t-d">
+                                    <!-- TITLE -->
+                                    <div>
+                                        <h4><a href="report_mutasi_barang.php">Laporan Mutasi Barang</a></h4>
+                                    </div>
+                                    <!-- DESC -->
+                                    <div>
+                                        <p>Menampilkan pencatatan aktifitas barang berdasarkan <b>Data Gate In</b> dan <b>Data Gate Out</b>. Pencatatan aktivitas barang pada <b><?= $resultSetting['app_name'] ?></b> sesuai dengan aktivitas aktualnya.</p>
+                                        <div>
+                                            <a href="report_mutasi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
                                         </div>
                                     </div>
                                 </div>

@@ -490,8 +490,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN
-                            PABEAN</font>
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
                             <?= $ShowFindNoAJU; ?>
@@ -777,7 +776,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Barang Keluar | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Barang Keluar | <?= $resultHeadSetting['app_name'] ?> <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>

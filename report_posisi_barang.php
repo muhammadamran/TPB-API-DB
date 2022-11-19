@@ -6,19 +6,288 @@ include "include/alert.php";
 include "include/top-header.php";
 include "include/top-sidebar.php";
 include "include/cssDatatables.php";
+include "include/cssForm.php";
 
-$StartTanggal = '';
-$EndTanggal = '';
+// FUNCTION SEARCHING
+$FindNoAJU          = '';
+$Field_RTU          = '';
+$Field_RTM          = '';
+$ShowFindNoAJU      = '';
+$ShowField_RTU      = '';
+$ShowField_RTM      = '';
+$info_filter        = "100 Data Terakhir Posisi Barang";
+$col                = "4";
+$display            = "none";
 
-if (isset($_POST['filter_date'])) {
-    if ($_POST["StartTanggal"] != '') {
-        $StartTanggal   = $_POST['StartTanggal'];
-    }
-
-    if ($_POST["EndTanggal"] != '') {
-        $EndTanggal     = $_POST['EndTanggal'];
-    }
+// NP
+if (isset($_POST["Find_NP"])) {
+    $FindNoAJU      = $_POST['FindNoAJU'];
+    $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
+    $info_filter    = "Data Berdasarkan Nomor Pengajuan";
+    $col            = "2";
+    $display        = "show";
 }
+
+// RTU
+if (isset($_POST["Find_RTU"])) {
+    $Field_RTU      = $_POST['default-daterange-upload'];
+    $Field_RTUE     = explode(" - ", $Field_RTU);
+    $RTUStart       = $Field_RTUE[0];
+    $RTUStart_T     = strtotime($RTUStart);
+    $S_RTU          = date("Y-m-d", $RTUStart_T);
+    $RTUEnd         = $Field_RTUE[1];
+    $RTUEnd_T       = strtotime($RTUEnd);
+    $E_RTU          = date("Y-m-d", $RTUEnd_T);
+    $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
+    // OTHERS
+    $info_filter    = "Data Berdasarkan Tgl. Upload PLB";
+    $col            = "2";
+    $display        = "show";
+}
+
+// RTM
+if (isset($_POST["Find_RTM"])) {
+    $Field_RTM      = $_POST['default-daterange-masuk'];
+    $Field_RTME     = explode(" - ", $Field_RTM);
+    $RTMStart       = $Field_RTME[0];
+    $RTMStart_T     = strtotime($RTMStart);
+    $S_RTM          = date("Y-m-d", $RTMStart_T);
+    $RTMEnd         = $Field_RTME[1];
+    $RTMEnd_T       = strtotime($RTMEnd);
+    $E_RTM          = date("Y-m-d", $RTMEnd_T);
+    $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
+    // OTHERS
+    $info_filter    = "Data Berdasarkan Tgl. Brg. Masuk";
+    $col            = "2";
+    $display        = "show";
+}
+
+// START
+// TANGGAL UPLOAD FIRST
+$dataRangeFirstUpload   = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY sts.ck5_plb_submit ASC LIMIT 1");
+$resultRangeFirstUpload = mysqli_fetch_array($dataRangeFirstUpload);
+$iniUploadFirst         = $resultRangeFirstUpload['ck5_plb_submit'];
+$alldateUploadFirst     = $iniUploadFirst;
+$tglUFirst              = substr($alldateUploadFirst, 0, 10);
+$tglUFirstE             = explode("-", $tglUFirst);
+$RUFirst                = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
+// TANGGAL UPLOAD LAST
+$dataRangeLastUpload    = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY sts.ck5_plb_submit DESC LIMIT 1");
+$resultRangeLastUpload  = mysqli_fetch_array($dataRangeLastUpload);
+$iniUploadLast          = $resultRangeLastUpload['ck5_plb_submit'];
+$alldateUploadLast      = $iniUploadLast;
+$tglULast               = substr($alldateUploadLast, 0, 10);
+$tglULastE              = explode("-", $tglULast);
+$RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
+// END
+
+// START
+// TANGGAL MASUK FIRST
+$dataRangeFirstMasuk    = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY plb.TGL_CEK ASC LIMIT 1");
+$resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
+$iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
+$alldateMasukFirst      = $iniMasukFirst;
+$tglMFirst              = substr($alldateMasukFirst, 0, 10);
+$tglMFirstE             = explode("-", $tglMFirst);
+$RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+// TANGGAL MASUK LAST
+$dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
+                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                    ORDER BY plb.TGL_CEK DESC LIMIT 1");
+$resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
+$iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
+$alldateMasukLast       = $iniMasukLast;
+$tglMLast               = substr($alldateMasukLast, 0, 10);
+$tglMLastE              = explode("-", $tglMLast);
+$RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+// END
+
+if (isset($_POST['Find_NP']) != '') {
+    $displayOne = 'show';
+    $displayTwo = 'none';
+    $displayThree = 'none';
+
+    $selectOne = 'selected';
+    $selectTwo = '';
+    $selectThree = '';
+} else if (isset($_POST['Find_RTU']) != '') {
+    $displayOne = 'none';
+    $displayTwo = 'show';
+    $displayThree = 'none';
+
+    $selectOne = '';
+    $selectTwo = 'selected';
+    $selectThree = '';
+} else if (isset($_POST['Find_RTM']) != '') {
+    $displayOne = 'none';
+    $displayTwo = 'none';
+    $displayThree = 'show';
+
+    $selectOne = '';
+    $selectTwo = '';
+    $selectThree = 'selected';
+} else {
+    $displayOne = 'show';
+    $displayTwo = 'none';
+    $displayThree = 'none';
+
+    $selectOne = 'selected';
+    $selectTwo = '';
+    $selectThree = '';
+}
+
+// RINCIAN JUMLAH BARANG
+$dataRincianBRG = $dbcon->query("SELECT COUNT(*) AS r_total_brg
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianBRG = mysqli_fetch_array($dataRincianBRG);
+// RINCIAN CT
+$dataRincianCT = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianCT = mysqli_fetch_array($dataRincianCT);
+// RINCIAN TOTAL BOTOL
+$dataRincianBTL = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianBTL = mysqli_fetch_array($dataRincianBTL);
+// RINCIAN TOTAL LITER
+$dataRincianLTR = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianLTR = mysqli_fetch_array($dataRincianLTR);
+
+if (isset($_POST["Find_NP"])) {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+} else if (isset($_POST["Find_RTU"])) {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+} else if (isset($_POST["Find_RTM"])) {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+} else {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+}
+// RINCIAN JUMLAH BARANG
+$resultRincianBRG_F = mysqli_fetch_array($dataRincianBRG_F);
+// RINCIAN CT
+$resultRincianCT_F = mysqli_fetch_array($dataRincianCT_F);
+// RINCIAN TOTAL BOTOL
+$resultRincianBTL_F = mysqli_fetch_array($dataRincianBTL_F);
+// RINCIAN TOTAL LITER
+$resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
 
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
@@ -32,12 +301,12 @@ if (isset($_POST['filter_date'])) {
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-desktop icon-page"></i>
+                <i class="fa-solid fa-circle-down icon-page"></i>
                 <font class="text-page">Laporan Posisi Barang</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
-                <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
+                <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
                 <li class="breadcrumb-item active">Laporan Posisi Barang</li>
             </ol>
         </div>
@@ -46,46 +315,207 @@ if (isset($_POST['filter_date'])) {
         </div>
     </div>
     <div class="line-page"></div>
-
     <!-- begin Select Tabel -->
     <div class="row">
-        <div class="col-xl-12">
+        <div class="col-xl-8">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Posisi Barang</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang Berdasarkan
+                        <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
+                            <option value="NP" <?= $selectOne ?>>Nomor Pengajuan</option>
+                            <option value="RTU" <?= $selectTwo ?>>Range Tanggal Upload</option>
+                            <option value="RTM" <?= $selectThree ?>>Range Tanggal Masuk</option>
+                        </select>
+                    </h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <!-- <form action="" method="POST">
-                        <div style="display: flex;justify-content: center;align-items: center;">
+                    <!-- Nomor Pengajuan -->
+                    <div id="form_NP" style="display: <?= $displayOne ?>;">
+                        <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
-                                <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-5">
-                                    <div class="form-group">
-                                        <label>Tanggal Mulai</label>
-                                        <input type="date" name="StartTanggal" class="form-control" value="<?= $StartTanggal; ?>" required>
-                                    </div>
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
                                 </div>
-                                <div class="col-xl-2" style="display: flex;justify-content: center;align-self: center;margin-top: 25px;">
-                                    <div class="form-group">
-                                        S.D
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>BC 2.7 PLB (Nomor Pengajuan)</label>
+                                            <input type="number" id="IDAJU_PLB" name="FindNoAJU" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $FindNoAJU; ?>">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-5">
-                                    <div class="form-group">
-                                        <label>Tanggal Selesai</label>
-                                        <input type="date" name="EndTanggal" class="form-control" value="<?= $EndTanggal; ?>" required>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_NP" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" name="filter_date" class="btn btn-info m-r-5"><i class="fas fa-filter"></i>
-                                        Filter Tanggal</button>
                                 </div>
                             </div>
+                        </form>
+                    </div>
+                    <!-- Tanggal Upload -->
+                    <div id="form_RTU" style="display: <?= $displayTwo ?>;">
+                        <form action="" method="POST">
+                            <div style="display: flex;justify-content: center;align-items: center;">
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Range Tanggal Upload</label>
+                                            <div class="input-group" id="default-daterange-upload">
+                                                <input type="text" name="default-daterange-upload" class="form-control" value="<?= $Field_RTU ?>" placeholder="Pilih Range Tanggal Upload" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_RTU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Range Tanggal Masuk -->
+                    <div id="form_RTM" style="display: <?= $displayThree ?>;">
+                        <form action="" method="POST">
+                            <div style="display: flex;justify-content: center;align-items: center;">
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Range Tanggal Masuk</label>
+                                            <div class="input-group" id="default-daterange-masuk">
+                                                <input type="text" name="default-daterange-masuk" class="form-control" value="<?= $Field_RTM ?>" placeholder="Pilih Range Tanggal Masuk" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_RTM" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-<?= $col ?>">
+            <div class="panel-body text-inverse">
+                <div class="card border-0 bg-dark-darker text-white mb-3">
+                    <div class="card-body">
+                        <div class="mb-3 text-grey">
+                            <b>LAPORAN DATA POSISI BARANG</b>
+                            <span class="text-grey ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Laporan Data Posisi Barang <?= $resultSetting['app_name'] ?> - <?= $resultSetting['company'] ?>"></i></span>
                         </div>
-                    </form> -->
+                        <h3 class="m-b-10"><i class="fas fa-check-circle"></i> <span data-animation="number" data-value="<?= $resultRincianBRG['r_total_brg']; ?>">0.00</span> Brg. Masuk</h3>
+                        <div class="text-grey m-b-1"><i class="fa fa-calendar"></i> <?= date_indo_s(date('Y-m-d'), TRUE); ?></div>
+                    </div>
+                    <div class="widget-list widget-list-rounded inverse-mode">
+                        <a href="#" class="widget-list-item rounded-0 p-t-3" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-box-open bg-warning text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Carton</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianCT['r_total_ct']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-wine-bottle bg-blue text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Botol</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianBTL['r_total_btl']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-tint bg-aqua text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Liter</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= round($resultRincianLTR['r_total_ltr']); ?>">0.00</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2" style="display:<?= $display ?>">
+            <div class="panel-body text-inverse">
+                <div class="card border-0 bg-dark-darker text-white mb-3">
+                    <div class="card-body">
+                        <div class="mb-3 text-grey">
+                            <b>HASIL FILTER LAP. DATA BRG. MASUK</b>
+                            <span class="text-grey ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Hasil Filter Laporan Data Posisi Barang <?= $resultSetting['app_name'] ?> - <?= $resultSetting['company'] ?>"></i></span>
+                        </div>
+                        <h3 class="m-b-10"><i class="fas fa-filter"></i> <span data-animation="number" data-value="<?= $resultRincianBRG_F['r_total_brg']; ?>">0.00</span> Brg. Masuk</h3>
+                        <div class="text-grey m-b-1"><i class="fab fa-creative-commons-nd"></i> <?= $info_filter ?></div>
+                    </div>
+                    <div class="widget-list widget-list-rounded inverse-mode">
+                        <a href="#" class="widget-list-item rounded-0 p-t-3" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-box-open bg-warning text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Carton</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianCT_F['r_total_ct']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-wine-bottle bg-blue text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Botol</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianBTL_F['r_total_btl']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-tint bg-aqua text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Liter</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= round($resultRincianLTR_F['r_total_ltr']); ?>">0.00</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,255 +526,267 @@ if (isset($_POST['filter_date'])) {
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
-                <div class="row">
-                    <div style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;">
-                        <div class="col-md-3">
-                            <div style="display: flex;justify-content: center;">
-                                <?php if ($resultHeadSetting['logo'] == NULL) { ?>
-                                    <img src="assets/images/logo/logo-default.png" width="30%">
-                                <?php } else { ?>
-                                    <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div style="display: grid;justify-content: left;">
-                                <font style="font-size: 24px;font-weight: 800;">LAPORAN POSISI BARANG PER DOKUMEN PABEAN</font>
-                                <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-                                <?php if (isset($_POST['filter_date'])) { ?>
-                                    <font style="font-size: 14px;font-weight: 800;"><i class="fas fa-calendar-check"></i> Tanggal: <?= $StartTanggal ?> S.D
-                                        <?= $EndTanggal ?></font>
-                                <?php } ?>
-                                <div class="line-page-table"></div>
-                                <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
-                                <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
-                                </font>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    .bar {
-                        display: flex;
-                        justify-content: end;
-                        background: transparent;
-                    }
-                </style>
-                <div class="panel-body text-inverse">
-                    <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
-                    </div>
-                    <?php if (isset($_POST['filter_date'])) { ?>
-                        <div class="bar">
-                            <div style="padding: 5px;">
-                                <a href="./report_masuk_barang.php" class="btn btn-warning" title="Reset" style="padding: 8px;">
-                                    <div style="display: flex;justify-content: space-between;align-items: end;">
-                                        <i class="fas fa-refresh" style="font-size: 18px;margin-top: -10px;"></i>&nbsp;Reset
+                <div class="row" style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;padding: 25px;margin: 10px;">
+                    <?php if (isset($_POST["Find_NP"])) { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
+                                        <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
+                                        <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    </form>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
+                                            <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
+                                            <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
+                                        </form>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
-                                </a>
-                            </div>
-                            <div style="padding: 5px;">
-                                <form action="./export/excel_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                    <button type="submit" name="find_" class="btn btn-secondary">
-                                        <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel" data-toggle="popover" data-trigger="hover" data-title="Export File Excel" data-placement="top" data-content="Klik untuk mengexport data dalam file Excel">
-                                        Export
-                                        Excel
-                                    </button>
-                                </form>
-                            </div>
-                            <div style="padding: 5px;">
-                                <form action="./export/pdf_report_masuk_barang.php" target="_blank" method="POST" style="display: inline-block;">
-                                    <input type="hidden" name="StartTanggal" value="<?= $StartTanggal; ?>">
-                                    <input type="hidden" name="EndTanggal" value="<?= $EndTanggal; ?>">
-                                    <button type="submit" name="find_" class="btn btn-secondary">
-                                        <img src="assets/img/favicon/print.png" class="icon-primary-print" alt="Print" data-toggle="popover" data-trigger="hover" data-title="Print File" data-placement="top" data-content="Klik untuk Print File">
-                                        Print
-                                    </button>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                        <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;">
+                    <?php } else if (isset($_POST["Find_RTU"])) { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
+                                        <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
+                                        <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
+                                        <button type="submit" name="Find_RTU" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    </form>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
+                                            <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
+                                            <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
+                                            <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
+                                        </form>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else if (isset($_POST["Find_RTM"])) { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
+                                        <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
+                                        <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
+                                        <button type="submit" name="Find_RTM" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    </form>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
+                                            <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
+                                            <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
+                                            <button type="submit" name="Find_RTM" class="dropdown-item">Download as XLS</button>
+                                        </form>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="col-sm-12">
+                            <div style="display: flex;justify-content: end;">
+                                <div>
+                                    <a href="report_masuk_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
+                                </div>
+                                <div class="btn-group m-r-5 m-b-5">
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="report_masuk_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     <?php } ?>
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="col-md-3 m-b-20">
+                        <div style="display: flex;justify-content: center;">
+                            <?php if ($resultHeadSetting['logo'] == NULL) { ?>
+                                <img src="assets/images/logo/logo-default.png" width="30%">
+                            <?php } else { ?>
+                                <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="50%">
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="display: grid;justify-content: left;">
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
+                            PABEAN</font>
+                        <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
+                        <font style="font-size: 14px;font-weight: 800;">
+                            <?= $ShowFindNoAJU; ?>
+                            <?= $ShowField_RTU; ?>
+                            <?= $ShowField_RTM; ?>
+                        </font>
+                        <div class="line-page-table"></div>
+                        <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
+                        <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
+                        </font>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: -40px;">
+                        <hr>
+                    </div>
+                </div>
+                <div class="panel-body text-inverse">
                     <div class="table-responsive">
                         <table id="C_TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
-                                    <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
-                                    <th rowspan="2" style="text-align: center;">Kode Barang</th>
+                                    <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
+                                    <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
+                                    <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
-                                    <th rowspan="2" style="text-align: center;">Jumlah Satuan</th>
-                                    <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk/Keluar</th>
-                                    <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+                                    <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
+                                    <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
+                                    <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th colspan="2" style="text-align: center;">Petugas</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
                                 </tr>
                                 <tr>
-                                    <!-- PLB -->
-                                    <th class="no-sort" style="text-align: center;">Jenis Dokumen</th>
+                                    <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
-                                    <th style="text-align: center;">No. Daftar</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
+                                    <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
                                     <th style="text-align: center;">Asal</th>
                                     <th style="text-align: center;">Tujuan</th>
-                                    <!-- END -->
-                                    <!-- TPB -->
-                                    <th class="no-sort" style="text-align: center;">Jenis Dokumen</th>
-                                    <th style="text-align: center;">Nomor Pengajuan</th>
-                                    <th style="text-align: center;">No. Daftar</th>
-                                    <th style="text-align: center;">Asal</th>
-                                    <th style="text-align: center;">Tujuan</th>
-                                    <!-- END -->
-                                    <th style="text-align: center;">Sarinah</th>
-                                    <th style="text-align: center;">BC</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Upload<font style="color: #dadddf;">.</font>PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Masuk<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
+                                    <th style="text-align: center;">BeaCukai</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT rcd.rcd_id,rcd.bm_no_aju_plb,rcd.bk_no_aju_sarinah,
-                                                            hdr.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_PLB,
-                                                            hdr.NOMOR_DAFTAR AS NOMOR_DAFTAR_PLB,
-                                                            sts.ck5_plb_submit AS ck5_plb_submit_PLB,
-                                                            hdr.NOMOR_AJU AS NOMOR_AJU_PLB_PLB,
-                                                            hdr.PERUSAHAAN AS PERUSAHAAN_PLB,
-                                                            hdr.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_PLB,
-                                                            -- GB
-                                                            tpb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_GB,
-                                                            tpb.NOMOR_AJU AS NOMOR_AJU_GB,
-                                                            tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_GB,
-                                                            tpb.NAMA_PENGUSAHA AS NAMA_PENGUSAHA_GB,
-                                                            tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_GB,
-                                                            -- BARANG
-                                                            plb.KODE_BARANG,
-                                                            plb.POS_TARIF,
-                                                            plb.URAIAN,
-                                                            plb.KODE_SATUAN,
-                                                            plb.JUMLAH_SATUAN,
-                                                            hdr.KODE_VALUTA,
-                                                            plb.CIF,
-                                                            rcd.bm_tgl_masuk,
-                                                            rcd.bk_tgl_keluar,
-                                                            rcd.bm_nama_operator,
-                                                            rcd.bk_nama_operator,
-                                                            rcd.bc_in,
-                                                            rcd.bc_out,
-                                                            rcd.upload_beritaAcara_PLB,
-                                                            rcd.upload_beritaAcara_GB
-                                                            FROM rcd_status AS rcd 
+                                if (isset($_POST["Find_NP"])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
                                                             WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            ORDER BY hdr.ID DESC", 0);
+                                                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                } else if (isset($_POST["Find_RTU"])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                } else if (isset($_POST["Find_RTM"])) {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                } else {
+                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
+                                }
+
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
-                                            <!-- PLB -->
                                             <td style="text-align: center">
-                                                BC <?= $row['KODE_DOKUMEN_PABEAN_PLB']; ?> PLB
+                                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_AJU_PLB_PLB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                 <?php } else { ?>
-                                                    <?= $row['NOMOR_AJU_PLB_PLB']; ?>
+                                                    <?= $row['NOMOR_AJU']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_DAFTAR_PLB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NOMOR_DAFTAR_PLB']; ?>
-                                                <?php } ?>
+                                                <div style="width: 80px;">
+                                                    <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['NOMOR_DAFTAR']; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['ck5_plb_submit_PLB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                                        <center>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                        </center>
+                                                    <?php } else { ?>
+                                                        <?= $row['PERUSAHAAN']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                                        <center>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                        </center>
+                                                    <?php } else { ?>
+                                                        <?= $row['NAMA_PENERIMA_BARANG']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['ck5_plb_submit'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?php
+                                                        $alldate = $row['ck5_plb_submit'];
+                                                        $tgl = substr($alldate, 0, 10);
+                                                        $time = substr($alldate, 10, 20);
+                                                        ?>
+                                                        <?= date_indo_s($tgl) ?> <?= $time ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
                                                     <?php
-                                                    $alldate = $row['ck5_plb_submit_PLB'];
-                                                    $tgl = substr($alldate, 0, 10);
-                                                    $time = substr($alldate, 10, 20);
+                                                    $alldateM = $row['TGL_CEK'];
+                                                    $tglM = substr($alldateM, 0, 10);
+                                                    $timeM = substr($alldateM, 10, 20);
                                                     ?>
-                                                    <div style="display: flex;justify-content: center;">
-                                                        <font>
-                                                            <i class="fa-solid fa-calendar-days"></i> <?= $tgl ?> - <?= $time ?>
-                                                        </font>
-                                                    </div>
-                                                <?php } ?>
+                                                    <?php if ($row['TGL_CEK'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= date_indo_s($tglM); ?> <?= $timeM; ?>
+                                                    <?php } ?>
+                                                </div>
                                             </td>
-                                            <td style="text-align: left">
-                                                <?php if ($row['PERUSAHAAN_PLB'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['PERUSAHAAN_PLB']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <?php if ($row['NAMA_PENERIMA_BARANG_PLB'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['NAMA_PENERIMA_BARANG_PLB']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- END PLB -->
-                                            <!-- GB -->
-                                            <td style="text-align: center">
-                                                BC <?= $row['KODE_DOKUMEN_PABEAN_GB']; ?> PLB
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['NOMOR_AJU_GB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NOMOR_AJU_GB']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['NOMOR_DAFTAR_GB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['NOMOR_DAFTAR_GB']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <?php if ($row['NAMA_PENGUSAHA_GB'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['NAMA_PENGUSAHA_GB']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <?php if ($row['NAMA_PENERIMA_BARANG_GB'] == NULL) { ?>
-                                                    <center>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    </center>
-                                                <?php } else { ?>
-                                                    <?= $row['NAMA_PENERIMA_BARANG_GB']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- END GB -->
-
                                             <td style="text-align: left">
                                                 <?php
                                                 if ($row['KODE_BARANG'] == NULL) {
@@ -360,7 +802,14 @@ if (isset($_POST['filter_date'])) {
                                                 ?>
                                                 <?= $KDBRG ?>
                                             </td>
-                                            <td><?= $row['URAIAN']; ?></td>
+                                            <td>
+                                                <div style="width: 280px;">
+                                                    <?= $row['URAIAN']; ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?= $row['SPESIFIKASI_LAIN']; ?>
+                                            </td>
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">
                                                     <font><?= $row['KODE_SATUAN']; ?></font>
@@ -374,60 +823,37 @@ if (isset($_POST['filter_date'])) {
                                                 </div>
                                             </td>
                                             <td style="text-align: left">
-                                                <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;width: 155px;">
-                                                    <div style="font-size: 20px;">
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                    <div style="font-size: 10px;margin-left: 5px;">
-                                                        <div>
-                                                            Masuk: <?= $row['bm_tgl_masuk'] ?>
-                                                        </div>
-                                                        <div style="margin-top: -5px;">
-                                                            Keluar: <?= $row['bk_tgl_keluar'] ?>
-                                                        </div>
-                                                    </div>
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['OPERATOR_ONE']; ?>
+                                                    <?php } ?>
                                                 </div>
                                             </td>
                                             <td style="text-align: left">
-                                                <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;width: 155px;">
-                                                    <div style="font-size: 20px;">
-                                                        <i class="fa-solid fa-user-circle"></i>
-                                                    </div>
-                                                    <div style="font-size: 10px;margin-left: 5px;">
-                                                        <div>
-                                                            Masuk: <?= $row['bm_nama_operator'] ?>
-                                                        </div>
-                                                        <div style="margin-top: -5px;">
-                                                            Keluar: <?= $row['bk_nama_operator'] ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;width: 155px;">
-                                                    <div style="font-size: 20px;">
-                                                        <i class="fa-solid fa-user-circle"></i>
-                                                    </div>
-                                                    <div style="font-size: 10px;margin-left: 5px;">
-                                                        <div>
-                                                            Masuk: <?= $row['bc_in'] ?>
-                                                        </div>
-                                                        <div style="margin-top: -5px;">
-                                                            Keluar: <?= $row['bc_out'] ?>
-                                                        </div>
-                                                    </div>
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['bc_in'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['bc_in']; ?>
+                                                    <?php } ?>
                                                 </div>
                                             </td>
                                             <td style="text-align: center">
-                                                <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-dark" data-toggle="modal" title="Add">
-                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
-                                                        <div>
-                                                            <div style="font-size: 12px;">
-                                                                <i class="fas fa-eye"></i>
+                                                <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
+                                                <?php } else { ?>
+                                                    <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
+                                                            <div>
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-file-invoice"></i>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </font>
-                                                </a>
+                                                        </font>
+                                                    </a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
 
@@ -437,115 +863,60 @@ if (isset($_POST['filter_date'])) {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Berita Acara] Laporan Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Berita Acara] Laporan Posisi Barang</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label>Nomor Pengajuan PLB</label>
+                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label>Nomor Pengajuan GB</label>
+                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Tanggal Masuk Barang</label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_tgl_masuk']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Petugas <?= $resultSetting['company']; ?></label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Petugas BeaCukai</label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bc_in']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
                                                                 <div class="col-md-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label>Nomor Pengajuan PLB</label>
-                                                                                <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                            </div>
+                                                                    <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                                        <div style="font-size: 30px;">
+                                                                            <i class="fas fa-file-pdf"></i>
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <label>Nomor Pengajuan GB</label>
-                                                                                <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
+                                                                        <div style="margin-left: 10px;">
+                                                                            <div style="font-size: 17px;font-weight: 900;">
+                                                                                Dokumen Berita Acara
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>Tanggal Masuk Barang</label>
-                                                                                <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_tgl_masuk']; ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>Petugas <?= $resultSetting['company']; ?></label>
-                                                                                <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>Petugas BeaCukai</label>
-                                                                                <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bc_in']; ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div style="display: flex;justify-content: flex-start;align-items: center;">
-                                                                                <div style="font-size: 30px;">
-                                                                                    <i class="fas fa-file-pdf"></i>
-                                                                                </div>
-                                                                                <div style="margin-left: 10px;">
-                                                                                    <div style="font-size: 17px;font-weight: 900;">
-                                                                                        Dokumen Berita Acara Masuk
-                                                                                    </div>
-                                                                                    <div style="margin-top: -5px;font-size: 10px;">
-                                                                                        Lampiran Gate In
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                                    <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
-                                                                                <?php } ?>
+                                                                            <div style="margin-top: -5px;font-size: 10px;">
+                                                                                Lampiran Gate In
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>Tanggal Keluar Barang</label>
-                                                                                <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_tgl_keluar']; ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>Petugas <?= $resultSetting['company']; ?></label>
-                                                                                <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_nama_operator']; ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>Petugas BeaCukai</label>
-                                                                                <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bc_out']; ?>" readonly>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div style="display: flex;justify-content: flex-start;align-items: center;">
-                                                                                <div style="font-size: 30px;">
-                                                                                    <i class="fas fa-file-pdf"></i>
-                                                                                </div>
-                                                                                <div style="margin-left: 10px;">
-                                                                                    <div style="font-size: 17px;font-weight: 900;">
-                                                                                        Dokumen Berita Acara Keluar
-                                                                                    </div>
-                                                                                    <div style="margin-top: -5px;font-size: 10px;">
-                                                                                        Lampiran Gate Out
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
-                                                                                    <embed src="files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
-                                                                                <?php } ?>
-                                                                            </div>
-                                                                        </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                        </object>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -564,7 +935,7 @@ if (isset($_POST['filter_date'])) {
                                     ?>
                                 <?php else : ?>
                                     <tr>
-                                        <td colspan="14">
+                                        <td colspan="16">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -579,15 +950,18 @@ if (isset($_POST['filter_date'])) {
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Posisi Barang | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Posisi Barang | <?= $resultHeadSetting['app_name'] ?> <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>
-                                <?= $resultHeadSetting['website'] ?></span>
+                                <?= $resultHeadSetting['website'] ?>
+                            </span>
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i>
-                                T:<?= $resultHeadSetting['telp'] ?></span>
+                                T:<?= $resultHeadSetting['telp'] ?>
+                            </span>
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i>
-                                <?= $resultHeadSetting['email'] ?></span>
+                                <?= $resultHeadSetting['email'] ?>
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -599,23 +973,64 @@ if (isset($_POST['filter_date'])) {
 </div>
 <!-- end #content -->
 <?php
+include "include/pusat_bantuan.php";
+include "include/riwayat_aktifitas.php";
 include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
+include "include/jsForm.php";
 ?>
 <script type="text/javascript">
     $(function() {
+        $("#IDAJU_PLB").autocomplete({
+            source: 'function/autocomplete/nomor_aju_plb.php'
+        });
+    });
+    $(function() {
         $("#input-filter").change(function() {
-            if ($(this).val() == "TGL") {
-                $("#form_tgl").show();
-                $("#form_aju").hide();
-            } else if ($(this).val() == "AJU") {
-                $("#form_tgl").hide();
-                $("#form_aju").show();
+            if ($(this).val() == "NP") {
+                $("#form_NP").show();
+                $("#form_RTU").hide();
+                $("#form_RTM").hide();
+            } else if ($(this).val() == "RTU") {
+                $("#form_NP").hide();
+                $("#form_RTU").show();
+                $("#form_RTM").hide();
+            } else if ($(this).val() == "RTM") {
+                $("#form_NP").hide();
+                $("#form_RTU").hide();
+                $("#form_RTM").show();
             } else {
-                $("#form_tgl").hide();
-                $("#form_aju").hide();
+                $("#form_NP").show();
+                $("#form_RTU").hide();
+                $("#form_RTM").hide();
             }
         });
     });
+    var handleDateRangePicker = function() {
+        // RANGE TANGGAL UPLOAD
+        $('#default-daterange-upload').daterangepicker({
+            opens: 'right',
+            format: 'MM/DD/YYYY',
+            separator: ' to ',
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '<?= $RUFirst ?>',
+            maxDate: '<?= $RULast ?>',
+        }, function(start, end) {
+            $('#default-daterange-upload input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
+        // RANGE TANGGAL MASUK
+        $('#default-daterange-masuk').daterangepicker({
+            opens: 'right',
+            format: 'MM/DD/YYYY',
+            separator: ' to ',
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '<?= $RMFirst ?>',
+            maxDate: '<?= $RMLast ?>',
+        }, function(start, end) {
+            $('#default-daterange-masuk input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
+    };
 </script>

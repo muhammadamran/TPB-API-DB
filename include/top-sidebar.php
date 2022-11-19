@@ -116,10 +116,10 @@
                 <span>Laporan </span>
             </a>
             <ul class="sub-menu">
-                <li class="<?= $uriSegmentsTop[1] == 'report_masuk_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>;"><a href="report_masuk_barang.php">Masuk Barang</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_keluar_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_keluar_barang']; ?>;"><a href="report_keluar_barang.php">Keluar Barang</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_mutasi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>;"><a href="report_mutasi_barang.php">Mutasi Barang</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_masuk_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>;"><a href="report_masuk_barang.php">Barang Masuk</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_keluar_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_keluar_barang']; ?>;"><a href="report_keluar_barang.php">Barang Keluar</a></li>
                 <li class="<?= $uriSegmentsTop[1] == 'report_posisi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_posisi_barang']; ?>;"><a href="report_posisi_barang.php">Posisi Barang</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_mutasi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>;"><a href="report_mutasi_barang.php">Mutasi Barang</a></li>
                 <li class="<?= $uriSegmentsTop[1] == 'report_realisasi.php' ||
                                 $uriSegmentsTop[1] == 'report_realisasi_all_mitra.php' ||
                                 $uriSegmentsTop[1] == 'report_realisasi_per_mitra.php' ||

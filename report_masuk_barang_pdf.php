@@ -130,8 +130,7 @@ if (isset($_POST["Find_RTM"])) {
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;margin-bottom:-30px">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
-                            PABEAN</font>
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
                             <?= $ShowFindNoAJU; ?>
@@ -329,7 +328,7 @@ if (isset($_POST["Find_RTM"])) {
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Barang Masuk | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Barang Masuk | <?= $resultHeadSetting['app_name'] ?> <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>
