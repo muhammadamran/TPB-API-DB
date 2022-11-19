@@ -15,11 +15,17 @@ $Field_RTM          = '';
 $ShowFindNoAJU      = '';
 $ShowField_RTU      = '';
 $ShowField_RTM      = '';
+$info_filter        = "100 Data Terakhir Barang Masuk";
+$col                = "4";
+$display            = "none";
 
 // RTU
 if (isset($_POST["Find_NP"])) {
     $FindNoAJU      = $_POST['FindNoAJU'];
     $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
+    $info_filter    = "Data Berdasarkan Nomor Pengajuan";
+    $col            = "2";
+    $display        = "show";
 }
 
 // RTU
@@ -33,6 +39,9 @@ if (isset($_POST["Find_RTU"])) {
     $RTUEnd_T       = strtotime($RTUEnd);
     $E_RTU          = date("Y-m-d", $RTUEnd_T);
     $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
+    $info_filter    = "Data Berdasarkan Tgl. Upload PLB";
+    $col            = "2";
+    $display        = "show";
 }
 
 // RTM
@@ -46,6 +55,10 @@ if (isset($_POST["Find_RTM"])) {
     $RTMEnd_T       = strtotime($RTMEnd);
     $E_RTM          = date("Y-m-d", $RTMEnd_T);
     $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
+    // OTHERS
+    $info_filter    = "Data Berdasarkan Tgl. Brg. Masuk";
+    $col            = "2";
+    $display        = "show";
 }
 
 // START
@@ -139,6 +152,142 @@ if (isset($_POST['Find_NP']) != '') {
     $selectTwo = '';
     $selectThree = '';
 }
+
+// RINCIAN JUMLAH BARANG
+$dataRincianBRG = $dbcon->query("SELECT COUNT(*) AS r_total_brg
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianBRG = mysqli_fetch_array($dataRincianBRG);
+// RINCIAN CT
+$dataRincianCT = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianCT = mysqli_fetch_array($dataRincianCT);
+// RINCIAN TOTAL BOTOL
+$dataRincianBTL = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianBTL = mysqli_fetch_array($dataRincianBTL);
+// RINCIAN TOTAL LITER
+$dataRincianLTR = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
+                                FROM plb_barang AS brg 
+                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
+$resultRincianLTR = mysqli_fetch_array($dataRincianLTR);
+
+if (isset($_POST["Find_NP"])) {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
+} else if (isset($_POST["Find_RTU"])) {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr,sts.ck5_plb_submit
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
+} else if (isset($_POST["Find_RTM"])) {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr,brg.TGL_CEK
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
+} else {
+    // RINCIAN JUMLAH BARANG
+    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+    // RINCIAN CT
+    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+    // RINCIAN TOTAL BOTOL
+    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+    // RINCIAN TOTAL LITER
+    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
+                            FROM plb_barang AS brg 
+                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
+                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
+}
+// RINCIAN JUMLAH BARANG
+$resultRincianBRG_F = mysqli_fetch_array($dataRincianBRG_F);
+// RINCIAN CT
+$resultRincianCT_F = mysqli_fetch_array($dataRincianCT_F);
+// RINCIAN TOTAL BOTOL
+$resultRincianBTL_F = mysqli_fetch_array($dataRincianBTL_F);
+// RINCIAN TOTAL LITER
+$resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
+
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Laporan Barang Masuk App Name | Company </title>
@@ -167,7 +316,7 @@ if (isset($_POST['Find_NP']) != '') {
     <div class="line-page"></div>
     <!-- begin Select Tabel -->
     <div class="row">
-        <div class="col-xl-12">
+        <div class="col-xl-8">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang Berdasarkan
@@ -185,7 +334,7 @@ if (isset($_POST['Find_NP']) != '') {
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
+                                    <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -211,7 +360,7 @@ if (isset($_POST['Find_NP']) != '') {
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -242,7 +391,7 @@ if (isset($_POST['Find_NP']) != '') {
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -267,6 +416,104 @@ if (isset($_POST['Find_NP']) != '') {
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-<?= $col ?>">
+            <div class="panel-body text-inverse">
+                <div class="card border-0 bg-dark-darker text-white mb-3">
+                    <div class="card-body">
+                        <div class="mb-3 text-grey">
+                            <b>LAPORAN DATA BARANG MASUK</b>
+                            <span class="text-grey ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Laporan Data Barang Masuk <?= $resultSetting['app_name'] ?> - <?= $resultSetting['company'] ?>"></i></span>
+                        </div>
+                        <h3 class="m-b-10"><i class="fas fa-check-circle"></i> <span data-animation="number" data-value="<?= $resultRincianBRG['r_total_brg']; ?>">0.00</span> Brg. Masuk</h3>
+                        <div class="text-grey m-b-1"><i class="fa fa-calendar"></i> <?= date_indo_s(date('Y-m-d'), TRUE); ?></div>
+                    </div>
+                    <div class="widget-list widget-list-rounded inverse-mode">
+                        <a href="#" class="widget-list-item rounded-0 p-t-3" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-box-open bg-warning text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Carton</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianCT['r_total_ct']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-wine-bottle bg-blue text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Botol</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianBTL['r_total_btl']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-tint bg-aqua text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Liter</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= round($resultRincianLTR['r_total_ltr']); ?>">0.00</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2" style="display:<?= $display ?>">
+            <div class="panel-body text-inverse">
+                <div class="card border-0 bg-dark-darker text-white mb-3">
+                    <div class="card-body">
+                        <div class="mb-3 text-grey">
+                            <b>HASIL FILTER LAP. DATA BRG. MASUK</b>
+                            <span class="text-grey ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Hasil Filter Laporan Data Barang Masuk <?= $resultSetting['app_name'] ?> - <?= $resultSetting['company'] ?>"></i></span>
+                        </div>
+                        <h3 class="m-b-10"><i class="fas fa-filter"></i> <span data-animation="number" data-value="<?= $resultRincianBRG_F['r_total_brg']; ?>">0.00</span> Brg. Masuk</h3>
+                        <div class="text-grey m-b-1"><i class="fab fa-creative-commons-nd"></i> <?= $info_filter ?></div>
+                    </div>
+                    <div class="widget-list widget-list-rounded inverse-mode">
+                        <a href="#" class="widget-list-item rounded-0 p-t-3" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-box-open bg-warning text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Carton</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianCT_F['r_total_ct']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-wine-bottle bg-blue text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Botol</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= $resultRincianBTL_F['r_total_btl']; ?>">0.00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
+                            <div class="widget-list-media icon">
+                                <i class="fas fa-tint bg-aqua text-white"></i>
+                            </div>
+                            <div class="widget-list-content">
+                                <div class="widget-list-title text-black">Liter</div>
+                            </div>
+                            <div class="widget-list-action text-nowrap text-black">
+                                <span data-animation="number" data-value="<?= round($resultRincianLTR_F['r_total_ltr']); ?>">0.00</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -408,22 +655,24 @@ if (isset($_POST['Find_NP']) != '') {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
+                                    <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
+                                    <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
-                                    <th rowspan="2" style="text-align: center;">Jumlah Satuan</th>
-                                    <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk</th>
+                                    <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
+                                    <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
+                                    <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
                                     <th colspan="2" style="text-align: center;">Petugas Penerima</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
                                 </tr>
                                 <tr>
-                                    <th class="no-sort" style="text-align: center;">Jenis Dokumen</th>
+                                    <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">No. Daftar</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
                                     <th style="text-align: center;">Asal</th>
                                     <th style="text-align: center;">Tujuan</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Upload PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Masuk Barang</th>
                                     <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
                                     <th style="text-align: center;">BeaCukai</th>
                                 </tr>
@@ -473,8 +722,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['NOMOR_AJU']; ?>
                                                 <?php } ?>
@@ -482,8 +730,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: center">
                                                 <div style="width: 80px;">
                                                     <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['NOMOR_DAFTAR']; ?>
                                                     <?php } ?>
@@ -491,25 +738,9 @@ if (isset($_POST['Find_NP']) != '') {
                                             </td>
                                             <td style="text-align: left">
                                                 <div style="width: 200px;">
-                                                    <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    <?php } else { ?>
-                                                        <?php
-                                                        $alldate = $row['ck5_plb_submit'];
-                                                        $tgl = substr($alldate, 0, 10);
-                                                        $time = substr($alldate, 10, 20);
-                                                        ?>
-                                                        <?= date_indo_s($tgl, TRUE) ?> - <?= $time ?>
-                                                    <?php } ?>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <div style="width: 200px;">
                                                     <?php if ($row['PERUSAHAAN'] == NULL) { ?>
                                                         <center>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                         </center>
                                                     <?php } else { ?>
                                                         <?= $row['PERUSAHAAN']; ?>
@@ -520,11 +751,38 @@ if (isset($_POST['Find_NP']) != '') {
                                                 <div style="width: 200px;">
                                                     <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
                                                         <center>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                         </center>
                                                     <?php } else { ?>
                                                         <?= $row['NAMA_PENERIMA_BARANG']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['ck5_plb_submit'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?php
+                                                        $alldate = $row['ck5_plb_submit'];
+                                                        $tgl = substr($alldate, 0, 10);
+                                                        $time = substr($alldate, 10, 20);
+                                                        ?>
+                                                        <?= date_indo_s($tgl) ?> <?= $time ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php
+                                                    $alldateM = $row['TGL_CEK'];
+                                                    $tglM = substr($alldateM, 0, 10);
+                                                    $timeM = substr($alldateM, 10, 20);
+                                                    ?>
+                                                    <?php if ($row['TGL_CEK'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= date_indo_s($tglM); ?> <?= $timeM; ?>
                                                     <?php } ?>
                                                 </div>
                                             </td>
@@ -548,6 +806,9 @@ if (isset($_POST['Find_NP']) != '') {
                                                     <?= $row['URAIAN']; ?>
                                                 </div>
                                             </td>
+                                            <td style="text-align: center">
+                                                <?= $row['SPESIFIKASI_LAIN']; ?>
+                                            </td>
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">
                                                     <font><?= $row['KODE_SATUAN']; ?></font>
@@ -562,19 +823,8 @@ if (isset($_POST['Find_NP']) != '') {
                                             </td>
                                             <td style="text-align: left">
                                                 <div style="width: 150px;">
-                                                    <?php if ($row['TGL_CEK'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
-                                                    <?php } else { ?>
-                                                        <?= $row['TGL_CEK']; ?>
-                                                    <?php } ?>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <div style="width: 150px;">
                                                     <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['OPERATOR_ONE']; ?>
                                                     <?php } ?>
@@ -583,8 +833,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: left">
                                                 <div style="width: 150px;">
                                                     <?php if ($row['bc_in'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['bc_in']; ?>
                                                     <?php } ?>
@@ -592,8 +841,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
                                                 <?php } else { ?>
                                                     <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
                                                         <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
@@ -686,7 +934,7 @@ if (isset($_POST['Find_NP']) != '') {
                                     ?>
                                 <?php else : ?>
                                     <tr>
-                                        <td colspan="15">
+                                        <td colspan="16">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data

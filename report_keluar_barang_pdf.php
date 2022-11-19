@@ -97,11 +97,11 @@ if (isset($_POST["Find_RTM"])) {
 }
 ?>
 <?php if (isset($_POST["Find_NP"])) { ?>
-    <title>Print Laporan Barang Masuk <?= $ShowFindNoAJU; ?>_<?= date('Ymd_H:m:i') ?></title>
+    <title>Print Laporan Barang Keluar <?= $ShowFindNoAJU; ?>_<?= date('Ymd_H:m:i') ?></title>
 <?php } else if (isset($_POST["Find_RTM"])) { ?>
-    <title>Print Laporan Barang Masuk <?= $ShowField_RTM; ?>_<?= date('Ymd_H:m:i') ?></title>
+    <title>Print Laporan Barang Keluar <?= $ShowField_RTM; ?>_<?= date('Ymd_H:m:i') ?></title>
 <?php } else { ?>
-    <title>Print Laporan Barang Masuk 100 Data Terakhir_<?= date('Ymd_H:m:i') ?></title>
+    <title>Print Laporan Barang Keluar 100 Data Terakhir_<?= date('Ymd_H:m:i') ?></title>
 <?php } ?>
 
 <body class="pace-done">
@@ -138,20 +138,19 @@ if (isset($_POST["Find_RTM"])) {
                         <thead style="background: #dadddf;color: #333;">
                             <tr style="background: #dadddf;color: #333;">
                                 <th rowspan="2" width="1%">No.</th>
-                                <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
+                                <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
                                 <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                 <th rowspan="2" style="text-align: center;">Uraian</th>
-                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>
-                                </th>
+                                <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
+                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
                                 <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Masuk</th>
+                                <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
                                 <th colspan="2" style="text-align: center;">Petugas Penerima</th>
                             </tr>
                             <tr>
                                 <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
                                 <th style="text-align: center;">Nomor Pengajuan</th>
                                 <th style="text-align: center;">No<font style="color: #dadddf;">.</font>Daftar</th>
-                                <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
                                 <th style="text-align: center;">Asal</th>
                                 <th style="text-align: center;">Tujuan</th>
                                 <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>
@@ -218,19 +217,6 @@ if (isset($_POST["Find_RTM"])) {
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: left">
-                                            <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                </font>
-                                            <?php } else { ?>
-                                                <?php
-                                                $alldate = $row['ck5_plb_submit'];
-                                                $tgl = substr($alldate, 0, 10);
-                                                $time = substr($alldate, 10, 20);
-                                                ?>
-                                                <?= date_indo_s($tgl, TRUE) ?><br><?= $time ?>
-                                            <?php } ?>
-                                        </td>
-                                        <td style="text-align: left">
                                             <?php if ($row['PERUSAHAAN'] == NULL) { ?>
                                                 <center>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
@@ -267,6 +253,9 @@ if (isset($_POST["Find_RTM"])) {
                                         </td>
                                         <td>
                                             <?= $row['URAIAN']; ?>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <?= $row['SPESIFIKASI_LAIN']; ?>
                                         </td>
                                         <td>
                                             <div style="display: flex;justify-content: space-between;align-items: center">
@@ -316,7 +305,7 @@ if (isset($_POST["Find_RTM"])) {
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Barang Masuk | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Barang Keluar | IT Inventory <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>

@@ -410,16 +410,17 @@ if (isset($_POST['Find_NP']) != '') {
                                     <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
-                                    <th rowspan="2" style="text-align: center;">Jumlah Satuan</th>
-                                    <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Keluar</th>
+                                    <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
+                                    <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
+                                    <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
                                     <th colspan="2" style="text-align: center;">Petugas Penerima</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
                                 </tr>
                                 <tr>
-                                    <th class="no-sort" style="text-align: center;">Jenis Dokumen</th>
+                                    <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
-                                    <th style="text-align: center;">No. Daftar</th>
+                                    <th style="text-align: center;">No.Daftar</th>
                                     <th style="text-align: center;">Asal</th>
                                     <th style="text-align: center;">Tujuan</th>
                                     <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
@@ -526,6 +527,9 @@ if (isset($_POST['Find_NP']) != '') {
                                                 <div style="width: 280px;">
                                                     <?= $row['URAIAN']; ?>
                                                 </div>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?= $row['SPESIFIKASI_LAIN']; ?>
                                             </td>
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">

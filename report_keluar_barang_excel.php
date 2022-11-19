@@ -148,10 +148,9 @@ if (isset($_POST["Find_NP"])) {
             <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
             <th rowspan="2" style="text-align: center;">Kode Barang</th>
             <th rowspan="2" style="text-align: center;">Uraian</th>
-            <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>
-            </th>
+            <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
             <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-            <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Masuk</th>
+            <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
             <th colspan="2" style="text-align: center;">Petugas Penerima</th>
         </tr>
         <tr style="background: #dadddf;color: #333;">
