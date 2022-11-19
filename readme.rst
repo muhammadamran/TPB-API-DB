@@ -1,5 +1,5 @@
 ###################
-System Information TPB
+System IT Inventory PT. Sarinah (TPB ERP)
 ###################
 
 PHP is an Application Development Framework - a toolkit - for people
@@ -9,13 +9,6 @@ a rich set of libraries for commonly needed tasks, as well as a simple
 interface and logical structure to access these libraries. PHP lets
 you creatively focus on your project by minimizing the amount of code needed
 for a given task.
-
-<img src="assets/vendors/images/deskapp-logo.png" width="30%">
-
-## 📸 Example Dashboard Mahasiswa
-<pre>
-<img src="assets/screenshot/laptop-dashboard-mahasiswa.JPG" width="30%">     <img src="assets/screenshot/android-dashboard-mahasiswa.JPG" width="30%">
-</pre>
 
 *******************
 Release Information
