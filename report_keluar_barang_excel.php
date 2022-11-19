@@ -52,13 +52,6 @@ if (isset($_POST["Find_NP"])) {
     $ShowFindNoAJU  = $_POST['ShowFindNoAJU'];
 }
 
-// RTU
-if (isset($_POST["Find_RTU"])) {
-    $S_RTU          = $_POST['S_RTU'];
-    $E_RTU          = $_POST['E_RTU'];
-    $ShowField_RTU  = $_POST['ShowField_RTU'];
-}
-
 // RTM
 if (isset($_POST["Find_RTM"])) {
     $S_RTM          = $_POST['S_RTM'];
@@ -122,7 +115,7 @@ if (isset($_POST["Find_NP"])) {
                     <br>
                 </div>
             </td>
-            <td colspan="8" rowspan="2" style="font-size: 18px;font-weight: 900;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN</td>
+            <td colspan="8" rowspan="2" style="font-size: 18px;font-weight: 900;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN</td>
             <td colspan="2" rowspan="3" style="font-size: 12px;font-weight: 900;">
                 <div style="display:flex;justify-content:center">
                     <br>
@@ -137,7 +130,6 @@ if (isset($_POST["Find_NP"])) {
         <tr>
             <td colspan="8" style="font-size: 14px;font-weight: 900;">
                 <?= $ShowFindNoAJU; ?>
-                <?= $ShowField_RTU; ?>
                 <?= $ShowField_RTM; ?>
             </td>
             <td colspan="2" rowspan="3"></td>

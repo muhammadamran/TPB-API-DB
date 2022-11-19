@@ -407,7 +407,7 @@ if (isset($_POST['Find_NP']) != '') {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
+                                    <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah Satuan</th>
@@ -482,20 +482,6 @@ if (isset($_POST['Find_NP']) != '') {
                                                         <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['NOMOR_DAFTAR']; ?>
-                                                    <?php } ?>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: left">
-                                                <div style="width: 200px;">
-                                                    <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    <?php } else { ?>
-                                                        <?php
-                                                        $alldate = $row['ck5_plb_submit'];
-                                                        $tgl = substr($alldate, 0, 10);
-                                                        $time = substr($alldate, 10, 20);
-                                                        ?>
-                                                        <?= date_indo_s($tgl, TRUE) ?> - <?= $time ?>
                                                     <?php } ?>
                                                 </div>
                                             </td>

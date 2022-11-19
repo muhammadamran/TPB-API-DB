@@ -89,13 +89,6 @@ if (isset($_POST["Find_NP"])) {
     $ShowFindNoAJU  = $_POST['ShowFindNoAJU'];
 }
 
-// RTU
-if (isset($_POST["Find_RTU"])) {
-    $S_RTU          = $_POST['S_RTU'];
-    $E_RTU          = $_POST['E_RTU'];
-    $ShowField_RTU  = $_POST['ShowField_RTU'];
-}
-
 // RTM
 if (isset($_POST["Find_RTM"])) {
     $S_RTM          = $_POST['S_RTM'];
@@ -130,12 +123,11 @@ if (isset($_POST["Find_RTM"])) {
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;margin-bottom:-30px">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN
                             PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
                             <?= $ShowFindNoAJU; ?>
-                            <?= $ShowField_RTU; ?>
                             <?= $ShowField_RTM; ?>
                         </font>
                         <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
