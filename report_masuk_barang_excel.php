@@ -68,9 +68,9 @@ if (isset($_POST["Find_RTM"])) {
 if (isset($_POST["Find_NP"])) {
     header("Content-Disposition: attachment; filename=Laporan Barang Masuk $ShowFindNoAJU-$datenow.xls");
 } else if (isset($_POST["Find_RTU"])) {
-    header("Content-Disposition: attachment; filename=Laporan Barang Masuk $ShowField_RTU-$datenow.xls");
+    header("Content-Disposition: attachment; filename=Laporan Barang Masuk_Range-Tanggal-Upload-$datenow.xls");
 } else if (isset($_POST["Find_RTM"])) {
-    header("Content-Disposition: attachment; filename=Laporan Barang Masuk $ShowField_RTM-$datenow.xls");
+    header("Content-Disposition: attachment; filename=Laporan Barang Masuk_Range-Tanggal-Masuk-$datenow.xls");
 } else {
     header("Content-Disposition: attachment; filename=Laporan Barang Masuk 100 Data Terakhir_$datenow.xls");
 }
@@ -84,30 +84,73 @@ if (isset($_POST["Find_NP"])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
 </head>
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: .75rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #333;
+        text-align: left;
+        background-color: #d9e0e7;
+    }
+</style>
+<table width="1829">
+    <tbody>
+        <tr>
+            <td width="31">&nbsp;</td>
+            <td width="117">&nbsp;</td>
+            <td width="170">&nbsp;</td>
+            <td width="89">&nbsp;</td>
+            <td width="119">&nbsp;</td>
+            <td width="160">&nbsp;</td>
+            <td width="214">&nbsp;</td>
+            <td width="112">&nbsp;</td>
+            <td width="263">&nbsp;</td>
+            <td width="75">&nbsp;</td>
+            <td width="111">&nbsp;</td>
+            <td width="180">&nbsp;</td>
+            <td width="99">&nbsp;</td>
+            <td width="89">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4" rowspan="6">
+                <div style="display:flex;justify-content:center">
+                    <font style="color: #fff;font-size: 65px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">##</font>
+                    <font style="color: red;font-size: 65px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">Sarinah</font>
+                    <br>
+                </div>
+            </td>
+            <td colspan="8" rowspan="2" style="font-size: 18px;font-weight: 900;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN</td>
+            <td colspan="2" rowspan="3" style="font-size: 12px;font-weight: 900;">
+                <div style="display:flex;justify-content:center">
+                    <br>
+                    <?= $resultHeadSetting['app_name'] ?><br>
+                    Date Time: <?= date('Y-m-d H:m:i') ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8"></td>
+        </tr>
+        <tr>
+            <td colspan="8" style="font-size: 14px;font-weight: 900;">
+                <?= $ShowFindNoAJU; ?>
+                <?= $ShowField_RTU; ?>
+                <?= $ShowField_RTM; ?>
+            </td>
+            <td colspan="2" rowspan="3"></td>
+        </tr>
+        <tr>
+            <td colspan="8" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company_t'] ?></td>
+        </tr>
+        <tr>
+            <td colspan="8" style="font-size: 12px;font-weight: 300;"><?= $resultHeadSetting['address'] ?></td>
+        </tr>
+    </tbody>
+</table>
 <!-- Begin Row -->
-<div>
-    <img src="http://itinventory-sarinah.com/assets/images/icon/icon_1659678389.png" style="width: 300px;margin-top:-80px;margin-bottom:-100px">
-</div>
-<div>
-    <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN</font>
-</div>
-<div>
-    <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
-</div>
-<div>
-    <font style="font-size: 14px;font-weight: 800;">
-        <?= $ShowFindNoAJU; ?>
-        <?= $ShowField_RTU; ?>
-        <?= $ShowField_RTM; ?>
-    </font>
-</div>
-<div>
-    <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
-</div>
-<div>
-    <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?></font>
-</div>
-<br>
 <table class="table table-bordered table-td-valign-middle" border="1">
     <thead style="background: #dadddf;color: #333;">
         <tr style="background: #dadddf;color: #333;">
@@ -180,7 +223,7 @@ if (isset($_POST["Find_NP"])) {
                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                             </font>
                         <?php } else { ?>
-                            <?= $row['NOMOR_AJU']; ?>
+                            '<?= $row['NOMOR_AJU']; ?>
                         <?php } ?>
                     </td>
                     <td style="text-align: center">
@@ -201,7 +244,7 @@ if (isset($_POST["Find_NP"])) {
                             $tgl = substr($alldate, 0, 10);
                             $time = substr($alldate, 10, 20);
                             ?>
-                            <?= date_indo_s($tgl, TRUE) ?><br><?= $time ?>
+                            <?= date_indo_s($tgl, TRUE) ?> <?= $time ?>
                         <?php } ?>
                     </td>
                     <td style="text-align: left">
@@ -237,7 +280,7 @@ if (isset($_POST["Find_NP"])) {
                             $POSTARIF = $row['POS_TARIF'];
                         }
                         ?>
-                        <?= $KDBRG ?>
+                        '<?= $KDBRG ?>
                     </td>
                     <td>
                         <?= $row['URAIAN']; ?>

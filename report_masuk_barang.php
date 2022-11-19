@@ -298,7 +298,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
                                             <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
                                         </form>
-                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -318,8 +318,13 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
-                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
+                                            <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
+                                            <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
+                                            <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
+                                        </form>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -339,8 +344,13 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
-                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
+                                            <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
+                                            <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
+                                            <button type="submit" name="Find_RTM" class="dropdown-item">Download as XLS</button>
+                                        </form>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -355,8 +365,8 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="javascript:;" class="dropdown-item">Download as XLS</a>
-                                        <a href="javascript:;" class="dropdown-item">Download as DOCX</a>
+                                        <a href="report_masuk_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
