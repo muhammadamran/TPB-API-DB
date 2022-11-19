@@ -11,7 +11,7 @@ $AJU_GB = '';
 
 if (isset($_POST['edit_'])) {
     $rcd_id                 = $_POST['rcd_id'];
-    $bk_tgl_keluar          = $_POST['bk_tgl_keluar'];
+    $bk_tgl_keluar          = $_POST['bk_tgl_keluar'] . ' ' . date('H:m:i');
     $bk_nama_operator       = $_POST['bk_nama_operator'];
 
     $sql = $dbcon->query("UPDATE rcd_status SET bk_tgl_keluar='$bk_tgl_keluar',

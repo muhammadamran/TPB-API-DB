@@ -37,7 +37,7 @@ if (isset($_POST["Find_RTU"])) {
 
 // RTM
 if (isset($_POST["Find_RTM"])) {
-    $Field_RTM      = $_POST['default-daterange-masuk'];
+    $Field_RTM      = $_POST['default-daterange-keluar'];
     $Field_RTME     = explode(" - ", $Field_RTM);
     $RTMStart       = $Field_RTME[0];
     $RTMStart_T     = strtotime($RTMStart);
@@ -45,7 +45,7 @@ if (isset($_POST["Find_RTM"])) {
     $RTMEnd         = $Field_RTME[1];
     $RTMEnd_T       = strtotime($RTMEnd);
     $E_RTM          = date("Y-m-d", $RTMEnd_T);
-    $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
+    $ShowField_RTM  = "Tanggal Keluar: " . $_POST['default-daterange-keluar'];
 }
 
 // START
@@ -78,30 +78,30 @@ $RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE
 // END
 
 // START
-// TANGGAL MASUK FIRST
-$dataRangeFirstMasuk    = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+// TANGGAL KELUAR FIRST
+$dataRangeFirstKeluar    = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY plb.TGL_CEK ASC LIMIT 1");
-$resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
-$iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
-$alldateMasukFirst      = $iniMasukFirst;
-$tglMFirst              = substr($alldateMasukFirst, 0, 10);
+$resultRangeFirstKeluar  = mysqli_fetch_array($dataRangeFirstKeluar);
+$iniKeluarFirst          = $resultRangeFirstKeluar['TGL_CEK'];
+$alldateKeluarFirst      = $iniKeluarFirst;
+$tglMFirst              = substr($alldateKeluarFirst, 0, 10);
 $tglMFirstE             = explode("-", $tglMFirst);
 $RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
-// TANGGAL MASUK LAST
-$dataRangeLastMasuk     = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+// TANGGAL KELUAR LAST
+$dataRangeLastKeluar     = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY plb.TGL_CEK DESC LIMIT 1");
-$resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
-$iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
-$alldateMasukLast       = $iniMasukLast;
-$tglMLast               = substr($alldateMasukLast, 0, 10);
+$resultRangeLastKeluar   = mysqli_fetch_array($dataRangeLastKeluar);
+$iniKeluarLast           = $resultRangeLastKeluar['TGL_CEK'];
+$alldateKeluarLast       = $iniKeluarLast;
+$tglMLast               = substr($alldateKeluarLast, 0, 10);
 $tglMLastE              = explode("-", $tglMLast);
 $RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
 // END
@@ -141,9 +141,9 @@ if (isset($_POST['Find_NP']) != '') {
 }
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>Laporan Barang Masuk App Name | Company </title>
+    <title>Laporan Barang Keluar App Name | Company </title>
 <?php } else { ?>
-    <title>Laporan Barang Masuk - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+    <title>Laporan Barang Keluar - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
 <!-- begin #content -->
@@ -152,12 +152,12 @@ if (isset($_POST['Find_NP']) != '') {
         <div>
             <h1 class="page-header-css">
                 <i class="fa-solid fa-circle-down icon-page"></i>
-                <font class="text-page">Laporan Barang Masuk</font>
+                <font class="text-page">Laporan Barang Keluar</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
                 <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
-                <li class="breadcrumb-item active">Laporan Barang Masuk</li>
+                <li class="breadcrumb-item active">Laporan Barang Keluar</li>
             </ol>
         </div>
         <div>
@@ -170,11 +170,10 @@ if (isset($_POST['Find_NP']) != '') {
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang Berdasarkan
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Keluar Barang Berdasarkan
                         <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
                             <option value="NP" <?= $selectOne ?>>Nomor Pengajuan</option>
-                            <option value="RTU" <?= $selectTwo ?>>Range Tanggal Upload</option>
-                            <option value="RTM" <?= $selectThree ?>>Range Tanggal Masuk</option>
+                            <option value="RTM" <?= $selectThree ?>>Range Tanggal Keluar</option>
                         </select>
                     </h4>
                     <?php include "include/panel-row.php"; ?>
@@ -198,7 +197,7 @@ if (isset($_POST['Find_NP']) != '') {
                                         <button type="submit" name="Find_NP" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
                                             <font class="f-action">Cari</font>
                                         </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                        <a href="report_keluar_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
                                             <font class="f-action">Reset</font>
                                         </a>
                                     </div>
@@ -229,7 +228,7 @@ if (isset($_POST['Find_NP']) != '') {
                                         <button type="submit" name="Find_RTU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
                                             <font class="f-action">Cari</font>
                                         </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                        <a href="report_keluar_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
                                             <font class="f-action">Reset</font>
                                         </a>
                                     </div>
@@ -237,7 +236,7 @@ if (isset($_POST['Find_NP']) != '') {
                             </div>
                         </form>
                     </div>
-                    <!-- Range Tanggal Masuk -->
+                    <!-- Range Tanggal Keluar -->
                     <div id="form_RTM" style="display: <?= $displayThree ?>;">
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
@@ -247,9 +246,9 @@ if (isset($_POST['Find_NP']) != '') {
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Range Tanggal Masuk</label>
-                                            <div class="input-group" id="default-daterange-masuk">
-                                                <input type="text" name="default-daterange-masuk" class="form-control" value="<?= $Field_RTM ?>" placeholder="Pilih Range Tanggal Masuk" />
+                                            <label>Range Tanggal Keluar</label>
+                                            <div class="input-group" id="default-daterange-keluar">
+                                                <input type="text" name="default-daterange-keluar" class="form-control" value="<?= $Field_RTM ?>" placeholder="Pilih Range Tanggal Keluar" />
                                                 <span class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </span>
@@ -260,7 +259,7 @@ if (isset($_POST['Find_NP']) != '') {
                                         <button type="submit" name="Find_RTM" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
                                             <font class="f-action">Cari</font>
                                         </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                        <a href="report_keluar_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
                                             <font class="f-action">Reset</font>
                                         </a>
                                     </div>
@@ -283,7 +282,7 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                    <form action="report_keluar_barang_pdf.php" target="_blank" method="POST">
                                         <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
                                         <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
                                         <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
@@ -293,7 +292,7 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                        <form action="report_keluar_barang_excel.php" target="_blank" method="POST">
                                             <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
                                             <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
                                             <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
@@ -307,7 +306,7 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                    <form action="report_keluar_barang_pdf.php" target="_blank" method="POST">
                                         <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
                                         <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
                                         <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
@@ -318,7 +317,7 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                        <form action="report_keluar_barang_excel.php" target="_blank" method="POST">
                                             <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
                                             <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
                                             <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
@@ -333,7 +332,7 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                    <form action="report_keluar_barang_pdf.php" target="_blank" method="POST">
                                         <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
                                         <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
                                         <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
@@ -344,7 +343,7 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                        <form action="report_keluar_barang_excel.php" target="_blank" method="POST">
                                             <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
                                             <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
                                             <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
@@ -359,13 +358,13 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <a href="report_masuk_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
+                                    <a href="report_keluar_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
                                 </div>
                                 <div class="btn-group m-r-5 m-b-5">
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="report_masuk_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
+                                        <a href="report_keluar_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
                                         <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
@@ -385,7 +384,7 @@ if (isset($_POST['Find_NP']) != '') {
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN
                             PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
@@ -408,12 +407,12 @@ if (isset($_POST['Find_NP']) != '') {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
+                                    <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
                                     <th rowspan="2" style="text-align: center;">Kode Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah Satuan</th>
                                     <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Masuk</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal & Waktu Keluar</th>
                                     <th colspan="2" style="text-align: center;">Petugas Penerima</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
                                 </tr>
@@ -421,7 +420,6 @@ if (isset($_POST['Find_NP']) != '') {
                                     <th class="no-sort" style="text-align: center;">Jenis Dokumen</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">No. Daftar</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
                                     <th style="text-align: center;">Asal</th>
                                     <th style="text-align: center;">Tujuan</th>
                                     <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
@@ -434,33 +432,33 @@ if (isset($_POST['Find_NP']) != '') {
                                     $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
                                                             AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                                 } else if (isset($_POST["Find_RTU"])) {
                                     $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
                                                             AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                                 } else if (isset($_POST["Find_RTM"])) {
                                     $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            AND plb.TGL_CEK_GB BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                                 } else {
                                     $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC LIMIT 100", 0);
                                 }
 
                                 if ($dataTable) : $no = 1;
@@ -473,8 +471,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             </td>
                                             <td style="text-align: center">
                                                 <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                 <?php } else { ?>
                                                     <?= $row['NOMOR_AJU']; ?>
                                                 <?php } ?>
@@ -482,8 +479,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: center">
                                                 <div style="width: 80px;">
                                                     <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['NOMOR_DAFTAR']; ?>
                                                     <?php } ?>
@@ -492,8 +488,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: left">
                                                 <div style="width: 200px;">
                                                     <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?php
                                                         $alldate = $row['ck5_plb_submit'];
@@ -506,13 +501,12 @@ if (isset($_POST['Find_NP']) != '') {
                                             </td>
                                             <td style="text-align: left">
                                                 <div style="width: 200px;">
-                                                    <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                                    <?php if ($row['NAMA_PENGUSAHA'] == NULL) { ?>
                                                         <center>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                         </center>
                                                     <?php } else { ?>
-                                                        <?= $row['PERUSAHAAN']; ?>
+                                                        <?= $row['NAMA_PENGUSAHA']; ?>
                                                     <?php } ?>
                                                 </div>
                                             </td>
@@ -520,8 +514,7 @@ if (isset($_POST['Find_NP']) != '') {
                                                 <div style="width: 200px;">
                                                     <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
                                                         <center>
-                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                            </font>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                         </center>
                                                     <?php } else { ?>
                                                         <?= $row['NAMA_PENERIMA_BARANG']; ?>
@@ -563,8 +556,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: left">
                                                 <div style="width: 150px;">
                                                     <?php if ($row['TGL_CEK'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['TGL_CEK']; ?>
                                                     <?php } ?>
@@ -573,8 +565,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: left">
                                                 <div style="width: 150px;">
                                                     <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['OPERATOR_ONE']; ?>
                                                     <?php } ?>
@@ -583,17 +574,15 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: left">
                                                 <div style="width: 150px;">
                                                     <?php if ($row['bc_in'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                        </font>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                     <?php } else { ?>
                                                         <?= $row['bc_in']; ?>
                                                     <?php } ?>
                                                 </div>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i>
-                                                    </font>
+                                                <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
                                                 <?php } else { ?>
                                                     <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
                                                         <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
@@ -614,7 +603,7 @@ if (isset($_POST['Find_NP']) != '') {
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Berita Acara] Laporan Barang Masuk</h4>
+                                                            <h4 class="modal-title">[Berita Acara] Laporan Barang Keluar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
@@ -633,8 +622,8 @@ if (isset($_POST['Find_NP']) != '') {
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>Tanggal Masuk Barang</label>
-                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bm_tgl_masuk']; ?>" readonly>
+                                                                        <label>Tanggal Keluar Barang</label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_tgl_keluar']; ?>" readonly>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -659,14 +648,14 @@ if (isset($_POST['Find_NP']) != '') {
                                                                                 Dokumen Berita Acara
                                                                             </div>
                                                                             <div style="margin-top: -5px;font-size: 10px;">
-                                                                                Lampiran Gate In
+                                                                                Lampiran Gate Out
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                        <embed src="files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
                                                                         </object>
                                                                     </div>
                                                                 </div>
@@ -701,7 +690,7 @@ if (isset($_POST['Find_NP']) != '') {
                     <hr>
                     <div class="invoice-footer">
                         <p class="text-center m-b-5 f-w-600">
-                            Laporan Barang Masuk | IT Inventory <?= $resultHeadSetting['company'] ?>
+                            Laporan Barang Keluar | IT Inventory <?= $resultHeadSetting['company'] ?>
                         </p>
                         <p class="text-center">
                             <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>
@@ -771,8 +760,8 @@ include "include/jsForm.php";
         }, function(start, end) {
             $('#default-daterange-upload input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         });
-        // RANGE TANGGAL MASUK
-        $('#default-daterange-masuk').daterangepicker({
+        // RANGE TANGGAL KELUAR
+        $('#default-daterange-keluar').daterangepicker({
             opens: 'right',
             format: 'MM/DD/YYYY',
             separator: ' to ',
@@ -781,7 +770,7 @@ include "include/jsForm.php";
             minDate: '<?= $RMFirst ?>',
             maxDate: '<?= $RMLast ?>',
         }, function(start, end) {
-            $('#default-daterange-masuk input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            $('#default-daterange-keluar input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         });
     };
 </script>
