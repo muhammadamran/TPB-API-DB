@@ -1,4 +1,5 @@
 <?php include "include/connection.php";
+include "include/restrict.php";
 
 // DATE SPLIT
 function date_indo_s($date, $print_day = false)
@@ -96,46 +97,50 @@ if (isset($_POST["Find_NP"])) {
         background-color: #d9e0e7;
     }
 </style>
-<table width="1829">
+<!-- LINE -->
+<table style="height: 36px;" width="1548">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="border-bottom: 1px solid #333;" colspan="15">&nbsp;</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="border-style: none; height: 18px; width: 1541px;" colspan="15">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+<!-- END LINE -->
+<table width="1548">
     <tbody>
         <tr>
-            <td width="31">&nbsp;</td>
-            <td width="117">&nbsp;</td>
-            <td width="170">&nbsp;</td>
-            <td width="89">&nbsp;</td>
-            <td width="119">&nbsp;</td>
-            <td width="160">&nbsp;</td>
-            <td width="214">&nbsp;</td>
-            <td width="112">&nbsp;</td>
-            <td width="263">&nbsp;</td>
-            <td width="75">&nbsp;</td>
-            <td width="111">&nbsp;</td>
-            <td width="180">&nbsp;</td>
-            <td width="99">&nbsp;</td>
-            <td width="89">&nbsp;</td>
+            <td colspan="4" rowspan="5" width="392">
+                <!-- <p>## Sarinah</p> -->
+                <p>
+                <div style="display:flex;justify-content:center">
+                    <font style="color: #fff;font-size: 72px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">##</font>
+                    <font style="color: #d8121a;font-size: 72px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">Sarinah</font>
+                </div>
+                <br>
+                </p>
+            </td>
+            <td colspan="4" rowspan="2" width="579" style="font-size: 18px;font-weight: 900;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN</td>
+            <td width="87">&nbsp;</td>
+            <td width="85">&nbsp;</td>
+            <td width="92">&nbsp;</td>
+            <td width="138">&nbsp;</td>
+            <td width="85">&nbsp;</td>
+            <td width="90">&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="4" rowspan="6">
-                <div style="display:flex;justify-content:center">
-                    <font style="color: #fff;font-size: 65px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">##</font>
-                    <font style="color: #d8121a;font-size: 65px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">Sarinah</font>
-                    <br>
-                </div>
-            </td>
-            <td colspan="8" rowspan="2" style="font-size: 18px;font-weight: 900;">LAPORAN PEMASUKAN BARANG PER DOKUMEN PABEAN</td>
-            <td colspan="2" rowspan="3" style="font-size: 12px;font-weight: 900;">
-                <div style="display:flex;justify-content:center">
-                    <br>
-                    <?= $resultHeadSetting['app_name'] ?><br>
-                    Date Time: <?= date('Y-m-d H:m:i') ?>
-                </div>
+            <td width="87">&nbsp;</td>
+            <td width="85">&nbsp;</td>
+            <td width="92">&nbsp;</td>
+            <td width="138">&nbsp;</td>
+            <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">
+                <p><?= $resultHeadSetting['app_name']; ?></p>
             </td>
         </tr>
         <tr>
-            <td colspan="8"></td>
-        </tr>
-        <tr>
-            <td colspan="8" style="font-size: 14px;font-weight: 900;">
+            <td colspan="8" width="981" style="font-size: 14px;font-weight: 900;">
                 <?php
                 if (isset($_POST["Find_NP"])) {
                     echo $ShowFindNoAJU;
@@ -148,16 +153,31 @@ if (isset($_POST["Find_NP"])) {
                 }
                 ?>
             </td>
-            <td colspan="2" rowspan="3"></td>
+            <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">Print By: <?= $_SESSION['username']; ?></td>
         </tr>
         <tr>
-            <td colspan="8" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company_t'] ?></td>
+            <td colspan="8" width="981" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company_t'] ?></td>
+            <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">Date Time: <?= date_indo_s(date('Y-m-d'), TRUE) ?> <?= date('H:m:i') ?></td>
         </tr>
         <tr>
-            <td colspan="8" style="font-size: 12px;font-weight: 300;"><?= $resultHeadSetting['address'] ?></td>
+            <td colspan="8" width="981" style="font-size: 12px;font-weight: 300;"><?= $resultHeadSetting['address'] ?></td>
+            <td width="85">&nbsp;</td>
+            <td width="90">&nbsp;</td>
         </tr>
     </tbody>
 </table>
+<!-- LINE -->
+<table style="height: 36px;" width="1548">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="border-bottom: 1px solid #333;" colspan="15">&nbsp;</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="border-style: none; height: 18px; width: 1541px;" colspan="15">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+<!-- END LINE -->
 <!-- Begin Row -->
 <table class="table table-bordered table-td-valign-middle" border="1">
     <thead>
@@ -170,7 +190,7 @@ if (isset($_POST["Find_NP"])) {
             <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
             <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
             <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
-            <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+            <th colspan="2" style="text-align: center;">Petugas</th>
         </tr>
         <tr>
             <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>

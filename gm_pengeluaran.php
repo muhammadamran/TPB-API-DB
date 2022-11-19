@@ -237,7 +237,7 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bk_nama_operator,
                                                                 rcd.bk_remarks,
                                                                 rcd.keterangan,
-                                                                rcd.bc_in,
+                                                                rcd.bc_out,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
                                                                 -- TAMBAHAN
@@ -272,7 +272,7 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bk_nama_operator,
                                                                 rcd.bk_remarks,
                                                                 rcd.keterangan,
-                                                                rcd.bc_in,
+                                                                rcd.bc_out,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
                                                                 -- TAMBAHAN
@@ -308,7 +308,7 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bk_nama_operator,
                                                                 rcd.bk_remarks,
                                                                 rcd.keterangan,
-                                                                rcd.bc_in,
+                                                                rcd.bc_out,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
                                                                 -- TAMBAHAN
@@ -549,79 +549,6 @@ if (isset($_POST['show_all'])) {
                                                 </div>
                                             </td>
                                         </tr>
-                                        <!-- Add -->
-                                        <div class="modal fade" id="add<?= $row['IDH'] ?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form action="" method="POST" enctype="multipart/form-data">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">[Tambah Data] Data Gate In</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <fieldset>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="form-group">
-                                                                            <h4>PLB</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label>Nomor Pengajuan PLB</label>
-                                                                            <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                            <select name="bk_aju" class="default-select2 form-control" required>
-                                                                                <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
-                                                                                    <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
-                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
-                                                                                <?php } else { ?>
-                                                                                    <option value="">Pilih Nomor Pengajuan GB</option>
-                                                                                <?php } ?>
-                                                                                <?php
-                                                                                $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
-                                                                                                            LEFT JOIN rcd_status AS rcd ON plb.NOMOR_AJU=rcd.bk_no_aju_sarinah
-                                                                                                            WHERE rcd.bk_no_aju_sarinah IS NULL
-                                                                                                            ORDER BY plb.ID DESC");
-                                                                                foreach ($resultMitra as $RowMitra) {
-                                                                                ?>
-                                                                                    <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
-                                                                                <?php } ?>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label>Petugas <?= $resultSetting['company'] ?></label>
-                                                                            <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $_SESSION['username']; ?>" readonly>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label>Tanggal Gate In <small style="color:red">*</small></label>
-                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." required>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- End Gate In -->
-                                                                    <div class="col-md-12">
-                                                                        <font style="color: red;">*</font> <i>Wajib diisi.</i>
-                                                                    </div>
-                                                                </div>
-                                                            </fieldset>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                            <button type="submit" name="add_" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Add -->
 
                                         <!-- Edit -->
                                         <div class="modal fade" id="edit<?= $row['IDH'] ?>">
@@ -754,7 +681,7 @@ if (isset($_POST['show_all'])) {
                                                                     <?php } else { ?>
                                                                         <?php $col = '12'; ?>
                                                                     <?php } ?>
-                                                                    <!-- Gate In -->
+                                                                    <!-- Gate Out -->
                                                                     <div class="col-<?= $col; ?>">
                                                                         <div class="row">
                                                                             <div class="col-md-6">
@@ -800,12 +727,12 @@ if (isset($_POST['show_all'])) {
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
                                                                                     <label>Petugas BC</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bc_in']; ?>" readonly>
+                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bc_out']; ?>" readonly>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End Gate In -->
+                                                                    <!-- End Gate Out -->
                                                                     <!-- Barang Keluar -->
                                                                     <?php if ($row['upload_beritaAcara_GB'] != NULL) { ?>
                                                                         <div class="col-6">

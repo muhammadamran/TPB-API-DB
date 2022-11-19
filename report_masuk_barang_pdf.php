@@ -150,12 +150,12 @@ if (isset($_POST["Find_RTM"])) {
                                 <th rowspan="2" width="1%">No.</th>
                                 <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
                                 <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
-                                <th rowspan="2" style="text-align: center;">KD. Barang</th>
+                                <th rowspan="2" style="text-align: center;">KD.<font style="color: transparent;">.</font>Barang</th>
                                 <th rowspan="2" style="text-align: center;">Uraian</th>
                                 <th rowspan="2" style="text-align: center;">Spe.<font style="color: transparent;">.</font>Lain</th>
                                 <th rowspan="2" style="text-align: center;">Jml.<font style="color: transparent;">.</font>Satuan</th>
-                                <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+                                <th rowspan="2" style="text-align: center;">Nilai<font style="color: transparent;">.</font>Barang</th>
+                                <th colspan="2" style="text-align: center;">Petugas</th>
                             </tr>
                             <tr>
                                 <th class="no-sort" style="text-align: center;">Jen.<font style="color: transparent;">.</font>Dok.</th>

@@ -134,23 +134,23 @@ if (isset($_POST["Find_RTM"])) {
                     </div>
                 </div>
                 <div class="panel-body text-inverse">
-                    <table class="table table-bordered table-td-valign-middle">
-                        <thead style="background: #dadddf;color: #333;">
-                            <tr style="background: #dadddf;color: #333;">
+                    <table id="C_TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
+                        <thead>
+                            <tr>
                                 <th rowspan="2" width="1%">No.</th>
-                                <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
-                                <th rowspan="2" style="text-align: center;">Kode Barang</th>
+                                <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
+                                <th rowspan="2" style="text-align: center;">KD.<font style="color: transparent;">.</font>Barang</th>
                                 <th rowspan="2" style="text-align: center;">Uraian</th>
-                                <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
-                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
-                                <th rowspan="2" style="text-align: center;">Nilai Barang</th>
-                                <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
-                                <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+                                <th rowspan="2" style="text-align: center;">Spe.<font style="color: transparent;">.</font>Lain</th>
+                                <th rowspan="2" style="text-align: center;">Jml.<font style="color: transparent;">.</font>Satuan</th>
+                                <th rowspan="2" style="text-align: center;">Nilai<font style="color: transparent;">.</font>Barang</th>
+                                <th rowspan="2" style="text-align: center;">Tanggal<font style="color: transparent;">.</font>&<font style="color: transparent;">.</font>Waktu<font style="color: transparent;">.</font>Keluar</th>
+                                <th colspan="2" style="text-align: center;">Petugas</th>
                             </tr>
                             <tr>
-                                <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
-                                <th style="text-align: center;">Nomor Pengajuan</th>
-                                <th style="text-align: center;">No<font style="color: #dadddf;">.</font>Daftar</th>
+                                <th class="no-sort" style="text-align: center;">Jenis<font style="color: transparent;">.</font>Dokumen</th>
+                                <th style="text-align: center;">Nomor<font style="color: transparent;">.</font>Pengajuan</th>
+                                <th style="text-align: center;">No.<font style="color: transparent;">.</font>Daftar</th>
                                 <th style="text-align: center;">Asal</th>
                                 <th style="text-align: center;">Tujuan</th>
                                 <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>
@@ -163,33 +163,25 @@ if (isset($_POST["Find_RTM"])) {
                                 $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
-                            } else if (isset($_POST["Find_RTU"])) {
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            AND rcd.bk_no_aju_sarinah LIKE '%" . $FindNoAJU . "%'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                             } else if (isset($_POST["Find_RTM"])) {
                                 $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            AND plb.TGL_CEK_GB BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                             } else {
                                 $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC LIMIT 100", 0);
                             }
 
                             if ($dataTable) : $no = 1;
@@ -202,35 +194,31 @@ if (isset($_POST["Find_RTM"])) {
                                         </td>
                                         <td style="text-align: center">
                                             <?php if ($row['NOMOR_AJU'] == NULL) { ?>
-                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                </font>
+                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                             <?php } else { ?>
                                                 <?= $row['NOMOR_AJU']; ?>
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: center">
                                             <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                </font>
+                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                             <?php } else { ?>
                                                 <?= $row['NOMOR_DAFTAR']; ?>
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: left">
-                                            <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                            <?php if ($row['NAMA_PENGUSAHA'] == NULL) { ?>
                                                 <center>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                 </center>
                                             <?php } else { ?>
-                                                <?= $row['PERUSAHAAN']; ?>
+                                                <?= $row['NAMA_PENGUSAHA']; ?>
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: left">
                                             <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
                                                 <center>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                    </font>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                 </center>
                                             <?php } else { ?>
                                                 <?= $row['NAMA_PENERIMA_BARANG']; ?>
@@ -270,27 +258,24 @@ if (isset($_POST["Find_RTM"])) {
                                             </div>
                                         </td>
                                         <td style="text-align: left">
-                                            <?php if ($row['TGL_CEK'] == NULL) { ?>
-                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                </font>
+                                            <?php if ($row['TGL_CEK_GB'] == NULL) { ?>
+                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                             <?php } else { ?>
-                                                <?= $row['TGL_CEK']; ?>
+                                                <?= $row['TGL_CEK_GB']; ?>
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: left">
                                             <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
-                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                </font>
+                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                             <?php } else { ?>
                                                 <?= $row['OPERATOR_ONE']; ?>
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: left">
-                                            <?php if ($row['bc_in'] == NULL) { ?>
-                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                                </font>
+                                            <?php if ($row['bc_out'] == NULL) { ?>
+                                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                             <?php } else { ?>
-                                                <?= $row['bc_in']; ?>
+                                                <?= $row['bc_out']; ?>
                                             <?php } ?>
                                         </td>
                                     </tr>
@@ -299,6 +284,15 @@ if (isset($_POST["Find_RTM"])) {
                                 endforeach
                                 ?>
                             <?php else : ?>
+                                <tr>
+                                    <td colspan="15">
+                                        <center>
+                                            <div style="display: grid;">
+                                                <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                            </div>
+                                        </center>
+                                    </td>
+                                </tr>
                             <?php endif ?>
                         </tbody>
                     </table>

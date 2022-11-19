@@ -19,7 +19,7 @@ $info_filter        = "100 Data Terakhir Barang Masuk";
 $col                = "4";
 $display            = "none";
 
-// RTU
+// NP
 if (isset($_POST["Find_NP"])) {
     $FindNoAJU      = $_POST['FindNoAJU'];
     $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
@@ -39,6 +39,7 @@ if (isset($_POST["Find_RTU"])) {
     $RTUEnd_T       = strtotime($RTUEnd);
     $E_RTU          = date("Y-m-d", $RTUEnd_T);
     $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
+    // OTHERS
     $info_filter    = "Data Berdasarkan Tgl. Upload PLB";
     $col            = "2";
     $display        = "show";
@@ -92,7 +93,7 @@ $RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE
 
 // START
 // TANGGAL MASUK FIRST
-$dataRangeFirstMasuk    = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+$dataRangeFirstMasuk    = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
@@ -105,7 +106,7 @@ $tglMFirst              = substr($alldateMasukFirst, 0, 10);
 $tglMFirstE             = explode("-", $tglMFirst);
 $RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
 // TANGGAL MASUK LAST
-$dataRangeLastMasuk     = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
+$dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                     LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                     LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
@@ -657,22 +658,22 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                     <th rowspan="2" width="1%">No.</th>
                                     <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
                                     <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
-                                    <th rowspan="2" style="text-align: center;">Kode Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
                                     <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
                                     <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
                                     <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
-                                    <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+                                    <th colspan="2" style="text-align: center;">Petugas</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
                                 </tr>
                                 <tr>
                                     <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
-                                    <th style="text-align: center;">No. Daftar</th>
+                                    <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
                                     <th style="text-align: center;">Asal</th>
                                     <th style="text-align: center;">Tujuan</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Upload PLB</th>
-                                    <th class="text-nowrap no-sort" style="text-align: center;">Masuk Barang</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Upload<font style="color: #dadddf;">.</font>PLB</th>
+                                    <th class="text-nowrap no-sort" style="text-align: center;">Masuk<font style="color: #dadddf;">.</font>Barang</th>
                                     <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
                                     <th style="text-align: center;">BeaCukai</th>
                                 </tr>

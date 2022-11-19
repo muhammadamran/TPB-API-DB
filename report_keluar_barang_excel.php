@@ -1,4 +1,5 @@
 <?php include "include/connection.php";
+include "include/restrict.php";
 
 // DATE SPLIT
 function date_indo_s($date, $print_day = false)
@@ -61,7 +62,7 @@ if (isset($_POST["Find_RTM"])) {
 if (isset($_POST["Find_NP"])) {
     header("Content-Disposition: attachment; filename=Laporan Barang Keluar $ShowFindNoAJU-$datenow.xls");
 } else if (isset($_POST["Find_RTM"])) {
-    header("Content-Disposition: attachment; filename=Laporan Barang Keluar_Range-Tanggal-Masuk-$datenow.xls");
+    header("Content-Disposition: attachment; filename=Laporan Barang Keluar_Range-Tanggal-Keluar-$datenow.xls");
 } else {
     header("Content-Disposition: attachment; filename=Laporan Barang Keluar 100 Data Terakhir_$datenow.xls");
 }
@@ -87,77 +88,103 @@ if (isset($_POST["Find_NP"])) {
         background-color: #d9e0e7;
     }
 </style>
-<table width="1829">
+<!-- LINE -->
+<table style="height: 36px;" width="1548">
     <tbody>
-        <tr>
-            <td width="31">&nbsp;</td>
-            <td width="117">&nbsp;</td>
-            <td width="170">&nbsp;</td>
-            <td width="89">&nbsp;</td>
-            <td width="119">&nbsp;</td>
-            <td width="160">&nbsp;</td>
-            <td width="214">&nbsp;</td>
-            <td width="112">&nbsp;</td>
-            <td width="263">&nbsp;</td>
-            <td width="75">&nbsp;</td>
-            <td width="111">&nbsp;</td>
-            <td width="180">&nbsp;</td>
-            <td width="99">&nbsp;</td>
-            <td width="89">&nbsp;</td>
+        <tr style="height: 18px;">
+            <td style="border-bottom: 1px solid #333;" colspan="14">&nbsp;</td>
         </tr>
-        <tr>
-            <td colspan="4" rowspan="6">
-                <div style="display:flex;justify-content:center">
-                    <font style="color: #fff;font-size: 65px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">##</font>
-                    <font style="color: red;font-size: 65px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">Sarinah</font>
-                    <br>
-                </div>
-            </td>
-            <td colspan="8" rowspan="2" style="font-size: 18px;font-weight: 900;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN</td>
-            <td colspan="2" rowspan="3" style="font-size: 12px;font-weight: 900;">
-                <div style="display:flex;justify-content:center">
-                    <br>
-                    <?= $resultHeadSetting['app_name'] ?><br>
-                    Date Time: <?= date('Y-m-d H:m:i') ?>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="8"></td>
-        </tr>
-        <tr>
-            <td colspan="8" style="font-size: 14px;font-weight: 900;">
-                <?= $ShowFindNoAJU; ?>
-                <?= $ShowField_RTM; ?>
-            </td>
-            <td colspan="2" rowspan="3"></td>
-        </tr>
-        <tr>
-            <td colspan="8" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company_t'] ?></td>
-        </tr>
-        <tr>
-            <td colspan="8" style="font-size: 12px;font-weight: 300;"><?= $resultHeadSetting['address'] ?></td>
+        <tr style="height: 18px;">
+            <td style="border-style: none; height: 18px; width: 1541px;" colspan="14">&nbsp;</td>
         </tr>
     </tbody>
 </table>
+<!-- END LINE -->
+<table width="1548">
+    <tbody>
+        <tr>
+            <td colspan="4" rowspan="5" width="392">
+                <!-- <p>## Sarinah</p> -->
+                <p>
+                <div style="display:flex;justify-content:center">
+                    <font style="color: #fff;font-size: 72px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">##</font>
+                    <font style="color: #d8121a;font-size: 72px;font-weight: 900;font-family: Brush Script MT, Brush Script Std, cursive;">Sarinah</font>
+                </div>
+                <br>
+                </p>
+            </td>
+            <td colspan="4" rowspan="2" width="579" style="font-size: 18px;font-weight: 900;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN</td>
+            <td width="87">&nbsp;</td>
+            <td width="85">&nbsp;</td>
+            <td width="92">&nbsp;</td>
+            <td width="138">&nbsp;</td>
+            <td width="85">&nbsp;</td>
+            <td width="90">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="87">&nbsp;</td>
+            <td width="85">&nbsp;</td>
+            <td width="92">&nbsp;</td>
+            <td width="138">&nbsp;</td>
+            <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">
+                <p><?= $resultHeadSetting['app_name']; ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8" width="981" style="font-size: 14px;font-weight: 900;">
+                <?php
+                if (isset($_POST["Find_NP"])) {
+                    echo $ShowFindNoAJU;
+                } else if (isset($_POST["Find_RTM"])) {
+                    echo $ShowField_RTM;
+                } else {
+                    echo "100 Data Terakhir Barang Keluar";
+                }
+                ?>
+            </td>
+            <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">Print By: <?= $_SESSION['username']; ?></td>
+        </tr>
+        <tr>
+            <td colspan="8" width="981" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company_t'] ?></td>
+            <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">Date Time: <?= date_indo_s(date('Y-m-d'), TRUE) ?> <?= date('H:m:i') ?></td>
+        </tr>
+        <tr>
+            <td colspan="8" width="981" style="font-size: 12px;font-weight: 300;"><?= $resultHeadSetting['address'] ?></td>
+            <td width="85">&nbsp;</td>
+            <td width="90">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+<!-- LINE -->
+<table style="height: 36px;" width="1548">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="border-bottom: 1px solid #333;" colspan="14">&nbsp;</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="border-style: none; height: 18px; width: 1541px;" colspan="14">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+<!-- END LINE -->
 <!-- Begin Row -->
 <table class="table table-bordered table-td-valign-middle" border="1">
     <thead style="background: #dadddf;color: #333;">
         <tr style="background: #dadddf;color: #333;">
             <th rowspan="2" width="1%">No.</th>
-            <th colspan="6" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
-            <th rowspan="2" style="text-align: center;">Kode Barang</th>
+            <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
+            <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
             <th rowspan="2" style="text-align: center;">Uraian</th>
+            <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
             <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
-            <th rowspan="2" style="text-align: center;">Nilai Barang</th>
+            <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
             <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
-            <th colspan="2" style="text-align: center;">Petugas Penerima</th>
+            <th colspan="2" style="text-align: center;">Petugas</th>
         </tr>
         <tr style="background: #dadddf;color: #333;">
             <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
-            <th style="text-align: center;">Nomor Pengajuan</th>
-            <th style="text-align: center;">No<font style="color: #dadddf;">.</font>Daftar</th>
-            <th class="text-nowrap no-sort" style="text-align: center;">Tanggal Upload</th>
+            <th style="text-align: center;">Nomor<font style="color: #dadddf;">.</font>Pengajuan</th>
+            <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
             <th style="text-align: center;">Asal</th>
             <th style="text-align: center;">Tujuan</th>
             <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>
@@ -170,33 +197,25 @@ if (isset($_POST["Find_NP"])) {
             $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
-        } else if (isset($_POST["Find_RTU"])) {
-            $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            AND rcd.bk_no_aju_sarinah LIKE '%" . $FindNoAJU . "%'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
         } else if (isset($_POST["Find_RTM"])) {
             $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            AND plb.TGL_CEK_GB BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
         } else {
             $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
+                                                            LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
+                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC LIMIT 100", 0);
         }
 
         if ($dataTable) : $no = 1;
@@ -224,26 +243,13 @@ if (isset($_POST["Find_NP"])) {
                         <?php } ?>
                     </td>
                     <td style="text-align: left">
-                        <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                            </font>
-                        <?php } else { ?>
-                            <?php
-                            $alldate = $row['ck5_plb_submit'];
-                            $tgl = substr($alldate, 0, 10);
-                            $time = substr($alldate, 10, 20);
-                            ?>
-                            <?= date_indo_s($tgl, TRUE) ?> <?= $time ?>
-                        <?php } ?>
-                    </td>
-                    <td style="text-align: left">
-                        <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                        <?php if ($row['NAMA_PENGUSAHA'] == NULL) { ?>
                             <center>
                                 <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                                 </font>
                             </center>
                         <?php } else { ?>
-                            <?= $row['PERUSAHAAN']; ?>
+                            <?= $row['NAMA_PENGUSAHA']; ?>
                         <?php } ?>
                     </td>
                     <td style="text-align: left">
@@ -274,6 +280,9 @@ if (isset($_POST["Find_NP"])) {
                     <td>
                         <?= $row['URAIAN']; ?>
                     </td>
+                    <td style="text-align: center">
+                        <?= $row['SPESIFIKASI_LAIN']; ?>
+                    </td>
                     <td>
                         <div style="display: flex;justify-content: space-between;align-items: center">
                             <font><?= $row['KODE_SATUAN']; ?></font>
@@ -303,11 +312,11 @@ if (isset($_POST["Find_NP"])) {
                         <?php } ?>
                     </td>
                     <td style="text-align: left">
-                        <?php if ($row['bc_in'] == NULL) { ?>
+                        <?php if ($row['bc_out'] == NULL) { ?>
                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
                             </font>
                         <?php } else { ?>
-                            <?= $row['bc_in']; ?>
+                            <?= $row['bc_out']; ?>
                         <?php } ?>
                     </td>
                 </tr>
