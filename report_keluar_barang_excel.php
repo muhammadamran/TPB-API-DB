@@ -59,19 +59,17 @@ if (isset($_POST["Find_RTM"])) {
     $ShowField_RTM  = $_POST['ShowField_RTM'];
 }
 if (isset($_POST["Find_NP"])) {
-    header("Content-Disposition: attachment; filename=Laporan Barang Masuk $ShowFindNoAJU-$datenow.xls");
-} else if (isset($_POST["Find_RTU"])) {
-    header("Content-Disposition: attachment; filename=Laporan Barang Masuk_Range-Tanggal-Upload-$datenow.xls");
+    header("Content-Disposition: attachment; filename=Laporan Barang Keluar $ShowFindNoAJU-$datenow.xls");
 } else if (isset($_POST["Find_RTM"])) {
-    header("Content-Disposition: attachment; filename=Laporan Barang Masuk_Range-Tanggal-Masuk-$datenow.xls");
+    header("Content-Disposition: attachment; filename=Laporan Barang Keluar_Range-Tanggal-Masuk-$datenow.xls");
 } else {
-    header("Content-Disposition: attachment; filename=Laporan Barang Masuk 100 Data Terakhir_$datenow.xls");
+    header("Content-Disposition: attachment; filename=Laporan Barang Keluar 100 Data Terakhir_$datenow.xls");
 }
 ?>
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />

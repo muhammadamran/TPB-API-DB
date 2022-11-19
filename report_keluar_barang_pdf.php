@@ -23,7 +23,7 @@
     <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
     <link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <link href="assets/css/tpb.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
@@ -98,8 +98,6 @@ if (isset($_POST["Find_RTM"])) {
 ?>
 <?php if (isset($_POST["Find_NP"])) { ?>
     <title>Print Laporan Barang Masuk <?= $ShowFindNoAJU; ?>_<?= date('Ymd_H:m:i') ?></title>
-<?php } else if (isset($_POST["Find_RTU"])) { ?>
-    <title>Print Laporan Barang Masuk <?= $ShowField_RTU; ?>_<?= date('Ymd_H:m:i') ?></title>
 <?php } else if (isset($_POST["Find_RTM"])) { ?>
     <title>Print Laporan Barang Masuk <?= $ShowField_RTM; ?>_<?= date('Ymd_H:m:i') ?></title>
 <?php } else { ?>
