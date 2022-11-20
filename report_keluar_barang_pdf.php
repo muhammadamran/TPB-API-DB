@@ -1,4 +1,6 @@
-<?php include "include/connection.php"; ?>
+<?php include "include/connection.php";
+include "include/restrict.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,7 +122,7 @@ if (isset($_POST["Find_RTM"])) {
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="col-md-9" style="display: grid;justify-content: left;margin-bottom:-30px">
+                    <div class="col-md-7" style="display: grid;justify-content: left;margin-bottom:-30px">
                         <font style="font-size: 24px;font-weight: 800;">LAPORAN PENGELUARAN BARANG PER DOKUMEN PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
@@ -130,6 +132,12 @@ if (isset($_POST["Find_RTM"])) {
                         <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
                         <font style="font-size: 14px;font-weight: 400;"><i class="fa-solid fa-location-dot"></i> <?= $resultHeadSetting['address'] ?>
                         </font>
+                    </div>
+                    <div class="col-md-2" style="display: grid;justify-content: left;">
+                        <br>
+                        <font style="font-size: 12px;font-weight: 600;"><?= $resultHeadSetting['app_name'] ?></font>
+                        <font style="font-size: 12px;font-weight: 600;">Print By: <?= $_SESSION['username'] ?></font>
+                        <font style="font-size: 12px;font-weight: 600;">Date Time: <?= date_indo_s(date('Y-m-d'), TRUE) ?> <?= date('H:m:i') ?></font>
                     </div>
                 </div>
                 <div class="panel-body text-inverse">

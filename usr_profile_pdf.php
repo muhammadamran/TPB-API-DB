@@ -36,39 +36,39 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 
 function date_indo_pdf($date, $print_day = false)
 {
-    $day = array(
-        1 =>
-        'Senin',
-        'Selasa',
-        'Rabu',
-        'Kamis',
-        'Jumat',
-        'Sabtu',
-        'Minggu'
-    );
-    $month = array(
-        1 =>
-        'Januari',
-        'Februari',
-        'Maret',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Agustus',
-        'September',
-        'Oktober',
-        'November',
-        'Desember'
-    );
-    $split    = explode('-', $date);
-    $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
+  $day = array(
+    1 =>
+    'Senin',
+    'Selasa',
+    'Rabu',
+    'Kamis',
+    'Jumat',
+    'Sabtu',
+    'Minggu'
+  );
+  $month = array(
+    1 =>
+    'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+  );
+  $split    = explode('-', $date);
+  $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
 
-    if ($print_day) {
-        $num = date('N', strtotime($date));
-        return $day[$num] . ', ' . $tgl_indo;
-    }
-    return $tgl_indo;
+  if ($print_day) {
+    $num = date('N', strtotime($date));
+    return $day[$num] . ', ' . $tgl_indo;
+  }
+  return $tgl_indo;
 }
 
 $GetData = $_GET['USER'];
@@ -105,8 +105,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-    require_once(dirname(__FILE__) . '/lang/eng.php');
-    $pdf->setLanguageArray($l);
+  require_once(dirname(__FILE__) . '/lang/eng.php');
+  $pdf->setLanguageArray($l);
 }
 
 // ---------------------------------------------------------

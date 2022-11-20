@@ -180,8 +180,8 @@ if (isset($_POST["Find_NP"])) {
 <!-- END LINE -->
 <!-- Begin Row -->
 <table class="table table-bordered table-td-valign-middle" border="1">
-    <thead>
-        <tr>
+    <thead style="background: #dadddf;color: #333;">
+        <tr style="background: #dadddf;color: #333;">
             <th rowspan="2" width="1%">No.</th>
             <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
             <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
@@ -192,7 +192,7 @@ if (isset($_POST["Find_NP"])) {
             <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
             <th colspan="2" style="text-align: center;">Petugas</th>
         </tr>
-        <tr>
+        <tr style="background: #dadddf;color: #333;">
             <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
             <th style="text-align: center;">Nomor Pengajuan</th>
             <th style="text-align: center;">No. Daftar</th>

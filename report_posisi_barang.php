@@ -40,7 +40,7 @@ if (isset($_POST["Find_KELUAR"])) {
     $KELUAREnd         = $Field_KELUARE[1];
     $KELUAREnd_T       = strtotime($KELUAREnd);
     $E_KELUAR          = date("Y-m-d", $KELUAREnd_T);
-    $ShowField_KELUAR  = "Tanggal Masuk: " . $_POST['default-daterange-keluar'];
+    $ShowField_KELUAR  = "Tanggal Keluar: " . $_POST['default-daterange-keluar'];
     // OTHERS
     $info_filter    = "Data Berdasarkan Tgl. Barang Keluar";
 }
@@ -235,78 +235,52 @@ if (isset($_POST['Find_MASUK']) != '') {
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
                 <div class="row" style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;padding: 25px;margin: 10px;">
-                    <?php if (isset($_POST["Find_NP"])) { ?>
+                    <?php if (isset($_POST["Find_MASUK"])) { ?>
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
-                                <div>
+                                <!-- <div>
                                     <form action="report_posisi_barang_pdf.php" target="_blank" method="POST">
-                                        <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
-                                        <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
-                                        <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                        <input type="hidden" name="S_MASUK" value="<?= $S_MASUK ?>">
+                                        <input type="hidden" name="E_MASUK" value="<?= $E_MASUK ?>">
+                                        <input type="hidden" name="ShowField_MASUK" value="<?= $ShowField_MASUK ?>">
+                                        <button type="submit" name="Find_MASUK" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
                                     </form>
-                                </div>
+                                </div> -->
                                 <div class="btn-group m-r-5 m-b-5">
-                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 5px 0 0 5px ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <form action="report_posisi_barang_excel.php" target="_blank" method="POST">
-                                            <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
-                                            <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
-                                            <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
+                                            <input type="hidden" name="S_MASUK" value="<?= $S_MASUK ?>">
+                                            <input type="hidden" name="E_MASUK" value="<?= $E_MASUK ?>">
+                                            <input type="hidden" name="ShowField_MASUK" value="<?= $ShowField_MASUK ?>">
+                                            <button type="submit" name="Find_MASUK" class="dropdown-item">Download as XLS</button>
                                         </form>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php } else if (isset($_POST["Find_RTU"])) { ?>
+                    <?php } else if (isset($_POST["Find_KEUAR"])) { ?>
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
-                                <div>
+                                <!-- <div>
                                     <form action="report_posisi_barang_pdf.php" target="_blank" method="POST">
-                                        <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                        <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                        <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                        <button type="submit" name="Find_RTU" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                        <input type="hidden" name="S_KELUAR" value="<?= $S_KELUAR ?>">
+                                        <input type="hidden" name="E_KELUAR" value="<?= $E_KELUAR ?>">
+                                        <input type="hidden" name="ShowField_KELUAR" value="<?= $ShowField_KELUAR ?>">
+                                        <button type="submit" name="Find_KELUAR" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
                                     </form>
-                                </div>
+                                </div> -->
                                 <div class="btn-group m-r-5 m-b-5">
-                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 5px 0 0 5px ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <form action="report_posisi_barang_excel.php" target="_blank" method="POST">
-                                            <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                            <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                            <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                            <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
+                                            <input type="hidden" name="S_KELUAR" value="<?= $S_KELUAR ?>">
+                                            <input type="hidden" name="E_KELUAR" value="<?= $E_KELUAR ?>">
+                                            <input type="hidden" name="ShowField_KELUAR" value="<?= $ShowField_KELUAR ?>">
+                                            <button type="submit" name="Find_KELUAR" class="dropdown-item">Download as XLS</button>
                                         </form>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } else if (isset($_POST["Find_RTM"])) { ?>
-                        <div class="col-sm-12">
-                            <div style="display: flex;justify-content: end;">
-                                <div>
-                                    <form action="report_posisi_barang_pdf.php" target="_blank" method="POST">
-                                        <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
-                                        <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
-                                        <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
-                                        <button type="submit" name="Find_RTM" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
-                                    </form>
-                                </div>
-                                <div class="btn-group m-r-5 m-b-5">
-                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
-                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_posisi_barang_excel.php" target="_blank" method="POST">
-                                            <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
-                                            <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
-                                            <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
-                                            <button type="submit" name="Find_RTM" class="dropdown-item">Download as XLS</button>
-                                        </form>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -314,15 +288,14 @@ if (isset($_POST['Find_MASUK']) != '') {
                     <?php } else { ?>
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
-                                <div>
+                                <!-- <div>
                                     <a href="report_posisi_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
-                                </div>
+                                </div> -->
                                 <div class="btn-group m-r-5 m-b-5">
-                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
+                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 5px 0 0 5px ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a href="report_posisi_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
