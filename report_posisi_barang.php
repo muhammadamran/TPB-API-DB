@@ -9,96 +9,50 @@ include "include/cssDatatables.php";
 include "include/cssForm.php";
 
 // FUNCTION SEARCHING
-$FindNoAJU          = '';
-$Field_RTU          = '';
-$Field_RTM          = '';
-$ShowFindNoAJU      = '';
-$ShowField_RTU      = '';
-$ShowField_RTM      = '';
-$info_filter        = "100 Data Terakhir Posisi Barang";
-$col                = "4";
-$display            = "none";
+$Field_MASUK          = '';
+$Field_KELUAR         = '';
+$ShowField_MASUK      = '';
+$ShowField_KELUAR     = '';
+$info_filter          = "100 Data Terakhir Posisi Barang";
 
-// NP
-if (isset($_POST["Find_NP"])) {
-    $FindNoAJU      = $_POST['FindNoAJU'];
-    $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
-    $info_filter    = "Data Berdasarkan Nomor Pengajuan";
-    $col            = "2";
-    $display        = "show";
-}
-
-// RTU
-if (isset($_POST["Find_RTU"])) {
-    $Field_RTU      = $_POST['default-daterange-upload'];
-    $Field_RTUE     = explode(" - ", $Field_RTU);
-    $RTUStart       = $Field_RTUE[0];
-    $RTUStart_T     = strtotime($RTUStart);
-    $S_RTU          = date("Y-m-d", $RTUStart_T);
-    $RTUEnd         = $Field_RTUE[1];
-    $RTUEnd_T       = strtotime($RTUEnd);
-    $E_RTU          = date("Y-m-d", $RTUEnd_T);
-    $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
+// MASUK
+if (isset($_POST["Find_MASUK"])) {
+    $Field_MASUK      = $_POST['default-daterange-masuk'];
+    $Field_MASUKE     = explode(" - ", $Field_MASUK);
+    $MASUKStart       = $Field_MASUKE[0];
+    $MASUKStart_T     = strtotime($MASUKStart);
+    $S_MASUK          = date("Y-m-d", $MASUKStart_T);
+    $MASUKEnd         = $Field_MASUKE[1];
+    $MASUKEnd_T       = strtotime($MASUKEnd);
+    $E_MASUK          = date("Y-m-d", $MASUKEnd_T);
+    $ShowField_MASUK  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
     // OTHERS
-    $info_filter    = "Data Berdasarkan Tgl. Upload PLB";
-    $col            = "2";
-    $display        = "show";
+    $info_filter    = "Data Berdasarkan Tgl. Barang Masuk";
 }
 
-// RTM
-if (isset($_POST["Find_RTM"])) {
-    $Field_RTM      = $_POST['default-daterange-masuk'];
-    $Field_RTME     = explode(" - ", $Field_RTM);
-    $RTMStart       = $Field_RTME[0];
-    $RTMStart_T     = strtotime($RTMStart);
-    $S_RTM          = date("Y-m-d", $RTMStart_T);
-    $RTMEnd         = $Field_RTME[1];
-    $RTMEnd_T       = strtotime($RTMEnd);
-    $E_RTM          = date("Y-m-d", $RTMEnd_T);
-    $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
+// KELUAR
+if (isset($_POST["Find_KELUAR"])) {
+    $Field_KELUAR      = $_POST['default-daterange-keluar'];
+    $Field_KELUARE     = explode(" - ", $Field_KELUAR);
+    $KELUARStart       = $Field_KELUARE[0];
+    $KELUARStart_T     = strtotime($KELUARStart);
+    $S_KELUAR          = date("Y-m-d", $KELUARStart_T);
+    $KELUAREnd         = $Field_KELUARE[1];
+    $KELUAREnd_T       = strtotime($KELUAREnd);
+    $E_KELUAR          = date("Y-m-d", $KELUAREnd_T);
+    $ShowField_KELUAR  = "Tanggal Masuk: " . $_POST['default-daterange-keluar'];
     // OTHERS
-    $info_filter    = "Data Berdasarkan Tgl. Brg. Masuk";
-    $col            = "2";
-    $display        = "show";
+    $info_filter    = "Data Berdasarkan Tgl. Barang Keluar";
 }
 
-// START
-// TANGGAL UPLOAD FIRST
-$dataRangeFirstUpload   = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY sts.ck5_plb_submit ASC LIMIT 1");
-$resultRangeFirstUpload = mysqli_fetch_array($dataRangeFirstUpload);
-$iniUploadFirst         = $resultRangeFirstUpload['ck5_plb_submit'];
-$alldateUploadFirst     = $iniUploadFirst;
-$tglUFirst              = substr($alldateUploadFirst, 0, 10);
-$tglUFirstE             = explode("-", $tglUFirst);
-$RUFirst                = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
-// TANGGAL UPLOAD LAST
-$dataRangeLastUpload    = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY sts.ck5_plb_submit DESC LIMIT 1");
-$resultRangeLastUpload  = mysqli_fetch_array($dataRangeLastUpload);
-$iniUploadLast          = $resultRangeLastUpload['ck5_plb_submit'];
-$alldateUploadLast      = $iniUploadLast;
-$tglULast               = substr($alldateUploadLast, 0, 10);
-$tglULastE              = explode("-", $tglULast);
-$RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
-// END
-
-// START
+// START TANGGAL BARANG MASUK
 // TANGGAL MASUK FIRST
 $dataRangeFirstMasuk    = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY plb.TGL_CEK ASC LIMIT 1");
+                                        LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                        LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                        LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                        WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                        ORDER BY plb.TGL_CEK ASC LIMIT 1");
 $resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
 $iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
 $alldateMasukFirst      = $iniMasukFirst;
@@ -107,188 +61,67 @@ $tglMFirstE             = explode("-", $tglMFirst);
 $RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
 // TANGGAL MASUK LAST
 $dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY plb.TGL_CEK DESC LIMIT 1");
+                                        LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                        LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                        LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                        WHERE rcd.bk_no_aju_sarinah IS NOT NULL
+                                        ORDER BY plb.TGL_CEK DESC LIMIT 1");
 $resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
 $iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
 $alldateMasukLast       = $iniMasukLast;
 $tglMLast               = substr($alldateMasukLast, 0, 10);
 $tglMLastE              = explode("-", $tglMLast);
 $RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
-// END
+// END TANGGAL BARANG MASUK
 
-if (isset($_POST['Find_NP']) != '') {
-    $displayOne = 'show';
-    $displayTwo = 'none';
-    $displayThree = 'none';
+// START TANGGAL BARANG KELUAR
+// TANGGAL KELUAR FIRST
+$dataRangeFirstKeluar    = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status AS rcd 
+                                        LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                        LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                        LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                        WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                        ORDER BY plb.TGL_CEK_GB ASC LIMIT 1");
+$resultRangeFirstKeluar  = mysqli_fetch_array($dataRangeFirstKeluar);
+$iniKeluarFirst          = $resultRangeFirstKeluar['TGL_CEK_GB'];
+$alldateKeluarFirst      = $iniKeluarFirst;
+$tglKFirst              = substr($alldateKeluarFirst, 0, 10);
+$tglKFirstE             = explode("-", $tglKFirst);
+$RKFirst                = $tglKFirstE[1] . "/" . $tglKFirstE[2] . "/" . $tglKFirstE[0];
+// TANGGAL KELUAR LAST
+$dataRangeLastKeluar     = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status AS rcd 
+                                        LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
+                                        LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                        LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
+                                        WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
+                                        ORDER BY plb.TGL_CEK_GB DESC LIMIT 1");
+$resultRangeLastKeluar   = mysqli_fetch_array($dataRangeLastKeluar);
+$iniKeluarLast           = $resultRangeLastKeluar['TGL_CEK_GB'];
+$alldateKeluarLast       = $iniKeluarLast;
+$tglKLast               = substr($alldateKeluarLast, 0, 10);
+$tglKLastE              = explode("-", $tglKLast);
+$RKLast                 = $tglKLastE[1] . "/" . $tglKLastE[2] . "/" . $tglKLastE[0];
+// END TANGGAL BARANG KELUAR
 
-    $selectOne = 'selected';
-    $selectTwo = '';
-    $selectThree = '';
-} else if (isset($_POST['Find_RTU']) != '') {
-    $displayOne = 'none';
-    $displayTwo = 'show';
-    $displayThree = 'none';
+if (isset($_POST['Find_MASUK']) != '') {
+    $displayTGLMASUK   = 'show';
+    $displayTGLKELUAR  = 'none';
 
-    $selectOne = '';
-    $selectTwo = 'selected';
-    $selectThree = '';
-} else if (isset($_POST['Find_RTM']) != '') {
-    $displayOne = 'none';
-    $displayTwo = 'none';
-    $displayThree = 'show';
+    $selectTGLMASUK    = 'selected';
+    $selectTGLKELUAR   = '';
+} else if (isset($_POST['Find_KELUAR']) != '') {
+    $displayTGLMASUK   = 'none';
+    $displayTGLKELUAR  = 'show';
 
-    $selectOne = '';
-    $selectTwo = '';
-    $selectThree = 'selected';
+    $selectTGLMASUK    = '';
+    $selectTGLKELUAR   = 'selected';
 } else {
-    $displayOne = 'show';
-    $displayTwo = 'none';
-    $displayThree = 'none';
+    $displayTGLMASUK   = 'show';
+    $displayTGLKELUAR  = 'none';
 
-    $selectOne = 'selected';
-    $selectTwo = '';
-    $selectThree = '';
+    $selectTGLMASUK    = 'selected';
+    $selectTGLKELUAR   = '';
 }
-
-// RINCIAN JUMLAH BARANG
-$dataRincianBRG = $dbcon->query("SELECT COUNT(*) AS r_total_brg
-                                FROM plb_barang AS brg 
-                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
-$resultRincianBRG = mysqli_fetch_array($dataRincianBRG);
-// RINCIAN CT
-$dataRincianCT = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
-                                FROM plb_barang AS brg 
-                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
-$resultRincianCT = mysqli_fetch_array($dataRincianCT);
-// RINCIAN TOTAL BOTOL
-$dataRincianBTL = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
-                                FROM plb_barang AS brg 
-                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
-$resultRincianBTL = mysqli_fetch_array($dataRincianBTL);
-// RINCIAN TOTAL LITER
-$dataRincianLTR = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
-                                FROM plb_barang AS brg 
-                                LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL", 0);
-$resultRincianLTR = mysqli_fetch_array($dataRincianLTR);
-
-if (isset($_POST["Find_NP"])) {
-    // RINCIAN JUMLAH BARANG
-    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
-    // RINCIAN CT
-    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
-    // RINCIAN TOTAL BOTOL
-    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
-    // RINCIAN TOTAL LITER
-    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'", 0);
-} else if (isset($_POST["Find_RTU"])) {
-    // RINCIAN JUMLAH BARANG
-    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg,sts.ck5_plb_submit
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
-    // RINCIAN CT
-    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct,sts.ck5_plb_submit
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
-    // RINCIAN TOTAL BOTOL
-    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl,sts.ck5_plb_submit
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
-    // RINCIAN TOTAL LITER
-    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr,sts.ck5_plb_submit
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            LEFT OUTER JOIN plb_status AS sts ON brg.NOMOR_AJU=sts.NOMOR_AJU_PLB
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'", 0);
-} else if (isset($_POST["Find_RTM"])) {
-    // RINCIAN JUMLAH BARANG
-    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg,brg.TGL_CEK
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
-    // RINCIAN CT
-    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct,brg.TGL_CEK
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
-    // RINCIAN TOTAL BOTOL
-    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl,brg.TGL_CEK
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
-    // RINCIAN TOTAL LITER
-    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr,brg.TGL_CEK
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                            AND brg.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'", 0);
-} else {
-    // RINCIAN JUMLAH BARANG
-    $dataRincianBRG_F = $dbcon->query("SELECT COUNT(*) AS r_total_brg
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
-    // RINCIAN CT
-    $dataRincianCT_F = $dbcon->query("SELECT SUM(brg.TOTAL_CT_AKHIR) AS r_total_ct
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
-    // RINCIAN TOTAL BOTOL
-    $dataRincianBTL_F = $dbcon->query("SELECT SUM(brg.TOTAL_BOTOL_AKHIR) AS r_total_btl
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
-    // RINCIAN TOTAL LITER
-    $dataRincianLTR_F = $dbcon->query("SELECT SUM(brg.TOTAL_LITER_AKHIR) AS r_total_ltr
-                            FROM plb_barang AS brg 
-                            LEFT OUTER JOIN rcd_status AS rcd ON brg.NOMOR_AJU=rcd.bm_no_aju_plb
-                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL LIMIT 100", 0);
-}
-// RINCIAN JUMLAH BARANG
-$resultRincianBRG_F = mysqli_fetch_array($dataRincianBRG_F);
-// RINCIAN CT
-$resultRincianCT_F = mysqli_fetch_array($dataRincianCT_F);
-// RINCIAN TOTAL BOTOL
-$resultRincianBTL_F = mysqli_fetch_array($dataRincianBTL_F);
-// RINCIAN TOTAL LITER
-$resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
-
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Laporan Posisi Barang App Name | Company </title>
@@ -301,7 +134,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fa-solid fa-circle-down icon-page"></i>
+                <i class="fa-solid fa-map-location icon-page"></i>
                 <font class="text-page">Laporan Posisi Barang</font>
             </h1>
             <ol class="breadcrumb">
@@ -317,78 +150,20 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
     <div class="line-page"></div>
     <!-- begin Select Tabel -->
     <div class="row">
-        <div class="col-xl-8">
+        <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Masuk Barang Berdasarkan
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Posisi Berdasarkan
                         <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
-                            <option value="NP" <?= $selectOne ?>>Nomor Pengajuan</option>
-                            <option value="RTU" <?= $selectTwo ?>>Range Tanggal Upload</option>
-                            <option value="RTM" <?= $selectThree ?>>Range Tanggal Masuk</option>
+                            <option value="TGLMASUK" <?= $selectTGLMASUK ?>>Range Tanggal Masuk</option>
+                            <option value="TGLKELUAR" <?= $selectTGLKELUAR ?>>Range Tanggal Keluar</option>
                         </select>
                     </h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <!-- Nomor Pengajuan -->
-                    <div id="form_NP" style="display: <?= $displayOne ?>;">
-                        <form action="" method="POST">
-                            <div style="display: flex;justify-content: center;align-items: center;">
-                                <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>BC 2.7 PLB (Nomor Pengajuan)</label>
-                                            <input type="number" id="IDAJU_PLB" name="FindNoAJU" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $FindNoAJU; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="Find_NP" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
-                                            <font class="f-action">Cari</font>
-                                        </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
-                                            <font class="f-action">Reset</font>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <!-- Tanggal Upload -->
-                    <div id="form_RTU" style="display: <?= $displayTwo ?>;">
-                        <form action="" method="POST">
-                            <div style="display: flex;justify-content: center;align-items: center;">
-                                <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Range Tanggal Upload</label>
-                                            <div class="input-group" id="default-daterange-upload">
-                                                <input type="text" name="default-daterange-upload" class="form-control" value="<?= $Field_RTU ?>" placeholder="Pilih Range Tanggal Upload" />
-                                                <span class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="Find_RTU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
-                                            <font class="f-action">Cari</font>
-                                        </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
-                                            <font class="f-action">Reset</font>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Range Tanggal Masuk -->
-                    <div id="form_RTM" style="display: <?= $displayThree ?>;">
+                    <div id="form_MASUK" style="display: <?= $displayTGLMASUK ?>;">
                         <form action="" method="POST">
                             <div style="display: flex;justify-content: center;align-items: center;">
                                 <div style="display: flex;justify-content: center;">
@@ -399,7 +174,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                         <div class="form-group">
                                             <label>Range Tanggal Masuk</label>
                                             <div class="input-group" id="default-daterange-masuk">
-                                                <input type="text" name="default-daterange-masuk" class="form-control" value="<?= $Field_RTM ?>" placeholder="Pilih Range Tanggal Masuk" />
+                                                <input type="text" name="default-daterange-masuk" class="form-control" value="<?= $Field_MASUK ?>" placeholder="Pilih Range Tanggal Masuk" />
                                                 <span class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </span>
@@ -407,10 +182,10 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" name="Find_RTM" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                        <button type="submit" name="Find_MASUK" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
                                             <font class="f-action">Cari</font>
                                         </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                        <a href="report_posisi_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
                                             <font class="f-action">Reset</font>
                                         </a>
                                     </div>
@@ -418,103 +193,36 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-<?= $col ?>">
-            <div class="panel-body text-inverse">
-                <div class="card border-0 bg-dark-darker text-white mb-3">
-                    <div class="card-body">
-                        <div class="mb-3 text-grey">
-                            <b>LAPORAN DATA POSISI BARANG</b>
-                            <span class="text-grey ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Laporan Data Posisi Barang <?= $resultSetting['app_name'] ?> - <?= $resultSetting['company'] ?>"></i></span>
-                        </div>
-                        <h3 class="m-b-10"><i class="fas fa-check-circle"></i> <span data-animation="number" data-value="<?= $resultRincianBRG['r_total_brg']; ?>">0.00</span> Brg. Masuk</h3>
-                        <div class="text-grey m-b-1"><i class="fa fa-calendar"></i> <?= date_indo_s(date('Y-m-d'), TRUE); ?></div>
-                    </div>
-                    <div class="widget-list widget-list-rounded inverse-mode">
-                        <a href="#" class="widget-list-item rounded-0 p-t-3" style="background: #fff;color:#202124;">
-                            <div class="widget-list-media icon">
-                                <i class="fas fa-box-open bg-warning text-white"></i>
+                    <!-- Tanggal Keluar -->
+                    <div id="form_KELUAR" style="display: <?= $displayTGLKELUAR ?>;">
+                        <form action="" method="POST">
+                            <div style="display: flex;justify-content: center;align-items: center;">
+                                <div style="display: flex;justify-content: center;">
+                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 57%;">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Range Tanggal Keluar</label>
+                                            <div class="input-group" id="default-daterange-keluar">
+                                                <input type="text" name="default-daterange-keluar" class="form-control" value="<?= $Field_KELUAR ?>" placeholder="Pilih Range Tanggal Keluar" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="submit" name="Find_KELUAR" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
+                                            <font class="f-action">Cari</font>
+                                        </button>
+                                        <a href="report_posisi_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
+                                            <font class="f-action">Reset</font>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widget-list-content">
-                                <div class="widget-list-title text-black">Carton</div>
-                            </div>
-                            <div class="widget-list-action text-nowrap text-black">
-                                <span data-animation="number" data-value="<?= $resultRincianCT['r_total_ct']; ?>">0.00</span>
-                            </div>
-                        </a>
-                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
-                            <div class="widget-list-media icon">
-                                <i class="fas fa-wine-bottle bg-blue text-white"></i>
-                            </div>
-                            <div class="widget-list-content">
-                                <div class="widget-list-title text-black">Botol</div>
-                            </div>
-                            <div class="widget-list-action text-nowrap text-black">
-                                <span data-animation="number" data-value="<?= $resultRincianBTL['r_total_btl']; ?>">0.00</span>
-                            </div>
-                        </a>
-                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
-                            <div class="widget-list-media icon">
-                                <i class="fas fa-tint bg-aqua text-white"></i>
-                            </div>
-                            <div class="widget-list-content">
-                                <div class="widget-list-title text-black">Liter</div>
-                            </div>
-                            <div class="widget-list-action text-nowrap text-black">
-                                <span data-animation="number" data-value="<?= round($resultRincianLTR['r_total_ltr']); ?>">0.00</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-2" style="display:<?= $display ?>">
-            <div class="panel-body text-inverse">
-                <div class="card border-0 bg-dark-darker text-white mb-3">
-                    <div class="card-body">
-                        <div class="mb-3 text-grey">
-                            <b>HASIL FILTER LAP. DATA BRG. MASUK</b>
-                            <span class="text-grey ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Hasil Filter Laporan Data Posisi Barang <?= $resultSetting['app_name'] ?> - <?= $resultSetting['company'] ?>"></i></span>
-                        </div>
-                        <h3 class="m-b-10"><i class="fas fa-filter"></i> <span data-animation="number" data-value="<?= $resultRincianBRG_F['r_total_brg']; ?>">0.00</span> Brg. Masuk</h3>
-                        <div class="text-grey m-b-1"><i class="fab fa-creative-commons-nd"></i> <?= $info_filter ?></div>
-                    </div>
-                    <div class="widget-list widget-list-rounded inverse-mode">
-                        <a href="#" class="widget-list-item rounded-0 p-t-3" style="background: #fff;color:#202124;">
-                            <div class="widget-list-media icon">
-                                <i class="fas fa-box-open bg-warning text-white"></i>
-                            </div>
-                            <div class="widget-list-content">
-                                <div class="widget-list-title text-black">Carton</div>
-                            </div>
-                            <div class="widget-list-action text-nowrap text-black">
-                                <span data-animation="number" data-value="<?= $resultRincianCT_F['r_total_ct']; ?>">0.00</span>
-                            </div>
-                        </a>
-                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
-                            <div class="widget-list-media icon">
-                                <i class="fas fa-wine-bottle bg-blue text-white"></i>
-                            </div>
-                            <div class="widget-list-content">
-                                <div class="widget-list-title text-black">Botol</div>
-                            </div>
-                            <div class="widget-list-action text-nowrap text-black">
-                                <span data-animation="number" data-value="<?= $resultRincianBTL_F['r_total_btl']; ?>">0.00</span>
-                            </div>
-                        </a>
-                        <a href="#" class="widget-list-item" style="background: #fff;color:#202124;">
-                            <div class="widget-list-media icon">
-                                <i class="fas fa-tint bg-aqua text-white"></i>
-                            </div>
-                            <div class="widget-list-content">
-                                <div class="widget-list-title text-black">Liter</div>
-                            </div>
-                            <div class="widget-list-action text-nowrap text-black">
-                                <span data-animation="number" data-value="<?= round($resultRincianLTR_F['r_total_ltr']); ?>">0.00</span>
-                            </div>
-                        </a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -531,7 +239,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                    <form action="report_posisi_barang_pdf.php" target="_blank" method="POST">
                                         <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
                                         <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
                                         <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
@@ -541,7 +249,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                        <form action="report_posisi_barang_excel.php" target="_blank" method="POST">
                                             <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
                                             <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
                                             <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
@@ -555,7 +263,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                    <form action="report_posisi_barang_pdf.php" target="_blank" method="POST">
                                         <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
                                         <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
                                         <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
@@ -566,7 +274,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                        <form action="report_posisi_barang_excel.php" target="_blank" method="POST">
                                             <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
                                             <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
                                             <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
@@ -581,7 +289,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
+                                    <form action="report_posisi_barang_pdf.php" target="_blank" method="POST">
                                         <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
                                         <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
                                         <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
@@ -592,7 +300,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
+                                        <form action="report_posisi_barang_excel.php" target="_blank" method="POST">
                                             <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
                                             <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
                                             <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
@@ -607,13 +315,13 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <a href="report_masuk_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
+                                    <a href="report_posisi_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
                                 </div>
                                 <div class="btn-group m-r-5 m-b-5">
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="report_masuk_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
+                                        <a href="report_posisi_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
                                         <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
@@ -633,13 +341,11 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PEMASUKAN BARANG PER DOKUMEN
-                            PABEAN</font>
+                        <font style="font-size: 24px;font-weight: 800;">LAPORAN POSISI BARANG PER DOKUMEN PABEAN</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
-                            <?= $ShowFindNoAJU; ?>
-                            <?= $ShowField_RTU; ?>
-                            <?= $ShowField_RTM; ?>
+                            <?= $ShowField_MASUK; ?>
+                            <?= $ShowField_KELUAR; ?>
                         </font>
                         <div class="line-page-table"></div>
                         <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
@@ -656,6 +362,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
+                                    <!-- BARANG MASUK -->
                                     <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
                                     <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
                                     <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
@@ -665,8 +372,21 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                     <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
                                     <th colspan="2" style="text-align: center;">Petugas</th>
                                     <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
+                                    <!-- END BARANG MASUK -->
+                                    <!-- BARANG KELUAR -->
+                                    <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
+                                    <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Uraian</th>
+                                    <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
+                                    <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
+                                    <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
+                                    <th colspan="2" style="text-align: center;">Petugas</th>
+                                    <th rowspan="2" class="text-nowrap no-sort" style="text-align: center;">Berita Acara</th>
+                                    <!-- END BARANG MASUK -->
                                 </tr>
                                 <tr>
+                                    <!-- BARANG MASUK -->
                                     <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
                                     <th style="text-align: center;">Nomor Pengajuan</th>
                                     <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
@@ -676,41 +396,169 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                     <th class="text-nowrap no-sort" style="text-align: center;">Masuk<font style="color: #dadddf;">.</font>Barang</th>
                                     <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
                                     <th style="text-align: center;">BeaCukai</th>
+                                    <!-- END BARANG MASUK -->
+                                    <!-- BARANG KELUAR -->
+                                    <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
+                                    <th style="text-align: center;">Nomor<font style="color: #dadddf;">.</font>Pengajuan</th>
+                                    <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
+                                    <th style="text-align: center;">Asal</th>
+                                    <th style="text-align: center;">Tujuan</th>
+                                    <th style="text-align: center;"><?= $resultSetting['company']; ?></th>
+                                    <th style="text-align: center;">BeaCukai</th>
+                                    <!-- END BARANG MASUK -->
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                if (isset($_POST["Find_NP"])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
-                                } else if (isset($_POST["Find_RTU"])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
-                                } else if (isset($_POST["Find_RTM"])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
+                                if (isset($_POST["Find_MASUK"])) {
+                                    $dataTable = $dbcon->query("SELECT
+                                                                -- BARANG MASUK
+                                                                plb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_BCPLB,
+                                                                plb.NOMOR_AJU AS NOMOR_AJU_BCPLB,
+                                                                plb.NOMOR_DAFTAR AS NOMOR_DAFTAR_BCPLB,
+                                                                plb.PERUSAHAAN,
+                                                                plb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_BCPLB,
+                                                                sts.ck5_plb_submit,
+                                                                brg.TGL_CEK,
+                                                                brg.OPERATOR_ONE,
+                                                                rcd.bc_in,
+                                                                rcd.upload_beritaAcara_PLB,
+                                                                rcd.bm_tgl_masuk,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bm_no_aju_plb,
+                                                                -- END BARANG MASUK
+                                                                -- BARANG KELUAR
+                                                                tpb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_BCGB,
+                                                                tpb.NOMOR_AJU AS NOMOR_AJU_BCGB,
+                                                                tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_BCGB,
+                                                                tpb.NAMA_PENGUSAHA,
+                                                                tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_BCGB,
+                                                                brg.TGL_CEK_GB,
+                                                                brg.OPERATOR_TWO,
+                                                                rcd.bc_out,
+                                                                rcd.upload_beritaAcara_GB,
+                                                                rcd.bk_tgl_keluar,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bk_no_aju_sarinah,
+                                                                -- END BARANG KELUAR
+                                                                -- GABUNGAN
+                                                                rcd.rcd_id,
+                                                                brg.KODE_BARANG,
+                                                                brg.URAIAN,
+                                                                brg.SPESIFIKASI_LAIN,
+                                                                brg.KODE_SATUAN,
+                                                                brg.JUMLAH_SATUAN,
+                                                                plb.KODE_VALUTA,
+                                                                brg.CIF,
+                                                                brg.POS_TARIF
+                                                                -- END GABUNGAN
+                                                                FROM rcd_status AS rcd 
+                                                                LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
+                                                                LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
+                                                                LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
+                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND brg.STATUS_GB='Sesuai'
+                                                                AND brg.TGL_CEK BETWEEN '" . $S_MASUK . "' AND '" . $E_MASUK . " 23:59:59'
+                                                                ORDER BY brg.ID,brg.TGL_CEK,brg.TGL_CEK_GB DESC", 0);
+                                } else if (isset($_POST["Find_KELUAR"])) {
+                                    $dataTable = $dbcon->query("SELECT
+                                                                -- BARANG MASUK
+                                                                plb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_BCPLB,
+                                                                plb.NOMOR_AJU AS NOMOR_AJU_BCPLB,
+                                                                plb.NOMOR_DAFTAR AS NOMOR_DAFTAR_BCPLB,
+                                                                plb.PERUSAHAAN,
+                                                                plb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_BCPLB,
+                                                                sts.ck5_plb_submit,
+                                                                brg.TGL_CEK,
+                                                                brg.OPERATOR_ONE,
+                                                                rcd.bc_in,
+                                                                rcd.upload_beritaAcara_PLB,
+                                                                rcd.bm_tgl_masuk,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bm_no_aju_plb,
+                                                                -- END BARANG MASUK
+                                                                -- BARANG KELUAR
+                                                                tpb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_BCGB,
+                                                                tpb.NOMOR_AJU AS NOMOR_AJU_BCGB,
+                                                                tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_BCGB,
+                                                                tpb.NAMA_PENGUSAHA,
+                                                                tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_BCGB,
+                                                                brg.TGL_CEK_GB,
+                                                                brg.OPERATOR_TWO,
+                                                                rcd.bc_out,
+                                                                rcd.upload_beritaAcara_GB,
+                                                                rcd.bk_tgl_keluar,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bk_no_aju_sarinah,
+                                                                -- END BARANG KELUAR
+                                                                -- GABUNGAN
+                                                                rcd.rcd_id,
+                                                                brg.KODE_BARANG,
+                                                                brg.URAIAN,
+                                                                brg.SPESIFIKASI_LAIN,
+                                                                brg.KODE_SATUAN,
+                                                                brg.JUMLAH_SATUAN,
+                                                                plb.KODE_VALUTA,
+                                                                brg.CIF,
+                                                                brg.POS_TARIF
+                                                                -- END GABUNGAN
+                                                                FROM rcd_status AS rcd 
+                                                                LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
+                                                                LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
+                                                                LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
+                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND brg.STATUS_GB='Sesuai'
+                                                                AND brg.TGL_CEK_GB BETWEEN '" . $S_KELUAR . "' AND '" . $E_KELUAR . " 23:59:59'
+                                                                ORDER BY brg.ID,brg.TGL_CEK,brg.TGL_CEK_GB DESC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
-                                                            LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                                            LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                                            LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                                            WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                                            ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC LIMIT 100", 0);
+                                    $dataTable = $dbcon->query("SELECT
+                                                                -- BARANG MASUK
+                                                                plb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_BCPLB,
+                                                                plb.NOMOR_AJU AS NOMOR_AJU_BCPLB,
+                                                                plb.NOMOR_DAFTAR AS NOMOR_DAFTAR_BCPLB,
+                                                                plb.PERUSAHAAN,
+                                                                plb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_BCPLB,
+                                                                sts.ck5_plb_submit,
+                                                                brg.TGL_CEK,
+                                                                brg.OPERATOR_ONE,
+                                                                rcd.bc_in,
+                                                                rcd.upload_beritaAcara_PLB,
+                                                                rcd.bm_tgl_masuk,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bm_no_aju_plb,
+                                                                -- END BARANG MASUK
+                                                                -- BARANG KELUAR
+                                                                tpb.KODE_DOKUMEN_PABEAN AS KODE_DOKUMEN_PABEAN_BCGB,
+                                                                tpb.NOMOR_AJU AS NOMOR_AJU_BCGB,
+                                                                tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_BCGB,
+                                                                tpb.NAMA_PENGUSAHA,
+                                                                tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_BCGB,
+                                                                brg.TGL_CEK_GB,
+                                                                brg.OPERATOR_TWO,
+                                                                rcd.bc_out,
+                                                                rcd.upload_beritaAcara_GB,
+                                                                rcd.bk_tgl_keluar,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bk_no_aju_sarinah,
+                                                                -- END BARANG KELUAR
+                                                                -- GABUNGAN
+                                                                rcd.rcd_id,
+                                                                brg.KODE_BARANG,
+                                                                brg.URAIAN,
+                                                                brg.SPESIFIKASI_LAIN,
+                                                                brg.KODE_SATUAN,
+                                                                brg.JUMLAH_SATUAN,
+                                                                plb.KODE_VALUTA,
+                                                                brg.CIF,
+                                                                brg.POS_TARIF
+                                                                -- END GABUNGAN
+                                                                FROM rcd_status AS rcd 
+                                                                LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
+                                                                LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
+                                                                LEFT OUTER JOIN plb_header AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
+                                                                WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND brg.STATUS_GB='Sesuai'
+                                                                ORDER BY brg.ID,brg.TGL_CEK,brg.TGL_CEK_GB DESC LIMIT 100", 0);
                                 }
 
                                 if ($dataTable) : $no = 1;
@@ -718,24 +566,23 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
+                                            <!-- BARANG MASUK -->
                                             <td style="text-align: center">
-                                                BC <?= $row['KODE_DOKUMEN_PABEAN']; ?>
+                                                BC <?= $row['KODE_DOKUMEN_PABEAN_BCPLB']; ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <?php if ($row['NOMOR_AJU'] == NULL) { ?>
+                                                <?php if ($row['NOMOR_AJU_BCPLB'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                 <?php } else { ?>
-                                                    <?= $row['NOMOR_AJU']; ?>
+                                                    <?= $row['NOMOR_AJU_BCPLB']; ?>
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center">
-                                                <div style="width: 80px;">
-                                                    <?php if ($row['NOMOR_DAFTAR'] == NULL) { ?>
-                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                                    <?php } else { ?>
-                                                        <?= $row['NOMOR_DAFTAR']; ?>
-                                                    <?php } ?>
-                                                </div>
+                                                <?php if ($row['NOMOR_DAFTAR_BCPLB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_DAFTAR_BCPLB']; ?>
+                                                <?php } ?>
                                             </td>
                                             <td style="text-align: left">
                                                 <div style="width: 200px;">
@@ -750,12 +597,12 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                             </td>
                                             <td style="text-align: left">
                                                 <div style="width: 200px;">
-                                                    <?php if ($row['NAMA_PENERIMA_BARANG'] == NULL) { ?>
+                                                    <?php if ($row['NAMA_PENERIMA_BARANG_BCPLB'] == NULL) { ?>
                                                         <center>
                                                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                                         </center>
                                                     <?php } else { ?>
-                                                        <?= $row['NAMA_PENERIMA_BARANG']; ?>
+                                                        <?= $row['NAMA_PENERIMA_BARANG_BCPLB']; ?>
                                                     <?php } ?>
                                                 </div>
                                             </td>
@@ -844,7 +691,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                 <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
                                                 <?php } else { ?>
-                                                    <a href="#detail<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
+                                                    <a href="#detailIN<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
                                                         <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
                                                             <div>
                                                                 <div style="font-size: 12px;">
@@ -855,10 +702,131 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                     </a>
                                                 <?php } ?>
                                             </td>
+                                            <!-- END BARANG MASUK -->
+                                            <!-- BARANG KELUAR -->
+                                            <td style="text-align: center">
+                                                BC <?= $row['KODE_DOKUMEN_PABEAN_BCGB']; ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['NOMOR_AJU_BCGB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_AJU_BCGB']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <div style="width: 80px;">
+                                                    <?php if ($row['NOMOR_DAFTAR_BCGB'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['NOMOR_DAFTAR_BCGB']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 100px;">
+                                                    <?php if ($row['NAMA_PENGUSAHA'] == NULL) { ?>
+                                                        <center>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                        </center>
+                                                    <?php } else { ?>
+                                                        <?= $row['NAMA_PENGUSAHA']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?php if ($row['NAMA_PENERIMA_BARANG_BCGB'] == NULL) { ?>
+                                                        <center>
+                                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                        </center>
+                                                    <?php } else { ?>
+                                                        <?= $row['NAMA_PENERIMA_BARANG_BCGB']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <?php
+                                                if ($row['KODE_BARANG'] == NULL) {
+                                                    $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                                } else {
+                                                    $KDBRG = $row['KODE_BARANG'];
+                                                }
+                                                if ($row['POS_TARIF'] == NULL) {
+                                                    $POSTARIF = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
+                                                } else {
+                                                    $POSTARIF = $row['POS_TARIF'];
+                                                }
+                                                ?>
+                                                <?= $KDBRG ?>
+                                            </td>
+                                            <td>
+                                                <div style="width: 280px;">
+                                                    <?= $row['URAIAN']; ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?= $row['SPESIFIKASI_LAIN']; ?>
+                                            </td>
+                                            <td>
+                                                <div style="display: flex;justify-content: space-between;align-items: center">
+                                                    <font><?= $row['KODE_SATUAN']; ?></font>
+                                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="display: flex;justify-content: space-between;align-items: center">
+                                                    <font><?= $row['KODE_VALUTA']; ?></font>
+                                                    <font><?= $row['CIF']; ?></font>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['TGL_CEK_GB'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['TGL_CEK_GB']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['OPERATOR_ONE']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?php if ($row['bc_out'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?= $row['bc_out']; ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?php if ($row['upload_beritaAcara_GB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
+                                                <?php } else { ?>
+                                                    <a href="#detailOUT<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
+                                                            <div>
+                                                                <div style="font-size: 12px;">
+                                                                    <i class="fas fa-file-invoice"></i>
+                                                                </div>
+                                                            </div>
+                                                        </font>
+                                                    </a>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- END BARANG KELUAR -->
                                         </tr>
 
-                                        <!-- Detail -->
-                                        <div class="modal fade" id="detail<?= $row['rcd_id'] ?>">
+                                        <!-- Detail IN -->
+                                        <div class="modal fade" id="detailIN<?= $row['rcd_id'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
@@ -871,7 +839,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label>Nomor Pengajuan PLB</label>
-                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['bm_no_aju_plb']; ?>" readonly>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -928,14 +896,86 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Detail -->
+                                        <!-- End Detail IN -->
+                                        <!-- Detail OUT -->
+                                        <div class="modal fade" id="detailOUT<?= $row['rcd_id'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Berita Acara] Laporan Posisi Barang</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label>Nomor Pengajuan PLB</label>
+                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['bm_no_aju_plb']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label>Nomor Pengajuan GB</label>
+                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Tanggal Masuk Barang</label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_tgl_keluar']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Petugas <?= $resultSetting['company']; ?></label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_nama_operator']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Petugas BeaCukai</label>
+                                                                        <input type="text" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bc_out']; ?>" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                                        <div style="font-size: 30px;">
+                                                                            <i class="fas fa-file-pdf"></i>
+                                                                        </div>
+                                                                        <div style="margin-left: 10px;">
+                                                                            <div style="font-size: 17px;font-weight: 900;">
+                                                                                Dokumen Berita Acara
+                                                                            </div>
+                                                                            <div style="margin-top: -5px;font-size: 10px;">
+                                                                                Lampiran Gate Out
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <embed src="files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
+                                                                        </object>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Detail OUT -->
                                     <?php
                                         $no++;
                                     endforeach
                                     ?>
                                 <?php else : ?>
                                     <tr>
-                                        <td colspan="16">
+                                        <td colspan="31">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -982,44 +1022,20 @@ include "include/jsForm.php";
 ?>
 <script type="text/javascript">
     $(function() {
-        $("#IDAJU_PLB").autocomplete({
-            source: 'function/autocomplete/nomor_aju_plb.php'
-        });
-    });
-    $(function() {
         $("#input-filter").change(function() {
-            if ($(this).val() == "NP") {
-                $("#form_NP").show();
-                $("#form_RTU").hide();
-                $("#form_RTM").hide();
-            } else if ($(this).val() == "RTU") {
-                $("#form_NP").hide();
-                $("#form_RTU").show();
-                $("#form_RTM").hide();
-            } else if ($(this).val() == "RTM") {
-                $("#form_NP").hide();
-                $("#form_RTU").hide();
-                $("#form_RTM").show();
+            if ($(this).val() == "TGLMASUK") {
+                $("#form_MASUK").show();
+                $("#form_KELUAR").hide();
+            } else if ($(this).val() == "TGLKELUAR") {
+                $("#form_MASUK").hide();
+                $("#form_KELUAR").show();
             } else {
-                $("#form_NP").show();
-                $("#form_RTU").hide();
-                $("#form_RTM").hide();
+                $("#form_MASUK").show();
+                $("#form_KELUAR").hide();
             }
         });
     });
     var handleDateRangePicker = function() {
-        // RANGE TANGGAL UPLOAD
-        $('#default-daterange-upload').daterangepicker({
-            opens: 'right',
-            format: 'MM/DD/YYYY',
-            separator: ' to ',
-            startDate: moment().subtract('days', 29),
-            endDate: moment(),
-            minDate: '<?= $RUFirst ?>',
-            maxDate: '<?= $RULast ?>',
-        }, function(start, end) {
-            $('#default-daterange-upload input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        });
         // RANGE TANGGAL MASUK
         $('#default-daterange-masuk').daterangepicker({
             opens: 'right',
@@ -1031,6 +1047,18 @@ include "include/jsForm.php";
             maxDate: '<?= $RMLast ?>',
         }, function(start, end) {
             $('#default-daterange-masuk input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
+        // RANGE TANGGAL KELUAR
+        $('#default-daterange-keluar').daterangepicker({
+            opens: 'right',
+            format: 'MM/DD/YYYY',
+            separator: ' to ',
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '<?= $RKFirst ?>',
+            maxDate: '<?= $RKLast ?>',
+        }, function(start, end) {
+            $('#default-daterange-keluar input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         });
     };
 </script>
