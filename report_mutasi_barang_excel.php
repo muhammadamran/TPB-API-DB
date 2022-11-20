@@ -366,7 +366,6 @@ if (isset($_POST['Find_NP']) != '') {
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a href="report_masuk_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>

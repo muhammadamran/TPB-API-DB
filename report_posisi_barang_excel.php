@@ -380,7 +380,7 @@ if (isset($_POST["Find_MASUK"])) {
                         <?php if ($row['NOMOR_AJU_BCPLB'] == NULL) { ?>
                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                         <?php } else { ?>
-                            <?= $row['NOMOR_AJU_BCPLB']; ?>
+                            '<?= $row['NOMOR_AJU_BCPLB']; ?>
                         <?php } ?>
                     </td>
                     <td style="text-align: center">
@@ -453,7 +453,7 @@ if (isset($_POST["Find_MASUK"])) {
                             $POSTARIF = $row['POS_TARIF'];
                         }
                         ?>
-                        <?= $KDBRG ?>
+                        '<?= $KDBRG ?>
                     </td>
                     <td>
                         <div style="width: 280px;">
@@ -502,7 +502,7 @@ if (isset($_POST["Find_MASUK"])) {
                         <?php if ($row['NOMOR_AJU_BCGB'] == NULL) { ?>
                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                         <?php } else { ?>
-                            <?= $row['NOMOR_AJU_BCGB']; ?>
+                            '<?= $row['NOMOR_AJU_BCGB']; ?>
                         <?php } ?>
                     </td>
                     <td style="text-align: center">
@@ -549,7 +549,7 @@ if (isset($_POST["Find_MASUK"])) {
                             $POSTARIF = $row['POS_TARIF'];
                         }
                         ?>
-                        <?= $KDBRG ?>
+                        '<?= $KDBRG ?>
                     </td>
                     <td>
                         <div style="width: 280px;">

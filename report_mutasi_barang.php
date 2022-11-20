@@ -407,26 +407,22 @@ if (isset($_POST['Find_NP']) != '') {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>
-                                    <th rowspan="2" style="text-align: center;">Kode Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Uraian Barang</th>
-                                    <th rowspan="2" style="text-align: center;">Spesifikasi Lain</th>
+                                    <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th rowspan="2" style="text-align: center;">Uraian</th>
+                                    <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
                                     <th rowspan="2" style="text-align: center;">Golongan</th>
-                                    <th rowspan="2" class="text-nowsrap no-sort" style="text-align: center;">Satuan</th>
+                                    <th rowspan="2" class="text-nowsrap no-sort" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
                                     <th colspan="2" style="text-align: center;">Saldo Awal</th>
-                                    <th colspan="2" style="text-align: center;">Mutasi Masuk</th>
-                                    <th colspan="2" style="text-align: center;">Mutasi Keluar</th>
+                                    <th colspan="2" style="text-align: center;">Mutasi<font style="color: #dadddf;">.</font>Masuk</th>
+                                    <th colspan="2" style="text-align: center;">Mutasi<font style="color: #dadddf;">.</font>Keluar</th>
                                     <th rowspan="2" style="text-align: center;">Penyesuaian</th>
-                                    <th colspan="2" style="text-align: center;">Saldo Akhir</th>
-                                    <th colspan="2" style="text-align: center;">Stock Opname</th>
+                                    <th colspan="2" style="text-align: center;">Saldo<font style="color: #dadddf;">.</font>Akhir</th>
+                                    <th colspan="2" style="text-align: center;">Stock<font style="color: #dadddf;">.</font>Opname</th>
                                     <th colspan="2" style="text-align: center;">Selisih</th>
-                                    <th colspan="2" style="text-align: center;">Petugas Sarinah</th>
-                                    <th colspan="2" style="text-align: center;">Petugas BC</th>
-                                    <th colspan="4" style="text-align: center;background: #f59c1a">Ket. Gate In</th>
-                                    <th colspan="4" style="text-align: center;background: #90ca4b">Ket. Gate Out</th>
+                                    <th colspan="2" style="text-align: center;">Petugas<font style="color: #dadddf;">.</font><?= $resultSetting['company']; ?></th>
+                                    <th colspan="2" style="text-align: center;">Petugas BeaCukai</th>
                                 </tr>
                                 <tr>
-                                    <!-- <th style="text-align: center;">CT</th>
-                                    <th style="text-align: center;">Botol</th> -->
                                     <th style="text-align: center;">CT</th>
                                     <th style="text-align: center;">Botol</th>
                                     <th style="text-align: center;">CT</th>
@@ -443,49 +439,47 @@ if (isset($_POST['Find_NP']) != '') {
                                     <th style="text-align: center;">Out</th>
                                     <th style="text-align: center;">In</th>
                                     <th style="text-align: center;">Out</th>
-                                    <!-- Gate In -->
-                                    <th style="text-align: center;">Kurang</th>
-                                    <th style="text-align: center;">Lebih</th>
-                                    <th style="text-align: center;">Pecah</th>
-                                    <th style="text-align: center;">Rusak</th>
-                                    <!-- Gate Out -->
-                                    <th style="text-align: center;">Kurang</th>
-                                    <th style="text-align: center;">Lebih</th>
-                                    <th style="text-align: center;">Pecah</th>
-                                    <th style="text-align: center;">Rusak</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $dataTable = $dbcon->query("SELECT brg.ID,ct.ID_BARANG,brg.KODE_BARANG,brg.URAIAN,brg.TIPE,brg.SPESIFIKASI_LAIN,brg.KODE_SATUAN,brg.JUMLAH_SATUAN,
-                                                            rcd.bm_nama_operator,rcd.bk_nama_operator,rcd.bc_in,rcd.bc_out,
-                                                            (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS MUTASI_MASUK_CT,
-                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS MUTASI_MASUK_BTL,
-                                                            (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS MUTASI_KELUAR_CT,
-                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS MUTASI_KELUAR_BTL,
-                                                            -- IN
-                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN') AS K_IN,
+                                $dataTable = $dbcon->query("SELECT 
+                                                            brg.ID,
+                                                            brg.KODE_BARANG,
+                                                            brg.URAIAN,
+                                                            brg.TIPE,
+                                                            brg.SPESIFIKASI_LAIN,
+                                                            brg.KODE_SATUAN,
+                                                            brg.JUMLAH_SATUAN,
+                                                            brg.SERI_BARANG,
+                                                            rcd.bm_nama_operator,
+                                                            rcd.bk_nama_operator,
+                                                            rcd.bc_in,
+                                                            rcd.bc_out,
+                                                            -- SALDO AWAL
+                                                            (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS IS NULL) AS SALDO_CT,
+                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS IS NULL) AS SALDO_BTL,
+                                                            -- END SALOD AWAL
+                                                            -- MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
+                                                            (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai') AS MUTASI_MASUK_CT,
+                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai') AS MUTASI_MASUK_BTL,
+                                                            -- END MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
+                                                            -- MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
+                                                            (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_CT,
+                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_BTL,
+                                                            -- END MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
+                                                            -- SALDO AKHIR
                                                             (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN') AS L_IN,
-                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN') AS P_IN,
-                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN') AS R_IN,
-                                                            -- OUT
-                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT') AS K_OUT,
-                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT') AS L_OUT,
-                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT') AS P_OUT,
-                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT') AS R_OUT,
+                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT') AS L_OUT
+                                                            -- END SALDO AKHIR
                                                             -- STOCK OPNAME
-                                                            (
-                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG) + 
-                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG ) +
-                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG )
-                                                            ) 
-                                                            AS BTL_SO
-                                                            FROM plb_barang AS brg
-                                                            LEFT OUTER JOIN plb_barang_ct AS ct ON ct.ID_BARANG=brg.ID
+                                                            -- END STOCK OPANEM
+                                                            FROM plb_barang_ct AS ct
+                                                            LEFT OUTER JOIN plb_barang AS brg ON brg.KODE_BARANG=ct.KODE_BARANG
+                                                            LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=brg.NOMOR_AJU
                                                             LEFT OUTER JOIN rcd_status AS rcd ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
-                                                            WHERE rcd.upload_beritaAcara_GB IS NOT NULL
-                                                            GROUP BY brg.ID 
-                                                            ORDER BY brg.ID DESC", 0);
+                                                            GROUP BY brg.KODE_BARANG
+                                                            ORDER BY brg.SERI_BARANG ASC,brg.ID DESC", 0);
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
                                 ?>
@@ -534,50 +528,54 @@ if (isset($_POST['Find_NP']) != '') {
                                             <!-- Saldo Awal -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?php if ($row['SALDO_CT'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(SCtn)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['SALDO_CT']; ?><font style="font-size: 3px;">(SCtn)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?php if ($row['SALDO_BTL'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(SBtl)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['SALDO_BTL']; ?><font style="font-size: 3px;">(SBtl)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- End Saldo Awal -->
-
                                             <!-- Mutasi Masuk -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_CT']; ?> <font style="font-size: 3px;">(M In Ctn)</font>
+                                                <?= $row['MUTASI_MASUK_CT']; ?><font style="font-size: 3px;">(MInCtn)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_BTL']; ?> <font style="font-size: 3px;">(M In Btl)</font>
+                                                <?= $row['MUTASI_MASUK_BTL']; ?><font style="font-size: 3px;">(MInBtl)</font>
                                             </td>
                                             <!-- End Mutasi Masuk -->
-
                                             <!-- Mutasi keluar -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_CT']; ?> <font style="font-size: 3px;">(M Out Ctn)</font>
+                                                <?= $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MOutCtn)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_BTL']; ?> <font style="font-size: 3px;">(M Out Btl)</font>
+                                                <?= $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MOutBtl)</font>
                                             </td>
                                             <!-- End Mutasi keluar -->
-
                                             <!-- Penyesuaian -->
                                             <td style="text-align: center;">
-                                                <?= $row['K_IN'] + $row['K_OUT'] + $row['P_IN'] + $row['P_OUT'] + $row['R_IN'] + $row['R_OUT']; ?>
+                                                <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(Penyesuaian)</font>
                                             </td>
                                             <!-- End Penyesuaian -->
-
                                             <!-- Saldo Akhir -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_CT']; ?> <font style="font-size: 3px;">(M SA Ctn)</font>
+                                                <?= $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSACtn)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_BTL']; ?> <font style="font-size: 3px;">(M SA Btl)</font>
+                                                <?= $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSABtl)</font>
                                             </td>
                                             <!-- End Saldo Akhir -->
                                             <!-- Stok Opname -->
@@ -592,11 +590,11 @@ if (isset($_POST['Find_NP']) != '') {
                                             <!-- End Stok Opname -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_CT'] - $row['MUTASI_KELUAR_CT']; ?> <font style="font-size: 3px;">(M SO Ctn)</font>
+                                                <?= $row['MUTASI_MASUK_CT'] - $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSOCtn)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?> <font style="font-size: 3px;">(M SO Btl)</font>
+                                                <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSOBtl)</font>
                                             </td>
                                             <!-- End Selisih -->
                                             <!-- Petugas Sarinah-->
@@ -635,72 +633,6 @@ if (isset($_POST['Find_NP']) != '') {
                                                     </font>
                                                 <?php } else { ?>
                                                     <?= $row['bc_out']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- IN -->
-                                            <!-- KURANG -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['K_IN'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['K_IN']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- LEBIH -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['L_IN'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['L_IN']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- PECAH -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['P_IN'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['P_IN']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- RUSAK -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['R_IN'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['R_IN']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- OUT -->
-                                            <!-- KURANG -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['K_OUT'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['K_OUT']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- LEBIH -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['L_OUT'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['L_OUT']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- PECAH -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['P_OUT'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['P_OUT']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- RUSAK -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['R_OUT'] == NULL) { ?>
-                                                    0
-                                                <?php } else { ?>
-                                                    <?= $row['R_OUT']; ?>
                                                 <?php } ?>
                                             </td>
                                         </tr>
