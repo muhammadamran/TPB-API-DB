@@ -580,6 +580,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                             <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
                                             <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
                                         </form>
+                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>

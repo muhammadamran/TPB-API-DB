@@ -188,7 +188,7 @@ include "include/cssDatatables.php";
                             </div>
                         </div>
                         <!-- LAPORAN DATA PLB -->
-                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_ck_plb']; ?>">
+                        <div class="col-sm-6" style="display: <?= $resultRoleModules['re_data_plb']; ?>">
                             <div class="lap">
                                 <!-- ICON -->
                                 <div class="lap-icon-isi">
@@ -198,13 +198,13 @@ include "include/cssDatatables.php";
                                 <div class="lap-t-d">
                                     <!-- TITLE -->
                                     <div>
-                                        <h4><a href="report_ck5_plb_lap.php">Laporan Data PLB</a></h4>
+                                        <h4><a href="report_data_plb.php">Laporan Data PLB</a></h4>
                                     </div>
                                     <!-- DESC -->
                                     <div>
                                         <p>Menampilkan <b>Dokumen CK5 Pusat Logistik Berikat</b>, <b>Packing List</b> dan <b>Inovice</b> barang <b><?= $resultSetting['app_name'] ?></b>.</p>
                                         <div>
-                                            <a href="report_ck5_plb_lap.php" class="btn btn-default-index">Lihat Laporan</a>
+                                            <a href="report_data_plb.php" class="btn btn-default-index">Lihat Laporan</a>
                                         </div>
                                     </div>
                                 </div>
@@ -221,13 +221,13 @@ include "include/cssDatatables.php";
                                 <div class="lap-t-d">
                                     <!-- TITLE -->
                                     <div>
-                                        <h4><a href="report_ck5_sarinah.php">Laporan Data GB</a></h4>
+                                        <h4><a href="report_data_gb.php">Laporan Data GB</a></h4>
                                     </div>
                                     <!-- DESC -->
                                     <div>
                                         <p>Menampilkan <b>Dokumen CK5 Gudang Berikat</b>, <b>Packing List</b> dan <b>Inovice</b> barang <b><?= $resultSetting['app_name'] ?></b>.</p>
                                         <div>
-                                            <a href="report_ck5_sarinah.php" class="btn btn-default-index">Lihat Laporan</a>
+                                            <a href="report_data_gb.php" class="btn btn-default-index">Lihat Laporan</a>
                                         </div>
                                     </div>
                                 </div>

@@ -86,8 +86,8 @@
             $resultRoleModules['re_posisi_barang'] == 'none' &&
             $resultRoleModules['re_realisasi'] == 'none' &&
             $resultRoleModules['re_data_tpb'] == 'none' &&
-            $resultRoleModules['re_ck_plb'] == 'none' &&
-            $resultRoleModules['re_ck_sarinah'] == 'none' &&
+            $resultRoleModules['re_data_plb'] == 'none' &&
+            $resultRoleModules['re_data_gb'] == 'none' &&
             $resultRoleModules['re_log'] == 'none'
         ) {
             $TitleReport = 'none';
@@ -106,32 +106,29 @@
                         $uriSegmentsTop[1] == 'report_realisasi_per_mitra.php' ||
                         $uriSegmentsTop[1] == 'report_realisasi_per_tahun.php' ||
                         $uriSegmentsTop[1] == 'report_data_tpb.php' ||
-                        $uriSegmentsTop[1] == 'report_log_system.php' ||
-                        $uriSegmentsTop[1] == 'report_ck5_plb_data.php' ||
-                        $uriSegmentsTop[1] == 'report_ck5_plb.php' ||
-                        $uriSegmentsTop[1] == 'report_ck5_sarinah.php'
+                        $uriSegmentsTop[1] == 'report_data_plb.php' ||
+                        $uriSegmentsTop[1] == 'report_data_gb.php' ||
+                        $uriSegmentsTop[1] == 'report_log_system.php'
                         ? 'active-top' : '' ?>" style="display: <?= $TitleReport ?>;">
             <a href="index_report.php">
                 <i class="fas fa-clipboard"></i>
                 <span>Laporan </span>
             </a>
             <ul class="sub-menu">
-                <li class="<?= $uriSegmentsTop[1] == 'report_masuk_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>;"><a href="report_masuk_barang.php">Barang Masuk</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_keluar_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_keluar_barang']; ?>;"><a href="report_keluar_barang.php">Barang Keluar</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_posisi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_posisi_barang']; ?>;"><a href="report_posisi_barang.php">Posisi Barang</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_mutasi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>;"><a href="report_mutasi_barang.php">Mutasi Barang</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_masuk_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_masuk_barang']; ?>;"><a href="report_masuk_barang.php">Laporan Barang Masuk</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_keluar_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_keluar_barang']; ?>;"><a href="report_keluar_barang.php">Laporan Barang Keluar</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_posisi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_posisi_barang']; ?>;"><a href="report_posisi_barang.php">Laporan Posisi Barang</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_mutasi_barang.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_mutasi_barang']; ?>;"><a href="report_mutasi_barang.php">Laporan Mutasi Barang</a></li>
                 <li class="<?= $uriSegmentsTop[1] == 'report_realisasi.php' ||
                                 $uriSegmentsTop[1] == 'report_realisasi_all_mitra.php' ||
                                 $uriSegmentsTop[1] == 'report_realisasi_per_mitra.php' ||
                                 $uriSegmentsTop[1] == 'report_realisasi_per_tahun.php'
-                                ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_realisasi']; ?>;"><a href="report_realisasi.php">Realisasi</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_data_tpb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_tpb']; ?>;"><a href="report_data_tpb.php">Data
-                        TPB</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_ck5_plb.php' || $uriSegmentsTop[1] == 'report_ck5_plb_data.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_ck_plb']; ?>;"><a href="report_ck5_plb.php">PLB CK5</a>
+                                ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_realisasi']; ?>;"><a href="report_realisasi.php">Laporan Realisasi Barang</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_data_tpb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_tpb']; ?>;"><a href="report_data_tpb.php">Laporan Data TPB</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_data_plb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_plb']; ?>;"><a href="report_data_plb.php">Laporan Data PLB</a>
                 </li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_ck5_sarinah.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_ck_sarinah']; ?>;"><a href="report_ck5_sarinah.php">Sarinah CK5</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_log_system.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_log']; ?>;"><a href="report_log_system.php">Log
-                        System</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_data_gb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_gb']; ?>;"><a href="report_data_gb.php">Laporan Data GB</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_log_system.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_log']; ?>;"><a href="report_log_system.php">Laporan Aktifitas (Log System)</a></li>
             </ul>
         </li>
     </ul>
