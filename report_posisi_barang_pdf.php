@@ -158,40 +158,40 @@ if (isset($_POST["Find_KELUAR"])) {
                                 <!-- BARANG MASUK -->
                                 <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
                                 <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
-                                <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
+                                <th rowspan="2" style="text-align: center;">Kode<font style="color: transparent;">.</font>Barang</th>
                                 <th rowspan="2" style="text-align: center;">Uraian</th>
-                                <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
-                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
-                                <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
+                                <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: transparent;">.</font>Lain</th>
+                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: transparent;">.</font>Satuan</th>
+                                <th rowspan="2" style="text-align: center;">Nilai<font style="color: transparent;">.</font>Barang</th>
                                 <th colspan="2" style="text-align: center;">Petugas</th>
                                 <!-- END BARANG MASUK -->
                                 <!-- BARANG KELUAR -->
                                 <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
-                                <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
+                                <th rowspan="2" style="text-align: center;">Kode<font style="color: transparent;">.</font>Barang</th>
                                 <th rowspan="2" style="text-align: center;">Uraian</th>
-                                <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
-                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
-                                <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
-                                <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
+                                <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: transparent;">.</font>Lain</th>
+                                <th rowspan="2" style="text-align: center;">Jumlah<font style="color: transparent;">.</font>Satuan</th>
+                                <th rowspan="2" style="text-align: center;">Nilai<font style="color: transparent;">.</font>Barang</th>
+                                <th rowspan="2" style="text-align: center;">Tanggal<font style="color: transparent;">.</font>&<font style="color: transparent;">.</font>Waktu<font style="color: transparent;">.</font>Keluar</th>
                                 <th colspan="2" style="text-align: center;">Petugas</th>
                                 <!-- END BARANG MASUK -->
                             </tr>
                             <tr>
                                 <!-- BARANG MASUK -->
-                                <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
+                                <th class="no-sort" style="text-align: center;">Jenis<font style="color: transparent;">.</font>Dokumen</th>
                                 <th style="text-align: center;">Nomor Pengajuan</th>
-                                <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
+                                <th style="text-align: center;">No.<font style="color: transparent;">.</font>Daftar</th>
                                 <th style="text-align: center;">Asal</th>
                                 <th style="text-align: center;">Tujuan</th>
-                                <th class="text-nowrap no-sort" style="text-align: center;">Upload<font style="color: #dadddf;">.</font>PLB</th>
-                                <th class="text-nowrap no-sort" style="text-align: center;">Masuk<font style="color: #dadddf;">.</font>Barang</th>
+                                <th class="text-nowrap no-sort" style="text-align: center;">Upload<font style="color: transparent;">.</font>PLB</th>
+                                <th class="text-nowrap no-sort" style="text-align: center;">Masuk<font style="color: transparent;">.</font>Barang</th>
                                 <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>
                                 <th style="text-align: center;">BeaCukai</th>
                                 <!-- END BARANG MASUK -->
                                 <!-- BARANG KELUAR -->
-                                <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
-                                <th style="text-align: center;">Nomor<font style="color: #dadddf;">.</font>Pengajuan</th>
-                                <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
+                                <th class="no-sort" style="text-align: center;">Jenis<font style="color: transparent;">.</font>Dokumen</th>
+                                <th style="text-align: center;">Nomor<font style="color: transparent;">.</font>Pengajuan</th>
+                                <th style="text-align: center;">No.<font style="color: transparent;">.</font>Daftar</th>
                                 <th style="text-align: center;">Asal</th>
                                 <th style="text-align: center;">Tujuan</th>
                                 <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>

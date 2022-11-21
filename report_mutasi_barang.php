@@ -9,74 +9,14 @@ include "include/cssDatatables.php";
 include "include/cssForm.php";
 
 // FUNCTION SEARCHING
-$FindNoAJU          = '';
-$Field_RTU          = '';
-$Field_RTM          = '';
-$ShowFindNoAJU      = '';
-$ShowField_RTU      = '';
-$ShowField_RTM      = '';
+$FindBulan = '';
+$FindTahun = '';
+$ShowFind  = 'Bulan ' . date('m') . ' Tahun ' . date('Y');
 
-// RTU
-if (isset($_POST["Find_NP"])) {
-    $FindNoAJU      = $_POST['FindNoAJU'];
-    $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
-}
-// RTU
-if (isset($_POST["Find_RTU"])) {
-    $Field_RTU      = $_POST['default-daterange-upload'];
-    $Field_RTUE     = explode(" - ", $Field_RTU);
-    $RTUStart       = $Field_RTUE[0];
-    $RTUStart_T     = strtotime($RTUStart);
-    $S_RTU          = date("Y-m-d", $RTUStart_T);
-    $RTUEnd         = $Field_RTUE[1];
-    $RTUEnd_T       = strtotime($RTUEnd);
-    $E_RTU          = date("Y-m-d", $RTUEnd_T);
-    $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
-}
-// RTM
-if (isset($_POST["Find_RTM"])) {
-    $Field_RTM      = $_POST['default-daterange-masuk'];
-    $Field_RTME     = explode(" - ", $Field_RTM);
-    $RTMStart       = $Field_RTME[0];
-    $RTMStart_T     = strtotime($RTMStart);
-    $S_RTM          = date("Y-m-d", $RTMStart_T);
-    $RTMEnd         = $Field_RTME[1];
-    $RTMEnd_T       = strtotime($RTMEnd);
-    $E_RTM          = date("Y-m-d", $RTMEnd_T);
-    $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
-}
-if (isset($_POST['Find_NP']) != '') {
-    $displayOne = 'show';
-    $displayTwo = 'none';
-    $displayThree = 'none';
-
-    $selectOne = 'selected';
-    $selectTwo = '';
-    $selectThree = '';
-} else if (isset($_POST['Find_RTU']) != '') {
-    $displayOne = 'none';
-    $displayTwo = 'show';
-    $displayThree = 'none';
-
-    $selectOne = '';
-    $selectTwo = 'selected';
-    $selectThree = '';
-} else if (isset($_POST['Find_RTM']) != '') {
-    $displayOne = 'none';
-    $displayTwo = 'none';
-    $displayThree = 'show';
-
-    $selectOne = '';
-    $selectTwo = '';
-    $selectThree = 'selected';
-} else {
-    $displayOne = 'show';
-    $displayTwo = 'none';
-    $displayThree = 'none';
-
-    $selectOne = 'selected';
-    $selectTwo = '';
-    $selectThree = '';
+if (isset($_POST['FindFilter'])) {
+    $FindBulan = $_POST['FindBulan'];
+    $FindTahun = $_POST['FindTahun'];
+    $ShowFind  = 'Bulan ' . $_POST['FindBulan'] . ' Tahun ' . $_POST['FindTahun'];
 }
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
@@ -104,192 +44,103 @@ if (isset($_POST['Find_NP']) != '') {
         </div>
     </div>
     <div class="line-page"></div>
-    <!-- begin Select Tabel -->
+    <!-- begin Search -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Mutasi Barang Berdasarkan
-                        <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
-                            <option value="NP" <?= $selectOne ?>>Nomor Pengajuan</option>
-                            <option value="RTU" <?= $selectTwo ?>>Range Tanggal Upload</option>
-                            <option value="RTM" <?= $selectThree ?>>Range Tanggal Masuk</option>
-                        </select>
-                    </h4>
+                    <h4 class="panel-title"><i class="fas fa-filter"></i> Filter Stok Barang</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
-                    <!-- Nomor Pengajuan -->
-                    <div id="form_NP" style="display: <?= $displayOne ?>;">
-                        <form action="" method="POST">
-                            <div style="display: flex;justify-content: center;align-items: center;">
-                                <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/search-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
+                    <form action="" id="fformone" method="POST">
+                        <fieldset>
+                            <div class="form-group row m-b-15">
+                                <label class="col-md-3 col-form-label">Bulan & Tahun</label>
+                                <div class="col-md-4">
+                                    <select type="text" class="default-select2 form-control" name="FindBulan">
+                                        <?php if ($FindBulan == NULL) { ?>
+                                            <option value="">Pilih Bulan</option>
+                                        <?php } else { ?>
+                                            <option value="<?= $FindBulan ?>"><?= $FindBulan ?></option>
+                                            <option value="">Pilih Bulan</option>
+                                        <?php } ?>
+                                        <option value="1">January</option>
+                                        <option value="2">Februari</option>
+                                        <option value="3">Maret</option>
+                                        <option value="4">April</option>
+                                        <option value="5">Mei</option>
+                                        <option value="6">Juni</option>
+                                        <option value="7">Juli</option>
+                                        <option value="8">Agustus</option>
+                                        <option value="9">September</option>
+                                        <option value="10">Oktober</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Desember</option>
+                                    </select>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>BC 2.7 PLB (Nomor Pengajuan)</label>
-                                            <input type="number" id="IDAJU_PLB" name="FindNoAJU" class="form-control" placeholder="BC 2.7 PLB (Nomor Pengajuan) ..." value="<?= $FindNoAJU; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="Find_NP" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
-                                            <font class="f-action">Cari</font>
-                                        </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
-                                            <font class="f-action">Reset</font>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Tanggal Upload -->
-                    <div id="form_RTU" style="display: <?= $displayTwo ?>;">
-                        <form action="" method="POST">
-                            <div style="display: flex;justify-content: center;align-items: center;">
-                                <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Range Tanggal Upload</label>
-                                            <div class="input-group" id="default-daterange-upload">
-                                                <input type="text" name="default-daterange-upload" class="form-control" value="<?= $Field_RTU ?>" placeholder="Pilih Range Tanggal Upload" />
-                                                <span class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="Find_RTU" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
-                                            <font class="f-action">Cari</font>
-                                        </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
-                                            <font class="f-action">Reset</font>
-                                        </a>
-                                    </div>
+                                <div class="col-md-4">
+                                    <select type="text" class="default-select2 form-control" name="FindTahun">
+                                        <?php if ($FindTahun == NULL) { ?>
+                                            <option value="">Pilih Tahun</option>
+                                        <?php } else { ?>
+                                            <option value="<?= $FindTahun ?>"><?= $FindTahun ?></option>
+                                            <option value="">Pilih Tahun</option>
+                                        <?php } ?>
+                                        <?php
+                                        for ($year = date('Y'); $year >= date('Y') - 2; $year -= 1) {
+                                            echo "<option value='$year'> $year </option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <!-- Range Tanggal Masuk -->
-                    <div id="form_RTM" style="display: <?= $displayThree ?>;">
-                        <form action="" method="POST">
-                            <div style="display: flex;justify-content: center;align-items: center;">
-                                <div style="display: flex;justify-content: center;">
-                                    <img src="assets/img/svg/realisasi_b.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" style="width: 70%;">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Range Tanggal Masuk</label>
-                                            <div class="input-group" id="default-daterange-masuk">
-                                                <input type="text" name="default-daterange-masuk" class="form-control" value="<?= $Field_RTM ?>" placeholder="Pilih Range Tanggal Masuk" />
-                                                <span class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="Find_RTM" class="btn btn-info m-r-5"><i class="fas fa-search"></i>
-                                            <font class="f-action">Cari</font>
-                                        </button>
-                                        <a href="report_masuk_barang.php" class="btn btn-warning m-r-5"><i class="fas fa-refresh"></i>
-                                            <font class="f-action">Reset</font>
-                                        </a>
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-3">
+                                    <button type="submit" class="btn btn-info m-r-5" name="FindFilter">
+                                        <i class="fa fa-search"></i>
+                                        <font class="f-action">Cari</font>
+                                    </button>
+                                    <a href="report_mutasi_barang.php" type="button" class="btn btn-warning m-r-5">
+                                        <i class="fa fa-refresh"></i>
+                                        <font class="f-action">Reset</font>
+                                    </a>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Select Tabel -->
+    <!-- End Search -->
 
     <!-- Begin Row -->
     <div class="row">
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-perusahaan">
                 <div class="row" style="display: flex;align-items: center;margin-top: 15px;margin-bottom: -0px;padding: 25px;margin: 10px;">
-                    <?php if (isset($_POST["Find_NP"])) { ?>
+                    <?php if (isset($_POST["FindFilter"])) { ?>
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
-                                        <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
-                                        <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
-                                        <button type="submit" name="Find_NP" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
+                                    <form action="report_mutasi_barang_pdf.php" target="_blank" method="POST">
+                                        <input type="hidden" name="FindBulan" value="<?= $FindBulan ?>">
+                                        <input type="hidden" name="FindTahun" value="<?= $FindTahun ?>">
+                                        <input type="hidden" name="ShowFind" value="<?= $ShowFind ?>">
+                                        <button type="submit" name="FindFilter" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
                                     </form>
                                 </div>
                                 <div class="btn-group m-r-5 m-b-5">
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
-                                            <input type="hidden" name="FindNoAJU" value="<?= $FindNoAJU ?>">
-                                            <input type="hidden" name="ShowFindNoAJU" value="<?= $ShowFindNoAJU ?>">
-                                            <button type="submit" name="Find_NP" class="dropdown-item">Download as XLS</button>
+                                        <form action="report_mutasi_barang_excel.php" target="_blank" method="POST">
+                                            <input type="hidden" name="FindBulan" value="<?= $FindBulan ?>">
+                                            <input type="hidden" name="FindTahun" value="<?= $FindTahun ?>">
+                                            <input type="hidden" name="ShowFind" value="<?= $ShowFind ?>">
+                                            <button type="submit" name="FindFilter" class="dropdown-item">Download as XLS</button>
                                         </form>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } else if (isset($_POST["Find_RTU"])) { ?>
-                        <div class="col-sm-12">
-                            <div style="display: flex;justify-content: end;">
-                                <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
-                                        <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                        <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                        <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                        <button type="submit" name="Find_RTU" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
-                                    </form>
-                                </div>
-                                <div class="btn-group m-r-5 m-b-5">
-                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
-                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
-                                            <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                            <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                            <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                            <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
-                                        </form>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } else if (isset($_POST["Find_RTM"])) { ?>
-                        <div class="col-sm-12">
-                            <div style="display: flex;justify-content: end;">
-                                <div>
-                                    <form action="report_masuk_barang_pdf.php" target="_blank" method="POST">
-                                        <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
-                                        <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
-                                        <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
-                                        <button type="submit" name="Find_RTM" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
-                                    </form>
-                                </div>
-                                <div class="btn-group m-r-5 m-b-5">
-                                    <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
-                                    <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <form action="report_masuk_barang_excel.php" target="_blank" method="POST">
-                                            <input type="hidden" name="S_RTM" value="<?= $S_RTM ?>">
-                                            <input type="hidden" name="E_RTM" value="<?= $E_RTM ?>">
-                                            <input type="hidden" name="ShowField_RTM" value="<?= $ShowField_RTM ?>">
-                                            <button type="submit" name="Find_RTM" class="dropdown-item">Download as XLS</button>
-                                        </form>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -298,14 +149,13 @@ if (isset($_POST['Find_NP']) != '') {
                         <div class="col-sm-12">
                             <div style="display: flex;justify-content: end;">
                                 <div>
-                                    <a href="report_masuk_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
+                                    <a href="report_mutasi_barang_pdf.php" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
                                 </div>
                                 <div class="btn-group m-r-5 m-b-5">
                                     <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                                     <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="report_masuk_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
-                                        <!-- <a href="javascript:;" class="dropdown-item">Download as DOCX</a> -->
+                                        <a href="report_mutasi_barang_excel.php" target="_blank" class="dropdown-item">Download as XLS</a>
                                     </div>
                                 </div>
                             </div>
@@ -324,12 +174,10 @@ if (isset($_POST['Find_NP']) != '') {
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;text-transform:uppercase">LAPORAN PERTANGGUNGJAWABAN MUTASI BARANG <?= date('F') ?> <?= date('Y') ?></font>
+                        <font style="font-size: 24px;font-weight: 800;text-transform:uppercase">LAPORAN PERTANGGUNGJAWABAN MUTASI BARANG</font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
-                            <?= $ShowFindNoAJU; ?>
-                            <?= $ShowField_RTU; ?>
-                            <?= $ShowField_RTM; ?>
+                            Periode: <?= $ShowFind; ?>
                         </font>
                         <div class="line-page-table"></div>
                         <font style="font-size: 18px;font-weight: 800;"><?= $resultHeadSetting['company_t'] ?></font>
@@ -354,12 +202,16 @@ if (isset($_POST['Find_NP']) != '') {
                                     <th colspan="2" style="text-align: center;">Mutasi<font style="color: #dadddf;">.</font>Masuk</th>
                                     <th colspan="2" style="text-align: center;">Mutasi<font style="color: #dadddf;">.</font>Keluar</th>
                                     <th colspan="2" style="text-align: center;">Saldo<font style="color: #dadddf;">.</font>Akhir</th>
-                                    <th colspan="2" style="text-align: center;">Stock<font style="color: #dadddf;">.</font>Opname</th>
-                                    <th colspan="2" style="text-align: center;">Penyesuaian</th>
+                                    <th rowspan="2" style="text-align: center;">
+                                        <i>Stock<font style="color: #dadddf;">.</font>Opname</i>
+                                        <br>
+                                        <font style="font-size: 10px;font-weight:400"><i>Berdasarkan<font style="color: #dadddf;">.</font>Botol</i></font>
+                                    </th>
                                     <th colspan="2" style="text-align: center;">Selisih</th>
+                                    <th colspan="2" style="text-align: center;">Penyesuaian</th>
                                     <th colspan="2" style="text-align: center;">Keterangan</th>
                                     <th colspan="2" style="text-align: center;">Petugas<font style="color: #dadddf;">.</font><?= $resultSetting['company']; ?></th>
-                                    <th colspan="2" style="text-align: center;">Petugas BeaCukai</th>
+                                    <th colspan="2" style="text-align: center;">Petugas<font style="color: transparent;">.</font>BeaCukai</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">Carton</th>
@@ -374,8 +226,6 @@ if (isset($_POST['Find_NP']) != '') {
                                     <th style="text-align: center;">Botol</th>
                                     <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
                                     <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>Out</th>
-                                    <th style="text-align: center;">Carton</th>
-                                    <th style="text-align: center;">Botol</th>
                                     <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
                                     <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>Out</th>
                                     <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
@@ -388,69 +238,111 @@ if (isset($_POST['Find_NP']) != '') {
                                 <?php
                                 $dateMB        = date('m');
                                 $dateYB        = date('Y');
-                                $dataTable = $dbcon->query("SELECT 
-                                                            brg.ID,
-                                                            brg.KODE_BARANG,
-                                                            brg.URAIAN,
-                                                            brg.SPESIFIKASI_LAIN,
-                                                            brg.KODE_SATUAN,
-                                                            brg.BOTOL,
-                                                            brg.SERI_BARANG,
-                                                            rcd.bm_nama_operator,
-                                                            rcd.bk_nama_operator,
-                                                            rcd.bc_in,
-                                                            rcd.bc_out,
-                                                            stock.carton AS carton_stock,
-                                                            stock.botol AS botol_stock,
-                                                            -- SALDO AWAL
-                                                            (SELECT SUM(JUMLAH_SATUAN) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS SALDO_CT,
-                                                            (SELECT SUM(BOTOL) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS SALDO_BTL,
-                                                            -- END SALOD AWAL
-                                                            -- MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
-                                                            (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai') AS MUTASI_MASUK_CT,
-                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai') AS MUTASI_MASUK_BTL,
-                                                            -- END MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
-                                                            -- MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
-                                                            (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_CT,
-                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_BTL,
-                                                            -- END MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
-                                                            -- SALDO AKHIR
-                                                            -- END SALDO AKHIR
-                                                            -- STOCK OPNAME
-                                                            (SELECT COUNT(TOTAL_BOTOL) FROM plb_barang_ct WHERE KODE_BARANG=brg.KODE_BARANG AND TOTAL_BOTOL='0') AS CT_SO,
-                                                            -- END STOCK OPNAME
-                                                            -- PENYESUAIAN
-                                                            -- IN
-                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS K_IN,
-                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS L_IN,
-                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS P_IN,
-                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS R_IN,
-                                                            -- OUT
-                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS K_OUT,
-                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS L_OUT,
-                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS P_OUT,
-                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS R_OUT
-                                                            -- PENYESUAIAN
-                                                            FROM plb_barang_ct AS ct
-                                                            LEFT OUTER JOIN plb_barang AS brg ON brg.KODE_BARANG=ct.KODE_BARANG
-                                                            LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=brg.NOMOR_AJU
-                                                            LEFT OUTER JOIN rcd_status AS rcd ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
-                                                            LEFT OUTER JOIN tbl_cust_stock AS stock ON stock.kd_barang=brg.KODE_BARANG
-                                                            WHERE EXTRACT(MONTH FROM brg.DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM brg.DATE_CT)='$dateYB'
-                                                            GROUP BY brg.KODE_BARANG
-                                                            ORDER BY brg.SERI_BARANG ASC,brg.ID DESC", 0);
+                                if (isset($_POST['FindFilter'])) {
+                                    $dataTable = $dbcon->query("SELECT 
+                                                                stok.kd_barang,
+                                                                stok.uraian AS uraian_stok,
+                                                                stok.carton AS carton_stok,
+                                                                stok.botol AS botol_stok,
+                                                                stok.stock_month,
+                                                                stok.stock_year,
+                                                                brg.ID,
+                                                                brg.KODE_BARANG,
+                                                                brg.URAIAN,
+                                                                brg.SPESIFIKASI_LAIN,
+                                                                brg.KODE_SATUAN,
+                                                                brg.BOTOL,
+                                                                brg.SERI_BARANG,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bc_in,
+                                                                rcd.bc_out,
+                                                                -- MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
+                                                                (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$FindBulan' AND EXTRACT(YEAR FROM DATE_CT)='$FindTahun') AS MUTASI_MASUK_CT,
+                                                                (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$FindBulan' AND EXTRACT(YEAR FROM DATE_CT)='$FindTahun') AS MUTASI_MASUK_BTL,
+                                                                -- END MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
+                                                                -- MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
+                                                                (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$FindBulan' AND EXTRACT(YEAR FROM DATE_CT)='$FindTahun') AS MUTASI_KELUAR_CT,
+                                                                (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$FindBulan' AND EXTRACT(YEAR FROM DATE_CT)='$FindTahun') AS MUTASI_KELUAR_BTL,
+                                                                -- END MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
+                                                                -- SALDO AKHIR
+                                                                -- STOK KD BARANG + MUTASI_KELUAR
+                                                                -- END SALDO AKHIR
+                                                                -- STOCK OPNAME
+                                                                -- END STOCK OPNAME
+                                                                -- STOK BOTOL + BARANG REJECT IN + BARANG REJECT OUT
+                                                                -- PENYESUAIAN
+                                                                -- IN
+                                                                (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS K_IN,
+                                                                (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS L_IN,
+                                                                (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS P_IN,
+                                                                (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS R_IN,
+                                                                -- OUT
+                                                                (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS K_OUT,
+                                                                (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS L_OUT,
+                                                                (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS P_OUT,
+                                                                (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS R_OUT
+                                                                -- PENYESUAIAN
+                                                                FROM plb_barang AS brg
+                                                                LEFT OUTER JOIN tbl_cust_stock AS stok ON brg.KODE_BARANG=stok.kd_barang AND stok.stock_month='$FindBulan' AND stok.stock_year='$FindTahun'
+                                                                LEFT OUTER JOIN rcd_status AS rcd ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
+                                                                WHERE EXTRACT(MONTH FROM brg.DATE_CT)='$FindBulan' AND EXTRACT(YEAR FROM brg.DATE_CT)='$FindTahun'
+                                                                GROUP BY brg.KODE_BARANG 
+                                                                ORDER BY brg.KODE_BARANG ASC, brg.SERI_BARANG ASC", 0);
+                                } else {
+                                    $dataTable = $dbcon->query("SELECT 
+                                                                stok.kd_barang,
+                                                                stok.uraian AS uraian_stok,
+                                                                stok.carton AS carton_stok,
+                                                                stok.botol AS botol_stok,
+                                                                stok.stock_month,
+                                                                stok.stock_year,
+                                                                brg.ID,
+                                                                brg.KODE_BARANG,
+                                                                brg.URAIAN,
+                                                                brg.SPESIFIKASI_LAIN,
+                                                                brg.KODE_SATUAN,
+                                                                brg.BOTOL,
+                                                                brg.SERI_BARANG,
+                                                                rcd.bm_nama_operator,
+                                                                rcd.bk_nama_operator,
+                                                                rcd.bc_in,
+                                                                rcd.bc_out,
+                                                                -- MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
+                                                                (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM DATE_CT)='$dateYB') AS MUTASI_MASUK_CT,
+                                                                (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM DATE_CT)='$dateYB') AS MUTASI_MASUK_BTL,
+                                                                -- END MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
+                                                                -- MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
+                                                                (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM DATE_CT)='$dateYB') AS MUTASI_KELUAR_CT,
+                                                                (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai' AND EXTRACT(MONTH FROM DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM DATE_CT)='$dateYB') AS MUTASI_KELUAR_BTL,
+                                                                -- END MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
+                                                                -- SALDO AKHIR
+                                                                -- STOK KD BARANG + MUTASI_KELUAR
+                                                                -- END SALDO AKHIR
+                                                                -- STOCK OPNAME
+                                                                -- END STOCK OPNAME
+                                                                -- STOK BOTOL + BARANG REJECT IN + BARANG REJECT OUT
+                                                                -- PENYESUAIAN
+                                                                -- IN
+                                                                (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS K_IN,
+                                                                (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS L_IN,
+                                                                (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS P_IN,
+                                                                (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='IN' AND PENY IS NULL) AS R_IN,
+                                                                -- OUT
+                                                                (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS K_OUT,
+                                                                (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS L_OUT,
+                                                                (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS P_OUT,
+                                                                (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND NOMOR_AJU=brg.NOMOR_AJU AND POSISI='OUT' AND PENY IS NULL) AS R_OUT
+                                                                -- PENYESUAIAN
+                                                                FROM plb_barang AS brg
+                                                                LEFT OUTER JOIN tbl_cust_stock AS stok ON brg.KODE_BARANG=stok.kd_barang AND stok.stock_month='$dateMB' AND stok.stock_year='$dateYB'
+                                                                LEFT OUTER JOIN rcd_status AS rcd ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
+                                                                WHERE EXTRACT(MONTH FROM brg.DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM brg.DATE_CT)='$dateYB'
+                                                                GROUP BY brg.KODE_BARANG 
+                                                                ORDER BY brg.KODE_BARANG ASC, brg.SERI_BARANG ASC", 0);
+                                }
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
-                                        // $SA_CT  = str_replace(".0000", "", $row['SALDO_CT']);
-                                        // $SA_BTL = $row['BOTOL'] * $SA_CT;
-                                        // // PEYESUAIAN IN
-                                        // $PIN    = $SA_BTL - $row['MUTASI_MASUK_BTL'];
-                                        // // PENYESUAIAN OUT
-                                        // if ($row['MUTASI_KELUAR_BTL'] == NULL) {
-                                        //     $POUT   = 0;
-                                        // } else {
-                                        //     $POUT   = $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL'];
-                                        // }
                                         // PENYESUAIAN IN
                                         $P_IN = $row['K_IN'] + $row['L_IN'] + $row['P_IN'] + $row['R_IN'];
                                         // PENYESUAIAN OUT
@@ -495,18 +387,18 @@ if (isset($_POST['Find_NP']) != '') {
                                             <!-- Saldo Awal -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?php if ($row['carton_stock'] == NULL) { ?>
+                                                <?php if ($row['carton_stok'] == NULL) { ?>
                                                     0<font style="font-size: 3px;">(SCtn)</font>
                                                 <?php } else { ?>
-                                                    <?= $row['carton_stock']; ?><font style="font-size: 3px;">(SCtn)</font>
+                                                    <?= $row['carton_stok']; ?><font style="font-size: 3px;">(SCtn)</font>
                                                 <?php } ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?php if ($row['botol_stock'] == NULL) { ?>
-                                                    0<font style="font-size: 3px;">(SCtn)</font>
+                                                <?php if ($row['botol_stok'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(SBtl)</font>
                                                 <?php } else { ?>
-                                                    <?= $row['botol_stock']; ?><font style="font-size: 3px;">(SBtl)</font>
+                                                    <?= $row['botol_stok']; ?><font style="font-size: 3px;">(SBtl)</font>
                                                 <?php } ?>
                                             </td>
                                             <!-- End Saldo Awal -->
@@ -550,23 +442,29 @@ if (isset($_POST['Find_NP']) != '') {
                                             <!-- Saldo Akhir -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['carton_stock'] + $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSACtn)</font>
+                                                <?= $row['carton_stok'] + $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSACtn)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['botol_stock'] + $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSABtl)</font>
+                                                <?= $row['botol_stok'] + $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSABtl)</font>
                                             </td>
                                             <!-- End Saldo Akhir -->
                                             <!-- Stok Opname -->
+                                            <!-- Botol -->
+                                            <td style="text-align: center;">
+                                                <?= $row['botol_stok'] + $P_IN + $P_OUT ?><font style="font-size: 3px;">(SO)</font>
+                                            </td>
+                                            <!-- End Stok Opname -->
+                                            <!-- Selisih -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['CT_SO']; ?>
+                                                <?= $row['MUTASI_MASUK_CT'] - $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(Selisih)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $P_IN + $P_OUT ?>
+                                                <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(Selisih)</font>
                                             </td>
-                                            <!-- End Stok Opname -->
+                                            <!-- End Selisih -->
                                             <!-- Penyesuaian -->
                                             <!-- IN -->
                                             <td style="text-align: center;">
@@ -576,24 +474,7 @@ if (isset($_POST['Find_NP']) != '') {
                                             <td style="text-align: center;">
                                                 <?= $P_OUT; ?><font style="font-size: 3px;">(PenyesuaianOUT)</font>
                                             </td>
-                                            <!-- Selisih -->
-                                            <!-- CT -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['MUTASI_KELUAR_CT'] == NULL) { ?>
-                                                    0<font style="font-size: 3px;">(Selisih)</font>
-                                                <?php } else { ?>
-                                                    <?= $row['MUTASI_MASUK_CT'] - $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(Selisih)</font>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- Botol -->
-                                            <td style="text-align: center;">
-                                                <?php if ($row['MUTASI_KELUAR_BTL'] == NULL) { ?>
-                                                    0<font style="font-size: 3px;">(Selisih)</font>
-                                                <?php } else { ?>
-                                                    <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(Selisih)</font>
-                                                <?php } ?>
-                                            </td>
-                                            <!-- End Selisih -->
+                                            <!-- END Penyesuaian -->
                                             <!-- Keterangan -->
                                             <!-- IN -->
                                             <td style="text-align: left;">
@@ -719,7 +600,7 @@ if (isset($_POST['Find_NP']) != '') {
                                     ?>
                                 <?php else : ?>
                                     <tr>
-                                        <td colspan="35">
+                                        <td colspan="24">
                                             <center>
                                                 <div style="display: grid;">
                                                     <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -765,56 +646,4 @@ include "include/jsDatatables.php";
 include "include/jsForm.php";
 ?>
 <script type="text/javascript">
-    $(function() {
-        $("#IDAJU_PLB").autocomplete({
-            source: 'function/autocomplete/nomor_aju_plb.php'
-        });
-    });
-    $(function() {
-        $("#input-filter").change(function() {
-            if ($(this).val() == "NP") {
-                $("#form_NP").show();
-                $("#form_RTU").hide();
-                $("#form_RTM").hide();
-            } else if ($(this).val() == "RTU") {
-                $("#form_NP").hide();
-                $("#form_RTU").show();
-                $("#form_RTM").hide();
-            } else if ($(this).val() == "RTM") {
-                $("#form_NP").hide();
-                $("#form_RTU").hide();
-                $("#form_RTM").show();
-            } else {
-                $("#form_NP").show();
-                $("#form_RTU").hide();
-                $("#form_RTM").hide();
-            }
-        });
-    });
-    var handleDateRangePicker = function() {
-        // RANGE TANGGAL UPLOAD
-        $('#default-daterange-upload').daterangepicker({
-            opens: 'right',
-            format: 'MM/DD/YYYY',
-            separator: ' to ',
-            startDate: moment().subtract('days', 29),
-            endDate: moment(),
-            minDate: '<?= $RUFirst ?>',
-            maxDate: '<?= $RULast ?>',
-        }, function(start, end) {
-            $('#default-daterange-upload input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        });
-        // RANGE TANGGAL MASUK
-        $('#default-daterange-masuk').daterangepicker({
-            opens: 'right',
-            format: 'MM/DD/YYYY',
-            separator: ' to ',
-            startDate: moment().subtract('days', 29),
-            endDate: moment(),
-            minDate: '<?= $RMFirst ?>',
-            maxDate: '<?= $RMLast ?>',
-        }, function(start, end) {
-            $('#default-daterange-masuk input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        });
-    };
 </script>
