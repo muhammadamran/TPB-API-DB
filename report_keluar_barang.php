@@ -53,11 +53,13 @@ $dataRangeFirstKeluar    = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status 
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
                                     ORDER BY plb.TGL_CEK_GB ASC LIMIT 1");
 $resultRangeFirstKeluar  = mysqli_fetch_array($dataRangeFirstKeluar);
-$iniKeluarFirst          = $resultRangeFirstKeluar['TGL_CEK_GB'];
-$alldateKeluarFirst      = $iniKeluarFirst;
-$tglMFirst              = substr($alldateKeluarFirst, 0, 10);
-$tglMFirstE             = explode("-", $tglMFirst);
-$RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+if ($resultRangeFirstKeluar != NULL) {
+    $iniKeluarFirst          = $resultRangeFirstKeluar['TGL_CEK_GB'];
+    $alldateKeluarFirst      = $iniKeluarFirst;
+    $tglMFirst              = substr($alldateKeluarFirst, 0, 10);
+    $tglMFirstE             = explode("-", $tglMFirst);
+    $RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+}
 // TANGGAL KELUAR LAST
 $dataRangeLastKeluar     = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
@@ -66,11 +68,13 @@ $dataRangeLastKeluar     = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status 
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
                                     ORDER BY plb.TGL_CEK_GB DESC LIMIT 1");
 $resultRangeLastKeluar   = mysqli_fetch_array($dataRangeLastKeluar);
-$iniKeluarLast           = $resultRangeLastKeluar['TGL_CEK_GB'];
-$alldateKeluarLast       = $iniKeluarLast;
-$tglMLast               = substr($alldateKeluarLast, 0, 10);
-$tglMLastE              = explode("-", $tglMLast);
-$RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+if ($resultRangeLastKeluar != NULL) {
+    $iniKeluarLast           = $resultRangeLastKeluar['TGL_CEK_GB'];
+    $alldateKeluarLast       = $iniKeluarLast;
+    $tglMLast               = substr($alldateKeluarLast, 0, 10);
+    $tglMLastE              = explode("-", $tglMLast);
+    $RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+}
 // END
 
 if (isset($_POST['Find_NP']) != '') {

@@ -47,7 +47,7 @@ if (isset($_POST["add_kuota"])) {
 
         $IDUNIQme             = $resultme['USRIDUNIQ'];
         $InputUsername        = $me;
-        $InputModul           = 'Administrator Tools/Kuota Mitra';
+        $InputModul           = 'Kuota Mitra';
         $InputDescription     = $me . " Insert Data: " .  $NameMitra . "-" .  $NameTahun . " ,Simpan Data Sebagai Log Kuota Mitra";
         $InputAction          = 'Insert';
         $InputDate            = date('Y-m-d h:m:i');
@@ -112,7 +112,7 @@ if (isset($_POST["NUpdateData"])) {
 
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
-    $InputModul           = 'Administrator Tools/Kuota Mitra';
+    $InputModul           = 'Kuota Mitra';
     $InputDescription     = $me . " Update Data: " .  $UpdateMitra . "-" .  $UpdateTahun . ", Simpan Data Sebagai Log Kuota Mitra";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
@@ -145,7 +145,7 @@ if (isset($_POST["NDeleteData"])) {
 
     $IDUNIQme             = $resultme['USRIDUNIQ'];
     $InputUsername        = $me;
-    $InputModul           = 'Administrator Tools/Kuota Mitra';
+    $InputModul           = 'Kuota Mitra';
     $InputDescription     = $me . " Hapus Data: " .  $DeleteMitra . "-" .  $DeleteTahun . ", Simpan Data Sebagai Log Kuota Mitra";
     $InputAction          = 'Hapus';
     $InputDate            = date('Y-m-d h:m:i');
@@ -186,12 +186,11 @@ if (isset($_POST['FindFilter']) != '') {
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fa-solid fa-screwdriver-wrench icon-page"></i>
-                <font class="text-page">Administrator Tools</font>
+                <i class="fa-solid fa-digital-tachograph icon-page"></i>
+                <font class="text-page">Kuota Mitra</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index_viewonline.php">Data Online</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Administrator Tools</a></li>
                 <li class="breadcrumb-item active">Kuota Mitra</li>
             </ol>
         </div>
@@ -258,7 +257,7 @@ if (isset($_POST['FindFilter']) != '') {
             <!-- begin panel -->
             <div class="panel panel-inverse" data-sortable-id="ui-modal-notification-2">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> [Administrator Tools] Kuota Mitra</h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Data Kuota Mitra</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body">
@@ -284,12 +283,12 @@ if (isset($_POST['FindFilter']) != '') {
                                 <tr>
                                     <th style="text-align: center;">NPWP</th>
                                     <th style="text-align: center;">Nama Mitra</th>
-                                    <th style="text-align: center;">CARTON</th>
-                                    <th style="text-align: center;">LITER</th>
-                                    <th style="text-align: center;">CARTON</th>
-                                    <th style="text-align: center;">LITER</th>
-                                    <th style="text-align: center;">CARTON</th>
-                                    <th style="text-align: center;">LITER</th>
+                                    <th style="text-align: center;">Carton</th>
+                                    <th style="text-align: center;">Liter</th>
+                                    <th style="text-align: center;">Carton</th>
+                                    <th style="text-align: center;">Liter</th>
+                                    <th style="text-align: center;">Carton</th>
+                                    <th style="text-align: center;">Liter</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -601,6 +600,7 @@ if (isset($_POST['FindFilter']) != '') {
                                     <th style="text-align: center;"><?= decimal($resultLTR_B['total_gol_b_ltr']); ?></th>
                                     <th style="text-align: center;"><?= decimal($resultCT_C['total_gol_c_car']); ?></th>
                                     <th style="text-align: center;"><?= decimal($resultLTR_C['total_gol_c_ltr']); ?></th>
+                                    <th style="text-align: center;"></th>
                                 </tr>
                             </tfoot>
                         </table>

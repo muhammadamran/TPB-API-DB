@@ -29,7 +29,7 @@ if (
                         $uriSegments[1] == 'adm_setting.php' ||
                         $uriSegments[1] == 'adm_time_reload.php' ||
                         $uriSegments[1] == 'adm_info.php' ||
-                        $uriSegments[1] == 'adm_kuota.php' ||
+                        // $uriSegments[1] == 'adm_kuota.php' ||
                         $uriSegments[1] == 'adm_module.php'
                         ? 'active' : '' ?>" style="display: <?= $TitleADM; ?>;">
     <a href="javascript:;">
@@ -50,9 +50,9 @@ if (
         <li class="<?= $uriSegments[1] == 'adm_jabatan.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_jabatan']; ?>;">
             <a href="adm_jabatan.php">Jabatan</a>
         </li>
-        <li class="<?= $uriSegments[1] == 'adm_kuota.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_kuota_mitra']; ?>;">
+        <!-- <li class="<?= $uriSegments[1] == 'adm_kuota.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_kuota_mitra']; ?>;">
             <a href="adm_kuota.php">Kuota Mitra</a>
-        </li>
+        </li> -->
         <li class="<?= $uriSegments[1] == 'adm_setting.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['v_pengaturan_tbb']; ?>;">
             <a href="adm_setting.php">Pengaturan App TPB</a>
         </li>

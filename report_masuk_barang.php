@@ -71,11 +71,13 @@ $dataRangeFirstUpload   = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status A
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY sts.ck5_plb_submit ASC LIMIT 1");
 $resultRangeFirstUpload = mysqli_fetch_array($dataRangeFirstUpload);
-$iniUploadFirst         = $resultRangeFirstUpload['ck5_plb_submit'];
-$alldateUploadFirst     = $iniUploadFirst;
-$tglUFirst              = substr($alldateUploadFirst, 0, 10);
-$tglUFirstE             = explode("-", $tglUFirst);
-$RUFirst                = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
+if ($resultRangeFirstUpload != NULL) {
+    $iniUploadFirst         = $resultRangeFirstUpload['ck5_plb_submit'];
+    $alldateUploadFirst     = $iniUploadFirst;
+    $tglUFirst              = substr($alldateUploadFirst, 0, 10);
+    $tglUFirstE             = explode("-", $tglUFirst);
+    $RUFirst                = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
+}
 // TANGGAL UPLOAD LAST
 $dataRangeLastUpload    = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
@@ -84,11 +86,13 @@ $dataRangeLastUpload    = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status A
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY sts.ck5_plb_submit DESC LIMIT 1");
 $resultRangeLastUpload  = mysqli_fetch_array($dataRangeLastUpload);
-$iniUploadLast          = $resultRangeLastUpload['ck5_plb_submit'];
-$alldateUploadLast      = $iniUploadLast;
-$tglULast               = substr($alldateUploadLast, 0, 10);
-$tglULastE              = explode("-", $tglULast);
-$RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
+if ($resultRangeLastUpload != NULL) {
+    $iniUploadLast          = $resultRangeLastUpload['ck5_plb_submit'];
+    $alldateUploadLast      = $iniUploadLast;
+    $tglULast               = substr($alldateUploadLast, 0, 10);
+    $tglULastE              = explode("-", $tglULast);
+    $RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
+}
 // END
 
 // START
@@ -100,11 +104,13 @@ $dataRangeFirstMasuk    = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS r
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY plb.TGL_CEK ASC LIMIT 1");
 $resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
-$iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
-$alldateMasukFirst      = $iniMasukFirst;
-$tglMFirst              = substr($alldateMasukFirst, 0, 10);
-$tglMFirstE             = explode("-", $tglMFirst);
-$RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+if ($resultRangeFirstMasuk != NULL) {
+    $iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
+    $alldateMasukFirst      = $iniMasukFirst;
+    $tglMFirst              = substr($alldateMasukFirst, 0, 10);
+    $tglMFirstE             = explode("-", $tglMFirst);
+    $RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+}
 // TANGGAL MASUK LAST
 $dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
                                     LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
@@ -113,11 +119,13 @@ $dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS r
                                     WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                     ORDER BY plb.TGL_CEK DESC LIMIT 1");
 $resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
-$iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
-$alldateMasukLast       = $iniMasukLast;
-$tglMLast               = substr($alldateMasukLast, 0, 10);
-$tglMLastE              = explode("-", $tglMLast);
-$RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+if ($resultRangeLastMasuk != NULL) {
+    $iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
+    $alldateMasukLast       = $iniMasukLast;
+    $tglMLast               = substr($alldateMasukLast, 0, 10);
+    $tglMLastE              = explode("-", $tglMLast);
+    $RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+}
 // END
 
 if (isset($_POST['Find_NP']) != '') {

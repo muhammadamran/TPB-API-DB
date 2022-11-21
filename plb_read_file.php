@@ -60,7 +60,7 @@ if (!$dbcon) {
 	$insertquery = substr($insertquery, 0, strlen($insertquery) - 2);
 
 	if ($resultREF['total'] != 0) {
-		echo "<script>window.location.href='report_ck5_plb.php?UploadAlready=true';</script>";
+		echo "<script>window.location.href='plb.php?UploadAlready=true';</script>";
 		die();
 	} else {
 		if (mysqli_query($dbcon, $insertquery)) {

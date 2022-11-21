@@ -54,11 +54,13 @@ $dataRangeFirstMasuk    = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS r
                                         WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                         ORDER BY plb.TGL_CEK ASC LIMIT 1");
 $resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
-$iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
-$alldateMasukFirst      = $iniMasukFirst;
-$tglMFirst              = substr($alldateMasukFirst, 0, 10);
-$tglMFirstE             = explode("-", $tglMFirst);
-$RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+if ($resultRangeFirstMasuk != NULL) {
+    $iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
+    $alldateMasukFirst      = $iniMasukFirst;
+    $tglMFirst              = substr($alldateMasukFirst, 0, 10);
+    $tglMFirstE             = explode("-", $tglMFirst);
+    $RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
+}
 // TANGGAL MASUK LAST
 $dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS rcd 
                                         LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
@@ -67,11 +69,13 @@ $dataRangeLastMasuk     = $dbcon->query("SELECT plb.TGL_CEK FROM rcd_status AS r
                                         WHERE rcd.bk_no_aju_sarinah IS NOT NULL
                                         ORDER BY plb.TGL_CEK DESC LIMIT 1");
 $resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
-$iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
-$alldateMasukLast       = $iniMasukLast;
-$tglMLast               = substr($alldateMasukLast, 0, 10);
-$tglMLastE              = explode("-", $tglMLast);
-$RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+if ($resultRangeLastMasuk != NULL) {
+    $iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
+    $alldateMasukLast       = $iniMasukLast;
+    $tglMLast               = substr($alldateMasukLast, 0, 10);
+    $tglMLastE              = explode("-", $tglMLast);
+    $RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
+}
 // END TANGGAL BARANG MASUK
 
 // START TANGGAL BARANG KELUAR
@@ -83,11 +87,13 @@ $dataRangeFirstKeluar    = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status 
                                         WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
                                         ORDER BY plb.TGL_CEK_GB ASC LIMIT 1");
 $resultRangeFirstKeluar  = mysqli_fetch_array($dataRangeFirstKeluar);
-$iniKeluarFirst          = $resultRangeFirstKeluar['TGL_CEK_GB'];
-$alldateKeluarFirst      = $iniKeluarFirst;
-$tglKFirst              = substr($alldateKeluarFirst, 0, 10);
-$tglKFirstE             = explode("-", $tglKFirst);
-$RKFirst                = $tglKFirstE[1] . "/" . $tglKFirstE[2] . "/" . $tglKFirstE[0];
+if ($resultRangeFirstKeluar != NULL) {
+    $iniKeluarFirst          = $resultRangeFirstKeluar['TGL_CEK_GB'];
+    $alldateKeluarFirst      = $iniKeluarFirst;
+    $tglKFirst              = substr($alldateKeluarFirst, 0, 10);
+    $tglKFirstE             = explode("-", $tglKFirst);
+    $RKFirst                = $tglKFirstE[1] . "/" . $tglKFirstE[2] . "/" . $tglKFirstE[0];
+}
 // TANGGAL KELUAR LAST
 $dataRangeLastKeluar     = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status AS rcd 
                                         LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
@@ -96,11 +102,13 @@ $dataRangeLastKeluar     = $dbcon->query("SELECT plb.TGL_CEK_GB FROM rcd_status 
                                         WHERE rcd.bk_no_aju_sarinah IS NOT NULL AND rcd.bk_tgl_keluar IS NOT NULL AND plb.STATUS_GB='Sesuai'
                                         ORDER BY plb.TGL_CEK_GB DESC LIMIT 1");
 $resultRangeLastKeluar   = mysqli_fetch_array($dataRangeLastKeluar);
-$iniKeluarLast           = $resultRangeLastKeluar['TGL_CEK_GB'];
-$alldateKeluarLast       = $iniKeluarLast;
-$tglKLast               = substr($alldateKeluarLast, 0, 10);
-$tglKLastE              = explode("-", $tglKLast);
-$RKLast                 = $tglKLastE[1] . "/" . $tglKLastE[2] . "/" . $tglKLastE[0];
+if ($resultRangeLastKeluar != NULL) {
+    $iniKeluarLast           = $resultRangeLastKeluar['TGL_CEK_GB'];
+    $alldateKeluarLast       = $iniKeluarLast;
+    $tglKLast               = substr($alldateKeluarLast, 0, 10);
+    $tglKLastE              = explode("-", $tglKLast);
+    $RKLast                 = $tglKLastE[1] . "/" . $tglKLastE[2] . "/" . $tglKLastE[0];
+}
 // END TANGGAL BARANG KELUAR
 
 if (isset($_POST['Find_MASUK']) != '') {

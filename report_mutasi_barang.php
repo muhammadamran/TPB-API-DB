@@ -21,7 +21,6 @@ if (isset($_POST["Find_NP"])) {
     $FindNoAJU      = $_POST['FindNoAJU'];
     $ShowFindNoAJU  = "Nomor Pengajuan: " . $_POST['FindNoAJU'];
 }
-
 // RTU
 if (isset($_POST["Find_RTU"])) {
     $Field_RTU      = $_POST['default-daterange-upload'];
@@ -34,7 +33,6 @@ if (isset($_POST["Find_RTU"])) {
     $E_RTU          = date("Y-m-d", $RTUEnd_T);
     $ShowField_RTU  = "Tanggal Upload: " . $_POST['default-daterange-upload'];
 }
-
 // RTM
 if (isset($_POST["Find_RTM"])) {
     $Field_RTM      = $_POST['default-daterange-masuk'];
@@ -47,65 +45,6 @@ if (isset($_POST["Find_RTM"])) {
     $E_RTM          = date("Y-m-d", $RTMEnd_T);
     $ShowField_RTM  = "Tanggal Masuk: " . $_POST['default-daterange-masuk'];
 }
-
-// START
-// TANGGAL UPLOAD FIRST
-$dataRangeFirstUpload   = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY sts.ck5_plb_submit ASC LIMIT 1");
-$resultRangeFirstUpload = mysqli_fetch_array($dataRangeFirstUpload);
-$iniUploadFirst         = $resultRangeFirstUpload['ck5_plb_submit'];
-$alldateUploadFirst     = $iniUploadFirst;
-$tglUFirst              = substr($alldateUploadFirst, 0, 10);
-$tglUFirstE             = explode("-", $tglUFirst);
-$RUFirst                = $tglUFirstE[1] . "/" . $tglUFirstE[2] . "/" . $tglUFirstE[0];
-// TANGGAL UPLOAD LAST
-$dataRangeLastUpload    = $dbcon->query("SELECT ck5_plb_submit FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY sts.ck5_plb_submit DESC LIMIT 1");
-$resultRangeLastUpload  = mysqli_fetch_array($dataRangeLastUpload);
-$iniUploadLast          = $resultRangeLastUpload['ck5_plb_submit'];
-$alldateUploadLast      = $iniUploadLast;
-$tglULast               = substr($alldateUploadLast, 0, 10);
-$tglULastE              = explode("-", $tglULast);
-$RULast                 = $tglULastE[1] . "/" . $tglULastE[2] . "/" . $tglULastE[0];
-// END
-
-// START
-// TANGGAL MASUK FIRST
-$dataRangeFirstMasuk    = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY plb.TGL_CEK ASC LIMIT 1");
-$resultRangeFirstMasuk  = mysqli_fetch_array($dataRangeFirstMasuk);
-$iniMasukFirst          = $resultRangeFirstMasuk['TGL_CEK'];
-$alldateMasukFirst      = $iniMasukFirst;
-$tglMFirst              = substr($alldateMasukFirst, 0, 10);
-$tglMFirstE             = explode("-", $tglMFirst);
-$RMFirst                = $tglMFirstE[1] . "/" . $tglMFirstE[2] . "/" . $tglMFirstE[0];
-// TANGGAL MASUK LAST
-$dataRangeLastMasuk     = $dbcon->query("SELECT TGL_CEK FROM rcd_status AS rcd 
-                                    LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
-                                    LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
-                                    LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
-                                    WHERE rcd.bk_no_aju_sarinah IS NOT NULL
-                                    ORDER BY plb.TGL_CEK DESC LIMIT 1");
-$resultRangeLastMasuk   = mysqli_fetch_array($dataRangeLastMasuk);
-$iniMasukLast           = $resultRangeLastMasuk['TGL_CEK'];
-$alldateMasukLast       = $iniMasukLast;
-$tglMLast               = substr($alldateMasukLast, 0, 10);
-$tglMLastE              = explode("-", $tglMLast);
-$RMLast                 = $tglMLastE[1] . "/" . $tglMLastE[2] . "/" . $tglMLastE[0];
-// END
-
 if (isset($_POST['Find_NP']) != '') {
     $displayOne = 'show';
     $displayTwo = 'none';
@@ -385,7 +324,7 @@ if (isset($_POST['Find_NP']) != '') {
                         </div>
                     </div>
                     <div class="col-md-9" style="display: grid;justify-content: left;">
-                        <font style="font-size: 24px;font-weight: 800;">LAPORAN PERTANGGUNGJAWABAN MUTASI BARANG</font>
+                        <font style="font-size: 24px;font-weight: 800;text-transform:uppercase">LAPORAN PERTANGGUNGJAWABAN MUTASI BARANG <?= date('F') ?> <?= date('Y') ?></font>
                         <font style="font-size: 24px;font-weight: 800;"><?= $resultHeadSetting['company'] ?></font>
                         <font style="font-size: 14px;font-weight: 800;">
                             <?= $ShowFindNoAJU; ?>
@@ -410,78 +349,112 @@ if (isset($_POST['Find_NP']) != '') {
                                     <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
                                     <th rowspan="2" style="text-align: center;">Uraian</th>
                                     <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
-                                    <th rowspan="2" style="text-align: center;">Golongan</th>
-                                    <th rowspan="2" class="text-nowsrap no-sort" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
+                                    <th rowspan="2" style="text-align: center;">Satuan</th>
                                     <th colspan="2" style="text-align: center;">Saldo Awal</th>
                                     <th colspan="2" style="text-align: center;">Mutasi<font style="color: #dadddf;">.</font>Masuk</th>
                                     <th colspan="2" style="text-align: center;">Mutasi<font style="color: #dadddf;">.</font>Keluar</th>
-                                    <th rowspan="2" style="text-align: center;">Penyesuaian</th>
                                     <th colspan="2" style="text-align: center;">Saldo<font style="color: #dadddf;">.</font>Akhir</th>
                                     <th colspan="2" style="text-align: center;">Stock<font style="color: #dadddf;">.</font>Opname</th>
+                                    <th colspan="2" style="text-align: center;">Penyesuaian</th>
                                     <th colspan="2" style="text-align: center;">Selisih</th>
+                                    <th colspan="2" style="text-align: center;">Keterangan</th>
                                     <th colspan="2" style="text-align: center;">Petugas<font style="color: #dadddf;">.</font><?= $resultSetting['company']; ?></th>
                                     <th colspan="2" style="text-align: center;">Petugas BeaCukai</th>
                                 </tr>
                                 <tr>
-                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Carton</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Carton</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Carton</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Carton</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Carton</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">CT</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>Out</th>
+                                    <th style="text-align: center;">Carton</th>
                                     <th style="text-align: center;">Botol</th>
-                                    <th style="text-align: center;">In</th>
-                                    <th style="text-align: center;">Out</th>
-                                    <th style="text-align: center;">In</th>
-                                    <th style="text-align: center;">Out</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>Out</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>Out</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>In</th>
+                                    <th style="text-align: center;">Gate<font style="color: #dadddf;">.</font>Out</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                $dateMB        = date('m');
+                                $dateYB        = date('Y');
                                 $dataTable = $dbcon->query("SELECT 
                                                             brg.ID,
                                                             brg.KODE_BARANG,
                                                             brg.URAIAN,
-                                                            brg.TIPE,
                                                             brg.SPESIFIKASI_LAIN,
                                                             brg.KODE_SATUAN,
-                                                            brg.JUMLAH_SATUAN,
+                                                            brg.BOTOL,
                                                             brg.SERI_BARANG,
                                                             rcd.bm_nama_operator,
                                                             rcd.bk_nama_operator,
                                                             rcd.bc_in,
                                                             rcd.bc_out,
+                                                            stock.carton AS carton_stock,
+                                                            stock.botol AS botol_stock,
                                                             -- SALDO AWAL
-                                                            (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS IS NULL) AS SALDO_CT,
-                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS IS NULL) AS SALDO_BTL,
+                                                            (SELECT SUM(JUMLAH_SATUAN) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS SALDO_CT,
+                                                            (SELECT SUM(BOTOL) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG) AS SALDO_BTL,
                                                             -- END SALOD AWAL
                                                             -- MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
                                                             (SELECT SUM(TOTAL_CT_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai') AS MUTASI_MASUK_CT,
                                                             (SELECT SUM(TOTAL_BOTOL_AKHIR) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai') AS MUTASI_MASUK_BTL,
                                                             -- END MUTASI MASUK KONDISI BARANG MASUK (GATE IN)
                                                             -- MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
-                                                            (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_CT,
-                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS='Sesuai' AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_BTL,
+                                                            (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_CT,
+                                                            (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE KODE_BARANG=brg.KODE_BARANG AND STATUS_GB='Sesuai') AS MUTASI_KELUAR_BTL,
                                                             -- END MUTASI KELUAR KONDISI BARANG KELUAR (GATE OUT)
                                                             -- SALDO AKHIR
-                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN') AS L_IN,
-                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT') AS L_OUT
                                                             -- END SALDO AKHIR
                                                             -- STOCK OPNAME
-                                                            -- END STOCK OPANEM
+                                                            (SELECT COUNT(TOTAL_BOTOL) FROM plb_barang_ct WHERE KODE_BARANG=brg.KODE_BARANG AND TOTAL_BOTOL='0') AS CT_SO,
+                                                            -- END STOCK OPNAME
+                                                            -- PENYESUAIAN
+                                                            -- IN
+                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS K_IN,
+                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS L_IN,
+                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS P_IN,
+                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='IN' AND PENY IS NULL) AS R_IN,
+                                                            -- OUT
+                                                            (SELECT SUM(KURANG) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS K_OUT,
+                                                            (SELECT SUM(LEBIH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS L_OUT,
+                                                            (SELECT SUM(PECAH) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS P_OUT,
+                                                            (SELECT SUM(RUSAK) FROM plb_barang_ct_botol WHERE KODE_BARANG=brg.KODE_BARANG AND POSISI='OUT' AND PENY IS NULL) AS R_OUT
+                                                            -- PENYESUAIAN
                                                             FROM plb_barang_ct AS ct
                                                             LEFT OUTER JOIN plb_barang AS brg ON brg.KODE_BARANG=ct.KODE_BARANG
                                                             LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=brg.NOMOR_AJU
                                                             LEFT OUTER JOIN rcd_status AS rcd ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
+                                                            LEFT OUTER JOIN tbl_cust_stock AS stock ON stock.kd_barang=brg.KODE_BARANG
+                                                            WHERE EXTRACT(MONTH FROM brg.DATE_CT)='$dateMB' AND EXTRACT(YEAR FROM brg.DATE_CT)='$dateYB'
                                                             GROUP BY brg.KODE_BARANG
                                                             ORDER BY brg.SERI_BARANG ASC,brg.ID DESC", 0);
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
+                                        // $SA_CT  = str_replace(".0000", "", $row['SALDO_CT']);
+                                        // $SA_BTL = $row['BOTOL'] * $SA_CT;
+                                        // // PEYESUAIAN IN
+                                        // $PIN    = $SA_BTL - $row['MUTASI_MASUK_BTL'];
+                                        // // PENYESUAIAN OUT
+                                        // if ($row['MUTASI_KELUAR_BTL'] == NULL) {
+                                        //     $POUT   = 0;
+                                        // } else {
+                                        //     $POUT   = $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL'];
+                                        // }
+                                        // PENYESUAIAN IN
+                                        $P_IN = $row['K_IN'] + $row['L_IN'] + $row['P_IN'] + $row['R_IN'];
+                                        // PENYESUAIAN OUT
+                                        $P_OUT = $row['K_OUT'] + $row['L_OUT'] + $row['P_OUT'] + $row['R_OUT'];
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
@@ -504,14 +477,6 @@ if (isset($_POST['Find_NP']) != '') {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <?php if ($row['TIPE'] == NULL) { ?>
-                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
-                                                    </font>
-                                                <?php } else { ?>
-                                                    <?= $row['TIPE']; ?>
-                                                <?php } ?>
-                                            </td>
-                                            <td style="text-align: center;">
                                                 <?php if ($row['SPESIFIKASI_LAIN'] == NULL) { ?>
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
                                                     </font>
@@ -520,83 +485,195 @@ if (isset($_POST['Find_NP']) != '') {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;">
-                                                <div style="display: flex;justify-content: space-between;align-items: center">
-                                                    <font><?= $row['KODE_SATUAN']; ?></font>
-                                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                                                </div>
+                                                <?php if ($row['KODE_SATUAN'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['KODE_SATUAN']; ?>
+                                                <?php } ?>
                                             </td>
                                             <!-- Saldo Awal -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?php if ($row['SALDO_CT'] == NULL) { ?>
+                                                <?php if ($row['carton_stock'] == NULL) { ?>
                                                     0<font style="font-size: 3px;">(SCtn)</font>
                                                 <?php } else { ?>
-                                                    <?= $row['SALDO_CT']; ?><font style="font-size: 3px;">(SCtn)</font>
+                                                    <?= $row['carton_stock']; ?><font style="font-size: 3px;">(SCtn)</font>
                                                 <?php } ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?php if ($row['SALDO_BTL'] == NULL) { ?>
-                                                    0<font style="font-size: 3px;">(SBtl)</font>
+                                                <?php if ($row['botol_stock'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(SCtn)</font>
                                                 <?php } else { ?>
-                                                    <?= $row['SALDO_BTL']; ?><font style="font-size: 3px;">(SBtl)</font>
+                                                    <?= $row['botol_stock']; ?><font style="font-size: 3px;">(SBtl)</font>
                                                 <?php } ?>
                                             </td>
                                             <!-- End Saldo Awal -->
                                             <!-- Mutasi Masuk -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_CT']; ?><font style="font-size: 3px;">(MInCtn)</font>
+                                                <?php if ($row['MUTASI_MASUK_CT'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(MInBtl)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['MUTASI_MASUK_CT']; ?><font style="font-size: 3px;">(MInBtl)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_BTL']; ?><font style="font-size: 3px;">(MInBtl)</font>
+                                                <?php if ($row['MUTASI_MASUK_BTL'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(MInBtl)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['MUTASI_MASUK_BTL']; ?><font style="font-size: 3px;">(MInBtl)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- End Mutasi Masuk -->
                                             <!-- Mutasi keluar -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MOutCtn)</font>
+                                                <?php if ($row['MUTASI_KELUAR_CT'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(MOutCtn)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MOutCtn)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MOutBtl)</font>
+                                                <?php if ($row['MUTASI_KELUAR_BTL'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(MOutBtl)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MOutBtl)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- End Mutasi keluar -->
-                                            <!-- Penyesuaian -->
-                                            <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(Penyesuaian)</font>
-                                            </td>
                                             <!-- End Penyesuaian -->
                                             <!-- Saldo Akhir -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSACtn)</font>
+                                                <?= $row['carton_stock'] + $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSACtn)</font>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSABtl)</font>
+                                                <?= $row['botol_stock'] + $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSABtl)</font>
                                             </td>
                                             <!-- End Saldo Akhir -->
                                             <!-- Stok Opname -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?= $row['CT_SO']; ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                0
+                                                <?= $P_IN + $P_OUT ?>
                                             </td>
                                             <!-- End Stok Opname -->
+                                            <!-- Penyesuaian -->
+                                            <!-- IN -->
+                                            <td style="text-align: center;">
+                                                <?= $P_IN; ?><font style="font-size: 3px;">(PenyesuaianIN)</font>
+                                            </td>
+                                            <!-- OUT -->
+                                            <td style="text-align: center;">
+                                                <?= $P_OUT; ?><font style="font-size: 3px;">(PenyesuaianOUT)</font>
+                                            </td>
+                                            <!-- Selisih -->
                                             <!-- CT -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_CT'] - $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(MSOCtn)</font>
+                                                <?php if ($row['MUTASI_KELUAR_CT'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(Selisih)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['MUTASI_MASUK_CT'] - $row['MUTASI_KELUAR_CT']; ?><font style="font-size: 3px;">(Selisih)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- Botol -->
                                             <td style="text-align: center;">
-                                                <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(MSOBtl)</font>
+                                                <?php if ($row['MUTASI_KELUAR_BTL'] == NULL) { ?>
+                                                    0<font style="font-size: 3px;">(Selisih)</font>
+                                                <?php } else { ?>
+                                                    <?= $row['MUTASI_MASUK_BTL'] - $row['MUTASI_KELUAR_BTL']; ?><font style="font-size: 3px;">(Selisih)</font>
+                                                <?php } ?>
                                             </td>
                                             <!-- End Selisih -->
+                                            <!-- Keterangan -->
+                                            <!-- IN -->
+                                            <td style="text-align: left;">
+                                                <?php if ($row['K_IN'] == NULL && $row['L_IN'] == NULL && $row['P_IN'] == NULL && $row['R_IN'] == NULL) { ?>
+                                                    <center>
+                                                        0
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <div style="display: flex;">
+                                                        <?php if ($row['K_IN'] != NULL) { ?>
+                                                            <div>
+                                                                <span class="label label-sm label-yellow" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Kurang = <?= $row['K_IN']; ?> Botol">
+                                                                    <i class="fa-solid fa-minus"></i> <?= $row['K_IN']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php if ($row['L_IN'] != NULL) { ?>
+                                                            <div class="m-l-5">
+                                                                <span class="label label-sm label-lime" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Lebih = <?= $row['R_IN']; ?> Botol">
+                                                                    <i class="fa-solid fa-plus"></i> <?= $row['L_IN']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php if ($row['P_IN'] != NULL) { ?>
+                                                            <div class="m-l-5">
+                                                                <span class="label label-sm label-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Pecah = <?= $row['P_IN']; ?> Botol">
+                                                                    <i class="fa-solid fa-tags"></i> <?= $row['P_IN']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php if ($row['R_IN'] != NULL) { ?>
+                                                            <div class="m-l-5">
+                                                                <span class="label label-sm label-warning" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Rusak = <?= $row['R_IN']; ?> Botol">
+                                                                    <i class="fa-solid fa-magnifying-glass-arrow-right"></i> <?= $row['R_IN']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- OUT -->
+                                            <td style="text-align: left;">
+                                                <?php if ($row['K_OUT'] == NULL && $row['L_OUT'] == NULL && $row['P_OUT'] == NULL && $row['R_OUT'] == NULL) { ?>
+                                                    <center>
+                                                        0
+                                                    </center>
+                                                <?php } else { ?>
+                                                    <div style="display: flex;">
+                                                        <?php if ($row['K_OUT'] != NULL) { ?>
+                                                            <div>
+                                                                <span class="label label-sm label-yellow" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Kurang = <?= $row['K_OUT']; ?> Botol">
+                                                                    <i class="fa-solid fa-minus"></i> <?= $row['K_OUT']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php if ($row['L_OUT'] != NULL) { ?>
+                                                            <div class="m-l-5">
+                                                                <span class="label label-sm label-lime" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Lebih = <?= $row['R_OUT']; ?> Botol">
+                                                                    <i class="fa-solid fa-plus"></i> <?= $row['L_OUT']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php if ($row['P_OUT'] != NULL) { ?>
+                                                            <div class="m-l-5">
+                                                                <span class="label label-sm label-dark" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Pecah = <?= $row['P_OUT']; ?> Botol">
+                                                                    <i class="fa-solid fa-tags"></i> <?= $row['P_OUT']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <?php if ($row['R_OUT'] != NULL) { ?>
+                                                            <div class="m-l-5">
+                                                                <span class="label label-sm label-warning" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Rusak = <?= $row['R_OUT']; ?> Botol">
+                                                                    <i class="fa-solid fa-magnifying-glass-arrow-right"></i> <?= $row['R_OUT']; ?>
+                                                                </span>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                <?php } ?>
+                                            </td>
+                                            <!-- End Keterangan -->
                                             <!-- Petugas Sarinah-->
                                             <!-- IN -->
                                             <td style="text-align: center;">
