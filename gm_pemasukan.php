@@ -456,9 +456,9 @@ if (isset($_POST['show_all'])) {
                                             <td style="text-align: center">
                                                 <?php if ($row['STATUS'] == $row['JUMLAH_BARANG']) { ?>
                                                     <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
-                                                        <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB -> <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input Pengajuan GB
+                                                        <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB -> <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input
                                                     <?php } else if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                        <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara -> <?= $row['PERUSAHAAN'] ?>"></span> Upload Berita Acara
+                                                        <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara -> <?= $row['PERUSAHAAN'] ?>"></span> Upload
                                                     <?php } else { ?>
                                                         <span class="badge-dot badge-complete mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Complete"></span> Complete
                                                     <?php } ?>

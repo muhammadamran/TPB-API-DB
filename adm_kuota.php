@@ -167,13 +167,14 @@ if (isset($_POST["NDeleteData"])) {
 
 // FUNCTION SEARCHING
 $FindTahun = '';
-// END FUNCTION SEARCHING
 
 if (isset($_POST['FindFilter']) != '') {
     if (isset($_POST['FindTahun'])) {
         $FindTahun = $_POST['FindTahun'];
     }
 }
+// END FUNCTION SEARCHING
+
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Kuota Mitra App Name | Company </title>
