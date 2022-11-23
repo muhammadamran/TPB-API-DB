@@ -160,7 +160,7 @@ if (isset($_POST['show_all'])) {
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i><span> <?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i:m A') ?></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i><span> <?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -315,11 +315,13 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
+                                                                ngr.URAIAN_NEGARA,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
                                                                 (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
+                                                                LEFT OUTER JOIN referensi_negara AS ngr ON hdr.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                                 WHERE hdr.NOMOR_AJU LIKE '%" . $_POST['AJU_PLB'] . "%'
                                                                 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC", 0);
                                 } else if (isset($_POST['show_all'])) {
@@ -339,11 +341,13 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
+                                                                ngr.URAIAN_NEGARA,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
                                                                 (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
+                                                                LEFT OUTER JOIN referensi_negara AS ngr ON hdr.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                                 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC", 0);
                                 } else {
                                     $dataTable = $dbcon->query("SELECT hdr.ID,hdr.NOMOR_AJU,SUBSTR(hdr.NOMOR_AJU,13,8) AS TGL_AJU,hdr.PEMASOK,hdr.KODE_NEGARA_PEMASOK,hdr.NOMOR_DAFTAR,hdr.PERUSAHAAN,hdr.JUMLAH_BARANG,
@@ -362,11 +366,13 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.bc_in,
                                                                 rcd.upload_beritaAcara_PLB,
                                                                 rcd.upload_beritaAcara_GB,
+                                                                ngr.URAIAN_NEGARA,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
                                                                 (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
+                                                                LEFT OUTER JOIN referensi_negara AS ngr ON hdr.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                                 GROUP BY hdr.NOMOR_AJU ORDER BY hdr.ID DESC LIMIT 100", 0);
                                 }
                                 if (mysqli_num_rows($dataTable) > 0) {
@@ -437,8 +443,8 @@ if (isset($_POST['show_all'])) {
                                                     <?= $row['NAMA_PENERIMA_BARANG']; ?>
                                                 <?php } ?>
                                             </td>
-                                            <td style="text-align: center">
-                                                <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
+                                            <?php if ($row['KODE_NEGARA_PEMASOK'] == NULL) { ?>
+                                                <td style="text-align: center">
                                                     <a href="#MKodeNegara<?= $row['ID'] ?>" class="btn btn-primary" data-toggle="modal">
                                                         <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Kode Negara">
                                                             <div>
@@ -448,11 +454,24 @@ if (isset($_POST['show_all'])) {
                                                             </div>
                                                         </font>
                                                     </a>
-                                                <?php } else { ?>
-                                                    <?= $row['KODE_NEGARA_PEMASOK']; ?>
-                                                    <a href="#MUKodeNegara<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tambah/Edit Kode Negara"></i></a>
-                                                <?php } ?>
-                                            </td>
+                                                </td>
+                                            <?php } else { ?>
+                                                <td style="text-align: left;">
+                                                    <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                        <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Negara Pemasok">
+                                                            <i class="fas fa-globe"></i>
+                                                        </div>
+                                                        <div style="display: grid;margin-left:5px">
+                                                            <div>
+                                                                <?= $row['URAIAN_NEGARA']; ?> <a href="#MUKodeNegara<?= $row['ID'] ?>" class="label label-default" data-toggle="modal"><i class="fas fa-edit" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tambah/Edit Kode Negara"></i></a>
+                                                            </div>
+                                                            <div style="margin-top: -5px;">
+                                                                <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= $row['KODE_NEGARA_PEMASOK']; ?></font>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            <?php } ?>
                                             <td style="text-align: center">
                                                 <?php if ($row['STATUS'] == $row['JUMLAH_BARANG']) { ?>
                                                     <?php if ($row['bm_no_aju_plb'] == NULL) { ?>

@@ -237,7 +237,7 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
         <div>
             <button class="btn btn-primary-css">
                 <i class="fas fa-calendar-alt"></i>
-                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i:m A') ?></span>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i A') ?></span>
             </button>
         </div>
     </div>
@@ -859,7 +859,14 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                                     <td style="text-align: center;">
                                                         <div style="display: flex;justify-content: space-evenly;align-items:center">
                                                             <font><?= $rowBarang['KODE_SATUAN']; ?></font>
-                                                            <font><?= $rowBarang['JUMLAH_SATUAN']; ?></font>
+                                                            <?php
+                                                            $myString = $rowBarang['JUMLAH_SATUAN'];
+                                                            if (strstr($myString, '.0000')) {
+                                                                echo  "<font>" . $rowBarang['JUMLAH_SATUAN'] . "</font>";
+                                                            } else {
+                                                                echo  "<font>" . $rowBarang['JUMLAH_SATUAN'] . ".0000</font>";
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </td>
                                                     <td style="text-align: left;">

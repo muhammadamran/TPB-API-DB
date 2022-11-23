@@ -12,12 +12,12 @@ include "include/top-header.php";
 		<li>
 			<a href="index.php">
 				<i class="fas fa-chalkboard-teacher"></i>
-				<span>Index </span> 
+				<span>Index </span>
 			</a>
 		</li>
 		<style type="text/css">
 			li.active-top {
-			    background: #2d353c;
+				background: #2d353c;
 			}
 		</style>
 		<?php $uriSegmentsTop = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
@@ -26,7 +26,7 @@ include "include/top-header.php";
 				<div class="icon-img">
 					<img src="assets/img/icons/dashboard.png" alt="" />
 				</div>
-				<span>Dashboard </span> 
+				<span>Dashboard </span>
 			</a>
 		</li>
 		<li class="<?= $uriSegmentsTop[3] == 'index_summary.php' ? 'active-top' : '' ?>">
@@ -34,7 +34,7 @@ include "include/top-header.php";
 				<div class="icon-img">
 					<img src="assets/img/icons/summary.png" alt="" />
 				</div>
-				<span>Summary </span> 
+				<span>Summary </span>
 			</a>
 		</li>
 		<li class="<?= $uriSegmentsTop[3] == 'index_viewonline.php' ? 'active-top' : '' ?>">
@@ -42,7 +42,7 @@ include "include/top-header.php";
 				<div class="icon-img">
 					<img src="assets/img/icons/viewonline.png" alt="" />
 				</div>
-				<span>View Online </span> 
+				<span>View Online </span>
 			</a>
 		</li>
 		<li class="<?= $uriSegmentsTop[3] == 'index_report.php' ? 'active-top' : '' ?>">
@@ -50,7 +50,7 @@ include "include/top-header.php";
 				<div class="icon-img">
 					<img src="assets/img/icons/report.png" alt="" />
 				</div>
-				<span>Report </span> 
+				<span>Report </span>
 			</a>
 		</li>
 	</ul>
@@ -75,7 +75,7 @@ include "include/cssDatatables.php";
 			</ol>
 		</div>
 		<div>
-			<button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></font></span></button>
+			<button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('H:i a') ?></font></span></button>
 		</div>
 	</div>
 	<div class="line-page"></div>
@@ -95,7 +95,9 @@ include "include/cssDatatables.php";
 							</div>
 							<div class="d-flex mb-1">
 								<h2 class="mb-0">Rp. <span data-animation="number" data-value="64559.25">0.00</span></h2>
-								<div class="ml-auto mt-n1 mb-n1"><div id="total-sales-sparkline"></div></div>
+								<div class="ml-auto mt-n1 mb-n1">
+									<div id="total-sales-sparkline"></div>
+								</div>
 							</div>
 							<div class="mb-3 text-grey">
 								<i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% compare to last week
@@ -131,7 +133,7 @@ include "include/cssDatatables.php";
 					<div class="card border-0 bg-dark text-white text-truncate mb-3">
 						<div class="card-body">
 							<div class="mb-3 text-grey">
-								<b class="mb-3">CONVERSION RATE</b> 
+								<b class="mb-3">CONVERSION RATE</b>
 								<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Conversion Rate" data-placement="top" data-content="Percentage of sessions that resulted in orders from total number of sessions." data-original-title="" title=""></i></span>
 							</div>
 							<div class="d-flex align-items-center mb-1">
@@ -180,7 +182,7 @@ include "include/cssDatatables.php";
 					<div class="card border-0 bg-dark text-white text-truncate mb-3">
 						<div class="card-body">
 							<div class="mb-3 text-grey">
-								<b class="mb-3">STORE SESSIONS</b> 
+								<b class="mb-3">STORE SESSIONS</b>
 								<span class="ml-2"><i class="fa fa-info-circle" data-toggle="popover" data-trigger="hover" data-title="Store Sessions" data-placement="top" data-content="Number of sessions on your online store. A session is a period of continuous activity from a visitor." data-original-title="" title=""></i></span>
 							</div>
 							<div class="d-flex align-items-center mb-1">
@@ -341,7 +343,7 @@ include "include/cssDatatables.php";
 	<?php include "include/creator.php"; ?>
 </div>
 <!-- end #content -->
-<?php 
+<?php
 // include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
@@ -365,7 +367,7 @@ include "include/jsDatatables.php";
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("data-total-tabel").innerHTML =
-				this.responseText;
+					this.responseText;
 			}
 		};
 		xhttp.open("GET", "realtime/index_total_tabel.php", true);
@@ -383,7 +385,7 @@ include "include/jsDatatables.php";
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("data-total-pengguna").innerHTML =
-				this.responseText;
+					this.responseText;
 			}
 		};
 		xhttp.open("GET", "realtime/index_total_pengguna.php", true);
@@ -401,7 +403,7 @@ include "include/jsDatatables.php";
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("data-pengguna-sedang-aktif").innerHTML =
-				this.responseText;
+					this.responseText;
 			}
 		};
 		xhttp.open("GET", "realtime/index_pengguna_sedang_aktif.php", true);
@@ -419,7 +421,7 @@ include "include/jsDatatables.php";
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("data-aktifitas-sistem").innerHTML =
-				this.responseText;
+					this.responseText;
 			}
 		};
 		xhttp.open("GET", "realtime/index_aktifitas_sistem.php", true);

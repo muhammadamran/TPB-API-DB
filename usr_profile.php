@@ -223,7 +223,7 @@ if (isset($_POST["SaveEdit"])) {
                 <?php } else { ?>
                     <p class="text-white mt-0 mb-5">Ini adalah tampilan halaman profile anda. Di halaman profile, anda dapat melihat biodata dan status pengguna anda pada <br><b><i><?= $resultSetting['app_name'] ?></i></b>.</p>
                 <?php } ?>
-                <a href="#!" class="btn btn-neutral-tf"><i class="fas fa-calendar-alt"></i> <?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></a>
+                <a href="#!" class="btn btn-neutral-tf"><i class="fas fa-calendar-alt"></i> <?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('H:i a') ?></a>
             </div>
         </div>
     </div>

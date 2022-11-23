@@ -314,6 +314,6 @@ if (!$dbcon) {
 	$query .= $dbcon->query("INSERT INTO plb_log
                        (ID,NOMOR_AJU,username,filename,totalupload,dateupload,status)
                        VALUES
-                       ('','$descriptReplace','$me','$file_name','$size','$dateupload','$UploadStatus')");
+                       ('','$inputNoAJU','$me','$file_name','$size','$dateupload','$UploadStatus')");
 	?>
 </div>

@@ -319,7 +319,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></font></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('H:i a') ?></font></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -687,7 +687,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                             <tbody>
                                 <?php
                                 if (isset($_POST["Find_NP"])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                    $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
@@ -695,7 +695,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                             AND rcd.bm_no_aju_plb LIKE '%" . $FindNoAJU . "%'
                                                             ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
                                 } else if (isset($_POST["Find_RTU"])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                    $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
@@ -703,7 +703,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                             AND sts.ck5_plb_submit BETWEEN '" . $S_RTU . "' AND '" . $E_RTU . " 23:59:59'
                                                             ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
                                 } else if (isset($_POST["Find_RTM"])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                    $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
@@ -711,7 +711,7 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                                             AND plb.TGL_CEK BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
                                                             ORDER BY hdr.ID,plb.ID,plb.TGL_CEK DESC", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                    $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN plb_header AS hdr ON rcd.bm_no_aju_plb=hdr.NOMOR_AJU
@@ -819,13 +819,20 @@ $resultRincianLTR_F = mysqli_fetch_array($dataRincianLTR_F);
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">
                                                     <font><?= $row['KODE_SATUAN']; ?></font>
-                                                    <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                                    <?php
+                                                    $myString = $row['JUMLAH_SATUAN'];
+                                                    if (strstr($myString, '.0000')) {
+                                                        echo  "<font>" . $row['JUMLAH_SATUAN'] . "</font>";
+                                                    } else {
+                                                        echo  "<font>" . $row['JUMLAH_SATUAN'] . ".0000</font>";
+                                                    }
+                                                    ?>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div style="display: flex;justify-content: space-between;align-items: center">
                                                     <font><?= $row['KODE_VALUTA']; ?></font>
-                                                    <font><?= $row['CIF']; ?></font>
+                                                    <font><?= $row['CIF_BRG']; ?></font>
                                                 </div>
                                             </td>
                                             <td style="text-align: left">

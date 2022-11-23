@@ -1,1 +1,3 @@
 .htaccess
+include/connection.php
+api/connection.php

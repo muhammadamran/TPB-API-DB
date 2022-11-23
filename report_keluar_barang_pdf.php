@@ -167,7 +167,7 @@ if (isset($_POST["Find_RTM"])) {
                         <tbody>
                             <?php
                             if (isset($_POST["Find_NP"])) {
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
@@ -175,7 +175,7 @@ if (isset($_POST["Find_RTM"])) {
                                                             AND rcd.bk_no_aju_sarinah LIKE '%" . $FindNoAJU . "%'
                                                             ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                             } else if (isset($_POST["Find_RTM"])) {
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU 
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
@@ -183,7 +183,7 @@ if (isset($_POST["Find_RTM"])) {
                                                             AND plb.TGL_CEK_GB BETWEEN '" . $S_RTM . "' AND '" . $E_RTM . " 23:59:59'
                                                             ORDER BY hdr.ID,plb.ID,plb.TGL_CEK_GB DESC", 0);
                             } else {
-                                $dataTable = $dbcon->query("SELECT * FROM rcd_status AS rcd 
+                                $dataTable = $dbcon->query("SELECT *,plb.CIF AS CIF_BRG FROM rcd_status AS rcd 
                                                             LEFT OUTER JOIN plb_barang AS plb ON rcd.bm_no_aju_plb=plb.NOMOR_AJU
                                                             LEFT OUTER JOIN plb_status AS sts ON rcd.bm_no_aju_plb=sts.NOMOR_AJU_PLB
                                                             LEFT OUTER JOIN tpb_header AS hdr ON rcd.bk_no_aju_sarinah=hdr.NOMOR_AJU
@@ -255,20 +255,32 @@ if (isset($_POST["Find_RTM"])) {
                                         <td>
                                             <div style="display: flex;justify-content: space-between;align-items: center">
                                                 <font><?= $row['KODE_SATUAN']; ?></font>
-                                                <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                                                <?php
+                                                $myString = $row['JUMLAH_SATUAN'];
+                                                if (strstr($myString, '.0000')) {
+                                                    echo  "<font>" . $row['JUMLAH_SATUAN'] . "</font>";
+                                                } else {
+                                                    echo  "<font>" . $row['JUMLAH_SATUAN'] . ".0000</font>";
+                                                }
+                                                ?>
                                             </div>
                                         </td>
                                         <td>
                                             <div style="display: flex;justify-content: space-between;align-items: center">
                                                 <font><?= $row['KODE_VALUTA']; ?></font>
-                                                <font><?= $row['CIF']; ?></font>
+                                                <font><?= $row['CIF_BRG']; ?></font>
                                             </div>
                                         </td>
                                         <td style="text-align: left">
+                                            <?php
+                                            $alldateM = $row['TGL_CEK_GB'];
+                                            $tglM = substr($alldateM, 0, 10);
+                                            $timeM = substr($alldateM, 10, 20);
+                                            ?>
                                             <?php if ($row['TGL_CEK_GB'] == NULL) { ?>
                                                 <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                                             <?php } else { ?>
-                                                <?= $row['TGL_CEK_GB']; ?>
+                                                <?= date_indo_s($tglM); ?> <?= $timeM; ?>
                                             <?php } ?>
                                         </td>
                                         <td style="text-align: left">

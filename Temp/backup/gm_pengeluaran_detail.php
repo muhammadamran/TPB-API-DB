@@ -183,7 +183,7 @@ $dataBarang = json_decode($contentBarang, true);
         </div>
         <div>
             <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
-                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i:m A') ?></span></button>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
