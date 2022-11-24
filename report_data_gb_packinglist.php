@@ -87,6 +87,8 @@ $dataHeader = $dbcon->query("SELECT *,
                             SUBSTR(tpb.NOMOR_AJU,13,8) AS TGL_AJU,
                             -- PLB
                             plb.NOMOR_AJU AS NOMOR_AJU_PLB,
+                            plb.NOMOR_DAFTAR AS NOMOR_DAFTAR_PLB,
+                            plb.TANGGAL_DAFTAR AS TANGGAL_DAFTAR_PLB,
                             plb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_PLB,
                             plb.JUMLAH_BARANG AS JUMLAH_BARANG_PLB,
                             plb.ID_PENERIMA_BARANG AS ID_PENERIMA_BARANG_PLB,
@@ -94,6 +96,8 @@ $dataHeader = $dbcon->query("SELECT *,
                             plb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_PLB,
                             -- TPB
                             tpb.NOMOR_AJU AS NOMOR_AJU_GB,
+                            tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_GB,
+                            tpb.TANGGAL_DAFTAR AS TANGGAL_DAFTAR_GB,
                             tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_GB,
                             tpb.JUMLAH_BARANG AS JUMLAH_BARANG_GB,
                             tpb.ID_PENERIMA_BARANG AS ID_PENERIMA_BARANG_GB,
@@ -347,10 +351,18 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                         <div class="row">
                             <?php
                             // PLB
-                            $dataNoDokumen = $dbcon->query("SELECT NOMOR_AJU,NOMOR_DOKUMEN,TANGGAL_DOKUMEN FROM plb_dokumen WHERE NOMOR_AJU='" . $_GET['AJU'] . "'");
+                            $dataNoDokumen = $dbcon->query("SELECT 
+                                                            dok.NOMOR_AJU,dok.NOMOR_DOKUMEN,dok.TANGGAL_DOKUMEN,
+                                                            ref.URAIAN_DOKUMEN
+                                                            FROM plb_dokumen AS dok 
+                                                            LEFT OUTER JOIN referensi_dokumen AS ref ON ref.KODE_DOKUMEN=dok.KODE_JENIS_DOKUMEN
+                                                            WHERE dok.NOMOR_AJU='" . $_GET['AJU'] . "'");
                             foreach ($dataNoDokumen as $resultNoDokumen) {
                             ?>
-                                <div class="col-sm-6"><?= $resultNoDokumen['NOMOR_DOKUMEN'] ?></div>
+                                <div class="col-sm-6">
+                                    <?= $resultNoDokumen['NOMOR_DOKUMEN'] ?>
+                                    <font style="font-size: 8px;">(<?= $resultNoDokumen['URAIAN_DOKUMEN'] ?>)</font>
+                                </div>
                                 <div class="col-sm-6"><?= $resultNoDokumen['TANGGAL_DOKUMEN'] ?></div>
                             <?php } ?>
                         </div>
@@ -480,25 +492,33 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                         </div>
                     </div>
                     <!-- End Original -->
-                    <!-- NO. BC 2.7 -->
+                    <!-- NO. DAFTAR -->
                     <div class="col-3" style="font-weight: 900;">
-                        NO. BC 2.7
+                        NO. DAFTAR
                     </div>
                     <div class="col-1">
                         :
                     </div>
                     <div class="col-8">
-                        <?php
-                        $dataTGLAJU = $resultdataHeader['TGL_AJU'];
-                        $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
-                        $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
-                        $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
-
-                        $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
-                        ?>
                         <div class="row">
-                            <div class="col-sm-6"><?= substr($resultdataHeader['NOMOR_AJU_GB'], 20, 27); ?></div>
-                            <div class="col-sm-6"><?= date_indo($datTGLAJU); ?></div>
+                            <?php if ($resultdataHeader['TANGGAL_DAFTAR_GB'] != NULL) { ?>
+                                <div class="col-sm-6"><?= substr($resultdataHeader['NOMOR_DAFTAR_GB'], 20, 27); ?></div>
+                            <?php } else { ?>
+                                <div class="col-sm-6">-</div>
+                            <?php } ?>
+                            <?php if ($resultdataHeader['TANGGAL_DAFTAR_GB'] != NULL) { ?>
+                                <?php
+                                $dataTGLAJU = $resultdataHeader['TANGGAL_DAFTAR_GB'];
+                                $dataTGLAJUY = substr($dataTGLAJU, 0, 4);
+                                $dataTGLAJUM = substr($dataTGLAJU, 4, 2);
+                                $dataTGLAJUD =  substr($dataTGLAJU, 6, 2);
+
+                                $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($datTGLAJU); ?></div>
+                            <?php } else { ?>
+                                <div class="col-sm-6">-</div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

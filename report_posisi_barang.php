@@ -161,7 +161,7 @@ if (isset($_POST['Find_MASUK']) != '') {
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Posisi Berdasarkan
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> Filter Data Posisi Barang Berdasarkan
                         <select name="Filter" id="input-filter" style="background: #202124;color: #fff;font-weight: 800;border-color: transparent;">
                             <option value="TGLMASUK" <?= $selectTGLMASUK ?>>Range Tanggal Masuk</option>
                             <option value="TGLKELUAR" <?= $selectTGLKELUAR ?>>Range Tanggal Keluar</option>

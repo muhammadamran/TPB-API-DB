@@ -128,7 +128,7 @@
                 <li class="<?= $uriSegmentsTop[1] == 'report_data_plb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_plb']; ?>;"><a href="report_data_plb.php">Laporan Data PLB</a>
                 </li>
                 <li class="<?= $uriSegmentsTop[1] == 'report_data_gb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_gb']; ?>;"><a href="report_data_gb.php">Laporan Data GB</a></li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_log_system.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_log']; ?>;"><a href="report_log_system.php">Laporan Aktifitas (Log System)</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_log_system.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_log']; ?>;"><a href="report_log_system.php">Laporan Aktifitas</a></li>
             </ul>
         </li>
     </ul>

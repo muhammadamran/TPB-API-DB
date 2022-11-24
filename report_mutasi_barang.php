@@ -49,7 +49,7 @@ if (isset($_POST['FindFilter'])) {
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-filter"></i> Filter Stok Barang</h4>
+                    <h4 class="panel-title"><i class="fas fa-filter"></i> Filter Data Mutasi Barang Berdasarkan Periode</h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">

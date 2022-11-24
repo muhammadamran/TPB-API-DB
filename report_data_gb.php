@@ -43,7 +43,7 @@ $data = json_decode($content, true);
         <div class="col-xl-12">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> BC 2.7 - Gudang Berikat <?= $resultSetting['company']; ?></h4>
+                    <h4 class="panel-title"><i class="fas fa-info-circle"></i> [Laporan GB] Gudang Berikat <?= $resultSetting['company']; ?></h4>
                     <?php include "include/panel-row.php"; ?>
                 </div>
                 <div class="panel-body text-inverse">
@@ -109,7 +109,6 @@ $data = json_decode($content, true);
                                         <tr>
                                             <td><?= $no ?>.</td>
                                             <td style="text-align: center;">
-                                                <!-- <a href="report_ck5_sarinah_detail.php?AJU=<?= $row['bm_no_aju_plb']; ?>" target="_blank" class="btn btn-primary"> -->
                                                 <a href="report_data_gb_ck5.php?AJU=<?= $row['bm_no_aju_plb']; ?>" target="_blank" class="btn btn-primary">
                                                     <i class="fab fa-wpforms" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Lihat Detil <?= $row['bm_no_aju_plb']; ?>"></i><br>
                                                     <font style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
