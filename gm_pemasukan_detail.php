@@ -224,10 +224,24 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                         <option value="<?= $_GET['AJU']; ?>"><?= $_GET['AJU']; ?></option>
                         <option value="">Pilih Nomor Pengajuan</option>
                         <?php
-                        $resultMitra = $dbcon->query("SELECT NOMOR_AJU FROM plb_header AS hdr LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb WHERE upload_beritaAcara_PLB IS NULL");
+                        $resultMitra = $dbcon->query("SELECT NOMOR_AJU,
+                                                      (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS UKURAN
+                                                      FROM plb_header AS hdr 
+                                                      LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
+                                                      WHERE upload_beritaAcara_PLB IS NULL");
                         foreach ($resultMitra as $RowMitra) {
                         ?>
-                            <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
+                            <?php
+                            $myString = $RowMitra['UKURAN'];
+                            if (strstr($myString, 'ML')) { ?>
+                                <span class="badge-dot badge-danger mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tidak Dapat Diproses"></span> Unknown
+                            <?php } else if (strstr($myString, 'Ml')) { ?>
+                                <span class="badge-dot badge-danger mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tidak Dapat Diproses"></span> Unknown
+                            <?php } else if (strstr($myString, 'M')) { ?>
+                                <span class="badge-dot badge-danger mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tidak Dapat Diproses"></span> Unknown
+                            <?php } else { ?>
+                                <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?></option>
+                            <?php } ?>
                         <?php } ?>
                     </select>
                 </div>
@@ -790,12 +804,22 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                             foreach ($dataTable as $rowBarang) :
                                                 $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                 $pcs = str_replace(".0000", "", "$jml_pcs");
+
                                                 // TOTAL BOTOL
-                                                $botol = explode('X', $rowBarang['UKURAN']);
-                                                $t_botol = $botol[0];
+                                                // START TEMUKAM X
+                                                $myString = $rowBarang['UKURAN'];
+                                                if (strstr($myString, 'X')) {
+                                                    $botol = explode('X', $rowBarang['UKURAN']);
+                                                    $t_botol = $botol[0];
+                                                    $liter =  $botol[1];
+                                                } else {
+                                                    $botol = explode('x', $rowBarang['UKURAN']);
+                                                    $t_botol = $botol[0];
+                                                    $liter =  $botol[1];
+                                                }
+                                                // END START TEMUKAM X
                                                 // TOTAL LITER
-                                                $liter =  $botol[1];
-                                                $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+                                                $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr', 'L'], ['', '', '', '', ''], $liter);
                                                 $t_liter = str_replace(',', '.', $r_liter);
                                         ?>
                                                 <tr class="odd gradeX">

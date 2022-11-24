@@ -126,7 +126,7 @@ if (isset($_POST['find'])) {
     <div class="line-page"></div>
     <!-- UPLOAD CK5PLB -->
     <div class="row">
-        <div class="col-xl-6">
+        <div class="col-xl-4">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> Upload BC 2.7 PLB</h4>
@@ -157,7 +157,7 @@ if (isset($_POST['find'])) {
         </div>
         <!-- END UPLOAD CK5PLB -->
         <!-- begin row -->
-        <div class="col-xl-6">
+        <div class="col-xl-8">
             <div class="panel panel-inverse" data-sortable-id="ui-icons-1">
                 <div class="panel-heading">
                     <h4 class="panel-title"><i class="fas fa-info-circle"></i> Data BC 2.7 PLB</h4>
@@ -208,15 +208,24 @@ if (isset($_POST['find'])) {
                                     <th class="text-nowrap" style="text-align: center;">Nomor Pengajuan</th>
                                     <th class="text-nowrap" style="text-align: center;">Asal</th>
                                     <th class="text-nowrap" style="text-align: center;">Tujuan</th>
-                                    <th class="text-nowrap" style="text-align: center;">Jumlah Barang</th>
+                                    <th class="text-nowrap" style="text-align: center;">Jml Barang</th>
+                                    <th class="text-nowrap" style="text-align: center;">Filename</th>
+                                    <th class="text-nowrap" style="text-align: center;">Liter</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 if (isset($_POST['find'])) {
-                                    $dataTable = $dbcon->query("SELECT * FROM plb_header WHERE NOMOR_AJU='" . $_POST['NomorAJU'] . "' ORDER BY ID DESC LIMIT " . $_POST['Limit'] . "", 0);
+                                    $dataTable = $dbcon->query("SELECT *,log.filename 
+                                                                FROM plb_header AS hdr 
+                                                                LEFT OUTER JOIN plb_log AS log ON log.NOMOR_AJU=hdr.NOMOR_AJU
+                                                                WHERE hdr.NOMOR_AJU='" . $_POST['NomorAJU'] . "' ORDER BY hdr.ID DESC LIMIT " . $_POST['Limit'] . "", 0);
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM plb_header ORDER BY ID DESC LIMIT 100", 0);
+                                    $dataTable = $dbcon->query("SELECT *,log.filename,
+                                                                (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS UKURAN
+                                                                FROM plb_header AS hdr 
+                                                                LEFT OUTER JOIN plb_log AS log ON log.NOMOR_AJU=hdr.NOMOR_AJU
+                                                                ORDER BY hdr.ID DESC LIMIT 100", 0);
                                 }
                                 if ($dataTable) : $no = 1;
                                     foreach ($dataTable as $row) :
@@ -235,9 +244,24 @@ if (isset($_POST['find'])) {
                                                 <?php } ?>
                                             </td>
                                             <td style="text-align: center;"><?= $row['NOMOR_AJU'] ?></td>
-                                            <td style="text-align: center;"><?= $row['PERUSAHAAN'] ?></td>
-                                            <td style="text-align: center;"><?= $row['NAMA_PENERIMA_BARANG'] ?></td>
+                                            <td style="text-align: left;"><?= $row['PERUSAHAAN'] ?></td>
+                                            <td style="text-align: left;"><?= $row['NAMA_PENERIMA_BARANG'] ?></td>
                                             <td style="text-align: center;"><?= $row['JUMLAH_BARANG'] ?></td>
+                                            <td style="text-align: left;"><?= $row['filename'] ?></td>
+                                            <td style="text-align: center;">
+                                                <?php
+                                                $myString = $row['UKURAN'];
+                                                if (strstr($myString, 'ML')) {
+                                                    echo  "<i class='fas fa-times-circle' style='color:#ff5b57' data-container='body' data-trigger='hover' data-toggle='popover' data-placement='top' data-content='Satuan Bukan Liter'></i>";
+                                                } else if (strstr($myString, 'Ml')) {
+                                                    echo  "<i class='fas fa-times-circle' style='color:#ff5b57' data-container='body' data-trigger='hover' data-toggle='popover' data-placement='top' data-content='Satuan Bukan Liter'></i>";
+                                                } else if (strstr($myString, 'M')) {
+                                                    echo  "<i class='fas fa-times-circle' style='color:#ff5b57' data-container='body' data-trigger='hover' data-toggle='popover' data-placement='top' data-content='Satuan Bukan Liter'></i>";
+                                                } else {
+                                                    echo  "<i class='fas fa-check-circle' style='color:#00acac' data-container='body' data-trigger='hover' data-toggle='popover' data-placement='top' data-content='Satuan Liter'></i>";
+                                                }
+                                                ?>
+                                            </td>
                                         </tr>
 
                                         <!-- Delete -->
@@ -283,7 +307,27 @@ if (isset($_POST['find'])) {
                                     </tr>
                                 <?php endif ?>
                             </tbody>
-                            </tbody>
+                            <tfoot>
+                                <?php
+                                if (isset($_POST['find'])) {
+                                    $dataFooter = $dbcon->query("SELECT SUM(hdr.JUMLAH_BARANG) AS f_barang 
+                                                                FROM plb_header AS hdr 
+                                                                LEFT OUTER JOIN plb_log AS log ON log.NOMOR_AJU=hdr.NOMOR_AJU
+                                                                WHERE hdr.NOMOR_AJU='" . $_POST['NomorAJU'] . "' ORDER BY hdr.ID DESC LIMIT " . $_POST['Limit'] . "", 0);
+                                } else {
+                                    $dataFooter = $dbcon->query("SELECT SUM(hdr.JUMLAH_BARANG) AS f_barang 
+                                                                FROM plb_header AS hdr 
+                                                                LEFT OUTER JOIN plb_log AS log ON log.NOMOR_AJU=hdr.NOMOR_AJU
+                                                                ORDER BY hdr.ID DESC LIMIT 100", 0);
+                                }
+                                $resultFooter = mysqli_fetch_array($dataFooter);
+                                ?>
+                                <tr>
+                                    <th colspan="5" style="text-align: right;">Total Barang</th>
+                                    <th style="text-align: center;"><?= $resultFooter['f_barang']; ?> Barang</th>
+                                    <th colspan="2"></th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

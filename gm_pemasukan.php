@@ -317,7 +317,8 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.upload_beritaAcara_GB,
                                                                 ngr.URAIAN_NEGARA,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
-                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
+                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS,
+                                                                (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS UKURAN
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
@@ -343,7 +344,8 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.upload_beritaAcara_GB,
                                                                 ngr.URAIAN_NEGARA,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
-                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
+                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS,
+                                                                (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS UKURAN
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
@@ -368,7 +370,8 @@ if (isset($_POST['show_all'])) {
                                                                 rcd.upload_beritaAcara_GB,
                                                                 ngr.URAIAN_NEGARA,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
-                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
+                                                                (SELECT COUNT(STATUS) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS,
+                                                                (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS UKURAN
                                                                 FROM plb_header AS hdr
                                                                 LEFT OUTER JOIN rcd_status AS rcd ON hdr.NOMOR_AJU=rcd.bm_no_aju_plb 
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
@@ -473,94 +476,114 @@ if (isset($_POST['show_all'])) {
                                                 </td>
                                             <?php } ?>
                                             <td style="text-align: center">
-                                                <?php if ($row['STATUS'] == $row['JUMLAH_BARANG']) { ?>
-                                                    <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
-                                                        <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB -> <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input
-                                                    <?php } else if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                        <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara -> <?= $row['PERUSAHAAN'] ?>"></span> Upload
-                                                    <?php } else { ?>
-                                                        <span class="badge-dot badge-complete mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Complete"></span> Complete
+                                                <?php
+                                                $myString = $row['UKURAN'];
+                                                if (strstr($myString, 'ML')) { ?>
+                                                    <span class="badge-dot badge-danger mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tidak Dapat Diproses"></span> Unknown
+                                                <?php } else if (strstr($myString, 'Ml')) { ?>
+                                                    <span class="badge-dot badge-danger mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tidak Dapat Diproses"></span> Unknown
+                                                <?php } else if (strstr($myString, 'M')) { ?>
+                                                    <span class="badge-dot badge-danger mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Tidak Dapat Diproses"></span> Unknown
+                                                <?php } else { ?>
+                                                    <?php if ($row['STATUS'] == $row['JUMLAH_BARANG']) { ?>
+                                                        <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
+                                                            <span class="badge-dot badge-aju mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Input Nomor Pengajuan GB -> <?= $row['NAMA_PENERIMA_BARANG'] ?>"></span> Input
+                                                        <?php } else if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                            <span class="badge-dot badge-upload mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Upload Berita Acara -> <?= $row['PERUSAHAAN'] ?>"></span> Upload
+                                                        <?php } else { ?>
+                                                            <span class="badge-dot badge-complete mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Complete"></span> Complete
+                                                        <?php } ?>
+                                                    <?php } else if ($row['STATUS'] > 0) { ?>
+                                                        <span class="badge-dot badge-on-progress mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Proses Pengecekan Barang -> <?= $row['PERUSAHAAN']; ?>, Sisa Barang <?= $row['JUMLAH_BARANG'] - $row['STATUS']; ?>"></span> On Process
+                                                    <?php } else if ($row['STATUS'] == NULL || $row['STATUS'] == 0) { ?>
+                                                        <span class="badge-dot badge-need-checking mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Cek Barang Masuk -> <?= $row['PERUSAHAAN']; ?>, Jumlah Barang <?= $row['JUMLAH_BARANG']; ?>"></span> Check
                                                     <?php } ?>
-                                                <?php } else if ($row['STATUS'] > 0) { ?>
-                                                    <span class="badge-dot badge-on-progress mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Proses Pengecekan Barang -> <?= $row['PERUSAHAAN']; ?>, Sisa Barang <?= $row['JUMLAH_BARANG'] - $row['STATUS']; ?>"></span> On Process
-                                                <?php } else if ($row['STATUS'] == NULL || $row['STATUS'] == 0) { ?>
-                                                    <span class="badge-dot badge-need-checking mr-1" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Cek Barang Masuk -> <?= $row['PERUSAHAAN']; ?>, Jumlah Barang <?= $row['JUMLAH_BARANG']; ?>"></span> Check
                                                 <?php } ?>
                                             </td>
                                             <!-- Aksi -->
                                             <td style="text-align: left;">
-                                                <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
-                                                    <!-- Cek Done -->
-                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-sm btn-success">
-                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Gate In Selesai, Klik jika ingin melihat Detil">
-                                                            <div style="display: grid;">
-                                                                <div style="font-size: 12px;">
-                                                                    <i class="fas fa-check-circle"></i>
-                                                                </div>
-                                                            </div>
-                                                        </font>
-                                                    </a>
-                                                    <!-- End Cek Done -->
-                                                    <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
-                                                        <!-- Add -->
-                                                        <a href="#add<?= $row['ID'] ?>" class="btn btn-sm btn-primary" data-toggle="modal">
-                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Data Gate In">
-                                                                <div>
+                                                <?php
+                                                $myString = $row['UKURAN'];
+                                                if (strstr($myString, 'ML')) { ?>
+                                                    <span class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Satuan Bukan Liter"><i class="fas fa-warning"></i></span>
+                                                <?php } else if (strstr($myString, 'Ml')) { ?>
+                                                    <span class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Satuan Bukan Liter"><i class="fas fa-warning"></i></span>
+                                                <?php } else if (strstr($myString, 'M')) { ?>
+                                                    <span class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Satuan Bukan Liter"><i class="fas fa-warning"></i></span>
+                                                <?php } else { ?>
+                                                    <?php if ($row['total_All'] == $row['JUMLAH_BARANG']) { ?>
+                                                        <!-- Cek Done -->
+                                                        <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU'] ?>" class="btn btn-sm btn-success">
+                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Pengecekan Barang Gate In Selesai, Klik jika ingin melihat Detil">
+                                                                <div style="display: grid;">
                                                                     <div style="font-size: 12px;">
-                                                                        <i class="fas fa-plus-circle"></i>
+                                                                        <i class="fas fa-check-circle"></i>
                                                                     </div>
                                                                 </div>
                                                             </font>
                                                         </a>
-                                                        <!-- End Add -->
-                                                    <?php } else { ?>
-                                                        <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
-                                                            <!-- Edit -->
-                                                            <a href="#edit<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal">
-                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Data Gate In">
+                                                        <!-- End Cek Done -->
+                                                        <?php if ($row['bm_no_aju_plb'] == NULL) { ?>
+                                                            <!-- Add -->
+                                                            <a href="#add<?= $row['ID'] ?>" class="btn btn-sm btn-primary" data-toggle="modal">
+                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Tambah Data Gate In">
                                                                     <div>
                                                                         <div style="font-size: 12px;">
-                                                                            <i class="fas fa-edit"></i>
+                                                                            <i class="fas fa-plus-circle"></i>
                                                                         </div>
                                                                     </div>
                                                                 </font>
                                                             </a>
-                                                            <!-- End Edit -->
-                                                            <!-- Upload -->
-                                                            <a href="#upload<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal">
-                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Upload Berita Acara Gate In">
-                                                                    <div>
-                                                                        <div style="font-size: 12px;">
-                                                                            <i class="fas fa-upload"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </font>
-                                                            </a>
-                                                            <!-- End Upload -->
+                                                            <!-- End Add -->
                                                         <?php } else { ?>
-                                                            <!-- Detail -->
-                                                            <a href="#detail<?= $row['ID'] ?>" class="btn btn-sm btn-success" data-toggle="modal">
-                                                                <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Detail Data Gate In">
-                                                                    <div>
-                                                                        <div style="font-size: 12px;">
-                                                                            <i class="fas fa-file-invoice"></i>
+                                                            <?php if ($row['upload_beritaAcara_PLB'] == NULL) { ?>
+                                                                <!-- Edit -->
+                                                                <a href="#edit<?= $row['ID'] ?>" class="btn btn-sm btn-info" data-toggle="modal">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Data Gate In">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-edit"></i>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </font>
-                                                            </a>
-                                                            <!-- End Detail -->
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Edit -->
+                                                                <!-- Upload -->
+                                                                <a href="#upload<?= $row['ID'] ?>" class="btn btn-sm btn-warning" data-toggle="modal">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Upload Berita Acara Gate In">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-upload"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Upload -->
+                                                            <?php } else { ?>
+                                                                <!-- Detail -->
+                                                                <a href="#detail<?= $row['ID'] ?>" class="btn btn-sm btn-success" data-toggle="modal">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Detail Data Gate In">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-file-invoice"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Detail -->
+                                                            <?php } ?>
                                                         <?php } ?>
-                                                    <?php } ?>
-                                                <?php } else { ?>
-                                                    <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-sm btn-yellow">
-                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lakukan Pengecekan Barang Gate In">
-                                                            <div>
-                                                                <div style="font-size: 12px;">
-                                                                    <i class="fas fa-warning"></i>
+                                                    <?php } else { ?>
+                                                        <a href="gm_pemasukan_detail.php?AJU=<?= $row['NOMOR_AJU']; ?>" class="btn btn-sm btn-yellow">
+                                                            <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lakukan Pengecekan Barang Gate In">
+                                                                <div>
+                                                                    <div style="font-size: 12px;">
+                                                                        <i class="fas fa-warning"></i>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </font>
-                                                    </a>
+                                                            </font>
+                                                        </a>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </td>
                                         </tr>
@@ -612,7 +635,7 @@ if (isset($_POST['show_all'])) {
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
                                                                         <label>Kode Negara <small style="color:red">*</small></label>
-                                                                        <select name="KodeNegara" class="default-select2 form-control" required>
+                                                                        <select name="KodeNegara" class="default-select2 form-control" id="SNA<?= $row['ID'] ?>" required>
                                                                             <?php if ($row['KODE_NEGARA'] != NULL) { ?>
                                                                                 <option value="<?= $row['KODE_NEGARA']; ?>"><?= $row['KODE_NEGARA']; ?></option>
                                                                                 <option value="">Pilih Kode Negara</option>
@@ -658,7 +681,7 @@ if (isset($_POST['show_all'])) {
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
                                                                         <label>Kode Negara <small style="color:red">*</small></label>
-                                                                        <select name="KodeNegara" class="default-select2 form-control" required>
+                                                                        <select name="KodeNegara" class="default-select2 form-control" id="SNE<?= $row['ID'] ?>" required>
                                                                             <?php if ($row['KODE_NEGARA_PEMASOK'] != NULL) { ?>
                                                                                 <option value="<?= $row['KODE_NEGARA_PEMASOK']; ?>"><?= $row['KODE_NEGARA_PEMASOK']; ?></option>
                                                                                 <option value="">Pilih Kode Negara</option>
@@ -694,7 +717,7 @@ if (isset($_POST['show_all'])) {
                                         <div class="modal fade" id="add<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                    <form action="" method="POST">
                                                         <div class="modal-header">
                                                             <h4 class="modal-title">[Tambah Data] Data Gate In</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -716,7 +739,7 @@ if (isset($_POST['show_all'])) {
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>Nomor Pengajuan GB <small style="color:red">*</small></label>
-                                                                            <select name="bk_aju" class="default-select2 form-control" required>
+                                                                            <select name="bk_aju" class="default-select2 form-control" id="SAdd<?= $no; ?>" required>
                                                                                 <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
                                                                                     <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
                                                                                     <option value="">Pilih Nomor Pengajuan GB</option>
@@ -790,7 +813,7 @@ if (isset($_POST['show_all'])) {
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label>Nomor Pengajuan GB</label>
-                                                                            <select name="bk_aju" class="default-select2 form-control" required>
+                                                                            <select name="bk_aju" class="default-select2 form-control" id="SEdit<?= $no ?>" required>
                                                                                 <?php if ($row['bk_no_aju_sarinah'] != NULL) { ?>
                                                                                     <option value="<?= $row['bk_no_aju_sarinah']; ?>"><?= $row['bk_no_aju_sarinah']; ?></option>
                                                                                     <option value="">Pilih Nomor Pengajuan GB</option>
@@ -798,13 +821,13 @@ if (isset($_POST['show_all'])) {
                                                                                     <option value="">Pilih Nomor Pengajuan GB</option>
                                                                                 <?php } ?>
                                                                                 <?php
-                                                                                $resultMitra = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
+                                                                                $resultMitraEdit = $dbcon->query("SELECT plb.NOMOR_AJU,rcd.bk_no_aju_sarinah FROM tpb_header AS plb
                                                                                                             LEFT JOIN rcd_status AS rcd ON plb.NOMOR_AJU=rcd.bk_no_aju_sarinah
                                                                                                             WHERE rcd.bk_no_aju_sarinah IS NULL
                                                                                                             ORDER BY plb.ID DESC");
-                                                                                foreach ($resultMitra as $RowMitra) {
+                                                                                foreach ($resultMitraEdit as $RowMitraEdit) {
                                                                                 ?>
-                                                                                    <option value="<?= $RowMitra['NOMOR_AJU'] ?>"><?= $RowMitra['NOMOR_AJU'] ?> </option>
+                                                                                    <option value="<?= $RowMitraEdit['NOMOR_AJU'] ?>"><?= $RowMitraEdit['NOMOR_AJU'] ?> </option>
                                                                                 <?php } ?>
                                                                             </select>
                                                                         </div>
@@ -887,6 +910,7 @@ if (isset($_POST['show_all'])) {
                                             </div>
                                         </div>
                                         <!-- End Upload -->
+
                                         <!-- Detail -->
                                         <div class="modal fade" id="detail<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
@@ -1004,7 +1028,6 @@ if (isset($_POST['show_all'])) {
 <?php include "include/jsDatatables.php"; ?>
 <?php include "include/jsForm.php"; ?>
 <script type="text/javascript">
-    $(".default-select2").select2();
     $(function() {
         $("#IDAJU_PLB").autocomplete({
             source: 'function/autocomplete/nomor_aju_plb.php'
