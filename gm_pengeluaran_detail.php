@@ -32,10 +32,19 @@ if (isset($_POST["SimpanSemuaSesuai_"])) {
             $jml_pcs         = $dataBarang['JUMLAH_SATUAN'];
             $pcs             = str_replace(".0000", "", "$jml_pcs");
             // BOTOL
-            $botol           = explode('X', $dataBarang['UKURAN']);
-            $t_botol         = $botol[0];
+            // START TEMUKAM X
+            $myString = $dataBarang['UKURAN'];
+            if (strstr($myString, 'X')) {
+                $botol = explode('X', $dataBarang['UKURAN']);
+                $t_botol = $botol[0];
+                $liter =  $botol[1];
+            } else {
+                $botol = explode('x', $dataBarang['UKURAN']);
+                $t_botol = $botol[0];
+                $liter =  $botol[1];
+            }
+            // END START TEMUKAM X
             // LITER
-            $liter           =  $botol[1];
             $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
             $t_liter         = str_replace(',', '.', $r_liter);
             // TOTAL BOTOL
@@ -759,8 +768,20 @@ $resultPetugas          = mysqli_fetch_array($contentPetugas);
                                                 $jml_pcs = $rowBarang['JUMLAH_SATUAN'];
                                                 $pcs = str_replace(".0000", "", "$jml_pcs");
                                                 // TOTAL BOTOL
-                                                $botol = explode('X', $rowBarang['UKURAN']);
-                                                $t_botol = $botol[0];
+                                                // BOTOL
+                                                // START TEMUKAM X
+                                                $myString = $rowBarang['UKURAN'];
+                                                if (strstr($myString, 'X')) {
+                                                    $botol = explode('X', $rowBarang['UKURAN']);
+                                                    $t_botol = $botol[0];
+                                                    $liter =  $botol[1];
+                                                } else {
+                                                    $botol = explode('x', $rowBarang['UKURAN']);
+                                                    $t_botol = $botol[0];
+                                                    $liter =  $botol[1];
+                                                }
+                                                // END START TEMUKAM X
+                                                // LITER
                                                 // TOTAL LITER
                                                 $liter =  $botol[1];
                                                 $r_liter = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
