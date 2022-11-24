@@ -441,45 +441,47 @@ if (isset($_POST["FindFilter"])) {
                     <!-- END Penyesuaian -->
                     <!-- Keterangan -->
                     <!-- IN -->
-                    <td style="text-align: left;font-size:10px">
+                    <td style="text-align: left;">
                         <?php if ($row['K_IN'] == NULL && $row['L_IN'] == NULL && $row['P_IN'] == NULL && $row['R_IN'] == NULL) { ?>
-                            <center>
-                                0
-                            </center>
+                            <center>0</center>
                         <?php } else { ?>
-                            <?php if ($row['K_IN'] != NULL) { ?>
-                                Kurang=<?= $row['K_IN']; ?>;
-                            <?php } ?>
-                            <?php if ($row['L_IN'] != NULL) { ?>
-                                Lebih=<?= $row['L_IN']; ?>;
-                            <?php } ?>
-                            <?php if ($row['P_IN'] != NULL) { ?>
-                                Pecah=<?= $row['P_IN']; ?>;
-                            <?php } ?>
-                            <?php if ($row['R_IN'] != NULL) { ?>
-                                Rusak=<?= $row['R_IN']; ?>;
-                            <?php } ?>
+                            <font style="font-size:10px">
+                                <?php if ($row['K_IN'] != NULL) { ?>
+                                    Kurang=<?= $row['K_IN']; ?>;
+                                <?php } ?>
+                                <?php if ($row['L_IN'] != NULL) { ?>
+                                    Lebih=<?= $row['L_IN']; ?>;
+                                <?php } ?>
+                                <?php if ($row['P_IN'] != NULL) { ?>
+                                    Pecah=<?= $row['P_IN']; ?>;
+                                <?php } ?>
+                                <?php if ($row['R_IN'] != NULL) { ?>
+                                    Rusak=<?= $row['R_IN']; ?>;
+                                <?php } ?>
+                            </font>
                         <?php } ?>
                     </td>
                     <!-- OUT -->
-                    <td style="text-align: left;font-size:10px">
+                    <td style="text-align: left;">
                         <?php if ($row['K_OUT'] == NULL && $row['L_OUT'] == NULL && $row['P_OUT'] == NULL && $row['R_OUT'] == NULL) { ?>
                             <center>
                                 0
                             </center>
                         <?php } else { ?>
-                            <?php if ($row['K_OUT'] != NULL) { ?>
-                                Kurang=<?= $row['K_OUT']; ?>;
-                            <?php } ?>
-                            <?php if ($row['L_OUT'] != NULL) { ?>
-                                Lebih=<?= $row['L_OUT']; ?>;
-                            <?php } ?>
-                            <?php if ($row['P_OUT'] != NULL) { ?>
-                                Pecah=<?= $row['P_OUT']; ?>;
-                            <?php } ?>
-                            <?php if ($row['R_OUT'] != NULL) { ?>
-                                Rusak=<?= $row['R_OUT']; ?>;
-                            <?php } ?>
+                            <font style="font-size:10px">
+                                <?php if ($row['K_OUT'] != NULL) { ?>
+                                    Kurang=<?= $row['K_OUT']; ?>;
+                                <?php } ?>
+                                <?php if ($row['L_OUT'] != NULL) { ?>
+                                    Lebih=<?= $row['L_OUT']; ?>;
+                                <?php } ?>
+                                <?php if ($row['P_OUT'] != NULL) { ?>
+                                    Pecah=<?= $row['P_OUT']; ?>;
+                                <?php } ?>
+                                <?php if ($row['R_OUT'] != NULL) { ?>
+                                    Rusak=<?= $row['R_OUT']; ?>;
+                                <?php } ?>
+                            </font>
                         <?php } ?>
                     </td>
                     <!-- End Keterangan -->

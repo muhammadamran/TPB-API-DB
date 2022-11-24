@@ -92,10 +92,10 @@ if (isset($_POST["Find_MASUK"])) {
 <table style="height: 36px;" width="1548">
     <tbody>
         <tr style="height: 18px;">
-            <td style="border-bottom: 1px solid #333;" colspan="28">&nbsp;</td>
+            <td style="border-bottom: 1px solid #333;" colspan="21">&nbsp;</td>
         </tr>
         <tr style="height: 18px;">
-            <td style="border-style: none; height: 18px; width: 1541px;" colspan="28">&nbsp;</td>
+            <td style="border-style: none; height: 18px; width: 1541px;" colspan="21">&nbsp;</td>
         </tr>
     </tbody>
 </table>
@@ -158,10 +158,10 @@ if (isset($_POST["Find_MASUK"])) {
 <table style="height: 36px;" width="1548">
     <tbody>
         <tr style="height: 18px;">
-            <td style="border-bottom: 1px solid #333;" colspan="28">&nbsp;</td>
+            <td style="border-bottom: 1px solid #333;" colspan="21">&nbsp;</td>
         </tr>
         <tr style="height: 18px;">
-            <td style="border-style: none; height: 18px; width: 1541px;" colspan="28">&nbsp;</td>
+            <td style="border-style: none; height: 18px; width: 1541px;" colspan="21">&nbsp;</td>
         </tr>
     </tbody>
 </table>
@@ -169,49 +169,46 @@ if (isset($_POST["Find_MASUK"])) {
 <table class="table table-bordered table-td-valign-middle" border="1">
     <thead style="background: #dadddf;color: #333;">
         <tr style="background: #dadddf;color: #333;">
-            <th rowspan="2" width="1%">No.</th>
+            <th rowspan="3" width="1%">No.</th>
             <!-- BARANG MASUK -->
-            <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
-            <th colspan="2" style="text-align: center;">Tanggal & Waktu</th>
-            <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
-            <th rowspan="2" style="text-align: center;">Uraian</th>
-            <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
-            <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
-            <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
-            <th colspan="2" style="text-align: center;">Petugas</th>
+            <th colspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu</th>
+            <th rowspan="3" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
+            <th colspan="4" style="text-align: center;">Dokumen Pabean BC 2.7 PLB</th>
             <!-- END BARANG MASUK -->
             <!-- BARANG KELUAR -->
-            <th colspan="5" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
-            <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
-            <th rowspan="2" style="text-align: center;">Uraian</th>
-            <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
-            <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
-            <th rowspan="2" style="text-align: center;">Nilai<font style="color: #dadddf;">.</font>Barang</th>
-            <th rowspan="2" style="text-align: center;">Tanggal<font style="color: #dadddf;">.</font>&<font style="color: #dadddf;">.</font>Waktu<font style="color: #dadddf;">.</font>Keluar</th>
-            <th colspan="2" style="text-align: center;">Petugas</th>
+            <th colspan="4" style="text-align: center;">Dokumen Pabean BC 2.7 GB</th>
             <!-- END BARANG MASUK -->
+            <th colspan="5" style="text-align: center;">Detil Barang</th>
+            <th colspan="4" style="text-align: center;">Petugas Penerima</th>
         </tr>
         <tr style="background: #dadddf;color: #333;">
+            <th rowspan="2" style="text-align: center;">Masuk</th>
+            <th rowspan="2" style="text-align: center;">Keluar</th>
             <!-- BARANG MASUK -->
-            <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
-            <th style="text-align: center;">Nomor Pengajuan</th>
-            <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
-            <th style="text-align: center;">Asal</th>
-            <th style="text-align: center;">Tujuan</th>
-            <th class="text-nowrap no-sort" style="text-align: center;">Upload<font style="color: #dadddf;">.</font>PLB</th>
-            <th class="text-nowrap no-sort" style="text-align: center;">Masuk<font style="color: #dadddf;">.</font>Barang</th>
-            <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>
-            <th style="text-align: center;">BeaCukai</th>
+            <th rowspan="2" style="text-align: center;">No.<font style="color: #dadddf;">.</font>Pengajuan</th>
+            <th rowspan="2" style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
+            <th rowspan="2" style="text-align: center;">Asal</th>
+            <th rowspan="2" style="text-align: center;">Tujuan</th>
             <!-- END BARANG MASUK -->
             <!-- BARANG KELUAR -->
-            <th class="no-sort" style="text-align: center;">Jenis<font style="color: #dadddf;">.</font>Dokumen</th>
-            <th style="text-align: center;">Nomor<font style="color: #dadddf;">.</font>Pengajuan</th>
-            <th style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
-            <th style="text-align: center;">Asal</th>
-            <th style="text-align: center;">Tujuan</th>
-            <th style="text-align: center;"><?= $resultHeadSetting['company']; ?></th>
-            <th style="text-align: center;">BeaCukai</th>
+            <th rowspan="2" style="text-align: center;">No.<font style="color: #dadddf;">.</font>Pengajuan</th>
+            <th rowspan="2" style="text-align: center;">No.<font style="color: #dadddf;">.</font>Daftar</th>
+            <th rowspan="2" style="text-align: center;">Asal</th>
+            <th rowspan="2" style="text-align: center;">Tujuan</th>
             <!-- END BARANG MASUK -->
+            <th rowspan="2" style="text-align: center;">Kode<font style="color: #dadddf;">.</font>Barang</th>
+            <th rowspan="2" style="text-align: center;">Uraian</th>
+            <th rowspan="2" style="text-align: center;">Spesifikasi<font style="color: #dadddf;">.</font>Lain</th>
+            <th rowspan="2" style="text-align: center;">Jumlah<font style="color: #dadddf;">.</font>Satuan</th>
+            <th rowspan="2" style="text-align: center;">Nilai</th>
+            <th colspan="2" style="text-align: center;">Masuk</th>
+            <th colspan="2" style="text-align: center;">Keluar</th>
+        </tr>
+        <tr style="background: #dadddf;color: #333;">
+            <th style="text-align: center;"><?= $resultHeadSetting['company'] ?></th>
+            <th style="text-align: center;">BeaCukai</th>
+            <th style="text-align: center;"><?= $resultHeadSetting['company'] ?></th>
+            <th style="text-align: center;">BeaCukai</th>
         </tr>
     </thead>
     <tbody>
@@ -372,60 +369,6 @@ if (isset($_POST["Find_MASUK"])) {
         ?>
                 <tr>
                     <td><?= $no ?>.</td>
-                    <!-- BARANG MASUK -->
-                    <td style="text-align: center">
-                        BC <?= $row['KODE_DOKUMEN_PABEAN_BCPLB']; ?>
-                    </td>
-                    <td style="text-align: center">
-                        <?php if ($row['NOMOR_AJU_BCPLB'] == NULL) { ?>
-                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                        <?php } else { ?>
-                            '<?= $row['NOMOR_AJU_BCPLB']; ?>
-                        <?php } ?>
-                    </td>
-                    <td style="text-align: center">
-                        <?php if ($row['NOMOR_DAFTAR_BCPLB'] == NULL) { ?>
-                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                        <?php } else { ?>
-                            <?= $row['NOMOR_DAFTAR_BCPLB']; ?>
-                        <?php } ?>
-                    </td>
-                    <td style="text-align: left">
-                        <div style="width: 200px;">
-                            <?php if ($row['PERUSAHAAN'] == NULL) { ?>
-                                <center>
-                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                </center>
-                            <?php } else { ?>
-                                <?= $row['PERUSAHAAN']; ?>
-                            <?php } ?>
-                        </div>
-                    </td>
-                    <td style="text-align: left">
-                        <div style="width: 200px;">
-                            <?php if ($row['NAMA_PENERIMA_BARANG_BCPLB'] == NULL) { ?>
-                                <center>
-                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                                </center>
-                            <?php } else { ?>
-                                <?= $row['NAMA_PENERIMA_BARANG_BCPLB']; ?>
-                            <?php } ?>
-                        </div>
-                    </td>
-                    <td style="text-align: left">
-                        <div style="width: 200px;">
-                            <?php if ($row['ck5_plb_submit'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                            <?php } else { ?>
-                                <?php
-                                $alldate = $row['ck5_plb_submit'];
-                                $tgl = substr($alldate, 0, 10);
-                                $time = substr($alldate, 10, 20);
-                                ?>
-                                <?= date_indo_s($tgl) ?> <?= $time ?>
-                            <?php } ?>
-                        </div>
-                    </td>
                     <td style="text-align: left">
                         <div style="width: 150px;">
                             <?php
@@ -441,63 +384,61 @@ if (isset($_POST["Find_MASUK"])) {
                         </div>
                     </td>
                     <td style="text-align: left">
-                        <?php
-                        if ($row['KODE_BARANG'] == NULL) {
-                            $KDBRG = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
-                        } else {
-                            $KDBRG = $row['KODE_BARANG'];
-                        }
-                        if ($row['POS_TARIF'] == NULL) {
-                            $POSTARIF = "<font style='font-size: 8px;font-weight: 600;color: red'><i>Data Kosong!</i></font>";
-                        } else {
-                            $POSTARIF = $row['POS_TARIF'];
-                        }
-                        ?>
-                        '<?= $KDBRG ?>
-                    </td>
-                    <td>
-                        <div style="width: 280px;">
-                            <?= $row['URAIAN']; ?>
-                        </div>
-                    </td>
-                    <td style="text-align: center">
-                        <?= $row['SPESIFIKASI_LAIN']; ?>
-                    </td>
-                    <td>
-                        <div style="display: flex;justify-content: space-between;align-items: center">
-                            <font><?= $row['KODE_SATUAN']; ?></font>
-                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="display: flex;justify-content: space-between;align-items: center">
-                            <font><?= $row['KODE_VALUTA']; ?></font>
-                            <font><?= $row['CIF']; ?></font>
-                        </div>
-                    </td>
-                    <td style="text-align: left">
                         <div style="width: 150px;">
-                            <?php if ($row['OPERATOR_ONE'] == NULL) { ?>
+                            <?php
+                            $alldateGB = $row['TGL_CEK_GB'];
+                            $tglGB = substr($alldateGB, 0, 10);
+                            $timeGB = substr($alldateGB, 10, 20);
+                            ?>
+                            <?php if ($row['TGL_CEK_GB'] == NULL) { ?>
                                 <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                             <?php } else { ?>
-                                <?= $row['OPERATOR_ONE']; ?>
+                                <?= date_indo_s($tglGB); ?> <?= $timeGB; ?>
+                            <?php } ?>
+                        </div>
+                    </td>
+                    <!-- BARANG MASUK -->
+                    <td style="text-align: center">
+                        BC <?= $row['KODE_DOKUMEN_PABEAN_BCPLB']; ?>
+                    </td>
+                    <td style="text-align: center">
+                        <?php if ($row['NOMOR_AJU_BCPLB'] == NULL) { ?>
+                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                        <?php } else { ?>
+                            '<?= $row['NOMOR_AJU_BCPLB']; ?>
+                        <?php } ?>
+                    </td>
+                    <td style="text-align: center">
+                        <?php if ($row['NOMOR_DAFTAR_BCPLB'] == NULL) { ?>
+                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                        <?php } else { ?>
+                            '<?= $row['NOMOR_DAFTAR_BCPLB']; ?>
+                        <?php } ?>
+                    </td>
+                    <td style="text-align: left">
+                        <div style="width: 200px;">
+                            <?php if ($row['PERUSAHAAN'] == NULL) { ?>
+                                <center>
+                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                </center>
+                            <?php } else { ?>
+                                <?= $row['PERUSAHAAN']; ?>
                             <?php } ?>
                         </div>
                     </td>
                     <td style="text-align: left">
-                        <div style="width: 150px;">
-                            <?php if ($row['bc_in'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                        <div style="width: 100px;">
+                            <?php if ($row['NAMA_PENERIMA_BARANG_BCPLB'] == NULL) { ?>
+                                <center>
+                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                </center>
                             <?php } else { ?>
-                                <?= $row['bc_in']; ?>
+                                <?= $row['NAMA_PENERIMA_BARANG_BCPLB']; ?>
                             <?php } ?>
                         </div>
                     </td>
                     <!-- END BARANG MASUK -->
                     <!-- BARANG KELUAR -->
-                    <td style="text-align: center">
-                        BC <?= $row['KODE_DOKUMEN_PABEAN_BCGB']; ?>
-                    </td>
                     <td style="text-align: center">
                         <?php if ($row['NOMOR_AJU_BCGB'] == NULL) { ?>
                             <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
@@ -510,7 +451,7 @@ if (isset($_POST["Find_MASUK"])) {
                             <?php if ($row['NOMOR_DAFTAR_BCGB'] == NULL) { ?>
                                 <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                             <?php } else { ?>
-                                <?= $row['NOMOR_DAFTAR_BCGB']; ?>
+                                '<?= $row['NOMOR_DAFTAR_BCGB']; ?>
                             <?php } ?>
                         </div>
                     </td>
@@ -561,23 +502,19 @@ if (isset($_POST["Find_MASUK"])) {
                     </td>
                     <td>
                         <div style="display: flex;justify-content: space-between;align-items: center">
-                            <font><?= $row['KODE_SATUAN']; ?></font>
-                            <font><?= $row['JUMLAH_SATUAN']; ?></font>
+                            <?php
+                            $myString = $row['JUMLAH_SATUAN'];
+                            if (strstr($myString, '.0000')) {
+                                echo  "'<font>" . $row['JUMLAH_SATUAN'] . "</font>";
+                            } else {
+                                echo  "'<font>" . $row['JUMLAH_SATUAN'] . ".0000</font>";
+                            }
+                            ?>
                         </div>
                     </td>
                     <td>
                         <div style="display: flex;justify-content: space-between;align-items: center">
-                            <font><?= $row['KODE_VALUTA']; ?></font>
-                            <font><?= $row['CIF']; ?></font>
-                        </div>
-                    </td>
-                    <td style="text-align: left">
-                        <div style="width: 150px;">
-                            <?php if ($row['TGL_CEK_GB'] == NULL) { ?>
-                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
-                            <?php } else { ?>
-                                <?= $row['TGL_CEK_GB']; ?>
-                            <?php } ?>
+                            <font>'<?= $row['CIF']; ?></font>
                         </div>
                     </td>
                     <td style="text-align: left">
@@ -586,6 +523,24 @@ if (isset($_POST["Find_MASUK"])) {
                                 <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
                             <?php } else { ?>
                                 <?= $row['OPERATOR_ONE']; ?>
+                            <?php } ?>
+                        </div>
+                    </td>
+                    <td style="text-align: left">
+                        <div style="width: 150px;">
+                            <?php if ($row['bc_in'] == NULL) { ?>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                            <?php } else { ?>
+                                <?= $row['bc_in']; ?>
+                            <?php } ?>
+                        </div>
+                    </td>
+                    <td style="text-align: left">
+                        <div style="width: 150px;">
+                            <?php if ($row['OPERATOR_TWO'] == NULL) { ?>
+                                <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                            <?php } else { ?>
+                                <?= $row['OPERATOR_TWO']; ?>
                             <?php } ?>
                         </div>
                     </td>
@@ -605,6 +560,15 @@ if (isset($_POST["Find_MASUK"])) {
             endforeach
             ?>
         <?php else : ?>
+            <tr>
+                <td colspan="21">
+                    <center>
+                        <div style="display: grid;">
+                            <i class="far fa-times-circle no-data"></i> Tidak ada data
+                        </div>
+                    </center>
+                </td>
+            </tr>
         <?php endif ?>
     </tbody>
 </table>
