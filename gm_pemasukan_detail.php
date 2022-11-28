@@ -47,7 +47,7 @@ if (isset($_POST["SimpanSemuaSesuai_"])) {
                 }
                 // END START TEMUKAM X
                 // LITER
-                $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+                $r_liter         = str_replace(['LTR', 'LTr', 'Ltr', 'ltr', 'L'], ['', '', '', '', ''], $liter);
                 $t_liter         = str_replace(',', '.', $r_liter);
                 // TOTAL BOTOL
                 $total_btl = $t_botol * $pcs;

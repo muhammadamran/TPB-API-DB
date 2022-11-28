@@ -190,7 +190,7 @@ if (isset($_POST['FindFilter'])) {
                 </div>
                 <div class="panel-body text-inverse">
                     <div class="table-responsive">
-                        <table id="C_TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="C_TableDefault_LIST" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%">No.</th>

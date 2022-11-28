@@ -567,6 +567,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                     LEFT OUTER JOIN plb_barang AS brg ON plb.NOMOR_AJU=brg.NOMOR_AJU
                                                     LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                     WHERE plb.NOMOR_AJU='" . $_GET['AJU'] . "'
+                                                    GROUP BY brg.KODE_BARANG
                                                     ORDER BY brg.ID,brg.SERI_BARANG ASC");
                         if ($dataTable) : $no = 1;
                             foreach ($dataTable as $row) :
@@ -630,6 +631,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                     LEFT OUTER JOIN plb_barang AS brg ON plb.NOMOR_AJU=brg.NOMOR_AJU
                                                     LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                     WHERE plb.NOMOR_AJU='" . $_GET['AJU'] . "'
+                                                    GROUP BY brg.KODE_BARANG
                                                     ORDER BY brg.ID,brg.SERI_BARANG ASC");
                         $resultFooter = mysqli_fetch_array($dataFooter);
                         ?>

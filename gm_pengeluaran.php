@@ -25,6 +25,43 @@ if (isset($_POST['edit_'])) {
     }
 }
 
+if (isset($_POST['editdetail_'])) {
+    $rcd_id                 = $_POST['rcd_id'];
+    $TglGateIn              = $_POST['bm_masuk'];
+    $Petugas                = $_POST['bm_operator'];
+    $PetugasBeaCukai        = $_POST['bc_operator'];
+
+    // File
+    $filename = $_FILES['UploadFile']['name'];
+    $tmpname = $_FILES['UploadFile']['tmp_name'];
+    $sizename = $_FILES['UploadFile']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $uniq_file =  "Berita-Acara-GB" . '_' . time();
+    $newname =  "Berita-Acara-GB" . '_' . time() . "." . $ext;
+    $config['upload_path'] = './files/ck5plb/BA/GB/';
+    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'jfif' || $ext == 'gif' || $ext == 'pdf') {
+        move_uploaded_file($tmpname, "files/ck5plb/BA/GB/" . $newname);
+        $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_GB='$newname',
+                                                    bk_tgl_keluar='$TglGateIn',
+                                                    bk_nama_operator='$Petugas',
+                                                    bc_out='$PetugasBeaCukai'
+                                                WHERE rcd_id='$rcd_id'");
+    } else {
+        echo "<script>window.location.href='gm_pengeluaran.php?UploadQuestion=true';</script>";
+    }
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pengeluaran.php?UpdateSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pengeluaran.php?UpdateFailed=true';</script>";
+    }
+}
+
+
 if (isset($_POST['upload_'])) {
     $rcd_id                 = $_POST['rcd_id'];
     $bk_nama_operator       = $_POST['bk_nama_operator'];
@@ -586,6 +623,17 @@ if (isset($_POST['show_all'])) {
                                                                     </font>
                                                                 </a>
                                                                 <!-- End Detail -->
+                                                                <!-- Edit Detail -->
+                                                                <a href="#EditDetail<?= $row['IDH'] ?>" class="btn btn-sm btn-success" data-toggle="modal">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Detail Data Gate Out">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-file-edit"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Edit Detail -->
                                                             <?php } ?>
                                                         <?php } ?>
                                                     <?php } else { ?>
@@ -809,6 +857,89 @@ if (isset($_POST['show_all'])) {
                                             </div>
                                         </div>
                                         <!-- End Detail -->
+
+
+                                        <!-- Edit Detail -->
+                                        <div class="modal fade" id="EditDetail<?= $row['IDH'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">[Edit Detail Data] Gate Out</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <h4>GB</h4>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Nomor Pengajuan PLB</label>
+                                                                                            <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                            <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Nomor Pengajuan GB</label>
+                                                                                            <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Tanggal Gate Out</label>
+                                                                                            <?php
+                                                                                            $tgl_msk = $row['bk_tgl_keluar'];
+                                                                                            $tgl = substr($tgl_msk, 0, 10);
+                                                                                            $time = substr($tgl_msk, 10, 20);
+                                                                                            ?>
+                                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Keluar ..." value="<?= $tgl; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Upload Berita Acara</label>
+                                                                                            <input type="file" name="UploadFile" class="form-control" value="<?= $row['upload_beritaAcara_GB']; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Petugas <?= $resultSetting['company'] ?></label>
+                                                                                            <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator <?= $resultSetting['company'] ?> ..." value="<?= $row['bk_nama_operator']; ?>" readonly>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Petugas BeaCukai</label>
+                                                                                            <input type="text" name="bc_operator" class="form-control" placeholder="Nama Operator BeaCukai..." value="<?= $row['bc_out']; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <embed src="files/ck5plb/BA/GB/<?= $row['upload_beritaAcara_GB']; ?>" style="width: 100%" height="500">
+                                                                                </object>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="editdetail_" class="btn btn-info"><i class="fas fa-file-edit"></i> Edit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Edit Detail -->
                                     <?php
                                         $no++;
                                     endforeach

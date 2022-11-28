@@ -736,7 +736,7 @@ if (isset($_POST['Find_MASUK']) != '') {
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
                                                 <?php } else { ?>
                                                     <a href="#detailIN<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
-                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU_BCPLB'] ?>">
                                                             <div>
                                                                 <div style="font-size: 12px;">
                                                                     <i class="fas fa-file-invoice"></i>
@@ -751,7 +751,7 @@ if (isset($_POST['Find_MASUK']) != '') {
                                                     <font style="font-size: 8px;font-weight: 600;color: red"><i>Belum diupload!</i></font>
                                                 <?php } else { ?>
                                                     <a href="#detailOUT<?= $row['rcd_id'] ?>" class="btn btn-sm btn-success" data-toggle="modal" title="Add">
-                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU'] ?>">
+                                                        <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Lihat Berita Acara: <?= $row['NOMOR_AJU_BCGB'] ?>">
                                                             <div>
                                                                 <div style="font-size: 12px;">
                                                                     <i class="fas fa-file-invoice"></i>

@@ -12,6 +12,6 @@ if ($resultRoleModules['da_one'] == 'none' && $resultRoleModules['da_two'] == 'n
 <li class="<?= $uriSegments[1] == 'adm_stokbarang.php' ? 'active' : '' ?>" style="display: <?= $TitleDashboard ?>;">
     <a href="adm_stokbarang.php"><i class="fas fa-cubes icon-page-sidebar"></i> <span>Stok Barang</span></a>
 </li>
-<li class="<?= $uriSegments[1] == 'adm_penyesuaian.php' ? 'active' : '' ?>" style="display: <?= $TitleDashboard ?>;">
+<!-- <li class="<?= $uriSegments[1] == 'adm_penyesuaian.php' ? 'active' : '' ?>" style="display: <?= $TitleDashboard ?>;">
     <a href="adm_penyesuaian.php"><i class="fas fa-sliders-h icon-page-sidebar"></i> <span>Penyesuaian</span></a>
-</li>
+</li> -->

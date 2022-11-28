@@ -98,6 +98,42 @@ if (isset($_POST['edit_'])) {
     }
 }
 
+if (isset($_POST['editdetail_'])) {
+    $rcd_id                 = $_POST['rcd_id'];
+    $TglGateIn              = $_POST['bm_masuk'];
+    $Petugas                = $_POST['bm_operator'];
+    $PetugasBeaCukai        = $_POST['bc_operator'];
+
+    // File
+    $filename = $_FILES['UploadFile']['name'];
+    $tmpname = $_FILES['UploadFile']['tmp_name'];
+    $sizename = $_FILES['UploadFile']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $uniq_file =  "Berita-Acara-PLB" . '_' . time();
+    $newname =  "Berita-Acara-PLB" . '_' . time() . "." . $ext;
+    $config['upload_path'] = './files/ck5plb/BA/PLB/';
+    $config['allowed_types'] = "jpg|jpeg|png|jfif|gif|pdf";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'jfif' || $ext == 'gif' || $ext == 'pdf') {
+        move_uploaded_file($tmpname, "files/ck5plb/BA/PLB/" . $newname);
+        $sql = $dbcon->query("UPDATE rcd_status SET upload_beritaAcara_PLB='$newname',
+                                                    bm_tgl_masuk='$TglGateIn',
+                                                    bm_nama_operator='$Petugas',
+                                                    bc_in='$PetugasBeaCukai'
+                                                WHERE rcd_id='$rcd_id'");
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?UploadQuestion=true';</script>";
+    }
+
+    if ($sql) {
+        echo "<script>window.location.href='gm_pemasukan.php?UpdateSuccess=true';</script>";
+    } else {
+        echo "<script>window.location.href='gm_pemasukan.php?UpdateFailed=true';</script>";
+    }
+}
+
 if (isset($_POST['upload_'])) {
     $rcd_id                 = $_POST['rcd_id'];
     $bk_nama_operator       = $_POST['bk_nama_operator'];
@@ -571,6 +607,17 @@ if (isset($_POST['show_all'])) {
                                                                     </font>
                                                                 </a>
                                                                 <!-- End Detail -->
+                                                                <!-- Edit Detail -->
+                                                                <a href="#EditDetail<?= $row['ID'] ?>" class="btn btn-sm btn-success" data-toggle="modal">
+                                                                    <font data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Edit Detail Data Gate In">
+                                                                        <div>
+                                                                            <div style="font-size: 12px;">
+                                                                                <i class="fas fa-file-edit"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </font>
+                                                                </a>
+                                                                <!-- End Edit Detail -->
                                                             <?php } ?>
                                                         <?php } ?>
                                                     <?php } else { ?>
@@ -866,6 +913,7 @@ if (isset($_POST['show_all'])) {
                                             </div>
                                         </div>
                                         <!-- End Edit -->
+
                                         <!-- Upload -->
                                         <div class="modal fade" id="upload<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
@@ -915,89 +963,162 @@ if (isset($_POST['show_all'])) {
                                         <div class="modal fade" id="detail<?= $row['ID'] ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">[Detail Data] Gate In</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <fieldset>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <h4>PLB</h4>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Nomor Pengajuan PLB</label>
+                                                                                        <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Nomor Pengajuan GB</label>
+                                                                                        <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Tanggal Gate In</label>
+                                                                                        <?php
+                                                                                        $tgl_msk = $row['bm_tgl_masuk'];
+                                                                                        $tgl = substr($tgl_msk, 0, 10);
+                                                                                        $time = substr($tgl_msk, 10, 20);
+                                                                                        ?>
+                                                                                        <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Upload Berita Acara</label>
+                                                                                        <input type="text" name="UploadFile" class="form-control" value="<?= $row['upload_beritaAcara_PLB']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Petugas <?= $resultSetting['company'] ?></label>
+                                                                                        <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator <?= $resultSetting['company'] ?> ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label>Petugas BeaCukai</label>
+                                                                                        <input type="text" name="bc_operator" class="form-control" placeholder="Nama Operator BeaCukai..." value="<?= $row['bc_in']; ?>" readonly>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                            </object>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Detail -->
+
+                                        <!-- Edit Detail -->
+                                        <div class="modal fade" id="EditDetail<?= $row['ID'] ?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
                                                     <form action="" method="POST" enctype="multipart/form-data">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">[Detail Data] Gate In</h4>
+                                                            <h4 class="modal-title">[Edit Detail Data] Gate In</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <?php $col = '6'; ?>
-                                                                    <?php } else { ?>
-                                                                        <?php $col = '12'; ?>
-                                                                    <?php } ?>
-                                                                    <!-- Gate In -->
-                                                                    <div class="col-<?= $col; ?>">
+                                                                    <div class="col-sm-12">
+                                                                        <h4>PLB</h4>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
                                                                         <div class="row">
-                                                                            <div class="col-md-12">
-                                                                                <div class="form-group">
-                                                                                    <h4>PLB</h4>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Nomor Pengajuan PLB</label>
+                                                                                            <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
+                                                                                            <input type="hidden" name="rcd_id" class="form-control" value="<?= $row['rcd_id']; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Nomor Pengajuan GB</label>
+                                                                                            <input type="number" name="bk_aju" class="form-control" placeholder="Nomor Pengajuan GB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Tanggal Gate In</label>
+                                                                                            <?php
+                                                                                            $tgl_msk = $row['bm_tgl_masuk'];
+                                                                                            $tgl = substr($tgl_msk, 0, 10);
+                                                                                            $time = substr($tgl_msk, 10, 20);
+                                                                                            ?>
+                                                                                            <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Upload Berita Acara</label>
+                                                                                            <input type="file" name="UploadFile" class="form-control" value="<?= $row['upload_beritaAcara_PLB']; ?>">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Petugas <?= $resultSetting['company'] ?></label>
+                                                                                            <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator <?= $resultSetting['company'] ?> ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label>Petugas BeaCukai</label>
+                                                                                            <input type="text" name="bc_operator" class="form-control" placeholder="Nama Operator BeaCukai..." value="<?= $row['bc_in']; ?>">
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <hr>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan PLB</label>
-                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['NOMOR_AJU']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Nomor Pengajuan GB</label>
-                                                                                    <input type="number" name="bm_aju" class="form-control" placeholder="Nomor Pengajuan PLB ..." value="<?= $row['bk_no_aju_sarinah']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas <?= $resultSetting['company'] ?></label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bm_nama_operator']; ?>" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label>Tanggal Gate In</label>
-                                                                                    <?php
-                                                                                    $tgl_msk = $row['bm_tgl_masuk'];
-                                                                                    $tgl = substr($tgl_msk, 0, 10);
-                                                                                    $time = substr($tgl_msk, 10, 20);
-                                                                                    ?>
-                                                                                    <input type="date" name="bm_masuk" class="form-control" placeholder="Tanggal Masuk ..." value="<?= $tgl; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label>Petugas BC</label>
-                                                                                    <input type="text" name="bm_operator" class="form-control" placeholder="Nama Operator ..." value="<?= $row['bc_in']; ?>" readonly>
-                                                                                </div>
+                                                                            <div class="col-sm-6">
+                                                                                <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
+                                                                                </object>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- End Gate In -->
-                                                                    <!-- Barang Keluar -->
-                                                                    <?php if ($row['upload_beritaAcara_PLB'] != NULL) { ?>
-                                                                        <div class="col-6">
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <embed src="files/ck5plb/BA/PLB/<?= $row['upload_beritaAcara_PLB']; ?>" style="width: 100%" height="500">
-                                                                                    </object>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php } else { ?>
-                                                                    <?php } ?>
                                                                 </div>
                                                             </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
+                                                            <button type="submit" name="editdetail_" class="btn btn-info"><i class="fas fa-file-edit"></i> Edit</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Detail -->
+                                        <!-- End Edit Detail -->
+
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>

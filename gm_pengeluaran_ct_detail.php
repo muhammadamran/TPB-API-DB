@@ -314,7 +314,7 @@ $forBTL                 = $botol[0] * $forCT;
 $add_forBTL             = $botol[0];
 // FOR LITER
 $liter                  =  $botol[1];
-$r_liter                = str_replace(['LTR', 'LTr', 'Ltr', 'ltr'], ['', '', '', ''], $liter);
+$r_liter                = str_replace(['LTR', 'LTr', 'Ltr', 'ltr', 'L'], ['', '', '', '', ''], $liter);
 $forLTR                 = str_replace(',', '.', $r_liter) * $forBTL;
 $add_forLTR             = str_replace(',', '.', $r_liter);
 // DETAIL, PERUSAHAAN DAN TUJUAN

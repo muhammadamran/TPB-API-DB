@@ -170,6 +170,20 @@
                         iDisplayLength: -1
                 });
         });
+        // TABLE DEFAULT
+        $(document).ready(function() {
+                $('#C_TableDefault_LIST').DataTable({
+                        lengthMenu: [
+                                [10, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500, -1],
+                                [10, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500, 'All'],
+                        ],
+                        "columnDefs": [{
+                                "targets": 'no-sort',
+                                "orderable": false,
+                        }],
+                        // iDisplayLength: -1
+                });
+        });
 </script>
 </body>
 

@@ -1,13 +1,13 @@
-<?php
-include "include/connection.php";
-include "include/restrict.php";
-include "include/head.php";
-include "include/alert.php";
-include "include/top-header.php";
-include "include/top-sidebar.php";
-// include "include/sidebar.php";
-include "include/cssDatatables.php";
-?>
++9*<?php
+    include "include/connection.php";
+    include "include/restrict.php";
+    include "include/head.php";
+    include "include/alert.php";
+    include "include/top-header.php";
+    include "include/top-sidebar.php";
+    // include "include/sidebar.php";
+    include "include/cssDatatables.php";
+    ?>
 <!-- Query For Mitra -->
 <?php
 // Total Mitra
