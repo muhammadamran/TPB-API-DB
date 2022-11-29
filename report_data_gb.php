@@ -55,16 +55,18 @@ $data = json_decode($content, true);
                                     <th rowspan="2" style="text-align:center">Format CK5</th>
                                     <th rowspan="2" style="text-align:center">Packing List</th>
                                     <th rowspan="2" style="text-align:center">Invoice</th>
-                                    <th colspan="3" style="text-align:center">PLB</th>
-                                    <th colspan="3" style="text-align:center">GB</th>
+                                    <th colspan="4" style="text-align:center">PLB</th>
+                                    <th colspan="4" style="text-align:center">GB</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align:center">Nomor Pengajuan</th>
                                     <th style="text-align:center">Asal</th>
                                     <th style="text-align:center">Penerima</th>
+                                    <th class="text-nowrap" style="text-align: center;">Negara</th>
                                     <th style="text-align:center">Nomor Pengajuan</th>
                                     <th style="text-align:center">Asal</th>
                                     <th style="text-align:center">Penerima</th>
+                                    <th class="text-nowrap" style="text-align: center;">Negara</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +92,12 @@ $data = json_decode($content, true);
                                                                 tpb.NAMA_PENGUSAHA,
                                                                 tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_GB,
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS_GB IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All,
+                                                                -- NEGARA PLB DAN GB
+                                                                hdr.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_PLB,
+                                                                tpb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_GB,
+                                                                ngr_plb.URAIAN_NEGARA AS UN_PLB,
+                                                                ngr_gb.URAIAN_NEGARA AS UN_GB,
+                                                                -- END NEGARA PLB & GB
                                                                 -- END
                                                                 (SELECT COUNT(NOMOR_AJU) FROM plb_barang WHERE STATUS IS NOT NULL AND NOMOR_AJU=hdr.NOMOR_AJU) AS total_All_PLB,
                                                                 (SELECT COUNT(STATUS_GB) FROM plb_barang WHERE STATUS='Sesuai' AND NOMOR_AJU=hdr.NOMOR_AJU GROUP BY hdr.NOMOR_AJU) AS STATUS
@@ -98,6 +106,8 @@ $data = json_decode($content, true);
                                                                 LEFT OUTER JOIN plb_status AS plb ON hdr.NOMOR_AJU=plb.NOMOR_AJU_PLB 
                                                                 -- TAMBAHAN
                                                                 LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU 
+                                                                LEFT OUTER JOIN referensi_negara AS ngr_plb ON hdr.KODE_NEGARA_PEMASOK=ngr_plb.KODE_NEGARA
+                                                                LEFT OUTER JOIN referensi_negara AS ngr_gb ON tpb.KODE_NEGARA_PEMASOK=ngr_gb.KODE_NEGARA
                                                                 -- END
                                                                 -- TAMBAHAN
                                                                 WHERE rcd.upload_beritaAcara_PLB IS NOT NULL
@@ -184,6 +194,22 @@ $data = json_decode($content, true);
                                                     <?php } ?>
                                                 </div>
                                             </td>
+                                            <!-- NEGARA PEMASOK PLB -->
+                                            <td style="text-align: left;">
+                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                    <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Negara Pemasok PLB">
+                                                        <i class="fas fa-globe"></i>
+                                                    </div>
+                                                    <div style="display: grid;margin-left:5px">
+                                                        <div>
+                                                            <?= $row['UN_PLB']; ?>
+                                                        </div>
+                                                        <div style="margin-top: -5px;">
+                                                            <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= $row['KODE_NEGARA_PEMASOK_PLB']; ?></font>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <!-- GB -->
                                             <!-- NOMOR AJU GB & TANGGAL AJU -->
                                             <td style="text-align: left">
@@ -229,6 +255,22 @@ $data = json_decode($content, true);
                                             <td style="text-align: left">
                                                 <div style="width:150px">
                                                     <?= $row['NAMA_PENERIMA_BARANG_GB']; ?>
+                                                </div>
+                                            </td>
+                                            <!-- NEGARA PEMASOK GB -->
+                                            <td style="text-align: left;">
+                                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                                    <div style="font-size: 14px;background: #dadddf;padding: 5px 10px 5px 10px;border-radius: 2px;color: #444445;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Negara Pemasok GB">
+                                                        <i class="fas fa-globe"></i>
+                                                    </div>
+                                                    <div style="display: grid;margin-left:5px">
+                                                        <div>
+                                                            <?= $row['UN_GB']; ?>
+                                                        </div>
+                                                        <div style="margin-top: -5px;">
+                                                            <font style="font-size: 9px;font-weight: 300;margin-top:10px"><?= $row['KODE_NEGARA_PEMASOK_GB']; ?></font>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
