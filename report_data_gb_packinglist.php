@@ -647,7 +647,6 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                             <th style="text-align:center">x</th>
                             <th style="text-align:center"><?= round($resultFooter['c_liter']); ?></th>
                             <th style="text-align:right"><?= $resultFooter['c_ct']; ?> Ctn(s)</th>
-                            <th colspan="2" style="text-align:left"></th>
                             <th style="text-align:right"><?= $resultFooter['c_botol_akhir']; ?> Btl(s)</th>
                             <th style="text-align:right"><?= round($resultFooter['c_liter_akhir']); ?> Ltr(s)</th>
                         </tr>
