@@ -122,6 +122,15 @@ if ($resultBCGB41 == NULL) {
 } else {
     $resultBCGB41_show = $resultBCGB41['total_bc_41'];
 }
+
+// DATA BC PLB TERAKHIR
+$dataBCPLBTerakhir = $dbcon->query("SELECT *,SUBSTR(NOMOR_AJU,13,8) AS TGL_AJU 
+                                    FROM plb_header ORDER BY ID DESC LIMIT 1");
+$resultBCPLBTerakhir = mysqli_fetch_array($dataBCPLBTerakhir);
+// DATA BC TPB TERAKHIR
+$dataBCTPBTerakhir = $dbcon->query("SELECT *,SUBSTR(NOMOR_AJU,13,8) AS TGL_AJU 
+                                    FROM tpb_header ORDER BY ID DESC LIMIT 1");
+$resultBCTPBTerakhir = mysqli_fetch_array($dataBCTPBTerakhir);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Data Online App Name | Company </title>
@@ -147,70 +156,70 @@ if ($resultBCGB41 == NULL) {
         </div>
     </div>
     <div class="line-page"></div>
-
-    <div class="row" style="display: flex;justify-content: center;align-content: center;align-items: center;">
-        <div class="col-xl-6">
-            <div class="card border-0 bg-dark text-white mb-3 overflow-hidden">
-                <div class="card-body" style="padding: 28px;">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-8">
-                            <div class="mb-3 text-grey">
-                                <b>Barang IT Inventory</b>
-                                <span class="ml-2">
-                                    <i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Barang IT Inventory"></i>
-                                </span>
-                            </div>
-                            <div class="d-flex mb-1">
-                                <h2 class="mb-0" id="R_totalHP_awal"></h2>
-                                <div class="ml-auto mt-n1 mb-n1">
-                                    <div id="total-sales-sparkline"></div>
-                                </div>
-                            </div>
-                            <div class="mb-3 text-grey">
-                                <i class="fa fa-caret-up"></i> <span data-animation="number" data-value="33.21">0.00</span>% compare to last week
-                            </div>
-                            <hr class="bg-white-transparent-2" />
-                            <div class="row text-truncate">
-                                <div class="col-6">
-                                    <div class="f-s-12 text-grey">Total sales order</div>
-                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
-                                    <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-                                        <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="f-s-12 text-grey">Avg. sales per order</div>
-                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
-                                    <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-                                        <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="f-s-12 text-grey">Total sales order</div>
-                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="1568">0</div>
-                                    <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-                                        <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="f-s-12 text-grey">Avg. sales per order</div>
-                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1">$<span data-animation="number" data-value="41.20">0.00</span></div>
-                                    <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
-                                        <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-lg-4 align-items-center d-flex justify-content-center">
-                            <img src="../assets/img/svg/img-1.svg" height="150px" class="d-none d-lg-block" />
-                        </div>
+    <div class="row">
+        <!-- DASHBOARD PLB -->
+        <div class="col-sm-6">
+            <div class="card border-0 bg-white text-dark text-truncate mb-3">
+                <div class="card-body">
+                    <div class="mb-3 text-drak">
+                        <b class="mb-3">DOKUMEN PABEAN PLB</b>
+                        <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean PLB"></i></span>
                     </div>
+                    <div id="PLBBC"></div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-sm-6">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <a href="#" class="widget-card rounded mb-20px" data-id="widget">
+                        <div class="widget-card-cover rounded"></div>
+                        <div class="widget-card-content">
+                            <h6 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="fas fa-clock"></i> UPDATE DATA BC PLB TERAKHIR</b></h6>
+                            <div class="line-page-terakhir"></div>
+                            <div style="display: flex;justify-content: space-between;align-items: center;color: #2d353c;">
+                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                    <div style="font-size: 30px;">
+                                        <i class="fas fa-warehouse"></i>
+                                    </div>
+                                    <div style="margin-left: 10px;">
+                                        <div style="font-size: 17px;font-weight: 900;">
+                                            <?= $resultBCPLBTerakhir['PERUSAHAAN']; ?>
+                                        </div>
+                                        <div style="margin-top: -5px;font-size: 10px;">
+                                            <?= $resultBCPLBTerakhir['NOMOR_IJIN_TPB']; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                    <div style="font-size: 30px;">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <div style="margin-left: 10px;">
+                                        <div style="font-size: 17px;font-weight: 900;">
+                                            <?= $resultBCPLBTerakhir['NAMA_PENERIMA_BARANG']; ?>
+                                        </div>
+                                        <div style="margin-top: -5px;font-size: 10px;">
+                                            <?= $resultBCPLBTerakhir['NOMOR_IJIN_TPB_PENERIMA']; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-card-content bottom">
+                            <?php
+                            $TGLTPLB = $resultBCPLBTerakhir['TGL_AJU'];
+                            $TGLTPLBY = substr($TGLTPLB, 0, 4);
+                            $TGLTPLBM = substr($TGLTPLB, 4, 2);
+                            $TGLTPLBD =  substr($TGLTPLB, 6, 2);
+
+                            $TGLAJUTPLB = $TGLTPLBY . '-' . $TGLTPLBM . '-' . $TGLTPLBD;
+                            ?>
+                            <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75">BC <?= $resultBCPLBTerakhir['KODE_DOKUMEN_PABEAN']; ?> - <?= $resultBCPLBTerakhir['JUMLAH_BARANG']; ?> Barang | <?= $resultBCPLBTerakhir['NOMOR_AJU']; ?> (<?= date_indo_s($TGLAJUTPLB, TRUE) ?>)</b>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-12">
                     <div class="card border-0 bg-dark text-white text-truncate mb-3">
                         <div class="card-body">
                             <div class="mb-3 text-grey">
@@ -289,7 +298,60 @@ if ($resultBCGB41 == NULL) {
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="#" class="widget-card rounded mb-20px" data-id="widget">
+                        <div class="widget-card-cover rounded"></div>
+                        <div class="widget-card-content">
+                            <h6 class="fs-12px text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75"><b><i class="fas fa-clock"></i> UPDATE DATA BC GB TERAKHIR</b></h6>
+                            <div class="line-page-terakhir"></div>
+                            <div style="display: flex;justify-content: space-between;align-items: center;color: #2d353c;">
+                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                    <div style="font-size: 30px;">
+                                        <i class="fas fa-warehouse"></i>
+                                    </div>
+                                    <div style="margin-left: 10px;">
+                                        <div style="font-size: 17px;font-weight: 900;">
+                                            <?= $resultBCTPBTerakhir['NAMA_PENGUSAHA']; ?>
+                                        </div>
+                                        <div style="margin-top: -5px;font-size: 10px;">
+                                            <?= $resultBCTPBTerakhir['NOMOR_IJIN_TPB']; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: flex-start;align-items: center;">
+                                    <div style="font-size: 30px;">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <div style="margin-left: 10px;">
+                                        <div style="font-size: 17px;font-weight: 900;">
+                                            <?= $resultBCTPBTerakhir['NAMA_PENERIMA_BARANG']; ?>
+                                        </div>
+                                        <div style="margin-top: -5px;font-size: 10px;">
+                                            <?= $resultBCTPBTerakhir['NOMOR_IJIN_TPB_PENERIMA']; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-card-content bottom">
+                            <?php
+                            $TGLTTPB = $resultBCTPBTerakhir['TGL_AJU'];
+                            $TGLTTPBY = substr($TGLTTPB, 0, 4);
+                            $TGLTTPBM = substr($TGLTTPB, 4, 2);
+                            $TGLTTPBD =  substr($TGLTTPB, 6, 2);
+
+                            $TGLAJUTTPB = $TGLTTPBY . '-' . $TGLTTPBM . '-' . $TGLTTPBD;
+                            ?>
+                            <b class="text-black text-opacity-75" data-id="widget-elm" data-light-class="fs-12px text-black text-opacity-75" data-dark-class="fs-12px text-white text-opacity-75">BC <?= $resultBCTPBTerakhir['KODE_DOKUMEN_PABEAN']; ?> - <?= $resultBCTPBTerakhir['JUMLAH_BARANG']; ?> Barang | <?= $resultBCTPBTerakhir['NOMOR_AJU']; ?> (<?= date_indo_s($TGLAJUTTPB, TRUE) ?>)</b>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-12">
                     <div class="card border-0 bg-dark text-white text-truncate mb-3">
                         <div class="card-body">
                             <div class="mb-3 text-grey">
@@ -365,9 +427,20 @@ if ($resultBCGB41 == NULL) {
                                     <div class="width-50 text-right pl-2 f-w-600"><span data-animation="number" data-value="<?= $resultBCGB41_show; ?>"></span></div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- DASHBOARD TPB -->
+        <div class="col-sm-6">
+            <div class="card border-0 bg-white text-dark text-truncate mb-3">
+                <div class="card-body">
+                    <div class="mb-3 text-drak">
+                        <b class="mb-3">DOKUMEN PABEAN PLB</b>
+                        <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean PLB"></i></span>
+                    </div>
+                    <div id="TPBBC"></div>
                 </div>
             </div>
         </div>
@@ -382,8 +455,122 @@ include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 ?>
+<script src="assets/highcharts/highcharts.js"></script>
+<script src="assets/highcharts/modules/exporting.js"></script>
+<script src="assets/highcharts/modules/export-data.js"></script>
+<script src="assets/highcharts/modules/accessibility.js"></script>
+<script type="text/javascript">
+    // PLB
+    Highcharts.chart('PLBBC', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Dashboard BC Pusat Logistik Berikat'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:,.0f} Data</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{
+                name: 'BC 2.7',
+                y: <?= $resultBCPLB27_show ?>,
+                sliced: true,
+                selected: true
+            }, {
+                name: '2.3',
+                y: <?= $resultBCPLB23_show ?>
+            }, {
+                name: 'BC 2.5',
+                y: <?= $resultBCPLB25_show ?>
+            }, {
+                name: 'BC 2.6.1',
+                y: <?= $resultBCPLB261_show ?>
+            }, {
+                name: 'BC 4.0',
+                y: <?= $resultBCPLB40_show ?>
+            }, {
+                name: 'BC 4.1',
+                y: <?= $resultBCPLB41_show ?>
+            }]
+        }]
+    });
 
-<script>
+    // TPB
+    Highcharts.chart('TPBBC', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Dashboard BC Gudang Berikat'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:,.0f} Data</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{
+                name: 'BC 2.7',
+                y: <?= $resultBCGB27_show ?>,
+                sliced: true,
+                selected: true
+            }, {
+                name: '2.3',
+                y: <?= $resultBCGB23_show ?>
+            }, {
+                name: 'BC 2.5',
+                y: <?= $resultBCGB25_show ?>
+            }, {
+                name: 'BC 2.6.1',
+                y: <?= $resultBCGB261_show ?>
+            }, {
+                name: 'BC 4.0',
+                y: <?= $resultBCGB40_show ?>
+            }, {
+                name: 'BC 4.1',
+                y: <?= $resultBCGB41_show ?>
+            }]
+        }]
+    });
     // HP Awal
     function Page_totalHP_awal() {
         var xhttp = new XMLHttpRequest();

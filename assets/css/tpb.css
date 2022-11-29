@@ -109,6 +109,13 @@
     box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
 }
 
+.line-page-terakhir {
+    height: 0.5px;
+    margin: 0px 0px 10px 0px;
+    background: #444e66;
+    box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
+}
+
 .line-page-table {
     height: 1.5px;
     margin: 0px 0px 0px 0px;
