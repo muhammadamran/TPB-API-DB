@@ -553,6 +553,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                     plb.ID_PENERIMA_BARANG AS ID_PENERIMA_BARANG_PLB,
                                                     plb.ALAMAT_PENERIMA_BARANG AS ALAMAT_PENERIMA_BARANG_PLB,
                                                     plb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_PLB,
+                                                    plb.KODE_VALUTA,
                                                     -- TPB
                                                     tpb.NOMOR_AJU AS NOMOR_AJU_GB,
                                                     tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_GB,
@@ -567,7 +568,6 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                     LEFT OUTER JOIN plb_barang AS brg ON plb.NOMOR_AJU=brg.NOMOR_AJU
                                                     LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                     WHERE plb.NOMOR_AJU='" . $_GET['AJU'] . "'
-                                                    GROUP BY brg.KODE_BARANG
                                                     ORDER BY brg.ID,brg.SERI_BARANG ASC");
                         if ($dataTable) : $no = 1;
                             foreach ($dataTable as $row) :
@@ -579,6 +579,12 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                     <td style="text-align: center;">x</td>
                                     <td style="text-align: center;"><?= $row['LITER']; ?></td>
                                     <td style="text-align: right;"><?= $row['TOTAL_CT_AKHIR']; ?> Ctn(s)</td>
+                                    <td style="text-align: center;">
+                                        <div style="display: flex;justify-content: space-evenly;align-items:center">
+                                            <font><?= $row['KODE_VALUTA']; ?></font>
+                                            <font><?= $row['CIF']; ?></font>
+                                        </div>
+                                    </td>
                                     <td style="text-align: center;">-</td>
                                     <td style="text-align: center;">-</td>
                                     <td style="text-align: right;"><?= $row['TOTAL_BOTOL_AKHIR']; ?> Btl(s)</td>
@@ -590,7 +596,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                             ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="10">
+                                <td colspan="11">
                                     <center>
                                         <div style="display: grid;">
                                             <i class="far fa-times-circle no-data"></i> Tidak ada data
@@ -611,6 +617,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                     plb.ID_PENERIMA_BARANG AS ID_PENERIMA_BARANG_PLB,
                                                     plb.ALAMAT_PENERIMA_BARANG AS ALAMAT_PENERIMA_BARANG_PLB,
                                                     plb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_PLB,
+                                                    plb.KODE_VALUTA AS KODE_NEGARA_PEMASOK_PLB,
                                                     -- TPB
                                                     tpb.NOMOR_AJU AS NOMOR_AJU_GB,
                                                     tpb.NAMA_PENERIMA_BARANG AS NAMA_PENERIMA_BARANG_GB,
@@ -631,7 +638,6 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                     LEFT OUTER JOIN plb_barang AS brg ON plb.NOMOR_AJU=brg.NOMOR_AJU
                                                     LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
                                                     WHERE plb.NOMOR_AJU='" . $_GET['AJU'] . "'
-                                                    GROUP BY brg.KODE_BARANG
                                                     ORDER BY brg.ID,brg.SERI_BARANG ASC");
                         $resultFooter = mysqli_fetch_array($dataFooter);
                         ?>
