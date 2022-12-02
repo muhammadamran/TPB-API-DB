@@ -20,6 +20,11 @@ if (isset($_POST["add_kuota"])) {
     if ($HasilCekValidasi != NULL) {
         echo "<script>window.location.href='adm_kuota.php?DataAlready=true';</script>";
     } else {
+
+        $DATAPER = $dbcon->query("SELECT ID,NAMA,NPWP FROM referensi_pengusaha WHERE ID='$CekNameNPWP'");
+        $RDATAPER = mysqli_fetch_array($DATAPER);
+        $NPWP = str_replace(['.', '-', ' '], ['', '', ''], $RDATAPER['NPWP']);
+
         $NameMitra              = $_POST['NameMitra'];
         $NameTahun              = $_POST['NameTahun'];
         // Golongan A
@@ -36,9 +41,9 @@ if (isset($_POST["add_kuota"])) {
         $NameKuotaLITER_C       = $_POST['NameKuotaLITER_C'];
 
         $query = $dbcon->query("INSERT INTO tbl_cust_quota
-                               (quota_id,tbb_nama,gol_a_car,gol_a_ltr,gol_b_car,gol_b_ltr,gol_c_car,gol_c_ltr,quota_year)
+                               (quota_id,tbb_nama,tbb_npwp,gol_a_car,gol_a_ltr,gol_b_car,gol_b_ltr,gol_c_car,gol_c_ltr,quota_year)
                                VALUES
-                               ('','$NameMitra','$NameKuotaCARTON_A','$NameKuotaLITER_A','$NameKuotaCARTON_B','$NameKuotaLITER_B','$NameKuotaCARTON_C','$NameKuotaLITER_C','$NameTahun')");
+                               ('','$NameMitra','$NPWP','$NameKuotaCARTON_A','$NameKuotaLITER_A','$NameKuotaCARTON_B','$NameKuotaLITER_B','$NameKuotaCARTON_C','$NameKuotaLITER_C','$NameTahun')");
 
         // FOR AKTIFITAS
         $me = $_SESSION['username'];
@@ -79,6 +84,13 @@ if (isset($_POST["NUpdateData"])) {
     // if ($HasilCekValidasi != NULL) {
     //     echo "<script>window.location.href='adm_kuota.php?DataAlready=true';</script>";
     // } else {
+
+    $cekID = $_POST['UpdateMitra'];
+
+    $DataCekValidasi = $dbcon->query("SELECT ID,NAMA,NPWP FROM referensi_pengusaha WHERE ID='$cekID'");
+    $HasilCekValidasi = mysqli_fetch_array($DataCekValidasi);
+    $NPWP = str_replace(['.', '-', ' '], ['', '', ''], $HasilCekValidasi['NPWP']);
+
     $IDUNIQ                   = $_POST['IDUNIQ'];
     $UpdateMitra              = $_POST['UpdateMitra'];
     $UpdateTahun              = $_POST['UpdateTahun'];
@@ -96,6 +108,7 @@ if (isset($_POST["NUpdateData"])) {
     $UpdateKuotaLITER_C       = $_POST['UpdateKuotaLITER_C'];
 
     $query = $dbcon->query("UPDATE tbl_cust_quota SET tbb_nama='$UpdateMitra',
+                                                          tbb_npwp='$NPWP',
                                                           gol_a_car='$UpdateKuotaCARTON_A',
                                                           gol_a_ltr='$UpdateKuotaLITER_A',
                                                           gol_b_car='$UpdateKuotaCARTON_B',
