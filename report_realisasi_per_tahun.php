@@ -982,8 +982,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_01_b_ltr; ?>"><?= decimal($ResultDataFor01_ltr_b['jml_01_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_01_c_crt; ?>"><?= decimal($ResultDataFor01_crt_c['jml_01_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_01_c_ltr; ?>"><?= decimal($ResultDataFor01_ltr_c['jml_01_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_01_crt; ?>"><?= $Bln_jml_01_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_01_ltr; ?>"><?= $Bln_jml_01_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_01_crt; ?>"><?= decimal($Bln_jml_01_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_01_ltr; ?>"><?= decimal($Bln_jml_01_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>2. </td>
@@ -1047,8 +1047,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_02_b_ltr; ?>"><?= decimal($ResultDataFor02_ltr_b['jml_02_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_02_c_crt; ?>"><?= decimal($ResultDataFor02_crt_c['jml_02_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_02_c_ltr; ?>"><?= decimal($ResultDataFor02_ltr_c['jml_02_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_02_crt; ?>"><?= $Bln_jml_02_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_02_ltr; ?>"><?= $Bln_jml_02_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_02_crt; ?>"><?= decimal($Bln_jml_02_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_02_ltr; ?>"><?= decimal($Bln_jml_02_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>3. </td>
@@ -1112,8 +1112,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_03_b_ltr; ?>"><?= decimal($ResultDataFor03_ltr_b['jml_03_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_03_c_crt; ?>"><?= decimal($ResultDataFor03_crt_c['jml_03_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_03_c_ltr; ?>"><?= decimal($ResultDataFor03_ltr_c['jml_03_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_03_crt; ?>"><?= $Bln_jml_03_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_03_ltr; ?>"><?= $Bln_jml_03_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_03_crt; ?>"><?= decimal($Bln_jml_03_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_03_ltr; ?>"><?= decimal($Bln_jml_03_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>4. </td>
@@ -1177,8 +1177,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_04_b_ltr; ?>"><?= decimal($ResultDataFor04_ltr_b['jml_04_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_04_c_crt; ?>"><?= decimal($ResultDataFor04_crt_c['jml_04_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_04_c_ltr; ?>"><?= decimal($ResultDataFor04_ltr_c['jml_04_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_04_crt; ?>"><?= $Bln_jml_04_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_04_ltr; ?>"><?= $Bln_jml_04_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_04_crt; ?>"><?= decimal($Bln_jml_04_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_04_ltr; ?>"><?= decimal($Bln_jml_04_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>5. </td>
@@ -1242,8 +1242,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_05_b_ltr; ?>"><?= decimal($ResultDataFor05_ltr_b['jml_05_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_05_c_crt; ?>"><?= decimal($ResultDataFor05_crt_c['jml_05_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_05_c_ltr; ?>"><?= decimal($ResultDataFor05_ltr_c['jml_05_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_05_crt; ?>"><?= $Bln_jml_05_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_05_ltr; ?>"><?= $Bln_jml_05_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_05_crt; ?>"><?= decimal($Bln_jml_05_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_05_ltr; ?>"><?= decimal($Bln_jml_05_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>6. </td>
@@ -1307,8 +1307,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_06_b_ltr; ?>"><?= decimal($ResultDataFor06_ltr_b['jml_06_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_06_c_crt; ?>"><?= decimal($ResultDataFor06_crt_c['jml_06_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_06_c_ltr; ?>"><?= decimal($ResultDataFor06_ltr_c['jml_06_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_06_crt; ?>"><?= $Bln_jml_06_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_06_ltr; ?>"><?= $Bln_jml_06_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_06_crt; ?>"><?= decimal($Bln_jml_06_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_06_ltr; ?>"><?= decimal($Bln_jml_06_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>7. </td>
@@ -1372,8 +1372,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_07_b_crt; ?>"><?= decimal($ResultDataFor07_ltr_b['jml_07_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_07_c_crt; ?>"><?= decimal($ResultDataFor07_crt_c['jml_07_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_07_c_crt; ?>"><?= decimal($ResultDataFor07_ltr_c['jml_07_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_07_crt; ?>"><?= $Bln_jml_07_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_07_ltr; ?>"><?= $Bln_jml_07_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_07_crt; ?>"><?= decimal($Bln_jml_07_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_07_ltr; ?>"><?= decimal($Bln_jml_07_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>8. </td>
@@ -1437,8 +1437,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_08_b_ltr; ?>"><?= decimal($ResultDataFor08_ltr_b['jml_08_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_08_c_crt; ?>"><?= decimal($ResultDataFor08_crt_c['jml_08_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_08_c_ltr; ?>"><?= decimal($ResultDataFor08_ltr_c['jml_08_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_08_crt; ?>"><?= $Bln_jml_08_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_08_ltr; ?>"><?= $Bln_jml_08_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_08_crt; ?>"><?= decimal($Bln_jml_08_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_08_ltr; ?>"><?= decimal($Bln_jml_08_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>9. </td>
@@ -1502,8 +1502,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_09_b_ltr; ?>"><?= decimal($ResultDataFor09_ltr_b['jml_09_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_09_c_crt; ?>"><?= decimal($ResultDataFor09_crt_c['jml_09_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_09_c_ltr; ?>"><?= decimal($ResultDataFor09_ltr_c['jml_09_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_09_crt; ?>"><?= $Bln_jml_09_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_09_ltr; ?>"><?= $Bln_jml_09_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_09_crt; ?>"><?= decimal($Bln_jml_09_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_09_ltr; ?>"><?= decimal($Bln_jml_09_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>10. </td>
@@ -1567,8 +1567,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_10_b_ltr; ?>"><?= decimal($ResultDataFor10_ltr_b['jml_10_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_10_c_crt; ?>"><?= decimal($ResultDataFor10_crt_c['jml_10_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_10_c_ltr; ?>"><?= decimal($ResultDataFor10_ltr_c['jml_10_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_10_crt; ?>"><?= $Bln_jml_10_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_10_ltr; ?>"><?= $Bln_jml_10_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_10_crt; ?>"><?= decimal($Bln_jml_10_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_10_ltr; ?>"><?= decimal($Bln_jml_10_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>11. </td>
@@ -1632,8 +1632,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_11_b_ltr; ?>"><?= decimal($ResultDataFor11_ltr_b['jml_11_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_11_c_crt; ?>"><?= decimal($ResultDataFor11_crt_c['jml_11_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_11_c_ltr; ?>"><?= decimal($ResultDataFor11_ltr_c['jml_11_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_11_crt; ?>"><?= $Bln_jml_11_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_11_ltr; ?>"><?= $Bln_jml_11_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_11_crt; ?>"><?= decimal($Bln_jml_11_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_11_ltr; ?>"><?= decimal($Bln_jml_11_lrt) ?></td>
 										</tr>
 										<tr>
 											<td>12. </td>
@@ -1697,8 +1697,8 @@ if (isset($_GET['find_TahunAju'])) {
 											<td style="text-align: center;background: <?= $bln_12_b_ltr; ?>"><?= decimal($ResultDataFor12_ltr_b['jml_12_ltr_b']) ?></td>
 											<td style="text-align: center;background: <?= $bln_12_c_crt; ?>"><?= decimal($ResultDataFor12_crt_c['jml_12_crt_c']) ?></td>
 											<td style="text-align: center;background: <?= $bln_12_c_ltr; ?>"><?= decimal($ResultDataFor12_ltr_c['jml_12_ltr_c']) ?></td>
-											<td style="text-align: center;background: <?= $bln_12_crt; ?>"><?= $Bln_jml_12_crt ?></td>
-											<td style="text-align: center;background: <?= $bln_12_ltr; ?>"><?= $Bln_jml_12_lrt ?></td>
+											<td style="text-align: center;background: <?= $bln_12_crt; ?>"><?= decimal($Bln_jml_12_crt) ?></td>
+											<td style="text-align: center;background: <?= $bln_12_ltr; ?>"><?= decimal($Bln_jml_12_lrt) ?></td>
 										</tr>
 									</tbody>
 									<tfoot>
@@ -1872,54 +1872,54 @@ if (isset($_GET['find_TahunAju'])) {
 											// $per_crt_total = $jml_crt_gol_total / $JmlCarton * 100;
 											// $per_ltr_total = $jml_ltr_gol_total / $JmlLiter * 100;
 											if ($fC_a == 0) {
-												$per_crt_a = $jml_crt_gol_a;
+												$per_crt_a = 0;
 											} else {
 												$per_crt_a = $jml_crt_gol_a / $fC_a * 100;
 											}
 											if ($fL_a == 0) {
-												$per_ltr_a = $jml_ltr_gol_a;
+												$per_ltr_a = 0;
 											} else {
 												$per_ltr_a = $jml_ltr_gol_a / $fL_a * 100;
 											}
 											if ($fC_b == 0) {
-												$per_crt_b = $jml_crt_gol_b;
+												$per_crt_b = 0;
 											} else {
 												$per_crt_b = $jml_crt_gol_b / $fC_b * 100;
 											}
 											if ($fL_b == 0) {
-												$per_ltr_b = $jml_ltr_gol_b;
+												$per_ltr_b = 0;
 											} else {
 												$per_ltr_b = $jml_ltr_gol_b / $fL_b * 100;
 											}
 											if ($fC_c == 0) {
-												$per_crt_c = $jml_crt_gol_c;
+												$per_crt_c = 0;
 											} else {
 												$per_crt_c = $jml_crt_gol_c / $fC_c * 100;
 											}
 											if ($fL_c == 0) {
-												$per_ltr_c = $jml_ltr_gol_c;
+												$per_ltr_c = 0;
 											} else {
 												$per_ltr_c = $jml_ltr_gol_c / $fL_c * 100;
 											}
 											if ($JmlCarton == 0) {
-												$per_crt_total = $jml_crt_gol_total;
+												$per_crt_total = 0;
 											} else {
 												$per_crt_total = $jml_crt_gol_total / $JmlCarton * 100;
 											}
-											if ($JmlCarton == 0) {
-												$per_ltr_total = $jml_ltr_gol_total;
+											if ($JmlLiter == 0) {
+												$per_ltr_total = 0;
 											} else {
 												$per_ltr_total = $jml_ltr_gol_total / $JmlLiter * 100;
 											}
 											?>
-											<th style="text-align: center;background: <?= $bg_per_crt_a; ?>;"><?= round($per_crt_a, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_ltr_a; ?>;"><?= round($per_ltr_a, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_crt_b; ?>;"><?= round($per_crt_b, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_ltr_b; ?>;"><?= round($per_ltr_b, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_crt_c; ?>;"><?= round($per_crt_c, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_ltr_c; ?>;"><?= round($per_ltr_c, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_crt_total; ?>;"><?= round($per_crt_total, 0, PHP_ROUND_HALF_UP) ?>%</th>
-											<th style="text-align: center;background: <?= $bg_per_ltr_total; ?>;"><?= round($per_ltr_total, 0, PHP_ROUND_HALF_UP) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_crt_a; ?>;"><?= round($per_crt_a, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_ltr_a; ?>;"><?= round($per_ltr_a, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_crt_b; ?>;"><?= round($per_crt_b, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_ltr_b; ?>;"><?= round($per_ltr_b, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_crt_c; ?>;"><?= round($per_crt_c, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_ltr_c; ?>;"><?= round($per_ltr_c, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_crt_total; ?>;"><?= round($per_crt_total, 2) ?>%</th>
+											<th style="text-align: center;background: <?= $bg_per_ltr_total; ?>;"><?= round($per_ltr_total, 2) ?>%</th>
 										</tr>
 									</tfoot>
 								</table>
