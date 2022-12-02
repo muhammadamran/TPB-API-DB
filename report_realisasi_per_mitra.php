@@ -173,9 +173,6 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 						<div class="title-laporan" style="justify-content: center;text-align: center;align-items: center;display: grid;">
 							<font style="font-size: 30px;text-transform: uppercase;font-weight: 900;">Laporan Realisasi Mitra Tahun <?= $WGetTahunAju ?></font>
 							<div style="display: flex;justify-content: center;align-items: center;">
-								<!-- <div>
-									<font style="font-size: 30px;text-transform: uppercase;font-weight: 400;">Mitra TBB</font>
-								</div> -->
 								<div style="display: grid;justify-items: baseline;align-content: center;margin-left: 10px;">
 									<div>
 										<font style="font-size: 25px;text-transform: uppercase;font-weight: 400;">Mitra TBB: <?= $WGetNameMitra ?></font>
@@ -230,37 +227,37 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 									<th style="text-align: center;">KUOTA IMPOR</th>
 									<!-- gol_a_car -->
 									<?php if ($row['gol_a_car'] == NULL) { ?>
-										<th style="text-align: center;background: #dadddf;"><?= decimal($row['gol_a_car']) ?></th>
+										<th style="text-align: center;background: transparent;"><?= decimal($row['gol_a_car']) ?></th>
 									<?php } else { ?>
 										<th style="text-align: center;"><?= decimal($row['gol_a_car']) ?></th>
 									<?php } ?>
 									<!-- gol_a_ltr -->
 									<?php if ($row['gol_a_ltr'] == NULL) { ?>
-										<th style="text-align: center;background: #dadddf;"><?= decimal($row['gol_a_ltr']) ?></th>
+										<th style="text-align: center;background: transparent;"><?= decimal($row['gol_a_ltr']) ?></th>
 									<?php } else { ?>
 										<th style="text-align: center;"><?= decimal($row['gol_a_ltr']) ?></th>
 									<?php } ?>
 									<!-- gol_b_car -->
 									<?php if ($row['gol_b_car'] == NULL) { ?>
-										<th style="text-align: center;background: #dadddf;"><?= decimal($row['gol_b_car']) ?></th>
+										<th style="text-align: center;background: transparent;"><?= decimal($row['gol_b_car']) ?></th>
 									<?php } else { ?>
 										<th style="text-align: center;"><?= decimal($row['gol_b_car']) ?></th>
 									<?php } ?>
 									<!-- gol_b_ltr -->
 									<?php if ($row['gol_b_ltr'] == NULL) { ?>
-										<th style="text-align: center;background: #dadddf;"><?= decimal($row['gol_b_ltr']) ?></th>
+										<th style="text-align: center;background: transparent;"><?= decimal($row['gol_b_ltr']) ?></th>
 									<?php } else { ?>
 										<th style="text-align: center;"><?= decimal($row['gol_b_ltr']) ?></th>
 									<?php } ?>
 									<!-- gol_c_car -->
 									<?php if ($row['gol_c_car'] == NULL) { ?>
-										<th style="text-align: center;background: #dadddf;"><?= decimal($row['gol_c_car']) ?></th>
+										<th style="text-align: center;background: transparent;"><?= decimal($row['gol_c_car']) ?></th>
 									<?php } else { ?>
 										<th style="text-align: center;"><?= decimal($row['gol_c_car']) ?></th>
 									<?php } ?>
 									<!-- gol_c_ltr -->
 									<?php if ($row['gol_c_ltr'] == NULL) { ?>
-										<th style="text-align: center;background: #dadddf;"><?= decimal($row['gol_c_ltr']) ?></th>
+										<th style="text-align: center;background: transparent;"><?= decimal($row['gol_c_ltr']) ?></th>
 									<?php } else { ?>
 										<th style="text-align: center;"><?= decimal($row['gol_c_ltr']) ?></th>
 									<?php } ?>
@@ -273,12 +270,12 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 									<?php if ($JmlCarton == NULL || $JmlCarton == 0) { ?>
 										<th style="text-align: center;background: #dadddf;">0</th>
 									<?php } else { ?>
-										<th style="text-align: center;"><?= decimal($JmlCarton) ?></th>
+										<th style="text-align: center;background: #dadddf;"><?= decimal($JmlCarton) ?></th>
 									<?php } ?>
 									<?php if ($JmlLiter == NULL || $JmlLiter == 0) { ?>
 										<th style="text-align: center;background: #dadddf;">0</th>
 									<?php } else { ?>
-										<th style="text-align: center;"><?= decimal($JmlLiter) ?></th>
+										<th style="text-align: center;background: #dadddf;"><?= decimal($JmlLiter) ?></th>
 									<?php } ?>
 								</tr>
 							</thead>
@@ -1775,7 +1772,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 							</tbody>
 							<tfoot>
 								<tr>
-									<th style="background-color: #dadddf;"></th>
+									<th style="background-color: transparent;"></th>
 									<th>TOTAL REALISASI</th>
 									<?php
 									// GOL A
@@ -1783,17 +1780,17 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 										$ResultDataFor05_crt_a['jml_05_crt_a'] + $ResultDataFor06_crt_a['jml_06_crt_a'] + $ResultDataFor07_crt_a['jml_07_crt_a'] + $ResultDataFor08_crt_a['jml_08_crt_a'] +
 										$ResultDataFor09_crt_a['jml_09_crt_a'] + $ResultDataFor10_crt_a['jml_10_crt_a'] + $ResultDataFor11_crt_a['jml_11_crt_a'] + $ResultDataFor12_crt_a['jml_12_crt_a'];
 									if ($jml_crt_gol_a == NULL || $jml_crt_gol_a === 0) {
-										$bg_crt_a = '#dadddf';
+										$bg_crt_a = 'transparent';
 									} else {
-										$bg_crt_a = '#dadddf';
+										$bg_crt_a = 'transparent';
 									}
 									$jml_ltr_gol_a = $ResultDataFor01_ltr_a['jml_01_ltr_a'] + $ResultDataFor02_ltr_a['jml_02_ltr_a'] + $ResultDataFor03_ltr_a['jml_03_ltr_a'] + $ResultDataFor04_ltr_a['jml_04_ltr_a'] +
 										$ResultDataFor05_ltr_a['jml_05_ltr_a'] + $ResultDataFor06_ltr_a['jml_06_ltr_a'] + $ResultDataFor07_ltr_a['jml_07_ltr_a'] + $ResultDataFor08_ltr_a['jml_08_ltr_a'] +
 										$ResultDataFor09_ltr_a['jml_09_ltr_a'] + $ResultDataFor10_ltr_a['jml_10_ltr_a'] + $ResultDataFor11_ltr_a['jml_11_ltr_a'] + $ResultDataFor12_ltr_a['jml_12_ltr_a'];
 									if ($jml_ltr_gol_a == NULL || $jml_ltr_gol_a === 0) {
-										$bg_ltr_a = '#dadddf';
+										$bg_ltr_a = 'transparent';
 									} else {
-										$bg_ltr_a = '#dadddf';
+										$bg_ltr_a = 'transparent';
 									}
 									// End GOL A
 
@@ -1802,17 +1799,17 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 										$ResultDataFor05_crt_b['jml_05_crt_b'] + $ResultDataFor06_crt_b['jml_06_crt_b'] + $ResultDataFor07_crt_b['jml_07_crt_b'] + $ResultDataFor08_crt_b['jml_08_crt_b'] +
 										$ResultDataFor09_crt_b['jml_09_crt_b'] + $ResultDataFor10_crt_b['jml_10_crt_b'] + $ResultDataFor11_crt_b['jml_11_crt_b'] + $ResultDataFor12_crt_b['jml_12_crt_b'];
 									if ($jml_crt_gol_b == NULL || $jml_crt_gol_b == 0) {
-										$bg_crt_b = '#dadddf';
+										$bg_crt_b = 'transparent';
 									} else {
-										$bg_crt_b = '#dadddf';
+										$bg_crt_b = 'transparent';
 									}
 									$jml_ltr_gol_b = $ResultDataFor01_ltr_b['jml_01_ltr_b'] + $ResultDataFor02_ltr_b['jml_02_ltr_b'] + $ResultDataFor03_ltr_b['jml_03_ltr_b'] + $ResultDataFor04_ltr_b['jml_04_ltr_b'] +
 										$ResultDataFor05_ltr_b['jml_05_ltr_b'] + $ResultDataFor06_ltr_b['jml_06_ltr_b'] + $ResultDataFor07_ltr_b['jml_07_ltr_b'] + $ResultDataFor08_ltr_b['jml_08_ltr_b'] +
 										$ResultDataFor09_ltr_b['jml_09_ltr_b'] + $ResultDataFor10_ltr_b['jml_10_ltr_b'] + $ResultDataFor11_ltr_b['jml_11_ltr_b'] + $ResultDataFor12_ltr_b['jml_12_ltr_b'];
 									if ($jml_ltr_gol_b == NULL || $jml_ltr_gol_b == 0) {
-										$bg_ltr_b = '#dadddf';
+										$bg_ltr_b = 'transparent';
 									} else {
-										$bg_ltr_b = '#dadddf';
+										$bg_ltr_b = 'transparent';
 									}
 									// End GOL B
 
@@ -1821,17 +1818,17 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 										$ResultDataFor05_crt_c['jml_05_crt_c'] + $ResultDataFor06_crt_c['jml_06_crt_c'] + $ResultDataFor07_crt_c['jml_07_crt_c'] + $ResultDataFor08_crt_c['jml_08_crt_c'] +
 										$ResultDataFor09_crt_c['jml_09_crt_c'] + $ResultDataFor10_crt_c['jml_10_crt_c'] + $ResultDataFor11_crt_c['jml_11_crt_c'] + $ResultDataFor12_crt_c['jml_12_crt_c'];
 									if ($jml_crt_gol_c == NULL || $jml_crt_gol_c == 0) {
-										$bg_crt_c = '#dadddf';
+										$bg_crt_c = 'transparent';
 									} else {
-										$bg_crt_c = '#dadddf';
+										$bg_crt_c = 'transparent';
 									}
 									$jml_ltr_gol_c = $ResultDataFor01_ltr_c['jml_01_ltr_c'] + $ResultDataFor02_ltr_c['jml_02_ltr_c'] + $ResultDataFor03_ltr_c['jml_03_ltr_c'] + $ResultDataFor04_ltr_c['jml_04_ltr_c'] +
 										$ResultDataFor05_ltr_c['jml_05_ltr_c'] + $ResultDataFor06_ltr_c['jml_06_ltr_c'] + $ResultDataFor07_ltr_c['jml_07_ltr_c'] + $ResultDataFor08_ltr_c['jml_08_ltr_c'] +
 										$ResultDataFor09_ltr_c['jml_09_ltr_c'] + $ResultDataFor10_ltr_c['jml_10_ltr_c'] + $ResultDataFor11_ltr_c['jml_11_ltr_c'] + $ResultDataFor12_ltr_c['jml_12_ltr_c'];
 									if ($jml_ltr_gol_c == NULL || $jml_ltr_gol_c == 0) {
-										$bg_ltr_c = '#dadddf';
+										$bg_ltr_c = 'transparent';
 									} else {
-										$bg_ltr_c = '#dadddf';
+										$bg_ltr_c = 'transparent';
 									}
 									// End GOL C
 
@@ -1839,16 +1836,16 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 									// CARTON
 									$jml_crt_gol_total = $jml_crt_gol_a + $jml_crt_gol_b + $jml_crt_gol_c;
 									if ($jml_crt_gol_total == NULL || $jml_crt_gol_total == 0) {
-										$bg_crt_total = '#dadddf';
+										$bg_crt_total = 'transparent';
 									} else {
-										$bg_crt_total = '#dadddf';
+										$bg_crt_total = 'transparent';
 									}
 									// LITER
 									$jml_ltr_gol_total = $jml_ltr_gol_a + $jml_ltr_gol_b + $jml_ltr_gol_c;
 									if ($jml_ltr_gol_total == NULL || $jml_ltr_gol_total == 0) {
-										$bg_ltr_total = '#dadddf';
+										$bg_ltr_total = 'transparent';
 									} else {
-										$bg_ltr_total = '#dadddf';
+										$bg_ltr_total = 'transparent';
 									}
 									// End TOTAL
 									?>
@@ -1862,7 +1859,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 									<th style="text-align: center;background: <?= $bg_ltr_total; ?>"><?= decimal($jml_ltr_gol_total) ?></th>
 								</tr>
 								<tr>
-									<th style="background-color: #dadddf;"></th>
+									<th style="background-color: transparent;"></th>
 									<th>TOTAL SISA KUOTA</th>
 									<?php
 									$fC_a = $row['gol_a_car'];
@@ -1874,51 +1871,51 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 
 									$sisa_crt_a = $fC_a - $jml_crt_gol_a;
 									if ($sisa_crt_a == NULL || $sisa_crt_a == 0) {
-										$bg_sisa_crt_a = '#dadddf';
+										$bg_sisa_crt_a = 'transparent';
 									} else {
-										$bg_sisa_crt_a = '#dadddf';
+										$bg_sisa_crt_a = 'transparent';
 									}
 									$sisa_ltr_a = $fL_a - $jml_ltr_gol_a;
 									if ($sisa_ltr_a == NULL || $sisa_ltr_a == 0) {
-										$bg_sisa_ltr_a = '#dadddf';
+										$bg_sisa_ltr_a = 'transparent';
 									} else {
-										$bg_sisa_ltr_a = '#dadddf';
+										$bg_sisa_ltr_a = 'transparent';
 									}
 									$sisa_crt_b = $fC_b - $jml_crt_gol_b;
 									if ($sisa_crt_b == NULL || $sisa_crt_b == 0) {
-										$bg_sisa_crt_b = '#dadddf';
+										$bg_sisa_crt_b = 'transparent';
 									} else {
-										$bg_sisa_crt_b = '#dadddf';
+										$bg_sisa_crt_b = 'transparent';
 									}
 									$sisa_ltr_b = $fL_b - $jml_ltr_gol_b;
 									if ($sisa_ltr_b == NULL || $sisa_ltr_b == 0) {
-										$bg_sisa_ltr_b = '#dadddf';
+										$bg_sisa_ltr_b = 'transparent';
 									} else {
-										$bg_sisa_ltr_b = '#dadddf';
+										$bg_sisa_ltr_b = 'transparent';
 									}
 									$sisa_crt_c = $fC_c - $jml_crt_gol_c;
 									if ($sisa_crt_c == NULL || $sisa_crt_c == 0) {
-										$bg_sisa_crt_c = '#dadddf';
+										$bg_sisa_crt_c = 'transparent';
 									} else {
-										$bg_sisa_crt_c = '#dadddf';
+										$bg_sisa_crt_c = 'transparent';
 									}
 									$sisa_ltr_c = $fL_c - $jml_ltr_gol_c;
 									if ($sisa_ltr_c == NULL || $sisa_ltr_c == 0) {
-										$bg_sisa_ltr_c = '#dadddf';
+										$bg_sisa_ltr_c = 'transparent';
 									} else {
-										$bg_sisa_ltr_c = '#dadddf';
+										$bg_sisa_ltr_c = 'transparent';
 									}
 									$sisa_crt_total = $JmlCarton - $jml_crt_gol_total;
 									if ($sisa_crt_total == NULL || $sisa_crt_total == 0) {
-										$bg_sisa_crt_total = '#dadddf';
+										$bg_sisa_crt_total = 'transparent';
 									} else {
-										$bg_sisa_crt_total = '#dadddf';
+										$bg_sisa_crt_total = 'transparent';
 									}
 									$sisa_ltr_total = $JmlLiter - $jml_ltr_gol_total;
 									if ($sisa_ltr_total == NULL || $sisa_ltr_total == 0) {
-										$bg_sisa_ltr_total = '#dadddf';
+										$bg_sisa_ltr_total = 'transparent';
 									} else {
-										$bg_sisa_ltr_total = '#dadddf';
+										$bg_sisa_ltr_total = 'transparent';
 									}
 									?>
 									<th style="text-align: center;background: <?= $bg_sisa_crt_a ?>;"><?= decimal($sisa_crt_a) ?></th>
@@ -1931,7 +1928,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 									<th style="text-align: center;background: <?= $bg_sisa_ltr_total ?>;"><?= decimal($sisa_ltr_total) ?></th>
 								</tr>
 								<tr>
-									<th style="background-color: #dadddf;"></th>
+									<th style="background-color: transparent;"></th>
 									<th>%</th>
 									<?php
 									if ($fC_a == 0) {
