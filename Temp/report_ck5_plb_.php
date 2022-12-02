@@ -17,7 +17,7 @@ include "include/cssForm.php";
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
-                <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
+                <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">CK5</a></li>
                 <li class="breadcrumb-item active">PLB Records</li>
             </ol>

@@ -40,6 +40,12 @@ $rowFirstCon = mysqli_fetch_array($FirstCon);
 $WGetNameMitra = $rowFirstCon['NAMA'];
 // End Get
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+	<title>Laporan Realisasi Mitra App Name | Company </title>
+<?php } else { ?>
+	<title>Laporan Realisasi Mitra - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+		<?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
 	<div class="page-title-css">
@@ -50,7 +56,7 @@ $WGetNameMitra = $rowFirstCon['NAMA'];
 			</h1>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.php">Index</a></li>
-				<li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
+				<li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
 				<li class="breadcrumb-item"><a href="report_realisasi.php">Laporan Realisasi</a></li>
 				<li class="breadcrumb-item active">Laporan Realisasi Mitra <?= $WGetNameMitra ?> Tahun <?= $WGetTahunAju ?></li>
 			</ol>

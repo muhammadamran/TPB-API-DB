@@ -1,13 +1,13 @@
-+9*<?php
-    include "include/connection.php";
-    include "include/restrict.php";
-    include "include/head.php";
-    include "include/alert.php";
-    include "include/top-header.php";
-    include "include/top-sidebar.php";
-    // include "include/sidebar.php";
-    include "include/cssDatatables.php";
-    ?>
+<?php
+include "include/connection.php";
+include "include/restrict.php";
+include "include/head.php";
+include "include/alert.php";
+include "include/top-header.php";
+include "include/top-sidebar.php";
+// include "include/sidebar.php";
+include "include/cssDatatables.php";
+?>
 <!-- Query For Mitra -->
 <?php
 // Total Mitra
@@ -33,12 +33,6 @@ if ($resultRoleModules['da_two'] == 'none') {
     $TitleDashboardTwo = 'show';
 }
 ?>
-<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>Dashboard App Name | Company </title>
-<?php } else { ?>
-    <title>Dashboard - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
-        <?= $resultHeadSetting['title'] ?></title>
-<?php } ?>
 <!-- begin #content -->
 <!-- <div id="content" class="content"> -->
 <div id="content" class="nav-top-content">
@@ -46,17 +40,14 @@ if ($resultRoleModules['da_two'] == 'none') {
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-chart-pie icon-page"></i>
-                <font class="text-page">Dashboard</font>
+                <font class="text-page">Dashboard - Summary</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Perusahaan: <?= $resultSetting['company']  ?></li>
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
-                <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('H:i a') ?></font>
-                </span>
-            </button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></font></span></button>
         </div>
     </div>
     <div class="line-page"></div>
@@ -165,24 +156,21 @@ if ($resultRoleModules['da_two'] == 'none') {
                                                 </div>
                                             </div>
                                             <div class="mb-3 text-grey">
-                                                <i class="fa fa-clock"></i> Sign In:
-                                                <?= date_indo(SUBSTR($resultSetDevice['log_date'], 0, 10), TRUE); ?>
+                                                <i class="fa fa-clock"></i> Sign In: <?= date_indo(SUBSTR($resultSetDevice['log_date'], 0, 10), TRUE); ?>
                                             </div>
                                             <hr class="bg-white-transparent-2" />
                                             <div class="row text-truncate">
                                                 <!-- begin col-6 -->
                                                 <div class="col-6">
                                                     <div class="f-s-12 text-grey">IP Address:</div>
-                                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="<?= $resultSetDevice['log_ip']; ?>">
-                                                        <?= $resultSetDevice['log_ip']; ?></div>
+                                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1" data-animation="number" data-value="<?= $resultSetDevice['log_ip']; ?>"><?= $resultSetDevice['log_ip']; ?></div>
                                                     <!-- <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                                             <div class="progress-bar progress-bar-striped rounded-right bg-teal" data-animation="width" data-value="55%" style="width: 0%"></div>
                                                         </div> -->
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="f-s-12 text-grey">Browser:</div>
-                                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="<?= $resultSetDevice['log_browser']; ?>"><?= $resultSetDevice['log_browser']; ?></span>
-                                                    </div>
+                                                    <div class="f-s-18 m-b-5 f-w-600 p-b-1"><span data-animation="number" data-value="<?= $resultSetDevice['log_browser']; ?>"><?= $resultSetDevice['log_browser']; ?></span></div>
                                                     <!-- <div class="progress progress-xs rounded-lg bg-dark-darker m-b-5">
                                                             <div class="progress-bar progress-bar-striped rounded-right" data-animation="width" data-value="55%" style="width: 0%"></div>
                                                         </div> -->
@@ -215,8 +203,7 @@ if ($resultRoleModules['da_two'] == 'none') {
                             <div class="panel panel-inverse" id="data-mitra-chart">
                                 <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="fas fa-chart-line"></i> Data Mitra TPBERP
-                                        <?= $resultSetting['company']  ?></h4>
+                                    <h4 class="panel-title"><i class="fas fa-chart-line"></i> Data Mitra TPBERP <?= $resultSetting['company']  ?></h4>
                                     <?php include "include/panel-row.php"; ?>
                                 </div>
                                 <div class="panel-body">
@@ -235,9 +222,9 @@ if ($resultRoleModules['da_two'] == 'none') {
                         <!-- Nama Pengangkut -->
                         <div class="col-xl-8">
                             <div class="panel panel-inverse">
+                                <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="far fa-chart-bar"></i> Pengangkut
-                                        <?= $resultSetting['company']  ?></h4>
+                                    <h4 class="panel-title"><i class="far fa-chart-bar"></i> Pengangkut <?= $resultSetting['company']  ?></h4>
                                     <?php include "include/panel-row.php"; ?>
                                 </div>
                                 <div class="panel-body">
@@ -247,46 +234,46 @@ if ($resultRoleModules['da_two'] == 'none') {
                         </div>
                         <!-- End Nama Pengangkut -->
                         <!-- Valuta -->
-                        <!-- <div class="col-xl-4">
+                        <div class="col-xl-4">
                             <div class="panel panel-inverse">
+                                <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="fas fa-chart-pie"></i> Valuta
-                                        <?= $resultSetting['company']  ?></h4>
+                                    <h4 class="panel-title"><i class="fas fa-chart-pie"></i> Valuta <?= $resultSetting['company']  ?></h4>
                                     <?php include "include/panel-row.php"; ?>
                                 </div>
                                 <div class="panel-body">
                                     <div id="chart_valuta_pie"></div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- End Valuta -->
                         <!-- Kantor Tujuan -->
-                        <!-- <div class="col-xl-4">
+                        <div class="col-xl-4">
                             <div class="panel panel-inverse">
+                                <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="far fa-chart-bar"></i> Kantor Tujuan
-                                        <?= $resultSetting['company']  ?></h4>
+                                    <h4 class="panel-title"><i class="far fa-chart-bar"></i> Kantor Tujuan <?= $resultSetting['company']  ?></h4>
                                     <?php include "include/panel-row.php"; ?>
                                 </div>
                                 <div class="panel-body">
                                     <div id="chart_kantor_tujuan_pie"></div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- End Kantor Tujuan -->
                         <!-- Jumlah Netto Per Tahun Aju -->
-                        <!-- <div class="col-xl-4">
+                        <div class="col-xl-4">
                             <div class="panel panel-inverse">
+                                <!-- begin panel-heading -->
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="far fa-chart-bar"></i> Jumlah Netto Per Tahun Aju
-                                        <?= $resultSetting['company']  ?></h4>
+                                    <h4 class="panel-title"><i class="far fa-chart-bar"></i> Jumlah Netto Per Tahun Aju <?= $resultSetting['company']  ?></h4>
                                     <?php include "include/panel-row.php"; ?>
                                 </div>
                                 <div class="panel-body">
                                     <div id="chart_netto_line"></div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- End Jumlah Netto Per Tahun Aju -->
                     <!-- </div> -->
@@ -319,6 +306,7 @@ include "include/jsDatatables.php";
         })
         history.replaceState({}, '', './index.php');
     }
+
     // REALTIME DATA LOAD
     // Pengguna Aktifitas Sistem
     function RealTimePenggunaAktifitasSistem() {

@@ -66,7 +66,7 @@ $access = mysqli_fetch_array($role);
             </div>
             <!-- API -->
             <div style="margin-left: 5px;">
-                <a href="http://api.itinventory-sarinah.com:8091/" target="_blank" class="btn btn-dark-custom" style="width: 63px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="API"><i class="fas fa-code"></i> API</a>
+                <a href="http://api.itinventory-sarinah.com:8091/" target="_blank" class="btn btn-dark-custom" style="width: 65px;" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="API"><i class="fas fa-code"></i> API</a>
             </div>
         </div>
         <!-- END BUTTON -->

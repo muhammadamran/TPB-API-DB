@@ -49,7 +49,7 @@ if (isset($_GET['findRange'])) {
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
-                <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
+                <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
                 <li class="breadcrumb-item active">Laporan Log System</li>
             </ol>
         </div>

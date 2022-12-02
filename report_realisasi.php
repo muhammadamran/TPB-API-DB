@@ -9,18 +9,24 @@ include "include/top-sidebar.php";
 include "include/cssDatatables.php";
 include "include/cssForm.php";
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+	<title>Laporan Realisasi Barang App Name | Company </title>
+<?php } else { ?>
+	<title>Laporan Realisasi Barang - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+		<?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
 	<div class="page-title-css">
 		<div>
 			<h1 class="page-header-css">
-				<i class="fas fa-desktop icon-page"></i>
-				<font class="text-page">Laporan Realisasi</font>
+				<i class="fas fa-check-to-slot icon-page"></i>
+				<font class="text-page">Laporan Realisasi Barang</font>
 			</h1>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.php">Index</a></li>
-				<li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
-				<li class="breadcrumb-item active">Laporan Realisasi</li>
+				<li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
+				<li class="breadcrumb-item active">Laporan Realisasi Barang</li>
 			</ol>
 		</div>
 		<div>
@@ -101,154 +107,34 @@ include "include/cssForm.php";
 	<div class="row-choose">
 		<!-- begin col-3 -->
 		<!-- 1 -->
-		<a href="#modal-lihat-daftar-mitra" class="class-utama" data-toggle="modal" title="Lihat Daftar Mitra">
+		<a href="adm_kuota.php" target="_blank" class="class-utama" title="Kouta Mitra">
 			<div class="class-one">
 				<div class="show-choose">
-					<img src="assets/img/svg/realisasi_e.svg" alt="Cari Laporan Realisasi" class="image" width="100%">
+					<img src="assets/img/svg/realisasi_a.svg" alt="Kouta Mitra" class="image" width="100%">
 					<div class="overlay">
-						<div class="text">Lihat Daftar Mitra</div>
+						<div class="text">Kouta Mitra</div>
 					</div>
 				</div>
 			</div>
 		</a>
-		<!-- Modal Lihat Daftar Mitra -->
-		<div class="modal fade" id="modal-lihat-daftar-mitra">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<form action="adm_hak_akses.php" method="POST">
-						<div class="modal-header">
-							<h4 class="modal-title">[Laporan Realisasi] Lihat Daftar Mitra</h4>
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						</div>
-						<div class="modal-body">
-							<div class="table-responsive">
-								<table class="table table-striped table-bordered table-td-valign-middle">
-									<thead>
-										<tr>
-											<th width="1%">No.</th>
-											<th class="text-nowrap" style="text-align: center;">NPWP</th>
-											<th class="text-nowrap" style="text-align: center;">Nama Mitra</th>
-											<th class="text-nowrap" style="text-align: center;">Alamat</th>
-											<th class="text-nowrap" style="text-align: center;">No. SKEP</th>
-											<th class="text-nowrap" style="text-align: center;">API</th>
-											<th class="text-nowrap" style="text-align: center;">Status</th>
-											<!-- <th class="text-nowrap">Aksi</th> -->
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-										$dataTable = $dbcon->query("SELECT * FROM referensi_pengusaha AS a
-		                                                            LEFT JOIN referensi_status_pengusaha AS b ON a.KODE_ID=b.KODE_STATUS_PENGUSAHA ORDER BY a.ID DESC");
-										if (mysqli_num_rows($dataTable) > 0) {
-											$no = 0;
-											while ($row = mysqli_fetch_array($dataTable)) {
-												$no++;
-										?>
-												<tr class="odd gradeX">
-													<td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-													<td style="text-align: left;">
-														<?php if ($row['NPWP'] == NULL || $row['NPWP'] == '') { ?>
-															<center>
-																<font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
-															</center>
-														<?php } else { ?>
-															<?= $row['NPWP'] ?>
-														<?php } ?>
-													</td>
-													<td style="text-align: left;">
-														<?php if ($row['NAMA'] == NULL || $row['NAMA'] == '') { ?>
-															<center>
-																<font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
-															</center>
-														<?php } else { ?>
-															<?= $row['NAMA'] ?>
-														<?php } ?>
-													</td>
-													<td style="text-align: left;">
-														<?php if ($row['ALAMAT'] == NULL || $row['ALAMAT'] == '') { ?>
-															<center>
-																<font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
-															</center>
-														<?php } else { ?>
-															<?= $row['ALAMAT'] ?>
-														<?php } ?>
-													</td>
-													<td style="text-align: left;">
-														<?php if ($row['NOMOR_SKEP'] == NULL || $row['NOMOR_SKEP'] == '') { ?>
-															<center>
-																<font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
-															</center>
-														<?php } else { ?>
-															<?= $row['NOMOR_SKEP'] ?>
-														<?php } ?>
-													</td>
-													<td style="text-align: left;">
-														<?php if ($row['STATUS_IMPORTIR'] == NULL || $row['STATUS_IMPORTIR'] == '') { ?>
-															<center>
-																<font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
-															</center>
-														<?php } else { ?>
-															<?= $row['STATUS_IMPORTIR'] ?>
-														<?php } ?>
-													</td>
-													<td style="text-align: left;">
-														<?php if ($row['URAIAN_STATUS_PENGUSAHA'] == NULL || $row['URAIAN_STATUS_PENGUSAHA'] == '') { ?>
-															<center>
-																<font style="font-size: 8px;font-weight: 600;color: red"><i>Tidak Diisi!</i></font>
-															</center>
-														<?php } else { ?>
-															<?= $row['URAIAN_STATUS_PENGUSAHA'] ?>
-														<?php } ?>
-													</td>
-												</tr>
-											<?php } ?>
-										<?php } else { ?>
-											<tr>
-												<td colspan="10">
-													<center>
-														<div style="display: grid;">
-															<i class="far fa-times-circle no-data"></i> Tidak ada data
-														</div>
-													</center>
-												</td>
-											</tr>
-										<?php } ?>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- End Modal Lihat Daftar Mitra -->
 		<!-- End 1 -->
 		<!-- 2 -->
-		<!-- <a href="report_realisasi_all_mitra.php?TahunAju=<?= date('Y'); ?>" target="_blank" class="class-utama"> -->
-		<!-- <form action="report_realisasi_all_mitra.php" method="GET" class="class-utama">
-		<a href="report_realisasi_all_mitra.php" target="_blank">
-			<input type="hidden" name="session" value="<?= $_SESSION['username'] ?>">
-			<button type="submit" name="find_" style="border-color: transparent;">
+		<a href="dashboard_realisasi.php" target="_blank" class="class-utama" title="Analisis Kouta Mitra">
 			<div class="class-one">
 				<div class="show-choose">
-				  <img src="assets/img/svg/realisasi_d.svg" alt="Cari Laporan Realisasi" class="image" width="100%">
-				  <div class="overlay">
-				    <div class="text">Laporan Realisasi Semua Mitra</div>
-				  </div>
+					<img src="assets/img/svg/design-stats-animate.svg" alt="Analisis Kouta Mitra" class="image" width="100%">
+					<div class="overlay">
+						<div class="text">Analisis Kouta Mitra</div>
+					</div>
 				</div>
 			</div>
-			</button>
 		</a>
-		</form> -->
 		<!-- End 2 -->
 		<!-- 3 -->
 		<a href="#modal-laporan-realisasi-per-mitra" class="class-utama" data-toggle="modal" title="Laporan Realisasi Per Mitra">
 			<div class="class-one">
 				<div class="show-choose">
-					<img src="assets/img/svg/realisasi_a.svg" alt="Laporan Realisasi Semua Mitra" class="image" width="100%">
+					<img src="assets/img/svg/cohort-analysis-animate.svg" alt="Laporan Realisasi Semua Mitra" class="image" width="100%">
 					<div class="overlay">
 						<div class="text">Laporan Realisasi Per Mitra</div>
 					</div>
@@ -266,7 +152,7 @@ include "include/cssForm.php";
 						<div class="modal-body">
 							<div class="row" style="display: grid;justify-content: center;align-items: center;">
 								<div class="col-12">
-									<img src="assets/img/svg/realisasi_a.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
+									<img src="assets/img/svg/cohort-analysis-animate.svg" alt="Laporan Realisasi Mitra Per Tahun" class="image" width="50%">
 								</div>
 							</div>
 							<hr>
@@ -369,7 +255,8 @@ include "include/cssForm.php";
 </div>
 <!-- end #content -->
 <?php
-// include "include/panel.php";
+include "include/panel.php";
+include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 include "include/jsForm.php";

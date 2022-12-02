@@ -152,13 +152,13 @@ include "include/cssDatatables.php";
                                 <div class="lap-t-d">
                                     <!-- TITLE -->
                                     <div>
-                                        <h4><a href="report_posisi_barang.php">Laporan Realisasi Barang</a></h4>
+                                        <h4><a href="report_realisasi.php">Laporan Realisasi Barang</a></h4>
                                     </div>
                                     <!-- DESC -->
                                     <div>
                                         <p>Menampilkan data monitoring <b>Kuota Mitra</b> berdasarkan Capaian <b>Realisasi Mitra</b> yang telah digunakan.</p>
                                         <div>
-                                            <a href="report_posisi_barang.php" class="btn btn-default-index">Lihat Laporan</a>
+                                            <a href="report_realisasi.php" class="btn btn-default-index">Lihat Laporan</a>
                                         </div>
                                     </div>
                                 </div>

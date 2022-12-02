@@ -129,6 +129,13 @@
     box-shadow: 2px 3px 12px 0px rgb(0 0 0 / 52%);
 }
 
+.chart-number-oke {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #fff;
+}
+
 .announcement {
     background: #1d2226;
     padding: 5px;

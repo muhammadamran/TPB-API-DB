@@ -131,6 +131,73 @@ $resultBCPLBTerakhir = mysqli_fetch_array($dataBCPLBTerakhir);
 $dataBCTPBTerakhir = $dbcon->query("SELECT *,SUBSTR(NOMOR_AJU,13,8) AS TGL_AJU 
                                     FROM tpb_header ORDER BY ID DESC LIMIT 1");
 $resultBCTPBTerakhir = mysqli_fetch_array($dataBCTPBTerakhir);
+
+// TOTAL BARANG MASUK
+$QBarangMasukNULL = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_barang");
+$resultQBarangMasukNULL = mysqli_fetch_array($QBarangMasukNULL);
+
+$QBarangMasuk = $dbcon->query("SELECT COUNT(*) AS total_in FROM plb_barang WHERE STATUS_CT='Complete'");
+$resultQBarangMasuk = mysqli_fetch_array($QBarangMasuk);
+// TOTAL BARANG KELUAR
+$QBarangKeluarNULL = $dbcon->query("SELECT COUNT(*) AS total_out FROM plb_barang");
+$resultQBarangKeluarNULL = mysqli_fetch_array($QBarangKeluarNULL);
+
+$QBarangKeluar = $dbcon->query("SELECT COUNT(*) AS total_out FROM plb_barang WHERE STATUS_CT_GB='Complete'");
+$resultQBarangKeluar = mysqli_fetch_array($QBarangKeluar);
+
+$resultDataBMBK = $resultQBarangMasuk['total_in'] + $resultQBarangKeluar['total_out'];
+
+// DATA LINE
+// BARANG MASUK
+// TAHUN BARANG MASUK AWAL
+$thnBMAwal = $dbcon->query("SELECT EXTRACT(YEAR FROM DATE_CT) AS THN_BM_AWAL,STATUS_CT
+                            FROM `plb_barang` 
+                            WHERE STATUS_CT='Complete'
+                            ORDER BY EXTRACT(YEAR FROM DATE_CT) ASC LIMIT 1");
+$resultthnBMAwal = mysqli_fetch_array($thnBMAwal);
+// TAHUN BARANG MASUK AKHIR
+$thnBMAkhir = $dbcon->query("SELECT EXTRACT(YEAR FROM DATE_CT) AS THN_BM_AKHIR,STATUS_CT
+                            FROM `plb_barang` 
+                            WHERE STATUS_CT='Complete'
+                            ORDER BY EXTRACT(YEAR FROM DATE_CT) DESC LIMIT 1");
+$resultthnBMAkhir = mysqli_fetch_array($thnBMAkhir);
+
+$dataLineBM = $dbcon->query("SELECT COUNT(*) AS BMLine,EXTRACT(YEAR FROM DATE_CT),DATE_CT 
+                            FROM `plb_barang` 
+                            WHERE STATUS_CT='Complete'
+                            GROUP BY EXTRACT(YEAR FROM DATE_CT) HAVING DATE_CT");
+foreach ($dataLineBM as $resultdataLineBM) {
+    $arrdataLineBM[] = array(
+        $resultdataLineBM['BMLine']
+    );
+}
+$JEnLineBM  = json_encode($arrdataLineBM, JSON_ERROR_NONE);
+$pregLineBM = preg_replace("/[^0-9,.]/", "", $JEnLineBM);
+// BARANG KELUAR
+// TAHUN BARANG KELUAR AWAL
+$thnBKAwal = $dbcon->query("SELECT EXTRACT(YEAR FROM DATE_CT) AS THN_BK_AWAL,STATUS_CT
+                            FROM `plb_barang` 
+                            WHERE STATUS_CT_GB='Complete'
+                            ORDER BY EXTRACT(YEAR FROM DATE_CT) ASC LIMIT 1");
+$resultthnBKAwal = mysqli_fetch_array($thnBKAwal);
+// TAHUN BARANG KELUAR AKHIR
+$thnBKAkhir = $dbcon->query("SELECT EXTRACT(YEAR FROM DATE_CT) AS THN_BK_AKHIR,STATUS_CT_GB
+                            FROM `plb_barang` 
+                            WHERE STATUS_CT_GB='Complete'
+                            ORDER BY EXTRACT(YEAR FROM DATE_CT) DESC LIMIT 1");
+$resultthnBKAkhir = mysqli_fetch_array($thnBKAkhir);
+
+$dataLineBK = $dbcon->query("SELECT COUNT(*) AS BKLine,EXTRACT(YEAR FROM DATE_CT),DATE_CT 
+                            FROM `plb_barang` 
+                            WHERE STATUS_CT_GB='Complete'
+                            GROUP BY EXTRACT(YEAR FROM DATE_CT) HAVING DATE_CT");
+foreach ($dataLineBK as $resultdataLineBK) {
+    $arrdataLineBK[] = array(
+        $resultdataLineBK['BKLine']
+    );
+}
+$JEnLineBK  = json_encode($arrdataLineBK, JSON_ERROR_NONE);
+$pregLineBK = preg_replace("/[^0-9,.]/", "", $JEnLineBK);
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
     <title>Data Online App Name | Company </title>
@@ -157,12 +224,66 @@ $resultBCTPBTerakhir = mysqli_fetch_array($dataBCTPBTerakhir);
     </div>
     <div class="line-page"></div>
     <div class="row">
+        <!-- LINE PERGERAKAN BARANG -->
+        <div class="col-xl-12">
+            <div class="widget-chart with-sidebar inverse-mode">
+                <div class="widget-chart-content bg-white">
+                    <h4 class="chart-title text-dark">
+                        <i class="fas fa-chart-line"></i> Analisis Gate Mandiri
+                        <small>Tansaksi Barang Masuk & Barang Keluar</small>
+                    </h4>
+                    <div id="LINEBMBK" class="widget-chart-full-width nvd3-inverse-mode" style="height: 260px;"></div>
+                </div>
+                <div class="widget-chart-sidebar bg-dark-darker">
+                    <div class="chart-number">
+                        <?= decimal($resultDataBMBK); ?>
+                        <small>Total Transaksi Barang</small>
+                    </div>
+                    <div style="display: flex;justify-content: space-around;align-items: center;height: 220px;" class="text-white">
+                        <div>
+                            <div class="chart-number-oke">
+                                <?= decimal($resultQBarangMasuk['total_in']); ?>
+                            </div>
+                            Gate In
+                        </div>
+                        <div>
+                            <div class="chart-number-oke">
+                                <?= decimal($resultQBarangKeluar['total_out']); ?>
+                            </div>
+                            Gate Out
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 d-flex align-items-center">
+                    </div>
+                    <ul class="chart-legend f-s-11">
+                        <li>
+                            <i class="fa fa-circle fa-fw text-blue f-s-9 m-r-5 t-minus-1"></i>
+                            <?php
+                            $perBM = $resultQBarangMasuk['total_in'] / $resultQBarangMasukNULL['total_in'];
+                            $rperBM = $perBM * 100;
+                            echo round($rperBM);
+                            ?>%
+                            <span>Barang Masuk</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-circle fa-fw text-teal f-s-9 m-r-5 t-minus-1"></i>
+                            <?php
+                            $perBK = $resultQBarangKeluar['total_out'] / $resultQBarangKeluarNULL['total_out'];
+                            $rperBK = $perBK * 100;
+                            echo round($rperBK);
+                            ?>%
+                            <span>Barang Keluar</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!-- DASHBOARD PLB -->
         <div class="col-sm-6">
             <div class="card border-0 bg-white text-dark text-truncate mb-3">
                 <div class="card-body">
                     <div class="mb-3 text-drak">
-                        <b class="mb-3">DOKUMEN PABEAN PLB</b>
+                        <b class="mb-3">DASHBOARD DOKUMEN PABEAN PLB</b>
                         <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean PLB"></i></span>
                     </div>
                     <div id="PLBBC"></div>
@@ -300,7 +421,6 @@ $resultBCTPBTerakhir = mysqli_fetch_array($dataBCTPBTerakhir);
                 </div>
             </div>
         </div>
-
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-sm-12">
@@ -434,10 +554,10 @@ $resultBCTPBTerakhir = mysqli_fetch_array($dataBCTPBTerakhir);
         </div>
         <!-- DASHBOARD TPB -->
         <div class="col-sm-6">
-            <div class="card border-0 bg-white text-dark text-truncate mb-3">
+            <div class="card border-0 bg-white text-white text-truncate mb-3">
                 <div class="card-body">
-                    <div class="mb-3 text-drak">
-                        <b class="mb-3">DOKUMEN PABEAN PLB</b>
+                    <div class="mb-3 text-dark">
+                        <b class="mb-3">DASHBOARD DOKUMEN PABEAN TPB</b>
                         <span class="ml-2"><i class="fa fa-info-circle" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Dokumen Pabean PLB"></i></span>
                     </div>
                     <div id="TPBBC"></div>
@@ -455,11 +575,80 @@ include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 ?>
+
+<!-- <script src="assets/js/demo/dashboard-v2.js"></script> -->
 <script src="assets/highcharts/highcharts.js"></script>
 <script src="assets/highcharts/modules/exporting.js"></script>
+<script src="assets/highcharts/modules/variable-pie.js"></script>
 <script src="assets/highcharts/modules/export-data.js"></script>
 <script src="assets/highcharts/modules/accessibility.js"></script>
 <script type="text/javascript">
+    // LINE BARANG MASUK - BARANG KELUAR
+    Highcharts.chart('LINEBMBK', {
+        title: {
+            text: 'Tansaksi Barang Masuk & Barang Keluar Per Tahun'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Jumlah Barang'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2022 to 2022'
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: <?= $resultthnBMAwal['THN_BM_AWAL'] ?>
+            }
+        },
+
+        series: [{
+            name: "Barang Masuk",
+            color: "#1a2229",
+            marker: {
+                symbol: "circle"
+            },
+            data: [<?= $pregLineBM ?>],
+        }, {
+            name: "Barang Keluar",
+            color: "#00acac",
+            marker: {
+                symbol: "circle"
+            },
+            data: [<?= $pregLineBK ?>],
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
+
     // PLB
     Highcharts.chart('PLBBC', {
         chart: {
@@ -496,7 +685,8 @@ include "include/jsDatatables.php";
                 name: 'BC 2.7',
                 y: <?= $resultBCPLB27_show ?>,
                 sliced: true,
-                selected: true
+                color: "#00acac",
+                selected: true,
             }, {
                 name: '2.3',
                 y: <?= $resultBCPLB23_show ?>
@@ -519,6 +709,8 @@ include "include/jsDatatables.php";
     // TPB
     Highcharts.chart('TPBBC', {
         chart: {
+            // backgroundColor: '#2d353c',
+            textColor: '#ddd',
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
@@ -552,6 +744,7 @@ include "include/jsDatatables.php";
                 name: 'BC 2.7',
                 y: <?= $resultBCGB27_show ?>,
                 sliced: true,
+                color: "#00acac",
                 selected: true
             }, {
                 name: '2.3',

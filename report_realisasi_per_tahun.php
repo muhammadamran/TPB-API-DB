@@ -31,6 +31,12 @@ if (isset($_GET['find_TahunAju'])) {
 }
 // End _GET
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+	<title>Laporan Realisasi Mitra Per Tahun App Name | Company </title>
+<?php } else { ?>
+	<title>Laporan Realisasi Mitra Per Tahun - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+		<?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
 	<div class="page-title-css">
@@ -41,7 +47,7 @@ if (isset($_GET['find_TahunAju'])) {
 			</h1>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.php">Index</a></li>
-				<li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
+				<li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
 				<li class="breadcrumb-item"><a href="report_realisasi.php">Laporan Realisasi</a></li>
 				<li class="breadcrumb-item active">Laporan Realisasi Mitra Tahun <?= $WGetTahunAju ?></li>
 			</ol>

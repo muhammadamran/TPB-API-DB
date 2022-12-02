@@ -13,11 +13,11 @@ http: //127.0.0.1/tpbbackend/api/reportDataTPB.php?function=get_NomorPengajuanKo
 $dataCon = json_decode($contentCon, true);
 ?>
 <style>
-@media (max-width: 767.5px) {
-    #OKEBTN {
-        margin-top: 10px;
+    @media (max-width: 767.5px) {
+        #OKEBTN {
+            margin-top: 10px;
+        }
     }
-}
 </style>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
@@ -29,7 +29,7 @@ $dataCon = json_decode($contentCon, true);
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
-                <li class="breadcrumb-item"><a href="index_report.php">Report</a></li>
+                <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Data TPB</a></li>
                 <li class="breadcrumb-item"><a href="javascript:;">Sarinah Records</a></li>
                 <li class="breadcrumb-item active">Detail Kontainer</li>
@@ -57,8 +57,7 @@ $dataCon = json_decode($contentCon, true);
                         <div class="row">
                             <div class="col-md-12">
 
-                                <table id="TableDataTPB"
-                                    class="table table-striped table-bordered table-td-valign-middle">
+                                <table id="TableDataTPB" class="table table-striped table-bordered table-td-valign-middle">
                                     <thead>
                                         <tr>
                                             <th rowspan="2" width="1%">No.</th>
@@ -70,53 +69,52 @@ $dataCon = json_decode($contentCon, true);
                                     </thead>
                                     <tbody>
                                         <?php if ($dataCon['status'] == 404) { ?>
-                                        <div
-                                            style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i>
-                                                    Tidak ada data
-                                                </div>
-                                            </center>
-                                        </div>
+                                            <div style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
+                                                <center>
+                                                    <div style="display: grid;">
+                                                        <i class="far fa-times-circle no-data"></i>
+                                                        Tidak ada data
+                                                    </div>
+                                                </center>
+                                            </div>
                                         <?php } else { ?>
-                                        <?php $no = 0; ?>
-                                        <?php foreach ($dataCon['result'] as $row) { ?>
-                                        <?php $no++ ?>
-                                        <td><?= $no ?>.</td>
-                                        <td style="text-align: center">
-                                            <?php if ($row['NOMOR_KONTAINER'] == NULL) { ?>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                            </font>
-                                            <?php } else { ?>
-                                            <?= $row['NOMOR_KONTAINER']; ?>
+                                            <?php $no = 0; ?>
+                                            <?php foreach ($dataCon['result'] as $row) { ?>
+                                                <?php $no++ ?>
+                                                <td><?= $no ?>.</td>
+                                                <td style="text-align: center">
+                                                    <?php if ($row['NOMOR_KONTAINER'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['NOMOR_KONTAINER']; ?>
+                                                    <?php } ?>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <?php if ($row['KODE_TIPE_KONTAINER'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['KODE_TIPE_KONTAINER']; ?>
+                                                    <?php } ?>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <?php if ($row['KODE_UKURAN_KONTAINER'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['KODE_UKURAN_KONTAINER']; ?>
+                                                    <?php } ?>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <?php if ($row['NO_POLISI'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                        </font>
+                                                    <?php } else { ?>
+                                                        <?= $row['NO_POLISI']; ?>
+                                                    <?php } ?>
+                                                </td>
                                             <?php } ?>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <?php if ($row['KODE_TIPE_KONTAINER'] == NULL) { ?>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                            </font>
-                                            <?php } else { ?>
-                                            <?= $row['KODE_TIPE_KONTAINER']; ?>
-                                            <?php } ?>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <?php if ($row['KODE_UKURAN_KONTAINER'] == NULL) { ?>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                            </font>
-                                            <?php } else { ?>
-                                            <?= $row['KODE_UKURAN_KONTAINER']; ?>
-                                            <?php } ?>
-                                        </td>
-                                        <td style="text-align: center">
-                                            <?php if ($row['NO_POLISI'] == NULL) { ?>
-                                            <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
-                                            </font>
-                                            <?php } else { ?>
-                                            <?= $row['NO_POLISI']; ?>
-                                            <?php } ?>
-                                        </td>
-                                        <?php } ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -138,35 +136,35 @@ $dataCon = json_decode($contentCon, true);
 <?php include "include/jsDatatables.php"; ?>
 
 <script type="text/javascript">
-// UPDATE SUCCESS
-if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
-    Swal.fire({
-        title: 'Data berhasil diupload!',
-        icon: 'success',
-        text: 'Data berhasil diupload didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './report_ck5_tpb.php');
-}
-// UPDATE FAILED
-if (window?.location?.href?.indexOf('UploadFailed') > -1) {
-    Swal.fire({
-        title: 'Data gagal diupload!',
-        icon: 'error',
-        text: 'Data gagal diupload didalam <?= $alertAppName ?>!'
-    })
-    history.replaceState({}, '', './report_ck5_tpb.php');
-}
+    // UPDATE SUCCESS
+    if (window?.location?.href?.indexOf('UploadSuccess') > -1) {
+        Swal.fire({
+            title: 'Data berhasil diupload!',
+            icon: 'success',
+            text: 'Data berhasil diupload didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './report_ck5_tpb.php');
+    }
+    // UPDATE FAILED
+    if (window?.location?.href?.indexOf('UploadFailed') > -1) {
+        Swal.fire({
+            title: 'Data gagal diupload!',
+            icon: 'error',
+            text: 'Data gagal diupload didalam <?= $alertAppName ?>!'
+        })
+        history.replaceState({}, '', './report_ck5_tpb.php');
+    }
 
-// TableDataTPB
-$(document).ready(function() {
-    $('#TableDataTPB').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ]
+    // TableDataTPB
+    $(document).ready(function() {
+        $('#TableDataTPB').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
     });
-});
 </script>
