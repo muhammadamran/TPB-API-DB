@@ -117,6 +117,10 @@ $dataHeader = $dbcon->query("SELECT *,
                             WHERE plb.NOMOR_AJU='" . $_GET['AJU'] . "'
                             ORDER BY rcd.rcd_id DESC");
 $resultdataHeader = mysqli_fetch_array($dataHeader);
+
+$dataTPBH = $dbcon->query("SELECT ID FROM tpb_header WHERE NOMOR_AJU='" . $resultdataHeader['NOMOR_AJU_GB'] . "'");
+$resultdataTPBH = mysqli_fetch_array($dataTPBH);
+$IDHEADER = $resultdataTPBH['ID'];
 ?>
 <div id="content" class="nav-top-content">
     <div class="header-laporan">
@@ -128,23 +132,13 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                 <div class="col-sm-6" id="p-e">
                     <div style="display: flex;justify-content: end;">
                         <div>
-                            <form action="report_data_packinglist_pdf.php" target="_blank" method="POST">
-                                <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                <button type="submit" name="Find_RTU" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</button>
-                            </form>
+                            <a href="report_data_gb_packinglist_pdf.php?AJU=<?= $_GET['AJU']; ?>" target="_blank" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
                         </div>
                         <div class="btn-group m-r-5 m-b-5">
                             <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                             <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <form action="report_data_packinglist_excel.php" target="_blank" method="POST">
-                                    <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                    <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                    <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                    <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
-                                </form>
+                                <a href="report_data_gb_packinglist_excel.php?AJU=<?= $_GET['AJU']; ?>&GB=<?= $resultdataHeader['NOMOR_AJU_GB']; ?>" target="_blank" class="dropdown-item">Download as XLS</a>
                             </div>
                         </div>
                     </div>
@@ -291,19 +285,19 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                         <div class="row">
                             <?php
                             // PLB
-                            $dataNoDokumen = $dbcon->query("SELECT 
-                                                            dok.NOMOR_AJU,dok.NOMOR_DOKUMEN,dok.TANGGAL_DOKUMEN,
-                                                            ref.URAIAN_DOKUMEN
-                                                            FROM plb_dokumen AS dok 
-                                                            LEFT OUTER JOIN referensi_dokumen AS ref ON ref.KODE_DOKUMEN=dok.KODE_JENIS_DOKUMEN
-                                                            WHERE dok.NOMOR_AJU='" . $_GET['AJU'] . "' AND ref.KODE_DOKUMEN='705'");
-                            foreach ($dataNoDokumen as $resultNoDokumen) {
+                            $NoBLQuery = $dbcon->query("SELECT 
+                                                        dok.ID_HEADER,dok.NOMOR_DOKUMEN,dok.TANGGAL_DOKUMEN,
+                                                        ref.URAIAN_DOKUMEN
+                                                        FROM tpb_dokumen AS dok 
+                                                        LEFT OUTER JOIN referensi_dokumen AS ref ON ref.KODE_DOKUMEN=dok.KODE_JENIS_DOKUMEN
+                                                        WHERE dok.ID_HEADER='" . $IDHEADER . "' AND ref.KODE_DOKUMEN='705' ORDER BY dok.ID DESC LIMIT 1");
+                            foreach ($NoBLQuery as $rowBLQuery) {
                             ?>
                                 <div class="col-sm-6">
-                                    <?= $resultNoDokumen['NOMOR_DOKUMEN'] ?>
-                                    <font style="font-size: 8px;">(<?= $resultNoDokumen['URAIAN_DOKUMEN'] ?>)</font>
+                                    <?= $rowBLQuery['NOMOR_DOKUMEN'] ?>
+                                    <font style="font-size: 8px;">(<?= $rowBLQuery['URAIAN_DOKUMEN'] ?>)</font>
                                 </div>
-                                <div class="col-sm-6"><?= $resultNoDokumen['TANGGAL_DOKUMEN'] ?></div>
+                                <div class="col-sm-6"><?= $rowBLQuery['TANGGAL_DOKUMEN'] ?></div>
                             <?php } ?>
                         </div>
                         <br>
@@ -373,11 +367,11 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                             <?php
                             // PLB
                             $dataNoDokumen = $dbcon->query("SELECT 
-                                                            dok.NOMOR_AJU,dok.NOMOR_DOKUMEN,dok.TANGGAL_DOKUMEN,
+                                                            dok.ID_HEADER,dok.NOMOR_DOKUMEN,dok.TANGGAL_DOKUMEN,
                                                             ref.URAIAN_DOKUMEN
-                                                            FROM plb_dokumen AS dok 
+                                                            FROM tpb_dokumen AS dok 
                                                             LEFT OUTER JOIN referensi_dokumen AS ref ON ref.KODE_DOKUMEN=dok.KODE_JENIS_DOKUMEN
-                                                            WHERE dok.NOMOR_AJU='" . $_GET['AJU'] . "' AND ref.KODE_DOKUMEN='380'");
+                                                            WHERE dok.ID_HEADER='" . $IDHEADER . "' AND ref.KODE_DOKUMEN='380' ORDER BY dok.ID DESC LIMIT 1");
                             foreach ($dataNoDokumen as $resultNoDokumen) {
                             ?>
                                 <div class="col-sm-6">

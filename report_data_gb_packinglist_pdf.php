@@ -1,18 +1,153 @@
-<?php
-include "include/connection.php";
+<?php include "include/connection.php";
 include "include/restrict.php";
-include "include/head.php";
-include "include/alert.php";
-include "include/top-header.php";
-include "include/top-sidebar.php";
-// include "include/sidebar.php";
-include "include/cssDatatables.php";
-include "include/cssForm.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <?php if ($resultHeadSetting['icon'] == NULL) { ?>
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/icon-default.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/icon-default.png">
+    <?php } else { ?>
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icon/<?= $resultHeadSetting['icon'] ?>">
+    <?php } ?>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+    <!-- <link href="assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" /> -->
+    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+    <link href="assets/css/tpb.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q66YLEFFZ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q66YLEFFZ2');
+    </script>
+</head>
+<?php
+// DATE DAFULT
+date_default_timezone_set("Asia/jakarta");
+
+// DATE
+function date_indo($date, $print_day = false)
+{
+    $day = array(
+        1 =>
+        'Senin',
+        'Selasa',
+        'Rabu',
+        'Kamis',
+        'Jumat',
+        'Sabtu',
+        'Minggu'
+    );
+    $month = array(
+        1 =>
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $split    = explode('-', $date);
+    $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
+
+    if ($print_day) {
+        $num = date('N', strtotime($date));
+        return $day[$num] . ', ' . $tgl_indo;
+    }
+    return $tgl_indo;
+}
+
+// DATE SPLIT
+function date_indo_s($date, $print_day = false)
+{
+    $day = array(
+        1 =>
+        'Sen',
+        'Sel',
+        'Rab',
+        'Kam',
+        'Jum',
+        'Sab',
+        'Min'
+    );
+    $month = array(
+        1 =>
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'Mei',
+        'Jun',
+        'Jul',
+        'Agu',
+        'Sep',
+        'Okt',
+        'Nov',
+        'Des'
+    );
+    $split    = explode('-', $date);
+    $tgl_indo = $split[2] . ' ' . $month[(int)$split[1]] . ' ' . $split[0];
+
+    if ($print_day) {
+        $num = date('N', strtotime($date));
+        return $day[$num] . ', ' . $tgl_indo;
+    }
+    return $tgl_indo;
+}
+
+// RUPIAH
+function Rupiah($angka)
+{
+    $hasil = "Rp. " . number_format($angka, 2, ',', '.');
+    return $hasil;
+}
+
+// DECIMAL
+function decimal($number)
+{
+    $hasil = number_format($number, 0, ",", ",");
+    return $hasil;
+}
+
+// NPWP
+function NPWP($value)
+{
+    // 12.345.678.9-012.345
+    $hasil = number_format($value, 0, ',', '.');
+    return $hasil;
+}
 ?>
 <?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
-    <title>Laporan Invoice App Name | Company </title>
+    <title>Laporan Packing List App Name | Company </title>
 <?php } else { ?>
-    <title>Laporan Invoice <?= $_GET['AJU']; ?> <?= $resultSetting['company']; ?> - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+    <title>Laporan Packing List <?= $_GET['AJU']; ?> <?= $resultSetting['company']; ?> - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
         <?= $resultHeadSetting['title'] ?></title>
 <?php } ?>
 <?php
@@ -28,9 +163,9 @@ if (isset($_POST['Number_'])) {
                           WHERE NOMOR_AJU='$NOAJU'");
 
     if ($sql) {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertNumber=true';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertNumber=true';</script>";
     } else {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertNumber=false';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertNumber=false';</script>";
     }
 }
 // NO BL
@@ -45,9 +180,9 @@ if (isset($_POST['NoBL_'])) {
                           WHERE NOMOR_AJU='$NOAJU'");
 
     if ($sql) {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertNoBL=true';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertNoBL=true';</script>";
     } else {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertNoBL=false';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertNoBL=false';</script>";
     }
 }
 // WEIGHR
@@ -62,9 +197,9 @@ if (isset($_POST['Weight_'])) {
                           WHERE NOMOR_AJU='$NOAJU'");
 
     if ($sql) {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertOriginal=true';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertOriginal=true';</script>";
     } else {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertOriginal=false';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertOriginal=false';</script>";
     }
 }
 // ORIGINAL
@@ -77,9 +212,9 @@ if (isset($_POST['Orginial_'])) {
                           WHERE NOMOR_AJU='$NOAJU'");
 
     if ($sql) {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertOriginal=true';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertOriginal=true';</script>";
     } else {
-        echo "<script>window.location.href='report_data_gb_invoice.php?AJU=$NOAJU_PLB&AlertOriginal=false';</script>";
+        echo "<script>window.location.href='report_data_gb_packinglist.php?AJU=$NOAJU_PLB&AlertOriginal=false';</script>";
     }
 }
 // DATA HEADER
@@ -123,34 +258,6 @@ $resultdataTPBH = mysqli_fetch_array($dataTPBH);
 $IDHEADER = $resultdataTPBH['ID'];
 ?>
 <div id="content" class="nav-top-content">
-    <div class="header-laporan">
-        <form action="" method="POST">
-            <div class="row">
-                <div class="col-sm-6">
-                    <a href="report_data_gb.php" class="btn btn-dark"><i class="fas fa-caret-square-left"></i> Kembali</a>
-                </div>
-                <div class="col-sm-6" id="p-e">
-                    <div style="display: flex;justify-content: end;">
-                        <div>
-                            <a href="report_data_gb_invoice_pdf.php?AJU=<?= $_GET['AJU']; ?>" class="btn btn-secondary" style="border-radius: 5px 0 0 5px;border-right-color: #545b62;"><i class="fas fa-print"></i> Print</a>
-                        </div>
-                        <div class="btn-group m-r-5 m-b-5">
-                            <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
-                            <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <form action="report_data_packinglist_excel.php" target="_blank" method="POST">
-                                    <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                    <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                    <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                    <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
     <div class="invoice">
         <div class="line-page-table-n"></div>
         <div class="row" style="display: flex;align-items: center;margin-bottom: -5px;">
@@ -177,7 +284,7 @@ $IDHEADER = $resultdataTPBH['ID'];
             <div class="col-md-12">
                 <div>
                     <hr>
-                    <p><span style="color: #404040; font-family: Arial Black; font-size: xx-large;">INVOICE</span></p>
+                    <p><span style="color: #404040; font-family: Arial Black; font-size: xx-large;">PACKING LIST</span></p>
                     <hr>
                 </div>
             </div>
@@ -230,7 +337,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                         <div class="row">
                             <div class="col-sm-6">
                                 <?= $resultdataHeader['NUMBER_GB']; ?>
-                                <a href="#M_NUMBER" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                             </div>
                             <div class="col-sm-6">
                                 <?php if ($resultdataHeader['TGL_NUMBER_GB'] != NULL) { ?>
@@ -398,7 +504,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                     <div class="col-8">
                         <p>
                             <?= decimal($resultdataHeader['WEIGHT']); ?> <?= $resultdataHeader['WEIGHT_S']; ?>
-                            <a href="#M_WEIGHT" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                         </p>
                     </div>
                     <!-- Weight -->
@@ -463,7 +568,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                     <div class="col-8">
                         <p>
                             <?= $resultdataHeader['URAIAN_NEGARA']; ?>
-                            <a href="#M_ORIGINAL" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                         </p>
                     </div>
                     <!-- Original -->
@@ -553,7 +657,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                             <th rowspan="2" width="1%">NO.</th>
                             <th rowspan="2" style="text-align:center">DESCRIPTION</th>
                             <th rowspan="2" colspan="4" style="text-align:center">QUANTITY</th>
-                            <th rowspan="2" style="text-align:center">PRICE</th>
                             <th colspan="4" style="text-align:center">REMARKS</th>
                         </tr>
                         <tr>
@@ -600,12 +703,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                                     <td style="text-align: center;">x</td>
                                     <td style="text-align: center;"><?= $row['LITER']; ?></td>
                                     <td style="text-align: right;"><?= $row['TOTAL_CT_AKHIR']; ?> Ctn(s)</td>
-                                    <td style="text-align: center;">
-                                        <div style="display: flex;justify-content: space-evenly;align-items:center">
-                                            <font><?= $row['KODE_VALUTA']; ?></font>
-                                            <font><?= $row['CIF']; ?></font>
-                                        </div>
-                                    </td>
                                     <td style="text-align: center;">-</td>
                                     <td style="text-align: center;">-</td>
                                     <td style="text-align: right;"><?= $row['TOTAL_BOTOL_AKHIR']; ?> Btl(s)</td>
@@ -668,12 +765,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                             <th style="text-align:center">x</th>
                             <th style="text-align:center"><?= round($resultFooter['c_liter']); ?></th>
                             <th style="text-align:right"><?= $resultFooter['c_ct']; ?> Ctn(s)</th>
-                            <th style="text-align:center">
-                                <div style="display: flex;justify-content: space-evenly;align-items:center">
-                                    <font><?= $resultFooter['KODE_VALUTA']; ?></font>
-                                    <font><?= round($resultFooter['c_cif']); ?></font>
-                                </div>
-                            </th>
                             <th colspan="2" style="text-align:left"></th>
                             <th style="text-align:right"><?= $resultFooter['c_botol_akhir']; ?> Btl(s)</th>
                             <th style="text-align:right"><?= round($resultFooter['c_liter_akhir']); ?> Ltr(s)</th>
@@ -684,7 +775,7 @@ $IDHEADER = $resultdataTPBH['ID'];
         </div>
         <div class="invoice-footer">
             <p class="text-center m-b-5 f-w-600">
-                Invoice | IT Inventory <?= $resultHeadSetting['company'] ?>
+                Packing List | IT Inventory <?= $resultHeadSetting['company'] ?>
             </p>
             <p class="text-center">
                 <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>
@@ -697,32 +788,18 @@ $IDHEADER = $resultdataTPBH['ID'];
         </div>
     </div>
 </div>
-<?php include "include/pusat_bantuan.php"; ?>
-<?php include "include/riwayat_aktifitas.php"; ?>
-<?php include "include/panel.php"; ?>
-<?php include "include/footer.php"; ?>
-<?php include "include/jsDatatables.php"; ?>
-<?php include "include/jsForm.php"; ?>
-<script src="assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<!-- End Begin Row -->
+<script src="assets/js/theme/default.min.js"></script>
+<script src="assets/plugins/d3/d3.min.js"></script>
+<script src="assets/plugins/nvd3/build/nv.d3.js"></script>
+<script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
+<script src="assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
+<script src="assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
+<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+<br>
+</body>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#TableData').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5', 'excelHtml5', 'csvHtml5'
-            ],
-            "order": [],
-            "columnDefs": [{
-                "targets": 'no-sort',
-                "orderable": false,
-            }],
-            iDisplayLength: -1
-        });
-    });
-
-    // NUMBER 001/GB-BGR/XI/2022
-    $("#input-Number").mask("999/**-***/**/<?= date('Y') ?>");
-    // NO BL STA/SINJKT11010
-    $("#input-NoBL").mask("***/******99999");
-    // $("#masked-input-date").mask("99/99/9999");
+    window.print();
 </script>
+
+</html>

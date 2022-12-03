@@ -1,4 +1,5 @@
-<?php include "include/connection.php";
+<?php
+include "include/connection.php";
 include "include/restrict.php";
 
 // DATE SPLIT
