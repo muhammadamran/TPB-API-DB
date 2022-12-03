@@ -33,6 +33,12 @@ if ($resultRoleModules['da_two'] == 'none') {
     $TitleDashboardTwo = 'show';
 }
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Dashboard App Name | Company </title>
+<?php } else { ?>
+    <title>Dashboard - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <!-- <div id="content" class="content"> -->
 <div id="content" class="nav-top-content">
@@ -40,14 +46,15 @@ if ($resultRoleModules['da_two'] == 'none') {
         <div>
             <h1 class="page-header-css">
                 <i class="fas fa-chart-pie icon-page"></i>
-                <font class="text-page">Dashboard - Summary</font>
+                <font class="text-page">Dashboard</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active">Perusahaan: <?= $resultSetting['company']  ?></li>
             </ol>
         </div>
         <div>
-            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i> <span id=""><?= date_indo(date('Y-m-d'), TRUE) ?> - <font style="text-transform: uppercase;"><?= date('h:m:i a') ?></font></span></button>
+            <button class="btn btn-primary-css"><i class="fas fa-calendar-alt"></i>
+                <span><?= date_indo(date('Y-m-d'), TRUE); ?> <?= date('H:i A') ?></span></button>
         </div>
     </div>
     <div class="line-page"></div>
