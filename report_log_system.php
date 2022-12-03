@@ -39,18 +39,24 @@ if (isset($_GET['findRange'])) {
 }
 // End Function Search
 ?>
+<?php if ($resultHeadSetting['app_name'] == NULL || $resultHeadSetting['company'] == NULL || $resultHeadSetting['title'] == NULL) { ?>
+    <title>Laporan Aktifitas App Name | Company </title>
+<?php } else { ?>
+    <title>Laporan Aktifitas - <?= $resultHeadSetting['app_name'] ?> | <?= $resultHeadSetting['company'] ?> -
+        <?= $resultHeadSetting['title'] ?></title>
+<?php } ?>
 <!-- begin #content -->
 <div id="content" class="nav-top-content">
     <div class="page-title-css">
         <div>
             <h1 class="page-header-css">
-                <i class="fas fa-desktop icon-page"></i>
-                <font class="text-page">Laporan Log System</font>
+                <i class="fas fa-solid fa-clipboard-question icon-page"></i>
+                <font class="text-page">Laporan Aktifitas</font>
             </h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Index</a></li>
                 <li class="breadcrumb-item"><a href="index_report.php">Laporan</a></li>
-                <li class="breadcrumb-item active">Laporan Log System</li>
+                <li class="breadcrumb-item active">Laporan Aktifitas</li>
             </ol>
         </div>
         <div>
@@ -67,10 +73,10 @@ if (isset($_GET['findRange'])) {
                         <?php if ($resultHeadSetting['logo'] == NULL) { ?>
                             <img src="assets/images/logo/logo-default.png" width="10%">
                         <?php } else { ?>
-                            <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="20%">
+                            <img src="assets/images/logo/<?= $resultHeadSetting['logo'] ?>" width="225px">
                         <?php } ?>
                         <div class="title-laporan" style="justify-content: center;text-align: center;align-items: center;display: grid;">
-                            <font style="font-size: 20px;text-transform: uppercase;font-weight: 900;">LAPORAN LOG SYSTEM</font>
+                            <font style="font-size: 20px;text-transform: uppercase;font-weight: 900;">LAPORAN Aktifitas</font>
                             <font><?= $resultHeadSetting['address'] ?></font>
                             <font><?= $resultHeadSetting['company'] ?></font>
                             <?php if (isset($_GET['findRange'])) { ?>
@@ -86,7 +92,7 @@ if (isset($_GET['findRange'])) {
                                     <div class="modal-content">
                                         <form action="" method="GET">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">[Laporan Log System] Cari Tanggal</h4>
+                                                <h4 class="modal-title">[Laporan Aktifitas] Cari Tanggal</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             </div>
                                             <div class="modal-body">
@@ -134,43 +140,8 @@ if (isset($_GET['findRange'])) {
                         </div>
                     </div>
                     <div style="background: #4c4747;height: 4px;width: 100%;margin: 15px -1px;box-sizing: border-box;"></div>
-                    <style type="text/css">
-                        .button-top-table {
-                            margin-bottom: 15px;
-                        }
-
-                        .icon-primary-excel {
-                            width: 20px;
-                        }
-
-                        .btn-primary-excel {
-                            color: #1f7244;
-                            border: 2px solid #1f7244;
-                            background-color: #fff;
-                            box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
-                        }
-
-                        .btn-primary-excel:hover {
-                            color: #fff;
-                            border: 2px solid #1f7244;
-                            background-color: #1f7244;
-                            box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
-                        }
-                    </style>
-                    <?php if (isset($_GET['findRange'])) { ?>
-                        <div class="button-top-table">
-                            <form action="export/excel_log_system.php" method="GET">
-                                <input type="hidden" name="startdate" value="<?= $startdate ?>">
-                                <input type="hidden" name="enddate" value="<?= $enddate ?>">
-                                <input type="hidden" name="me" value="<?= $_SESSION['username'] ?>">
-                                <button class="btn btn-primary-excel" name="find_">
-                                    <img src="assets/img/favicon/excel.png" class="icon-primary-excel" alt="Excel"> Export Excel
-                                </button>
-                            </form>
-                        </div>
-                    <?php } ?>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="TableDefault" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
@@ -185,9 +156,9 @@ if (isset($_GET['findRange'])) {
                                 if (isset($_GET['findRange'])) {
                                     $startdate = $_GET['startdate'];
                                     $enddate   = $_GET['enddate'];
-                                    $dataTable = $dbcon->query("SELECT * FROM tbl_aktifitas WHERE date_created BETWEEN '$startdate' AND '$enddate' ORDER BY id DESC");
+                                    $dataTable = $dbcon->query("SELECT * FROM tbl_aktifitas WHERE date_created BETWEEN '$startdate' AND '$enddate 23:59:59' ORDER BY id DESC");
                                 } else {
-                                    $dataTable = $dbcon->query("SELECT * FROM tbl_aktifitas ORDER BY id DESC LIMIT 0");
+                                    $dataTable = $dbcon->query("SELECT * FROM tbl_aktifitas ORDER BY id DESC LIMIT 100");
                                 }
                                 if (mysqli_num_rows($dataTable) > 0) {
                                     $no = 0;
@@ -227,7 +198,7 @@ if (isset($_GET['findRange'])) {
 </div>
 <!-- end #content -->
 <?php
-// include "include/panel.php";
+include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
 ?>

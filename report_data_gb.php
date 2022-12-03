@@ -130,7 +130,7 @@ if ($resultRangeLastAJU != NULL) {
                             <thead>
                                 <tr>
                                     <th rowspan="2" width="1%" style="text-align:center">No.</th>
-                                    <th rowspan="2" style="text-align:center">Format CK5</th>
+                                    <!-- <th rowspan="2" style="text-align:center">Format CK5</th> -->
                                     <th rowspan="2" style="text-align:center">Packing List</th>
                                     <th rowspan="2" style="text-align:center">Invoice</th>
                                     <th colspan="4" style="text-align:center">PLB</th>
@@ -244,14 +244,14 @@ if ($resultRangeLastAJU != NULL) {
                                 ?>
                                         <tr>
                                             <td><?= $no ?>.</td>
-                                            <td style="text-align: center;">
+                                            <!-- <td style="text-align: center;">
                                                 <a href="report_data_gb_ck5.php?AJU=<?= $row['bm_no_aju_plb']; ?>" target="_blank" class="btn btn-primary">
                                                     <i class="fab fa-wpforms" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Lihat Detil <?= $row['bm_no_aju_plb']; ?>"></i><br>
                                                     <font style="font-size: 8px;display: flex;width: 55px;justify-content: center;">
                                                         CK5
                                                     </font>
                                                 </a>
-                                            </td>
+                                            </td> -->
                                             <td style="text-align: center;">
                                                 <a href="report_data_gb_packinglist.php?AJU=<?= $row['bm_no_aju_plb']; ?>" target="_blank" class="btn btn-success">
                                                     <i class="fa-solid fa-boxes-stacked" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Packing List <?= $row['bm_no_aju_plb']; ?>"></i><br>
