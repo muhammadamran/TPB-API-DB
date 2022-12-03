@@ -59,16 +59,41 @@
                             </div>
                             <div class="col-xl-3">
                                 <div class="form-group">
+                                    <label style="font-weight: 800;">GATE MANDIRI</label>
+                                    <input type="button" class="for-select-tpb" onclick='seGM()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deGM()' value="Batalkan" />
+                                    <div class="form-group">
+                                        <label style="color: transparent;">GATE MANDIRI</label>
+                                        <div class="form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input type="checkbox" name="NameGateIN" value="Y" id="IDGateIN" class="form-check-input" />
+                                                <label class="form-check-label" for="IDGateIN">Gate In</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input type="checkbox" name="NameGateOUT" value="Y" id="IDGateOUT" class="form-check-input" />
+                                                <label class="form-check-label" for="IDGateOUT">Gate Out</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label style="font-weight: 800;">DOKUMEN PABEAN</label>
                                     <input type="button" class="for-select-tpb" onclick='seBC()' value="Pilih Semua" />
                                     <input type="button" class="for-unselect-tpb" onclick='deBC()' value="Batalkan" />
                                     <div class="form-group">
-                                        <label style="font-weight: 500;">1. BC</label>
-                                        <input type="hidden" name="NameBC">
+                                        <label style="color: transparent;">DOKUMEN PABEAN</label>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameBC23MasterData" value="Y" id="IDBC23MasterData" class="form-check-input" />
-                                                <label class="form-check-label" for="IDBC23MasterData">BC 2.7 / Master Data</label>
+                                                <input type="checkbox" name="NameDokumenPLB" value="Y" id="IDDokumenPLB" class="form-check-input" />
+                                                <label class="form-check-label" for="IDDokumenPLB">Dokumen PLB</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input type="checkbox" name="NameDokumenGB" value="Y" id="IDDokumenGB" class="form-check-input" />
+                                                <label class="form-check-label" for="IDDokumenGB">Dokumen GB</label>
                                             </div>
                                         </div>
                                     </div>
@@ -83,14 +108,14 @@
                                         <label style="color: transparent;">DATA</label>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameCountTabelTPB" value="Y" id="IDCountTabelTPB" class="form-check-input" />
-                                                <label class="form-check-label" for="IDCountTabelTPB">Count Tabel TPB</label>
+                                                <input type="checkbox" name="NameKuotaMitra" value="Y" id="IDKuotaMitra" class="form-check-input" />
+                                                <label class="form-check-label" for="IDKuotaMitra">Kuota Mitra</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameFilterTableTPB" value="Y" id="IDFilterTableTPB" class="form-check-input" />
-                                                <label class="form-check-label" for="IDFilterTableTPB">Filter Tabel TPB</label>
+                                                <input type="checkbox" name="NameStokBarang" value="Y" id="IDStokBarang" class="form-check-input" />
+                                                <label class="form-check-label" for="IDStokBarang">Stok Barang</label>
                                             </div>
                                         </div>
                                     </div>
@@ -98,96 +123,29 @@
                             </div>
                             <div class="col-xl-3">
                                 <div class="form-group">
-                                    <label style="font-weight: 800;">REFERENSI</label>
-                                    <input type="button" class="for-select-tpb" onclick='seRefAll()' value="Pilih Semua" />
-                                    <input type="button" class="for-unselect-tpb" onclick='deRefAll()' value="Batalkan" />
+                                    <label style="font-weight: 800;">UPLOAD</label>
+                                    <input type="button" class="for-select-tpb" onclick='seUpload()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deUpload()' value="Batalkan" />
                                     <div class="form-group">
-                                        <label style="font-weight: 500;">1. Referensi</label>
-                                        <input type="button" class="for-select-tpb" onclick='seRef()' value="Pilih Semua" />
-                                        <input type="button" class="for-unselect-tpb" onclick='deRef()' value="Batalkan" />
-                                        <input type="hidden" name="NameReferensi">
+                                        <label style="color: transparent;">UPLOAD</label>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameDaftarBarang" value="Y" id="IDDaftarBarang" class="form-check-input" />
-                                                <label class="form-check-label" for="IDDaftarBarang">Daftar Barang</label>
+                                                <input type="checkbox" name="NameBC27PLB" value="Y" id="IDUpload" class="form-check-input" />
+                                                <label class="form-check-label" for="IDUpload">BC 2.7 PLB</label>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-weight: 800;">SETTINGS</label>
+                                    <input type="button" class="for-select-tpb" onclick='seSettings()' value="Pilih Semua" />
+                                    <input type="button" class="for-unselect-tpb" onclick='deSettings()' value="Batalkan" />
+                                    <div class="form-group">
+                                        <label style="color: transparent;">SETTINGS</label>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameTarifHS" value="Y" id="IDTarifHS" class="form-check-input" />
-                                                <label class="form-check-label" for="IDTarifHS">Tarif HS</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NamePemasok" value="Y" id="IDPemasok" class="form-check-input" />
-                                                <label class="form-check-label" for="IDPemasok">Pemasok</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NamePerusahaan" value="Y" id="IDPerusahaan" class="form-check-input" />
-                                                <label class="form-check-label" for="IDPerusahaan">Perusahaan</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameAlatAngkut" value="Y" id="IDAlatAngkut" class="form-check-input" />
-                                                <label class="form-check-label" for="IDAlatAngkut">Alat Angkut</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameTempatPenimbunan" value="Y" id="IDTempatPenimbunan" class="form-check-input" />
-                                                <label class="form-check-label" for="IDTempatPenimbunan">Tempat Penimbunan</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameKantorBeaCukai" value="Y" id="IDKantorBeaCukai" class="form-check-input" />
-                                                <label class="form-check-label" for="IDKantorBeaCukai">Kantor Bea Cukai</label>
-                                            </div>
-                                        </div>
-                                        <label style="font-weight: 500;">1.1 Edifact</label>
-                                        <input type="button" class="for-select-tpb" onclick='seEdi()' value="Pilih Semua" />
-                                        <input type="button" class="for-unselect-tpb" onclick='deEdi()' value="Batalkan" />
-                                        <input type="hidden" name="Edifact">
-                                        <div style="margin-left: 15px;">
-                                            <div class="form-group">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" name="NameNegara" value="Y" id="IDNegara" class="form-check-input" />
-                                                    <label class="form-check-label" for="IDNegara">Negara</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" name="NamePelabuhanDalamNegeri" value="Y" id="IDPelabuhanDalamNegeri" class="form-check-input" />
-                                                    <label class="form-check-label" for="IDPelabuhanDalamNegeri">Pelabuhan Dalam Negeri</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" name="NamePelabuhanLuarNegeri" value="Y" id="IDPelabuhanLuarNegeri" class="form-check-input" />
-                                                    <label class="form-check-label" for="IDPelabuhanLuarNegeri">Pelabuhan Luar Negeri</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" name="NameMataUang" value="Y" id="IDMataUang" class="form-check-input" />
-                                                    <label class="form-check-label" for="IDMataUang">Mata Uang</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" name="NameSatuan" value="Y" id="IDSatuan" class="form-check-input" />
-                                                    <label class="form-check-label" for="IDSatuan">Satuan</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="checkbox" name="NameKemasan" value="Y" id="IDKemasan" class="form-check-input" />
-                                                    <label class="form-check-label" for="IDKemasan">Kemasan</label>
-                                                </div>
+                                                <input type="checkbox" name="NameSettings" value="Y" id="IDSettings" class="form-check-input" />
+                                                <label class="form-check-label" for="IDSettings">Settings</label>
                                             </div>
                                         </div>
                                     </div>
@@ -220,12 +178,6 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline">
-                                                <input type="checkbox" name="NameKuotaMitra" value="Y" id="IDKuotaMitra" class="form-check-input" />
-                                                <label class="form-check-label" for="IDKuotaMitra">Kuota Mitra</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="form-check form-check-inline">
                                                 <input type="checkbox" name="NamePengaturanAppTPB" value="Y" id="IDPengaturanAppTPB" class="form-check-input" />
                                                 <label class="form-check-label" for="IDPengaturanAppTPB">Pengaturan App TPB</label>
                                             </div>
@@ -254,7 +206,7 @@
                             <!-- End Data Online -->
                             <!-- Report -->
                             <div class="col-md-12" style="background: #348fe2;display: flex;justify-content: center;align-items: center;padding: 10px 0 0 10px;margin-bottom: 10px;color: #fff;font-size: 14px;font-weight: 700;border-radius: 5px;">
-                                <label for="IDReport">Report</label>
+                                <label for="IDReport">Laporan</label>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -267,7 +219,7 @@
                                 <div class="form-group">
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" name="NameLapMasukBarang" value="Y" id="IDLapMasukBarang" class="form-check-input" />
-                                        <label class="form-check-label" for="IDLapMasukBarang">Laporan Masuk Barang</label>
+                                        <label class="form-check-label" for="IDLapMasukBarang">Laporan Barang Masuk</label>
                                     </div>
                                 </div>
                             </div>
@@ -275,15 +227,7 @@
                                 <div class="form-group">
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" name="NameLapKeluarBarang" value="Y" id="IDLapKeluarBarang" class="form-check-input" />
-                                        <label class="form-check-label" for="IDLapKeluarBarang">Laporan Keluar Barang</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <div class="form-check form-check-inline">
-                                        <input type="checkbox" name="NameLapMutasiBarang" value="Y" id="IDLapMutasiBarang" class="form-check-input" />
-                                        <label class="form-check-label" for="IDLapMutasiBarang">Laporan Mutasi Barang</label>
+                                        <label class="form-check-label" for="IDLapKeluarBarang">Laporan Barang Keluar</label>
                                     </div>
                                 </div>
                             </div>
@@ -298,8 +242,16 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="NameLapMutasiBarang" value="Y" id="IDLapMutasiBarang" class="form-check-input" />
+                                        <label class="form-check-label" for="IDLapMutasiBarang">Laporan Mutasi Barang</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
                                         <input type="checkbox" name="NameLapRealisasi" value="Y" id="IDLapRealisasi" class="form-check-input" />
-                                        <label class="form-check-label" for="IDLapRealisasi">Laporan Realisasi</label>
+                                        <label class="form-check-label" for="IDLapRealisasi">Laporan Realisasi Barang</label>
                                     </div>
                                 </div>
                             </div>
@@ -314,16 +266,16 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-check-inline">
-                                        <input type="checkbox" name="NamePLBReportCK5" value="Y" id="IDPLBReportCK5" class="form-check-input" />
-                                        <label class="form-check-label" for="IDPLBReportCK5">PLB Report CK5</label>
+                                        <input type="checkbox" name="NameLapDataPLB" value="Y" id="IDLapDataPLB" class="form-check-input" />
+                                        <label class="form-check-label" for="IDLapDataPLB">Laporan Data PLB</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="form-check form-check-inline">
-                                        <input type="checkbox" name="NameGBSarinahReportCK5" value="Y" id="IDGBSarinahReportCK5" class="form-check-input" />
-                                        <label class="form-check-label" for="IDGBSarinahReportCK5">GB - Sarinah Report CK5</label>
+                                        <input type="checkbox" name="NameLapDataGB" value="Y" id="IDLapDataGB" class="form-check-input" />
+                                        <label class="form-check-label" for="IDLapDataGB">Laporan Data GB</label>
                                     </div>
                                 </div>
                             </div>
