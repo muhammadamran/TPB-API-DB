@@ -51,7 +51,7 @@ $data = json_decode($content, true);
                         <table id="TableData" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
-                                    <th rowspan="2" width="1%" style="text-align:center">#</th>
+                                    <th rowspan="2" width="1%" style="text-align:center">No.</th>
                                     <th rowspan="2" style="text-align:center">Format CK5</th>
                                     <th rowspan="2" style="text-align:center">Packing List</th>
                                     <th rowspan="2" style="text-align:center">Invoice</th>

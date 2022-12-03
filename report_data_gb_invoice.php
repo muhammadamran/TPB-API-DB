@@ -289,6 +289,27 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                     </div>
                     <div class="col-8">
                         <div class="row">
+                            <?php
+                            // PLB
+                            $dataNoDokumen = $dbcon->query("SELECT 
+                                                            dok.NOMOR_AJU,dok.NOMOR_DOKUMEN,dok.TANGGAL_DOKUMEN,
+                                                            ref.URAIAN_DOKUMEN
+                                                            FROM plb_dokumen AS dok 
+                                                            LEFT OUTER JOIN referensi_dokumen AS ref ON ref.KODE_DOKUMEN=dok.KODE_JENIS_DOKUMEN
+                                                            WHERE dok.NOMOR_AJU='" . $_GET['AJU'] . "' AND ref.KODE_DOKUMEN='705'");
+                            foreach ($dataNoDokumen as $resultNoDokumen) {
+                            ?>
+                                <div class="col-sm-6">
+                                    <?= $resultNoDokumen['NOMOR_DOKUMEN'] ?>
+                                    <font style="font-size: 8px;">(<?= $resultNoDokumen['URAIAN_DOKUMEN'] ?>)</font>
+                                </div>
+                                <div class="col-sm-6"><?= $resultNoDokumen['TANGGAL_DOKUMEN'] ?></div>
+                            <?php } ?>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- <div class="col-8">
+                        <div class="row">
                             <div class="col-sm-6">
                                 <?= $resultdataHeader['NO_BL_GB']; ?>
                                 <a href="#M_NO_BL" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
@@ -300,9 +321,9 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                             </div>
                         </div>
                         <br>
-                    </div>
+                    </div> -->
                     <!-- NO BL -->
-                    <div class="modal fade" id="M_NO_BL">
+                    <!-- <div class="modal fade" id="M_NO_BL">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="" method="POST" enctype="multipart/form-data">
@@ -338,11 +359,11 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- End NO BL -->
-                    <!-- NO. DOKUMEN -->
+                    <!-- NO. INVOICE -->
                     <div class="col-3" style="font-weight: 900;">
-                        NO. DOKUMEN
+                        NO. INVOICE
                     </div>
                     <div class="col-1">
                         :
@@ -356,7 +377,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
                                                             ref.URAIAN_DOKUMEN
                                                             FROM plb_dokumen AS dok 
                                                             LEFT OUTER JOIN referensi_dokumen AS ref ON ref.KODE_DOKUMEN=dok.KODE_JENIS_DOKUMEN
-                                                            WHERE dok.NOMOR_AJU='" . $_GET['AJU'] . "'");
+                                                            WHERE dok.NOMOR_AJU='" . $_GET['AJU'] . "' AND ref.KODE_DOKUMEN='380'");
                             foreach ($dataNoDokumen as $resultNoDokumen) {
                             ?>
                                 <div class="col-sm-6">
@@ -689,7 +710,7 @@ $resultdataHeader = mysqli_fetch_array($dataHeader);
         $('#TableData').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copyHtml5', 'pdfHtml5'
+                'copyHtml5', 'excelHtml5', 'csvHtml5'
             ],
             "order": [],
             "columnDefs": [{

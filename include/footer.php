@@ -99,7 +99,7 @@
                 $('#C_TableDefault_L').DataTable({
                         dom: 'Bfrtip',
                         buttons: [
-                                'copyHtml5', 'pdfHtml5'
+                                'copyHtml5', 'csvHtml5'
                         ],
                         "order": [],
                         lengthMenu: [
@@ -118,7 +118,7 @@
                 $('#C_TableDefault_L_3').DataTable({
                         dom: 'Bfrtip',
                         buttons: [
-                                'copyHtml5', 'pdfHtml5'
+                                'copyHtml5', 'csvHtml5'
                         ],
                         "order": [],
                         lengthMenu: [
@@ -137,7 +137,7 @@
                 $('#C_TableDefault_L_5').DataTable({
                         dom: 'Bfrtip',
                         buttons: [
-                                'copyHtml5', 'pdfHtml5'
+                                'copyHtml5', 'csvHtml5'
                         ],
                         "order": [],
                         lengthMenu: [
@@ -156,7 +156,7 @@
                 $('#C_TableDefault').DataTable({
                         dom: 'Bfrtip',
                         buttons: [
-                                'copyHtml5', 'pdfHtml5'
+                                'copyHtml5', 'csvHtml5'
                         ],
                         "order": [],
                         lengthMenu: [

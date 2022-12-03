@@ -16,28 +16,18 @@ $TanggalBC27Two = '';
 $Supplier = '';
 $KodeNegara = '';
 $NamaNegara = '';
-$Party = '';
-$NoContainer = '';
 $MataUang = '';
 $TanggalMasukBarangOne = '';
 $TanggalMasukBarangTwo = '';
 $TanggalKeluarBarangOne = '';
 $TanggalKeluarBarangTwo = '';
 if (isset($_POST["findOne"])) {
-    if ($_POST["NoPengajuan"] != '') {
-        $NoPengajuan = $_POST['NoPengajuan'];
+    if ($_POST["NoPengajuanPLB"] != '') {
+        $NoPengajuanPLB = $_POST['NoPengajuanPLB'];
     }
 
-    // if ($_POST["TanggalInputOne"] != '') {
-    //     $TanggalInputOne = $_POST['TanggalInputOne'];
-    // }
-
-    // if ($_POST["TanggalInputTwo"] != '') {
-    //     $TanggalInputTwo = $_POST['TanggalInputTwo'];
-    // }
-
-    if ($_POST["NoBC27"] != '') {
-        $NoBC27 = $_POST['NoBC27'];
+    if ($_POST["NoPengajuanGB"] != '') {
+        $NoPengajuanGB = $_POST['NoPengajuanGB'];
     }
 
     if ($_POST["TanggalBC27One"] != '') {
@@ -52,24 +42,12 @@ if (isset($_POST["findOne"])) {
         $Supplier = $_POST['Supplier'];
     }
 
-    // if ($_POST["AlamatSupplier"] != '') {
-    //     $AlamatSupplier = $_POST['AlamatSupplier'];
-    // }
-
     if ($_POST["KodeNegara"] != '') {
         $KodeNegara = $_POST['KodeNegara'];
     }
 
     if ($_POST["NamaNegara"] != '') {
         $NamaNegara = $_POST['NamaNegara'];
-    }
-
-    if ($_POST["Party"] != '') {
-        $Party = $_POST['Party'];
-    }
-
-    if ($_POST["NoContainer"] != '') {
-        $NoContainer = $_POST['NoContainer'];
     }
 
     if ($_POST["MataUang"] != '') {
@@ -136,7 +114,7 @@ if (isset($_POST["findOne"])) {
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" id="IDAJU_PLB" class="form-control" name="NoPengajuanPLB" placeholder="No. Pengajuan PLB ..." value="<?= $NoPengajuanPLB ?>">
+                                    <input type="number" id="IDAJU_PLB" class="form-control" name="NoPengajuanPLB" placeholder="No. Pengajuan PLB ..." value="<?= $NoPengajuanPLB ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
@@ -145,7 +123,7 @@ if (isset($_POST["findOne"])) {
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" id="IDAJU_GB" class="form-control" name="NoPengajuanGB" placeholder="No. Pengajuan GB ..." value="<?= $NoPengajuanGB ?>">
+                                    <input type="number" id="IDAJU_GB" class="form-control" name="NoPengajuanGB" placeholder="No. Pengajuan GB ..." value="<?= $NoPengajuanGB ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
@@ -169,7 +147,7 @@ if (isset($_POST["findOne"])) {
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="Supplier" placeholder="Supplier ..." value="<?= $Supplier ?>">
+                                    <input type="text" id="ID_SUPPLIER" class="form-control" name="Supplier" placeholder="Supplier ..." value="<?= $Supplier ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
@@ -178,22 +156,13 @@ if (isset($_POST["findOne"])) {
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="KodeNegara" placeholder="Kode Negara ..." value="<?= $KodeNegara ?>">
+                                    <input type="text" id="ID_KD_NEGARA" class="form-control" name="KodeNegara" placeholder="Kode Negara ..." value="<?= $KodeNegara ?>">
                                 </div>
                                 <div class="col-md-1" style="display: flex;justify-content: center;">
                                     <font>/</font>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="NamaNegara" placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
-                                </div>
-                            </div>
-                            <div class="form-group row m-b-15" style="align-items: center;">
-                                <label class="col-md-3 col-form-label">No. Container</label>
-                                <div class="col-md-2">
-                                    <font class="titik-dua">:</font>
-                                </div>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" name="NoContainer" placeholder="No. Container ..." value="<?= $NoContainer ?>">
+                                    <input type="text" id="ID_NAMA_NEGARA" class="form-control" name="NamaNegara" placeholder="Nama Negara ..." value="<?= $NamaNegara ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
@@ -202,7 +171,7 @@ if (isset($_POST["findOne"])) {
                                     <font class="titik-dua">:</font>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" name="MataUang" placeholder="Mata Uang ..." value="<?= $MataUang ?>">
+                                    <input type="text" id="ID_MATA_UANG" class="form-control" name="MataUang" placeholder="Mata Uang ..." value="<?= $MataUang ?>">
                                 </div>
                             </div>
                             <div class="form-group row m-b-15" style="align-items: center;">
@@ -266,34 +235,38 @@ if (isset($_POST["findOne"])) {
                         <table id="TableDataTPB" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
                                 <tr>
+                                    <th rowspan="2" width="1%" style="text-align:center">No.</th>
                                     <th colspan="4" style="text-align:center">BC.27 PLB</th>
-                                    <th colspan="4" style="text-align:center">BC.27 Sarinah</th>
+                                    <th colspan="4" style="text-align:center">BC.27 GB</th>
                                     <th rowspan="2" style="text-align:center">KD / Negara</th>
                                     <th rowspan="2" style="text-align:center">Supplier</th>
-                                    <th rowspan="2" style="text-align:center">Jumlah Barang</th>
+                                    <th colspan="3" style="text-align:center">Jumlah</th>
                                     <th rowspan="2" style="text-align:center">Party</th>
                                     <th rowspan="2" style="text-align:center">Valas</th>
                                     <th rowspan="2" style="text-align:center">Nilai Total</th>
-                                    <th colspan="3" style="text-align:center">Tujuan</th>
-                                    <th rowspan="2" style="text-align:center">Tanggal Masuk Barang</th>
-                                    <th rowspan="2" style="text-align:center">Tanggal Keluar Barang</th>
-                                    <th rowspan="2" style="text-align:center">Cont. Details</th>
+                                    <th colspan="2" style="text-align:center">Tujuan</th>
+                                    <th rowspan="2" style="text-align:center">Origin</th>
+                                    <th rowspan="2" style="text-align:center">Tgl.<font style="color: #dadddf;">.</font>Masuk<font style="color: #dadddf;">.</font>Barang</th>
+                                    <th rowspan="2" style="text-align:center">Tgl.<font style="color: #dadddf;">.</font>Keluar<font style="color: #dadddf;">.</font>Barang</th>
                                 </tr>
                                 <tr>
                                     <!-- PLB -->
-                                    <th style="text-align:center">No. Pengajuan</th>
-                                    <th style="text-align:center">Tanggal Input</th>
-                                    <th style="text-align:center">No. Daftar</th>
-                                    <th style="text-align:center">Tanggal Daftar</th>
-                                    <!-- Sarinah -->
-                                    <th style="text-align:center">No. AJU</th>
-                                    <th style="text-align:center">Tanggal Input</th>
-                                    <th style="text-align:center">No. Daftar</th>
-                                    <th style="text-align:center">Tanggal Daftar</th>
+                                    <th style="text-align:center">No.<font style="color: #dadddf;">.</font>Pengajuan</th>
+                                    <th style="text-align:center">Tgl.<font style="color: #dadddf;">.</font>Input</th>
+                                    <th style="text-align:center">No.<font style="color: #dadddf;">.</font>Daftar</th>
+                                    <th style="text-align:center">Tgl.<font style="color: #dadddf;">.</font>Daftar</th>
+                                    <!-- GB -->
+                                    <th style="text-align:center">No.<font style="color: #dadddf;">.</font>Pengajuan</th>
+                                    <th style="text-align:center">Tgl.<font style="color: #dadddf;">.</font>Input</th>
+                                    <th style="text-align:center">No.<font style="color: #dadddf;">.</font>Daftar</th>
+                                    <th style="text-align:center">Tgl.<font style="color: #dadddf;">.</font>Daftar</th>
+                                    <!-- Jumlah -->
+                                    <th style="text-align:center">Carton</th>
+                                    <th style="text-align:center">Botol</th>
+                                    <th style="text-align:center">Liter</th>
                                     <!-- Tujuan -->
                                     <th style="text-align:center">NPWP</th>
                                     <th style="text-align:center">Nama</th>
-                                    <th style="text-align:center">Alamat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -312,235 +285,243 @@ if (isset($_POST["findOne"])) {
                                     $_where = '';
                                     $i = 1;
                                     $_where = '';
-                                    if ($NoPengajuan == true) {
-                                        $_where = where_add($_where, ' plb.NOMOR_AJU LIKE ' . "'%$NoPengajuan%'" . '');
+                                    if ($NoPengajuanPLB == true) {
+                                        $_where = where_add($_where, ' plb.NOMOR_AJU LIKE ' . "'%$NoPengajuanPLB%'" . '');
                                     }
-                                    if ($NoBC27 == true) {
-                                        $_where = where_add($_where, ' plb.NOMOR_DAFTAR LIKE ' . "'%$NoBC27%'" . '');
+                                    if ($NoPengajuanGB == true) {
+                                        $_where = where_add($_where, ' tpb.NOMOR_AJU LIKE ' . "'%$NoPengajuanGB%'" . '');
                                     }
-                                    if ($NoBC27 == true) {
-                                        $_where = where_add($_where, ' plb.TANGGAL_DAFTAR BETWEEN "' . $TanggalBC27One . '" AND "' . $TanggalBC27Two . '"');
+                                    if ($TanggalBC27One == true) {
+                                        $_where = where_add($_where, ' tpb.TANGGAL_DAFTAR BETWEEN "' . $TanggalBC27One . '" AND "' . $TanggalBC27Two . '"');
                                     }
                                     if ($Supplier == true) {
-                                        $_where = where_add($_where, ' tpb.NAMA_PEMASOK LIKE ' . "'%$Supplier%'" . '');
+                                        $_where = where_add($_where, ' tpb.NAMA_PENERIMA_BARANG LIKE ' . "'%$Supplier%'" . '');
                                     }
                                     if ($KodeNegara == true) {
                                         $_where = where_add($_where, ' tpb.KODE_NEGARA_PEMASOK LIKE ' . "'%$KodeNegara%'" . '');
                                     }
                                     if ($NamaNegara == true) {
-                                        $_where = where_add($_where, ' ngr.URAIAN_NEGARA LIKE ' . "'%$NamaNegara%'" . '');
-                                    }
-                                    if ($Party == true) {
-                                        $_where = where_add($_where, ' plb_kem.JUMLAH_KEMASAN LIKE ' . "'%$Party%'" . '');
-                                    }
-                                    if ($NoContainer == true) {
-                                        $_where = where_add($_where, ' kon.NOMOR_KONTAINER LIKE ' . "'%$NoContainer%'" . '');
+                                        $_where = where_add($_where, ' ngr_gb.URAIAN_NEGARA LIKE ' . "'%$NamaNegara%'" . '');
                                     }
                                     if ($MataUang == true) {
                                         $_where = where_add($_where, ' tpb.KODE_VALUTA LIKE ' . "'%$MataUang%'" . '');
                                     }
                                     if ($TanggalMasukBarangOne == true) {
-                                        $_where = where_add($_where, ' plb.TANGGAL_BC11 BETWEEN "' . $TanggalMasukBarangOne . '" AND "' . $TanggalMasukBarangTwo . '"');
+                                        $_where = where_add($_where, ' (SELECT DATE_CT FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU ORDER BY ID ASC) BETWEEN "' . $TanggalMasukBarangOne . '" AND "' . $TanggalMasukBarangTwo . '"');
                                     }
                                     if ($TanggalKeluarBarangOne == true) {
-                                        $_where = where_add($_where, ' tpb.TANGGAL_BC11 BETWEEN "' . $TanggalKeluarBarangOne . '" AND "' . $TanggalKeluarBarangTwo . '"');
+                                        $_where = where_add($_where, ' (SELECT DATE_CT_GB FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU ORDER BY ID DESC) BETWEEN "' . $TanggalKeluarBarangOne . '" AND "' . $TanggalKeluarBarangTwo . '"');
                                     }
 
                                     // echo $_where;
-                                    $result2 = mysqli_query($dbcon, "SELECT tpb.ID AS TPB_ID,
-                                                                            plb.NOMOR_AJU AS PLB_NOMOR_AJU,
-                                                                            plb.NOMOR_DAFTAR AS PLB_NOMOR_DAFTAR,
-                                                                            plb.TANGGAL_DAFTAR AS PLB_TANGGAL_DAFTAR,
-
-                                                                            tpb.NOMOR_AJU AS TPB_NOMOR_AJU,
-                                                                            tpb.NOMOR_DAFTAR AS TPB_NOMOR_DAFTAR,
-                                                                            tpb.TANGGAL_DAFTAR AS TPB_TANGGAL_DAFTAR,
-
-                                                                            tpb.KODE_NEGARA_PEMASOK,
-                                                                            ngr.URAIAN_NEGARA,
-                                                                            tpb.NAMA_PEMASOK,
-                                                                            tpb.JUMLAH_BARANG,
-                                                                            plb_kem.KODE_JENIS_KEMASAN,
-                                                                            plb_kem.JUMLAH_KEMASAN,
-                                                                            ref_kem.URAIAN_KEMASAN,
-                                                                            plb_kem.MEREK_KEMASAN,
-                                                                            tpb.KODE_VALUTA,
-                                                                            tpb.CIF,
-                                                                            peng.NPWP,
-                                                                            tpb.NAMA_PENERIMA_BARANG,
-                                                                            tpb.ALAMAT_PENERIMA_BARANG,
-                                                                            plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,
-                                                                            tpb.TANGGAL_BC11 AS TPB_TANGGAL_BC11,
-                                                                            kon.NOMOR_KONTAINER
-                                                                 FROM plb_header AS plb
-                                                                 LEFT OUTER JOIN plb_kemasan AS plb_kem ON plb.NOMOR_AJU=plb_kem.NOMOR_AJU
-                                                                 LEFT OUTER JOIN referensi_kemasan AS ref_kem ON plb_kem.KODE_JENIS_KEMASAN=ref_kem.KODE_KEMASAN
-                                                                 LEFT OUTER JOIN tpb_header AS tpb ON plb.NOMOR_DAFTAR=tpb.NOMOR_DAFTAR
-                                                                 LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
-                                                                 LEFT OUTER JOIN referensi_pengusaha AS peng ON tpb.NAMA_PENERIMA_BARANG=peng.NAMA
-                                                                 LEFT OUTER JOIN tpb_kontainer AS kon ON tpb.ID=kon.ID_HEADER
-                                                                 $_where
-                                                                --  WHERE plb.TANGGAL_BC11 BETWEEN '2018-05-18' AND '2022-08-08'
-                                                                 GROUP BY kon.ID_HEADER
-                                                                 ORDER BY plb.NOMOR_AJU ASC");
+                                    $dataTable = $dbcon->query("SELECT 
+                                                                -- BC27 PLB
+                                                                plb.NOMOR_AJU AS NOMOR_AJU_PLB,
+                                                                SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,
+                                                                plb.NOMOR_DAFTAR AS NOMOR_DAFTAR_PLB,
+                                                                plb.TANGGAL_DAFTAR AS TANGGAL_DAFTAR_PLB,
+                                                                -- END
+                                                                -- BC27 GB
+                                                                tpb.NOMOR_AJU AS NOMOR_AJU_GB,
+                                                                SUBSTR(tpb.NOMOR_AJU,13,8) AS TGL_AJU_GB,
+                                                                tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_GB,
+                                                                tpb.TANGGAL_DAFTAR AS TANGGAL_DAFTAR_GB,
+                                                                -- END
+                                                                tpb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_GB,                                                                
+                                                                ngr_gb.URAIAN_NEGARA,
+                                                                plb.PERUSAHAAN,
+                                                                (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU) AS CARTON,
+                                                                (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU) AS BOTOL,
+                                                                (SELECT SUM(TOTAL_LITER_AKHIR_GB) FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU) AS LITER,
+                                                                (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU) AS PARTY,
+                                                                tpb.KODE_VALUTA,
+                                                                tpb.CIF,
+                                                                tpb.ID_PENERIMA_BARANG,
+                                                                tpb.NAMA_PENERIMA_BARANG,
+                                                                ngr_origin.URAIAN_NEGARA AS ORIGIN,
+                                                                (SELECT DATE_CT FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU ORDER BY ID ASC) AS TGL_MASUK,
+                                                                (SELECT DATE_CT_GB FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU ORDER BY ID DESC) AS TGL_KELUAR
+                                                                FROM rcd_status AS rcd
+                                                                LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=rcd.bm_no_aju_plb
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=rcd.bk_no_aju_sarinah
+                                                                LEFT OUTER JOIN referensi_negara AS ngr_gb ON tpb.KODE_NEGARA_PEMASOK=ngr_gb.KODE_NEGARA
+                                                                LEFT OUTER JOIN referensi_negara AS ngr_origin ON plb.KODE_NEGARA_PEMASOK=ngr_origin.KODE_NEGARA
+                                                                $_where
+                                                                ORDER BY rcd.rcd_id DESC");
                                 } else {
-                                    $result2 = mysqli_query($dbcon, "SELECT tpb.ID AS TPB_ID,
-                                                                        plb.NOMOR_AJU AS PLB_NOMOR_AJU,
-                                                                        plb.NOMOR_DAFTAR AS PLB_NOMOR_DAFTAR,
-                                                                        plb.TANGGAL_DAFTAR AS PLB_TANGGAL_DAFTAR,
-
-                                                                        tpb.NOMOR_AJU AS TPB_NOMOR_AJU,
-                                                                        tpb.NOMOR_DAFTAR AS TPB_NOMOR_DAFTAR,
-                                                                        tpb.TANGGAL_DAFTAR AS TPB_TANGGAL_DAFTAR,
-
-                                                                        tpb.KODE_NEGARA_PEMASOK,
-                                                                        ngr.URAIAN_NEGARA,
-                                                                        tpb.NAMA_PEMASOK,
-                                                                        tpb.JUMLAH_BARANG,
-                                                                        plb_kem.KODE_JENIS_KEMASAN,
-                                                                        plb_kem.JUMLAH_KEMASAN,
-                                                                        ref_kem.URAIAN_KEMASAN,
-                                                                        plb_kem.MEREK_KEMASAN,
-                                                                        tpb.KODE_VALUTA,
-                                                                        tpb.CIF,
-                                                                        peng.NPWP,
-                                                                        tpb.NAMA_PENERIMA_BARANG,
-                                                                        tpb.ALAMAT_PENERIMA_BARANG,
-                                                                        plb.TANGGAL_BC11 AS PLB_TANGGAL_BC11,
-                                                                        tpb.TANGGAL_BC11 AS TPB_TANGGAL_BC11,
-                                                                        kon.NOMOR_KONTAINER
-                                                                 FROM plb_header AS plb
-                                                                 LEFT OUTER JOIN plb_kemasan AS plb_kem ON plb.NOMOR_AJU=plb_kem.NOMOR_AJU
-                                                                 LEFT OUTER JOIN referensi_kemasan AS ref_kem ON plb_kem.KODE_JENIS_KEMASAN=ref_kem.KODE_KEMASAN
-                                                                 LEFT OUTER JOIN tpb_header AS tpb ON plb.NOMOR_DAFTAR=tpb.NOMOR_DAFTAR
-                                                                 LEFT OUTER JOIN referensi_negara AS ngr ON tpb.KODE_NEGARA_PEMASOK=ngr.KODE_NEGARA
-                                                                 LEFT OUTER JOIN referensi_pengusaha AS peng ON tpb.NAMA_PENERIMA_BARANG=peng.NAMA
-                                                                 LEFT OUTER JOIN tpb_kontainer AS kon ON tpb.ID=kon.ID_HEADER
-                                                                 GROUP BY kon.ID_HEADER
-                                                                 ORDER BY plb.NOMOR_AJU ASC LIMIT 0");
+                                    $dataTable = $dbcon->query("SELECT 
+                                                                -- BC27 PLB
+                                                                plb.NOMOR_AJU AS NOMOR_AJU_PLB,
+                                                                SUBSTR(plb.NOMOR_AJU,13,8) AS TGL_AJU_PLB,
+                                                                plb.NOMOR_DAFTAR AS NOMOR_DAFTAR_PLB,
+                                                                plb.TANGGAL_DAFTAR AS TANGGAL_DAFTAR_PLB,
+                                                                -- END
+                                                                -- BC27 GB
+                                                                tpb.NOMOR_AJU AS NOMOR_AJU_GB,
+                                                                SUBSTR(tpb.NOMOR_AJU,13,8) AS TGL_AJU_GB,
+                                                                tpb.NOMOR_DAFTAR AS NOMOR_DAFTAR_GB,
+                                                                tpb.TANGGAL_DAFTAR AS TANGGAL_DAFTAR_GB,
+                                                                -- END
+                                                                tpb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_GB,                                                                
+                                                                ngr_gb.URAIAN_NEGARA,
+                                                                plb.PERUSAHAAN,
+                                                                (SELECT SUM(TOTAL_CT_AKHIR_GB) FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU) AS CARTON,
+                                                                (SELECT SUM(TOTAL_BOTOL_AKHIR_GB) FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU) AS BOTOL,
+                                                                (SELECT SUM(TOTAL_LITER_AKHIR_GB) FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU) AS LITER,
+                                                                (SELECT UKURAN FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU) AS PARTY,
+                                                                tpb.KODE_VALUTA,
+                                                                tpb.CIF,
+                                                                tpb.ID_PENERIMA_BARANG,
+                                                                tpb.NAMA_PENERIMA_BARANG,
+                                                                ngr_origin.URAIAN_NEGARA AS ORIGIN,
+                                                                (SELECT DATE_CT FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU ORDER BY ID ASC) AS TGL_MASUK,
+                                                                (SELECT DATE_CT_GB FROM plb_barang WHERE NOMOR_AJU=plb.NOMOR_AJU GROUP BY NOMOR_AJU ORDER BY ID DESC) AS TGL_KELUAR
+                                                                FROM rcd_status AS rcd
+                                                                LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=rcd.bm_no_aju_plb
+                                                                LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=rcd.bk_no_aju_sarinah
+                                                                LEFT OUTER JOIN referensi_negara AS ngr_gb ON tpb.KODE_NEGARA_PEMASOK=ngr_gb.KODE_NEGARA
+                                                                LEFT OUTER JOIN referensi_negara AS ngr_origin ON plb.KODE_NEGARA_PEMASOK=ngr_origin.KODE_NEGARA ORDER BY rcd.rcd_id DESC LIMIT 100");
                                 }
-                                if (mysqli_num_rows($result2) > 0) {
-                                    while ($row2 = mysqli_fetch_array($result2)) {
-                                        // FOR TANGGAL INPUT PLB
-                                        $PLB_YYMMDD = SUBSTR($row2['PLB_NOMOR_AJU'], 12, 8);
-                                        $PLB_YY = SUBSTR($PLB_YYMMDD, 0, 4);
-                                        $PLB_MM = SUBSTR($PLB_YYMMDD, 4, 2);
-                                        $PLB_DD = SUBSTR($PLB_YYMMDD, 6, 2);
-                                        // FOR TANGGAL INPUT TPB
-                                        $TPB_YYMMDD = SUBSTR($row2['TPB_NOMOR_AJU'], 12, 8);
-                                        $TPB_YY = SUBSTR($TPB_YYMMDD, 0, 4);
-                                        $TPB_MM = SUBSTR($TPB_YYMMDD, 4, 2);
-                                        $TPB_DD = SUBSTR($TPB_YYMMDD, 6, 2);
-                                        echo "<tr>";
-                                        echo "<td>" . $row2['PLB_NOMOR_AJU'] . "</td>";
-                                        echo "<td>" . $PLB_YY . "-" . $PLB_MM . "-" . $PLB_DD . "</td>";
-                                        echo "<td>" . $row2['PLB_NOMOR_DAFTAR'] . "</td>";
-                                        echo "<td>" . $row2['PLB_TANGGAL_DAFTAR'] . "</td>";
-                                        echo "<td>" . $row2['TPB_NOMOR_AJU'] . "</td>";
-                                        echo "<td>" . $TPB_YY . "-" . $TPB_MM . "-" . $TPB_DD . "</td>";
-                                        echo "<td>" . $row2['TPB_NOMOR_DAFTAR'] . "</td>";
-                                        echo "<td>" . SUBSTR($row2['TPB_TANGGAL_DAFTAR'], 0, 10) . "</td>";
-                                        echo "<td>" . $row2['KODE_NEGARA_PEMASOK'] . "/" . $row2['URAIAN_NEGARA'] . "</td>";
-                                        echo "<td>" . $row2['NAMA_PEMASOK'] . "</td>";
-                                        echo "<td>" . $row2['JUMLAH_BARANG'] . "</td>";
-                                        echo "<td>" . $row2['JUMLAH_KEMASAN'] . " " . $row2['URAIAN_KEMASAN'] . " " . $row2['MEREK_KEMASAN'] . "</td>";
-                                        echo "<td>" . $row2['KODE_VALUTA'] . "</td>";
-                                        echo "<td>" . $row2['CIF'] . "</td>";
-                                        echo "<td>" . $row2['NPWP'] . "</td>";
-                                        echo "<td>" . $row2['NAMA_PENERIMA_BARANG'] . "</td>";
-                                        echo "<td>" . $row2['ALAMAT_PENERIMA_BARANG'] . "</td>";
-                                        if ($row2['PLB_TANGGAL_BC11'] == NULL || $row2['PLB_TANGGAL_BC11'] == '') {
-                                            echo "<td style='text-align: center;color: red'><i>Belum ada tanggal</i></td>";
-                                        } else {
-                                            echo "<td>" . $row2['PLB_TANGGAL_BC11'] . "</td>";
-                                        }
-                                        if ($row2['TPB_TANGGAL_BC11'] == NULL || $row2['TPB_TANGGAL_BC11'] == '') {
-                                            echo "<td style='text-align: center;color: red'><i>Belum ada tanggal</i></td>";
-                                        } else {
-                                            echo "<td>" . SUBSTR($row2['TPB_TANGGAL_BC11'], 0, 10) . "</td>";
-                                        }
+                                if ($dataTable) : $no = 1;
+                                    foreach ($dataTable as $row) :
                                 ?>
-                                        <td>
-                                            <a href="#kontainer<?= $row2['TPB_ID'] ?>" class="btn btn-primary" data-toggle="modal" title="Cont. Details"><i class="fas fa-box"></i> Cont. Details</a>
-                                        </td>
-                                        <?php
-                                        echo "</tr>";
-                                        ?>
+                                        <tr>
+                                            <td><?= $no ?>.</td>
+                                            <!-- BC27 PLB -->
+                                            <td style="text-align: left">
+                                                <?php if ($row['NOMOR_AJU_PLB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_AJU_PLB']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 80px;">
+                                                    <?php
+                                                    $dataTGLAJU_PLB = $row['TGL_AJU_PLB'];
+                                                    $dataTGLAJU_PLBY = substr($dataTGLAJU_PLB, 0, 4);
+                                                    $dataTGLAJU_PLBM = substr($dataTGLAJU_PLB, 4, 2);
+                                                    $dataTGLAJU_PLBD = substr($dataTGLAJU_PLB, 6, 2);
 
-                                        <!-- Cont. Details -->
-                                        <div class="modal fade" id="kontainer<?= $row2['TPB_ID'] ?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form action="" method="POST">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">[Cont. Details <?= $row2['TPB_ID'] ?>] No. Pengajuan - <?= $row2['TPB_NOMOR_AJU'] ?></h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <fieldset>
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <?php
-                                                                        $contDet = mysqli_query($dbcon, "SELECT * FROM tpb_kontainer WHERE ID_HEADER = '$row2[TPB_ID]' ");
-                                                                        if (mysqli_num_rows($contDet) > 0) {
-                                                                            $nocont = 0;
-                                                                            while ($cont = mysqli_fetch_array($contDet)) {
-                                                                                $nocont++;
-                                                                        ?>
-                                                                                <div style="display: flex;justify-content: space-between;align-items: center;padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
-                                                                                    <div style="display: grid;">
-                                                                                        <font>No.</font>
-                                                                                        <font style="font-weight: 400;"><?= $nocont; ?>.</font>
-                                                                                    </div>
-                                                                                    <div style="display: grid;">
-                                                                                        <font>Cont. Details</font>
-                                                                                        <font style="font-weight: 400;"><?= $cont['KODE_TIPE_KONTAINER']; ?> / <?= $cont['KODE_UKURAN_KONTAINER']; ?></font>
-                                                                                    </div>
-                                                                                    <div style="display: grid;">
-                                                                                        <font>Cont. No</font>
-                                                                                        <font style="font-weight: 400;"><?= $cont['NOMOR_KONTAINER']; ?></font>
-                                                                                    </div>
-                                                                                </div>
-                                                                            <?php }
-                                                                        } else {
-                                                                            ?>
-                                                                            <div style="padding: 10px;font-weight: 700;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;background: #ddd;">
-                                                                                <center>
-                                                                                    <div style="display: grid;">
-                                                                                        <i class="far fa-times-circle no-data"></i> Tidak ada data
-                                                                                    </div>
-                                                                                </center>
-                                                                            </div>
-                                                                        <?php
-                                                                        }
-                                                                        ?>
-                                                                        <div class="form-group">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </fieldset>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Tutup</a>
-                                                        </div>
-                                                    </form>
+                                                    $datTGLAJU_PLB = $dataTGLAJU_PLBY . '-' . $dataTGLAJU_PLBM . '-' . $dataTGLAJU_PLBD;
+                                                    ?>
+                                                    <?= $datTGLAJU_PLB ?>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Cont. Details -->
-                                    <?php }
-                                } else {
-                                    ?>
-                                    <tr>
-                                        <td colspan="20">
-                                            <center>
-                                                <div style="display: grid;">
-                                                    <i class="far fa-times-circle no-data"></i> Tidak ada data
+                                            </td>
+                                            <td style="text-align: left">
+                                                <?php if ($row['NOMOR_DAFTAR_PLB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i>
+                                                    </font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_DAFTAR_PLB']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 80px;">
+                                                    <?php if ($row['TANGGAL_DAFTAR_PLB'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?php
+                                                        $alldatePLB = $row['TANGGAL_DAFTAR_PLB'];
+                                                        $tglPLB = substr($alldatePLB, 0, 10);
+                                                        $timePLB = substr($alldatePLB, 10, 20);
+                                                        ?>
+                                                        <?= $tglPLB ?>
+                                                    <?php } ?>
                                                 </div>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
+                                            </td>
+                                            <!-- BC27 GB -->
+                                            <td style="text-align: left">
+                                                <?php if ($row['NOMOR_AJU_GB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_AJU_GB']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 80px;">
+                                                    <?php
+                                                    $dataTGLAJU_GB = $row['TGL_AJU_GB'];
+                                                    $dataTGLAJU_GBY = substr($dataTGLAJU_GB, 0, 4);
+                                                    $dataTGLAJU_GBM = substr($dataTGLAJU_GB, 4, 2);
+                                                    $dataTGLAJU_GBD = substr($dataTGLAJU_GB, 6, 2);
+
+                                                    $datTGLAJU_GB = $dataTGLAJU_GBY . '-' . $dataTGLAJU_GBM . '-' . $dataTGLAJU_GBD;
+                                                    ?>
+                                                    <?= $datTGLAJU_GB ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <?php if ($row['NOMOR_DAFTAR_GB'] == NULL) { ?>
+                                                    <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                <?php } else { ?>
+                                                    <?= $row['NOMOR_DAFTAR_GB']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 80px;">
+                                                    <?php if ($row['TANGGAL_DAFTAR_GB'] == NULL) { ?>
+                                                        <font style="font-size: 8px;font-weight: 600;color: red"><i>Data Kosong!</i></font>
+                                                    <?php } else { ?>
+                                                        <?php
+                                                        $alldateGB = $row['TANGGAL_DAFTAR_GB'];
+                                                        $tglGB = substr($alldateGB, 0, 10);
+                                                        $timeGB = substr($alldateGB, 10, 20);
+                                                        ?>
+                                                        <?= $tglGB ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 150px;">
+                                                    <?= $row['KODE_NEGARA_PEMASOK_GB'] ?> / <?= $row['URAIAN_NEGARA']; ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?= $row['PERUSAHAAN'] ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= $row['CARTON'] ?>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= $row['BOTOL'] ?>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= round($row['LITER'], 3) ?>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <?= $row['PARTY'] ?>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= $row['KODE_VALUTA'] ?>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= $row['CIF'] ?>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= NPWP($row['ID_PENERIMA_BARANG']) ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <div style="width: 200px;">
+                                                    <?= $row['NAMA_PENERIMA_BARANG'] ?>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <?= $row['ORIGIN'] ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <?= $row['TGL_MASUK'] ?>
+                                            </td>
+                                            <td style="text-align: left">
+                                                <?= $row['TGL_KELUAR'] ?>
+                                            </td>
+                                        </tr>
+                                    <?php $no++;
+                                    endforeach ?>
+                                <?php endif ?>
                             </tbody>
                         </table>
                     </div>
@@ -562,14 +543,40 @@ include "include/panel.php";
 <?php include "include/jsForm.php"; ?>
 
 <script type="text/javascript">
+    // AJU PLB
     $(function() {
         $("#IDAJU_PLB").autocomplete({
             source: 'function/autocomplete/nomor_aju_plb.php'
         });
     });
+    // AJU GB
     $(function() {
         $("#IDAJU_GB").autocomplete({
             source: 'function/autocomplete/nomor_aju_gb.php'
+        });
+    });
+    // SUPPLIER
+    $(function() {
+        $("#ID_SUPPLIER").autocomplete({
+            source: 'function/autocomplete/datatpb.php?function=supplier'
+        });
+    });
+    // KD_NEGARA
+    $(function() {
+        $("#ID_KD_NEGARA").autocomplete({
+            source: 'function/autocomplete/datatpb.php?function=kd_negara'
+        });
+    });
+    // NAMA_NEGARA
+    $(function() {
+        $("#ID_NAMA_NEGARA").autocomplete({
+            source: 'function/autocomplete/datatpb.php?function=nm_negara'
+        });
+    });
+    // MATA_UANG
+    $(function() {
+        $("#ID_MATA_UANG").autocomplete({
+            source: 'function/autocomplete/datatpb.php?function=mata_uang'
         });
     });
     // UPDATE SUCCESS
@@ -596,7 +603,7 @@ include "include/panel.php";
         $('#TableDataTPB').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+                'copyHtml5', 'excelHtml5', 'csvHtml5'
             ],
             "order": [],
             "columnDefs": [{
