@@ -156,7 +156,7 @@ if (isset($_POST["Find_NP"])) {
             <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">Print By: <?= $_SESSION['username']; ?></td>
         </tr>
         <tr>
-            <td colspan="8" width="981" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company_t'] ?></td>
+            <td colspan="8" width="981" style="font-size: 16px;font-weight: 900;"><?= $resultHeadSetting['company'] ?> - <?= $resultHeadSetting['company_t'] ?></td>
             <td colspan="2" width="175" style="font-size: 12px;font-weight: 900;">Date Time: <?= date_indo_s(date('Y-m-d'), TRUE) ?> <?= date('H:m:i') ?></td>
         </tr>
         <tr>
