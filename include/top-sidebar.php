@@ -108,6 +108,8 @@
                         $uriSegmentsTop[1] == 'report_data_tpb.php' ||
                         $uriSegmentsTop[1] == 'report_data_plb.php' ||
                         $uriSegmentsTop[1] == 'report_data_gb.php' ||
+                        $uriSegmentsTop[1] == 'report_data_gb_packinglist.php' ||
+                        $uriSegmentsTop[1] == 'report_data_gb_invoice.php' ||
                         $uriSegmentsTop[1] == 'report_log_system.php'
                         ? 'active-top' : '' ?>" style="display: <?= $TitleReport ?>;">
             <a href="index_report.php">
@@ -127,7 +129,7 @@
                 <li class="<?= $uriSegmentsTop[1] == 'report_data_tpb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_tpb']; ?>;"><a href="report_data_tpb.php">Laporan Data TPB</a></li>
                 <li class="<?= $uriSegmentsTop[1] == 'report_data_plb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_plb']; ?>;"><a href="report_data_plb.php">Laporan Data PLB</a>
                 </li>
-                <li class="<?= $uriSegmentsTop[1] == 'report_data_gb.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_gb']; ?>;"><a href="report_data_gb.php">Laporan Data GB</a></li>
+                <li class="<?= $uriSegmentsTop[1] == 'report_data_gb.php' || $uriSegmentsTop[1] == 'report_data_gb_packinglist.php' || $uriSegmentsTop[1] == 'report_data_gb_invoice.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_data_gb']; ?>;"><a href="report_data_gb.php">Laporan Data GB</a></li>
                 <li class="<?= $uriSegmentsTop[1] == 'report_log_system.php' ? 'active' : '' ?>" style="display: <?= $resultRoleModules['re_log']; ?>;"><a href="report_log_system.php">Laporan Aktifitas</a></li>
             </ul>
         </li>

@@ -337,7 +337,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                         <div class="row">
                             <div class="col-sm-6">
                                 <?= $resultdataHeader['NUMBER_GB']; ?>
-                                <a href="#M_NUMBER" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                             </div>
                             <div class="col-sm-6">
                                 <?php if ($resultdataHeader['TGL_NUMBER_GB'] != NULL) { ?>
@@ -505,7 +504,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                     <div class="col-8">
                         <p>
                             <?= decimal($resultdataHeader['WEIGHT']); ?> <?= $resultdataHeader['WEIGHT_S']; ?>
-                            <a href="#M_WEIGHT" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                         </p>
                     </div>
                     <!-- Weight -->
@@ -570,7 +568,6 @@ $IDHEADER = $resultdataTPBH['ID'];
                     <div class="col-8">
                         <p>
                             <?= $resultdataHeader['URAIAN_NEGARA']; ?>
-                            <a href="#M_ORIGINAL" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
                         </p>
                     </div>
                     <!-- Original -->

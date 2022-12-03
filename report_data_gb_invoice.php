@@ -138,12 +138,7 @@ $IDHEADER = $resultdataTPBH['ID'];
                             <a href="javascript:;" class="btn btn-secondary" style="border-radius: 0 0 0 0 ;"><i class=" fas fa-file-export"></i> Export File</a>
                             <a href="#" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle"><b class="caret"></b></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <form action="report_data_packinglist_excel.php" target="_blank" method="POST">
-                                    <input type="hidden" name="S_RTU" value="<?= $S_RTU ?>">
-                                    <input type="hidden" name="E_RTU" value="<?= $E_RTU ?>">
-                                    <input type="hidden" name="ShowField_RTU" value="<?= $ShowField_RTU ?>">
-                                    <button type="submit" name="Find_RTU" class="dropdown-item">Download as XLS</button>
-                                </form>
+                                <a href="report_data_gb_invoice_excel.php?AJU=<?= $_GET['AJU']; ?>&GB=<?= $resultdataHeader['NOMOR_AJU_GB']; ?>" target="_blank" class="dropdown-item">Download as XLS</a>
                             </div>
                         </div>
                     </div>
