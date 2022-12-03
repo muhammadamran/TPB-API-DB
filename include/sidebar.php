@@ -177,7 +177,9 @@ $result_count_gb = mysqli_fetch_array($count_gb);
             <!-- Inventory -->
             <?php include 'modules/Inventory/menu.php' ?>
             <!-- Referensi -->
-            <?php include 'modules/Referensi/menu.php' ?>
+            <?php
+            // include 'modules/Referensi/menu.php' 
+            ?>
             <!-- Utility -->
             <?php
             // include 'modules/Utility/menu.php' 

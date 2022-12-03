@@ -119,7 +119,7 @@ include "include/cssForm.php";
 		</a>
 		<!-- End 1 -->
 		<!-- 2 -->
-		<a href="dashboard_realisasi.php" target="_blank" class="class-utama" title="Analisis Kouta Mitra">
+		<!-- <a href="dashboard_realisasi.php" target="_blank" class="class-utama" title="Analisis Kouta Mitra">
 			<div class="class-one">
 				<div class="show-choose">
 					<img src="assets/img/svg/design-stats-animate.svg" alt="Analisis Kouta Mitra" class="image" width="100%">
@@ -128,7 +128,7 @@ include "include/cssForm.php";
 					</div>
 				</div>
 			</div>
-		</a>
+		</a> -->
 		<!-- End 2 -->
 		<!-- 3 -->
 		<a href="#modal-laporan-realisasi-per-mitra" class="class-utama" data-toggle="modal" title="Laporan Realisasi Per Mitra">
@@ -255,7 +255,8 @@ include "include/cssForm.php";
 </div>
 <!-- end #content -->
 <?php
-include "include/panel.php";
+include "include/pusat_bantuan.php";
+include "include/riwayat_aktifitas.php";
 include "include/panel.php";
 include "include/footer.php";
 include "include/jsDatatables.php";
