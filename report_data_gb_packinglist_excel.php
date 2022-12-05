@@ -368,7 +368,13 @@ $IDHEADER = $resultdataTPBH['ID'];
 
                         $datTGLDAFTAR = $dataTGLDAFTARY . '-' . $dataTGLDAFTARM . '-' . $dataTGLDAFTARD;
                         ?>
-                        <?= date_indo($resultdataHeader['TANGGAL_DAFTAR_GB']); ?>
+
+                        <?php
+                        $alldateDF = $resultdataHeader['TANGGAL_DAFTAR_GB'];
+                        $tglDF = substr($alldateDF, 0, 10);
+                        $timeDF = substr($alldateDF, 10, 20);
+                        ?>
+                        <?= date_indo($tglDF); ?>
                     </p>
                 <?php } ?>
             </td>

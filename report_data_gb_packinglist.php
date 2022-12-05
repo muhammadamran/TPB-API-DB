@@ -541,7 +541,12 @@ $IDHEADER = $resultdataTPBH['ID'];
 
                                 $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                 ?>
-                                <div class="col-sm-6"><?= date_indo($resultdataHeader['TANGGAL_DAFTAR_GB']); ?></div>
+                                <?php
+                                $alldateDF = $resultdataHeader['TANGGAL_DAFTAR_GB'];
+                                $tglDF = substr($alldateDF, 0, 10);
+                                $timeDF = substr($alldateDF, 10, 20);
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($tglDF); ?></div>
                             <?php } else { ?>
                                 <div class="col-sm-6">-</div>
                             <?php } ?>
