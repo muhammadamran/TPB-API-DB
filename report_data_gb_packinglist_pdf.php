@@ -244,7 +244,8 @@ $dataHeader = $dbcon->query("SELECT *,
                             tpb.WEIGHT,
                             tpb.WEIGHT_S,
                             tpb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_GB,
-                            ngr.URAIAN_NEGARA
+                            ngr.URAIAN_NEGARA,
+                            tpb.BRUTO
                             FROM rcd_status AS rcd
                             LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=rcd.bm_no_aju_plb
                             LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=rcd.bk_no_aju_sarinah
@@ -503,7 +504,7 @@ $IDHEADER = $resultdataTPBH['ID'];
                     </div>
                     <div class="col-8">
                         <p>
-                            <?= decimal($resultdataHeader['WEIGHT']); ?> <?= $resultdataHeader['WEIGHT_S']; ?>
+                            <?= decimal($resultdataHeader['BRUTO']); ?>
                         </p>
                     </div>
                     <!-- Weight -->
