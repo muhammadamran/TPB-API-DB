@@ -1655,7 +1655,7 @@ header("Content-Disposition: attachment; filename=Laporan BC 2.7 PLB-Halaman1_$d
                     <td height=17 class=xl7811096 style='height:12.75pt'>&nbsp;</td>
                     <td class=xl6911096></td>
                     <td class=xl6911096></td>
-                    <td colspan=10 class=xl7611096 style='border-right:.5pt solid black'><?= $resultDataCK5PLB['PERUSAHAAN']; ?></td>
+                    <td colspan=10 class=xl7611096 style='border-right:.5pt solid black'><?= $resultHeadSetting['company']; ?></td>
                     <td class=xl7811096 style='border-left:none'>&nbsp;</td>
                     <td class=xl6911096></td>
                     <td colspan=5 class=xl7511096>&nbsp;&nbsp;Pejabat Penerima</td>

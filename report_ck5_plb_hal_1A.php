@@ -1,7 +1,7 @@
 <!-- QUERY -->
 <?php
 include "include/connection.php";
-include "include/restrict.php";
+// include "include/restrict.php";
 
 $dataHeadSettting = $dbcon->query("SELECT * FROM tbl_setting");
 $resultHeadSetting = mysqli_fetch_array($dataHeadSettting);

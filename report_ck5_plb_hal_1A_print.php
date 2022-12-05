@@ -1,7 +1,7 @@
 <!-- QUERY -->
 <?php
 include "include/connection.php";
-include "include/restrict.php";
+// include "include/restrict.php";
 
 ?>
 <!DOCTYPE html>
