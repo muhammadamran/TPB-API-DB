@@ -109,7 +109,8 @@ $dataHeader = $dbcon->query("SELECT *,
                             tpb.WEIGHT,
                             tpb.WEIGHT_S,
                             tpb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_GB,
-                            ngr.URAIAN_NEGARA
+                            ngr.URAIAN_NEGARA,
+                            tpb.BRUTO
                             FROM rcd_status AS rcd
                             LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=rcd.bm_no_aju_plb
                             LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=rcd.bk_no_aju_sarinah
@@ -297,7 +298,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                                     <?= $rowBLQuery['NOMOR_DOKUMEN'] ?>
                                     <font style="font-size: 8px;">(<?= $rowBLQuery['URAIAN_DOKUMEN'] ?>)</font>
                                 </div>
-                                <div class="col-sm-6"><?= $rowBLQuery['TANGGAL_DOKUMEN'] ?></div>
+                                <?php
+                                $alldateBL = $rowBLQuery['TANGGAL_DOKUMEN'];
+                                $tglBL = substr($alldateBL, 0, 10);
+                                $timeBL = substr($alldateBL, 10, 20);
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($tglBL) ?></div>
                             <?php } ?>
                         </div>
                         <br>
@@ -378,7 +384,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                                     <?= $resultNoDokumen['NOMOR_DOKUMEN'] ?>
                                     <font style="font-size: 8px;">(<?= $resultNoDokumen['URAIAN_DOKUMEN'] ?>)</font>
                                 </div>
-                                <div class="col-sm-6"><?= $resultNoDokumen['TANGGAL_DOKUMEN'] ?></div>
+                                <?php
+                                $alldateINV = $resultNoDokumen['TANGGAL_DOKUMEN'];
+                                $tglINV = substr($alldateINV, 0, 10);
+                                $timeINV = substr($alldateINV, 10, 20);
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($tglINV) ?></div>
                             <?php } ?>
                         </div>
                         <br>
@@ -392,8 +403,8 @@ $IDHEADER = $resultdataTPBH['ID'];
                     </div>
                     <div class="col-8">
                         <p>
-                            <?= decimal($resultdataHeader['WEIGHT']); ?> <?= $resultdataHeader['WEIGHT_S']; ?>
-                            <a href="#M_WEIGHT" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a>
+                            <?= decimal($resultdataHeader['BRUTO']); ?>
+                            <!-- <a href="#M_WEIGHT" class="label label-default" data-toggle="modal"><i class="fas fa-edit"></i></a> -->
                         </p>
                     </div>
                     <!-- Weight -->
@@ -517,7 +528,7 @@ $IDHEADER = $resultdataTPBH['ID'];
                     <div class="col-8">
                         <div class="row">
                             <?php if ($resultdataHeader['TANGGAL_DAFTAR_GB'] != NULL) { ?>
-                                <div class="col-sm-6"><?= substr($resultdataHeader['NOMOR_DAFTAR_GB'], 20, 27); ?></div>
+                                <div class="col-sm-6"><?= $resultdataHeader['NOMOR_DAFTAR_GB']; ?></div>
                             <?php } else { ?>
                                 <div class="col-sm-6">-</div>
                             <?php } ?>
@@ -530,7 +541,12 @@ $IDHEADER = $resultdataTPBH['ID'];
 
                                 $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                 ?>
-                                <div class="col-sm-6"><?= date_indo($datTGLAJU); ?></div>
+                                <?php
+                                $alldateDF = $resultdataHeader['TANGGAL_DAFTAR_GB'];
+                                $tglDF = substr($alldateDF, 0, 10);
+                                $timeDF = substr($alldateDF, 10, 20);
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($tglDF); ?></div>
                             <?php } else { ?>
                                 <div class="col-sm-6">-</div>
                             <?php } ?>

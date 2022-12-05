@@ -135,7 +135,8 @@ $dataHeader = $dbcon->query("SELECT *,
                             tpb.WEIGHT,
                             tpb.WEIGHT_S,
                             tpb.KODE_NEGARA_PEMASOK AS KODE_NEGARA_PEMASOK_GB,
-                            ngr.URAIAN_NEGARA
+                            ngr.URAIAN_NEGARA,
+                            tpb.BRUTO
                             FROM rcd_status AS rcd
                             LEFT OUTER JOIN plb_header AS plb ON plb.NOMOR_AJU=rcd.bm_no_aju_plb
                             LEFT OUTER JOIN tpb_header AS tpb ON tpb.NOMOR_AJU=rcd.bk_no_aju_sarinah
@@ -277,7 +278,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                 </p>
             </td>
             <td style="width: 72.5781px;">
-                <p><?= $resultNoBLQuery['TANGGAL_DOKUMEN'] ?></p>
+                <?php
+                $alldateBL = $resultNoBLQuery['TANGGAL_DOKUMEN'];
+                $tglBL = substr($alldateBL, 0, 10);
+                $timeBL = substr($alldateBL, 10, 20);
+                ?>
+                <p><?= date_indo($tglBL) ?></p>
             </td>
         </tr>
         <tr>
@@ -307,7 +313,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                 </p>
             </td>
             <td style="width: 72.5781px;">
-                <p><?= $resultdataNoDokumen['TANGGAL_DOKUMEN'] ?></p>
+                <?php
+                $alldateINV = $resultdataNoDokumen['TANGGAL_DOKUMEN'];
+                $tglINV = substr($alldateINV, 0, 10);
+                $timeINV = substr($alldateINV, 10, 20);
+                ?>
+                <p><?= date_indo($tglINV) ?></p>
             </td>
         </tr>
         <tr>
@@ -315,7 +326,7 @@ $IDHEADER = $resultdataTPBH['ID'];
                 <p><strong>WEIGHT</strong></p>
             </td>
             <td style="width: 83.2031px;" colspan="2">
-                <p>: <?= decimal($resultdataHeader['WEIGHT']); ?> <?= $resultdataHeader['WEIGHT_S']; ?></p>
+                <p>: <?= decimal($resultdataHeader['BRUTO']); ?></p>
             </td>
             <td style="width: 72.5781px;">
                 <p></p>
@@ -356,7 +367,12 @@ $IDHEADER = $resultdataTPBH['ID'];
 
                         $datTGLDAFTAR = $dataTGLDAFTARY . '-' . $dataTGLDAFTARM . '-' . $dataTGLDAFTARD;
                         ?>
-                        <?= date_indo($datTGLDAFTAR); ?>
+                        <?php
+                        $alldateDF = $resultdataHeader['TANGGAL_DAFTAR_GB'];
+                        $tglDF = substr($alldateDF, 0, 10);
+                        $timeDF = substr($alldateDF, 10, 20);
+                        ?>
+                        <?= date_indo($tglDF); ?>
                     </p>
                 <?php } ?>
             </td>
