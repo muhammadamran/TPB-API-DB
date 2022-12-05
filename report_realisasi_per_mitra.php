@@ -290,7 +290,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='01'");
 								$ResultDataFor01_crt_a = mysqli_fetch_array($DataFor01_crt_a);
 								// 01 LITER GOL A
@@ -299,7 +299,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='01'");
 								$ResultDataFor01_ltr_a = mysqli_fetch_array($DataFor01_ltr_a);
 								// 01 CARTON GOL B
@@ -308,7 +308,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='01'");
 								$ResultDataFor01_crt_b = mysqli_fetch_array($DataFor01_crt_b);
 								// 01 LITER GOL B
@@ -317,7 +317,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='01'");
 								$ResultDataFor01_ltr_b = mysqli_fetch_array($DataFor01_ltr_b);
 								// 01 CARTON GOL C
@@ -326,7 +326,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='01'");
 								$ResultDataFor01_crt_c = mysqli_fetch_array($DataFor01_crt_c);
 								// 01 LITER GOL C
@@ -335,7 +335,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='01'");
 								$ResultDataFor01_ltr_c = mysqli_fetch_array($DataFor01_ltr_c);
 								// End 01
@@ -349,7 +349,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='02'");
 								$ResultDataFor02_crt_a = mysqli_fetch_array($DataFor02_crt_a);
 								// 02 LITER GOL A
@@ -358,7 +358,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='02'");
 								$ResultDataFor02_ltr_a = mysqli_fetch_array($DataFor02_ltr_a);
 								// 02 CARTON GOL B
@@ -367,7 +367,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='02'");
 								$ResultDataFor02_crt_b = mysqli_fetch_array($DataFor02_crt_b);
 								// 02 LITER GOL B
@@ -376,7 +376,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='02'");
 								$ResultDataFor02_ltr_b = mysqli_fetch_array($DataFor02_ltr_b);
 								// 02 CARTON GOL C
@@ -385,7 +385,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='02'");
 								$ResultDataFor02_crt_c = mysqli_fetch_array($DataFor02_crt_c);
 								// 02 LITER GOL C
@@ -394,7 +394,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='02'");
 								$ResultDataFor02_ltr_c = mysqli_fetch_array($DataFor02_ltr_c);
 								// End 02
@@ -408,7 +408,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='03'");
 								$ResultDataFor03_crt_a = mysqli_fetch_array($DataFor03_crt_a);
 								// 03 LITER GOL A
@@ -417,7 +417,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='03'");
 								$ResultDataFor03_ltr_a = mysqli_fetch_array($DataFor03_ltr_a);
 								// 03 CARTON GOL B
@@ -426,7 +426,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='03'");
 								$ResultDataFor03_crt_b = mysqli_fetch_array($DataFor03_crt_b);
 								// 03 LITER GOL B
@@ -435,7 +435,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='03'");
 								$ResultDataFor03_ltr_b = mysqli_fetch_array($DataFor03_ltr_b);
 								// 03 CARTON GOL C
@@ -444,7 +444,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='03'");
 								$ResultDataFor03_crt_c = mysqli_fetch_array($DataFor03_crt_c);
 								// 03 LITER GOL C
@@ -453,7 +453,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='03'");
 								$ResultDataFor03_ltr_c = mysqli_fetch_array($DataFor03_ltr_c);
 								// End 03
@@ -467,7 +467,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='04'");
 								$ResultDataFor04_crt_a = mysqli_fetch_array($DataFor04_crt_a);
 								// 04 LITER GOL A
@@ -476,7 +476,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='04'");
 								$ResultDataFor04_ltr_a = mysqli_fetch_array($DataFor04_ltr_a);
 								// 04 CARTON GOL B
@@ -485,7 +485,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='04'");
 								$ResultDataFor04_crt_b = mysqli_fetch_array($DataFor04_crt_b);
 								// 04 LITER GOL B
@@ -494,7 +494,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='04'");
 								$ResultDataFor04_ltr_b = mysqli_fetch_array($DataFor04_ltr_b);
 								// 04 CARTON GOL C
@@ -503,7 +503,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='04'");
 								$ResultDataFor04_crt_c = mysqli_fetch_array($DataFor04_crt_c);
 								// 04 LITER GOL C
@@ -512,7 +512,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='04'");
 								$ResultDataFor04_ltr_c = mysqli_fetch_array($DataFor04_ltr_c);
 								// End 04
@@ -526,7 +526,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='05'");
 								$ResultDataFor05_crt_a = mysqli_fetch_array($DataFor05_crt_a);
 								// 05 LITER GOL A
@@ -535,7 +535,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='05'");
 								$ResultDataFor05_ltr_a = mysqli_fetch_array($DataFor05_ltr_a);
 								// 05 CARTON GOL B
@@ -544,7 +544,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='05'");
 								$ResultDataFor05_crt_b = mysqli_fetch_array($DataFor05_crt_b);
 								// 05 LITER GOL B
@@ -553,7 +553,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='05'");
 								$ResultDataFor05_ltr_b = mysqli_fetch_array($DataFor05_ltr_b);
 								// 05 CARTON GOL C
@@ -562,7 +562,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='05'");
 								$ResultDataFor05_crt_c = mysqli_fetch_array($DataFor05_crt_c);
 								// 05 LITER GOL C
@@ -571,7 +571,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='05'");
 								$ResultDataFor05_ltr_c = mysqli_fetch_array($DataFor05_ltr_c);
 								// End 05
@@ -585,7 +585,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='06'");
 								$ResultDataFor06_crt_a = mysqli_fetch_array($DataFor06_crt_a);
 								// 06 LITER GOL A
@@ -594,7 +594,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='06'");
 								$ResultDataFor06_ltr_a = mysqli_fetch_array($DataFor06_ltr_a);
 								// 06 CARTON GOL B
@@ -603,7 +603,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='06'");
 								$ResultDataFor06_crt_b = mysqli_fetch_array($DataFor06_crt_b);
 								// 06 LITER GOL B
@@ -612,7 +612,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='06'");
 								$ResultDataFor06_ltr_b = mysqli_fetch_array($DataFor06_ltr_b);
 								// 06 CARTON GOL C
@@ -621,7 +621,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='06'");
 								$ResultDataFor06_crt_c = mysqli_fetch_array($DataFor06_crt_c);
 								// 06 LITER GOL C
@@ -630,7 +630,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='06'");
 								$ResultDataFor06_ltr_c = mysqli_fetch_array($DataFor06_ltr_c);
 								// End 06
@@ -644,7 +644,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='07'");
 								$ResultDataFor07_crt_a = mysqli_fetch_array($DataFor07_crt_a);
 								// 07 LITER GOL A
@@ -653,7 +653,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='07'");
 								$ResultDataFor07_ltr_a = mysqli_fetch_array($DataFor07_ltr_a);
 								// 07 CARTON GOL B
@@ -662,7 +662,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='07'");
 								$ResultDataFor07_crt_b = mysqli_fetch_array($DataFor07_crt_b);
 								// 07 LITER GOL B
@@ -671,7 +671,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='07'");
 								$ResultDataFor07_ltr_b = mysqli_fetch_array($DataFor07_ltr_b);
 								// 07 CARTON GOL C
@@ -680,7 +680,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='07'");
 								$ResultDataFor07_crt_c = mysqli_fetch_array($DataFor07_crt_c);
 								// 07 LITER GOL C
@@ -689,7 +689,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='07'");
 								$ResultDataFor07_ltr_c = mysqli_fetch_array($DataFor07_ltr_c);
 								// End 07
@@ -703,7 +703,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='08'");
 								$ResultDataFor08_crt_a = mysqli_fetch_array($DataFor08_crt_a);
 								// 08 LITER GOL A
@@ -712,7 +712,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='08'");
 								$ResultDataFor08_ltr_a = mysqli_fetch_array($DataFor08_ltr_a);
 								// 08 CARTON GOL B
@@ -721,7 +721,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='08'");
 								$ResultDataFor08_crt_b = mysqli_fetch_array($DataFor08_crt_b);
 								// 08 LITER GOL B
@@ -730,7 +730,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='08'");
 								$ResultDataFor08_ltr_b = mysqli_fetch_array($DataFor08_ltr_b);
 								// 08 CARTON GOL C
@@ -739,7 +739,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='08'");
 								$ResultDataFor08_crt_c = mysqli_fetch_array($DataFor08_crt_c);
 								// 08 LITER GOL C
@@ -748,7 +748,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='08'");
 								$ResultDataFor08_ltr_c = mysqli_fetch_array($DataFor08_ltr_c);
 								// End 08
@@ -762,7 +762,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='09'");
 								$ResultDataFor09_crt_a = mysqli_fetch_array($DataFor09_crt_a);
 								// 09 LITER GOL A
@@ -771,7 +771,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='09'");
 								$ResultDataFor09_ltr_a = mysqli_fetch_array($DataFor09_ltr_a);
 								// 09 CARTON GOL B
@@ -780,7 +780,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='09'");
 								$ResultDataFor09_crt_b = mysqli_fetch_array($DataFor09_crt_b);
 								// 09 LITER GOL B
@@ -789,7 +789,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='09'");
 								$ResultDataFor09_ltr_b = mysqli_fetch_array($DataFor09_ltr_b);
 								// 09 CARTON GOL C
@@ -798,7 +798,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='09'");
 								$ResultDataFor09_crt_c = mysqli_fetch_array($DataFor09_crt_c);
 								// 09 LITER GOL C
@@ -807,7 +807,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='09'");
 								$ResultDataFor09_ltr_c = mysqli_fetch_array($DataFor09_ltr_c);
 								// End 09
@@ -821,7 +821,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='10'");
 								$ResultDataFor10_crt_a = mysqli_fetch_array($DataFor10_crt_a);
 								// 10 LITER GOL A
@@ -830,7 +830,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='10'");
 								$ResultDataFor10_ltr_a = mysqli_fetch_array($DataFor10_ltr_a);
 								// 10 CARTON GOL B
@@ -839,7 +839,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='10'");
 								$ResultDataFor10_crt_b = mysqli_fetch_array($DataFor10_crt_b);
 								// 10 LITER GOL B
@@ -848,7 +848,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='10'");
 								$ResultDataFor10_ltr_b = mysqli_fetch_array($DataFor10_ltr_b);
 								// 10 CARTON GOL C
@@ -857,7 +857,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='10'");
 								$ResultDataFor10_crt_c = mysqli_fetch_array($DataFor10_crt_c);
 								// 10 LITER GOL C
@@ -866,7 +866,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='10'");
 								$ResultDataFor10_ltr_c = mysqli_fetch_array($DataFor10_ltr_c);
 								// End 10
@@ -880,7 +880,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='11'");
 								$ResultDataFor11_crt_a = mysqli_fetch_array($DataFor11_crt_a);
 								// 11 LITER GOL A
@@ -889,7 +889,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='11'");
 								$ResultDataFor11_ltr_a = mysqli_fetch_array($DataFor11_ltr_a);
 								// 11 CARTON GOL B
@@ -898,7 +898,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='11'");
 								$ResultDataFor11_crt_b = mysqli_fetch_array($DataFor11_crt_b);
 								// 11 LITER GOL B
@@ -907,7 +907,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='11'");
 								$ResultDataFor11_ltr_b = mysqli_fetch_array($DataFor11_ltr_b);
 								// 11 CARTON GOL C
@@ -916,7 +916,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='11'");
 								$ResultDataFor11_crt_c = mysqli_fetch_array($DataFor11_crt_c);
 								// 11 LITER GOL C
@@ -925,7 +925,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='11'");
 								$ResultDataFor11_ltr_c = mysqli_fetch_array($DataFor11_ltr_c);
 								// End 11
@@ -939,7 +939,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='12'");
 								$ResultDataFor12_crt_a = mysqli_fetch_array($DataFor12_crt_a);
 								// 12 LITER GOL A
@@ -948,7 +948,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL A'
+								AND brg.SPESIFIKASI_LAIN='GOL A'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='12'");
 								$ResultDataFor12_ltr_a = mysqli_fetch_array($DataFor12_ltr_a);
 								// 12 CARTON GOL B
@@ -957,7 +957,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='12'");
 								$ResultDataFor12_crt_b = mysqli_fetch_array($DataFor12_crt_b);
 								// 12 LITER GOL B
@@ -966,7 +966,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL B'
+								AND brg.SPESIFIKASI_LAIN='GOL B'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='12'");
 								$ResultDataFor12_ltr_b = mysqli_fetch_array($DataFor12_ltr_b);
 								// 12 CARTON GOL C
@@ -975,7 +975,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='12'");
 								$ResultDataFor12_crt_c = mysqli_fetch_array($DataFor12_crt_c);
 								// 12 LITER GOL C
@@ -984,7 +984,7 @@ $keyIDPenerima = str_replace(['.', '-', ' '], ['', '', ''], $rowFirstCon['NPWP']
 								LEFT OUTER JOIN tpb_header AS tpb ON rcd.bk_no_aju_sarinah=tpb.NOMOR_AJU
 								LEFT OUTER JOIN plb_barang AS brg ON rcd.bm_no_aju_plb=brg.NOMOR_AJU
 								WHERE tpb.ID_PENERIMA_BARANG='$keyIDPenerima' 
-								AND brg.TIPE='GOL C'
+								AND brg.SPESIFIKASI_LAIN='GOL C'
 								AND EXTRACT(YEAR FROM brg.DATE_CT_GB)='$WGetTahunAju' AND EXTRACT(MONTH FROM brg.DATE_CT_GB)='12'");
 								$ResultDataFor12_ltr_c = mysqli_fetch_array($DataFor12_ltr_c);
 								// End 12
