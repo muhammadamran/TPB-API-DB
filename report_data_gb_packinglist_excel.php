@@ -279,7 +279,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                 </p>
             </td>
             <td style="width: 72.5781px;">
-                <p><?= $resultNoBLQuery['TANGGAL_DOKUMEN'] ?></p>
+                <?php
+                $alldateBL = $resultNoBLQuery['TANGGAL_DOKUMEN'];
+                $tglBL = substr($alldateBL, 0, 10);
+                $timeBL = substr($alldateBL, 10, 20);
+                ?>
+                <p><?= date_indo($tglBL) ?></p>
             </td>
         </tr>
         <tr>
@@ -309,7 +314,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                 </p>
             </td>
             <td style="width: 72.5781px;">
-                <p><?= $resultdataNoDokumen['TANGGAL_DOKUMEN'] ?></p>
+                <?php
+                $alldateINV = $resultdataNoDokumen['TANGGAL_DOKUMEN'];
+                $tglINV = substr($alldateINV, 0, 10);
+                $timeINV = substr($alldateINV, 10, 20);
+                ?>
+                <p><?= date_indo($tglINV) ?></p>
             </td>
         </tr>
         <tr>
@@ -342,7 +352,7 @@ $IDHEADER = $resultdataTPBH['ID'];
                 <?php if ($resultdataHeader['TANGGAL_DAFTAR_GB'] == NULL) { ?>
                     <p>: -</p>
                 <?php } else { ?>
-                    <p>: <?= substr($resultdataHeader['NOMOR_DAFTAR_GB'], 20, 27); ?></p>
+                    <p>: <?= $resultdataHeader['NOMOR_DAFTAR_GB']; ?></p>
                 <?php } ?>
             </td>
             <td style="width: 72.5781px;">
@@ -358,7 +368,7 @@ $IDHEADER = $resultdataTPBH['ID'];
 
                         $datTGLDAFTAR = $dataTGLDAFTARY . '-' . $dataTGLDAFTARM . '-' . $dataTGLDAFTARD;
                         ?>
-                        <?= date_indo($datTGLDAFTAR); ?>
+                        <?= date_indo($resultdataHeader['TANGGAL_DAFTAR_GB']); ?>
                     </p>
                 <?php } ?>
             </td>

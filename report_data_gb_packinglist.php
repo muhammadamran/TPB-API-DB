@@ -298,7 +298,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                                     <?= $rowBLQuery['NOMOR_DOKUMEN'] ?>
                                     <font style="font-size: 8px;">(<?= $rowBLQuery['URAIAN_DOKUMEN'] ?>)</font>
                                 </div>
-                                <div class="col-sm-6"><?= $rowBLQuery['TANGGAL_DOKUMEN'] ?></div>
+                                <?php
+                                $alldateBL = $rowBLQuery['TANGGAL_DOKUMEN'];
+                                $tglBL = substr($alldateBL, 0, 10);
+                                $timeBL = substr($alldateBL, 10, 20);
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($tglBL) ?></div>
                             <?php } ?>
                         </div>
                         <br>
@@ -379,7 +384,12 @@ $IDHEADER = $resultdataTPBH['ID'];
                                     <?= $resultNoDokumen['NOMOR_DOKUMEN'] ?>
                                     <font style="font-size: 8px;">(<?= $resultNoDokumen['URAIAN_DOKUMEN'] ?>)</font>
                                 </div>
-                                <div class="col-sm-6"><?= $resultNoDokumen['TANGGAL_DOKUMEN'] ?></div>
+                                <?php
+                                $alldateINV = $resultNoDokumen['TANGGAL_DOKUMEN'];
+                                $tglINV = substr($alldateINV, 0, 10);
+                                $timeINV = substr($alldateINV, 10, 20);
+                                ?>
+                                <div class="col-sm-6"><?= date_indo($tglINV) ?></div>
                             <?php } ?>
                         </div>
                         <br>
@@ -518,7 +528,7 @@ $IDHEADER = $resultdataTPBH['ID'];
                     <div class="col-8">
                         <div class="row">
                             <?php if ($resultdataHeader['TANGGAL_DAFTAR_GB'] != NULL) { ?>
-                                <div class="col-sm-6"><?= substr($resultdataHeader['NOMOR_DAFTAR_GB'], 20, 27); ?></div>
+                                <div class="col-sm-6"><?= $resultdataHeader['NOMOR_DAFTAR_GB']; ?></div>
                             <?php } else { ?>
                                 <div class="col-sm-6">-</div>
                             <?php } ?>
@@ -531,7 +541,7 @@ $IDHEADER = $resultdataTPBH['ID'];
 
                                 $datTGLAJU = $dataTGLAJUY . '-' . $dataTGLAJUM . '-' . $dataTGLAJUD;
                                 ?>
-                                <div class="col-sm-6"><?= date_indo($datTGLAJU); ?></div>
+                                <div class="col-sm-6"><?= date_indo($resultdataHeader['TANGGAL_DAFTAR_GB']); ?></div>
                             <?php } else { ?>
                                 <div class="col-sm-6">-</div>
                             <?php } ?>
